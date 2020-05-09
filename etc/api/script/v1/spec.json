@@ -7,7 +7,7 @@
   "canonicalName": "Script",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190912",
+  "revision": "20200424",
   "title": "Apps Script API",
   "description": "Manages and executes Google Apps Script projects.\n",
   "ownerDomain": "google.com",
@@ -488,7 +488,7 @@
       "enumDescriptions": [],
       "properties": {
         "result": {
-          "description": "The result of the execution.\nTODO (johnlattin): Add debugging and logging.",
+          "description": "The result of the execution.",
           "$ref": "ScriptExecutionResult"
         }
       },
@@ -1247,7 +1247,7 @@
     },
     "ListValue": {
       "id": "ListValue",
-      "description": "`ListValue` is a wrapper around a repeated field of values.\nBased on LustValue at:\ngoogle3/apps/maestro/api/struct.proto?q=message%5c%20ListValue",
+      "description": "`ListValue` is a wrapper around a repeated field of values.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1510,14 +1510,14 @@
     },
     "ScriptExecutionResult": {
       "id": "ScriptExecutionResult",
-      "description": "The result of an execution\nBased on ScriptExecutionResult at:\ngoogle3/apps/maestro/api/frontend_execution_common.proto?q=message%5c%20ScriptExecutionResult",
+      "description": "The result of an execution.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "returnValue": {
-          "description": "The returned value of the execution.\nTODO (johnlattin): Add HtmlResponse\nTODO (johnlattin): Add ExceptionResponse\nTODO (johlnattin): Add TextResponse",
+          "description": "The returned value of the execution.",
           "$ref": "Value"
         }
       },
@@ -1617,7 +1617,7 @@
     },
     "Struct": {
       "id": "Struct",
-      "description": "`Struct` represents a structured data value, consisting of fields which map\nto dynamically typed values.\nBased on Struct at:\ngoogle3/apps/maestro/api/struct.proto?q=message%5c%20Struct",
+      "description": "`Struct` represents a structured data value, consisting of fields which map\nto dynamically typed values.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1658,7 +1658,7 @@
     },
     "Value": {
       "id": "Value",
-      "description": "`Value` represents a dynamically typed value which is the outcome of an\nexecuted script\nBased on Value at:\ngoogle3/apps/maestro/api/struct.proto?q=message%5c%20Value",
+      "description": "`Value` represents a dynamically typed value which is the outcome of an\nexecuted script.",
       "type": "object",
       "format": null,
       "enum": [],

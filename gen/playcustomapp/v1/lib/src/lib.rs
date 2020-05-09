@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [custom_apps](resources/accounts/custom_apps/struct.CustomAppsActions.html)\n        * [*create*](resources/accounts/custom_apps/struct.CreateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your Google Play Developer account\n\n`https://www.googleapis.com/auth/androidpublisher`"]
+    pub const ANDROIDPUBLISHER: &str = "https://www.googleapis.com/auth/androidpublisher";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -108,7 +112,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -116,8 +120,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -136,7 +152,7 @@ pub mod resources {
     pub mod accounts {
         pub mod params {}
         pub struct AccountsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AccountsActions<'a> {
@@ -156,7 +172,7 @@ pub mod resources {
         pub mod custom_apps {
             pub mod params {}
             pub struct CustomAppsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> CustomAppsActions<'a> {
@@ -187,7 +203,7 @@ pub mod resources {
             #[doc = "Created via [CustomAppsActions::create()](struct.CustomAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CustomApp,
                 account: i64,
@@ -268,7 +284,7 @@ pub mod resources {
                         ::reqwest::header::CONTENT_TYPE,
                         format!("multipart/related; boundary={}", multipart.boundary()),
                     );
-                    let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                    let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _resumable_upload_path(&self) -> String {
@@ -392,7 +408,10 @@ pub mod resources {
                     output.push_str("/customApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("fields", &self.fields)]);
@@ -428,9 +447,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -472,7 +489,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();
@@ -687,13 +706,13 @@ mod parsed_string {
     }
 }
 pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     url: String,
     progress: Option<i64>,
 }
 
 impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
+    pub fn new(reqwest: ::reqwest::blocking::Client, url: String) -> Self {
         ResumableUpload {
             reqwest,
             url,
@@ -741,7 +760,7 @@ impl ResumableUpload {
         let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
         let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
         let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
+        let req = req.body(::reqwest::blocking::Body::sized(reader, content_length));
         req.send()?.error_for_status()?;
         Ok(())
     }

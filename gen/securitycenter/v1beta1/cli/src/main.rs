@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("securitycenter1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
-            .about("Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.")
+            .version("0.1.0-20200410")
+            .about("Security Command Center API provides access to temporal views of assets and findings within an organization.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -128,11 +128,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             findings2 = findings2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("group").about("Filters an organization or source\'s findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/123/sources/-/findings");
+            let mcmd = SubCommand::with_name("group").about("Filters an organization or source\'s findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/{organization_id}/sources/-/findings");
             findings2 = findings2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists an organization or source\'s findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/123/sources/-/findings");
+            let mcmd = SubCommand::with_name("list").about("Lists an organization or source\'s findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1beta1/organizations/{organization_id}/sources/-/findings");
             findings2 = findings2.subcommand(mcmd);
         }
         {

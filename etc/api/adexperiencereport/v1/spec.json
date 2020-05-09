@@ -7,7 +7,7 @@
   "canonicalName": "Ad Experience Report",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190916",
+  "revision": "20200504",
   "title": "Ad Experience Report API",
   "description": "Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.",
   "ownerDomain": "google.com",
@@ -197,15 +197,7 @@
       "repeated": false
     }
   },
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/xapi.zoo": {
-          "description": "Test scope for access to the Zoo service"
-        }
-      }
-    }
-  },
+  "auth": null,
   "schemas": {
     "PlatformSummary": {
       "id": "PlatformSummary",
@@ -416,9 +408,7 @@
           "response": {
             "$ref": "SiteSummaryResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
+          "scopes": [],
           "supportsMediaDownload": false,
           "useMediaDownloadService": false,
           "supportsSubscription": false,
@@ -441,9 +431,7 @@
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
+          "scopes": [],
           "supportsMediaDownload": false,
           "useMediaDownloadService": false,
           "supportsSubscription": false,

@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190919",
+  "revision": "20200507",
   "title": "Genomics API",
   "description": "Uploads, processes, queries, and searches Genomics data in the cloud.",
   "ownerDomain": "google.com",
@@ -1103,7 +1103,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -1143,7 +1143,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

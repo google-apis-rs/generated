@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("serviceusage1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190918")
+            .version("0.1.0-20200508")
             .about("Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -54,9 +54,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut services0 = SubCommand::with_name("services")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: batch_enable, disable, enable, get and list");
+            .about("methods: batch_enable, batch_get, disable, enable, get and list");
         {
             let mcmd = SubCommand::with_name("batch_enable").about("Enable multiple services on a project. The operation is atomic: if enabling\nany service fails, then the entire batch fails, and no state changes occur.\nTo enable a single service, use the `EnableService` method instead.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("batch_get").about("Returns the service configurations and enabled states for a given list of\nservices.");
             services0 = services0.subcommand(mcmd);
         }
         {

@@ -1,4 +1,30 @@
 #![doc = "# Resources and Methods\n    * [contact_groups](resources/contact_groups/struct.ContactGroupsActions.html)\n      * [*batchGet*](resources/contact_groups/struct.BatchGetRequestBuilder.html), [*create*](resources/contact_groups/struct.CreateRequestBuilder.html), [*delete*](resources/contact_groups/struct.DeleteRequestBuilder.html), [*get*](resources/contact_groups/struct.GetRequestBuilder.html), [*list*](resources/contact_groups/struct.ListRequestBuilder.html), [*update*](resources/contact_groups/struct.UpdateRequestBuilder.html)\n      * [members](resources/contact_groups/members/struct.MembersActions.html)\n        * [*modify*](resources/contact_groups/members/struct.ModifyRequestBuilder.html)\n    * [people](resources/people/struct.PeopleActions.html)\n      * [*createContact*](resources/people/struct.CreateContactRequestBuilder.html), [*deleteContact*](resources/people/struct.DeleteContactRequestBuilder.html), [*deleteContactPhoto*](resources/people/struct.DeleteContactPhotoRequestBuilder.html), [*get*](resources/people/struct.GetRequestBuilder.html), [*getBatchGet*](resources/people/struct.GetBatchGetRequestBuilder.html), [*updateContact*](resources/people/struct.UpdateContactRequestBuilder.html), [*updateContactPhoto*](resources/people/struct.UpdateContactPhotoRequestBuilder.html)\n      * [connections](resources/people/connections/struct.ConnectionsActions.html)\n        * [*list*](resources/people/connections/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "See, edit, download, and permanently delete your contacts\n\n`https://www.googleapis.com/auth/contacts`"]
+    pub const CONTACTS: &str = "https://www.googleapis.com/auth/contacts";
+    #[doc = "See and download your contacts\n\n`https://www.googleapis.com/auth/contacts.readonly`"]
+    pub const CONTACTS_READONLY: &str = "https://www.googleapis.com/auth/contacts.readonly";
+    #[doc = "See and download your organization's GSuite directory\n\n`https://www.googleapis.com/auth/directory.readonly`"]
+    pub const DIRECTORY_READONLY: &str = "https://www.googleapis.com/auth/directory.readonly";
+    #[doc = "View your street addresses\n\n`https://www.googleapis.com/auth/user.addresses.read`"]
+    pub const USER_ADDRESSES_READ: &str = "https://www.googleapis.com/auth/user.addresses.read";
+    #[doc = "View your complete date of birth\n\n`https://www.googleapis.com/auth/user.birthday.read`"]
+    pub const USER_BIRTHDAY_READ: &str = "https://www.googleapis.com/auth/user.birthday.read";
+    #[doc = "View your email addresses\n\n`https://www.googleapis.com/auth/user.emails.read`"]
+    pub const USER_EMAILS_READ: &str = "https://www.googleapis.com/auth/user.emails.read";
+    #[doc = "See your gender\n\n`https://www.googleapis.com/auth/user.gender.read`"]
+    pub const USER_GENDER_READ: &str = "https://www.googleapis.com/auth/user.gender.read";
+    #[doc = "See your education, work history and org info\n\n`https://www.googleapis.com/auth/user.organization.read`"]
+    pub const USER_ORGANIZATION_READ: &str =
+        "https://www.googleapis.com/auth/user.organization.read";
+    #[doc = "View your phone numbers\n\n`https://www.googleapis.com/auth/user.phonenumbers.read`"]
+    pub const USER_PHONENUMBERS_READ: &str =
+        "https://www.googleapis.com/auth/user.phonenumbers.read";
+    #[doc = "View your email address\n\n`https://www.googleapis.com/auth/userinfo.email`"]
+    pub const USERINFO_EMAIL: &str = "https://www.googleapis.com/auth/userinfo.email";
+    #[doc = "See your personal info, including any personal info you've made publicly available\n\n`https://www.googleapis.com/auth/userinfo.profile`"]
+    pub const USERINFO_PROFILE: &str = "https://www.googleapis.com/auth/userinfo.profile";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -41,7 +67,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub extended_address: ::std::option::Option<String>,
-        #[doc = "The read-only type of the address translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the address translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -471,35 +497,35 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "The read-only name translated and formatted in the viewer's account locale\nor the `Accept-Language` HTTP header locale for system groups names.\nGroup names set by the owner are the same as name."]
+        #[doc = "Output only. The name translated and formatted in the viewer's account locale\nor the `Accept-Language` HTTP header locale for system groups names.\nGroup names set by the owner are the same as name."]
         #[serde(
             rename = "formattedName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formatted_name: ::std::option::Option<String>,
-        #[doc = "The read-only contact group type."]
+        #[doc = "Output only. The contact group type."]
         #[serde(
             rename = "groupType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_type: ::std::option::Option<crate::schemas::ContactGroupGroupType>,
-        #[doc = "The total number of contacts in the group irrespective of max members in\nspecified in the request."]
+        #[doc = "Output only. The total number of contacts in the group irrespective of max members in\nspecified in the request."]
         #[serde(
             rename = "memberCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub member_count: ::std::option::Option<i32>,
-        #[doc = "The list of contact person resource names that are members of the contact\ngroup. The field is not populated for LIST requests and can only be updated\nthrough the\n[ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify)."]
+        #[doc = "Output only. The list of contact person resource names that are members of the contact\ngroup. The field is not populated for LIST requests and can only be updated\nthrough the\n[ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify)."]
         #[serde(
             rename = "memberResourceNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub member_resource_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Metadata about the contact group."]
+        #[doc = "Output only. Metadata about the contact group."]
         #[serde(
             rename = "metadata",
             default,
@@ -513,7 +539,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/`<var>contact_group_id</var>."]
+        #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/{contact_group_id}`."]
         #[serde(
             rename = "resourceName",
             default,
@@ -620,14 +646,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContactGroupMembership {
-        #[doc = "The read-only contact group ID for the contact group membership."]
+        #[doc = "Output only. The contact group ID for the contact group membership."]
         #[serde(
             rename = "contactGroupId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contact_group_id: ::std::option::Option<String>,
-        #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/`<var>contact_group_id</var>.\nOnly contact_group_resource_name can be used for modifying memberships.\nAny contact group membership can be removed, but only user group or\n\"myContacts\" or \"starred\" system groups memberships can be added. A\ncontact must always have at least one contact group membership."]
+        #[doc = "The resource name for the contact group, assigned by the server. An ASCII\nstring, in the form of `contactGroups/{contact_group_id}`.\nOnly contact_group_resource_name can be used for modifying memberships.\nAny contact group membership can be removed, but only user group or\n\"myContacts\" or \"starred\" system groups memberships can be added. A\ncontact must always have at least one contact group membership."]
         #[serde(
             rename = "contactGroupResourceName",
             default,
@@ -658,14 +684,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContactGroupMetadata {
-        #[doc = "True if the contact group resource has been deleted. Populated only for\n[`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests\nthat include a sync token."]
+        #[doc = "Output only. True if the contact group resource has been deleted. Populated only for\n[`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests\nthat include a sync token."]
         #[serde(
             rename = "deleted",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deleted: ::std::option::Option<bool>,
-        #[doc = "The time the group was last updated."]
+        #[doc = "Output only. The time the group was last updated."]
         #[serde(
             rename = "updateTime",
             default,
@@ -775,7 +801,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateContactGroupRequest {
-        #[doc = "The contact group to create."]
+        #[doc = "Required. The contact group to create."]
         #[serde(
             rename = "contactGroup",
             default,
@@ -920,7 +946,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The read-only type of the email address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the email address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1003,7 +1029,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "The read-only type of the event translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the event translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1062,7 +1088,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source: ::std::option::Option<crate::schemas::Source>,
-        #[doc = "True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person."]
+        #[doc = "Output only. True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person."]
         #[serde(
             rename = "verified",
             default,
@@ -1093,7 +1119,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Gender {
-        #[doc = "The read-only value of the gender translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "The type of pronouns that should be used to address the person. The value\ncan be custom or one of these predefined values:\n\n* `male`\n* `female`\n* `other`"]
+        #[serde(
+            rename = "addressMeAs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub address_me_as: ::std::option::Option<String>,
+        #[doc = "Output only. The value of the gender translated and formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale. Unspecified or custom\nvalue are not localized."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -1107,7 +1140,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The gender for the person. The gender can be custom or one of these\npredefined values:\n\n* `male`\n* `female`\n* `other`\n* `unknown`"]
+        #[doc = "The gender for the person. The gender can be custom or one of these\npredefined values:\n\n* `male`\n* `female`\n* `unspecified`"]
         #[serde(
             rename = "value",
             default,
@@ -1158,14 +1191,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ImClient {
-        #[doc = "The read-only protocol of the IM client formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The protocol of the IM client formatted in the viewer's account\nlocale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedProtocol",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formatted_protocol: ::std::option::Option<String>,
-        #[doc = "The read-only type of the IM client translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the IM client translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1269,14 +1302,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub connections: ::std::option::Option<Vec<crate::schemas::Person>>,
-        #[doc = "The token that can be used to retrieve the next page of results."]
+        #[doc = "A token, which can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages."]
         #[serde(
             rename = "nextPageToken",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
-        #[doc = "The token that can be used to retrieve changes since the last request."]
+        #[doc = "A token, which can be sent as `sync_token` to retrieve changes since the\nlast request. Request must set `request_sync_token` to return the sync\ntoken."]
         #[serde(
             rename = "nextSyncToken",
             default,
@@ -1418,7 +1451,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub contact_group_membership: ::std::option::Option<crate::schemas::ContactGroupMembership>,
-        #[doc = "The read-only domain membership."]
+        #[doc = "Output only. The domain membership."]
         #[serde(
             rename = "domainMembership",
             default,
@@ -1456,14 +1489,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ModifyContactGroupMembersRequest {
-        #[doc = "The resource names of the contact people to add in the form of in the form\n`people/`<var>person_id</var>."]
+        #[doc = "Optional. The resource names of the contact people to add in the form of\n`people/{person_id}`."]
         #[serde(
             rename = "resourceNamesToAdd",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_names_to_add: ::std::option::Option<Vec<String>>,
-        #[doc = "The resource names of the contact people to remove in the form of in the\nform of `people/`<var>person_id</var>."]
+        #[doc = "Optional. The resource names of the contact people to remove in the form of\n`people/{person_id}`."]
         #[serde(
             rename = "resourceNamesToRemove",
             default,
@@ -1532,14 +1565,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Name {
-        #[doc = "The read-only display name formatted according to the locale specified by\nthe viewer's account or the `Accept-Language` HTTP header."]
+        #[doc = "Output only. The display name formatted according to the locale specified by\nthe viewer's account or the `Accept-Language` HTTP header."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The read-only display name with the last name first formatted according to\nthe locale specified by the viewer's account or the\n`Accept-Language` HTTP header."]
+        #[doc = "Output only. The display name with the last name first formatted according to\nthe locale specified by the viewer's account or the\n`Accept-Language` HTTP header."]
         #[serde(
             rename = "displayNameLastFirst",
             default,
@@ -1688,6 +1721,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum NicknameType {
+        #[doc = "Alternate name person is known by."]
+        AlternateName,
         #[doc = "Generic nickname."]
         Default,
         #[doc = "Google+ profile nickname."]
@@ -1698,15 +1733,19 @@ pub mod schemas {
         MaidenName,
         #[doc = "A professional affiliation or other name; for example, `Dr. Smith.`"]
         OtherName,
+        #[doc = "A shorter version of the person's name."]
+        ShortName,
     }
     impl NicknameType {
         pub fn as_str(self) -> &'static str {
             match self {
+                NicknameType::AlternateName => "ALTERNATE_NAME",
                 NicknameType::Default => "DEFAULT",
                 NicknameType::Gplus => "GPLUS",
                 NicknameType::Initials => "INITIALS",
                 NicknameType::MaidenName => "MAIDEN_NAME",
                 NicknameType::OtherName => "OTHER_NAME",
+                NicknameType::ShortName => "SHORT_NAME",
             }
         }
     }
@@ -1719,11 +1758,13 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<NicknameType, ()> {
             Ok(match s {
+                "ALTERNATE_NAME" => NicknameType::AlternateName,
                 "DEFAULT" => NicknameType::Default,
                 "GPLUS" => NicknameType::Gplus,
                 "INITIALS" => NicknameType::Initials,
                 "MAIDEN_NAME" => NicknameType::MaidenName,
                 "OTHER_NAME" => NicknameType::OtherName,
+                "SHORT_NAME" => NicknameType::ShortName,
                 _ => return Err(()),
             })
         }
@@ -1748,11 +1789,13 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ALTERNATE_NAME" => NicknameType::AlternateName,
                 "DEFAULT" => NicknameType::Default,
                 "GPLUS" => NicknameType::Gplus,
                 "INITIALS" => NicknameType::Initials,
                 "MAIDEN_NAME" => NicknameType::MaidenName,
                 "OTHER_NAME" => NicknameType::OtherName,
+                "SHORT_NAME" => NicknameType::ShortName,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1851,7 +1894,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "The read-only type of the organization translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the organization translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -1952,14 +1995,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub addresses: ::std::option::Option<Vec<crate::schemas::Address>>,
-        #[doc = "**DEPRECATED** (Please use `person.ageRanges` instead)**\n\nThe person's read-only age range."]
+        #[doc = "Output only. **DEPRECATED** (Please use `person.ageRanges` instead)\n\nThe person's age range."]
         #[serde(
             rename = "ageRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub age_range: ::std::option::Option<crate::schemas::PersonAgeRange>,
-        #[doc = "The person's read-only age ranges."]
+        #[doc = "Output only. The person's age ranges."]
         #[serde(
             rename = "ageRanges",
             default,
@@ -1980,14 +2023,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub birthdays: ::std::option::Option<Vec<crate::schemas::Birthday>>,
-        #[doc = "The person's bragging rights."]
+        #[doc = "**DEPRECATED**: No data will be returned\nThe person's bragging rights."]
         #[serde(
             rename = "braggingRights",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bragging_rights: ::std::option::Option<Vec<crate::schemas::BraggingRights>>,
-        #[doc = "The person's read-only cover photos."]
+        #[doc = "Output only. The person's cover photos."]
         #[serde(
             rename = "coverPhotos",
             default,
@@ -2050,7 +2093,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub memberships: ::std::option::Option<Vec<crate::schemas::Membership>>,
-        #[doc = "Read-only metadata about the person."]
+        #[doc = "Output only. Metadata about the person."]
         #[serde(
             rename = "metadata",
             default,
@@ -2092,7 +2135,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub phone_numbers: ::std::option::Option<Vec<crate::schemas::PhoneNumber>>,
-        #[doc = "The person's read-only photos."]
+        #[doc = "Output only. The person's photos."]
         #[serde(
             rename = "photos",
             default,
@@ -2106,7 +2149,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub relations: ::std::option::Option<Vec<crate::schemas::Relation>>,
-        #[doc = "The person's read-only relationship interests."]
+        #[doc = "Output only. **DEPRECATED**: No data will be returned\nThe person's relationship interests."]
         #[serde(
             rename = "relationshipInterests",
             default,
@@ -2114,7 +2157,7 @@ pub mod schemas {
         )]
         pub relationship_interests:
             ::std::option::Option<Vec<crate::schemas::RelationshipInterest>>,
-        #[doc = "The person's read-only relationship statuses."]
+        #[doc = "Output only. **DEPRECATED**: No data will be returned\nThe person's relationship statuses."]
         #[serde(
             rename = "relationshipStatuses",
             default,
@@ -2128,7 +2171,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub residences: ::std::option::Option<Vec<crate::schemas::Residence>>,
-        #[doc = "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of\n`people/`<var>person_id</var>."]
+        #[doc = "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of\n`people/{person_id}`."]
         #[serde(
             rename = "resourceName",
             default,
@@ -2149,7 +2192,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub skills: ::std::option::Option<Vec<crate::schemas::Skill>>,
-        #[doc = "The person's read-only taglines."]
+        #[doc = "Output only. **DEPRECATED**: No data will be returned\nThe person's taglines."]
         #[serde(
             rename = "taglines",
             default,
@@ -2275,28 +2318,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PersonMetadata {
-        #[doc = "True if the person resource has been deleted. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token."]
+        #[doc = "Output only. True if the person resource has been deleted. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token."]
         #[serde(
             rename = "deleted",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deleted: ::std::option::Option<bool>,
-        #[doc = "Resource names of people linked to this resource."]
+        #[doc = "Output only. Resource names of people linked to this resource."]
         #[serde(
             rename = "linkedPeopleResourceNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub linked_people_resource_names: ::std::option::Option<Vec<String>>,
-        #[doc = "**DEPRECATED** (Please use\n`person.metadata.sources.profileMetadata.objectType` instead)\n\nThe type of the person object."]
+        #[doc = "Output only. **DEPRECATED** (Please use\n`person.metadata.sources.profileMetadata.objectType` instead)\n\nThe type of the person object."]
         #[serde(
             rename = "objectType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_type: ::std::option::Option<crate::schemas::PersonMetadataObjectType>,
-        #[doc = "Any former resource names this person has had. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.\n\nThe resource name may change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or\nprofile URL."]
+        #[doc = "Output only. Any former resource names this person has had. Populated only for\n[`connections.list`](/people/api/rest/v1/people.connections/list) requests\nthat include a sync token.\n\nThe resource name may change when adding or removing fields that link a\ncontact and profile such as a verified email, verified phone number, or\nprofile URL."]
         #[serde(
             rename = "previousResourceNames",
             default,
@@ -2451,14 +2494,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PhoneNumber {
-        #[doc = "The read-only canonicalized [ITU-T\nE.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)\nform of the phone number."]
+        #[doc = "Output only. The canonicalized [ITU-T\nE.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)\nform of the phone number."]
         #[serde(
             rename = "canonicalForm",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub canonical_form: ::std::option::Option<String>,
-        #[doc = "The read-only type of the phone number translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the phone number translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -2524,7 +2567,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadata>,
-        #[doc = "The URL of the photo. You can change the desired size by appending a query\nparameter `sz=`<var>size</var> at the end of the url. Example:\n`https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50`"]
+        #[doc = "The URL of the photo. You can change the desired size by appending a query\nparameter `sz={size}` at the end of the url, where {size} is the size in\npixels. Example:\nhttps://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50"]
         #[serde(
             rename = "url",
             default,
@@ -2555,14 +2598,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProfileMetadata {
-        #[doc = "The profile object type."]
+        #[doc = "Output only. The profile object type."]
         #[serde(
             rename = "objectType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_type: ::std::option::Option<crate::schemas::ProfileMetadataObjectType>,
-        #[doc = "The user types."]
+        #[doc = "Output only. The user types."]
         #[serde(
             rename = "userTypes",
             default,
@@ -2746,7 +2789,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Relation {
-        #[doc = "The type of the relation translated and formatted in the viewer's account\nlocale or the locale specified in the Accept-Language HTTP header."]
+        #[doc = "Output only. The type of the relation translated and formatted in the viewer's\naccount locale or the locale specified in the Accept-Language HTTP header."]
         #[serde(
             rename = "formattedType",
             default,
@@ -2798,7 +2841,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RelationshipInterest {
-        #[doc = "The value of the relationship interest translated and formatted in the\nviewer's account locale or the locale specified in the Accept-Language\nHTTP header."]
+        #[doc = "Output only. The value of the relationship interest translated and formatted\nin the viewer's account locale or the locale specified in the\nAccept-Language HTTP header."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -2843,7 +2886,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RelationshipStatus {
-        #[doc = "The read-only value of the relationship status translated and formatted in\nthe viewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The value of the relationship status translated and formatted in\nthe viewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedValue",
             default,
@@ -2933,7 +2976,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SipAddress {
-        #[doc = "The read-only type of the SIP address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the SIP address translated and formatted in the\nviewer's account locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -3037,7 +3080,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "**Only populated in `person.metadata.sources`.**\n\nMetadata about a source of type PROFILE."]
+        #[doc = "Output only. **Only populated in `person.metadata.sources`.**\n\nMetadata about a source of type PROFILE."]
         #[serde(
             rename = "profileMetadata",
             default,
@@ -3051,7 +3094,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::SourceType>,
-        #[doc = "**Only populated in `person.metadata.sources`.**\n\nLast update timestamp of this source."]
+        #[doc = "Output only. **Only populated in `person.metadata.sources`.**\n\nLast update timestamp of this source."]
         #[serde(
             rename = "updateTime",
             default,
@@ -3073,11 +3116,11 @@ pub mod schemas {
     pub enum SourceType {
         #[doc = "[Google Account](https://accounts.google.com)."]
         Account,
-        #[doc = "[Google contact](https://contacts.google.com). You can view the\ncontact at https://contact.google.com/<var>id</var> where <var>id</var>\nis the source id."]
+        #[doc = "[Google contact](https://contacts.google.com). You can view the\ncontact at\n[https://contact.google.com/](https://contact.google.com/){id}, where\n{id} is the source id."]
         Contact,
         #[doc = "[G Suite domain profile](https://support.google.com/a/answer/1628008)."]
         DomainProfile,
-        #[doc = "[Google profile](https://profiles.google.com). You can view the\nprofile at https://profiles.google.com/<var>id</var> where\n<var>id</var> is the source id."]
+        #[doc = "[Google profile](https://profiles.google.com). You can view the\nprofile at\n[https://profiles.google.com/](https://profiles.google.com/){id}, where\n{id} is the source id."]
         Profile,
         #[doc = "Unspecified."]
         SourceTypeUnspecified,
@@ -3241,7 +3284,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateContactGroupRequest {
-        #[doc = "The contact group to update."]
+        #[doc = "Required. The contact group to update."]
         #[serde(
             rename = "contactGroup",
             default,
@@ -3272,14 +3315,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateContactPhotoRequest {
-        #[doc = "**Optional.** Not specifying any fields will skip the post mutate read.\nA field mask to restrict which fields on the person are\nreturned. Multiple fields can be specified by separating them with commas.\nValid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* sipAddresses\n* skills\n* taglines\n* urls\n* userDefined"]
+        #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to empty\nif not set, which will skip the post mutate get. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
         #[serde(
             rename = "personFields",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub person_fields: ::std::option::Option<String>,
-        #[doc = "Raw photo bytes"]
+        #[doc = "Required. Raw photo bytes"]
         #[serde(
             rename = "photoBytes",
             default,
@@ -3341,7 +3384,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Url {
-        #[doc = "The read-only type of the URL translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
+        #[doc = "Output only. The type of the URL translated and formatted in the viewer's\naccount locale or the `Accept-Language` HTTP header locale."]
         #[serde(
             rename = "formattedType",
             default,
@@ -3576,7 +3619,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3584,8 +3627,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3611,7 +3666,7 @@ pub mod resources {
     pub mod contact_groups {
         pub mod params {}
         pub struct ContactGroupsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ContactGroupsActions<'a> {
@@ -3756,7 +3811,7 @@ pub mod resources {
         #[doc = "Created via [ContactGroupsActions::batch_get()](struct.ContactGroupsActions.html#method.batch_get)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             max_members: Option<i32>,
             resource_names: Option<Vec<String>>,
@@ -3773,12 +3828,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> BatchGetRequestBuilder<'a> {
-            #[doc = "Specifies the maximum number of members to return for each group."]
+            #[doc = "Optional. Specifies the maximum number of members to return for each group. Defaults\nto 0 if not set, which will return zero members."]
             pub fn max_members(mut self, value: i32) -> Self {
                 self.max_members = Some(value);
                 self
             }
-            #[doc = "The resource names of the contact groups to get."]
+            #[doc = "Required. The resource names of the contact groups to get."]
             pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.resource_names = Some(value.into());
                 self
@@ -3889,7 +3944,10 @@ pub mod resources {
                 output.push_str("v1/contactGroups:batchGet");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxMembers", &self.max_members)]);
                 let req = req.query(&[("resourceNames", &self.resource_names)]);
@@ -3915,7 +3973,7 @@ pub mod resources {
         #[doc = "Created via [ContactGroupsActions::create()](struct.ContactGroupsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CreateContactGroupRequest,
             access_token: Option<String>,
@@ -4038,7 +4096,10 @@ pub mod resources {
                 output.push_str("v1/contactGroups");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4062,7 +4123,7 @@ pub mod resources {
         #[doc = "Created via [ContactGroupsActions::delete()](struct.ContactGroupsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
             delete_contacts: Option<bool>,
@@ -4079,7 +4140,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "Set to true to also delete the contacts in the specified group."]
+            #[doc = "Optional. Set to true to also delete the contacts in the specified group."]
             pub fn delete_contacts(mut self, value: bool) -> Self {
                 self.delete_contacts = Some(value);
                 self
@@ -4195,7 +4256,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("deleteContacts", &self.delete_contacts)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -4220,7 +4284,7 @@ pub mod resources {
         #[doc = "Created via [ContactGroupsActions::get()](struct.ContactGroupsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
             max_members: Option<i32>,
@@ -4237,7 +4301,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Specifies the maximum number of members to return."]
+            #[doc = "Optional. Specifies the maximum number of members to return. Defaults to 0 if not\nset, which will return zero members."]
             pub fn max_members(mut self, value: i32) -> Self {
                 self.max_members = Some(value);
                 self
@@ -4355,7 +4419,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxMembers", &self.max_members)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -4380,7 +4447,7 @@ pub mod resources {
         #[doc = "Created via [ContactGroupsActions::list()](struct.ContactGroupsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_size: Option<i32>,
             page_token: Option<String>,
@@ -4398,17 +4465,17 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The maximum number of resources to return."]
+            #[doc = "Optional. The maximum number of resources to return. Valid values are between 1 and\n1000, inclusive. Defaults to 30 if not set or set to 0."]
             pub fn page_size(mut self, value: i32) -> Self {
                 self.page_size = Some(value);
                 self
             }
-            #[doc = "The next_page_token value returned from a previous call to\n[ListContactGroups](/people/api/rest/v1/contactgroups/list).\nRequests the next page of resources."]
+            #[doc = "Optional. The next_page_token value returned from a previous call to\n[ListContactGroups](/people/api/rest/v1/contactgroups/list).\nRequests the next page of resources."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "A sync token, returned by a previous call to `contactgroups.list`.\nOnly resources changed since the sync token was created will be returned."]
+            #[doc = "Optional. A sync token, returned by a previous call to `contactgroups.list`.\nOnly resources changed since the sync token was created will be returned."]
             pub fn sync_token(mut self, value: impl Into<String>) -> Self {
                 self.sync_token = Some(value.into());
                 self
@@ -4619,7 +4686,10 @@ pub mod resources {
                 output.push_str("v1/contactGroups");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4657,7 +4727,7 @@ pub mod resources {
         #[doc = "Created via [ContactGroupsActions::update()](struct.ContactGroupsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UpdateContactGroupRequest,
             resource_name: String,
@@ -4788,7 +4858,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4812,14 +4885,14 @@ pub mod resources {
         pub mod members {
             pub mod params {}
             pub struct MembersActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> MembersActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Modify the members of a contact group owned by the authenticated user.\n<br>\nThe only system contact groups that can have members added are\n`contactGroups/myContacts` and `contactGroups/starred`. Other system\ncontact groups are deprecated and can only have contacts removed."]
+                #[doc = "Modify the members of a contact group owned by the authenticated user.\n\nThe only system contact groups that can have members added are\n`contactGroups/myContacts` and `contactGroups/starred`. Other system\ncontact groups are deprecated and can only have contacts removed."]
                 pub fn modify(
                     &self,
                     request: crate::schemas::ModifyContactGroupMembersRequest,
@@ -4847,7 +4920,7 @@ pub mod resources {
             #[doc = "Created via [MembersActions::modify()](struct.MembersActions.html#method.modify)"]
             #[derive(Debug, Clone)]
             pub struct ModifyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ModifyContactGroupMembersRequest,
                 resource_name: String,
@@ -4984,7 +5057,10 @@ pub mod resources {
                     output.push_str("/members:modify");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5010,7 +5086,7 @@ pub mod resources {
     pub mod people {
         pub mod params {}
         pub struct PeopleActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PeopleActions<'a> {
@@ -5037,7 +5113,6 @@ pub mod resources {
                     upload_protocol: None,
                     upload_type: None,
                     xgafv: None,
-                    parent: None,
                 }
             }
             #[doc = "Delete a contact person. Any non-contact data will not be deleted."]
@@ -5085,7 +5160,7 @@ pub mod resources {
                     person_fields: None,
                 }
             }
-            #[doc = "Provides information about a person by specifying a resource name. Use\n`people/me` to indicate the authenticated user.\n<br>\nThe request throws a 400 error if 'personFields' is not specified."]
+            #[doc = "Provides information about a person by specifying a resource name. Use\n`people/me` to indicate the authenticated user.\n\nThe request throws a 400 error if 'personFields' is not specified."]
             pub fn get(&self, resource_name: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -5106,7 +5181,7 @@ pub mod resources {
                     request_mask_include_field: None,
                 }
             }
-            #[doc = "Provides information about a list of specific people by specifying a list\nof requested resource names. Use `people/me` to indicate the authenticated\nuser.\n<br>\nThe request throws a 400 error if 'personFields' is not specified."]
+            #[doc = "Provides information about a list of specific people by specifying a list\nof requested resource names. Use `people/me` to indicate the authenticated\nuser.\n\nThe request throws a 400 error if 'personFields' is not specified."]
             pub fn get_batch_get(&self) -> GetBatchGetRequestBuilder {
                 GetBatchGetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -5127,7 +5202,7 @@ pub mod resources {
                     resource_names: None,
                 }
             }
-            #[doc = "Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n<br>\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n<br>\nThe request throws a 400 error with an error with reason\n`\"failedPrecondition\"` if `person.metadata.sources.etag` is different than\nthe contact's etag, which indicates the contact has changed since its data\nwas read. Clients should get the latest person and re-apply their updates\nto the latest person."]
+            #[doc = "Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n\nThe request throws a 400 error with an error with reason\n`\"failedPrecondition\"` if `person.metadata.sources.etag` is different than\nthe contact's etag, which indicates the contact has changed since its data\nwas read. Clients should get the latest person and re-apply their updates\nto the latest person."]
             pub fn update_contact(
                 &self,
                 request: crate::schemas::Person,
@@ -5187,10 +5262,9 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::create_contact()](struct.PeopleActions.html#method.create_contact)"]
         #[derive(Debug, Clone)]
         pub struct CreateContactRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Person,
-            parent: Option<String>,
             access_token: Option<String>,
             alt: Option<crate::params::Alt>,
             callback: Option<String>,
@@ -5204,11 +5278,6 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> CreateContactRequestBuilder<'a> {
-            #[doc = "The resource name of the owning person resource."]
-            pub fn parent(mut self, value: impl Into<String>) -> Self {
-                self.parent = Some(value.into());
-                self
-            }
             #[doc = "OAuth access token."]
             pub fn access_token(mut self, value: impl Into<String>) -> Self {
                 self.access_token = Some(value.into());
@@ -5314,9 +5383,11 @@ pub mod resources {
                 output.push_str("v1/people:createContact");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("parent", &self.parent)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("callback", &self.callback)]);
@@ -5339,7 +5410,7 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::delete_contact()](struct.PeopleActions.html#method.delete_contact)"]
         #[derive(Debug, Clone)]
         pub struct DeleteContactRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
             access_token: Option<String>,
@@ -5467,7 +5538,10 @@ pub mod resources {
                 output.push_str(":deleteContact");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5491,7 +5565,7 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::delete_contact_photo()](struct.PeopleActions.html#method.delete_contact_photo)"]
         #[derive(Debug, Clone)]
         pub struct DeleteContactPhotoRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
             person_fields: Option<String>,
@@ -5508,7 +5582,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteContactPhotoRequestBuilder<'a> {
-            #[doc = "**Optional.** Not specifying any fields will skip the post mutate read.\nA field mask to restrict which fields on the person are\nreturned. Multiple fields can be specified by separating them with commas.\nValid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* sipAddresses\n* skills\n* taglines\n* urls\n* userDefined"]
+            #[doc = "Optional. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to empty\nif not set, which will skip the post mutate get. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
             pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                 self.person_fields = Some(value.into());
                 self
@@ -5627,7 +5701,10 @@ pub mod resources {
                 output.push_str(":deleteContactPhoto");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("personFields", &self.person_fields)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -5652,7 +5729,7 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::get()](struct.PeopleActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_name: String,
             person_fields: Option<String>,
@@ -5670,12 +5747,12 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "**Required.** A field mask to restrict which fields on the person are\nreturned. Multiple fields can be specified by separating them with commas.\nValid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* sipAddresses\n* skills\n* taglines\n* urls\n* userDefined"]
+            #[doc = "Required. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
             pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                 self.person_fields = Some(value.into());
                 self
             }
-            #[doc = "**Required.** Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`."]
+            #[doc = "Required. Comma-separated list of person fields to be included in the response. Each\npath should start with `person.`: for example, `person.names` or\n`person.photos`."]
             pub fn request_mask_include_field(mut self, value: impl Into<String>) -> Self {
                 self.request_mask_include_field = Some(value.into());
                 self
@@ -5791,7 +5868,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("personFields", &self.person_fields)]);
                 let req =
@@ -5818,7 +5898,7 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::get_batch_get()](struct.PeopleActions.html#method.get_batch_get)"]
         #[derive(Debug, Clone)]
         pub struct GetBatchGetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             person_fields: Option<String>,
             request_mask_include_field: Option<String>,
@@ -5836,17 +5916,17 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetBatchGetRequestBuilder<'a> {
-            #[doc = "**Required.** A field mask to restrict which fields on each person are\nreturned. Multiple fields can be specified by separating them with commas.\nValid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* sipAddresses\n* skills\n* taglines\n* urls\n* userDefined"]
+            #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
             pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                 self.person_fields = Some(value.into());
                 self
             }
-            #[doc = "**Required.** Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`."]
+            #[doc = "Required. Comma-separated list of person fields to be included in the response. Each\npath should start with `person.`: for example, `person.names` or\n`person.photos`."]
             pub fn request_mask_include_field(mut self, value: impl Into<String>) -> Self {
                 self.request_mask_include_field = Some(value.into());
                 self
             }
-            #[doc = "The resource names of the people to provide information about.\n\n* To get information about the authenticated user, specify `people/me`.\n* To get information about a google account, specify\n  `people/`<var>account_id</var>.\n* To get information about a contact, specify the resource name that\n  identifies the contact as returned by\n  [`people.connections.list`](/people/api/rest/v1/people.connections/list).\n\nYou can include up to 50 resource names in one request."]
+            #[doc = "Required. The resource names of the people to provide information about.\n\n* To get information about the authenticated user, specify `people/me`.\n* To get information about a google account, specify\n  `people/{account_id}`.\n* To get information about a contact, specify the resource name that\n  identifies the contact as returned by\n  [`people.connections.list`](/people/api/rest/v1/people.connections/list).\n\nYou can include up to 50 resource names in one request."]
             pub fn resource_names(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.resource_names = Some(value.into());
                 self
@@ -5957,7 +6037,10 @@ pub mod resources {
                 output.push_str("v1/people:batchGet");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("personFields", &self.person_fields)]);
                 let req =
@@ -5985,7 +6068,7 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::update_contact()](struct.PeopleActions.html#method.update_contact)"]
         #[derive(Debug, Clone)]
         pub struct UpdateContactRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Person,
             resource_name: String,
@@ -6003,7 +6086,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateContactRequestBuilder<'a> {
-            #[doc = "**Required.** A field mask to restrict which fields on the person are\nupdated. Multiple fields can be specified by separating them with commas.\nAll updated fields will be replaced. Valid values are:\n\n* addresses\n* biographies\n* birthdays\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* relations\n* residences\n* sipAddresses\n* urls\n* userDefined"]
+            #[doc = "Required. A field mask to restrict which fields on the person are updated. Multiple\nfields can be specified by separating them with commas.\nAll updated fields will be replaced. Valid values are:\n\n* addresses\n* biographies\n* birthdays\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* relations\n* residences\n* sipAddresses\n* urls\n* userDefined"]
             pub fn update_person_fields(mut self, value: impl Into<String>) -> Self {
                 self.update_person_fields = Some(value.into());
                 self
@@ -6121,7 +6204,10 @@ pub mod resources {
                 output.push_str(":updateContact");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("updatePersonFields", &self.update_person_fields)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -6146,7 +6232,7 @@ pub mod resources {
         #[doc = "Created via [PeopleActions::update_contact_photo()](struct.PeopleActions.html#method.update_contact_photo)"]
         #[derive(Debug, Clone)]
         pub struct UpdateContactPhotoRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UpdateContactPhotoRequest,
             resource_name: String,
@@ -6278,7 +6364,10 @@ pub mod resources {
                 output.push_str(":updateContactPhoto");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6380,14 +6469,14 @@ pub mod resources {
                 }
             }
             pub struct ConnectionsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ConnectionsActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Provides a list of the authenticated user's contacts merged with any\nconnected profiles.\n<br>\nThe request throws a 400 error if 'personFields' is not specified."]
+                #[doc = "Provides a list of the authenticated user's contacts merged with any\nconnected profiles.\n\nThe request throws a 400 error if 'personFields' is not specified."]
                 pub fn list(&self, resource_name: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -6417,7 +6506,7 @@ pub mod resources {
             #[doc = "Created via [ConnectionsActions::list()](struct.ConnectionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 resource_name: String,
                 page_size: Option<i32>,
@@ -6440,32 +6529,32 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "The number of connections to include in the response. Valid values are\nbetween 1 and 2000, inclusive. Defaults to 100."]
+                #[doc = "Optional. The number of connections to include in the response. Valid values are\nbetween 1 and 2000, inclusive. Defaults to 100 if not set or set to 0."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "The token of the page to be returned."]
+                #[doc = "Optional. A page token, received from a previous `ListConnections` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListConnections`\nmust match the call that provided the page token."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "**Required.** A field mask to restrict which fields on each person are\nreturned. Multiple fields can be specified by separating them with commas.\nValid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* braggingRights\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* relationshipInterests\n* relationshipStatuses\n* residences\n* sipAddresses\n* skills\n* taglines\n* urls\n* userDefined"]
+                #[doc = "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined"]
                 pub fn person_fields(mut self, value: impl Into<String>) -> Self {
                     self.person_fields = Some(value.into());
                     self
                 }
-                #[doc = "**Required.** Comma-separated list of person fields to be included in the\nresponse. Each path should start with `person.`: for example,\n`person.names` or `person.photos`."]
+                #[doc = "Required. Comma-separated list of person fields to be included in the response. Each\npath should start with `person.`: for example, `person.names` or\n`person.photos`."]
                 pub fn request_mask_include_field(mut self, value: impl Into<String>) -> Self {
                     self.request_mask_include_field = Some(value.into());
                     self
                 }
-                #[doc = "Whether the response should include a sync token, which can be used to get\nall changes since the last request. For subsequent sync requests use the\n`sync_token` param instead. Initial sync requests that specify\n`request_sync_token` have an additional rate limit."]
+                #[doc = "Optional. Whether the response should include `next_sync_token`, which can be used to\nget all changes since the last request. For subsequent sync requests use\nthe `sync_token` param instead. Initial sync requests that specify\n`request_sync_token` have an additional rate limit."]
                 pub fn request_sync_token(mut self, value: bool) -> Self {
                     self.request_sync_token = Some(value);
                     self
                 }
-                #[doc = "The order in which the connections should be sorted. Defaults to\n`LAST_MODIFIED_ASCENDING`."]
+                #[doc = "Optional. The order in which the connections should be sorted. Defaults to\n`LAST_MODIFIED_ASCENDING`."]
                 pub fn sort_order(
                     mut self,
                     value: crate::resources::people::connections::params::ListSortOrder,
@@ -6473,7 +6562,7 @@ pub mod resources {
                     self.sort_order = Some(value);
                     self
                 }
-                #[doc = "A sync token returned by a previous call to `people.connections.list`.\nOnly resources changed since the sync token was created will be returned.\nSync requests that specify `sync_token` have an additional rate limit."]
+                #[doc = "Optional. A sync token, received from a previous `ListConnections` call.\nProvide this to retrieve only the resources changed since the last request.\nSync requests that specify `sync_token` have an additional rate limit.\n\nWhen syncing, all other parameters provided to `ListConnections`\nmust match the call that provided the sync token."]
                 pub fn sync_token(mut self, value: impl Into<String>) -> Self {
                     self.sync_token = Some(value.into());
                     self
@@ -6695,7 +6784,10 @@ pub mod resources {
                     output.push_str("/connections");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6754,9 +6846,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -6798,7 +6888,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

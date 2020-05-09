@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [managed_short_links](resources/managed_short_links/struct.ManagedShortLinksActions.html)\n      * [*create*](resources/managed_short_links/struct.CreateRequestBuilder.html)\n    * [short_links](resources/short_links/struct.ShortLinksActions.html)\n      * [*create*](resources/short_links/struct.CreateRequestBuilder.html)\n    * [v_1](resources/v_1/struct.V1Actions.html)\n      * [*getLinkStats*](resources/v_1/struct.GetLinkStatsRequestBuilder.html), [*installAttribution*](resources/v_1/struct.InstallAttributionRequestBuilder.html), [*reopenAttribution*](resources/v_1/struct.ReopenAttributionRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and administer all your Firebase data and settings\n\n`https://www.googleapis.com/auth/firebase`"]
+    pub const FIREBASE: &str = "https://www.googleapis.com/auth/firebase";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -58,14 +62,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_fallback_link: ::std::option::Option<String>,
-        #[doc = "If specified, this overrides the \u{2018}link\u{2019} parameter on Android."]
+        #[doc = "If specified, this overrides the ‘link’ parameter on Android."]
         #[serde(
             rename = "androidLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub android_link: ::std::option::Option<String>,
-        #[doc = "Minimum version code for the Android app. If the installed app\u{2019}s version\ncode is lower, then the user is taken to the Play Store."]
+        #[doc = "Minimum version code for the Android app. If the installed app’s version\ncode is lower, then the user is taken to the Play Store."]
         #[serde(
             rename = "androidMinPackageVersionCode",
             default,
@@ -1836,7 +1840,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ios_bundle_id: ::std::option::Option<String>,
-        #[doc = "Custom (destination) scheme to use for iOS. By default, we\u{2019}ll use the\nbundle ID as the custom scheme. Developer can override this behavior using\nthis param."]
+        #[doc = "Custom (destination) scheme to use for iOS. By default, we’ll use the\nbundle ID as the custom scheme. Developer can override this behavior using\nthis param."]
         #[serde(
             rename = "iosCustomScheme",
             default,
@@ -2503,7 +2507,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2511,8 +2515,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2547,7 +2563,7 @@ pub mod resources {
     pub mod managed_short_links {
         pub mod params {}
         pub struct ManagedShortLinksActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ManagedShortLinksActions<'a> {
@@ -2580,7 +2596,7 @@ pub mod resources {
         #[doc = "Created via [ManagedShortLinksActions::create()](struct.ManagedShortLinksActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CreateManagedShortLinkRequest,
             access_token: Option<String>,
@@ -2703,7 +2719,10 @@ pub mod resources {
                 output.push_str("v1/managedShortLinks:create");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2728,7 +2747,7 @@ pub mod resources {
     pub mod short_links {
         pub mod params {}
         pub struct ShortLinksActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ShortLinksActions<'a> {
@@ -2761,7 +2780,7 @@ pub mod resources {
         #[doc = "Created via [ShortLinksActions::create()](struct.ShortLinksActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CreateShortDynamicLinkRequest,
             access_token: Option<String>,
@@ -2884,7 +2903,10 @@ pub mod resources {
                 output.push_str("v1/shortLinks");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2909,7 +2931,7 @@ pub mod resources {
     pub mod v_1 {
         pub mod params {}
         pub struct V1Actions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> V1Actions<'a> {
@@ -2988,7 +3010,7 @@ pub mod resources {
         #[doc = "Created via [V1Actions::get_link_stats()](struct.V1Actions.html#method.get_link_stats)"]
         #[derive(Debug, Clone)]
         pub struct GetLinkStatsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             dynamic_link: String,
             duration_days: Option<i64>,
@@ -3130,7 +3152,10 @@ pub mod resources {
                 output.push_str("/linkStats");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("durationDays", &self.duration_days)]);
                 let req = req.query(&[("sdkVersion", &self.sdk_version)]);
@@ -3156,7 +3181,7 @@ pub mod resources {
         #[doc = "Created via [V1Actions::install_attribution()](struct.V1Actions.html#method.install_attribution)"]
         #[derive(Debug, Clone)]
         pub struct InstallAttributionRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GetIosPostInstallAttributionRequest,
             access_token: Option<String>,
@@ -3281,7 +3306,10 @@ pub mod resources {
                 output.push_str("v1/installAttribution");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3305,7 +3333,7 @@ pub mod resources {
         #[doc = "Created via [V1Actions::reopen_attribution()](struct.V1Actions.html#method.reopen_attribution)"]
         #[derive(Debug, Clone)]
         pub struct ReopenAttributionRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GetIosReopenAttributionRequest,
             access_token: Option<String>,
@@ -3428,7 +3456,10 @@ pub mod resources {
                 output.push_str("v1/reopenAttribution");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3467,9 +3498,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3511,7 +3540,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

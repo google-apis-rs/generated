@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Composer",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190827",
+  "revision": "20200421",
   "title": "Cloud Composer API",
   "description": "Manages Apache Airflow environments on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -207,6 +207,38 @@
     }
   },
   "schemas": {
+    "AllowedIpRange": {
+      "id": "AllowedIpRange",
+      "description": "Allowed IP range with user-provided description.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "Optional. User-provided description. It must contain at most 300 characters.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "value": {
+          "description": "IP address or range, defined using CIDR notation, of requests that this\nrule applies to.\nExamples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32`\n          or `2001:0db8:0000:0042:0000:8a2e:0370:7334`.\n\n\n<p>IP range prefixes should be properly truncated. For example,\n`1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6,\n`2001:db8::1/32` should be truncated to `2001:db8::/32`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Empty": {
       "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
@@ -260,7 +292,7 @@
           "items": null
         },
         "name": {
-          "description": "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
+          "description": "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"\n\nEnvironmentId must start with a lowercase letter followed by up to 63\nlowercase letters, numbers, or hyphens, and cannot end with a hyphen.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -376,6 +408,10 @@
         "softwareConfig": {
           "description": "The configuration settings for software inside the environment.",
           "$ref": "SoftwareConfig"
+        },
+        "webServerNetworkAccessControl": {
+          "description": "Optional. The network-level access control policy for the Airflow web server. If\nunspecified, no network-level access restrictions will be applied.",
+          "$ref": "WebServerNetworkAccessControl"
         }
       },
       "additionalProperties": null,
@@ -894,7 +930,17 @@
           "items": null
         },
         "masterIpv4CidrBlock": {
-          "description": "The IP range in CIDR notation to use for the hosted master network. This\nrange is used for assigning internal IP addresses to the cluster\nmaster or set of masters and to the internal load balancer virtual IP.\nThis range must not overlap with any other ranges in use\nwithin the cluster's network. If left blank, the default value of\n'172.16.0.0/28' is used.",
+          "description": "Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If\nleft blank, the default value of '172.16.0.0/23' is used.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "masterIpv4ReservedRange": {
+          "description": "Output only. The IP range in CIDR notation to use for the hosted master network. This\nrange is used for assigning internal IP addresses to the cluster\nmaster or set of masters and to the internal load balancer virtual IP.\nThis range must not overlap with any other ranges in use\nwithin the cluster's network.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -915,6 +961,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "cloudSqlIpv4CidrBlock": {
+          "description": "Optional. The CIDR block from which IP range in tenant project will be reserved for\nCloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "enablePrivateEnvironment": {
           "description": "Optional. If `true`, a Private IP Cloud Composer environment is created.\nIf this field is true, `use_ip_aliases` must be true.",
           "type": "boolean",
@@ -928,6 +984,26 @@
         "privateClusterConfig": {
           "description": "Optional. Configuration for the private GKE cluster for a Private IP\nCloud Composer environment.",
           "$ref": "PrivateClusterConfig"
+        },
+        "webServerIpv4CidrBlock": {
+          "description": "Optional. The CIDR block from which IP range for web server will be reserved. Needs\nto be disjoint from private_cluster_config.master_ipv4_cidr_block and\ncloud_sql_ipv4_cidr_block.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "webServerIpv4ReservedRange": {
+          "description": "Output only. The IP range reserved for the tenant project's App Engine VMs.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1076,6 +1152,30 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "WebServerNetworkAccessControl": {
+      "id": "WebServerNetworkAccessControl",
+      "description": "Network-level access control policy for the Airflow web server.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allowedIpRanges": {
+          "description": "A collection of allowed IP ranges with descriptions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AllowedIpRange"
+          }
         }
       },
       "additionalProperties": null,

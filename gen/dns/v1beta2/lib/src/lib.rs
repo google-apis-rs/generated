@@ -1,4 +1,17 @@
 #![doc = "# Resources and Methods\n    * [changes](resources/changes/struct.ChangesActions.html)\n      * [*create*](resources/changes/struct.CreateRequestBuilder.html), [*get*](resources/changes/struct.GetRequestBuilder.html), [*list*](resources/changes/struct.ListRequestBuilder.html)\n    * [dns_keys](resources/dns_keys/struct.DnsKeysActions.html)\n      * [*get*](resources/dns_keys/struct.GetRequestBuilder.html), [*list*](resources/dns_keys/struct.ListRequestBuilder.html)\n    * [managed_zone_operations](resources/managed_zone_operations/struct.ManagedZoneOperationsActions.html)\n      * [*get*](resources/managed_zone_operations/struct.GetRequestBuilder.html), [*list*](resources/managed_zone_operations/struct.ListRequestBuilder.html)\n    * [managed_zones](resources/managed_zones/struct.ManagedZonesActions.html)\n      * [*create*](resources/managed_zones/struct.CreateRequestBuilder.html), [*delete*](resources/managed_zones/struct.DeleteRequestBuilder.html), [*get*](resources/managed_zones/struct.GetRequestBuilder.html), [*list*](resources/managed_zones/struct.ListRequestBuilder.html), [*patch*](resources/managed_zones/struct.PatchRequestBuilder.html), [*update*](resources/managed_zones/struct.UpdateRequestBuilder.html)\n    * [policies](resources/policies/struct.PoliciesActions.html)\n      * [*create*](resources/policies/struct.CreateRequestBuilder.html), [*delete*](resources/policies/struct.DeleteRequestBuilder.html), [*get*](resources/policies/struct.GetRequestBuilder.html), [*list*](resources/policies/struct.ListRequestBuilder.html), [*patch*](resources/policies/struct.PatchRequestBuilder.html), [*update*](resources/policies/struct.UpdateRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*get*](resources/projects/struct.GetRequestBuilder.html)\n    * [resource_record_sets](resources/resource_record_sets/struct.ResourceRecordSetsActions.html)\n      * [*list*](resources/resource_record_sets/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform.read-only`"]
+    pub const CLOUD_PLATFORM_READ_ONLY: &str =
+        "https://www.googleapis.com/auth/cloud-platform.read-only";
+    #[doc = "View your DNS records hosted by Google Cloud DNS\n\n`https://www.googleapis.com/auth/ndev.clouddns.readonly`"]
+    pub const NDEV_CLOUDDNS_READONLY: &str =
+        "https://www.googleapis.com/auth/ndev.clouddns.readonly";
+    #[doc = "View and manage your DNS records hosted by Google Cloud DNS\n\n`https://www.googleapis.com/auth/ndev.clouddns.readwrite`"]
+    pub const NDEV_CLOUDDNS_READWRITE: &str =
+        "https://www.googleapis.com/auth/ndev.clouddns.readwrite";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -914,6 +927,14 @@ pub mod schemas {
         )]
         pub private_visibility_config:
             ::std::option::Option<crate::schemas::ManagedZonePrivateVisibilityConfig>,
+        #[doc = "The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config."]
+        #[serde(
+            rename = "reverseLookupConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reverse_lookup_config:
+            ::std::option::Option<crate::schemas::ManagedZoneReverseLookupConfig>,
         #[doc = "The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources."]
         #[serde(
             rename = "visibility",
@@ -1248,6 +1269,15 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ManagedZoneForwardingConfigNameServerTarget {
+        #[doc = "Forwarding path for this NameServerTarget, if unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target"]
+        #[serde(
+            rename = "forwardingPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub forwarding_path: ::std::option::Option<
+            crate::schemas::ManagedZoneForwardingConfigNameServerTargetForwardingPath,
+        >,
         #[doc = "IPv4 address of a target name server."]
         #[serde(
             rename = "ipv4Address",
@@ -1269,6 +1299,82 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ManagedZoneForwardingConfigNameServerTarget {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        Default,
+        Private,
+    }
+    impl ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ManagedZoneForwardingConfigNameServerTargetForwardingPath::Default => "default",
+                ManagedZoneForwardingConfigNameServerTargetForwardingPath::Private => "private",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ManagedZoneForwardingConfigNameServerTargetForwardingPath, ()>
+        {
+            Ok(match s {
+                "default" => ManagedZoneForwardingConfigNameServerTargetForwardingPath::Default,
+                "private" => ManagedZoneForwardingConfigNameServerTargetForwardingPath::Private,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ManagedZoneForwardingConfigNameServerTargetForwardingPath {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "default" => ManagedZoneForwardingConfigNameServerTargetForwardingPath::Default,
+                "private" => ManagedZoneForwardingConfigNameServerTargetForwardingPath::Private,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for ManagedZoneForwardingConfigNameServerTargetForwardingPath
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for ManagedZoneForwardingConfigNameServerTargetForwardingPath
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1481,6 +1587,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ManagedZonePrivateVisibilityConfigNetwork {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ManagedZoneReverseLookupConfig {
+        #[doc = "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneReverseLookupConfig\"."]
+        #[serde(
+            rename = "kind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kind: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ManagedZoneReverseLookupConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ManagedZoneReverseLookupConfig {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2019,6 +2156,15 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PolicyAlternativeNameServerConfigTargetNameServer {
+        #[doc = "Forwarding path for this TargetNameServer, if unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target"]
+        #[serde(
+            rename = "forwardingPath",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub forwarding_path: ::std::option::Option<
+            crate::schemas::PolicyAlternativeNameServerConfigTargetNameServerForwardingPath,
+        >,
         #[doc = "IPv4 address to forward to."]
         #[serde(
             rename = "ipv4Address",
@@ -2040,6 +2186,100 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for PolicyAlternativeNameServerConfigTargetNameServer {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
+        Default,
+        Private,
+    }
+    impl PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PolicyAlternativeNameServerConfigTargetNameServerForwardingPath::Default => {
+                    "default"
+                }
+                PolicyAlternativeNameServerConfigTargetNameServerForwardingPath::Private => {
+                    "private"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            PolicyAlternativeNameServerConfigTargetNameServerForwardingPath,
+            (),
+        > {
+            Ok(match s {
+                "default" => {
+                    PolicyAlternativeNameServerConfigTargetNameServerForwardingPath::Default
+                }
+                "private" => {
+                    PolicyAlternativeNameServerConfigTargetNameServerForwardingPath::Private
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "default" => {
+                    PolicyAlternativeNameServerConfigTargetNameServerForwardingPath::Default
+                }
+                "private" => {
+                    PolicyAlternativeNameServerConfigTargetNameServerForwardingPath::Private
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for PolicyAlternativeNameServerConfigTargetNameServerForwardingPath
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2482,7 +2722,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2490,8 +2730,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2622,7 +2874,7 @@ pub mod resources {
             }
         }
         pub struct ChangesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ChangesActions<'a> {
@@ -2703,7 +2955,7 @@ pub mod resources {
         #[doc = "Created via [ChangesActions::create()](struct.ChangesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Change,
             project: String,
@@ -2823,7 +3075,10 @@ pub mod resources {
                 output.push_str("/changes");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2844,7 +3099,7 @@ pub mod resources {
         #[doc = "Created via [ChangesActions::get()](struct.ChangesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -2970,7 +3225,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2991,7 +3249,7 @@ pub mod resources {
         #[doc = "Created via [ChangesActions::list()](struct.ChangesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -3227,7 +3485,10 @@ pub mod resources {
                 output.push_str("/changes");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3263,7 +3524,7 @@ pub mod resources {
     pub mod dns_keys {
         pub mod params {}
         pub struct DnsKeysActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DnsKeysActions<'a> {
@@ -3321,7 +3582,7 @@ pub mod resources {
         #[doc = "Created via [DnsKeysActions::get()](struct.DnsKeysActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -3453,7 +3714,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("digestType", &self.digest_type)]);
@@ -3475,7 +3739,7 @@ pub mod resources {
         #[doc = "Created via [DnsKeysActions::list()](struct.DnsKeysActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -3705,7 +3969,10 @@ pub mod resources {
                 output.push_str("/dnsKeys");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("digestType", &self.digest_type)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -3810,7 +4077,7 @@ pub mod resources {
             }
         }
         pub struct ManagedZoneOperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ManagedZoneOperationsActions<'a> {
@@ -3867,7 +4134,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZoneOperationsActions::get()](struct.ManagedZoneOperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -3995,7 +4262,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4016,7 +4286,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZoneOperationsActions::list()](struct.ManagedZoneOperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -4253,7 +4523,10 @@ pub mod resources {
                 output.push_str("/operations");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4288,7 +4561,7 @@ pub mod resources {
     pub mod managed_zones {
         pub mod params {}
         pub struct ManagedZonesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ManagedZonesActions<'a> {
@@ -4426,7 +4699,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZonesActions::create()](struct.ManagedZonesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ManagedZone,
             project: String,
@@ -4539,7 +4812,10 @@ pub mod resources {
                 output.push_str("/managedZones");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4560,7 +4836,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZonesActions::delete()](struct.ManagedZonesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -4628,7 +4904,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4649,7 +4928,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZonesActions::get()](struct.ManagedZonesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -4768,7 +5047,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4789,7 +5071,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZonesActions::list()](struct.ManagedZonesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             dns_name: Option<String>,
@@ -5010,7 +5292,10 @@ pub mod resources {
                 output.push_str("/managedZones");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("dnsName", &self.dns_name)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -5044,7 +5329,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZonesActions::patch()](struct.ManagedZonesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ManagedZone,
             project: String,
@@ -5165,7 +5450,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5186,7 +5474,7 @@ pub mod resources {
         #[doc = "Created via [ManagedZonesActions::update()](struct.ManagedZonesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ManagedZone,
             project: String,
@@ -5307,7 +5595,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5329,7 +5620,7 @@ pub mod resources {
     pub mod policies {
         pub mod params {}
         pub struct PoliciesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PoliciesActions<'a> {
@@ -5466,7 +5757,7 @@ pub mod resources {
         #[doc = "Created via [PoliciesActions::create()](struct.PoliciesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Policy,
             project: String,
@@ -5577,7 +5868,10 @@ pub mod resources {
                 output.push_str("/policies");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5598,7 +5892,7 @@ pub mod resources {
         #[doc = "Created via [PoliciesActions::delete()](struct.PoliciesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             policy: String,
@@ -5666,7 +5960,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5687,7 +5984,7 @@ pub mod resources {
         #[doc = "Created via [PoliciesActions::get()](struct.PoliciesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             policy: String,
@@ -5804,7 +6101,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5825,7 +6125,7 @@ pub mod resources {
         #[doc = "Created via [PoliciesActions::list()](struct.PoliciesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             max_results: Option<i32>,
@@ -6040,7 +6340,10 @@ pub mod resources {
                 output.push_str("/policies");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6073,7 +6376,7 @@ pub mod resources {
         #[doc = "Created via [PoliciesActions::patch()](struct.PoliciesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Policy,
             project: String,
@@ -6194,7 +6497,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6215,7 +6521,7 @@ pub mod resources {
         #[doc = "Created via [PoliciesActions::update()](struct.PoliciesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Policy,
             project: String,
@@ -6336,7 +6642,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6358,7 +6667,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -6385,7 +6694,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::get()](struct.ProjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             client_operation_id: Option<String>,
@@ -6493,7 +6802,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientOperationId", &self.client_operation_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6515,7 +6827,7 @@ pub mod resources {
     pub mod resource_record_sets {
         pub mod params {}
         pub struct ResourceRecordSetsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ResourceRecordSetsActions<'a> {
@@ -6550,7 +6862,7 @@ pub mod resources {
         #[doc = "Created via [ResourceRecordSetsActions::list()](struct.ResourceRecordSetsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             managed_zone: String,
@@ -6788,7 +7100,10 @@ pub mod resources {
                 output.push_str("/rrsets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("name", &self.name)]);
@@ -6838,9 +7153,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -6882,7 +7195,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

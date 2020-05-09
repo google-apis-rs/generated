@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Filestore",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190812",
+  "revision": "20200413",
   "title": "Cloud Filestore API",
   "description": "The Cloud Filestore API is used for creating and managing cloud file servers.",
   "ownerDomain": "google.com",
@@ -263,7 +263,7 @@
     },
     "GoogleCloudSaasacceleratorManagementProvidersV1Instance": {
       "id": "GoogleCloudSaasacceleratorManagementProvidersV1Instance",
-      "description": "Instance represents the interface for SLM services to actuate the state\nof control plane resources.\n\nExample Instance in JSON, where\n  consumer-project=snapchat,\n  producer-project=cloud-sql:\n\n```json\nInstance:\n{\n  \"name\":\n  \"projects/snapchat/locations/us-east1/instances/prod-instance\",\n  \"create_time\": {\n    \"seconds\": 1526406431,\n  },\n  \"labels\": {\n    \"env\": \"prod\",\n    \"foo\": \"bar\"\n  },\n  \"state\": READY,\n  \"software_versions\": {\n    \"software_update\": \"cloud-sql-09-28-2018\",\n  },\n  \"maintenance_policy_names\": {\n    \"UpdatePolicy\":\n    \"projects/snapchat/locations/us-east1/maintenancePolicies/prod-update-policy\",\n  }\n  \"rollout_metadata\": {\n    \"projects/cloud-sql/locations/global/rolloutTypes/software_update\": {\n      \"release\":\n      \"projects/cloud-sql/locations/global/releases/cloud-sql-09-28-2018\",\n      \"rollout\":\n      \"projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-28-2018-canary\",\n    },\n    \"projects/cloud-sql/locations/global/rolloutTypes/instance_restart\": {\n      \"release\":\n      \"projects/cloud-sql/locations/global/releases/cloud-sql-09-20-repair\",\n      \"rollout\":\n      \"projects/cloud-sql/locations/us-east1/rollouts/cloud-sql-09-20-repair-100-percent\",\n    }\n  }\n  \"tenant_project_id\": \"cloud-sql-test-tenant\",\n  \"producer_metadata\": {\n    \"cloud-sql-tier\": \"basic\",\n    \"cloud-sql-instance-size\": \"1G\",\n  },\n  \"provisioned_resources\": [\n    {\n      \"resource-type\": \"compute-instance\",\n      \"resource-url\":\n      \"https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1\",\n    }\n  ],\n  \"maintenance_schedules\": {\n    \"csa_rollout\": {\n       \"start_time\": {\n          \"seconds\": 1526406431,\n       },\n       \"end_time\": {\n          \"seconds\": 1535406431,\n       },\n    },\n    \"ncsa_rollout\": {\n       \"start_time\": {\n          \"seconds\": 1526406431,\n       },\n       \"end_time\": {\n          \"seconds\": 1535406431,\n       },\n    }\n  },\n  \"consumer_defined_name\": \"my-sql-instance1\",\n}\n```",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -381,17 +381,14 @@
             "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource"
           }
         },
-        "rolloutMetadata": {
-          "description": "The map between RolloutType and the corresponding RolloutMetadata.\nThis is only mutated by rollout service. For actuation implementation,\nthis information is pass-through for Rollout management. Producer shall\nnot modify by itself.\nFor update of a single entry in this map, the update field mask shall\nfollow this sementics: go/advanced-field-masks",
-          "type": "object",
+        "slmInstanceTemplate": {
+          "description": "Link to the SLM instance template. Only populated when updating SLM\ninstances via SSA's Actuation service adaptor.\nService producers with custom control plane (e.g. Cloud SQL) doesn't\nneed to populate this field. Instead they should use software_versions.",
+          "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
-          "additionalProperties": {
-            "description": null,
-            "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata"
-          },
+          "additionalProperties": null,
           "items": null
         },
         "sloMetadata": {
@@ -427,7 +424,8 @@
             "READY",
             "UPDATING",
             "REPAIRING",
-            "DELETING"
+            "DELETING",
+            "ERROR"
           ],
           "enumDescriptions": [
             "Unspecified state.",
@@ -435,7 +433,8 @@
             "Instance has been created and is ready to use.",
             "Instance is being updated.",
             "Instance is unheathy and under repair.",
-            "Instance is being deleted."
+            "Instance is being deleted.",
+            "Instance encountered an error and is in indeterministic state."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -487,6 +486,16 @@
           "description": "The scheduled end time for the maintenance.",
           "type": "string",
           "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "rolloutManagementPolicy": {
+          "description": "The rollout management policy this maintenance schedule is associated\nwith. When doing reschedule update request, the reschedule should be\nagainst this given policy.",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -551,58 +560,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata": {
-      "id": "GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata",
-      "description": "NotificationMetadata is the notification state for an instance.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "rescheduled": {
-          "description": "Whether the instance update has been rescheduled.",
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "scheduledEndTime": {
-          "description": "The scheduled end time for the maintenance window during which update\ncan be performed on the instance.",
-          "type": "string",
-          "format": "google-datetime",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "scheduledStartTime": {
-          "description": "The scheduled start time for the maintenance window during which\nupdate can be performed on the instance.",
-          "type": "string",
-          "format": "google-datetime",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "targetRelease": {
-          "description": "The target release to be applied to the instance.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource": {
       "id": "GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource",
       "description": "Describes provisioned dataplane resources.",
@@ -635,21 +592,17 @@
       "additionalProperties": null,
       "items": null
     },
-    "GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata": {
-      "id": "GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata",
-      "description": "RolloutMetadata for an actuation instance. It maps to a single RolloutType.",
+    "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility": {
+      "id": "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility",
+      "description": "SloEligibility is a tuple containing eligibility value: true if an instance\nis eligible for SLO calculation or false if it should be excluded from all\nSLO-related calculations along with a user-defined reason.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "notification": {
-          "description": "Instance level notification metadata.",
-          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata"
-        },
-        "releaseName": {
-          "description": "The last Release that has been applied to the instance.",
-          "type": "string",
+        "eligible": {
+          "description": "Whether an instance is eligible or ineligible.",
+          "type": "boolean",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
@@ -657,8 +610,8 @@
           "additionalProperties": null,
           "items": null
         },
-        "rolloutName": {
-          "description": "The last rollout that has been applied to the instance.",
+        "reason": {
+          "description": "User-defined reason for the current value of instance eligibility. Usually,\nthis can be directly mapped to the internal state. An empty reason is\nallowed.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -673,26 +626,16 @@
     },
     "GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion": {
       "id": "GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion",
-      "description": "SloExclusion represents an excusion in SLI calculation applies to all SLOs.",
+      "description": "SloExclusion represents an exclusion in SLI calculation applies to all SLOs.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "exclusionDuration": {
+        "duration": {
           "description": "Exclusion duration. No restrictions on the possible values.\n\nWhen an ongoing operation is taking longer than initially expected,\nan existing entry in the exclusion list can be updated by extending the\nduration. This is supported by the subsystem exporting eligibility data\nas long as such extension is committed at least 10 minutes before the\noriginal exclusion expiration - otherwise it is possible that there will\nbe \"gaps\" in the exclusion application in the exported timeseries.",
           "type": "string",
           "format": "google-duration",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "exclusionStartTime": {
-          "description": "Start time of the exclusion. No alignment (e.g. to a full minute) needed.",
-          "type": "string",
-          "format": "google-datetime",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -718,6 +661,16 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "startTime": {
+          "description": "Start time of the exclusion. No alignment (e.g. to a full minute) needed.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -731,8 +684,12 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "eligibility": {
+          "description": "Optional. User-defined instance eligibility.",
+          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility"
+        },
         "exclusions": {
-          "description": "List of SLO exclusion windows. When multiple entries in the list match\n(matching the exclusion time-window against current time point)\nthe exclusion reason used in the first matching entry will be published.\n\nIt is not needed to include expired exclusion in this list, as only the\ncurrently applicable exclusions are taken into account by the eligibility\nexporting subsystem (the historical state of exclusions will be reflected\nin the historically produced timeseries regardless of the current state).\n\nThis field can be used to mark the instance as temporary ineligible\nfor the purpose of SLO calculation. For permanent instance SLO exclusion,\na dedicated tier name can be used that does not have targets specified\nin the service SLO configuration.",
+          "description": "List of SLO exclusion windows. When multiple entries in the list match\n(matching the exclusion time-window against current time point)\nthe exclusion reason used in the first matching entry will be published.\n\nIt is not needed to include expired exclusion in this list, as only the\ncurrently applicable exclusions are taken into account by the eligibility\nexporting subsystem (the historical state of exclusions will be reflected\nin the historically produced timeseries regardless of the current state).\n\nThis field can be used to mark the instance as temporary ineligible\nfor the purpose of SLO calculation. For permanent instance SLO exclusion,\nuse of custom instance eligibility is recommended. See 'eligibility' field\nbelow.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -744,7 +701,7 @@
           }
         },
         "nodes": {
-          "description": "Optional: list of nodes.\nSome producers need to use per-node metadata to calculate SLO.\nThis field allows such producers to publish per-node SLO meta data,\nwhich will be consumed by SSA Eligibility Exporter and published in the\nform of per node metric to Monarch.",
+          "description": "Optional. List of nodes.\nSome producers need to use per-node metadata to calculate SLO.\nThis field allows such producers to publish per-node SLO meta data,\nwhich will be consumed by SSA Eligibility Exporter and published in the\nform of per node metric to Monarch.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -788,7 +745,7 @@
           "items": null
         },
         "description": {
-          "description": "Optional. A description of the instance (2048 characters or less).",
+          "description": "The description of the instance (2048 characters or less).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -870,7 +827,8 @@
             "READY",
             "REPAIRING",
             "DELETING",
-            "ERROR"
+            "ERROR",
+            "RESTORING"
           ],
           "enumDescriptions": [
             "State not set.",
@@ -878,7 +836,8 @@
             "The instance is available for use.",
             "Work is being done on the instance. You can get further details from the\n`statusMessage` field of the `Instance` resource.",
             "The instance is shutting down.",
-            "The instance is experiencing an issue and might be unusable. You can get\nfurther details from the `statusMessage` field of the `Instance`\nresource."
+            "The instance is experiencing an issue and might be unusable. You can get\nfurther details from the `statusMessage` field of the `Instance`\nresource.",
+            "The instance is restoring a snapshot or backup to an existing file share\nand may be unusable during this time."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -901,12 +860,18 @@
           "enum": [
             "TIER_UNSPECIFIED",
             "STANDARD",
-            "PREMIUM"
+            "PREMIUM",
+            "BASIC_HDD",
+            "BASIC_SSD",
+            "HIGH_SCALE_SSD"
           ],
           "enumDescriptions": [
             "Not set.",
-            "STANDARD tier.",
-            "PREMIUM tier."
+            "STANDARD tier. BASIC_HDD is the preferred term for this tier.",
+            "PREMIUM tier. BASIC_SSD is the preferred term for this tier.",
+            "BASIC instances offer a maximum capacity of 63.9 TB.\nBASIC_HDD is an alias for STANDARD Tier, offering economical\nperformance backed by HDD.",
+            "BASIC instances offer a maximum capacity of 63.9 TB.\nBASIC_SSD is an alias for PREMIUM Tier, and offers improved\nperformance backed by SSD.",
+            "HIGH_SCALE instances offer expanded capacity and performance scaling\ncapabilities."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1177,7 +1142,7 @@
           "items": null
         },
         "reservedIpRange": {
-          "description": "A /29 CIDR block in one of the\n[internal IP address\nranges](https://www.arin.net/knowledge/address_filters.html) that\nidentifies the range of IP addresses reserved for this instance. For\nexample, 10.0.0.0/29 or 192.168.0.0/29. The range you specify can't overlap\nwith either existing subnets or assigned IP address ranges for other Cloud\nFilestore instances in the selected VPC network.",
+          "description": "A /29 CIDR block for Basic or a /23 CIDR block for High Scale in one of the\n[internal IP address\nranges](https://www.arin.net/knowledge/address_filters.html) that\nidentifies the range of IP addresses reserved for this instance. For\nexample, 10.0.0.0/29 or 192.168.0.0/23. The range you specify can't overlap\nwith either existing subnets or assigned IP address ranges for other Cloud\nFilestore instances in the selected VPC network.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1421,7 +1386,7 @@
                   "description": "Creates an instance.",
                   "parameters": {
                     "instanceId": {
-                      "description": "The name of the instance to create.\nThe name must be unique for the specified project and location.",
+                      "description": "Required. The ID of the instance to create.\nThe ID must be unique within the specified project and location.\n\nThis value must start with a lowercase letter followed by up to 62\nlowercase letters, numbers, or hyphens, and cannot end with a hyphen.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -1435,7 +1400,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The instance's project and location, in the format\nprojects/{project_id}/locations/{location}. In Cloud Filestore,\nlocations map to GCP zones, for example **us-west1-b**.",
+                      "description": "Required. The instance's project and location, in the format\nprojects/{project_id}/locations/{location}. In Cloud Filestore,\nlocations map to GCP zones, for example **us-west1-b**.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1474,7 +1439,7 @@
                   "description": "Deletes an instance.",
                   "parameters": {
                     "name": {
-                      "description": "The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}",
+                      "description": "Required. The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1511,7 +1476,7 @@
                   "description": "Gets the details of a specific instance.",
                   "parameters": {
                     "name": {
-                      "description": "The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}.",
+                      "description": "Required. The instance resource name, in the format\nprojects/{project_id}/locations/{location}/instances/{instance_id}.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1604,7 +1569,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The project and location for which to retrieve instance information,\nin the format projects/{project_id}/locations/{location}. In Cloud\nFilestore, locations map to GCP zones, for example **us-west1-b**. To\nretrieve instance information for all locations, use \"-\" for the {location}\nvalue.",
+                      "description": "Required. The project and location for which to retrieve instance information,\nin the format projects/{project_id}/locations/{location}. In Cloud\nFilestore, locations map to GCP zones, for example **us-west1-b**. To\nretrieve instance information for all locations, use \"-\" for the {location}\nvalue.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1655,7 +1620,7 @@
                       "repeated": false
                     },
                     "updateMask": {
-                      "description": "Mask of fields to update.  At least one path must be supplied in this\nfield.  The elements of the repeated paths field may only include these\nfields:\n\"description\"",
+                      "description": "Required. Mask of fields to update.  At least one path must be supplied in this\nfield.  The elements of the repeated paths field may only include these\nfields:\n\n* \"description\"\n* \"file_shares\"\n* \"labels\"",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -1937,6 +1902,20 @@
                   "location": "query",
                   "required": false,
                   "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "includeUnrevealedLocations": {
+                  "description": "If true, the returned list will include locations which are not yet\nrevealed.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "boolean",
                   "format": null,
                   "minimum": null,
                   "maximum": null,

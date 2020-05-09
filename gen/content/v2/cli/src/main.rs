@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("content2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190910")
+            .version("0.1.0-20200428")
             .about("Manages product items, inventory, and Merchant Center accounts for Google Shopping.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut accounts0 = SubCommand::with_name("accounts")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: authinfo, claimwebsite, custombatch, delete, get, insert, link, list, patch and update");
+                        .about("methods: authinfo, claimwebsite, custombatch, delete, get, insert, link, list and update");
         {
             let mcmd = SubCommand::with_name("authinfo")
                 .about("Returns information about the authenticated user.");
@@ -74,11 +74,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounts0 = accounts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a Merchant Center account. This method supports patch semantics.");
-            accounts0 = accounts0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("update").about("Updates a Merchant Center account.");
             accounts0 = accounts0.subcommand(mcmd);
         }
@@ -101,7 +96,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut accounttax0 = SubCommand::with_name("accounttax")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: custombatch, get, list, patch and update");
+            .about("methods: custombatch, get, list and update");
         {
             let mcmd = SubCommand::with_name("custombatch").about(
                 "Retrieves and updates tax settings of multiple accounts in a single request.",
@@ -120,19 +115,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounttax0 = accounttax0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about(
-                "Updates the tax settings of the account. This method supports patch semantics.",
-            );
-            accounttax0 = accounttax0.subcommand(mcmd);
-        }
-        {
             let mcmd =
                 SubCommand::with_name("update").about("Updates the tax settings of the account.");
             accounttax0 = accounttax0.subcommand(mcmd);
         }
         let mut datafeeds0 = SubCommand::with_name("datafeeds")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: custombatch, delete, fetchnow, get, insert, list, patch and update");
+            .about("methods: custombatch, delete, fetchnow, get, insert, list and update");
         {
             let mcmd = SubCommand::with_name("custombatch").about("Deletes, fetches, gets, inserts and updates multiple datafeeds in a single request.");
             datafeeds0 = datafeeds0.subcommand(mcmd);
@@ -160,10 +149,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists the configurations for datafeeds in your Merchant Center account.");
-            datafeeds0 = datafeeds0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about("Updates a datafeed configuration of your Merchant Center account. This method supports patch semantics.");
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
@@ -204,7 +189,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut liasettings0 = SubCommand::with_name("liasettings")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: custombatch, get, getaccessiblegmbaccounts, list, listposdataproviders, patch, requestgmbaccess, requestinventoryverification, setinventoryverificationcontact, setposdataprovider and update");
+                        .about("methods: custombatch, get, getaccessiblegmbaccounts, list, listposdataproviders, requestgmbaccess, requestinventoryverification, setinventoryverificationcontact, setposdataprovider and update");
         {
             let mcmd = SubCommand::with_name("custombatch").about("Retrieves and/or updates the LIA settings of multiple accounts in a single request.");
             liasettings0 = liasettings0.subcommand(mcmd);
@@ -227,12 +212,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("listposdataproviders").about("Retrieves the list of POS data providers that have active settings for the all eiligible countries.");
-            liasettings0 = liasettings0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about(
-                "Updates the LIA settings of the account. This method supports patch semantics.",
-            );
             liasettings0 = liasettings0.subcommand(mcmd);
         }
         {
@@ -268,34 +247,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orderinvoices0 = orderinvoices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("createrefundinvoice").about("Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous invoice.");
+            let mcmd = SubCommand::with_name("createrefundinvoice").about("Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using `createChargeInvoice`. All amounts (except for the summary) are incremental with respect to the previous invoice.");
             orderinvoices0 = orderinvoices0.subcommand(mcmd);
-        }
-        let mut orderpayments0 = SubCommand::with_name("orderpayments")
-            .setting(AppSettings::ColoredHelp)
-            .about(
-                "methods: notifyauthapproved, notifyauthdeclined, notifycharge and notifyrefund",
-            );
-        {
-            let mcmd = SubCommand::with_name("notifyauthapproved").about(
-                "Notify about successfully authorizing user\'s payment method for a given amount.",
-            );
-            orderpayments0 = orderpayments0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("notifyauthdeclined")
-                .about("Notify about failure to authorize user\'s payment method.");
-            orderpayments0 = orderpayments0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("notifycharge")
-                .about("Notify about charge on user\'s selected payments method.");
-            orderpayments0 = orderpayments0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("notifyrefund")
-                .about("Notify about refund on user\'s selected payments method.");
-            orderpayments0 = orderpayments0.subcommand(mcmd);
         }
         let mut orderreports0 = SubCommand::with_name("orderreports")
             .setting(AppSettings::ColoredHelp)
@@ -331,7 +284,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orders0 = orders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("advancetestorder").about("Sandbox only. Moves a test order from state \"inProgress\" to state \"pendingShipment\".");
+            let mcmd = SubCommand::with_name("advancetestorder").about("Sandbox only. Moves a test order from state \"`inProgress`\" to state \"`pendingShipment`\".");
             orders0 = orders0.subcommand(mcmd);
         }
         {
@@ -490,8 +443,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             products0 = products0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists the products in your Merchant Center account.");
+            let mcmd = SubCommand::with_name("list").about("Lists the products in your Merchant Center account. The response might contain fewer items than specified by maxResults. Rely on nextPageToken to determine if there are more items to be requested.");
             products0 = products0.subcommand(mcmd);
         }
         let mut productstatuses0 = SubCommand::with_name("productstatuses")
@@ -514,7 +466,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut shippingsettings0 = SubCommand::with_name("shippingsettings")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: custombatch, get, getsupportedcarriers, getsupportedholidays, list, patch and update");
+                        .about("methods: custombatch, get, getsupportedcarriers, getsupportedholidays, getsupportedpickupservices, list and update");
         {
             let mcmd = SubCommand::with_name("custombatch").about("Retrieves and updates the shipping settings of multiple accounts in a single request.");
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
@@ -535,13 +487,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about(
-                "Lists the shipping settings of the sub-accounts in your Merchant Center account.",
-            );
+            let mcmd = SubCommand::with_name("getsupportedpickupservices")
+                .about("Retrieves supported pickup services for an account.");
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the shipping settings of the account. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists the shipping settings of the sub-accounts in your Merchant Center account.",
+            );
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         {
@@ -556,7 +509,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(orders0);
         app = app.subcommand(orderreturns0);
         app = app.subcommand(orderreports0);
-        app = app.subcommand(orderpayments0);
         app = app.subcommand(orderinvoices0);
         app = app.subcommand(liasettings0);
         app = app.subcommand(inventory0);

@@ -1,4 +1,11 @@
 #![doc = "# Resources and Methods\n    * [application_detail_service](resources/application_detail_service/struct.ApplicationDetailServiceActions.html)\n      * [*getApkDetails*](resources/application_detail_service/struct.GetApkDetailsRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [test_matrices](resources/projects/test_matrices/struct.TestMatricesActions.html)\n        * [*cancel*](resources/projects/test_matrices/struct.CancelRequestBuilder.html), [*create*](resources/projects/test_matrices/struct.CreateRequestBuilder.html), [*get*](resources/projects/test_matrices/struct.GetRequestBuilder.html)\n    * [test_environment_catalog](resources/test_environment_catalog/struct.TestEnvironmentCatalogActions.html)\n      * [*get*](resources/test_environment_catalog/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform.read-only`"]
+    pub const CLOUD_PLATFORM_READ_ONLY: &str =
+        "https://www.googleapis.com/auth/cloud-platform.read-only";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -193,6 +200,13 @@ pub mod schemas {
         )]
         pub orchestrator_option:
             ::std::option::Option<crate::schemas::AndroidInstrumentationTestOrchestratorOption>,
+        #[doc = "The option to run tests in multiple shards in parallel."]
+        #[serde(
+            rename = "shardingOption",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sharding_option: ::std::option::Option<crate::schemas::ShardingOption>,
         #[doc = "Required. The APK containing the test code to be executed."]
         #[serde(
             rename = "testApk",
@@ -485,6 +499,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
+        #[doc = "URL of a thumbnail image of the device."]
+        #[serde(
+            rename = "thumbnailUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub thumbnail_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AndroidModel {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2060,6 +2081,51 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct IosTestLoop {
+        #[doc = "Output only. The bundle id for the application under test."]
+        #[serde(
+            rename = "appBundleId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub app_bundle_id: ::std::option::Option<String>,
+        #[doc = "Required. The .ipa of the application to test."]
+        #[serde(
+            rename = "appIpa",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub app_ipa: ::std::option::Option<crate::schemas::FileReference>,
+        #[doc = "The list of scenarios that should be run during the test. Defaults to the\nsingle scenario 0 if unspecified."]
+        #[serde(
+            rename = "scenarios",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub scenarios: ::std::option::Option<Vec<i32>>,
+    }
+    impl ::google_field_selector::FieldSelector for IosTestLoop {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for IosTestLoop {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct IosTestSetup {
         #[doc = "The network traffic profile used for running the test.\nAvailable network profiles can be queried by using the\nNETWORK_CONFIGURATION environment type when calling\nTestEnvironmentDiscoveryService.GetTestEnvironmentCatalog."]
         #[serde(
@@ -2158,6 +2224,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app_bundle_id: ::std::option::Option<String>,
+        #[doc = "The option to test special app entitlements. Setting this would re-sign the\napp having special entitlements with an explicit application-identifier.\nCurrently supports testing aps-environment entitlement."]
+        #[serde(
+            rename = "testSpecialEntitlements",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub test_special_entitlements: ::std::option::Option<bool>,
         #[doc = "Required. The .zip containing the .xctestrun file and the contents of the\nDerivedData/Build/Products directory.\nThe .xctestrun file in this zip is ignored if the xctestrun field is\nspecified."]
         #[serde(
             rename = "testsZip",
@@ -2262,6 +2335,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Locale {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ManualSharding {
+        #[doc = "Required. Group of packages, classes, and/or test methods to be run for\neach shard. The number of shard_test_targets must be >= 1 and <= 50."]
+        #[serde(
+            rename = "testTargetsForShard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub test_targets_for_shard: ::std::option::Option<Vec<crate::schemas::TestTargetsForShard>>,
+    }
+    impl ::google_field_selector::FieldSelector for ManualSharding {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ManualSharding {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2710,6 +2814,89 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Shard {
+        #[doc = "Output only. The total number of shards."]
+        #[serde(
+            rename = "numShards",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub num_shards: ::std::option::Option<i32>,
+        #[doc = "Output only. The index of the shard among all the shards."]
+        #[serde(
+            rename = "shardIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shard_index: ::std::option::Option<i32>,
+        #[doc = "Output only. Test targets for each shard."]
+        #[serde(
+            rename = "testTargetsForShard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub test_targets_for_shard: ::std::option::Option<crate::schemas::TestTargetsForShard>,
+    }
+    impl ::google_field_selector::FieldSelector for Shard {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Shard {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ShardingOption {
+        #[doc = "Shards test cases into the specified groups of packages, classes, and/or\nmethods."]
+        #[serde(
+            rename = "manualSharding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub manual_sharding: ::std::option::Option<crate::schemas::ManualSharding>,
+        #[doc = "Uniformly shards test cases given a total number of shards."]
+        #[serde(
+            rename = "uniformSharding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub uniform_sharding: ::std::option::Option<crate::schemas::UniformSharding>,
+    }
+    impl ::google_field_selector::FieldSelector for ShardingOption {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ShardingOption {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct StartActivityIntent {
         #[doc = "Action name.\nRequired for START_ACTIVITY."]
         #[serde(
@@ -2739,6 +2926,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for StartActivityIntent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SystraceSetup {
+        #[doc = "Systrace duration in seconds.\nShould be between 1 and 30 seconds. 0 disables systrace."]
+        #[serde(
+            rename = "durationSeconds",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub duration_seconds: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for SystraceSetup {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SystraceSetup {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2866,6 +3084,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project_id: ::std::option::Option<String>,
+        #[doc = "Output only. Details about the shard."]
+        #[serde(
+            rename = "shard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shard: ::std::option::Option<crate::schemas::Shard>,
         #[doc = "Output only. Indicates the current progress of the test execution\n(e.g., FINISHED)."]
         #[serde(
             rename = "state",
@@ -3165,10 +3390,16 @@ pub mod schemas {
         InvalidRoboDirectives,
         #[doc = "The input app APK could not be parsed."]
         MalformedApk,
+        #[doc = "The iOS application bundle (.app) couldn't be processed."]
+        MalformedAppBundle,
+        #[doc = "The input IPA could not be parsed."]
+        MalformedIpa,
         #[doc = "The input test APK could not be parsed."]
         MalformedTestApk,
         #[doc = "The zipped XCTest was malformed. The zip did not contain a single\n.xctestrun file and the contents of the DerivedData/Build/Products\ndirectory."]
         MalformedXcTestZip,
+        #[doc = "The application doesn't register the game loop URL scheme."]
+        MissingUrlScheme,
         #[doc = "APK contains no code.\nSee also\nhttps://developer.android.com/guide/topics/manifest/application-element.html#code"]
         NoCodeApk,
         #[doc = "The test apk does not declare an instrumentation."]
@@ -3226,8 +3457,11 @@ pub mod schemas {
                 TestMatrixInvalidMatrixDetails::InvalidResourceName => "INVALID_RESOURCE_NAME",
                 TestMatrixInvalidMatrixDetails::InvalidRoboDirectives => "INVALID_ROBO_DIRECTIVES",
                 TestMatrixInvalidMatrixDetails::MalformedApk => "MALFORMED_APK",
+                TestMatrixInvalidMatrixDetails::MalformedAppBundle => "MALFORMED_APP_BUNDLE",
+                TestMatrixInvalidMatrixDetails::MalformedIpa => "MALFORMED_IPA",
                 TestMatrixInvalidMatrixDetails::MalformedTestApk => "MALFORMED_TEST_APK",
                 TestMatrixInvalidMatrixDetails::MalformedXcTestZip => "MALFORMED_XC_TEST_ZIP",
+                TestMatrixInvalidMatrixDetails::MissingUrlScheme => "MISSING_URL_SCHEME",
                 TestMatrixInvalidMatrixDetails::NoCodeApk => "NO_CODE_APK",
                 TestMatrixInvalidMatrixDetails::NoInstrumentation => "NO_INSTRUMENTATION",
                 TestMatrixInvalidMatrixDetails::NoLauncherActivity => "NO_LAUNCHER_ACTIVITY",
@@ -3284,8 +3518,11 @@ pub mod schemas {
                 "INVALID_RESOURCE_NAME" => TestMatrixInvalidMatrixDetails::InvalidResourceName,
                 "INVALID_ROBO_DIRECTIVES" => TestMatrixInvalidMatrixDetails::InvalidRoboDirectives,
                 "MALFORMED_APK" => TestMatrixInvalidMatrixDetails::MalformedApk,
+                "MALFORMED_APP_BUNDLE" => TestMatrixInvalidMatrixDetails::MalformedAppBundle,
+                "MALFORMED_IPA" => TestMatrixInvalidMatrixDetails::MalformedIpa,
                 "MALFORMED_TEST_APK" => TestMatrixInvalidMatrixDetails::MalformedTestApk,
                 "MALFORMED_XC_TEST_ZIP" => TestMatrixInvalidMatrixDetails::MalformedXcTestZip,
+                "MISSING_URL_SCHEME" => TestMatrixInvalidMatrixDetails::MissingUrlScheme,
                 "NO_CODE_APK" => TestMatrixInvalidMatrixDetails::NoCodeApk,
                 "NO_INSTRUMENTATION" => TestMatrixInvalidMatrixDetails::NoInstrumentation,
                 "NO_LAUNCHER_ACTIVITY" => TestMatrixInvalidMatrixDetails::NoLauncherActivity,
@@ -3354,8 +3591,11 @@ pub mod schemas {
                 "INVALID_RESOURCE_NAME" => TestMatrixInvalidMatrixDetails::InvalidResourceName,
                 "INVALID_ROBO_DIRECTIVES" => TestMatrixInvalidMatrixDetails::InvalidRoboDirectives,
                 "MALFORMED_APK" => TestMatrixInvalidMatrixDetails::MalformedApk,
+                "MALFORMED_APP_BUNDLE" => TestMatrixInvalidMatrixDetails::MalformedAppBundle,
+                "MALFORMED_IPA" => TestMatrixInvalidMatrixDetails::MalformedIpa,
                 "MALFORMED_TEST_APK" => TestMatrixInvalidMatrixDetails::MalformedTestApk,
                 "MALFORMED_XC_TEST_ZIP" => TestMatrixInvalidMatrixDetails::MalformedXcTestZip,
+                "MISSING_URL_SCHEME" => TestMatrixInvalidMatrixDetails::MissingUrlScheme,
                 "NO_CODE_APK" => TestMatrixInvalidMatrixDetails::NoCodeApk,
                 "NO_INSTRUMENTATION" => TestMatrixInvalidMatrixDetails::NoInstrumentation,
                 "NO_LAUNCHER_ACTIVITY" => TestMatrixInvalidMatrixDetails::NoLauncherActivity,
@@ -3663,6 +3903,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_profile: ::std::option::Option<String>,
+        #[doc = "Systrace configuration for the run.\nIf set a systrace will be taken, starting on test start and lasting for the\nconfigured duration. The systrace file thus obtained is put in the results\nbucket together with the other artifacts from the run."]
+        #[serde(
+            rename = "systrace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub systrace: ::std::option::Option<crate::schemas::SystraceSetup>,
     }
     impl ::google_field_selector::FieldSelector for TestSetup {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -3723,6 +3970,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disable_video_recording: ::std::option::Option<bool>,
+        #[doc = "An iOS application with a test loop."]
+        #[serde(
+            rename = "iosTestLoop",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ios_test_loop: ::std::option::Option<crate::schemas::IosTestLoop>,
         #[doc = "Test setup requirements for iOS."]
         #[serde(
             rename = "iosTestSetup",
@@ -3758,6 +4012,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for TestSpecification {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TestTargetsForShard {
+        #[doc = "Group of packages, classes, and/or test methods to be run for each shard.\nThe targets need to be specified in AndroidJUnitRunner argument format. For\nexample, “package com.my.packages” “class com.my.package.MyClass”.\n\nThe number of shard_test_targets must be greater than 0."]
+        #[serde(
+            rename = "testTargets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub test_targets: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for TestTargetsForShard {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TestTargetsForShard {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3959,6 +4244,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct UniformSharding {
+        #[doc = "Required. Total number of shards. The number must be >= 1 and <= 50."]
+        #[serde(
+            rename = "numShards",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub num_shards: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for UniformSharding {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UniformSharding {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct XcodeVersion {
         #[doc = "Tags for this Xcode version.\nExample: \"default\"."]
         #[serde(
@@ -4136,7 +4452,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -4144,8 +4460,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -4182,7 +4510,7 @@ pub mod resources {
     pub mod application_detail_service {
         pub mod params {}
         pub struct ApplicationDetailServiceActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ApplicationDetailServiceActions<'a> {
@@ -4215,7 +4543,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationDetailServiceActions::get_apk_details()](struct.ApplicationDetailServiceActions.html#method.get_apk_details)"]
         #[derive(Debug, Clone)]
         pub struct GetApkDetailsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::FileReference,
             access_token: Option<String>,
@@ -4338,7 +4666,10 @@ pub mod resources {
                 output.push_str("v1/applicationDetailService/getApkDetails");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4363,7 +4694,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -4383,7 +4714,7 @@ pub mod resources {
         pub mod test_matrices {
             pub mod params {}
             pub struct TestMatricesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> TestMatricesActions<'a> {
@@ -4467,7 +4798,7 @@ pub mod resources {
             #[doc = "Created via [TestMatricesActions::cancel()](struct.TestMatricesActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 test_matrix_id: String,
@@ -4611,7 +4942,10 @@ pub mod resources {
                     output.push_str(":cancel");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4635,7 +4969,7 @@ pub mod resources {
             #[doc = "Created via [TestMatricesActions::create()](struct.TestMatricesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestMatrix,
                 project_id: String,
@@ -4776,7 +5110,10 @@ pub mod resources {
                     output.push_str("/testMatrices");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("requestId", &self.request_id)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -4801,7 +5138,7 @@ pub mod resources {
             #[doc = "Created via [TestMatricesActions::get()](struct.TestMatricesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 test_matrix_id: String,
@@ -4942,7 +5279,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5056,7 +5396,7 @@ pub mod resources {
             }
         }
         pub struct TestEnvironmentCatalogActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TestEnvironmentCatalogActions<'a> {
@@ -5090,7 +5430,7 @@ pub mod resources {
         #[doc = "Created via [TestEnvironmentCatalogActions::get()](struct.TestEnvironmentCatalogActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             environment_type:
                 crate::resources::test_environment_catalog::params::GetEnvironmentType,
@@ -5227,7 +5567,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("projectId", &self.project_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -5267,9 +5610,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -5311,7 +5652,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [snapshots](resources/projects/snapshots/struct.SnapshotsActions.html)\n        * [*create*](resources/projects/snapshots/struct.CreateRequestBuilder.html), [*delete*](resources/projects/snapshots/struct.DeleteRequestBuilder.html), [*get*](resources/projects/snapshots/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/snapshots/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/snapshots/struct.ListRequestBuilder.html), [*patch*](resources/projects/snapshots/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/snapshots/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/snapshots/struct.TestIamPermissionsRequestBuilder.html)\n      * [subscriptions](resources/projects/subscriptions/struct.SubscriptionsActions.html)\n        * [*acknowledge*](resources/projects/subscriptions/struct.AcknowledgeRequestBuilder.html), [*create*](resources/projects/subscriptions/struct.CreateRequestBuilder.html), [*delete*](resources/projects/subscriptions/struct.DeleteRequestBuilder.html), [*get*](resources/projects/subscriptions/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/subscriptions/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/subscriptions/struct.ListRequestBuilder.html), [*modifyAckDeadline*](resources/projects/subscriptions/struct.ModifyAckDeadlineRequestBuilder.html), [*modifyPushConfig*](resources/projects/subscriptions/struct.ModifyPushConfigRequestBuilder.html), [*patch*](resources/projects/subscriptions/struct.PatchRequestBuilder.html), [*pull*](resources/projects/subscriptions/struct.PullRequestBuilder.html), [*seek*](resources/projects/subscriptions/struct.SeekRequestBuilder.html), [*setIamPolicy*](resources/projects/subscriptions/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/subscriptions/struct.TestIamPermissionsRequestBuilder.html)\n      * [topics](resources/projects/topics/struct.TopicsActions.html)\n        * [*create*](resources/projects/topics/struct.CreateRequestBuilder.html), [*delete*](resources/projects/topics/struct.DeleteRequestBuilder.html), [*get*](resources/projects/topics/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/topics/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/topics/struct.ListRequestBuilder.html), [*patch*](resources/projects/topics/struct.PatchRequestBuilder.html), [*publish*](resources/projects/topics/struct.PublishRequestBuilder.html), [*setIamPolicy*](resources/projects/topics/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/topics/struct.TestIamPermissionsRequestBuilder.html)\n        * [snapshots](resources/projects/topics/snapshots/struct.SnapshotsActions.html)\n          * [*list*](resources/projects/topics/snapshots/struct.ListRequestBuilder.html)\n        * [subscriptions](resources/projects/topics/subscriptions/struct.SubscriptionsActions.html)\n          * [*list*](resources/projects/topics/subscriptions/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and manage Pub/Sub topics and subscriptions\n\n`https://www.googleapis.com/auth/pubsub`"]
+    pub const PUBSUB: &str = "https://www.googleapis.com/auth/pubsub";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +19,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AcknowledgeRequest {
-        #[doc = "The acknowledgment ID for the messages being acknowledged that was returned\nby the Pub/Sub system in the `Pull` response. Must not be empty."]
+        #[doc = "Required. The acknowledgment ID for the messages being acknowledged that was returned\nby the Pub/Sub system in the `Pull` response. Must not be empty."]
         #[serde(
             rename = "ackIds",
             default,
@@ -44,14 +50,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
+        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(
             rename = "members",
             default,
@@ -96,7 +102,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The subscription whose backlog the snapshot retains.\nSpecifically, the created snapshot is guaranteed to retain:\n(a) The existing backlog on the subscription. More precisely, this is\ndefined as the messages in the subscription's backlog that are\nunacknowledged upon the successful completion of the\n`CreateSnapshot` request; as well as:\n(b) Any messages published to the subscription's topic following the\nsuccessful completion of the CreateSnapshot request.\nFormat is `projects/{project}/subscriptions/{sub}`."]
+        #[doc = "Required. The subscription whose backlog the snapshot retains.\nSpecifically, the created snapshot is guaranteed to retain:\n(a) The existing backlog on the subscription. More precisely, this is\ndefined as the messages in the subscription's backlog that are\nunacknowledged upon the successful completion of the\n`CreateSnapshot` request; as well as:\n(b) Any messages published to the subscription's topic following the\nsuccessful completion of the CreateSnapshot request.\nFormat is `projects/{project}/subscriptions/{sub}`."]
         #[serde(
             rename = "subscription",
             default,
@@ -110,6 +116,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for CreateSnapshotRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeadLetterPolicy {
+        #[doc = "The name of the topic to which dead letter messages should be published.\nFormat is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service\naccount associated with the enclosing subscription's parent project (i.e.,\nservice-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have\npermission to Publish() to this topic.\n\nThe operation will fail if the topic does not exist.\nUsers should ensure that there is a subscription attached to this topic\nsince messages published to a topic with no subscriptions are lost."]
+        #[serde(
+            rename = "deadLetterTopic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dead_letter_topic: ::std::option::Option<String>,
+        #[doc = "The maximum number of delivery attempts for any message. The value must be\nbetween 5 and 100.\n\nThe number of delivery attempts is defined as 1 + (the sum of number of\nNACKs and number of times the acknowledgement deadline has been exceeded\nfor the message).\n\nA NACK is any call to ModifyAckDeadline with a 0 deadline. Note that\nclient libraries may automatically extend ack_deadlines.\n\nThis field will be honored on a best effort basis.\n\nIf this parameter is 0, a default value of 5 is used."]
+        #[serde(
+            rename = "maxDeliveryAttempts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_delivery_attempts: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for DeadLetterPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeadLetterPolicy {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -182,28 +226,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(
             rename = "title",
             default,
@@ -455,14 +499,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ModifyAckDeadlineRequest {
-        #[doc = "The new ack deadline with respect to the time this request was sent to\nthe Pub/Sub system. For example, if the value is 10, the new\nack deadline will expire 10 seconds after the `ModifyAckDeadline` call\nwas made. Specifying zero might immediately make the message available for\ndelivery to another subscriber client. This typically results in an\nincrease in the rate of message redeliveries (that is, duplicates).\nThe minimum deadline you can specify is 0 seconds.\nThe maximum deadline you can specify is 600 seconds (10 minutes)."]
+        #[doc = "Required. The new ack deadline with respect to the time this request was sent to\nthe Pub/Sub system. For example, if the value is 10, the new\nack deadline will expire 10 seconds after the `ModifyAckDeadline` call\nwas made. Specifying zero might immediately make the message available for\ndelivery to another subscriber client. This typically results in an\nincrease in the rate of message redeliveries (that is, duplicates).\nThe minimum deadline you can specify is 0 seconds.\nThe maximum deadline you can specify is 600 seconds (10 minutes)."]
         #[serde(
             rename = "ackDeadlineSeconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ack_deadline_seconds: ::std::option::Option<i32>,
-        #[doc = "List of acknowledgment IDs."]
+        #[doc = "Required. List of acknowledgment IDs."]
         #[serde(
             rename = "ackIds",
             default,
@@ -493,7 +537,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ModifyPushConfigRequest {
-        #[doc = "The push configuration for future deliveries.\n\nAn empty `pushConfig` indicates that the Pub/Sub system should\nstop pushing messages from the given subscription and allow\nmessages to be pulled and acknowledged - effectively pausing\nthe subscription if `Pull` or `StreamingPull` is not called."]
+        #[doc = "Required. The push configuration for future deliveries.\n\nAn empty `pushConfig` indicates that the Pub/Sub system should\nstop pushing messages from the given subscription and allow\nmessages to be pulled and acknowledged - effectively pausing\nthe subscription if `Pull` or `StreamingPull` is not called."]
         #[serde(
             rename = "pushConfig",
             default,
@@ -562,21 +606,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Policy {
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "version",
             default,
@@ -607,7 +651,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PublishRequest {
-        #[doc = "The messages to publish."]
+        #[doc = "Required. The messages to publish."]
         #[serde(
             rename = "messages",
             default,
@@ -669,7 +713,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PubsubMessage {
-        #[doc = "Optional attributes for this message."]
+        #[doc = "Attributes for this message. If this field is empty, the message must\ncontain non-empty data."]
         #[serde(
             rename = "attributes",
             default,
@@ -721,14 +765,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PullRequest {
-        #[doc = "The maximum number of messages to return for this request. Must be a\npositive integer. The Pub/Sub system may return fewer than the number\nspecified."]
+        #[doc = "Required. The maximum number of messages to return for this request. Must be a\npositive integer. The Pub/Sub system may return fewer than the number\nspecified."]
         #[serde(
             rename = "maxMessages",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_messages: ::std::option::Option<i32>,
-        #[doc = "If this field set to true, the system will respond immediately even if\nit there are no messages available to return in the `Pull` response.\nOtherwise, the system may wait (for a bounded amount of time) until at\nleast one message is available, rather than returning no messages."]
+        #[doc = "Optional. If this field set to true, the system will respond immediately even if\nit there are no messages available to return in the `Pull` response.\nOtherwise, the system may wait (for a bounded amount of time) until at\nleast one message is available, rather than returning no messages. Warning:\nsetting this field to `true` is discouraged because it adversely impacts\nthe performance of `Pull` operations. We recommend that users do not set\nthis field."]
         #[serde(
             rename = "returnImmediately",
             default,
@@ -804,7 +848,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub oidc_token: ::std::option::Option<crate::schemas::OidcToken>,
-        #[doc = "A URL locating the endpoint to which messages should be pushed.\nFor example, a Webhook endpoint might use \"https://example.com/push\"."]
+        #[doc = "A URL locating the endpoint to which messages should be pushed.\nFor example, a Webhook endpoint might use `https://example.com/push`."]
         #[serde(
             rename = "pushEndpoint",
             default,
@@ -842,6 +886,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ack_id: ::std::option::Option<String>,
+        #[doc = "Delivery attempt counter is 1 + (the sum of number of NACKs and number of\nack_deadline exceeds) for this message.\n\nA NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline\nexceeds event is whenever a message is not acknowledged within\nack_deadline. Note that ack_deadline is initially\nSubscription.ackDeadlineSeconds, but may get extended automatically by\nthe client library.\n\nThe first delivery of a given message will have this value as 1. The value\nis calculated at best effort and is approximate.\n\nIf a DeadLetterPolicy is not set on the subscription, this will be 0.\n<b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This\nAPI might be changed in backward-incompatible ways and is not recommended\nfor production use. It is not subject to any SLA or deprecation policy."]
+        #[serde(
+            rename = "deliveryAttempt",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub delivery_attempt: ::std::option::Option<i32>,
         #[doc = "The message."]
         #[serde(
             rename = "message",
@@ -1025,6 +1076,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ack_deadline_seconds: ::std::option::Option<i32>,
+        #[doc = "A policy that specifies the conditions for dead lettering messages in\nthis subscription. If dead_letter_policy is not set, dead lettering\nis disabled.\n\nThe Cloud Pub/Sub service account associated with this subscriptions's\nparent project (i.e.,\nservice-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have\npermission to Acknowledge() messages on this subscription."]
+        #[serde(
+            rename = "deadLetterPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dead_letter_policy: ::std::option::Option<crate::schemas::DeadLetterPolicy>,
         #[doc = "A policy that specifies the conditions for this subscription's expiration.\nA subscription is considered active as long as any connected subscriber is\nsuccessfully consuming messages from the subscription or is issuing\noperations on the subscription. If `expiration_policy` is not set, a\n*default policy* with `ttl` of 31 days will be used. The minimum allowed\nvalue for `expiration_policy.ttl` is 1 day."]
         #[serde(
             rename = "expirationPolicy",
@@ -1032,6 +1090,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expiration_policy: ::std::option::Option<crate::schemas::ExpirationPolicy>,
+        #[doc = "An expression written in the Cloud Pub/Sub filter language. If non-empty,\nthen only `PubsubMessage`s whose `attributes` field matches the filter are\ndelivered on this subscription. If empty, then no messages are filtered\nout.\n<b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This\nAPI might be changed in backward-incompatible ways and is not recommended\nfor production use. It is not subject to any SLA or deprecation policy."]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<String>,
         #[doc = "See <a href=\"https://cloud.google.com/pubsub/docs/labels\"> Creating and\nmanaging labels</a>."]
         #[serde(
             rename = "labels",
@@ -1046,7 +1111,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub message_retention_duration: ::std::option::Option<String>,
-        #[doc = "The name of the subscription. It must have the format\n`\"projects/{project}/subscriptions/{subscription}\"`. `{subscription}` must\nstart with a letter, and contain only letters (`[A-Za-z]`), numbers\n(`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),\nplus (`+`) or percent signs (`%`). It must be between 3 and 255 characters\nin length, and it must not start with `\"goog\"`."]
+        #[doc = "Required. The name of the subscription. It must have the format\n`\"projects/{project}/subscriptions/{subscription}\"`. `{subscription}` must\nstart with a letter, and contain only letters (`[A-Za-z]`), numbers\n(`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),\nplus (`+`) or percent signs (`%`). It must be between 3 and 255 characters\nin length, and it must not start with `\"goog\"`."]
         #[serde(
             rename = "name",
             default,
@@ -1067,7 +1132,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub retain_acked_messages: ::std::option::Option<bool>,
-        #[doc = "The name of the topic from which this subscription is receiving messages.\nFormat is `projects/{project}/topics/{topic}`.\nThe value of this field will be `_deleted-topic_` if the topic has been\ndeleted."]
+        #[doc = "Required. The name of the topic from which this subscription is receiving messages.\nFormat is `projects/{project}/topics/{topic}`.\nThe value of this field will be `_deleted-topic_` if the topic has been\ndeleted."]
         #[serde(
             rename = "topic",
             default,
@@ -1181,7 +1246,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub message_storage_policy: ::std::option::Option<crate::schemas::MessageStoragePolicy>,
-        #[doc = "The name of the topic. It must have the format\n`\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter,\nand contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),\nunderscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent\nsigns (`%`). It must be between 3 and 255 characters in length, and it\nmust not start with `\"goog\"`."]
+        #[doc = "Required. The name of the topic. It must have the format\n`\"projects/{project}/topics/{topic}\"`. `{topic}` must start with a letter,\nand contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),\nunderscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent\nsigns (`%`). It must be between 3 and 255 characters in length, and it\nmust not start with `\"goog\"`."]
         #[serde(
             rename = "name",
             default,
@@ -1212,14 +1277,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateSnapshotRequest {
-        #[doc = "The updated snapshot object."]
+        #[doc = "Required. The updated snapshot object."]
         #[serde(
             rename = "snapshot",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snapshot: ::std::option::Option<crate::schemas::Snapshot>,
-        #[doc = "Indicates which fields in the provided snapshot to update.\nMust be specified and non-empty."]
+        #[doc = "Required. Indicates which fields in the provided snapshot to update.\nMust be specified and non-empty."]
         #[serde(
             rename = "updateMask",
             default,
@@ -1250,14 +1315,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateSubscriptionRequest {
-        #[doc = "The updated subscription object."]
+        #[doc = "Required. The updated subscription object."]
         #[serde(
             rename = "subscription",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subscription: ::std::option::Option<crate::schemas::Subscription>,
-        #[doc = "Indicates which fields in the provided subscription to update.\nMust be specified and non-empty."]
+        #[doc = "Required. Indicates which fields in the provided subscription to update.\nMust be specified and non-empty."]
         #[serde(
             rename = "updateMask",
             default,
@@ -1288,14 +1353,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateTopicRequest {
-        #[doc = "The updated topic object."]
+        #[doc = "Required. The updated topic object."]
         #[serde(
             rename = "topic",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub topic: ::std::option::Option<crate::schemas::Topic>,
-        #[doc = "Indicates which fields in the provided topic to update. Must be specified\nand non-empty. Note that if `update_mask` contains\n\"message_storage_policy\" then the new value will be determined based on the\npolicy configured at the project or organization level. The\n`message_storage_policy` must not be set in the `topic` provided above."]
+        #[doc = "Required. Indicates which fields in the provided topic to update. Must be specified\nand non-empty. Note that if `update_mask` contains\n\"message_storage_policy\" but the `message_storage_policy` is not set in\nthe `topic` provided above, then the updated value is determined by the\npolicy configured at the project or organization level."]
         #[serde(
             rename = "updateMask",
             default,
@@ -1464,7 +1529,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1472,8 +1537,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1492,7 +1569,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1526,7 +1603,7 @@ pub mod resources {
         pub mod snapshots {
             pub mod params {}
             pub struct SnapshotsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SnapshotsActions<'a> {
@@ -1663,7 +1740,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                 pub fn set_iam_policy(
                     &self,
                     request: crate::schemas::SetIamPolicyRequest,
@@ -1687,7 +1764,7 @@ pub mod resources {
                         resource: resource.into(),
                     }
                 }
-                #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
                 pub fn test_iam_permissions(
                     &self,
                     request: crate::schemas::TestIamPermissionsRequest,
@@ -1715,7 +1792,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::create()](struct.SnapshotsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CreateSnapshotRequest,
                 name: String,
@@ -1849,7 +1926,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1873,7 +1953,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::delete()](struct.SnapshotsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 snapshot: String,
                 access_token: Option<String>,
@@ -2005,7 +2085,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2029,7 +2112,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::get()](struct.SnapshotsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 snapshot: String,
                 access_token: Option<String>,
@@ -2161,7 +2244,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2185,7 +2271,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::get_iam_policy()](struct.SnapshotsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 resource: String,
                 options_requested_policy_version: Option<i32>,
@@ -2202,7 +2288,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -2324,7 +2410,10 @@ pub mod resources {
                     output.push_str(":getIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "options.requestedPolicyVersion",
@@ -2352,7 +2441,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::list()](struct.SnapshotsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project: String,
                 page_size: Option<i32>,
@@ -2597,7 +2686,10 @@ pub mod resources {
                     output.push_str("/snapshots");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2634,7 +2726,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::patch()](struct.SnapshotsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateSnapshotRequest,
                 name: String,
@@ -2768,7 +2860,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2792,7 +2887,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::set_iam_policy()](struct.SnapshotsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
@@ -2927,7 +3022,10 @@ pub mod resources {
                     output.push_str(":setIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2951,7 +3049,7 @@ pub mod resources {
             #[doc = "Created via [SnapshotsActions::test_iam_permissions()](struct.SnapshotsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
@@ -3088,7 +3186,10 @@ pub mod resources {
                     output.push_str(":testIamPermissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3113,7 +3214,7 @@ pub mod resources {
         pub mod subscriptions {
             pub mod params {}
             pub struct SubscriptionsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SubscriptionsActions<'a> {
@@ -3370,7 +3471,7 @@ pub mod resources {
                         subscription: subscription.into(),
                     }
                 }
-                #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                 pub fn set_iam_policy(
                     &self,
                     request: crate::schemas::SetIamPolicyRequest,
@@ -3394,7 +3495,7 @@ pub mod resources {
                         resource: resource.into(),
                     }
                 }
-                #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
                 pub fn test_iam_permissions(
                     &self,
                     request: crate::schemas::TestIamPermissionsRequest,
@@ -3422,7 +3523,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::acknowledge()](struct.SubscriptionsActions.html#method.acknowledge)"]
             #[derive(Debug, Clone)]
             pub struct AcknowledgeRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AcknowledgeRequest,
                 subscription: String,
@@ -3557,7 +3658,10 @@ pub mod resources {
                     output.push_str(":acknowledge");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3581,7 +3685,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::create()](struct.SubscriptionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Subscription,
                 name: String,
@@ -3715,7 +3819,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3739,7 +3846,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::delete()](struct.SubscriptionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 subscription: String,
                 access_token: Option<String>,
@@ -3871,7 +3978,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3895,7 +4005,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::get()](struct.SubscriptionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 subscription: String,
                 access_token: Option<String>,
@@ -4027,7 +4137,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4051,7 +4164,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::get_iam_policy()](struct.SubscriptionsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 resource: String,
                 options_requested_policy_version: Option<i32>,
@@ -4068,7 +4181,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -4190,7 +4303,10 @@ pub mod resources {
                     output.push_str(":getIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "options.requestedPolicyVersion",
@@ -4218,7 +4334,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::list()](struct.SubscriptionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project: String,
                 page_size: Option<i32>,
@@ -4465,7 +4581,10 @@ pub mod resources {
                     output.push_str("/subscriptions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4502,7 +4621,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::modify_ack_deadline()](struct.SubscriptionsActions.html#method.modify_ack_deadline)"]
             #[derive(Debug, Clone)]
             pub struct ModifyAckDeadlineRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ModifyAckDeadlineRequest,
                 subscription: String,
@@ -4637,7 +4756,10 @@ pub mod resources {
                     output.push_str(":modifyAckDeadline");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4661,7 +4783,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::modify_push_config()](struct.SubscriptionsActions.html#method.modify_push_config)"]
             #[derive(Debug, Clone)]
             pub struct ModifyPushConfigRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ModifyPushConfigRequest,
                 subscription: String,
@@ -4796,7 +4918,10 @@ pub mod resources {
                     output.push_str(":modifyPushConfig");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4820,7 +4945,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::patch()](struct.SubscriptionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateSubscriptionRequest,
                 name: String,
@@ -4954,7 +5079,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4978,7 +5106,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::pull()](struct.SubscriptionsActions.html#method.pull)"]
             #[derive(Debug, Clone)]
             pub struct PullRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::PullRequest,
                 subscription: String,
@@ -5113,7 +5241,10 @@ pub mod resources {
                     output.push_str(":pull");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5137,7 +5268,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::seek()](struct.SubscriptionsActions.html#method.seek)"]
             #[derive(Debug, Clone)]
             pub struct SeekRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SeekRequest,
                 subscription: String,
@@ -5272,7 +5403,10 @@ pub mod resources {
                     output.push_str(":seek");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5296,7 +5430,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::set_iam_policy()](struct.SubscriptionsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
@@ -5431,7 +5565,10 @@ pub mod resources {
                     output.push_str(":setIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5455,7 +5592,7 @@ pub mod resources {
             #[doc = "Created via [SubscriptionsActions::test_iam_permissions()](struct.SubscriptionsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
@@ -5592,7 +5729,10 @@ pub mod resources {
                     output.push_str(":testIamPermissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5617,7 +5757,7 @@ pub mod resources {
         pub mod topics {
             pub mod params {}
             pub struct TopicsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> TopicsActions<'a> {
@@ -5778,7 +5918,7 @@ pub mod resources {
                         topic: topic.into(),
                     }
                 }
-                #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors."]
                 pub fn set_iam_policy(
                     &self,
                     request: crate::schemas::SetIamPolicyRequest,
@@ -5802,7 +5942,7 @@ pub mod resources {
                         resource: resource.into(),
                     }
                 }
-                #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
                 pub fn test_iam_permissions(
                     &self,
                     request: crate::schemas::TestIamPermissionsRequest,
@@ -5850,7 +5990,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::create()](struct.TopicsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Topic,
                 name: String,
@@ -5984,7 +6124,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6008,7 +6151,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::delete()](struct.TopicsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 topic: String,
                 access_token: Option<String>,
@@ -6140,7 +6283,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6164,7 +6310,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::get()](struct.TopicsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 topic: String,
                 access_token: Option<String>,
@@ -6296,7 +6442,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6320,7 +6469,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::get_iam_policy()](struct.TopicsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 resource: String,
                 options_requested_policy_version: Option<i32>,
@@ -6337,7 +6486,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetIamPolicyRequestBuilder<'a> {
-                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+                #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
                 pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                     self.options_requested_policy_version = Some(value);
                     self
@@ -6459,7 +6608,10 @@ pub mod resources {
                     output.push_str(":getIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "options.requestedPolicyVersion",
@@ -6487,7 +6639,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::list()](struct.TopicsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project: String,
                 page_size: Option<i32>,
@@ -6732,7 +6884,10 @@ pub mod resources {
                     output.push_str("/topics");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6769,7 +6924,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::patch()](struct.TopicsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateTopicRequest,
                 name: String,
@@ -6903,7 +7058,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6927,7 +7085,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::publish()](struct.TopicsActions.html#method.publish)"]
             #[derive(Debug, Clone)]
             pub struct PublishRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::PublishRequest,
                 topic: String,
@@ -7062,7 +7220,10 @@ pub mod resources {
                     output.push_str(":publish");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7086,7 +7247,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::set_iam_policy()](struct.TopicsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
@@ -7221,7 +7382,10 @@ pub mod resources {
                     output.push_str(":setIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7245,7 +7409,7 @@ pub mod resources {
             #[doc = "Created via [TopicsActions::test_iam_permissions()](struct.TopicsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
@@ -7382,7 +7546,10 @@ pub mod resources {
                     output.push_str(":testIamPermissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7406,7 +7573,7 @@ pub mod resources {
             pub mod snapshots {
                 pub mod params {}
                 pub struct SnapshotsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> SnapshotsActions<'a> {
@@ -7438,7 +7605,7 @@ pub mod resources {
                 #[doc = "Created via [SnapshotsActions::list()](struct.SnapshotsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     topic: String,
                     page_size: Option<i32>,
@@ -7689,7 +7856,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -7727,7 +7895,7 @@ pub mod resources {
             pub mod subscriptions {
                 pub mod params {}
                 pub struct SubscriptionsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> SubscriptionsActions<'a> {
@@ -7759,7 +7927,7 @@ pub mod resources {
                 #[doc = "Created via [SubscriptionsActions::list()](struct.SubscriptionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     topic: String,
                     page_size: Option<i32>,
@@ -8011,7 +8179,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -8065,9 +8234,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -8109,7 +8276,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

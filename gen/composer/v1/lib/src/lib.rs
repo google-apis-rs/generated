@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [environments](resources/projects/locations/environments/struct.EnvironmentsActions.html)\n          * [*create*](resources/projects/locations/environments/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/environments/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/environments/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/environments/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/environments/struct.PatchRequestBuilder.html)\n        * [image_versions](resources/projects/locations/image_versions/struct.ImageVersionsActions.html)\n          * [*list*](resources/projects/locations/image_versions/struct.ListRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -58,7 +62,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\""]
+        #[doc = "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"\n\nEnvironmentId must start with a lowercase letter followed by up to 63\nlowercase letters, numbers, or hyphens, and cannot end with a hyphen."]
         #[serde(
             rename = "name",
             default,
@@ -236,6 +240,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub node_count: ::std::option::Option<i32>,
+        #[doc = "The configuration used for the Private IP Cloud Composer environment."]
+        #[serde(
+            rename = "privateEnvironmentConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub private_environment_config:
+            ::std::option::Option<crate::schemas::PrivateEnvironmentConfig>,
         #[doc = "The configuration settings for software inside the environment."]
         #[serde(
             rename = "softwareConfig",
@@ -295,6 +307,65 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ImageVersion {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct IpallocationPolicy {
+        #[doc = "Optional. The IP address range used to allocate IP addresses to pods in\nthe GKE cluster.\n\nThis field is applicable only when `use_ip_aliases` is true.\n\nSet to blank to have GKE choose a range with the default size.\n\nSet to /netmask (e.g. `/14`) to have GKE choose a range with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use."]
+        #[serde(
+            rename = "clusterIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_ipv_4_cidr_block: ::std::option::Option<String>,
+        #[doc = "Optional. The name of the GKE cluster's secondary range used to allocate\nIP addresses to pods.\n\nThis field is applicable only when `use_ip_aliases` is true."]
+        #[serde(
+            rename = "clusterSecondaryRangeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_secondary_range_name: ::std::option::Option<String>,
+        #[doc = "Optional. The IP address range of the services IP addresses in this\nGKE cluster.\n\nThis field is applicable only when `use_ip_aliases` is true.\n\nSet to blank to have GKE choose a range with the default size.\n\nSet to /netmask (e.g. `/14`) to have GKE choose a range with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use."]
+        #[serde(
+            rename = "servicesIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub services_ipv_4_cidr_block: ::std::option::Option<String>,
+        #[doc = "Optional. The name of the services' secondary range used to allocate\nIP addresses to the GKE cluster.\n\nThis field is applicable only when `use_ip_aliases` is true."]
+        #[serde(
+            rename = "servicesSecondaryRangeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub services_secondary_range_name: ::std::option::Option<String>,
+        #[doc = "Optional. Whether or not to enable Alias IPs in the GKE cluster.\nIf `true`, a VPC-native cluster is created."]
+        #[serde(
+            rename = "useIpAliases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub use_ip_aliases: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for IpallocationPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for IpallocationPolicy {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -422,6 +493,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disk_size_gb: ::std::option::Option<i32>,
+        #[doc = "Optional. The configuration for controlling how IPs are allocated in the GKE cluster."]
+        #[serde(
+            rename = "ipAllocationPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ip_allocation_policy: ::std::option::Option<crate::schemas::IpallocationPolicy>,
         #[doc = "Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which\nto deploy the VMs used to run the Apache Airflow software, specified as a\n[relative resource\nname](/apis/design/resource_names#relative_resource_name). For example:\n\"projects/{projectId}/zones/{zoneId}\".\n\nThis `location` must belong to the enclosing environment's project and\nlocation. If both this field and `nodeConfig.machineType` are specified,\n`nodeConfig.machineType` must belong to this `location`; if both are\nunspecified, the service will pick a zone in the Compute Engine region\ncorresponding to the Cloud Composer location, and propagate that choice to\nboth fields. If only one field (`location` or `nodeConfig.machineType`) is\nspecified, the location information from the specified field will be\npropagated to the unspecified field."]
         #[serde(
             rename = "location",
@@ -781,6 +859,110 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PrivateClusterConfig {
+        #[doc = "Optional. If `true`, access to the public endpoint of the GKE cluster is\ndenied."]
+        #[serde(
+            rename = "enablePrivateEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_private_endpoint: ::std::option::Option<bool>,
+        #[doc = "Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If\nleft blank, the default value of '172.16.0.0/23' is used."]
+        #[serde(
+            rename = "masterIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub master_ipv_4_cidr_block: ::std::option::Option<String>,
+        #[doc = "Output only. The IP range in CIDR notation to use for the hosted master network. This\nrange is used for assigning internal IP addresses to the GKE cluster\nmaster or set of masters and to the internal load balancer virtual IP.\nThis range must not overlap with any other ranges in use\nwithin the cluster's network."]
+        #[serde(
+            rename = "masterIpv4ReservedRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub master_ipv_4_reserved_range: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for PrivateClusterConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PrivateClusterConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct PrivateEnvironmentConfig {
+        #[doc = "Optional. The CIDR block from which IP range in tenant project will be reserved for\nCloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`."]
+        #[serde(
+            rename = "cloudSqlIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cloud_sql_ipv_4_cidr_block: ::std::option::Option<String>,
+        #[doc = "Optional. If `true`, a Private IP Cloud Composer environment is created.\nIf this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be\nset to true."]
+        #[serde(
+            rename = "enablePrivateEnvironment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_private_environment: ::std::option::Option<bool>,
+        #[doc = "Optional. Configuration for the private GKE cluster for a Private IP\nCloud Composer environment."]
+        #[serde(
+            rename = "privateClusterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub private_cluster_config: ::std::option::Option<crate::schemas::PrivateClusterConfig>,
+        #[doc = "Optional. The CIDR block from which IP range for web server will be reserved. Needs\nto be disjoint from `private_cluster_config.master_ipv4_cidr_block` and\n`cloud_sql_ipv4_cidr_block`."]
+        #[serde(
+            rename = "webServerIpv4CidrBlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub web_server_ipv_4_cidr_block: ::std::option::Option<String>,
+        #[doc = "Output only. The IP range reserved for the tenant project's App Engine VMs."]
+        #[serde(
+            rename = "webServerIpv4ReservedRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub web_server_ipv_4_reserved_range: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for PrivateEnvironmentConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PrivateEnvironmentConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct SoftwareConfig {
         #[doc = "Optional. Apache Airflow configuration properties to override.\n\nProperty keys contain the section and property names, separated by a\nhyphen, for example \"core-dags_are_paused_at_creation\". Section names must\nnot contain hyphens (\"-\"), opening square brackets (\"[\"),  or closing\nsquare brackets (\"]\"). The property name must not be empty and must not\ncontain an equals sign (\"=\") or semicolon (\";\"). Section and property names\nmust not contain a period (\".\"). Apache Airflow configuration property\nnames must be written in\n[snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can\ncontain any character, and can be written in any lower/upper case format.\n\nCertain Apache Airflow configuration property values are\n[blacklisted](/composer/docs/how-to/managing/setting-airflow-configurations#airflow_configuration_blacklists),\nand cannot be overridden."]
         #[serde(
@@ -1015,7 +1197,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1023,8 +1205,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1043,7 +1237,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1061,7 +1255,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -1102,7 +1296,7 @@ pub mod resources {
             pub mod environments {
                 pub mod params {}
                 pub struct EnvironmentsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> EnvironmentsActions<'a> {
@@ -1221,7 +1415,7 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::create()](struct.EnvironmentsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Environment,
                     parent: String,
@@ -1359,7 +1553,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -1383,7 +1578,7 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::delete()](struct.EnvironmentsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -1518,7 +1713,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -1542,7 +1738,7 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::get()](struct.EnvironmentsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -1677,7 +1873,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -1701,7 +1898,7 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::list()](struct.EnvironmentsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -1954,7 +2151,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -1991,7 +2189,7 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::patch()](struct.EnvironmentsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Environment,
                     name: String,
@@ -2134,7 +2332,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -2160,7 +2359,7 @@ pub mod resources {
             pub mod image_versions {
                 pub mod params {}
                 pub struct ImageVersionsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ImageVersionsActions<'a> {
@@ -2192,7 +2391,7 @@ pub mod resources {
                 #[doc = "Created via [ImageVersionsActions::list()](struct.ImageVersionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -2446,7 +2645,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2484,7 +2684,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -2555,7 +2755,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -2690,7 +2890,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -2714,7 +2915,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -2849,7 +3050,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -2873,7 +3075,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -3132,7 +3334,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3187,9 +3390,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3231,7 +3432,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

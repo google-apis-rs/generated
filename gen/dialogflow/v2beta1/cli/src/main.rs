@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dialogflow2_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190914")
+            .version("0.1.0-20200503")
             .about("Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,12 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: agent_method, delete_agent and get_agent");
-        {
-            let mcmd =
-                SubCommand::with_name("agent_method").about("Creates/updates the specified agent.");
-            projects0 = projects0.subcommand(mcmd);
-        }
+            .about("methods: delete_agent, get_agent and set_agent");
         {
             let mcmd = SubCommand::with_name("delete_agent").about("Deletes the specified agent.");
             projects0 = projects0.subcommand(mcmd);
@@ -49,11 +44,20 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("get_agent").about("Retrieves the specified agent.");
             projects0 = projects0.subcommand(mcmd);
         }
+        {
+            let mcmd =
+                SubCommand::with_name("set_agent").about("Creates/updates the specified agent.");
+            projects0 = projects0.subcommand(mcmd);
+        }
         let mut agent1 = SubCommand::with_name("agent")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: export, get_validation_result, import, restore, search and train");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: export, get_fulfillment, get_validation_result, import, restore, search, train and update_fulfillment");
         {
             let mcmd = SubCommand::with_name("export").about("Exports the specified agent to a ZIP file.\n\n\nOperation <response: ExportAgentResponse>");
+            agent1 = agent1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_fulfillment").about("Retrieves the fulfillment.");
             agent1 = agent1.subcommand(mcmd);
         }
         {
@@ -69,13 +73,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             agent1 = agent1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search").about("Returns the list of agents.\n\nSince there is at most one conversational agent per project, this method is\nuseful primarily for listing all agents across projects the caller has\naccess to. One can achieve that with a wildcard project collection id \"-\".\nRefer to [List\nSub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).");
+            let mcmd = SubCommand::with_name("search").about("Returns the list of agents.\nSince there is at most one conversational agent per project, this method is\nuseful primarily for listing all agents across projects the caller has\naccess to. One can achieve that with a wildcard project collection id \"-\".\nRefer to [List\nSub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).");
             agent1 = agent1.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("train").about(
                 "Trains the specified agent.\n\n\nOperation <response: google.protobuf.Empty>",
             );
+            agent1 = agent1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("update_fulfillment").about("Updates the fulfillment.");
             agent1 = agent1.subcommand(mcmd);
         }
         let mut knowledge_bases1 = SubCommand::with_name("knowledge_bases")
@@ -103,18 +112,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: agent_method, delete_agent and get_agent");
-        {
-            let mcmd =
-                SubCommand::with_name("agent_method").about("Creates/updates the specified agent.");
-            locations1 = locations1.subcommand(mcmd);
-        }
+            .about("methods: delete_agent, get_agent and set_agent");
         {
             let mcmd = SubCommand::with_name("delete_agent").about("Deletes the specified agent.");
             locations1 = locations1.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get_agent").about("Retrieves the specified agent.");
+            locations1 = locations1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("set_agent").about("Creates/updates the specified agent.");
             locations1 = locations1.subcommand(mcmd);
         }
         let mut operations1 = SubCommand::with_name("operations")
@@ -136,11 +145,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_delete, batch_update, create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("batch_delete").about("Deletes entity types in the specified agent.\n\nOperation <response: google.protobuf.Empty>");
+            let mcmd = SubCommand::with_name("batch_delete").about("Deletes entity types in the specified agent.\nOperation <response: google.protobuf.Empty>");
             entity_types2 = entity_types2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("batch_update").about("Updates/Creates multiple entity types in the specified agent.\n\nOperation <response: BatchUpdateEntityTypesResponse>");
+            let mcmd = SubCommand::with_name("batch_update").about("Updates/Creates multiple entity types in the specified agent.\nOperation <response: BatchUpdateEntityTypesResponse>");
             entity_types2 = entity_types2.subcommand(mcmd);
         }
         {
@@ -167,7 +176,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut environments2 = SubCommand::with_name("environments")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: users");
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Returns the list of all non-draft environments of the specified agent.");
+            environments2 = environments2.subcommand(mcmd);
+        }
         let mut intents2 = SubCommand::with_name("intents")
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_delete, batch_update, create, delete, get, list and patch");
@@ -241,11 +255,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch and reload");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("create").about("Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents2 = documents2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: google.protobuf.Empty,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents2 = documents2.subcommand(mcmd);
         }
         {
@@ -257,18 +271,26 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             documents2 = documents2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents2 = documents2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reload").about("Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("reload").about("Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents2 = documents2.subcommand(mcmd);
         }
         let mut agent2 = SubCommand::with_name("agent")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: export, import, restore and train");
+            .about("methods: export, fulfillment, get_fulfillment, import, restore and train");
         {
             let mcmd = SubCommand::with_name("export").about("Exports the specified agent to a ZIP file.\n\n\nOperation <response: ExportAgentResponse>");
+            agent2 = agent2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("fulfillment").about("Updates the fulfillment.");
+            agent2 = agent2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_fulfillment").about("Retrieves the fulfillment.");
             agent2 = agent2.subcommand(mcmd);
         }
         {
@@ -322,11 +344,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch and reload");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("create").about("Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents3 = documents3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: google.protobuf.Empty,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents3 = documents3.subcommand(mcmd);
         }
         {
@@ -338,11 +360,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             documents3 = documents3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents3 = documents3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reload").about("Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\n           metadata: KnowledgeOperationMetadata>");
+            let mcmd = SubCommand::with_name("reload").about("Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.");
             documents3 = documents3.subcommand(mcmd);
         }
         let mut contexts3 = SubCommand::with_name("contexts")
@@ -396,11 +418,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_delete, batch_update, create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("batch_delete").about("Deletes entity types in the specified agent.\n\nOperation <response: google.protobuf.Empty>");
+            let mcmd = SubCommand::with_name("batch_delete").about("Deletes entity types in the specified agent.\nOperation <response: google.protobuf.Empty>");
             entity_types3 = entity_types3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("batch_update").about("Updates/Creates multiple entity types in the specified agent.\n\nOperation <response: BatchUpdateEntityTypesResponse>");
+            let mcmd = SubCommand::with_name("batch_update").about("Updates/Creates multiple entity types in the specified agent.\nOperation <response: BatchUpdateEntityTypesResponse>");
             entity_types3 = entity_types3.subcommand(mcmd);
         }
         {
@@ -427,7 +449,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut environments3 = SubCommand::with_name("environments")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: users");
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Returns the list of all non-draft environments of the specified agent.");
+            environments3 = environments3.subcommand(mcmd);
+        }
         let mut intents3 = SubCommand::with_name("intents")
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_delete, batch_update, create, delete, get, list and patch");

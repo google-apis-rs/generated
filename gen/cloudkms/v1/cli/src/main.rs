@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudkms1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190824")
+            .version("0.1.0-20200409")
             .about("Manages keys and performs cryptographic operations in a central cloud service, for direct use by other cloud resources and applications.\n")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -69,7 +69,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             key_rings2 = key_rings2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             key_rings2 = key_rings2.subcommand(mcmd);
         }
         {
@@ -110,7 +110,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             crypto_keys3 = crypto_keys3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             crypto_keys3 = crypto_keys3.subcommand(mcmd);
         }
         {
@@ -144,7 +144,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             import_jobs3 = import_jobs3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             import_jobs3 = import_jobs3.subcommand(mcmd);
         }
         {

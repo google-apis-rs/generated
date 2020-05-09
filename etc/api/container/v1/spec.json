@@ -7,7 +7,7 @@
   "canonicalName": "Container",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190830",
+  "revision": "20200425",
   "title": "Kubernetes Engine API",
   "description": "Builds and manages container-based applications, powered by the open source Kubernetes technology.",
   "ownerDomain": "google.com",
@@ -226,7 +226,7 @@
           "items": null
         },
         "acceleratorType": {
-          "description": "The accelerator type resource name. List of supported accelerators\n[here](/compute/docs/gpus)",
+          "description": "The accelerator type resource name. List of supported accelerators\n[here](https://cloud.google.com/compute/docs/gpus)",
           "type": "string",
           "format": null,
           "enum": [],
@@ -247,6 +247,10 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "cloudRunConfig": {
+          "description": "Configuration for the Cloud Run addon, which allows the user to use a\nmanaged Knative service.",
+          "$ref": "CloudRunConfig"
+        },
         "horizontalPodAutoscaling": {
           "description": "Configuration for the horizontal pod autoscaling feature, which\nincreases or decreases the number of replica pods a replication controller\nhas based on the resource usage of the existing pods.",
           "$ref": "HorizontalPodAutoscaling"
@@ -262,6 +266,38 @@
         "networkPolicyConfig": {
           "description": "Configuration for NetworkPolicy. This only tracks whether the addon\nis enabled or not on the Master, it does not track whether network policy\nis enabled for the nodes.",
           "$ref": "NetworkPolicyConfig"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AuthenticatorGroupsConfig": {
+      "id": "AuthenticatorGroupsConfig",
+      "description": "Configuration for returning group information from authenticators.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enabled": {
+          "description": "Whether this cluster should return group membership lookups\nduring authentication using a group of security groups.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "securityGroup": {
+          "description": "The name of the security group-of-groups to be used. Only relevant\nif enabled = true.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -299,6 +335,54 @@
       "additionalProperties": null,
       "items": null
     },
+    "AutoprovisioningNodePoolDefaults": {
+      "id": "AutoprovisioningNodePoolDefaults",
+      "description": "AutoprovisioningNodePoolDefaults contains defaults for a node pool created\nby NAP.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "management": {
+          "description": "Specifies the node management options for NAP created node-pools.",
+          "$ref": "NodeManagement"
+        },
+        "oauthScopes": {
+          "description": "Scopes that are used by NAP when creating node pools. If oauth_scopes are\nspecified, service_account should be empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "serviceAccount": {
+          "description": "The Google Cloud Platform Service Account to be used by the node VMs. If\nservice_account is specified, scopes should be empty.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "upgradeSettings": {
+          "description": "Specifies the upgrade settings for NAP created node pools",
+          "$ref": "UpgradeSettings"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "BigQueryDestination": {
       "id": "BigQueryDestination",
       "description": "Parameters for using BigQuery as the destination of resource usage export.",
@@ -321,6 +405,28 @@
       "additionalProperties": null,
       "items": null
     },
+    "BinaryAuthorization": {
+      "id": "BinaryAuthorization",
+      "description": "Configuration for Binary Authorization.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enabled": {
+          "description": "Enable Binary Authorization for this cluster. If enabled, all container\nimages will be validated by Binary Authorization.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "CancelOperationRequest": {
       "id": "CancelOperationRequest",
       "description": "CancelOperationRequest cancels a single operation.",
@@ -330,7 +436,7 @@
       "enumDescriptions": [],
       "properties": {
         "name": {
-          "description": "The name (project, location, operation id) of the operation to cancel.\nSpecified in the format 'projects/*/locations/*/operations/*'.",
+          "description": "The name (project, location, operation id) of the operation to cancel.\nSpecified in the format `projects/*/locations/*/operations/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -360,7 +466,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation resides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\noperation resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -427,6 +533,28 @@
       "additionalProperties": null,
       "items": null
     },
+    "CloudRunConfig": {
+      "id": "CloudRunConfig",
+      "description": "Configuration options for the Cloud Run feature.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "disabled": {
+          "description": "Whether Cloud Run addon is enabled for this cluster.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Cluster": {
       "id": "Cluster",
       "description": "A Google Kubernetes Engine cluster.",
@@ -438,6 +566,18 @@
         "addonsConfig": {
           "description": "Configurations for the various addons available to run in the cluster.",
           "$ref": "AddonsConfig"
+        },
+        "authenticatorGroupsConfig": {
+          "description": "Configuration controlling RBAC group membership information.",
+          "$ref": "AuthenticatorGroupsConfig"
+        },
+        "autoscaling": {
+          "description": "Cluster-level autoscaling configuration.",
+          "$ref": "ClusterAutoscaling"
+        },
+        "binaryAuthorization": {
+          "description": "Configuration for Binary Authorization.",
+          "$ref": "BinaryAuthorization"
         },
         "clusterIpv4Cidr": {
           "description": "The IP address range of the container pods in this cluster, in\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`). Leave blank to have\none automatically chosen or specify a `/14` block in `10.0.0.0/8`.",
@@ -492,7 +632,7 @@
           "items": null
         },
         "currentNodeVersion": {
-          "description": "[Output only] Deprecated, use\n[NodePools.version](/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)\ninstead. The current version of the node software components. If they are\ncurrently at multiple versions because they're in the process of being\nupgraded, this reflects the minimum version of all nodes.",
+          "description": "[Output only] Deprecated, use\n[NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)\ninstead. The current version of the node software components. If they are\ncurrently at multiple versions because they're in the process of being\nupgraded, this reflects the minimum version of all nodes.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -500,6 +640,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "databaseEncryption": {
+          "description": "Configuration of etcd encryption.",
+          "$ref": "DatabaseEncryption"
         },
         "defaultMaxPodsConstraint": {
           "description": "The default constraint on the maximum number of pods that can be run\nsimultaneously on a node in the node pool of this cluster. Only honored\nif cluster created with IP Alias support.",
@@ -612,7 +756,7 @@
           "$ref": "LegacyAbac"
         },
         "location": {
-          "description": "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/regions-zones/regions-zones#available) or\n[region](/compute/docs/regions-zones/regions-zones#available) in which\nthe cluster resides.",
+          "description": "[Output only] The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)\nor\n[region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)\nin which the cluster resides.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -622,7 +766,7 @@
           "items": null
         },
         "locations": {
-          "description": "The list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the cluster's nodes\nshould be located.",
+          "description": "The list of Google Compute Engine\n[zones](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster's nodes should be located.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -640,7 +784,7 @@
           }
         },
         "loggingService": {
-          "description": "The logging service the cluster should use to write logs.\nCurrently available options:\n\n* \"logging.googleapis.com/kubernetes\" - the Google Cloud Logging\nservice with Kubernetes-native resource model in Stackdriver\n* `logging.googleapis.com` - the Google Cloud Logging service.\n* `none` - no logs will be exported from the cluster.\n* if left as an empty string,`logging.googleapis.com` will be used.",
+          "description": "The logging service the cluster should use to write logs.\nCurrently available options:\n\n* `logging.googleapis.com/kubernetes` - The Cloud Logging\nservice with a Kubernetes-native resource model\n* `logging.googleapis.com` - The legacy Cloud Logging service (no longer\n  available as of GKE 1.15).\n* `none` - no logs will be exported from the cluster.\n\nIf left as an empty string,`logging.googleapis.com/kubernetes` will be\nused for GKE 1.14+ or `logging.googleapis.com` for earlier versions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -662,7 +806,7 @@
           "$ref": "MasterAuthorizedNetworksConfig"
         },
         "monitoringService": {
-          "description": "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* `monitoring.googleapis.com` - the Google Cloud Monitoring service.\n* `none` - no metrics will be exported from the cluster.\n* if left as an empty string, `monitoring.googleapis.com` will be used.",
+          "description": "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com/kubernetes\" - The Cloud Monitoring\nservice with a Kubernetes-native resource model\n* `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no\n  longer available as of GKE 1.15).\n* `none` - No metrics will be exported from the cluster.\n\nIf left as an empty string,`monitoring.googleapis.com/kubernetes` will be\nused for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -672,7 +816,7 @@
           "items": null
         },
         "name": {
-          "description": "The name of this cluster. The name must be unique within this project\nand zone, and can be up to 40 characters with the following restrictions:\n\n* Lowercase letters, numbers, and hyphens only.\n* Must start with a letter.\n* Must end with a number or a letter.",
+          "description": "The name of this cluster. The name must be unique within this project\nand location (e.g. zone or region), and can be up to 40 characters with\nthe following restrictions:\n\n* Lowercase letters, numbers, and hyphens only.\n* Must start with a letter.\n* Must end with a number or a letter.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -682,7 +826,7 @@
           "items": null
         },
         "network": {
-          "description": "The name of the Google Compute Engine\n[network](/compute/docs/networks-and-firewalls#networks) to which the\ncluster is connected. If left unspecified, the `default` network\nwill be used.",
+          "description": "The name of the Google Compute Engine\n[network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks)\nto which the cluster is connected. If left unspecified, the `default`\nnetwork will be used.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -772,6 +916,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "shieldedNodes": {
+          "description": "Shielded Nodes configuration.",
+          "$ref": "ShieldedNodes"
+        },
         "status": {
           "description": "[Output only] The current status of this cluster.",
           "type": "string",
@@ -809,7 +957,7 @@
           "items": null
         },
         "subnetwork": {
-          "description": "The name of the Google Compute Engine\n[subnetwork](/compute/docs/subnetworks) to which the\ncluster is connected.",
+          "description": "The name of the Google Compute Engine\n[subnetwork](https://cloud.google.com/compute/docs/subnetworks) to which\nthe cluster is connected.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -828,8 +976,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "verticalPodAutoscaling": {
+          "description": "Cluster-level Vertical Pod Autoscaling configuration.",
+          "$ref": "VerticalPodAutoscaling"
+        },
+        "workloadIdentityConfig": {
+          "description": "Configuration for the use of Kubernetes Service Accounts in GCP IAM\npolicies.",
+          "$ref": "WorkloadIdentityConfig"
+        },
         "zone": {
-          "description": "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field is deprecated, use location instead.",
+          "description": "[Output only] The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field is deprecated, use location instead.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -837,6 +993,62 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ClusterAutoscaling": {
+      "id": "ClusterAutoscaling",
+      "description": "ClusterAutoscaling contains global, per-cluster information\nrequired by Cluster Autoscaler to automatically adjust\nthe size of the cluster and create/delete\nnode pools based on the current needs.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "autoprovisioningLocations": {
+          "description": "The list of Google Compute Engine\n[zones](https://cloud.google.com/compute/docs/zones#available) in which the\nNodePool's nodes can be created by NAP.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "autoprovisioningNodePoolDefaults": {
+          "description": "AutoprovisioningNodePoolDefaults contains defaults for a node pool\ncreated by NAP.",
+          "$ref": "AutoprovisioningNodePoolDefaults"
+        },
+        "enableNodeAutoprovisioning": {
+          "description": "Enables automatic node pool creation and deletion.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceLimits": {
+          "description": "Contains global constraints regarding minimum and maximum\namount of resources in the cluster.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ResourceLimit"
+          }
         }
       },
       "additionalProperties": null,
@@ -854,6 +1066,18 @@
           "description": "Configurations for the various addons available to run in the cluster.",
           "$ref": "AddonsConfig"
         },
+        "desiredBinaryAuthorization": {
+          "description": "The desired configuration options for the Binary Authorization feature.",
+          "$ref": "BinaryAuthorization"
+        },
+        "desiredClusterAutoscaling": {
+          "description": "Cluster-level autoscaling configuration.",
+          "$ref": "ClusterAutoscaling"
+        },
+        "desiredDatabaseEncryption": {
+          "description": "Configuration of etcd encryption.",
+          "$ref": "DatabaseEncryption"
+        },
         "desiredImageType": {
           "description": "The desired image type for the node pool.\nNOTE: Set the \"desired_node_pool\" field as well.",
           "type": "string",
@@ -869,7 +1093,7 @@
           "$ref": "IntraNodeVisibilityConfig"
         },
         "desiredLocations": {
-          "description": "The desired list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the cluster's nodes\nshould be located. Changing the locations a cluster is in will result\nin nodes being either created or removed from the cluster, depending on\nwhether locations are being added or removed.\n\nThis list must always include the cluster's primary zone.",
+          "description": "The desired list of Google Compute Engine\n[zones](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster's nodes should be located. Changing the locations a cluster is in\nwill result in nodes being either created or removed from the cluster,\ndepending on whether locations are being added or removed.\n\nThis list must always include the cluster's primary zone.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -887,7 +1111,7 @@
           }
         },
         "desiredLoggingService": {
-          "description": "The logging service the cluster should use to write logs.\nCurrently available options:\n\n* \"logging.googleapis.com/kubernetes\" - the Google Cloud Logging\nservice with Kubernetes-native resource model in Stackdriver\n* \"logging.googleapis.com\" - the Google Cloud Logging service\n* \"none\" - no logs will be exported from the cluster",
+          "description": "The logging service the cluster should use to write logs.\nCurrently available options:\n\n* `logging.googleapis.com/kubernetes` - The Cloud Logging\nservice with a Kubernetes-native resource model\n* `logging.googleapis.com` - The legacy Cloud Logging service (no longer\n  available as of GKE 1.15).\n* `none` - no logs will be exported from the cluster.\n\nIf left as an empty string,`logging.googleapis.com/kubernetes` will be\nused for GKE 1.14+ or `logging.googleapis.com` for earlier versions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -911,7 +1135,7 @@
           "items": null
         },
         "desiredMonitoringService": {
-          "description": "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com/kubernetes\" - the Google Cloud Monitoring\nservice with Kubernetes-native resource model in Stackdriver\n* \"monitoring.googleapis.com\" - the Google Cloud Monitoring service\n* \"none\" - no metrics will be exported from the cluster",
+          "description": "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com/kubernetes\" - The Cloud Monitoring\nservice with a Kubernetes-native resource model\n* `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no\n  longer available as of GKE 1.15).\n* `none` - No metrics will be exported from the cluster.\n\nIf left as an empty string,`monitoring.googleapis.com/kubernetes` will be\nused for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -947,6 +1171,18 @@
         "desiredResourceUsageExportConfig": {
           "description": "The desired configuration for exporting resource usage.",
           "$ref": "ResourceUsageExportConfig"
+        },
+        "desiredShieldedNodes": {
+          "description": "Configuration for Shielded Nodes.",
+          "$ref": "ShieldedNodes"
+        },
+        "desiredVerticalPodAutoscaling": {
+          "description": "Cluster-level Vertical Pod Autoscaling configuration.",
+          "$ref": "VerticalPodAutoscaling"
+        },
+        "desiredWorkloadIdentityConfig": {
+          "description": "Configuration for Workload Identity.",
+          "$ref": "WorkloadIdentityConfig"
         }
       },
       "additionalProperties": null,
@@ -971,7 +1207,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster id) of the cluster to complete IP\nrotation. Specified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster id) of the cluster to complete IP\nrotation. Specified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -991,7 +1227,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1035,11 +1271,11 @@
       "enumDescriptions": [],
       "properties": {
         "cluster": {
-          "description": "A [cluster\nresource](/container-engine/reference/rest/v1/projects.zones.clusters)",
+          "description": "Required. A [cluster\nresource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)",
           "$ref": "Cluster"
         },
         "parent": {
-          "description": "The parent (project and location) where the cluster will be created.\nSpecified in the format 'projects/*/locations/*'.",
+          "description": "The parent (project and location) where the cluster will be created.\nSpecified in the format `projects/*/locations/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1059,7 +1295,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the parent\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1091,11 +1327,11 @@
           "items": null
         },
         "nodePool": {
-          "description": "The node pool to create.",
+          "description": "Required. The node pool to create.",
           "$ref": "NodePool"
         },
         "parent": {
-          "description": "The parent (project, location, cluster id) where the node pool will be\ncreated. Specified in the format\n'projects/*/locations/*/clusters/*'.",
+          "description": "The parent (project, location, cluster id) where the node pool will be\ncreated. Specified in the format\n`projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1115,7 +1351,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the parent\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1152,6 +1388,46 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DatabaseEncryption": {
+      "id": "DatabaseEncryption",
+      "description": "Configuration of etcd encryption.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "keyName": {
+          "description": "Name of CloudKMS key to use for the encryption of secrets in etcd.\nEx. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "state": {
+          "description": "Denotes the state of etcd encryption.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNKNOWN",
+            "ENCRYPTED",
+            "DECRYPTED"
+          ],
+          "enumDescriptions": [
+            "Should never be set",
+            "Secrets in etcd are encrypted.",
+            "Secrets in etcd are stored in plain text (at etcd level) - this is\nunrelated to Compute Engine level full disk encryption."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1334,7 +1610,7 @@
       "enumDescriptions": [],
       "properties": {
         "disabled": {
-          "description": "Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.\nWhen enabled, it ensures that a Heapster pod is running in the cluster,\nwhich is also used by the Cloud Monitoring service.",
+          "description": "Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.\nWhen enabled, it ensures that metrics are collected into Stackdriver\nMonitoring.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1861,6 +2137,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "resourceVersion": {
+          "description": "A hash identifying the version of this policy, so that updates to fields of\nthe policy won't accidentally undo intermediate changes (and so that users\nof the API unaware of some fields won't accidentally remove other fields).\nMake a <code>get()</code> request to the cluster to get the current\nresource version and include it with requests to set the policy.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "window": {
           "description": "Specifies the maintenance window in which maintenance may be performed.",
           "$ref": "MaintenanceWindow"
@@ -1880,6 +2166,23 @@
         "dailyMaintenanceWindow": {
           "description": "DailyMaintenanceWindow specifies a daily maintenance operation window.",
           "$ref": "DailyMaintenanceWindow"
+        },
+        "maintenanceExclusions": {
+          "description": "Exceptions to maintenance window. Non-emergency maintenance should not\noccur in these windows.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "$ref": "TimeWindow"
+          },
+          "items": null
+        },
+        "recurringWindow": {
+          "description": "RecurringWindow specifies some number of recurring time periods for\nmaintenance to occur. The time windows may be overlapping. If no\nmaintenance windows are set, maintenance can occur at any time.",
+          "$ref": "RecurringTimeWindow"
         }
       },
       "additionalProperties": null,
@@ -2007,6 +2310,58 @@
       "additionalProperties": null,
       "items": null
     },
+    "Metric": {
+      "id": "Metric",
+      "description": "Progress metric is (string, int|float|string) pair.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "doubleValue": {
+          "description": "For metrics with floating point value.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "intValue": {
+          "description": "For metrics with integer value.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Required. Metric name, e.g., \"nodes total\", \"percent done\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "stringValue": {
+          "description": "For metrics with custom values (ratios, visual progress, etc.).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "NetworkConfig": {
       "id": "NetworkConfig",
       "description": "NetworkConfig reports the relative names of network & subnetwork.",
@@ -2026,7 +2381,7 @@
           "items": null
         },
         "network": {
-          "description": "Output only. The relative name of the Google Compute Engine\nnetwork(/compute/docs/networks-and-firewalls#networks) to which\nthe cluster is connected.\nExample: projects/my-project/global/networks/my-network",
+          "description": "Output only. The relative name of the Google Compute Engine\nnetwork(https://cloud.google.com/compute/docs/networks-and-firewalls#networks)\nto which the cluster is connected. Example:\nprojects/my-project/global/networks/my-network",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2036,7 +2391,7 @@
           "items": null
         },
         "subnetwork": {
-          "description": "Output only. The relative name of the Google Compute Engine\n[subnetwork](/compute/docs/vpc) to which the cluster is connected.\nExample: projects/my-project/regions/us-central1/subnetworks/my-subnet",
+          "description": "Output only. The relative name of the Google Compute Engine\n[subnetwork](https://cloud.google.com/compute/docs/vpc) to which the\ncluster is connected. Example:\nprojects/my-project/regions/us-central1/subnetworks/my-subnet",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2189,7 +2544,7 @@
           "items": null
         },
         "machineType": {
-          "description": "The name of a Google Compute Engine [machine\ntype](/compute/docs/machine-types) (e.g.\n`n1-standard-1`).\n\nIf unspecified, the default machine type is\n`n1-standard-1`.",
+          "description": "The name of a Google Compute Engine [machine\ntype](https://cloud.google.com/compute/docs/machine-types) (e.g.\n`n1-standard-1`).\n\nIf unspecified, the default machine type is\n`n1-standard-1`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2199,7 +2554,7 @@
           "items": null
         },
         "metadata": {
-          "description": "The metadata key/value pairs assigned to instances in the cluster.\n\nKeys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes\nin length. These are reflected as part of a URL in the metadata server.\nAdditionally, to avoid ambiguity, keys must not conflict with any other\nmetadata keys for the project or be one of the reserved keys:\n \"cluster-location\"\n \"cluster-name\"\n \"cluster-uid\"\n \"configure-sh\"\n \"containerd-configure-sh\"\n \"enable-os-login\"\n \"gci-update-strategy\"\n \"gci-ensure-gke-docker\"\n \"instance-template\"\n \"kube-env\"\n \"startup-script\"\n \"user-data\"\n \"disable-address-manager\"\n \"windows-startup-script-ps1\"\n \"common-psm1\"\n \"k8s-node-setup-psm1\"\n \"install-ssh-psm1\"\n \"user-profile-psm1\"\n \"serial-port-logging-enable\"\n\nValues are free-form strings, and only have meaning as interpreted by\nthe image running in the instance. The only restriction placed on them is\nthat each value's size must be less than or equal to 32 KB.\n\nThe total size of all keys and values must be less than 512 KB.",
+          "description": "The metadata key/value pairs assigned to instances in the cluster.\n\nKeys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes\nin length. These are reflected as part of a URL in the metadata server.\nAdditionally, to avoid ambiguity, keys must not conflict with any other\nmetadata keys for the project or be one of the reserved keys:\n \"cluster-location\"\n \"cluster-name\"\n \"cluster-uid\"\n \"configure-sh\"\n \"containerd-configure-sh\"\n \"enable-os-login\"\n \"gci-ensure-gke-docker\"\n \"gci-metrics-enabled\"\n \"gci-update-strategy\"\n \"instance-template\"\n \"kube-env\"\n \"startup-script\"\n \"user-data\"\n \"disable-address-manager\"\n \"windows-startup-script-ps1\"\n \"common-psm1\"\n \"k8s-node-setup-psm1\"\n \"install-ssh-psm1\"\n \"user-profile-psm1\"\n \"serial-port-logging-enable\"\n\nValues are free-form strings, and only have meaning as interpreted by\nthe image running in the instance. The only restriction placed on them is\nthat each value's size must be less than or equal to 32 KB.\n\nThe total size of all keys and values must be less than 512 KB.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -2228,7 +2583,7 @@
           "items": null
         },
         "oauthScopes": {
-          "description": "The set of Google API scopes to be made available on all of the\nnode VMs under the \"default\" service account.\n\nThe following scopes are recommended, but not required, and by default are\nnot included:\n\n* `https://www.googleapis.com/auth/compute` is required for mounting\npersistent storage on your nodes.\n* `https://www.googleapis.com/auth/devstorage.read_only` is required for\ncommunicating with **gcr.io**\n(the [Google Container Registry](/container-registry/)).\n\nIf unspecified, no scopes are added, unless Cloud Logging or Cloud\nMonitoring are enabled, in which case their required scopes will be added.",
+          "description": "The set of Google API scopes to be made available on all of the\nnode VMs under the \"default\" service account.\n\nThe following scopes are recommended, but not required, and by default are\nnot included:\n\n* `https://www.googleapis.com/auth/compute` is required for mounting\npersistent storage on your nodes.\n* `https://www.googleapis.com/auth/devstorage.read_only` is required for\ncommunicating with **gcr.io**\n(the [Google Container\nRegistry](https://cloud.google.com/container-registry/)).\n\nIf unspecified, no scopes are added, unless Cloud Logging or Cloud\nMonitoring are enabled, in which case their required scopes will be added.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2255,8 +2610,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "reservationAffinity": {
+          "description": "The optional reservation affinity. Setting this field will apply\nthe specified [Zonal Compute\nReservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)\nto this node pool.",
+          "$ref": "ReservationAffinity"
+        },
+        "sandboxConfig": {
+          "description": "Sandbox configuration for this node.",
+          "$ref": "SandboxConfig"
+        },
         "serviceAccount": {
-          "description": "The Google Cloud Platform Service Account to be used by the node VMs. If\nno Service Account is specified, the \"default\" service account is used.",
+          "description": "The Google Cloud Platform Service Account to be used by the node VMs.\nSpecify the email address of the Service Account; otherwise, if no Service\nAccount is specified, the \"default\" service account is used.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2264,6 +2627,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "shieldedInstanceConfig": {
+          "description": "Shielded Instance options.",
+          "$ref": "ShieldedInstanceConfig"
         },
         "tags": {
           "description": "The list of instance tags applied to all nodes. Tags are used to identify\nvalid sources or targets for network firewalls and are specified by\nthe client during cluster or node pool creation. Each tag within the list\nmust comply with RFC1035.",
@@ -2294,6 +2661,10 @@
           "items": {
             "$ref": "NodeTaint"
           }
+        },
+        "workloadMetadataConfig": {
+          "description": "The workload metadata configuration for this node.",
+          "$ref": "WorkloadMetadataConfig"
         }
       },
       "additionalProperties": null,
@@ -2374,7 +2745,25 @@
           "items": null
         },
         "instanceGroupUrls": {
-          "description": "[Output only] The resource URLs of the [managed instance\ngroups](/compute/docs/instance-groups/creating-groups-of-managed-instances)\nassociated with this node pool.",
+          "description": "[Output only] The resource URLs of the [managed instance\ngroups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)\nassociated with this node pool.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "locations": {
+          "description": "The list of Google Compute Engine\n[zones](https://cloud.google.com/compute/docs/zones#available) in which the\nNodePool's nodes should be located.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2465,6 +2854,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "upgradeSettings": {
+          "description": "Upgrade settings control disruption and speed of the upgrade.",
+          "$ref": "UpgradeSettings"
+        },
         "version": {
           "description": "The version of the Kubernetes of this node.",
           "type": "string",
@@ -2487,6 +2880,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "autoprovisioned": {
+          "description": "Can this node pool be deleted automatically.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "enabled": {
           "description": "Is autoscaling enabled for this node pool.",
           "type": "boolean",
@@ -2614,7 +3017,7 @@
           "items": null
         },
         "location": {
-          "description": "[Output only] The name of the Google Compute Engine\n[zone](/compute/docs/regions-zones/regions-zones#available) or\n[region](/compute/docs/regions-zones/regions-zones#available) in which\nthe cluster resides.",
+          "description": "[Output only] The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)\nor\n[region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available)\nin which the cluster resides.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2691,6 +3094,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "progress": {
+          "description": "Output only. [Output only] Progress information for an operation.",
+          "$ref": "OperationProgress"
+        },
         "selfLink": {
           "description": "Server-defined URL for the resource.",
           "type": "string",
@@ -2734,7 +3141,7 @@
           "items": null
         },
         "statusMessage": {
-          "description": "If an error has occurred, a textual description of the error.",
+          "description": "Output only. If an error has occurred, a textual description of the error.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2754,11 +3161,79 @@
           "items": null
         },
         "zone": {
-          "description": "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation\nis taking place.\nThis field is deprecated, use location instead.",
+          "description": "The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\noperation is taking place. This field is deprecated, use location instead.",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OperationProgress": {
+      "id": "OperationProgress",
+      "description": "Information about operation (or operation stage) progress.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "metrics": {
+          "description": "Progress metric bundle, for example:\n  metrics: [{name: \"nodes done\",     int_value: 15},\n            {name: \"nodes total\",    int_value: 32}]\nor\n  metrics: [{name: \"progress\",       double_value: 0.56},\n            {name: \"progress scale\", double_value: 1.0}]",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Metric"
+          }
+        },
+        "name": {
+          "description": "A non-parameterized string describing an operation stage.\nUnset for single-stage operations.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "stages": {
+          "description": "Substages of an operation or a stage.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "OperationProgress"
+          }
+        },
+        "status": {
+          "description": "Status of an operation stage.\nUnset for single-stage operations.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATUS_UNSPECIFIED",
+            "PENDING",
+            "RUNNING",
+            "DONE",
+            "ABORTING"
+          ],
+          "enumDescriptions": [
+            "Not set.",
+            "The operation has been created.",
+            "The operation is currently running.",
+            "The operation is done, either cancelled or completed.",
+            "The operation is aborting."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -2805,6 +3280,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "peeringName": {
+          "description": "Output only. The peering name in the customer VPC used by this cluster.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "privateEndpoint": {
           "description": "Output only. The internal IP address of this cluster's master endpoint.",
           "type": "string",
@@ -2817,6 +3302,134 @@
         },
         "publicEndpoint": {
           "description": "Output only. The external IP address of this cluster's master endpoint.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "RecurringTimeWindow": {
+      "id": "RecurringTimeWindow",
+      "description": "Represents an arbitrary window of time that recurs.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "recurrence": {
+          "description": "An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how\nthis window reccurs. They go on for the span of time between the start and\nend time.\n\nFor example, to have something repeat every weekday, you'd use:\n  <code>FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR</code>\nTo repeat some window daily (equivalent to the DailyMaintenanceWindow):\n  <code>FREQ=DAILY</code>\nFor the first weekend of every month:\n  <code>FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU</code>\nThis specifies how frequently the window starts. Eg, if you wanted to have\na 9-5 UTC-4 window every weekday, you'd use something like:\n<code>\n  start time = 2019-01-01T09:00:00-0400\n  end time = 2019-01-01T17:00:00-0400\n  recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR\n</code>\nWindows can span multiple days. Eg, to make the window encompass every\nweekend from midnight Saturday till the last minute of Sunday UTC:\n<code>\n  start time = 2019-01-05T00:00:00Z\n  end time = 2019-01-07T23:59:00Z\n  recurrence = FREQ=WEEKLY;BYDAY=SA\n</code>\nNote the start and end time's specific dates are largely arbitrary except\nto specify duration of the window and when it first starts.\nThe FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "window": {
+          "description": "The window of the first recurrence.",
+          "$ref": "TimeWindow"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ReservationAffinity": {
+      "id": "ReservationAffinity",
+      "description": "[ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)\nis the configuration of desired reservation which instances could take\ncapacity from.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "consumeReservationType": {
+          "description": "Corresponds to the type of reservation consumption.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNSPECIFIED",
+            "NO_RESERVATION",
+            "ANY_RESERVATION",
+            "SPECIFIC_RESERVATION"
+          ],
+          "enumDescriptions": [
+            "Default value. This should not be used.",
+            "Do not consume from any reserved capacity.",
+            "Consume any reservation available.",
+            "Must consume from a specific reservation. Must specify key value fields\nfor specifying the reservations."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "key": {
+          "description": "Corresponds to the label key of a reservation resource. To target a\nSPECIFIC_RESERVATION by name, specify \"googleapis.com/reservation-name\" as\nthe key and specify the name of your reservation as its value.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "values": {
+          "description": "Corresponds to the label value(s) of reservation resource(s).",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ResourceLimit": {
+      "id": "ResourceLimit",
+      "description": "Contains information about amount of some resource in the cluster.\nFor memory, value should be in GB.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "maximum": {
+          "description": "Maximum amount of the resource in the cluster.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "minimum": {
+          "description": "Minimum amount of the resource in the cluster.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceType": {
+          "description": "Resource name \"cpu\", \"memory\" or gpu-specific string.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2878,7 +3491,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster, node pool id) of the node poll to\nrollback upgrade.\nSpecified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.",
+          "description": "The name (project, location, cluster, node pool id) of the node poll to\nrollback upgrade.\nSpecified in the format `projects/*/locations/*/clusters/*/nodePools/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2908,11 +3521,39 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SandboxConfig": {
+      "id": "SandboxConfig",
+      "description": "SandboxConfig contains configurations of the sandbox to use for the node.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "type": {
+          "description": "Type of the sandbox to use for the node.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNSPECIFIED",
+            "GVISOR"
+          ],
+          "enumDescriptions": [
+            "Default value. This should not be used.",
+            "Run sandbox using gvisor."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -3016,7 +3657,7 @@
       "enumDescriptions": [],
       "properties": {
         "addonsConfig": {
-          "description": "The desired configurations for the various addons available to run in the\ncluster.",
+          "description": "Required. The desired configurations for the various addons available to run in the\ncluster.",
           "$ref": "AddonsConfig"
         },
         "clusterId": {
@@ -3030,7 +3671,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to set addons.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to set addons.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3050,7 +3691,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3082,7 +3723,7 @@
           "items": null
         },
         "labelFingerprint": {
-          "description": "The fingerprint of the previous set of labels for this resource,\nused to detect conflicts. The fingerprint is initially generated by\nKubernetes Engine and changes after every request to modify or update\nlabels. You must always provide an up-to-date fingerprint hash when\nupdating or changing labels. Make a <code>get()</code> request to the\nresource to get the latest fingerprint.",
+          "description": "Required. The fingerprint of the previous set of labels for this resource,\nused to detect conflicts. The fingerprint is initially generated by\nKubernetes Engine and changes after every request to modify or update\nlabels. You must always provide an up-to-date fingerprint hash when\nupdating or changing labels. Make a <code>get()</code> request to the\nresource to get the latest fingerprint.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3092,7 +3733,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster id) of the cluster to set labels.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster id) of the cluster to set labels.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3112,7 +3753,7 @@
           "items": null
         },
         "resourceLabels": {
-          "description": "The labels to set for that cluster.",
+          "description": "Required. The labels to set for that cluster.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -3131,7 +3772,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3163,7 +3804,7 @@
           "items": null
         },
         "enabled": {
-          "description": "Whether ABAC authorization will be enabled in the cluster.",
+          "description": "Required. Whether ABAC authorization will be enabled in the cluster.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -3173,7 +3814,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster id) of the cluster to set legacy abac.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster id) of the cluster to set legacy abac.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3193,7 +3834,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3225,7 +3866,7 @@
           "items": null
         },
         "locations": {
-          "description": "The desired list of Google Compute Engine\n[zones](/compute/docs/zones#available) in which the cluster's nodes\nshould be located. Changing the locations a cluster is in will result\nin nodes being either created or removed from the cluster, depending on\nwhether locations are being added or removed.\n\nThis list must always include the cluster's primary zone.",
+          "description": "Required. The desired list of Google Compute Engine\n[zones](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster's nodes should be located. Changing the locations a cluster is in\nwill result in nodes being either created or removed from the cluster,\ndepending on whether locations are being added or removed.\n\nThis list must always include the cluster's primary zone.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3243,7 +3884,7 @@
           }
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to set locations.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to set locations.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3263,7 +3904,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3295,7 +3936,7 @@
           "items": null
         },
         "loggingService": {
-          "description": "The logging service the cluster should use to write metrics.\nCurrently available options:\n\n* \"logging.googleapis.com\" - the Google Cloud Logging service\n* \"none\" - no metrics will be exported from the cluster",
+          "description": "Required. The logging service the cluster should use to write logs.\nCurrently available options:\n\n* `logging.googleapis.com/kubernetes` - The Cloud Logging\nservice with a Kubernetes-native resource model\n* `logging.googleapis.com` - The legacy Cloud Logging service (no longer\n  available as of GKE 1.15).\n* `none` - no logs will be exported from the cluster.\n\nIf left as an empty string,`logging.googleapis.com/kubernetes` will be\nused for GKE 1.14+ or `logging.googleapis.com` for earlier versions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3305,7 +3946,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to set logging.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to set logging.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3325,7 +3966,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3347,7 +3988,7 @@
       "enumDescriptions": [],
       "properties": {
         "clusterId": {
-          "description": "The name of the cluster to update.",
+          "description": "Required. The name of the cluster to update.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3357,11 +3998,11 @@
           "items": null
         },
         "maintenancePolicy": {
-          "description": "The maintenance policy to be set for the cluster. An empty field\nclears the existing maintenance policy.",
+          "description": "Required. The maintenance policy to be set for the cluster. An empty field\nclears the existing maintenance policy.",
           "$ref": "MaintenancePolicy"
         },
         "name": {
-          "description": "The name (project, location, cluster id) of the cluster to set maintenance\npolicy.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster id) of the cluster to set maintenance\npolicy.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3371,7 +4012,7 @@
           "items": null
         },
         "projectId": {
-          "description": "The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).",
+          "description": "Required. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3381,7 +4022,7 @@
           "items": null
         },
         "zone": {
-          "description": "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.",
+          "description": "Required. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3403,7 +4044,7 @@
       "enumDescriptions": [],
       "properties": {
         "action": {
-          "description": "The exact form of action to be taken on the master auth.",
+          "description": "Required. The exact form of action to be taken on the master auth.",
           "type": "string",
           "format": null,
           "enum": [
@@ -3433,7 +4074,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3453,11 +4094,11 @@
           "items": null
         },
         "update": {
-          "description": "A description of the update.",
+          "description": "Required. A description of the update.",
           "$ref": "MasterAuth"
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3489,7 +4130,7 @@
           "items": null
         },
         "monitoringService": {
-          "description": "The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com/kubernetes\" - the Google Cloud Monitoring\nservice with Kubernetes-native resource model in Stackdriver\n* \"monitoring.googleapis.com\" - the Google Cloud Monitoring service\n* \"none\" - no metrics will be exported from the cluster",
+          "description": "Required. The monitoring service the cluster should use to write metrics.\nCurrently available options:\n\n* \"monitoring.googleapis.com/kubernetes\" - The Cloud Monitoring\nservice with a Kubernetes-native resource model\n* `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no\n  longer available as of GKE 1.15).\n* `none` - No metrics will be exported from the cluster.\n\nIf left as an empty string,`monitoring.googleapis.com/kubernetes` will be\nused for GKE 1.14+ or `monitoring.googleapis.com` for earlier versions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3499,7 +4140,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to set monitoring.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to set monitoring.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3519,7 +4160,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3551,7 +4192,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster id) of the cluster to set networking\npolicy. Specified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster id) of the cluster to set networking\npolicy. Specified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3561,7 +4202,7 @@
           "items": null
         },
         "networkPolicy": {
-          "description": "Configuration options for the NetworkPolicy feature.",
+          "description": "Required. Configuration options for the NetworkPolicy feature.",
           "$ref": "NetworkPolicy"
         },
         "projectId": {
@@ -3575,7 +4216,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3597,7 +4238,7 @@
       "enumDescriptions": [],
       "properties": {
         "autoscaling": {
-          "description": "Autoscaling configuration for the node pool.",
+          "description": "Required. Autoscaling configuration for the node pool.",
           "$ref": "NodePoolAutoscaling"
         },
         "clusterId": {
@@ -3611,7 +4252,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster, node pool) of the node pool to set\nautoscaler settings. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+          "description": "The name (project, location, cluster, node pool) of the node pool to set\nautoscaler settings. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3641,7 +4282,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3673,11 +4314,11 @@
           "items": null
         },
         "management": {
-          "description": "NodeManagement configuration for the node pool.",
+          "description": "Required. NodeManagement configuration for the node pool.",
           "$ref": "NodeManagement"
         },
         "name": {
-          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nmanagement properties. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nmanagement properties. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3707,7 +4348,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3739,7 +4380,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nsize.\nSpecified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.",
+          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nsize.\nSpecified in the format `projects/*/locations/*/clusters/*/nodePools/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3749,7 +4390,7 @@
           "items": null
         },
         "nodeCount": {
-          "description": "The desired node count for the pool.",
+          "description": "Required. The desired node count for the pool.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3779,8 +4420,62 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ShieldedInstanceConfig": {
+      "id": "ShieldedInstanceConfig",
+      "description": "A set of Shielded Instance options.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enableIntegrityMonitoring": {
+          "description": "Defines whether the instance has integrity monitoring enabled.\n\nEnables monitoring and attestation of the boot integrity of the instance.\nThe attestation is performed against the integrity policy baseline. This\nbaseline is initially derived from the implicitly trusted boot image when\nthe instance is created.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enableSecureBoot": {
+          "description": "Defines whether the instance has Secure Boot enabled.\n\nSecure Boot helps ensure that the system only runs authentic software by\nverifying the digital signature of all boot components, and halting the\nboot process if signature verification fails.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ShieldedNodes": {
+      "id": "ShieldedNodes",
+      "description": "Configuration of Shielded Nodes feature.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enabled": {
+          "description": "Whether Shielded Nodes features are enabled on all nodes in this cluster.",
+          "type": "boolean",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
@@ -3811,7 +4506,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster id) of the cluster to start IP\nrotation. Specified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster id) of the cluster to start IP\nrotation. Specified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3841,7 +4536,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3871,14 +4566,16 @@
             "GCE_STOCKOUT",
             "GKE_SERVICE_ACCOUNT_DELETED",
             "GCE_QUOTA_EXCEEDED",
-            "SET_BY_OPERATOR"
+            "SET_BY_OPERATOR",
+            "CLOUD_KMS_KEY_ERROR"
           ],
           "enumDescriptions": [
             "UNKNOWN indicates a generic condition.",
-            "GCE_STOCKOUT indicates a Google Compute Engine stockout.",
+            "GCE_STOCKOUT indicates that Google Compute Engine resources are\ntemporarily unavailable.",
             "GKE_SERVICE_ACCOUNT_DELETED indicates that the user deleted their robot\nservice account.",
             "Google Compute Engine quota was exceeded.",
-            "Cluster state was manually changed by an SRE due to a system logic error.\nMore codes TBA"
+            "Cluster state was manually changed by an SRE due to a system logic error.",
+            "Unable to perform an encrypt operation against the CloudKMS key used for\netcd level encryption.\nMore codes TBA"
           ],
           "properties": {},
           "additionalProperties": null,
@@ -3888,6 +4585,38 @@
           "description": "Human-friendly representation of the condition",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TimeWindow": {
+      "id": "TimeWindow",
+      "description": "Represents an arbitrary window of time.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "endTime": {
+          "description": "The time that the window ends. The end time should take place after the\nstart time.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "startTime": {
+          "description": "The time that the window first starts.",
+          "type": "string",
+          "format": "google-datetime",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -3917,7 +4646,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3937,11 +4666,11 @@
           "items": null
         },
         "update": {
-          "description": "A description of the update.",
+          "description": "Required. A description of the update.",
           "$ref": "ClusterUpdate"
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3973,7 +4702,7 @@
           "items": null
         },
         "masterVersion": {
-          "description": "The Kubernetes version to change the master to.\n\nUsers may specify either explicit versions offered by Kubernetes Engine or\nversion aliases, which have the following behavior:\n\n- \"latest\": picks the highest valid Kubernetes version\n- \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n- \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n- \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n- \"-\": picks the default Kubernetes version",
+          "description": "Required. The Kubernetes version to change the master to.\n\nUsers may specify either explicit versions offered by Kubernetes Engine or\nversion aliases, which have the following behavior:\n\n- \"latest\": picks the highest valid Kubernetes version\n- \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n- \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n- \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n- \"-\": picks the default Kubernetes version",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3983,7 +4712,7 @@
           "items": null
         },
         "name": {
-          "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+          "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4003,7 +4732,7 @@
           "items": null
         },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4035,7 +4764,7 @@
           "items": null
         },
         "imageType": {
-          "description": "The desired image type for the node pool.",
+          "description": "Required. The desired image type for the node pool.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4044,8 +4773,26 @@
           "additionalProperties": null,
           "items": null
         },
+        "locations": {
+          "description": "The desired list of Google Compute Engine\n[zones](https://cloud.google.com/compute/docs/zones#available) in which the\nnode pool's nodes should be located. Changing the locations for a node pool\nwill result in nodes being either created or removed from the node pool,\ndepending on whether locations are being added or removed.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "name": {
-          "description": "The name (project, location, cluster, node pool) of the node pool to\nupdate. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+          "description": "The name (project, location, cluster, node pool) of the node pool to\nupdate. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4065,7 +4812,7 @@
           "items": null
         },
         "nodeVersion": {
-          "description": "The Kubernetes version to change the nodes to (typically an\nupgrade).\n\nUsers may specify either explicit versions offered by Kubernetes Engine or\nversion aliases, which have the following behavior:\n\n- \"latest\": picks the highest valid Kubernetes version\n- \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n- \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n- \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n- \"-\": picks the Kubernetes master version",
+          "description": "Required. The Kubernetes version to change the nodes to (typically an\nupgrade).\n\nUsers may specify either explicit versions offered by Kubernetes Engine or\nversion aliases, which have the following behavior:\n\n- \"latest\": picks the highest valid Kubernetes version\n- \"1.X\": picks the highest valid patch+gke.N patch in the 1.X version\n- \"1.X.Y\": picks the highest valid gke.N patch in the 1.X.Y version\n- \"1.X.Y-gke.N\": picks an explicit Kubernetes version\n- \"-\": picks the Kubernetes master version",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4084,10 +4831,50 @@
           "additionalProperties": null,
           "items": null
         },
+        "upgradeSettings": {
+          "description": "Upgrade settings control disruption and speed of the upgrade.",
+          "$ref": "UpgradeSettings"
+        },
+        "workloadMetadataConfig": {
+          "description": "The desired workload metadata config for the node pool.",
+          "$ref": "WorkloadMetadataConfig"
+        },
         "zone": {
-          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "UpgradeSettings": {
+      "id": "UpgradeSettings",
+      "description": "These upgrade settings control the level of parallelism and the level of\ndisruption caused by an upgrade.\n\nmaxUnavailable controls the number of nodes that can be simultaneously\nunavailable.\n\nmaxSurge controls the number of additional nodes that can be added to the\nnode pool temporarily for the time of the upgrade to increase the number of\navailable nodes.\n\n(maxUnavailable + maxSurge) determines the level of parallelism (how many\nnodes are being upgraded at the same time).\n\nNote: upgrades inevitably introduce some disruption since workloads need to\nbe moved from old nodes to new, upgraded ones. Even if maxUnavailable=0,\nthis holds true. (Disruption stays within the limits of\nPodDisruptionBudget, if it is configured.)\n\nConsider a hypothetical node pool with 5 nodes having maxSurge=2,\nmaxUnavailable=1. This means the upgrade process upgrades 3 nodes\nsimultaneously. It creates 2 additional (upgraded) nodes, then it brings\ndown 3 old (not yet upgraded) nodes at the same time. This ensures that\nthere are always at least 4 nodes available.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "maxSurge": {
+          "description": "The maximum number of nodes that can be created beyond the current size\nof the node pool during the upgrade process.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "maxUnavailable": {
+          "description": "The maximum number of nodes that can be simultaneously unavailable during\nthe upgrade process. A node is considered available if its status is\nReady.",
+          "type": "integer",
+          "format": "int32",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -4215,6 +5002,80 @@
       },
       "additionalProperties": null,
       "items": null
+    },
+    "VerticalPodAutoscaling": {
+      "id": "VerticalPodAutoscaling",
+      "description": "VerticalPodAutoscaling contains global, per-cluster information\nrequired by Vertical Pod Autoscaler to automatically adjust\nthe resources of pods controlled by it.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enabled": {
+          "description": "Enables vertical pod autoscaling.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "WorkloadIdentityConfig": {
+      "id": "WorkloadIdentityConfig",
+      "description": "Configuration for the use of Kubernetes Service Accounts in GCP IAM\npolicies.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "workloadPool": {
+          "description": "The workload pool to attach all Kubernetes service accounts to.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "WorkloadMetadataConfig": {
+      "id": "WorkloadMetadataConfig",
+      "description": "WorkloadMetadataConfig defines the metadata configuration to expose to\nworkloads on the node pool.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "mode": {
+          "description": "Mode is the configuration for how to expose metadata to workloads running\non the node pool.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "MODE_UNSPECIFIED",
+            "GCE_METADATA",
+            "GKE_METADATA"
+          ],
+          "enumDescriptions": [
+            "Not set.",
+            "Expose all Compute Engine metadata to pods.",
+            "Run the GKE Metadata Server on this node. The GKE Metadata Server exposes\na metadata API to workloads that is compatible with the V1 Compute\nMetadata APIs exposed by the Compute Engine and App Engine Metadata\nServers. This feature can only be enabled if Workload Identity is enabled\nat the cluster level."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
     }
   },
   "resources": {
@@ -4274,7 +5135,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The parent project where subnetworks are usable.\nSpecified in the format 'projects/*'.",
+                      "description": "The parent project where subnetworks are usable.\nSpecified in the format `projects/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4323,7 +5184,7 @@
                       "description": "Creates a node pool for a cluster.",
                       "parameters": {
                         "parent": {
-                          "description": "The parent (project, location, cluster id) where the node pool will be\ncreated. Specified in the format\n'projects/*/locations/*/clusters/*'.",
+                          "description": "The parent (project, location, cluster id) where the node pool will be\ncreated. Specified in the format\n`projects/*/locations/*/clusters/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4376,7 +5237,7 @@
                           "repeated": false
                         },
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node pool to\ndelete. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node pool to\ndelete. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4418,7 +5279,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -4469,7 +5330,7 @@
                           "repeated": false
                         },
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node pool to\nget. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node pool to\nget. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4511,7 +5372,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -4562,7 +5423,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "The parent (project, location, cluster id) where the node pools will be\nlisted. Specified in the format 'projects/*/locations/*/clusters/*'.",
+                          "description": "The parent (project, location, cluster id) where the node pools will be\nlisted. Specified in the format `projects/*/locations/*/clusters/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4590,7 +5451,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the parent\nfield.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -4627,7 +5488,7 @@
                       "description": "Rolls back a previously Aborted or Failed NodePool upgrade.\nThis makes no changes if the last upgrade successfully completed.",
                       "parameters": {
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node poll to\nrollback upgrade.\nSpecified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node poll to\nrollback upgrade.\nSpecified in the format `projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4666,7 +5527,7 @@
                       "description": "Sets the autoscaling settings for the specified node pool.",
                       "parameters": {
                         "name": {
-                          "description": "The name (project, location, cluster, node pool) of the node pool to set\nautoscaler settings. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool) of the node pool to set\nautoscaler settings. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4705,7 +5566,7 @@
                       "description": "Sets the NodeManagement options for a node pool.",
                       "parameters": {
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nmanagement properties. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nmanagement properties. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4744,7 +5605,7 @@
                       "description": "Sets the size for a specific node pool.",
                       "parameters": {
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nsize.\nSpecified in the format 'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node pool to set\nsize.\nSpecified in the format `projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4783,7 +5644,7 @@
                       "description": "Updates the version and/or image type for the specified node pool.",
                       "parameters": {
                         "name": {
-                          "description": "The name (project, location, cluster, node pool) of the node pool to\nupdate. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool) of the node pool to\nupdate. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4827,7 +5688,7 @@
                       "description": "Gets the OIDC discovery document for the cluster.\nSee the\n[OpenID Connect Discovery 1.0\nspecification](https://openid.net/specs/openid-connect-discovery-1_0.html)\nfor details.\nThis API is not yet intended for general use, and is not available for all\nclusters.",
                       "parameters": {
                         "parent": {
-                          "description": "The cluster (project, location, cluster id) to get the discovery document\nfor. Specified in the format 'projects/*/locations/*/clusters/*'.",
+                          "description": "The cluster (project, location, cluster id) to get the discovery document\nfor. Specified in the format `projects/*/locations/*/clusters/*`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -4866,7 +5727,7 @@
                   "description": "Completes master IP rotation.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster id) of the cluster to complete IP\nrotation. Specified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster id) of the cluster to complete IP\nrotation. Specified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4902,10 +5763,10 @@
                   "id": "container.projects.locations.clusters.create",
                   "path": "v1/{+parent}/clusters",
                   "httpMethod": "POST",
-                  "description": "Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project's\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project's global metadata indicating\nwhich CIDR range the cluster is using.",
+                  "description": "Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project's\n[default\nnetwork](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project's global metadata indicating\nwhich CIDR range the cluster is using.",
                   "parameters": {
                     "parent": {
-                      "description": "The parent (project and location) where the cluster will be created.\nSpecified in the format 'projects/*/locations/*'.",
+                      "description": "The parent (project and location) where the cluster will be created.\nSpecified in the format `projects/*/locations/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4958,7 +5819,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to delete.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to delete.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -4986,7 +5847,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5037,7 +5898,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to retrieve.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to retrieve.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5065,7 +5926,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5102,7 +5963,7 @@
                   "description": "Gets the public component of the cluster signing keys in\nJSON Web Key format.\nThis API is not yet intended for general use, and is not available for all\nclusters.",
                   "parameters": {
                     "parent": {
-                      "description": "The cluster (project, location, cluster id) to get keys for. Specified in\nthe format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The cluster (project, location, cluster id) to get keys for. Specified in\nthe format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5137,7 +5998,7 @@
                   "description": "Lists all clusters owned by a project in either the specified zone or all\nzones.",
                   "parameters": {
                     "parent": {
-                      "description": "The parent (project and location) where the clusters will be listed.\nSpecified in the format 'projects/*/locations/*'.\nLocation \"-\" matches all zones and all regions.",
+                      "description": "The parent (project and location) where the clusters will be listed.\nSpecified in the format `projects/*/locations/*`.\nLocation \"-\" matches all zones and all regions.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5165,7 +6026,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides, or \"-\" for all zones.\nThis field has been deprecated and replaced by the parent field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides, or \"-\" for all zones. This field has been deprecated and\nreplaced by the parent field.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5202,7 +6063,7 @@
                   "description": "Sets the addons for a specific cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to set addons.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to set addons.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5241,7 +6102,7 @@
                   "description": "Enables or disables the ABAC authorization mechanism on a cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster id) of the cluster to set legacy abac.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster id) of the cluster to set legacy abac.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5277,10 +6138,10 @@
                   "id": "container.projects.locations.clusters.setLocations",
                   "path": "v1/{+name}:setLocations",
                   "httpMethod": "POST",
-                  "description": "Sets the locations for a specific cluster.",
+                  "description": "Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)\ninstead.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to set locations.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to set locations.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5319,7 +6180,7 @@
                   "description": "Sets the logging service for a specific cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to set logging.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to set logging.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5358,7 +6219,7 @@
                   "description": "Sets the maintenance policy for a cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster id) of the cluster to set maintenance\npolicy.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster id) of the cluster to set maintenance\npolicy.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5397,7 +6258,7 @@
                   "description": "Sets master auth materials. Currently supports changing the admin password\nor a specific cluster, either via password generation or explicitly setting\nthe password.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to set auth.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5436,7 +6297,7 @@
                   "description": "Sets the monitoring service for a specific cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to set monitoring.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to set monitoring.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5475,7 +6336,7 @@
                   "description": "Enables or disables Network Policy for a cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster id) of the cluster to set networking\npolicy. Specified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster id) of the cluster to set networking\npolicy. Specified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5514,7 +6375,7 @@
                   "description": "Sets labels on a cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster id) of the cluster to set labels.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster id) of the cluster to set labels.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5553,7 +6414,7 @@
                   "description": "Starts master IP rotation.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster id) of the cluster to start IP\nrotation. Specified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster id) of the cluster to start IP\nrotation. Specified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5592,7 +6453,7 @@
                   "description": "Updates the settings of a specific cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5631,7 +6492,7 @@
                   "description": "Updates the master for a specific cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to update.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5675,7 +6536,7 @@
                   "description": "Cancels the specified operation.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, operation id) of the operation to cancel.\nSpecified in the format 'projects/*/locations/*/operations/*'.",
+                      "description": "The name (project, location, operation id) of the operation to cancel.\nSpecified in the format `projects/*/locations/*/operations/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5714,7 +6575,7 @@
                   "description": "Gets the specified operation.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, operation id) of the operation to get.\nSpecified in the format 'projects/*/locations/*/operations/*'.",
+                      "description": "The name (project, location, operation id) of the operation to get.\nSpecified in the format `projects/*/locations/*/operations/*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5756,7 +6617,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5793,7 +6654,7 @@
                   "description": "Lists all operations in a project in a specific zone or all zones.",
                   "parameters": {
                     "parent": {
-                      "description": "The parent (project and location) where the operations will be listed.\nSpecified in the format 'projects/*/locations/*'.\nLocation \"-\" matches all zones and all regions.",
+                      "description": "The parent (project and location) where the operations will be listed.\nSpecified in the format `projects/*/locations/*`.\nLocation \"-\" matches all zones and all regions.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -5821,7 +6682,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) to return operations for, or `-` for\nall zones. This field has been deprecated and replaced by the parent field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) to return\noperations for, or `-` for all zones. This field has been deprecated and\nreplaced by the parent field.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -5862,7 +6723,7 @@
               "description": "Returns configuration info about the Google Kubernetes Engine service.",
               "parameters": {
                 "name": {
-                  "description": "The name (project and location) of the server config to get,\nspecified in the format 'projects/*/locations/*'.",
+                  "description": "The name (project and location) of the server config to get,\nspecified in the format `projects/*/locations/*`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -5890,7 +6751,7 @@
                   "repeated": false
                 },
                 "zone": {
-                  "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) to return operations for.\nThis field has been deprecated and replaced by the name field.",
+                  "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) to return\noperations for. This field has been deprecated and replaced by the name\nfield.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5978,7 +6839,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6048,7 +6909,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the parent\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6103,7 +6964,7 @@
                           "repeated": false
                         },
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node pool to\ndelete. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node pool to\ndelete. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -6145,7 +7006,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6199,7 +7060,7 @@
                           "repeated": false
                         },
                         "name": {
-                          "description": "The name (project, location, cluster, node pool id) of the node pool to\nget. Specified in the format\n'projects/*/locations/*/clusters/*/nodePools/*'.",
+                          "description": "The name (project, location, cluster, node pool id) of the node pool to\nget. Specified in the format\n`projects/*/locations/*/clusters/*/nodePools/*`.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -6241,7 +7102,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6295,7 +7156,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "The parent (project, location, cluster id) where the node pools will be\nlisted. Specified in the format 'projects/*/locations/*/clusters/*'.",
+                          "description": "The parent (project, location, cluster id) where the node pools will be\nlisted. Specified in the format `projects/*/locations/*/clusters/*`.",
                           "default": null,
                           "location": "query",
                           "required": false,
@@ -6323,7 +7184,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the parent\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6404,7 +7265,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6488,7 +7349,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6572,7 +7433,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6656,7 +7517,7 @@
                           "repeated": false
                         },
                         "zone": {
-                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                          "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -6730,7 +7591,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -6799,7 +7660,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -6837,7 +7698,7 @@
                   "id": "container.projects.zones.clusters.create",
                   "path": "v1/projects/{projectId}/zones/{zone}/clusters",
                   "httpMethod": "POST",
-                  "description": "Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project's\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project's global metadata indicating\nwhich CIDR range the cluster is using.",
+                  "description": "Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project's\n[default\nnetwork](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project's global metadata indicating\nwhich CIDR range the cluster is using.",
                   "parameters": {
                     "projectId": {
                       "description": "Deprecated. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).\nThis field has been deprecated and replaced by the parent field.",
@@ -6854,7 +7715,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the parent field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the parent\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -6908,7 +7769,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to delete.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to delete.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -6936,7 +7797,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -6989,7 +7850,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "The name (project, location, cluster) of the cluster to retrieve.\nSpecified in the format 'projects/*/locations/*/clusters/*'.",
+                      "description": "The name (project, location, cluster) of the cluster to retrieve.\nSpecified in the format `projects/*/locations/*/clusters/*`.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -7017,7 +7878,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7084,7 +7945,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7125,7 +7986,7 @@
                   "description": "Lists all clusters owned by a project in either the specified zone or all\nzones.",
                   "parameters": {
                     "parent": {
-                      "description": "The parent (project and location) where the clusters will be listed.\nSpecified in the format 'projects/*/locations/*'.\nLocation \"-\" matches all zones and all regions.",
+                      "description": "The parent (project and location) where the clusters will be listed.\nSpecified in the format `projects/*/locations/*`.\nLocation \"-\" matches all zones and all regions.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -7153,7 +8014,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides, or \"-\" for all zones.\nThis field has been deprecated and replaced by the parent field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides, or \"-\" for all zones. This field has been deprecated and\nreplaced by the parent field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7188,7 +8049,7 @@
                   "id": "container.projects.zones.clusters.locations",
                   "path": "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations",
                   "httpMethod": "POST",
-                  "description": "Sets the locations for a specific cluster.",
+                  "description": "Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)\ninstead.",
                   "parameters": {
                     "clusterId": {
                       "description": "Deprecated. The name of the cluster to upgrade.\nThis field has been deprecated and replaced by the name field.",
@@ -7219,7 +8080,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7288,7 +8149,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7357,7 +8218,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7426,7 +8287,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7495,7 +8356,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7536,7 +8397,7 @@
                   "description": "Sets the maintenance policy for a cluster.",
                   "parameters": {
                     "clusterId": {
-                      "description": "The name of the cluster to update.",
+                      "description": "Required. The name of the cluster to update.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7550,7 +8411,7 @@
                       "repeated": false
                     },
                     "projectId": {
-                      "description": "The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).",
+                      "description": "Required. The Google Developers Console [project ID or project\nnumber](https://support.google.com/cloud/answer/6158840).",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7564,7 +8425,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.",
+                      "description": "Required. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7633,7 +8494,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7702,7 +8563,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7771,7 +8632,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7840,7 +8701,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7914,7 +8775,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the operation resides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\noperation resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7955,7 +8816,7 @@
                   "description": "Gets the specified operation.",
                   "parameters": {
                     "name": {
-                      "description": "The name (project, location, operation id) of the operation to get.\nSpecified in the format 'projects/*/locations/*/operations/*'.",
+                      "description": "The name (project, location, operation id) of the operation to get.\nSpecified in the format `projects/*/locations/*/operations/*`.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -7997,7 +8858,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) in which the cluster\nresides.\nThis field has been deprecated and replaced by the name field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) in which the\ncluster resides. This field has been deprecated and replaced by the name\nfield.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -8036,7 +8897,7 @@
                   "description": "Lists all operations in a project in a specific zone or all zones.",
                   "parameters": {
                     "parent": {
-                      "description": "The parent (project and location) where the operations will be listed.\nSpecified in the format 'projects/*/locations/*'.\nLocation \"-\" matches all zones and all regions.",
+                      "description": "The parent (project and location) where the operations will be listed.\nSpecified in the format `projects/*/locations/*`.\nLocation \"-\" matches all zones and all regions.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -8064,7 +8925,7 @@
                       "repeated": false
                     },
                     "zone": {
-                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) to return operations for, or `-` for\nall zones. This field has been deprecated and replaced by the parent field.",
+                      "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) to return\noperations for, or `-` for all zones. This field has been deprecated and\nreplaced by the parent field.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -8106,7 +8967,7 @@
               "description": "Returns configuration info about the Google Kubernetes Engine service.",
               "parameters": {
                 "name": {
-                  "description": "The name (project and location) of the server config to get,\nspecified in the format 'projects/*/locations/*'.",
+                  "description": "The name (project and location) of the server config to get,\nspecified in the format `projects/*/locations/*`.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -8134,7 +8995,7 @@
                   "repeated": false
                 },
                 "zone": {
-                  "description": "Deprecated. The name of the Google Compute Engine\n[zone](/compute/docs/zones#available) to return operations for.\nThis field has been deprecated and replaced by the name field.",
+                  "description": "Deprecated. The name of the Google Compute Engine\n[zone](https://cloud.google.com/compute/docs/zones#available) to return\noperations for. This field has been deprecated and replaced by the name\nfield.",
                   "default": null,
                   "location": "path",
                   "required": true,

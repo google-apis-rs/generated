@@ -1,4 +1,11 @@
 #![doc = "# Resources and Methods\n    * [activity](resources/activity/struct.ActivityActions.html)\n      * [*query*](resources/activity/struct.QueryRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and add to the activity record of files in your Google Drive\n\n`https://www.googleapis.com/auth/drive.activity`"]
+    pub const DRIVE_ACTIVITY: &str = "https://www.googleapis.com/auth/drive.activity";
+    #[doc = "View the activity record of files in your Google Drive\n\n`https://www.googleapis.com/auth/drive.activity.readonly`"]
+    pub const DRIVE_ACTIVITY_READONLY: &str =
+        "https://www.googleapis.com/auth/drive.activity.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -411,6 +418,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Assignment {
+        #[doc = "The user to whom the comment was assigned."]
+        #[serde(
+            rename = "assignedUser",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub assigned_user: ::std::option::Option<crate::schemas::User>,
         #[doc = "The sub-type of this event."]
         #[serde(
             rename = "subtype",
@@ -2236,14 +2250,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ancestor_name: ::std::option::Option<String>,
-        #[doc = "Details on how to consolidate related actions that make up the activity. If\nnot set, then related actions will not be consolidated."]
+        #[doc = "Details on how to consolidate related actions that make up the activity. If\nnot set, then related actions are not consolidated."]
         #[serde(
             rename = "consolidationStrategy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub consolidation_strategy: ::std::option::Option<crate::schemas::ConsolidationStrategy>,
-        #[doc = "The filtering for items returned from this query request. The format of the\nfilter string is a sequence of expressions, joined by an optional \"AND\",\nwhere each expression is of the form \"field operator value\".\n\nSupported fields:\n\n* <tt>time</tt>: Uses numerical operators on date values either in\n  terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.\n  Examples:\n  \n  * <tt>time > 1452409200000 AND time <= 1492812924310</tt>\n  * <tt>time >= \"2016-01-10T01:02:03-05:00\"</tt>\n* <tt>detail.action_detail_case</tt>: Uses the \"has\" operator (:) and\n  either a singular value or a list of allowed action types enclosed in\n  parentheses.\n  Examples:\n  \n  * <tt>detail.action_detail_case: RENAME</tt>\n  * <tt>detail.action_detail_case:(CREATE UPLOAD)</tt>\n  * <tt>-detail.action_detail_case:MOVE</tt>"]
+        #[doc = "The filtering for items returned from this query request. The format of the\nfilter string is a sequence of expressions, joined by an optional \"AND\",\nwhere each expression is of the form \"field operator value\".\n\nSupported fields:\n\n* <tt>time</tt>: Uses numerical operators on date values either in\n  terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.\n  Examples:\n  \n  * <tt>time > 1452409200000 AND time <= 1492812924310</tt>\n  * <tt>time >= \"2016-01-10T01:02:03-05:00\"</tt>\n* <tt>detail.action_detail_case</tt>: Uses the \"has\" operator (:) and\n  either a singular value or a list of allowed action types enclosed in\n  parentheses.\n  Examples:\n  \n  * <tt>detail.action_detail_case: RENAME</tt>\n  * <tt>detail.action_detail_case:(CREATE EDIT)</tt>\n  * <tt>-detail.action_detail_case:MOVE</tt>"]
         #[serde(
             rename = "filter",
             default,
@@ -2257,14 +2271,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub item_name: ::std::option::Option<String>,
-        #[doc = "The requested number of activity to return. If not set, a default value\nwill be used."]
+        #[doc = "The miminum number of activities desired in the response; the server will\nattempt to return at least this quanitity. The server may also return fewer\nactivities if it has a partial response ready before the request times out.\nIf not set, a default value is used."]
         #[serde(
             rename = "pageSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_size: ::std::option::Option<i32>,
-        #[doc = "The next_page_token value returned from a previous QueryDriveActivity\nrequest, if any."]
+        #[doc = "The token identifying which page of results to return. Set this to the\nnext_page_token value returned from a previous query to obtain the\nfollowing page of results. If not set, the first page of results will be\nreturned."]
         #[serde(
             rename = "pageToken",
             default,
@@ -3403,7 +3417,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3411,8 +3425,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3431,7 +3457,7 @@ pub mod resources {
     pub mod activity {
         pub mod params {}
         pub struct ActivityActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ActivityActions<'a> {
@@ -3464,7 +3490,7 @@ pub mod resources {
         #[doc = "Created via [ActivityActions::query()](struct.ActivityActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::QueryDriveActivityRequest,
             access_token: Option<String>,
@@ -3587,7 +3613,10 @@ pub mod resources {
                 output.push_str("v2/activity:query");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3626,9 +3655,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3670,7 +3697,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

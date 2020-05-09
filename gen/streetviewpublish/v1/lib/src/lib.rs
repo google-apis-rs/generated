@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [photo](resources/photo/struct.PhotoActions.html)\n      * [*create*](resources/photo/struct.CreateRequestBuilder.html), [*delete*](resources/photo/struct.DeleteRequestBuilder.html), [*get*](resources/photo/struct.GetRequestBuilder.html), [*startUpload*](resources/photo/struct.StartUploadRequestBuilder.html), [*update*](resources/photo/struct.UpdateRequestBuilder.html)\n    * [photos](resources/photos/struct.PhotosActions.html)\n      * [*batchDelete*](resources/photos/struct.BatchDeleteRequestBuilder.html), [*batchGet*](resources/photos/struct.BatchGetRequestBuilder.html), [*batchUpdate*](resources/photos/struct.BatchUpdateRequestBuilder.html), [*list*](resources/photos/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Publish and manage your 360 photos on Google Street View\n\n`https://www.googleapis.com/auth/streetviewpublish`"]
+    pub const STREETVIEWPUBLISH: &str = "https://www.googleapis.com/auth/streetviewpublish";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -330,7 +334,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub download_url: ::std::option::Option<String>,
-        #[doc = "Output only. Status in Google Maps, whether this photo was published or\nrejected."]
+        #[doc = "Output only. Status in Google Maps, whether this photo was published or\nrejected. Not currently populated."]
         #[serde(
             rename = "mapsPublishStatus",
             default,
@@ -1001,7 +1005,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1009,8 +1013,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1106,7 +1122,7 @@ pub mod resources {
             }
         }
         pub struct PhotoActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PhotoActions<'a> {
@@ -1172,7 +1188,7 @@ pub mod resources {
                     view: None,
                 }
             }
-            #[doc = "Creates an upload session to start uploading photo bytes.  The method uses\nthe upload URL of the returned\nUploadRef to upload the bytes for\nthe Photo.\n\nIn addition to the photo requirements shown in\nhttps://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,\nthe photo must meet the following requirements:\n\n* Photo Sphere XMP metadata must be included in the photo medadata. See\n  https://developers.google.com/streetview/spherical-metadata for the\n  required fields.\n* The pixel size of the photo must meet the size requirements listed in\n  https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604, and\n  the photo must be a full 360 horizontally.\n\nAfter the upload completes, the method uses\nUploadRef with\nCreatePhoto\nto create the Photo object entry."]
+            #[doc = "Creates an upload session to start uploading photo bytes.  The method uses\nthe upload URL of the returned\nUploadRef to upload the bytes for\nthe Photo.\n\nIn addition to the photo requirements shown in\nhttps://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604,\nthe photo must meet the following requirements:\n\n* Photo Sphere XMP metadata must be included in the photo metadata. See\n  https://developers.google.com/streetview/spherical-metadata for the\n  required fields.\n* The pixel size of the photo must meet the size requirements listed in\n  https://support.google.com/maps/answer/7012050?hl=en&ref_topic=6275604, and\n  the photo must be a full 360 horizontally.\n\nAfter the upload completes, the method uses\nUploadRef with\nCreatePhoto\nto create the Photo object entry."]
             pub fn start_upload(
                 &self,
                 request: crate::schemas::Empty,
@@ -1223,7 +1239,7 @@ pub mod resources {
         #[doc = "Created via [PhotoActions::create()](struct.PhotoActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Photo,
             access_token: Option<String>,
@@ -1344,7 +1360,10 @@ pub mod resources {
                 output.push_str("v1/photo");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1368,7 +1387,7 @@ pub mod resources {
         #[doc = "Created via [PhotoActions::delete()](struct.PhotoActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             photo_id: String,
             access_token: Option<String>,
@@ -1495,7 +1514,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1519,7 +1541,7 @@ pub mod resources {
         #[doc = "Created via [PhotoActions::get()](struct.PhotoActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             photo_id: String,
             language_code: Option<String>,
@@ -1658,7 +1680,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("languageCode", &self.language_code)]);
                 let req = req.query(&[("view", &self.view)]);
@@ -1684,7 +1709,7 @@ pub mod resources {
         #[doc = "Created via [PhotoActions::start_upload()](struct.PhotoActions.html#method.start_upload)"]
         #[derive(Debug, Clone)]
         pub struct StartUploadRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Empty,
             access_token: Option<String>,
@@ -1807,7 +1832,10 @@ pub mod resources {
                 output.push_str("v1/photo:startUpload");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1831,7 +1859,7 @@ pub mod resources {
         #[doc = "Created via [PhotoActions::update()](struct.PhotoActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Photo,
             id: String,
@@ -1966,7 +1994,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("updateMask", &self.update_mask)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2131,7 +2162,7 @@ pub mod resources {
             }
         }
         pub struct PhotosActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PhotosActions<'a> {
@@ -2230,7 +2261,7 @@ pub mod resources {
         #[doc = "Created via [PhotosActions::batch_delete()](struct.PhotosActions.html#method.batch_delete)"]
         #[derive(Debug, Clone)]
         pub struct BatchDeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchDeletePhotosRequest,
             access_token: Option<String>,
@@ -2353,7 +2384,10 @@ pub mod resources {
                 output.push_str("v1/photos:batchDelete");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2377,7 +2411,7 @@ pub mod resources {
         #[doc = "Created via [PhotosActions::batch_get()](struct.PhotosActions.html#method.batch_get)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language_code: Option<String>,
             photo_ids: Option<Vec<String>>,
@@ -2516,7 +2550,10 @@ pub mod resources {
                 output.push_str("v1/photos:batchGet");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("languageCode", &self.language_code)]);
                 let req = req.query(&[("photoIds", &self.photo_ids)]);
@@ -2543,7 +2580,7 @@ pub mod resources {
         #[doc = "Created via [PhotosActions::batch_update()](struct.PhotosActions.html#method.batch_update)"]
         #[derive(Debug, Clone)]
         pub struct BatchUpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchUpdatePhotosRequest,
             access_token: Option<String>,
@@ -2666,7 +2703,10 @@ pub mod resources {
                 output.push_str("v1/photos:batchUpdate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2690,7 +2730,7 @@ pub mod resources {
         #[doc = "Created via [PhotosActions::list()](struct.PhotosActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             filter: Option<String>,
             language_code: Option<String>,
@@ -2939,7 +2979,10 @@ pub mod resources {
                 output.push_str("v1/photos");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("languageCode", &self.language_code)]);
@@ -2994,9 +3037,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3038,7 +3079,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

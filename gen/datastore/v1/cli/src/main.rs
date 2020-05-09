@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("datastore1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190804")
+            .version("0.1.0-20200405")
             .about("Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.\n")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -79,7 +79,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut indexes1 = SubCommand::with_name("indexes")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates the specified index.\nA newly created index\'s initial state is `CREATING`. On completion of the\nreturned google.longrunning.Operation, the state will be `READY`.\nIf the index already exists, the call will return an `ALREADY_EXISTS`\nstatus.\n\nDuring index creation, the process could result in an error, in which\ncase the index will move to the `ERROR` state. The process can be recovered\nby fixing the data that caused the error, removing the index with\ndelete, then\nre-creating the index with create.\n\nIndexes with a single property cannot be created.");
+            indexes1 = indexes1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes an existing index.\nAn index can only be deleted if it is in a `READY` or `ERROR` state. On\nsuccessful execution of the request, the index will be in a `DELETING`\nstate. And on completion of the\nreturned google.longrunning.Operation, the index will be removed.\n\nDuring index deletion, the process could result in an error, in which\ncase the index will move to the `ERROR` state. The process can be recovered\nby fixing the data that caused the error, followed by calling\ndelete again.");
+            indexes1 = indexes1.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get").about("Gets an index.");
             indexes1 = indexes1.subcommand(mcmd);

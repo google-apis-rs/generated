@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("securitycenter1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
-            .about("Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.")
+            .version("0.1.0-20200410")
+            .about("Security Command Center API provides access to temporal views of assets and findings within an organization.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -65,6 +65,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd =
                 SubCommand::with_name("update_security_marks").about("Updates security marks.");
             assets1 = assets1.subcommand(mcmd);
+        }
+        let mut notification_configs1 = SubCommand::with_name("notification_configs")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a notification config.");
+            notification_configs1 = notification_configs1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a notification config.");
+            notification_configs1 = notification_configs1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a notification config.");
+            notification_configs1 = notification_configs1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists notification configs.");
+            notification_configs1 = notification_configs1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("\nUpdates a notification config.");
+            notification_configs1 = notification_configs1.subcommand(mcmd);
         }
         let mut operations1 = SubCommand::with_name("operations")
             .setting(AppSettings::ColoredHelp)
@@ -128,11 +151,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             findings2 = findings2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("group").about("Filters an organization or source\'s findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1/organizations/123/sources/-/findings");
+            let mcmd = SubCommand::with_name("group").about("Filters an organization or source\'s findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1/organizations/{organization_id}/sources/-/findings");
             findings2 = findings2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists an organization or source\'s findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1/organizations/123/sources/-/findings");
+            let mcmd = SubCommand::with_name("list").about("Lists an organization or source\'s findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1/organizations/{organization_id}/sources/-/findings");
             findings2 = findings2.subcommand(mcmd);
         }
         {
@@ -151,6 +174,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         sources1 = sources1.subcommand(findings2);
         organizations0 = organizations0.subcommand(sources1);
         organizations0 = organizations0.subcommand(operations1);
+        organizations0 = organizations0.subcommand(notification_configs1);
         organizations0 = organizations0.subcommand(assets1);
         app = app.subcommand(organizations0);
 

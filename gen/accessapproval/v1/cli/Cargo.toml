@@ -1,0 +1,23 @@
+[package]
+name = "google-accessapproval1-cli"
+version = "0.1.0-20200501"
+authors = ["Sebastian Thiel <byronimo@gmail.com>"]
+edition = "2018"
+# for now, let's not even accidentally publish these
+publish = false
+
+[[bin]]
+name = "accessapproval1"
+path = "src/main.rs"
+
+[dependencies]
+yup-oauth2 = "^3.1"
+google_api_auth = { git = "https://github.com/google-apis-rs/generator", features = ["with-yup-oauth2"] }
+clap = "^2.33"
+serde_json = "1.0.40"
+dirs = "2.0"
+google_cli_shared = { git = "https://github.com/google-apis-rs/generator", version = "0.1.0" }
+default-boxed = "0.1.6"
+[dependencies.google-accessapproval1]
+path = "../lib"
+version = "0.1.0-20200501"

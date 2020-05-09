@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("homegraph1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190918")
+            .version("0.1.0-20200504")
             .about("")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,26 +37,26 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete");
         {
-            let mcmd = SubCommand::with_name("delete").about("Unlinks an agent user from Google. As a result, all data related to this\nuser will be deleted.\n\nHere is how the agent user is created in Google:\n\n1.  When a user opens their Google Home App, they can begin linking a 3p\n    partner.\n2.  User is guided through the OAuth process.\n3.  After entering the 3p credentials, Google gets the 3p OAuth token and\n    uses it to make a Sync call to the 3p partner and gets back all of the\n    user\'s data, including `agent_user_id` and devices.\n4.  Google creates the agent user and stores a mapping from the\n    `agent_user_id` -> Google ID mapping. Google also\n    stores all of the user\'s devices under that Google ID.\n\nThe mapping from `agent_user_id` to Google ID is many to many, since one\nGoogle user can have multiple 3p accounts, and multiple Google users can\nmap to one `agent_user_id` (e.g., a husband and wife share one Nest account\nusername/password).\n\nThe third-party user\'s identity is passed in as `agent_user_id`.\nThe agent is identified by the JWT signed by the partner\'s service account.\n\nNote: Special characters (except \"/\") in `agent_user_id` must be\nURL-encoded.");
+            let mcmd = SubCommand::with_name("delete").about("Unlinks the given third-party user from your smart home Action.\nAll data related to this user will be deleted.\n\nFor more details on how users link their accounts, see\n[fulfillment and\nauthentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).\n\nThe third-party user\'s identity is passed in via the `agent_user_id`\n(see DeleteAgentUserRequest).\nThis request must be authorized using service account credentials from your\nActions console project.");
             agent_users0 = agent_users0.subcommand(mcmd);
         }
         let mut devices0 = SubCommand::with_name("devices")
             .setting(AppSettings::ColoredHelp)
             .about("methods: query, report_state_and_notification, request_sync and sync");
         {
-            let mcmd = SubCommand::with_name("query").about("Gets the device states for the devices in QueryRequest.\nThe third-party user\'s identity is passed in as `agent_user_id`. The agent\nis identified by the JWT signed by the third-party partner\'s service\naccount.");
+            let mcmd = SubCommand::with_name("query").about("Gets the current states in Home Graph for the given set of the third-party\nuser\'s devices.\n\nThe third-party user\'s identity is passed in via the `agent_user_id`\n(see QueryRequest).\nThis request must be authorized using service account credentials from your\nActions console project.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("report_state_and_notification").about("Reports device state and optionally sends device notifications. Called by\nan agent when the device state of a third-party changes or the agent wants\nto send a notification about the device. See\n[Implement Report State](/actions/smarthome/report-state) for more\ninformation.\nThis method updates a predefined set of states for a device, which all\ndevices have according to their prescribed traits (for example, a light\nwill have the [OnOff](/actions/smarthome/traits/onoff) trait that reports\nthe state `on` as a boolean value).\nA new state may not be created and an INVALID_ARGUMENT code will be thrown\nif so. It also optionally takes in a list of Notifications that may be\ncreated, which are associated to this state change.\n\nThe third-party user\'s identity is passed in as `agent_user_id`.\nThe agent is identified by the JWT signed by the partner\'s service account.");
+            let mcmd = SubCommand::with_name("report_state_and_notification").about("Reports device state and optionally sends device notifications.\nCalled by your smart home Action when the state of a third-party device\nchanges or you need to send a notification about the device.\nSee [Implement Report\nState](https://developers.google.com/assistant/smarthome/develop/report-state)\nfor more information.\n\nThis method updates the device state according to its declared\n[traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits).\nPublishing a new state value outside of these traits will result in an\n`INVALID_ARGUMENT` error response.\n\nThe third-party user\'s identity is passed in via the `agent_user_id`\n(see ReportStateAndNotificationRequest).\nThis request must be authorized using service account credentials from your\nActions console project.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("request_sync").about("Requests a `SYNC` call from Google to a 3p partner\'s home control agent for\na user.\n\n\nThe third-party user\'s identity is passed in as `agent_user_id`\n(see RequestSyncDevicesRequest) and forwarded back to the agent.\nThe agent is identified by the API key or JWT signed by the partner\'s\nservice account.");
+            let mcmd = SubCommand::with_name("request_sync").about("Requests Google to send an `action.devices.SYNC`\n[intent](https://developers.google.com/assistant/smarthome/reference/intent/sync)\nto your smart home Action to update device metadata for the given user.\n\n\nThe third-party user\'s identity is passed via the `agent_user_id`\n(see RequestSyncDevicesRequest).\nThis request must be authorized using service account credentials from your\nActions console project.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("sync").about("Gets all the devices associated with the given third-party user.\nThe third-party user\'s identity is passed in as `agent_user_id`. The agent\nis identified by the JWT signed by the third-party partner\'s service\naccount.");
+            let mcmd = SubCommand::with_name("sync").about("Gets all the devices associated with the given third-party user.\n\nThe third-party user\'s identity is passed in via the `agent_user_id`\n(see SyncRequest).\nThis request must be authorized using service account credentials from your\nActions console project.");
             devices0 = devices0.subcommand(mcmd);
         }
         app = app.subcommand(devices0);

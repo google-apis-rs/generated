@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("licensing1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20170213")
-            .about("Views and manages licenses for your domain.")
+            .version("0.1.0-20190916")
+            .about("Licensing API to view and manage licenses for your domain")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -37,35 +37,35 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: delete, get, insert, list_for_product, list_for_product_and_sku, patch and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Revoke License.");
+            let mcmd = SubCommand::with_name("delete").about("Revoke a license.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get")
-                .about("Get license assignment of a particular product and sku for a user");
+                .about("Get a specific user\'s license by product SKU.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Assign License.");
+            let mcmd = SubCommand::with_name("insert").about("Assign a license.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list_for_product")
-                .about("List license assignments for given product of the customer.");
+                .about("List all users assigned licenses for a specific product SKU.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list_for_product_and_sku")
-                .about("List license assignments for given product and sku of the customer.");
+                .about("List all users assigned licenses for a specific product SKU.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Assign License. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Reassign a user\'s product SKU with a different SKU in the same product. This method supports patch semantics.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Assign License.");
+            let mcmd = SubCommand::with_name("update")
+                .about("Reassign a user\'s product SKU with a different SKU in the same product.");
             license_assignments0 = license_assignments0.subcommand(mcmd);
         }
         app = app.subcommand(license_assignments0);

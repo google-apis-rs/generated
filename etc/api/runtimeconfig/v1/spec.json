@@ -7,7 +7,7 @@
   "canonicalName": "Cloud RuntimeConfig",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190916",
+  "revision": "20200504",
   "title": "Cloud Runtime Configuration API",
   "description": "The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.",
   "ownerDomain": "google.com",
@@ -419,7 +419,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -459,7 +459,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

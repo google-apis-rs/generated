@@ -7,7 +7,7 @@
   "canonicalName": "Hangouts Chat",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190913",
+  "revision": "20200502",
   "title": "Hangouts Chat API",
   "description": "Enables bots to fetch information and perform actions in Hangouts Chat.",
   "ownerDomain": "google.com",
@@ -591,7 +591,7 @@
       "enumDescriptions": [],
       "properties": {
         "actionMethodName": {
-          "description": "Apps Script function to invoke when the containing element is\nclicked/activated.",
+          "description": "The method name is used to identify which part of the form triggered the\nform submission. This information is echoed back to the bot as part of\nthe card click event. The same method name can be used for several\nelements that trigger a common behavior if desired.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -625,7 +625,7 @@
       "enumDescriptions": [],
       "properties": {
         "aspectRatio": {
-          "description": "The aspect ratio of this image (width/height).",
+          "description": "The aspect ratio of this image (width/height). This field allows clients\nto reserve the right height for the image while waiting for it to load.\nIt's not meant to override the native aspect ratio of the image.\nIf unset, the server fills it by prefetching the image.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -1246,8 +1246,28 @@
           "additionalProperties": null,
           "items": null
         },
+        "singleUserBotDm": {
+          "description": "Whether the space is a DM between a bot and a single human.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "threaded": {
+          "description": "Whether the messages are threaded in this space.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "type": {
-          "description": "Output only. The type of a space.",
+          "description": "Output only. The type of a space.\nThis is deprecated. Use `single_user_bot_dm` instead.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1257,7 +1277,7 @@
           ],
           "enumDescriptions": [
             "",
-            "A chat space where memberships are free to change. Messages in rooms are\nthreaded.",
+            "Multi-user spaces such as rooms and DMs between humans.",
             "1:1 Direct Message between a human and a bot, where all messages are\nflat."
           ],
           "properties": {},
@@ -1348,6 +1368,16 @@
       "properties": {
         "displayName": {
           "description": "The user's display name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "domainId": {
+          "description": "Obfuscated domain information.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1710,7 +1740,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Required. The field paths to be updated.\n\nCurrently supported field paths: \"text\", \"cards\".",
+                  "description": "Required. The field paths to be updated, comma separated if there are\nmultiple.\n\nCurrently supported field paths:\n* text\n* cards",
                   "default": null,
                   "location": "query",
                   "required": false,

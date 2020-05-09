@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudidentity1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190911")
+            .version("0.1.0-20200505")
             .about("API for provisioning and managing identity resources.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,52 +35,64 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut groups0 = SubCommand::with_name("groups")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, lookup, patch and search");
+            .about("methods: create, delete, get, list, lookup, patch and search");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a Group.");
+            let mcmd = SubCommand::with_name("create").about("Creates a `Group`.");
             groups0 = groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a Group.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a `Group`.");
             groups0 = groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves a Group.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves a `Group`.");
             groups0 = groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("lookup").about("Looks up [resource\nname](https://cloud.google.com/apis/design/resource_names) of a Group by\nits EntityKey.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the `Group`s under a customer or namespace.");
             groups0 = groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a Group.");
+            let mcmd = SubCommand::with_name("lookup").about("Looks up the [resource\nname](https://cloud.google.com/apis/design/resource_names) of a `Group` by\nits `EntityKey`.");
             groups0 = groups0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search").about("Searches for Groups.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a `Group`.");
+            groups0 = groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("search")
+                .about("Searches for `Group`s matching a specified query.");
             groups0 = groups0.subcommand(mcmd);
         }
         let mut memberships1 = SubCommand::with_name("memberships")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and lookup");
+            .about("methods: create, delete, get, list, lookup and modify_membership_roles");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a Membership.");
+            let mcmd = SubCommand::with_name("create").about("Creates a `Membership`.");
             memberships1 = memberships1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a Membership.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a `Membership`.");
             memberships1 = memberships1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieves a Membership.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves a `Membership`.");
             memberships1 = memberships1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List Memberships within a Group.");
+            let mcmd =
+                SubCommand::with_name("list").about("Lists the `Membership`s within a `Group`.");
             memberships1 = memberships1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("lookup").about("Looks up [resource\nname](https://cloud.google.com/apis/design/resource_names) of a Membership\nwithin a Group by member\'s EntityKey.");
+            let mcmd = SubCommand::with_name("lookup").about("Looks up the [resource\nname](https://cloud.google.com/apis/design/resource_names) of a\n`Membership` by its `EntityKey`.");
+            memberships1 = memberships1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("modify_membership_roles")
+                .about("Modifies the `MembershipRole`s of a `Membership`.");
             memberships1 = memberships1.subcommand(mcmd);
         }
         groups0 = groups0.subcommand(memberships1);

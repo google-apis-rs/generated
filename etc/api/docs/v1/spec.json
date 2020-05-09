@@ -7,7 +7,7 @@
   "canonicalName": "Docs",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190912",
+  "revision": "20200429",
   "title": "Google Docs API",
   "description": "Reads and writes Google Docs documents.",
   "ownerDomain": "google.com",
@@ -583,6 +583,156 @@
       "additionalProperties": null,
       "items": null
     },
+    "CreateFooterRequest": {
+      "id": "CreateFooterRequest",
+      "description": "Creates a Footer. The new footer is applied to\nthe SectionStyle at the location of the\nSectionBreak if specificed, otherwise\nit is applied to the DocumentStyle.\n\nIf a footer of the specified type already exists, a 400 bad request error\nis returned.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "sectionBreakLocation": {
+          "description": "The location of the SectionBreak\nimmediately preceding the section whose SectionStyle this footer should belong to. If this is\nunset or refers to the first section break in the document, the footer\napplies to the document style.",
+          "$ref": "Location"
+        },
+        "type": {
+          "description": "The type of footer to create.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "HEADER_FOOTER_TYPE_UNSPECIFIED",
+            "DEFAULT"
+          ],
+          "enumDescriptions": [
+            "The header/footer type is unspecified.",
+            "A default header/footer."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CreateFooterResponse": {
+      "id": "CreateFooterResponse",
+      "description": "The result of creating a footer.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "footerId": {
+          "description": "The ID of the created footer.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CreateFootnoteRequest": {
+      "id": "CreateFootnoteRequest",
+      "description": "Creates a Footnote segment\nand inserts a new FootnoteReference\nto it at the given location.\n\nThe new Footnote segment will contain a\nspace followed by a newline character.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "endOfSegmentLocation": {
+          "description": "Inserts the footnote reference at the end of the document body.\n\nFootnote references cannot be inserted inside a header, footer or\nfootnote. Since footnote references can only be inserted in the body, the\nsegment ID field\nmust be empty.",
+          "$ref": "EndOfSegmentLocation"
+        },
+        "location": {
+          "description": "Inserts the footnote reference at a specific index in the document.\n\nThe footnote reference must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nFootnote references cannot be inserted inside an equation,\nheader, footer or footnote. Since footnote references can only be\ninserted in the body, the segment ID field must be empty.",
+          "$ref": "Location"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CreateFootnoteResponse": {
+      "id": "CreateFootnoteResponse",
+      "description": "The result of creating a footnote.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "footnoteId": {
+          "description": "The ID of the created footnote.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CreateHeaderRequest": {
+      "id": "CreateHeaderRequest",
+      "description": "Creates a Header. The new header is applied to\nthe SectionStyle at the location of the\nSectionBreak if specificed, otherwise\nit is applied to the DocumentStyle.\n\nIf a header of the specified type already exists, a 400 bad request error\nis returned.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "sectionBreakLocation": {
+          "description": "The location of the SectionBreak\nwhich begins the section this header should belong to. If\n`section_break_location' is unset or if it refers to the first section\nbreak in the document body, the header applies to the\nDocumentStyle",
+          "$ref": "Location"
+        },
+        "type": {
+          "description": "The type of header to create.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "HEADER_FOOTER_TYPE_UNSPECIFIED",
+            "DEFAULT"
+          ],
+          "enumDescriptions": [
+            "The header/footer type is unspecified.",
+            "A default header/footer."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CreateHeaderResponse": {
+      "id": "CreateHeaderResponse",
+      "description": "The result of creating a header.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "headerId": {
+          "description": "The ID of the created header.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "CreateNamedRangeRequest": {
       "id": "CreateNamedRangeRequest",
       "description": "Creates a NamedRange referencing the given\nrange.",
@@ -826,6 +976,50 @@
         "range": {
           "description": "The range of content to delete.\n\nDeleting text that crosses a paragraph boundary may result in changes\nto paragraph styles, lists, positioned objects and bookmarks as the two\nparagraphs are merged.\n\nAttempting to delete certain ranges can result in an invalid document\nstructure in which case a 400 bad request error is returned.\n\nSome examples of invalid delete requests include:\n\n* Deleting one code unit of a surrogate pair.\n* Deleting the last newline character of a Body, Header,\n  Footer, Footnote, TableCell or TableOfContents.\n* Deleting the start or end of a Table,\n  TableOfContents or Equation without deleting the entire element.\n* Deleting the newline character before a\n  Table,\n  TableOfContents or\n  SectionBreak without deleting the\n  element.\n* Deleting individual rows or cells of a table. Deleting the content within\n  a table cell is allowed.",
           "$ref": "Range"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DeleteFooterRequest": {
+      "id": "DeleteFooterRequest",
+      "description": "Deletes a Footer from the document.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "footerId": {
+          "description": "The id of the footer to delete. If this footer is defined on\nDocumentStyle, the reference to\nthis footer is removed, resulting in no footer of that type for\nthe first section of the document. If this footer is defined on a\nSectionStyle, the reference to this\nfooter is removed and the footer of that type is now continued from\nthe previous section.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DeleteHeaderRequest": {
+      "id": "DeleteHeaderRequest",
+      "description": "Deletes a Header from the document.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "headerId": {
+          "description": "The id of the header to delete. If this header is defined on\nDocumentStyle, the reference to\nthis header is removed, resulting in no header of that type for\nthe first section of the document. If this header is defined on a\nSectionStyle, the reference to this\nheader is removed and the header of that type is now continued from\nthe previous section.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1238,6 +1432,14 @@
           "description": "The bottom page margin.\n\nUpdating the bottom page margin on the document style clears the bottom\npage margin on all section styles.",
           "$ref": "Dimension"
         },
+        "marginFooter": {
+          "description": "The amount of space between the bottom of the page and the contents of the\nfooter.",
+          "$ref": "Dimension"
+        },
+        "marginHeader": {
+          "description": "The amount of space between the top of the page and the contents of the\nheader.",
+          "$ref": "Dimension"
+        },
         "marginLeft": {
           "description": "The left page margin.\n\nUpdating the left page margin on the document style clears the left page\nmargin on all section styles. It may also cause columns to resize in all\nsections.",
           "$ref": "Dimension"
@@ -1264,8 +1466,18 @@
           "description": "The size of a page in the document.",
           "$ref": "Size"
         },
+        "useCustomHeaderFooterMargins": {
+          "description": "Indicates whether DocumentStyle\nmargin_header,\nSectionStyle\nmargin_header and\nDocumentStyle\nmargin_footer,\nSectionStyle\nmargin_footer are\nrespected. When false, the default values in the Docs editor for header and\nfooter margin are used.\n\nThis property is read-only.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "useEvenPageHeaderFooter": {
-          "description": "Indicates whether to use the even page header / footer IDs for the even\npages.\n\nThis property is read-only.",
+          "description": "Indicates whether to use the even page header / footer IDs for the even\npages.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1275,7 +1487,7 @@
           "items": null
         },
         "useFirstPageHeaderFooter": {
-          "description": "Indicates whether to use the first page header / footer IDs for the first\npage.\n\nThis property is read-only.",
+          "description": "Indicates whether to use the first page header / footer IDs for the first\npage.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1370,6 +1582,26 @@
           "additionalProperties": null,
           "items": null
         },
+        "marginFooterSuggested": {
+          "description": "Indicates if there was a suggested change to margin_footer.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "marginHeaderSuggested": {
+          "description": "Indicates if there was a suggested change to margin_header.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "marginLeftSuggested": {
           "description": "Indicates if there was a suggested change to margin_left.",
           "type": "boolean",
@@ -1413,6 +1645,16 @@
         "pageSizeSuggestionState": {
           "description": "A mask that indicates which of the fields in size have been changed in this\nsuggestion.",
           "$ref": "SizeSuggestionState"
+        },
+        "useCustomHeaderFooterMarginsSuggested": {
+          "description": "Indicates if there was a suggested change to\nuse_custom_header_footer_margins.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         },
         "useEvenPageHeaderFooterSuggested": {
           "description": "Indicates if there was a suggested change to use_even_page_header_footer.",
@@ -2469,6 +2711,44 @@
         "location": {
           "description": "Inserts the page break at a specific index in the document.\n\nThe page break must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nPage breaks cannot be inserted inside a table, equation, footnote, header\nor footer. Since page breaks can only be inserted inside the body, the\nsegment ID field must be\nempty.",
           "$ref": "Location"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "InsertSectionBreakRequest": {
+      "id": "InsertSectionBreakRequest",
+      "description": "Inserts a section break at the given location.\n\nA newline character will be inserted before the section break.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "endOfSegmentLocation": {
+          "description": "Inserts a newline and a section break at the end of the document body.\n\nSection breaks cannot be inserted inside a footnote, header or footer.\nBecause section breaks can only be inserted inside the body, the segment\nID field must be\nempty.",
+          "$ref": "EndOfSegmentLocation"
+        },
+        "location": {
+          "description": "Inserts a newline and a section break at a specific index in the\ndocument.\n\nThe section break must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nSection breaks cannot be inserted inside a table, equation, footnote,\nheader, or footer. Since section breaks can only be inserted inside the\nbody, the segment ID field\nmust be empty.",
+          "$ref": "Location"
+        },
+        "sectionType": {
+          "description": "The type of section to insert.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "SECTION_TYPE_UNSPECIFIED",
+            "CONTINUOUS",
+            "NEXT_PAGE"
+          ],
+          "enumDescriptions": [
+            "The section type is unspecified.",
+            "The section starts immediately after the last paragraph of the previous\nsection.",
+            "The section starts on the next page."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -4294,6 +4574,48 @@
       "additionalProperties": null,
       "items": null
     },
+    "ReplaceNamedRangeContentRequest": {
+      "id": "ReplaceNamedRangeContentRequest",
+      "description": "Replaces the contents of the specified\nNamedRange or\nNamedRanges with the given replacement\ncontent.\n\nNote that an individual NamedRange may\nconsist of multiple discontinuous\nranges. In this case, only the\ncontent in the first range will be replaced. The other ranges and their\ncontent will be deleted.\n\nIn cases where replacing or deleting any ranges would result in an invalid\ndocument structure, a 400 bad request error is returned.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "namedRangeId": {
+          "description": "The ID of the named range whose content will be replaced.\n\nIf there is no named range with the given ID a 400 bad request error is\nreturned.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "namedRangeName": {
+          "description": "The name of the NamedRanges whose\ncontent will be replaced.\n\nIf there are multiple named ranges with the given name, then\nthe content of each one will be replaced. If there are no named ranges\nwith the given name, then the request will be a no-op.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "text": {
+          "description": "Replaces the content of the specified named range(s) with the given text.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Request": {
       "id": "Request",
       "description": "A single update to apply to a document.",
@@ -4302,6 +4624,18 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "createFooter": {
+          "description": "Creates a footer.",
+          "$ref": "CreateFooterRequest"
+        },
+        "createFootnote": {
+          "description": "Creates a footnote.",
+          "$ref": "CreateFootnoteRequest"
+        },
+        "createHeader": {
+          "description": "Creates a header.",
+          "$ref": "CreateHeaderRequest"
+        },
         "createNamedRange": {
           "description": "Creates a named range.",
           "$ref": "CreateNamedRangeRequest"
@@ -4313,6 +4647,14 @@
         "deleteContentRange": {
           "description": "Deletes content from the document.",
           "$ref": "DeleteContentRangeRequest"
+        },
+        "deleteFooter": {
+          "description": "Deletes a footer from the document.",
+          "$ref": "DeleteFooterRequest"
+        },
+        "deleteHeader": {
+          "description": "Deletes a header from the document.",
+          "$ref": "DeleteHeaderRequest"
         },
         "deleteNamedRange": {
           "description": "Deletes a named range.",
@@ -4342,6 +4684,10 @@
           "description": "Inserts a page break at the specified location.",
           "$ref": "InsertPageBreakRequest"
         },
+        "insertSectionBreak": {
+          "description": "Inserts a section break at the specified location.",
+          "$ref": "InsertSectionBreakRequest"
+        },
         "insertTable": {
           "description": "Inserts a table at the specified location.",
           "$ref": "InsertTableRequest"
@@ -4370,6 +4716,10 @@
           "description": "Replaces an image in the document.",
           "$ref": "ReplaceImageRequest"
         },
+        "replaceNamedRangeContent": {
+          "description": "Replaces the content in a named range.",
+          "$ref": "ReplaceNamedRangeContentRequest"
+        },
         "unmergeTableCells": {
           "description": "Unmerges cells in a table.",
           "$ref": "UnmergeTableCellsRequest"
@@ -4381,6 +4731,10 @@
         "updateParagraphStyle": {
           "description": "Updates the paragraph style at the specified range.",
           "$ref": "UpdateParagraphStyleRequest"
+        },
+        "updateSectionStyle": {
+          "description": "Updates the section style of the specified range.",
+          "$ref": "UpdateSectionStyleRequest"
         },
         "updateTableCellStyle": {
           "description": "Updates the style of table cells.",
@@ -4410,6 +4764,18 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "createFooter": {
+          "description": "The result of creating a footer.",
+          "$ref": "CreateFooterResponse"
+        },
+        "createFootnote": {
+          "description": "The result of creating a footnote.",
+          "$ref": "CreateFootnoteResponse"
+        },
+        "createHeader": {
+          "description": "The result of creating a header.",
+          "$ref": "CreateHeaderResponse"
+        },
         "createNamedRange": {
           "description": "The result of creating a named range.",
           "$ref": "CreateNamedRangeResponse"
@@ -4537,7 +4903,7 @@
           "$ref": "Dimension"
         },
         "width": {
-          "description": "The width of the column.",
+          "description": "Output only. The width of the column.",
           "$ref": "Dimension"
         }
       },
@@ -4553,7 +4919,7 @@
       "enumDescriptions": [],
       "properties": {
         "columnProperties": {
-          "description": "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor.",
+          "description": "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor.\nA section can be updated to have no more than three columns.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property will result in a 400 bad request error.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4565,7 +4931,7 @@
           }
         },
         "columnSeparatorStyle": {
-          "description": "The style of column separators.\n\nThis style can be set even when there is one column in the section.",
+          "description": "The style of column separators.\n\nThis style can be set even when there is one column in the section.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
           "type": "string",
           "format": null,
           "enum": [
@@ -4583,7 +4949,7 @@
           "items": null
         },
         "contentDirection": {
-          "description": "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT.",
+          "description": "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
           "type": "string",
           "format": null,
           "enum": [
@@ -4596,6 +4962,128 @@
             "The content goes from left to right.",
             "The content goes from right to left."
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "defaultFooterId": {
+          "description": "The ID of the default footer. If unset, the value inherits from the\nprevious SectionBreak's SectionStyle.\nIf the value is unset in the first SectionBreak, it inherits from\nDocumentStyle's default_footer_id.\n\nThis property is read-only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "defaultHeaderId": {
+          "description": "The ID of the default header. If unset, the value inherits from the\nprevious SectionBreak's SectionStyle.\nIf the value is unset in the first SectionBreak, it inherits from\nDocumentStyle's default_header_id.\n\nThis property is read-only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "evenPageFooterId": {
+          "description": "The ID of the footer used only for even pages. If the value of\nDocumentStyle's use_even_page_header_footer is true,\nthis value is used for the footers on even pages in the section. If it\nis false, the footers on even pages uses the default_footer_id. If unset, the value\ninherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\neven_page_footer_id.\n\nThis property is read-only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "evenPageHeaderId": {
+          "description": "The ID of the header used only for even pages. If the value of\nDocumentStyle's use_even_page_header_footer is true,\nthis value is used for the headers on even pages in the section. If it\nis false, the headers on even pages uses the default_header_id. If unset, the value\ninherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\neven_page_header_id.\n\nThis property is read-only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "firstPageFooterId": {
+          "description": "The ID of the footer used only for the first page of the section.\nIf use_first_page_header_footer is true,\nthis value is used for the footer on the first page of the section. If\nit is false, the footer on the first page of the section uses the\ndefault_footer_id.\nIf unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\nfirst_page_footer_id.\n\nThis property is read-only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "firstPageHeaderId": {
+          "description": "The ID of the header used only for the first page of the section.\nIf use_first_page_header_footer is true,\nthis value is used for the header on the first page of the section. If\nit is false, the header on the first page of the section uses the\ndefault_header_id.\nIf unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\nfirst_page_header_id.\n\nThis property is read-only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "marginBottom": {
+          "description": "The bottom page margin of the section. If unset, uses margin_bottom from DocumentStyle.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "$ref": "Dimension"
+        },
+        "marginFooter": {
+          "description": "The footer margin of the section. If unset, uses margin_footer from DocumentStyle. If\nupdated, use_custom_header_footer_margins is set\nto true on DocumentStyle. The value of use_custom_header_footer_margins on\nDocumentStyle indicates if a footer margin is being respected for this\nsection\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "$ref": "Dimension"
+        },
+        "marginHeader": {
+          "description": "The header margin of the section. If unset, uses margin_header from DocumentStyle. If\nupdated, use_custom_header_footer_margins is set\nto true on DocumentStyle. The value of use_custom_header_footer_margins on\nDocumentStyle indicates if a header margin is being respected for this\nsection.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "$ref": "Dimension"
+        },
+        "marginLeft": {
+          "description": "The left page margin of the section. If unset, uses margin_left from DocumentStyle.\nUpdating left margin causes columns in this section to resize. Since\nthe margin affects column width, it is applied before column properties.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "$ref": "Dimension"
+        },
+        "marginRight": {
+          "description": "The right page margin of the section. If unset, uses margin_right from DocumentStyle.\nUpdating right margin causes columns in this section to resize. Since\nthe margin affects column width, it is applied before column properties.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "$ref": "Dimension"
+        },
+        "marginTop": {
+          "description": "The top page margin of the section. If unset, uses margin_top from DocumentStyle.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "$ref": "Dimension"
+        },
+        "pageNumberStart": {
+          "description": "The page number from which to start counting the number of pages for this\nsection. If unset, page numbering continues from the previous section.\nIf the value is unset in the first\nSectionBreak, refer to DocumentStyle's\npage_number_start.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sectionType": {
+          "description": "Output only. The type of section.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "SECTION_TYPE_UNSPECIFIED",
+            "CONTINUOUS",
+            "NEXT_PAGE"
+          ],
+          "enumDescriptions": [
+            "The section type is unspecified.",
+            "The section starts immediately after the last paragraph of the previous\nsection.",
+            "The section starts on the next page."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "useFirstPageHeaderFooter": {
+          "description": "Indicates whether to use the first page header / footer IDs for the first\npage of the section. If unset, it inherits from DocumentStyle's\nuse_first_page_header_footer for the\nfirst section. If the value is unset for subsequent sectors, it should be\ninterpreted as false.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -6208,6 +6696,36 @@
         "range": {
           "description": "The range overlapping the paragraphs to style.",
           "$ref": "Range"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "UpdateSectionStyleRequest": {
+      "id": "UpdateSectionStyleRequest",
+      "description": "Updates the SectionStyle.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "fields": {
+          "description": "The fields that should be updated.\n\nAt least one field must be specified. The root `section_style` is\nimplied and must not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the left margin, set `fields` to `\"margin_left\"`.",
+          "type": "string",
+          "format": "google-fieldmask",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "range": {
+          "description": "The range overlapping the sections to style.\n\nBecause section breaks can only be inserted inside the body, the segment\nID field must be empty.",
+          "$ref": "Range"
+        },
+        "sectionStyle": {
+          "description": "The styles to  be set on the section.\n\nCertain section style changes may cause other changes in order to mirror\nthe behavior of the Docs editor. See the documentation of SectionStyle for more information.",
+          "$ref": "SectionStyle"
         }
       },
       "additionalProperties": null,

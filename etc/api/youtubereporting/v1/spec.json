@@ -7,7 +7,7 @@
   "canonicalName": "YouTube Reporting",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190918",
+  "revision": "20200505",
   "title": "YouTube Reporting API",
   "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
   "ownerDomain": "google.com",
@@ -1731,7 +1731,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

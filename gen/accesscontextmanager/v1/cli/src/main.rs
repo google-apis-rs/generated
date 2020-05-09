@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("accesscontextmanager1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
+            .version("0.1.0-20200419")
             .about("An API for setting attribute based access control to requests to GCP services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -78,7 +78,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut access_levels1 = SubCommand::with_name("access_levels")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and patch");
+            .about("methods: create, delete, get, list, patch and replace_all");
         {
             let mcmd = SubCommand::with_name("create").about("Create an Access Level. The longrunning\noperation from this RPC will have a successful status once the Access\nLevel has\npropagated to long-lasting storage. Access Levels containing\nerrors will result in an error response for the first error encountered.");
             access_levels1 = access_levels1.subcommand(mcmd);
@@ -100,20 +100,28 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("patch").about("Update an Access Level. The longrunning\noperation from this RPC will have a successful status once the changes to\nthe Access Level have propagated\nto long-lasting storage. Access Levels containing\nerrors will result in an error response for the first error encountered.");
             access_levels1 = access_levels1.subcommand(mcmd);
         }
+        {
+            let mcmd = SubCommand::with_name("replace_all").about("Replace all existing Access Levels in an Access\nPolicy with\nthe Access Levels provided. This\nis done atomically. The longrunning operation from this RPC will have a\nsuccessful status once all replacements have propagated to long-lasting\nstorage. Replacements containing errors will result in an error response\nfor the first error encountered.  Replacement will be cancelled on error,\nexisting Access Levels will not be\naffected. Operation.response field will contain\nReplaceAccessLevelsResponse. Removing Access Levels contained in existing\nService Perimeters will result in\nerror.");
+            access_levels1 = access_levels1.subcommand(mcmd);
+        }
         let mut service_perimeters1 = SubCommand::with_name("service_perimeters")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and patch");
+            .about("methods: commit, create, delete, get, list, patch and replace_all");
         {
-            let mcmd = SubCommand::with_name("create").about("Create an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered.");
+            let mcmd = SubCommand::with_name("commit").about("Commit the dry-run spec for all the Service Perimeters in an\nAccess Policy.\nA commit operation on a Service Perimeter involves copying its `spec` field\nto that Service Perimeter\'s `status` field. Only Service Perimeters with\n`use_explicit_dry_run_spec` field set to true are affected by a commit\noperation. The longrunning operation from this RPC will have a successful\nstatus once the dry-run specs for all the Service Perimeters have been\ncommitted. If a commit fails, it will cause the longrunning operation to\nreturn an error response and the entire commit operation will be cancelled.\nWhen successful, Operation.response field will contain\nCommitServicePerimetersResponse. The `dry_run` and the `spec` fields will\nbe cleared after a successful commit operation.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete an Service Perimeter by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Service Perimeter has been\nremoved from long-lasting storage.");
+            let mcmd = SubCommand::with_name("create").about("Create a Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered.");
+            service_perimeters1 = service_perimeters1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Delete a Service Perimeter by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Service Perimeter has been\nremoved from long-lasting storage.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
             let mcmd =
-                SubCommand::with_name("get").about("Get an Service Perimeter by resource\nname.");
+                SubCommand::with_name("get").about("Get a Service Perimeter by resource\nname.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
@@ -122,7 +130,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Update an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nchanges to the Service Perimeter have\npropagated to long-lasting storage. Service Perimeter containing\nerrors will result in an error response for the first error encountered.");
+            let mcmd = SubCommand::with_name("patch").about("Update a Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nchanges to the Service Perimeter have\npropagated to long-lasting storage. Service Perimeter containing\nerrors will result in an error response for the first error encountered.");
+            service_perimeters1 = service_perimeters1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("replace_all").about("Replace all existing Service Perimeters in an\nAccess Policy\nwith the Service Perimeters provided.\nThis is done atomically. The longrunning operation from this\nRPC will have a successful status once all replacements have propagated to\nlong-lasting storage. Replacements containing errors will result in an\nerror response for the first error encountered. Replacement will be\ncancelled on error, existing Service Perimeters will not be\naffected. Operation.response field will contain\nReplaceServicePerimetersResponse.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         access_policies0 = access_policies0.subcommand(service_perimeters1);

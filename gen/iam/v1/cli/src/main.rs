@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("iam1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
+            .version("0.1.0-20200319")
             .about("Manages identity and access control for Google Cloud Platform resources, including the creation of service accounts, which you can use to authenticate to Google and make API calls.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,7 +37,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: lint_policy and query_auditable_services");
         {
-            let mcmd = SubCommand::with_name("lint_policy").about("Lints a Cloud IAM policy object or its sub fields. Currently supports\ngoogle.iam.v1.Policy, google.iam.v1.Binding and\ngoogle.iam.v1.Binding.condition.\n\nEach lint operation consists of multiple lint validation units.\nValidation units have the following properties:\n\n- Each unit inspects the input object in regard to a particular\n  linting aspect and issues a google.iam.admin.v1.LintResult\n  disclosing the result.\n- Domain of discourse of each unit can be either\n  google.iam.v1.Policy, google.iam.v1.Binding, or\n  google.iam.v1.Binding.condition depending on the purpose of the\n  validation.\n- A unit may require additional data (like the list of all possible\n  enumerable values of a particular attribute used in the policy instance)\n  which shall be provided by the caller. Refer to the comments of\n  google.iam.admin.v1.LintPolicyRequest.context for more details.\n\nThe set of applicable validation units is determined by the Cloud IAM\nserver and is not configurable.\n\nRegardless of any lint issues or their severities, successful calls to\n`lintPolicy` return an HTTP 200 OK status code.");
+            let mcmd = SubCommand::with_name("lint_policy").about("Lints a Cloud IAM policy object or its sub fields. Currently supports\ngoogle.iam.v1.Binding.condition.\n\nEach lint operation consists of multiple lint validation units.\nEach unit inspects the input object in regard to a particular linting\naspect and issues a google.iam.admin.v1.LintResult disclosing the\nresult.\n\nThe set of applicable validation units is determined by the Cloud IAM\nserver and is not configurable.\n\nRegardless of any lint issues or their severities, successful calls to\n`lintPolicy` return an HTTP 200 OK status code.");
             iam_policies0 = iam_policies0.subcommand(mcmd);
         }
         {

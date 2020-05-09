@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dialogflow2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190914")
+            .version("0.1.0-20200503")
             .about("Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,12 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: agent_method, delete_agent and get_agent");
-        {
-            let mcmd =
-                SubCommand::with_name("agent_method").about("Creates/updates the specified agent.");
-            projects0 = projects0.subcommand(mcmd);
-        }
+            .about("methods: delete_agent, get_agent and set_agent");
         {
             let mcmd = SubCommand::with_name("delete_agent").about("Deletes the specified agent.");
             projects0 = projects0.subcommand(mcmd);
@@ -49,11 +44,24 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("get_agent").about("Retrieves the specified agent.");
             projects0 = projects0.subcommand(mcmd);
         }
+        {
+            let mcmd =
+                SubCommand::with_name("set_agent").about("Creates/updates the specified agent.");
+            projects0 = projects0.subcommand(mcmd);
+        }
         let mut agent1 = SubCommand::with_name("agent")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: export, import, restore, search and train");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: export, get_fulfillment, get_validation_result, import, restore, search, train and update_fulfillment");
         {
             let mcmd = SubCommand::with_name("export").about("Exports the specified agent to a ZIP file.\n\nOperation <response: ExportAgentResponse>");
+            agent1 = agent1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_fulfillment").about("Retrieves the fulfillment.");
+            agent1 = agent1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_validation_result").about("Gets agent validation result. Agent validation is performed during\ntraining time and is updated automatically when training is completed.");
             agent1 = agent1.subcommand(mcmd);
         }
         {
@@ -72,6 +80,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("train").about(
                 "Trains the specified agent.\n\nOperation <response: google.protobuf.Empty>",
             );
+            agent1 = agent1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("update_fulfillment").about("Updates the fulfillment.");
             agent1 = agent1.subcommand(mcmd);
         }
         let mut locations1 = SubCommand::with_name("locations")
@@ -124,6 +137,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("patch").about("Updates the specified entity type.");
             entity_types2 = entity_types2.subcommand(mcmd);
+        }
+        let mut environments2 = SubCommand::with_name("environments")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Returns the list of all non-draft environments of the specified agent.");
+            environments2 = environments2.subcommand(mcmd);
         }
         let mut intents2 = SubCommand::with_name("intents")
             .setting(AppSettings::ColoredHelp)
@@ -194,13 +215,16 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             entities3 = entities3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("batch_delete").about("Deletes entities in the specified entity type.\n\nOperation <response: google.protobuf.Empty>");
+            let mcmd = SubCommand::with_name("batch_delete").about("Deletes entities in the specified entity type.\n\n\nOperation <response: google.protobuf.Empty>");
             entities3 = entities3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("batch_update").about("Updates or creates multiple entities in the specified entity type. This\nmethod does not affect entities in the entity type that aren\'t explicitly\nspecified in the request.\n\nOperation <response: google.protobuf.Empty>");
+            let mcmd = SubCommand::with_name("batch_update").about("Updates or creates multiple entities in the specified entity type. This\nmethod does not affect entities in the entity type that aren\'t explicitly\nspecified in the request.\n\n\nOperation <response: google.protobuf.Empty>");
             entities3 = entities3.subcommand(mcmd);
         }
+        let mut users3 = SubCommand::with_name("users")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: sessions");
         let mut contexts3 = SubCommand::with_name("contexts")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
@@ -248,12 +272,76 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("patch").about("Updates the specified session entity type.\n\nThis method doesn\'t work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.");
             entity_types3 = entity_types3.subcommand(mcmd);
         }
+        let mut sessions4 = SubCommand::with_name("sessions")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: delete_contexts and detect_intent");
+        {
+            let mcmd = SubCommand::with_name("delete_contexts")
+                .about("Deletes all active contexts in the specified session.");
+            sessions4 = sessions4.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("detect_intent").about("Processes a natural language query and returns structured, actionable data\nas a result. This method is not idempotent, because it may cause contexts\nand session entity types to be updated, which in turn might affect\nresults of future queries.");
+            sessions4 = sessions4.subcommand(mcmd);
+        }
+        let mut contexts5 = SubCommand::with_name("contexts")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a context.\n\nIf the specified context already exists, overrides the context.");
+            contexts5 = contexts5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified context.");
+            contexts5 = contexts5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Retrieves the specified context.");
+            contexts5 = contexts5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Returns the list of all contexts in the specified session.");
+            contexts5 = contexts5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified context.");
+            contexts5 = contexts5.subcommand(mcmd);
+        }
+        let mut entity_types5 = SubCommand::with_name("entity_types")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a session entity type.\n\nIf the specified session entity type already exists, overrides the session\nentity type.\n\nThis method doesn\'t work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.");
+            entity_types5 = entity_types5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified session entity type.\n\nThis method doesn\'t work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.");
+            entity_types5 = entity_types5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Retrieves the specified session entity type.\n\nThis method doesn\'t work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.");
+            entity_types5 = entity_types5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Returns the list of all session entity types in the specified session.\n\nThis method doesn\'t work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.");
+            entity_types5 = entity_types5.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified session entity type.\n\nThis method doesn\'t work with Google Assistant integration.\nContact Dialogflow support if you need to use session entities\nwith Google Assistant integration.");
+            entity_types5 = entity_types5.subcommand(mcmd);
+        }
+        sessions4 = sessions4.subcommand(entity_types5);
+        sessions4 = sessions4.subcommand(contexts5);
+        users3 = users3.subcommand(sessions4);
         sessions2 = sessions2.subcommand(entity_types3);
         sessions2 = sessions2.subcommand(contexts3);
+        environments2 = environments2.subcommand(users3);
         entity_types2 = entity_types2.subcommand(entities3);
         locations1 = locations1.subcommand(operations2);
         agent1 = agent1.subcommand(sessions2);
         agent1 = agent1.subcommand(intents2);
+        agent1 = agent1.subcommand(environments2);
         agent1 = agent1.subcommand(entity_types2);
         projects0 = projects0.subcommand(operations1);
         projects0 = projects0.subcommand(locations1);

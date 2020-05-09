@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [lineitems](resources/lineitems/struct.LineitemsActions.html)\n      * [*downloadlineitems*](resources/lineitems/struct.DownloadlineitemsRequestBuilder.html), [*uploadlineitems*](resources/lineitems/struct.UploadlineitemsRequestBuilder.html)\n    * [queries](resources/queries/struct.QueriesActions.html)\n      * [*createquery*](resources/queries/struct.CreatequeryRequestBuilder.html), [*deletequery*](resources/queries/struct.DeletequeryRequestBuilder.html), [*getquery*](resources/queries/struct.GetqueryRequestBuilder.html), [*listqueries*](resources/queries/struct.ListqueriesRequestBuilder.html), [*runquery*](resources/queries/struct.RunqueryRequestBuilder.html)\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*listreports*](resources/reports/struct.ListreportsRequestBuilder.html)\n    * [sdf](resources/sdf/struct.SdfActions.html)\n      * [*download*](resources/sdf/struct.DownloadRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your reports in DoubleClick Bid Manager\n\n`https://www.googleapis.com/auth/doubleclickbidmanager`"]
+    pub const DOUBLECLICKBIDMANAGER: &str = "https://www.googleapis.com/auth/doubleclickbidmanager";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -320,7 +324,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter_type: ::std::option::Option<crate::schemas::DownloadRequestFilterType>,
-        #[doc = "SDF Version (column names, types, order) in which the entities will be returned. Default to 3.1."]
+        #[doc = "SDF Version (column names, types, order) in which the entities will be returned. Default to 5."]
         #[serde(
             rename = "version",
             default,
@@ -614,14 +618,12 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum FilterPairType {
         FilterActiveViewExpectedViewability,
-        FilterActivityId,
         FilterAdPosition,
         FilterAdvertiser,
         FilterAdvertiserCurrency,
         FilterAdvertiserTimezone,
         FilterAge,
         FilterAuthorizedSellerState,
-        FilterBrandsafeChannelId,
         FilterBrowser,
         FilterBudgetSegmentDescription,
         FilterCampaignDailyFrequency,
@@ -662,9 +664,6 @@ pub mod schemas {
         FilterLineItemLifetimeFrequency,
         FilterLineItemType,
         FilterMediaPlan,
-        FilterMobileDeviceMake,
-        FilterMobileDeviceMakeModel,
-        FilterMobileDeviceType,
         FilterMobileGeo,
         FilterMonth,
         FilterMraidSupport,
@@ -679,10 +678,8 @@ pub mod schemas {
         FilterPageLayout,
         FilterPartner,
         FilterPartnerCurrency,
-        FilterPublicInventory,
         FilterQuarter,
         FilterRegion,
-        FilterRegularChannelId,
         FilterSiteId,
         FilterSiteLanguage,
         FilterSkippableSupport,
@@ -725,21 +722,17 @@ pub mod schemas {
         FilterUserListFirstParty,
         FilterUserListThirdParty,
         FilterVideoAdPositionInStream,
-        FilterVideoCompanionSize,
-        FilterVideoCompanionType,
         FilterVideoCreativeDuration,
         FilterVideoCreativeDurationSkippable,
         FilterVideoDurationSeconds,
         FilterVideoDurationSecondsRange,
         FilterVideoFormatSupport,
-        FilterVideoInventoryType,
         FilterVideoPlayerSize,
         FilterVideoRatingTier,
         FilterVideoSkippableSupport,
         FilterVideoVpaidSupport,
         FilterWeek,
         FilterYear,
-        FilterYoutubeVertical,
         FilterZipCode,
     }
     impl FilterPairType {
@@ -748,14 +741,12 @@ pub mod schemas {
                 FilterPairType::FilterActiveViewExpectedViewability => {
                     "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
                 }
-                FilterPairType::FilterActivityId => "FILTER_ACTIVITY_ID",
                 FilterPairType::FilterAdPosition => "FILTER_AD_POSITION",
                 FilterPairType::FilterAdvertiser => "FILTER_ADVERTISER",
                 FilterPairType::FilterAdvertiserCurrency => "FILTER_ADVERTISER_CURRENCY",
                 FilterPairType::FilterAdvertiserTimezone => "FILTER_ADVERTISER_TIMEZONE",
                 FilterPairType::FilterAge => "FILTER_AGE",
                 FilterPairType::FilterAuthorizedSellerState => "FILTER_AUTHORIZED_SELLER_STATE",
-                FilterPairType::FilterBrandsafeChannelId => "FILTER_BRANDSAFE_CHANNEL_ID",
                 FilterPairType::FilterBrowser => "FILTER_BROWSER",
                 FilterPairType::FilterBudgetSegmentDescription => {
                     "FILTER_BUDGET_SEGMENT_DESCRIPTION"
@@ -802,9 +793,6 @@ pub mod schemas {
                 }
                 FilterPairType::FilterLineItemType => "FILTER_LINE_ITEM_TYPE",
                 FilterPairType::FilterMediaPlan => "FILTER_MEDIA_PLAN",
-                FilterPairType::FilterMobileDeviceMake => "FILTER_MOBILE_DEVICE_MAKE",
-                FilterPairType::FilterMobileDeviceMakeModel => "FILTER_MOBILE_DEVICE_MAKE_MODEL",
-                FilterPairType::FilterMobileDeviceType => "FILTER_MOBILE_DEVICE_TYPE",
                 FilterPairType::FilterMobileGeo => "FILTER_MOBILE_GEO",
                 FilterPairType::FilterMonth => "FILTER_MONTH",
                 FilterPairType::FilterMraidSupport => "FILTER_MRAID_SUPPORT",
@@ -819,10 +807,8 @@ pub mod schemas {
                 FilterPairType::FilterPageLayout => "FILTER_PAGE_LAYOUT",
                 FilterPairType::FilterPartner => "FILTER_PARTNER",
                 FilterPairType::FilterPartnerCurrency => "FILTER_PARTNER_CURRENCY",
-                FilterPairType::FilterPublicInventory => "FILTER_PUBLIC_INVENTORY",
                 FilterPairType::FilterQuarter => "FILTER_QUARTER",
                 FilterPairType::FilterRegion => "FILTER_REGION",
-                FilterPairType::FilterRegularChannelId => "FILTER_REGULAR_CHANNEL_ID",
                 FilterPairType::FilterSiteId => "FILTER_SITE_ID",
                 FilterPairType::FilterSiteLanguage => "FILTER_SITE_LANGUAGE",
                 FilterPairType::FilterSkippableSupport => "FILTER_SKIPPABLE_SUPPORT",
@@ -875,8 +861,6 @@ pub mod schemas {
                 FilterPairType::FilterVideoAdPositionInStream => {
                     "FILTER_VIDEO_AD_POSITION_IN_STREAM"
                 }
-                FilterPairType::FilterVideoCompanionSize => "FILTER_VIDEO_COMPANION_SIZE",
-                FilterPairType::FilterVideoCompanionType => "FILTER_VIDEO_COMPANION_TYPE",
                 FilterPairType::FilterVideoCreativeDuration => "FILTER_VIDEO_CREATIVE_DURATION",
                 FilterPairType::FilterVideoCreativeDurationSkippable => {
                     "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE"
@@ -886,14 +870,12 @@ pub mod schemas {
                     "FILTER_VIDEO_DURATION_SECONDS_RANGE"
                 }
                 FilterPairType::FilterVideoFormatSupport => "FILTER_VIDEO_FORMAT_SUPPORT",
-                FilterPairType::FilterVideoInventoryType => "FILTER_VIDEO_INVENTORY_TYPE",
                 FilterPairType::FilterVideoPlayerSize => "FILTER_VIDEO_PLAYER_SIZE",
                 FilterPairType::FilterVideoRatingTier => "FILTER_VIDEO_RATING_TIER",
                 FilterPairType::FilterVideoSkippableSupport => "FILTER_VIDEO_SKIPPABLE_SUPPORT",
                 FilterPairType::FilterVideoVpaidSupport => "FILTER_VIDEO_VPAID_SUPPORT",
                 FilterPairType::FilterWeek => "FILTER_WEEK",
                 FilterPairType::FilterYear => "FILTER_YEAR",
-                FilterPairType::FilterYoutubeVertical => "FILTER_YOUTUBE_VERTICAL",
                 FilterPairType::FilterZipCode => "FILTER_ZIP_CODE",
             }
         }
@@ -910,14 +892,12 @@ pub mod schemas {
                 "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY" => {
                     FilterPairType::FilterActiveViewExpectedViewability
                 }
-                "FILTER_ACTIVITY_ID" => FilterPairType::FilterActivityId,
                 "FILTER_AD_POSITION" => FilterPairType::FilterAdPosition,
                 "FILTER_ADVERTISER" => FilterPairType::FilterAdvertiser,
                 "FILTER_ADVERTISER_CURRENCY" => FilterPairType::FilterAdvertiserCurrency,
                 "FILTER_ADVERTISER_TIMEZONE" => FilterPairType::FilterAdvertiserTimezone,
                 "FILTER_AGE" => FilterPairType::FilterAge,
                 "FILTER_AUTHORIZED_SELLER_STATE" => FilterPairType::FilterAuthorizedSellerState,
-                "FILTER_BRANDSAFE_CHANNEL_ID" => FilterPairType::FilterBrandsafeChannelId,
                 "FILTER_BROWSER" => FilterPairType::FilterBrowser,
                 "FILTER_BUDGET_SEGMENT_DESCRIPTION" => {
                     FilterPairType::FilterBudgetSegmentDescription
@@ -964,9 +944,6 @@ pub mod schemas {
                 }
                 "FILTER_LINE_ITEM_TYPE" => FilterPairType::FilterLineItemType,
                 "FILTER_MEDIA_PLAN" => FilterPairType::FilterMediaPlan,
-                "FILTER_MOBILE_DEVICE_MAKE" => FilterPairType::FilterMobileDeviceMake,
-                "FILTER_MOBILE_DEVICE_MAKE_MODEL" => FilterPairType::FilterMobileDeviceMakeModel,
-                "FILTER_MOBILE_DEVICE_TYPE" => FilterPairType::FilterMobileDeviceType,
                 "FILTER_MOBILE_GEO" => FilterPairType::FilterMobileGeo,
                 "FILTER_MONTH" => FilterPairType::FilterMonth,
                 "FILTER_MRAID_SUPPORT" => FilterPairType::FilterMraidSupport,
@@ -981,10 +958,8 @@ pub mod schemas {
                 "FILTER_PAGE_LAYOUT" => FilterPairType::FilterPageLayout,
                 "FILTER_PARTNER" => FilterPairType::FilterPartner,
                 "FILTER_PARTNER_CURRENCY" => FilterPairType::FilterPartnerCurrency,
-                "FILTER_PUBLIC_INVENTORY" => FilterPairType::FilterPublicInventory,
                 "FILTER_QUARTER" => FilterPairType::FilterQuarter,
                 "FILTER_REGION" => FilterPairType::FilterRegion,
-                "FILTER_REGULAR_CHANNEL_ID" => FilterPairType::FilterRegularChannelId,
                 "FILTER_SITE_ID" => FilterPairType::FilterSiteId,
                 "FILTER_SITE_LANGUAGE" => FilterPairType::FilterSiteLanguage,
                 "FILTER_SKIPPABLE_SUPPORT" => FilterPairType::FilterSkippableSupport,
@@ -1037,8 +1012,6 @@ pub mod schemas {
                 "FILTER_VIDEO_AD_POSITION_IN_STREAM" => {
                     FilterPairType::FilterVideoAdPositionInStream
                 }
-                "FILTER_VIDEO_COMPANION_SIZE" => FilterPairType::FilterVideoCompanionSize,
-                "FILTER_VIDEO_COMPANION_TYPE" => FilterPairType::FilterVideoCompanionType,
                 "FILTER_VIDEO_CREATIVE_DURATION" => FilterPairType::FilterVideoCreativeDuration,
                 "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE" => {
                     FilterPairType::FilterVideoCreativeDurationSkippable
@@ -1048,14 +1021,12 @@ pub mod schemas {
                     FilterPairType::FilterVideoDurationSecondsRange
                 }
                 "FILTER_VIDEO_FORMAT_SUPPORT" => FilterPairType::FilterVideoFormatSupport,
-                "FILTER_VIDEO_INVENTORY_TYPE" => FilterPairType::FilterVideoInventoryType,
                 "FILTER_VIDEO_PLAYER_SIZE" => FilterPairType::FilterVideoPlayerSize,
                 "FILTER_VIDEO_RATING_TIER" => FilterPairType::FilterVideoRatingTier,
                 "FILTER_VIDEO_SKIPPABLE_SUPPORT" => FilterPairType::FilterVideoSkippableSupport,
                 "FILTER_VIDEO_VPAID_SUPPORT" => FilterPairType::FilterVideoVpaidSupport,
                 "FILTER_WEEK" => FilterPairType::FilterWeek,
                 "FILTER_YEAR" => FilterPairType::FilterYear,
-                "FILTER_YOUTUBE_VERTICAL" => FilterPairType::FilterYoutubeVertical,
                 "FILTER_ZIP_CODE" => FilterPairType::FilterZipCode,
                 _ => return Err(()),
             })
@@ -1084,14 +1055,12 @@ pub mod schemas {
                 "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY" => {
                     FilterPairType::FilterActiveViewExpectedViewability
                 }
-                "FILTER_ACTIVITY_ID" => FilterPairType::FilterActivityId,
                 "FILTER_AD_POSITION" => FilterPairType::FilterAdPosition,
                 "FILTER_ADVERTISER" => FilterPairType::FilterAdvertiser,
                 "FILTER_ADVERTISER_CURRENCY" => FilterPairType::FilterAdvertiserCurrency,
                 "FILTER_ADVERTISER_TIMEZONE" => FilterPairType::FilterAdvertiserTimezone,
                 "FILTER_AGE" => FilterPairType::FilterAge,
                 "FILTER_AUTHORIZED_SELLER_STATE" => FilterPairType::FilterAuthorizedSellerState,
-                "FILTER_BRANDSAFE_CHANNEL_ID" => FilterPairType::FilterBrandsafeChannelId,
                 "FILTER_BROWSER" => FilterPairType::FilterBrowser,
                 "FILTER_BUDGET_SEGMENT_DESCRIPTION" => {
                     FilterPairType::FilterBudgetSegmentDescription
@@ -1138,9 +1107,6 @@ pub mod schemas {
                 }
                 "FILTER_LINE_ITEM_TYPE" => FilterPairType::FilterLineItemType,
                 "FILTER_MEDIA_PLAN" => FilterPairType::FilterMediaPlan,
-                "FILTER_MOBILE_DEVICE_MAKE" => FilterPairType::FilterMobileDeviceMake,
-                "FILTER_MOBILE_DEVICE_MAKE_MODEL" => FilterPairType::FilterMobileDeviceMakeModel,
-                "FILTER_MOBILE_DEVICE_TYPE" => FilterPairType::FilterMobileDeviceType,
                 "FILTER_MOBILE_GEO" => FilterPairType::FilterMobileGeo,
                 "FILTER_MONTH" => FilterPairType::FilterMonth,
                 "FILTER_MRAID_SUPPORT" => FilterPairType::FilterMraidSupport,
@@ -1155,10 +1121,8 @@ pub mod schemas {
                 "FILTER_PAGE_LAYOUT" => FilterPairType::FilterPageLayout,
                 "FILTER_PARTNER" => FilterPairType::FilterPartner,
                 "FILTER_PARTNER_CURRENCY" => FilterPairType::FilterPartnerCurrency,
-                "FILTER_PUBLIC_INVENTORY" => FilterPairType::FilterPublicInventory,
                 "FILTER_QUARTER" => FilterPairType::FilterQuarter,
                 "FILTER_REGION" => FilterPairType::FilterRegion,
-                "FILTER_REGULAR_CHANNEL_ID" => FilterPairType::FilterRegularChannelId,
                 "FILTER_SITE_ID" => FilterPairType::FilterSiteId,
                 "FILTER_SITE_LANGUAGE" => FilterPairType::FilterSiteLanguage,
                 "FILTER_SKIPPABLE_SUPPORT" => FilterPairType::FilterSkippableSupport,
@@ -1211,8 +1175,6 @@ pub mod schemas {
                 "FILTER_VIDEO_AD_POSITION_IN_STREAM" => {
                     FilterPairType::FilterVideoAdPositionInStream
                 }
-                "FILTER_VIDEO_COMPANION_SIZE" => FilterPairType::FilterVideoCompanionSize,
-                "FILTER_VIDEO_COMPANION_TYPE" => FilterPairType::FilterVideoCompanionType,
                 "FILTER_VIDEO_CREATIVE_DURATION" => FilterPairType::FilterVideoCreativeDuration,
                 "FILTER_VIDEO_CREATIVE_DURATION_SKIPPABLE" => {
                     FilterPairType::FilterVideoCreativeDurationSkippable
@@ -1222,14 +1184,12 @@ pub mod schemas {
                     FilterPairType::FilterVideoDurationSecondsRange
                 }
                 "FILTER_VIDEO_FORMAT_SUPPORT" => FilterPairType::FilterVideoFormatSupport,
-                "FILTER_VIDEO_INVENTORY_TYPE" => FilterPairType::FilterVideoInventoryType,
                 "FILTER_VIDEO_PLAYER_SIZE" => FilterPairType::FilterVideoPlayerSize,
                 "FILTER_VIDEO_RATING_TIER" => FilterPairType::FilterVideoRatingTier,
                 "FILTER_VIDEO_SKIPPABLE_SUPPORT" => FilterPairType::FilterVideoSkippableSupport,
                 "FILTER_VIDEO_VPAID_SUPPORT" => FilterPairType::FilterVideoVpaidSupport,
                 "FILTER_WEEK" => FilterPairType::FilterWeek,
                 "FILTER_YEAR" => FilterPairType::FilterYear,
-                "FILTER_YOUTUBE_VERTICAL" => FilterPairType::FilterYoutubeVertical,
                 "FILTER_ZIP_CODE" => FilterPairType::FilterZipCode,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -1388,14 +1348,12 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ParametersGroupBysItems {
         FilterActiveViewExpectedViewability,
-        FilterActivityId,
         FilterAdPosition,
         FilterAdvertiser,
         FilterAdvertiserCurrency,
         FilterAdvertiserTimezone,
         FilterAge,
         FilterAuthorizedSellerState,
-        FilterBrandsafeChannelId,
         FilterBrowser,
         FilterBudgetSegmentDescription,
         FilterCampaignDailyFrequency,
@@ -1436,9 +1394,6 @@ pub mod schemas {
         FilterLineItemLifetimeFrequency,
         FilterLineItemType,
         FilterMediaPlan,
-        FilterMobileDeviceMake,
-        FilterMobileDeviceMakeModel,
-        FilterMobileDeviceType,
         FilterMobileGeo,
         FilterMonth,
         FilterMraidSupport,
@@ -1453,10 +1408,8 @@ pub mod schemas {
         FilterPageLayout,
         FilterPartner,
         FilterPartnerCurrency,
-        FilterPublicInventory,
         FilterQuarter,
         FilterRegion,
-        FilterRegularChannelId,
         FilterSiteId,
         FilterSiteLanguage,
         FilterSkippableSupport,
@@ -1499,21 +1452,17 @@ pub mod schemas {
         FilterUserListFirstParty,
         FilterUserListThirdParty,
         FilterVideoAdPositionInStream,
-        FilterVideoCompanionSize,
-        FilterVideoCompanionType,
         FilterVideoCreativeDuration,
         FilterVideoCreativeDurationSkippable,
         FilterVideoDurationSeconds,
         FilterVideoDurationSecondsRange,
         FilterVideoFormatSupport,
-        FilterVideoInventoryType,
         FilterVideoPlayerSize,
         FilterVideoRatingTier,
         FilterVideoSkippableSupport,
         FilterVideoVpaidSupport,
         FilterWeek,
         FilterYear,
-        FilterYoutubeVertical,
         FilterZipCode,
     }
     impl ParametersGroupBysItems {
@@ -1522,7 +1471,6 @@ pub mod schemas {
                 ParametersGroupBysItems::FilterActiveViewExpectedViewability => {
                     "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY"
                 }
-                ParametersGroupBysItems::FilterActivityId => "FILTER_ACTIVITY_ID",
                 ParametersGroupBysItems::FilterAdPosition => "FILTER_AD_POSITION",
                 ParametersGroupBysItems::FilterAdvertiser => "FILTER_ADVERTISER",
                 ParametersGroupBysItems::FilterAdvertiserCurrency => "FILTER_ADVERTISER_CURRENCY",
@@ -1531,7 +1479,6 @@ pub mod schemas {
                 ParametersGroupBysItems::FilterAuthorizedSellerState => {
                     "FILTER_AUTHORIZED_SELLER_STATE"
                 }
-                ParametersGroupBysItems::FilterBrandsafeChannelId => "FILTER_BRANDSAFE_CHANNEL_ID",
                 ParametersGroupBysItems::FilterBrowser => "FILTER_BROWSER",
                 ParametersGroupBysItems::FilterBudgetSegmentDescription => {
                     "FILTER_BUDGET_SEGMENT_DESCRIPTION"
@@ -1592,11 +1539,6 @@ pub mod schemas {
                 }
                 ParametersGroupBysItems::FilterLineItemType => "FILTER_LINE_ITEM_TYPE",
                 ParametersGroupBysItems::FilterMediaPlan => "FILTER_MEDIA_PLAN",
-                ParametersGroupBysItems::FilterMobileDeviceMake => "FILTER_MOBILE_DEVICE_MAKE",
-                ParametersGroupBysItems::FilterMobileDeviceMakeModel => {
-                    "FILTER_MOBILE_DEVICE_MAKE_MODEL"
-                }
-                ParametersGroupBysItems::FilterMobileDeviceType => "FILTER_MOBILE_DEVICE_TYPE",
                 ParametersGroupBysItems::FilterMobileGeo => "FILTER_MOBILE_GEO",
                 ParametersGroupBysItems::FilterMonth => "FILTER_MONTH",
                 ParametersGroupBysItems::FilterMraidSupport => "FILTER_MRAID_SUPPORT",
@@ -1611,10 +1553,8 @@ pub mod schemas {
                 ParametersGroupBysItems::FilterPageLayout => "FILTER_PAGE_LAYOUT",
                 ParametersGroupBysItems::FilterPartner => "FILTER_PARTNER",
                 ParametersGroupBysItems::FilterPartnerCurrency => "FILTER_PARTNER_CURRENCY",
-                ParametersGroupBysItems::FilterPublicInventory => "FILTER_PUBLIC_INVENTORY",
                 ParametersGroupBysItems::FilterQuarter => "FILTER_QUARTER",
                 ParametersGroupBysItems::FilterRegion => "FILTER_REGION",
-                ParametersGroupBysItems::FilterRegularChannelId => "FILTER_REGULAR_CHANNEL_ID",
                 ParametersGroupBysItems::FilterSiteId => "FILTER_SITE_ID",
                 ParametersGroupBysItems::FilterSiteLanguage => "FILTER_SITE_LANGUAGE",
                 ParametersGroupBysItems::FilterSkippableSupport => "FILTER_SKIPPABLE_SUPPORT",
@@ -1685,8 +1625,6 @@ pub mod schemas {
                 ParametersGroupBysItems::FilterVideoAdPositionInStream => {
                     "FILTER_VIDEO_AD_POSITION_IN_STREAM"
                 }
-                ParametersGroupBysItems::FilterVideoCompanionSize => "FILTER_VIDEO_COMPANION_SIZE",
-                ParametersGroupBysItems::FilterVideoCompanionType => "FILTER_VIDEO_COMPANION_TYPE",
                 ParametersGroupBysItems::FilterVideoCreativeDuration => {
                     "FILTER_VIDEO_CREATIVE_DURATION"
                 }
@@ -1700,7 +1638,6 @@ pub mod schemas {
                     "FILTER_VIDEO_DURATION_SECONDS_RANGE"
                 }
                 ParametersGroupBysItems::FilterVideoFormatSupport => "FILTER_VIDEO_FORMAT_SUPPORT",
-                ParametersGroupBysItems::FilterVideoInventoryType => "FILTER_VIDEO_INVENTORY_TYPE",
                 ParametersGroupBysItems::FilterVideoPlayerSize => "FILTER_VIDEO_PLAYER_SIZE",
                 ParametersGroupBysItems::FilterVideoRatingTier => "FILTER_VIDEO_RATING_TIER",
                 ParametersGroupBysItems::FilterVideoSkippableSupport => {
@@ -1709,7 +1646,6 @@ pub mod schemas {
                 ParametersGroupBysItems::FilterVideoVpaidSupport => "FILTER_VIDEO_VPAID_SUPPORT",
                 ParametersGroupBysItems::FilterWeek => "FILTER_WEEK",
                 ParametersGroupBysItems::FilterYear => "FILTER_YEAR",
-                ParametersGroupBysItems::FilterYoutubeVertical => "FILTER_YOUTUBE_VERTICAL",
                 ParametersGroupBysItems::FilterZipCode => "FILTER_ZIP_CODE",
             }
         }
@@ -1726,7 +1662,6 @@ pub mod schemas {
                 "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY" => {
                     ParametersGroupBysItems::FilterActiveViewExpectedViewability
                 }
-                "FILTER_ACTIVITY_ID" => ParametersGroupBysItems::FilterActivityId,
                 "FILTER_AD_POSITION" => ParametersGroupBysItems::FilterAdPosition,
                 "FILTER_ADVERTISER" => ParametersGroupBysItems::FilterAdvertiser,
                 "FILTER_ADVERTISER_CURRENCY" => ParametersGroupBysItems::FilterAdvertiserCurrency,
@@ -1735,7 +1670,6 @@ pub mod schemas {
                 "FILTER_AUTHORIZED_SELLER_STATE" => {
                     ParametersGroupBysItems::FilterAuthorizedSellerState
                 }
-                "FILTER_BRANDSAFE_CHANNEL_ID" => ParametersGroupBysItems::FilterBrandsafeChannelId,
                 "FILTER_BROWSER" => ParametersGroupBysItems::FilterBrowser,
                 "FILTER_BUDGET_SEGMENT_DESCRIPTION" => {
                     ParametersGroupBysItems::FilterBudgetSegmentDescription
@@ -1796,11 +1730,6 @@ pub mod schemas {
                 }
                 "FILTER_LINE_ITEM_TYPE" => ParametersGroupBysItems::FilterLineItemType,
                 "FILTER_MEDIA_PLAN" => ParametersGroupBysItems::FilterMediaPlan,
-                "FILTER_MOBILE_DEVICE_MAKE" => ParametersGroupBysItems::FilterMobileDeviceMake,
-                "FILTER_MOBILE_DEVICE_MAKE_MODEL" => {
-                    ParametersGroupBysItems::FilterMobileDeviceMakeModel
-                }
-                "FILTER_MOBILE_DEVICE_TYPE" => ParametersGroupBysItems::FilterMobileDeviceType,
                 "FILTER_MOBILE_GEO" => ParametersGroupBysItems::FilterMobileGeo,
                 "FILTER_MONTH" => ParametersGroupBysItems::FilterMonth,
                 "FILTER_MRAID_SUPPORT" => ParametersGroupBysItems::FilterMraidSupport,
@@ -1815,10 +1744,8 @@ pub mod schemas {
                 "FILTER_PAGE_LAYOUT" => ParametersGroupBysItems::FilterPageLayout,
                 "FILTER_PARTNER" => ParametersGroupBysItems::FilterPartner,
                 "FILTER_PARTNER_CURRENCY" => ParametersGroupBysItems::FilterPartnerCurrency,
-                "FILTER_PUBLIC_INVENTORY" => ParametersGroupBysItems::FilterPublicInventory,
                 "FILTER_QUARTER" => ParametersGroupBysItems::FilterQuarter,
                 "FILTER_REGION" => ParametersGroupBysItems::FilterRegion,
-                "FILTER_REGULAR_CHANNEL_ID" => ParametersGroupBysItems::FilterRegularChannelId,
                 "FILTER_SITE_ID" => ParametersGroupBysItems::FilterSiteId,
                 "FILTER_SITE_LANGUAGE" => ParametersGroupBysItems::FilterSiteLanguage,
                 "FILTER_SKIPPABLE_SUPPORT" => ParametersGroupBysItems::FilterSkippableSupport,
@@ -1889,8 +1816,6 @@ pub mod schemas {
                 "FILTER_VIDEO_AD_POSITION_IN_STREAM" => {
                     ParametersGroupBysItems::FilterVideoAdPositionInStream
                 }
-                "FILTER_VIDEO_COMPANION_SIZE" => ParametersGroupBysItems::FilterVideoCompanionSize,
-                "FILTER_VIDEO_COMPANION_TYPE" => ParametersGroupBysItems::FilterVideoCompanionType,
                 "FILTER_VIDEO_CREATIVE_DURATION" => {
                     ParametersGroupBysItems::FilterVideoCreativeDuration
                 }
@@ -1904,7 +1829,6 @@ pub mod schemas {
                     ParametersGroupBysItems::FilterVideoDurationSecondsRange
                 }
                 "FILTER_VIDEO_FORMAT_SUPPORT" => ParametersGroupBysItems::FilterVideoFormatSupport,
-                "FILTER_VIDEO_INVENTORY_TYPE" => ParametersGroupBysItems::FilterVideoInventoryType,
                 "FILTER_VIDEO_PLAYER_SIZE" => ParametersGroupBysItems::FilterVideoPlayerSize,
                 "FILTER_VIDEO_RATING_TIER" => ParametersGroupBysItems::FilterVideoRatingTier,
                 "FILTER_VIDEO_SKIPPABLE_SUPPORT" => {
@@ -1913,7 +1837,6 @@ pub mod schemas {
                 "FILTER_VIDEO_VPAID_SUPPORT" => ParametersGroupBysItems::FilterVideoVpaidSupport,
                 "FILTER_WEEK" => ParametersGroupBysItems::FilterWeek,
                 "FILTER_YEAR" => ParametersGroupBysItems::FilterYear,
-                "FILTER_YOUTUBE_VERTICAL" => ParametersGroupBysItems::FilterYoutubeVertical,
                 "FILTER_ZIP_CODE" => ParametersGroupBysItems::FilterZipCode,
                 _ => return Err(()),
             })
@@ -1942,7 +1865,6 @@ pub mod schemas {
                 "FILTER_ACTIVE_VIEW_EXPECTED_VIEWABILITY" => {
                     ParametersGroupBysItems::FilterActiveViewExpectedViewability
                 }
-                "FILTER_ACTIVITY_ID" => ParametersGroupBysItems::FilterActivityId,
                 "FILTER_AD_POSITION" => ParametersGroupBysItems::FilterAdPosition,
                 "FILTER_ADVERTISER" => ParametersGroupBysItems::FilterAdvertiser,
                 "FILTER_ADVERTISER_CURRENCY" => ParametersGroupBysItems::FilterAdvertiserCurrency,
@@ -1951,7 +1873,6 @@ pub mod schemas {
                 "FILTER_AUTHORIZED_SELLER_STATE" => {
                     ParametersGroupBysItems::FilterAuthorizedSellerState
                 }
-                "FILTER_BRANDSAFE_CHANNEL_ID" => ParametersGroupBysItems::FilterBrandsafeChannelId,
                 "FILTER_BROWSER" => ParametersGroupBysItems::FilterBrowser,
                 "FILTER_BUDGET_SEGMENT_DESCRIPTION" => {
                     ParametersGroupBysItems::FilterBudgetSegmentDescription
@@ -2012,11 +1933,6 @@ pub mod schemas {
                 }
                 "FILTER_LINE_ITEM_TYPE" => ParametersGroupBysItems::FilterLineItemType,
                 "FILTER_MEDIA_PLAN" => ParametersGroupBysItems::FilterMediaPlan,
-                "FILTER_MOBILE_DEVICE_MAKE" => ParametersGroupBysItems::FilterMobileDeviceMake,
-                "FILTER_MOBILE_DEVICE_MAKE_MODEL" => {
-                    ParametersGroupBysItems::FilterMobileDeviceMakeModel
-                }
-                "FILTER_MOBILE_DEVICE_TYPE" => ParametersGroupBysItems::FilterMobileDeviceType,
                 "FILTER_MOBILE_GEO" => ParametersGroupBysItems::FilterMobileGeo,
                 "FILTER_MONTH" => ParametersGroupBysItems::FilterMonth,
                 "FILTER_MRAID_SUPPORT" => ParametersGroupBysItems::FilterMraidSupport,
@@ -2031,10 +1947,8 @@ pub mod schemas {
                 "FILTER_PAGE_LAYOUT" => ParametersGroupBysItems::FilterPageLayout,
                 "FILTER_PARTNER" => ParametersGroupBysItems::FilterPartner,
                 "FILTER_PARTNER_CURRENCY" => ParametersGroupBysItems::FilterPartnerCurrency,
-                "FILTER_PUBLIC_INVENTORY" => ParametersGroupBysItems::FilterPublicInventory,
                 "FILTER_QUARTER" => ParametersGroupBysItems::FilterQuarter,
                 "FILTER_REGION" => ParametersGroupBysItems::FilterRegion,
-                "FILTER_REGULAR_CHANNEL_ID" => ParametersGroupBysItems::FilterRegularChannelId,
                 "FILTER_SITE_ID" => ParametersGroupBysItems::FilterSiteId,
                 "FILTER_SITE_LANGUAGE" => ParametersGroupBysItems::FilterSiteLanguage,
                 "FILTER_SKIPPABLE_SUPPORT" => ParametersGroupBysItems::FilterSkippableSupport,
@@ -2105,8 +2019,6 @@ pub mod schemas {
                 "FILTER_VIDEO_AD_POSITION_IN_STREAM" => {
                     ParametersGroupBysItems::FilterVideoAdPositionInStream
                 }
-                "FILTER_VIDEO_COMPANION_SIZE" => ParametersGroupBysItems::FilterVideoCompanionSize,
-                "FILTER_VIDEO_COMPANION_TYPE" => ParametersGroupBysItems::FilterVideoCompanionType,
                 "FILTER_VIDEO_CREATIVE_DURATION" => {
                     ParametersGroupBysItems::FilterVideoCreativeDuration
                 }
@@ -2120,7 +2032,6 @@ pub mod schemas {
                     ParametersGroupBysItems::FilterVideoDurationSecondsRange
                 }
                 "FILTER_VIDEO_FORMAT_SUPPORT" => ParametersGroupBysItems::FilterVideoFormatSupport,
-                "FILTER_VIDEO_INVENTORY_TYPE" => ParametersGroupBysItems::FilterVideoInventoryType,
                 "FILTER_VIDEO_PLAYER_SIZE" => ParametersGroupBysItems::FilterVideoPlayerSize,
                 "FILTER_VIDEO_RATING_TIER" => ParametersGroupBysItems::FilterVideoRatingTier,
                 "FILTER_VIDEO_SKIPPABLE_SUPPORT" => {
@@ -2129,7 +2040,6 @@ pub mod schemas {
                 "FILTER_VIDEO_VPAID_SUPPORT" => ParametersGroupBysItems::FilterVideoVpaidSupport,
                 "FILTER_WEEK" => ParametersGroupBysItems::FilterWeek,
                 "FILTER_YEAR" => ParametersGroupBysItems::FilterYear,
-                "FILTER_YOUTUBE_VERTICAL" => ParametersGroupBysItems::FilterYoutubeVertical,
                 "FILTER_ZIP_CODE" => ParametersGroupBysItems::FilterZipCode,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2185,14 +2095,6 @@ pub mod schemas {
         MetricClicks,
         MetricCmPostClickRevenue,
         MetricCmPostViewRevenue,
-        MetricComscoreVceAudienceAvgFrequency,
-        MetricComscoreVceAudienceImpressions,
-        MetricComscoreVceAudienceImpressionsShare,
-        MetricComscoreVceAudienceReachPct,
-        MetricComscoreVceAudienceSharePct,
-        MetricComscoreVceGrossRatingPoints,
-        MetricComscoreVcePopulation,
-        MetricComscoreVceUniqueAudience,
         MetricConversionsPerMille,
         MetricCookieReachAverageImpressionFrequency,
         MetricCookieReachImpressionReach,
@@ -2284,8 +2186,6 @@ pub mod schemas {
         MetricImpressionsToConversionRate,
         MetricLastClicks,
         MetricLastImpressions,
-        MetricLinearTvReservedSpotCost,
-        MetricLinearTvReservedSpots,
         MetricMediaCostAdvertiser,
         MetricMediaCostEcpaAdvertiser,
         MetricMediaCostEcpaPartner,
@@ -2325,25 +2225,10 @@ pub mod schemas {
         MetricMediaFee5Advertiser,
         MetricMediaFee5Partner,
         MetricMediaFee5Usd,
-        MetricPixelLoads,
         MetricPlatformFeeAdvertiser,
         MetricPlatformFeePartner,
         MetricPlatformFeeUsd,
-        MetricPostClickDfaRevenue,
-        MetricPostViewDfaRevenue,
         MetricProfitAdvertiser,
-        MetricProfitEcpaAdvertiser,
-        MetricProfitEcpaPartner,
-        MetricProfitEcpaUsd,
-        MetricProfitEcpapcAdvertiser,
-        MetricProfitEcpapcPartner,
-        MetricProfitEcpapcUsd,
-        MetricProfitEcpapvAdvertiser,
-        MetricProfitEcpapvPartner,
-        MetricProfitEcpapvUsd,
-        MetricProfitEcpcAdvertiser,
-        MetricProfitEcpcPartner,
-        MetricProfitEcpcUsd,
         MetricProfitEcpmAdvertiser,
         MetricProfitEcpmPartner,
         MetricProfitEcpmUsd,
@@ -2353,8 +2238,6 @@ pub mod schemas {
         MetricProfitViewableEcpmAdvertiser,
         MetricProfitViewableEcpmPartner,
         MetricProfitViewableEcpmUsd,
-        MetricReachCookieFrequency,
-        MetricReachCookieReach,
         MetricRevenueAdvertiser,
         MetricRevenueEcpaAdvertiser,
         MetricRevenueEcpaPartner,
@@ -2371,7 +2254,6 @@ pub mod schemas {
         MetricRevenueEcpcvAdvertiser,
         MetricRevenueEcpcvPartner,
         MetricRevenueEcpcvUsd,
-        MetricRevenueEcpiavcAdvertiser,
         MetricRevenueEcpmAdvertiser,
         MetricRevenueEcpmPartner,
         MetricRevenueEcpmUsd,
@@ -2423,20 +2305,8 @@ pub mod schemas {
         MetricTrueviewConversionCostManyPerViewAdvertiser,
         MetricTrueviewConversionCostManyPerViewPartner,
         MetricTrueviewConversionCostManyPerViewUsd,
-        MetricTrueviewConversionCostOnePerViewAdvertiser,
-        MetricTrueviewConversionCostOnePerViewPartner,
-        MetricTrueviewConversionCostOnePerViewUsd,
         MetricTrueviewConversionManyPerView,
-        MetricTrueviewConversionOnePerView,
         MetricTrueviewConversionRateOnePerView,
-        MetricTrueviewConversionValueManyPerViewAdvertiser,
-        MetricTrueviewConversionValueManyPerViewPartner,
-        MetricTrueviewConversionValueManyPerViewUsd,
-        MetricTrueviewConversionValueOnePerViewAdvertiser,
-        MetricTrueviewConversionValueOnePerViewPartner,
-        MetricTrueviewConversionValueOnePerViewUsd,
-        MetricTrueviewCostConversionManyPerViewRatio,
-        MetricTrueviewCostConversionOnePerViewRatio,
         MetricTrueviewCpvAdvertiser,
         MetricTrueviewCpvPartner,
         MetricTrueviewCpvUsd,
@@ -2455,8 +2325,6 @@ pub mod schemas {
         MetricTrueviewTotalConversionValuesPartner,
         MetricTrueviewTotalConversionValuesUsd,
         MetricTrueviewUniqueViewers,
-        MetricTrueviewValueConversionManyPerViewRatio,
-        MetricTrueviewValueConversionOnePerViewRatio,
         MetricTrueviewViewRate,
         MetricTrueviewViewThroughConversion,
         MetricTrueviewViews,
@@ -2555,30 +2423,6 @@ pub mod schemas {
                 ParametersMetricsItems::MetricClicks => "METRIC_CLICKS",
                 ParametersMetricsItems::MetricCmPostClickRevenue => "METRIC_CM_POST_CLICK_REVENUE",
                 ParametersMetricsItems::MetricCmPostViewRevenue => "METRIC_CM_POST_VIEW_REVENUE",
-                ParametersMetricsItems::MetricComscoreVceAudienceAvgFrequency => {
-                    "METRIC_COMSCORE_VCE_AUDIENCE_AVG_FREQUENCY"
-                }
-                ParametersMetricsItems::MetricComscoreVceAudienceImpressions => {
-                    "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS"
-                }
-                ParametersMetricsItems::MetricComscoreVceAudienceImpressionsShare => {
-                    "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS_SHARE"
-                }
-                ParametersMetricsItems::MetricComscoreVceAudienceReachPct => {
-                    "METRIC_COMSCORE_VCE_AUDIENCE_REACH_PCT"
-                }
-                ParametersMetricsItems::MetricComscoreVceAudienceSharePct => {
-                    "METRIC_COMSCORE_VCE_AUDIENCE_SHARE_PCT"
-                }
-                ParametersMetricsItems::MetricComscoreVceGrossRatingPoints => {
-                    "METRIC_COMSCORE_VCE_GROSS_RATING_POINTS"
-                }
-                ParametersMetricsItems::MetricComscoreVcePopulation => {
-                    "METRIC_COMSCORE_VCE_POPULATION"
-                }
-                ParametersMetricsItems::MetricComscoreVceUniqueAudience => {
-                    "METRIC_COMSCORE_VCE_UNIQUE_AUDIENCE"
-                }
                 ParametersMetricsItems::MetricConversionsPerMille => "METRIC_CONVERSIONS_PER_MILLE",
                 ParametersMetricsItems::MetricCookieReachAverageImpressionFrequency => {
                     "METRIC_COOKIE_REACH_AVERAGE_IMPRESSION_FREQUENCY"
@@ -2678,12 +2522,6 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricLastClicks => "METRIC_LAST_CLICKS",
                 ParametersMetricsItems::MetricLastImpressions => "METRIC_LAST_IMPRESSIONS",
-                ParametersMetricsItems::MetricLinearTvReservedSpotCost => {
-                    "METRIC_LINEAR_TV_RESERVED_SPOT_COST"
-                }
-                ParametersMetricsItems::MetricLinearTvReservedSpots => {
-                    "METRIC_LINEAR_TV_RESERVED_SPOTS"
-                }
                 ParametersMetricsItems::MetricMediaCostAdvertiser => "METRIC_MEDIA_COST_ADVERTISER",
                 ParametersMetricsItems::MetricMediaCostEcpaAdvertiser => {
                     "METRIC_MEDIA_COST_ECPA_ADVERTISER"
@@ -2753,37 +2591,12 @@ pub mod schemas {
                 ParametersMetricsItems::MetricMediaFee5Advertiser => "METRIC_MEDIA_FEE5_ADVERTISER",
                 ParametersMetricsItems::MetricMediaFee5Partner => "METRIC_MEDIA_FEE5_PARTNER",
                 ParametersMetricsItems::MetricMediaFee5Usd => "METRIC_MEDIA_FEE5_USD",
-                ParametersMetricsItems::MetricPixelLoads => "METRIC_PIXEL_LOADS",
                 ParametersMetricsItems::MetricPlatformFeeAdvertiser => {
                     "METRIC_PLATFORM_FEE_ADVERTISER"
                 }
                 ParametersMetricsItems::MetricPlatformFeePartner => "METRIC_PLATFORM_FEE_PARTNER",
                 ParametersMetricsItems::MetricPlatformFeeUsd => "METRIC_PLATFORM_FEE_USD",
-                ParametersMetricsItems::MetricPostClickDfaRevenue => {
-                    "METRIC_POST_CLICK_DFA_REVENUE"
-                }
-                ParametersMetricsItems::MetricPostViewDfaRevenue => "METRIC_POST_VIEW_DFA_REVENUE",
                 ParametersMetricsItems::MetricProfitAdvertiser => "METRIC_PROFIT_ADVERTISER",
-                ParametersMetricsItems::MetricProfitEcpaAdvertiser => {
-                    "METRIC_PROFIT_ECPA_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricProfitEcpaPartner => "METRIC_PROFIT_ECPA_PARTNER",
-                ParametersMetricsItems::MetricProfitEcpaUsd => "METRIC_PROFIT_ECPA_USD",
-                ParametersMetricsItems::MetricProfitEcpapcAdvertiser => {
-                    "METRIC_PROFIT_ECPAPC_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricProfitEcpapcPartner => "METRIC_PROFIT_ECPAPC_PARTNER",
-                ParametersMetricsItems::MetricProfitEcpapcUsd => "METRIC_PROFIT_ECPAPC_USD",
-                ParametersMetricsItems::MetricProfitEcpapvAdvertiser => {
-                    "METRIC_PROFIT_ECPAPV_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricProfitEcpapvPartner => "METRIC_PROFIT_ECPAPV_PARTNER",
-                ParametersMetricsItems::MetricProfitEcpapvUsd => "METRIC_PROFIT_ECPAPV_USD",
-                ParametersMetricsItems::MetricProfitEcpcAdvertiser => {
-                    "METRIC_PROFIT_ECPC_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricProfitEcpcPartner => "METRIC_PROFIT_ECPC_PARTNER",
-                ParametersMetricsItems::MetricProfitEcpcUsd => "METRIC_PROFIT_ECPC_USD",
                 ParametersMetricsItems::MetricProfitEcpmAdvertiser => {
                     "METRIC_PROFIT_ECPM_ADVERTISER"
                 }
@@ -2801,10 +2614,6 @@ pub mod schemas {
                 ParametersMetricsItems::MetricProfitViewableEcpmUsd => {
                     "METRIC_PROFIT_VIEWABLE_ECPM_USD"
                 }
-                ParametersMetricsItems::MetricReachCookieFrequency => {
-                    "METRIC_REACH_COOKIE_FREQUENCY"
-                }
-                ParametersMetricsItems::MetricReachCookieReach => "METRIC_REACH_COOKIE_REACH",
                 ParametersMetricsItems::MetricRevenueAdvertiser => "METRIC_REVENUE_ADVERTISER",
                 ParametersMetricsItems::MetricRevenueEcpaAdvertiser => {
                     "METRIC_REVENUE_ECPA_ADVERTISER"
@@ -2835,9 +2644,6 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricRevenueEcpcvPartner => "METRIC_REVENUE_ECPCV_PARTNER",
                 ParametersMetricsItems::MetricRevenueEcpcvUsd => "METRIC_REVENUE_ECPCV_USD",
-                ParametersMetricsItems::MetricRevenueEcpiavcAdvertiser => {
-                    "METRIC_REVENUE_ECPIAVC_ADVERTISER"
-                }
                 ParametersMetricsItems::MetricRevenueEcpmAdvertiser => {
                     "METRIC_REVENUE_ECPM_ADVERTISER"
                 }
@@ -2977,47 +2783,11 @@ pub mod schemas {
                 ParametersMetricsItems::MetricTrueviewConversionCostManyPerViewUsd => {
                     "METRIC_TRUEVIEW_CONVERSION_COST_MANY_PER_VIEW_USD"
                 }
-                ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewAdvertiser => {
-                    "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewPartner => {
-                    "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_PARTNER"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewUsd => {
-                    "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_USD"
-                }
                 ParametersMetricsItems::MetricTrueviewConversionManyPerView => {
                     "METRIC_TRUEVIEW_CONVERSION_MANY_PER_VIEW"
                 }
-                ParametersMetricsItems::MetricTrueviewConversionOnePerView => {
-                    "METRIC_TRUEVIEW_CONVERSION_ONE_PER_VIEW"
-                }
                 ParametersMetricsItems::MetricTrueviewConversionRateOnePerView => {
                     "METRIC_TRUEVIEW_CONVERSION_RATE_ONE_PER_VIEW"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewAdvertiser => {
-                    "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewPartner => {
-                    "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_PARTNER"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewUsd => {
-                    "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_USD"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewAdvertiser => {
-                    "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_ADVERTISER"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewPartner => {
-                    "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_PARTNER"
-                }
-                ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewUsd => {
-                    "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_USD"
-                }
-                ParametersMetricsItems::MetricTrueviewCostConversionManyPerViewRatio => {
-                    "METRIC_TRUEVIEW_COST_CONVERSION_MANY_PER_VIEW_RATIO"
-                }
-                ParametersMetricsItems::MetricTrueviewCostConversionOnePerViewRatio => {
-                    "METRIC_TRUEVIEW_COST_CONVERSION_ONE_PER_VIEW_RATIO"
                 }
                 ParametersMetricsItems::MetricTrueviewCpvAdvertiser => {
                     "METRIC_TRUEVIEW_CPV_ADVERTISER"
@@ -3060,12 +2830,6 @@ pub mod schemas {
                 }
                 ParametersMetricsItems::MetricTrueviewUniqueViewers => {
                     "METRIC_TRUEVIEW_UNIQUE_VIEWERS"
-                }
-                ParametersMetricsItems::MetricTrueviewValueConversionManyPerViewRatio => {
-                    "METRIC_TRUEVIEW_VALUE_CONVERSION_MANY_PER_VIEW_RATIO"
-                }
-                ParametersMetricsItems::MetricTrueviewValueConversionOnePerViewRatio => {
-                    "METRIC_TRUEVIEW_VALUE_CONVERSION_ONE_PER_VIEW_RATIO"
                 }
                 ParametersMetricsItems::MetricTrueviewViewRate => "METRIC_TRUEVIEW_VIEW_RATE",
                 ParametersMetricsItems::MetricTrueviewViewThroughConversion => {
@@ -3181,30 +2945,6 @@ pub mod schemas {
                 "METRIC_CLICKS" => ParametersMetricsItems::MetricClicks,
                 "METRIC_CM_POST_CLICK_REVENUE" => ParametersMetricsItems::MetricCmPostClickRevenue,
                 "METRIC_CM_POST_VIEW_REVENUE" => ParametersMetricsItems::MetricCmPostViewRevenue,
-                "METRIC_COMSCORE_VCE_AUDIENCE_AVG_FREQUENCY" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceAvgFrequency
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceImpressions
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS_SHARE" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceImpressionsShare
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_REACH_PCT" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceReachPct
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_SHARE_PCT" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceSharePct
-                }
-                "METRIC_COMSCORE_VCE_GROSS_RATING_POINTS" => {
-                    ParametersMetricsItems::MetricComscoreVceGrossRatingPoints
-                }
-                "METRIC_COMSCORE_VCE_POPULATION" => {
-                    ParametersMetricsItems::MetricComscoreVcePopulation
-                }
-                "METRIC_COMSCORE_VCE_UNIQUE_AUDIENCE" => {
-                    ParametersMetricsItems::MetricComscoreVceUniqueAudience
-                }
                 "METRIC_CONVERSIONS_PER_MILLE" => ParametersMetricsItems::MetricConversionsPerMille,
                 "METRIC_COOKIE_REACH_AVERAGE_IMPRESSION_FREQUENCY" => {
                     ParametersMetricsItems::MetricCookieReachAverageImpressionFrequency
@@ -3304,12 +3044,6 @@ pub mod schemas {
                 }
                 "METRIC_LAST_CLICKS" => ParametersMetricsItems::MetricLastClicks,
                 "METRIC_LAST_IMPRESSIONS" => ParametersMetricsItems::MetricLastImpressions,
-                "METRIC_LINEAR_TV_RESERVED_SPOT_COST" => {
-                    ParametersMetricsItems::MetricLinearTvReservedSpotCost
-                }
-                "METRIC_LINEAR_TV_RESERVED_SPOTS" => {
-                    ParametersMetricsItems::MetricLinearTvReservedSpots
-                }
                 "METRIC_MEDIA_COST_ADVERTISER" => ParametersMetricsItems::MetricMediaCostAdvertiser,
                 "METRIC_MEDIA_COST_ECPA_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpaAdvertiser
@@ -3379,37 +3113,12 @@ pub mod schemas {
                 "METRIC_MEDIA_FEE5_ADVERTISER" => ParametersMetricsItems::MetricMediaFee5Advertiser,
                 "METRIC_MEDIA_FEE5_PARTNER" => ParametersMetricsItems::MetricMediaFee5Partner,
                 "METRIC_MEDIA_FEE5_USD" => ParametersMetricsItems::MetricMediaFee5Usd,
-                "METRIC_PIXEL_LOADS" => ParametersMetricsItems::MetricPixelLoads,
                 "METRIC_PLATFORM_FEE_ADVERTISER" => {
                     ParametersMetricsItems::MetricPlatformFeeAdvertiser
                 }
                 "METRIC_PLATFORM_FEE_PARTNER" => ParametersMetricsItems::MetricPlatformFeePartner,
                 "METRIC_PLATFORM_FEE_USD" => ParametersMetricsItems::MetricPlatformFeeUsd,
-                "METRIC_POST_CLICK_DFA_REVENUE" => {
-                    ParametersMetricsItems::MetricPostClickDfaRevenue
-                }
-                "METRIC_POST_VIEW_DFA_REVENUE" => ParametersMetricsItems::MetricPostViewDfaRevenue,
                 "METRIC_PROFIT_ADVERTISER" => ParametersMetricsItems::MetricProfitAdvertiser,
-                "METRIC_PROFIT_ECPA_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpaAdvertiser
-                }
-                "METRIC_PROFIT_ECPA_PARTNER" => ParametersMetricsItems::MetricProfitEcpaPartner,
-                "METRIC_PROFIT_ECPA_USD" => ParametersMetricsItems::MetricProfitEcpaUsd,
-                "METRIC_PROFIT_ECPAPC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpapcAdvertiser
-                }
-                "METRIC_PROFIT_ECPAPC_PARTNER" => ParametersMetricsItems::MetricProfitEcpapcPartner,
-                "METRIC_PROFIT_ECPAPC_USD" => ParametersMetricsItems::MetricProfitEcpapcUsd,
-                "METRIC_PROFIT_ECPAPV_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpapvAdvertiser
-                }
-                "METRIC_PROFIT_ECPAPV_PARTNER" => ParametersMetricsItems::MetricProfitEcpapvPartner,
-                "METRIC_PROFIT_ECPAPV_USD" => ParametersMetricsItems::MetricProfitEcpapvUsd,
-                "METRIC_PROFIT_ECPC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpcAdvertiser
-                }
-                "METRIC_PROFIT_ECPC_PARTNER" => ParametersMetricsItems::MetricProfitEcpcPartner,
-                "METRIC_PROFIT_ECPC_USD" => ParametersMetricsItems::MetricProfitEcpcUsd,
                 "METRIC_PROFIT_ECPM_ADVERTISER" => {
                     ParametersMetricsItems::MetricProfitEcpmAdvertiser
                 }
@@ -3427,10 +3136,6 @@ pub mod schemas {
                 "METRIC_PROFIT_VIEWABLE_ECPM_USD" => {
                     ParametersMetricsItems::MetricProfitViewableEcpmUsd
                 }
-                "METRIC_REACH_COOKIE_FREQUENCY" => {
-                    ParametersMetricsItems::MetricReachCookieFrequency
-                }
-                "METRIC_REACH_COOKIE_REACH" => ParametersMetricsItems::MetricReachCookieReach,
                 "METRIC_REVENUE_ADVERTISER" => ParametersMetricsItems::MetricRevenueAdvertiser,
                 "METRIC_REVENUE_ECPA_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpaAdvertiser
@@ -3461,9 +3166,6 @@ pub mod schemas {
                 }
                 "METRIC_REVENUE_ECPCV_PARTNER" => ParametersMetricsItems::MetricRevenueEcpcvPartner,
                 "METRIC_REVENUE_ECPCV_USD" => ParametersMetricsItems::MetricRevenueEcpcvUsd,
-                "METRIC_REVENUE_ECPIAVC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricRevenueEcpiavcAdvertiser
-                }
                 "METRIC_REVENUE_ECPM_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpmAdvertiser
                 }
@@ -3603,47 +3305,11 @@ pub mod schemas {
                 "METRIC_TRUEVIEW_CONVERSION_COST_MANY_PER_VIEW_USD" => {
                     ParametersMetricsItems::MetricTrueviewConversionCostManyPerViewUsd
                 }
-                "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewAdvertiser
-                }
-                "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_PARTNER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewPartner
-                }
-                "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_USD" => {
-                    ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewUsd
-                }
                 "METRIC_TRUEVIEW_CONVERSION_MANY_PER_VIEW" => {
                     ParametersMetricsItems::MetricTrueviewConversionManyPerView
                 }
-                "METRIC_TRUEVIEW_CONVERSION_ONE_PER_VIEW" => {
-                    ParametersMetricsItems::MetricTrueviewConversionOnePerView
-                }
                 "METRIC_TRUEVIEW_CONVERSION_RATE_ONE_PER_VIEW" => {
                     ParametersMetricsItems::MetricTrueviewConversionRateOnePerView
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewAdvertiser
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_PARTNER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewPartner
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_USD" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewUsd
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewAdvertiser
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_PARTNER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewPartner
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_USD" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewUsd
-                }
-                "METRIC_TRUEVIEW_COST_CONVERSION_MANY_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewCostConversionManyPerViewRatio
-                }
-                "METRIC_TRUEVIEW_COST_CONVERSION_ONE_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewCostConversionOnePerViewRatio
                 }
                 "METRIC_TRUEVIEW_CPV_ADVERTISER" => {
                     ParametersMetricsItems::MetricTrueviewCpvAdvertiser
@@ -3686,12 +3352,6 @@ pub mod schemas {
                 }
                 "METRIC_TRUEVIEW_UNIQUE_VIEWERS" => {
                     ParametersMetricsItems::MetricTrueviewUniqueViewers
-                }
-                "METRIC_TRUEVIEW_VALUE_CONVERSION_MANY_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewValueConversionManyPerViewRatio
-                }
-                "METRIC_TRUEVIEW_VALUE_CONVERSION_ONE_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewValueConversionOnePerViewRatio
                 }
                 "METRIC_TRUEVIEW_VIEW_RATE" => ParametersMetricsItems::MetricTrueviewViewRate,
                 "METRIC_TRUEVIEW_VIEW_THROUGH_CONVERSION" => {
@@ -3819,30 +3479,6 @@ pub mod schemas {
                 "METRIC_CLICKS" => ParametersMetricsItems::MetricClicks,
                 "METRIC_CM_POST_CLICK_REVENUE" => ParametersMetricsItems::MetricCmPostClickRevenue,
                 "METRIC_CM_POST_VIEW_REVENUE" => ParametersMetricsItems::MetricCmPostViewRevenue,
-                "METRIC_COMSCORE_VCE_AUDIENCE_AVG_FREQUENCY" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceAvgFrequency
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceImpressions
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_IMPRESSIONS_SHARE" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceImpressionsShare
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_REACH_PCT" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceReachPct
-                }
-                "METRIC_COMSCORE_VCE_AUDIENCE_SHARE_PCT" => {
-                    ParametersMetricsItems::MetricComscoreVceAudienceSharePct
-                }
-                "METRIC_COMSCORE_VCE_GROSS_RATING_POINTS" => {
-                    ParametersMetricsItems::MetricComscoreVceGrossRatingPoints
-                }
-                "METRIC_COMSCORE_VCE_POPULATION" => {
-                    ParametersMetricsItems::MetricComscoreVcePopulation
-                }
-                "METRIC_COMSCORE_VCE_UNIQUE_AUDIENCE" => {
-                    ParametersMetricsItems::MetricComscoreVceUniqueAudience
-                }
                 "METRIC_CONVERSIONS_PER_MILLE" => ParametersMetricsItems::MetricConversionsPerMille,
                 "METRIC_COOKIE_REACH_AVERAGE_IMPRESSION_FREQUENCY" => {
                     ParametersMetricsItems::MetricCookieReachAverageImpressionFrequency
@@ -3942,12 +3578,6 @@ pub mod schemas {
                 }
                 "METRIC_LAST_CLICKS" => ParametersMetricsItems::MetricLastClicks,
                 "METRIC_LAST_IMPRESSIONS" => ParametersMetricsItems::MetricLastImpressions,
-                "METRIC_LINEAR_TV_RESERVED_SPOT_COST" => {
-                    ParametersMetricsItems::MetricLinearTvReservedSpotCost
-                }
-                "METRIC_LINEAR_TV_RESERVED_SPOTS" => {
-                    ParametersMetricsItems::MetricLinearTvReservedSpots
-                }
                 "METRIC_MEDIA_COST_ADVERTISER" => ParametersMetricsItems::MetricMediaCostAdvertiser,
                 "METRIC_MEDIA_COST_ECPA_ADVERTISER" => {
                     ParametersMetricsItems::MetricMediaCostEcpaAdvertiser
@@ -4017,37 +3647,12 @@ pub mod schemas {
                 "METRIC_MEDIA_FEE5_ADVERTISER" => ParametersMetricsItems::MetricMediaFee5Advertiser,
                 "METRIC_MEDIA_FEE5_PARTNER" => ParametersMetricsItems::MetricMediaFee5Partner,
                 "METRIC_MEDIA_FEE5_USD" => ParametersMetricsItems::MetricMediaFee5Usd,
-                "METRIC_PIXEL_LOADS" => ParametersMetricsItems::MetricPixelLoads,
                 "METRIC_PLATFORM_FEE_ADVERTISER" => {
                     ParametersMetricsItems::MetricPlatformFeeAdvertiser
                 }
                 "METRIC_PLATFORM_FEE_PARTNER" => ParametersMetricsItems::MetricPlatformFeePartner,
                 "METRIC_PLATFORM_FEE_USD" => ParametersMetricsItems::MetricPlatformFeeUsd,
-                "METRIC_POST_CLICK_DFA_REVENUE" => {
-                    ParametersMetricsItems::MetricPostClickDfaRevenue
-                }
-                "METRIC_POST_VIEW_DFA_REVENUE" => ParametersMetricsItems::MetricPostViewDfaRevenue,
                 "METRIC_PROFIT_ADVERTISER" => ParametersMetricsItems::MetricProfitAdvertiser,
-                "METRIC_PROFIT_ECPA_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpaAdvertiser
-                }
-                "METRIC_PROFIT_ECPA_PARTNER" => ParametersMetricsItems::MetricProfitEcpaPartner,
-                "METRIC_PROFIT_ECPA_USD" => ParametersMetricsItems::MetricProfitEcpaUsd,
-                "METRIC_PROFIT_ECPAPC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpapcAdvertiser
-                }
-                "METRIC_PROFIT_ECPAPC_PARTNER" => ParametersMetricsItems::MetricProfitEcpapcPartner,
-                "METRIC_PROFIT_ECPAPC_USD" => ParametersMetricsItems::MetricProfitEcpapcUsd,
-                "METRIC_PROFIT_ECPAPV_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpapvAdvertiser
-                }
-                "METRIC_PROFIT_ECPAPV_PARTNER" => ParametersMetricsItems::MetricProfitEcpapvPartner,
-                "METRIC_PROFIT_ECPAPV_USD" => ParametersMetricsItems::MetricProfitEcpapvUsd,
-                "METRIC_PROFIT_ECPC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricProfitEcpcAdvertiser
-                }
-                "METRIC_PROFIT_ECPC_PARTNER" => ParametersMetricsItems::MetricProfitEcpcPartner,
-                "METRIC_PROFIT_ECPC_USD" => ParametersMetricsItems::MetricProfitEcpcUsd,
                 "METRIC_PROFIT_ECPM_ADVERTISER" => {
                     ParametersMetricsItems::MetricProfitEcpmAdvertiser
                 }
@@ -4065,10 +3670,6 @@ pub mod schemas {
                 "METRIC_PROFIT_VIEWABLE_ECPM_USD" => {
                     ParametersMetricsItems::MetricProfitViewableEcpmUsd
                 }
-                "METRIC_REACH_COOKIE_FREQUENCY" => {
-                    ParametersMetricsItems::MetricReachCookieFrequency
-                }
-                "METRIC_REACH_COOKIE_REACH" => ParametersMetricsItems::MetricReachCookieReach,
                 "METRIC_REVENUE_ADVERTISER" => ParametersMetricsItems::MetricRevenueAdvertiser,
                 "METRIC_REVENUE_ECPA_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpaAdvertiser
@@ -4099,9 +3700,6 @@ pub mod schemas {
                 }
                 "METRIC_REVENUE_ECPCV_PARTNER" => ParametersMetricsItems::MetricRevenueEcpcvPartner,
                 "METRIC_REVENUE_ECPCV_USD" => ParametersMetricsItems::MetricRevenueEcpcvUsd,
-                "METRIC_REVENUE_ECPIAVC_ADVERTISER" => {
-                    ParametersMetricsItems::MetricRevenueEcpiavcAdvertiser
-                }
                 "METRIC_REVENUE_ECPM_ADVERTISER" => {
                     ParametersMetricsItems::MetricRevenueEcpmAdvertiser
                 }
@@ -4241,47 +3839,11 @@ pub mod schemas {
                 "METRIC_TRUEVIEW_CONVERSION_COST_MANY_PER_VIEW_USD" => {
                     ParametersMetricsItems::MetricTrueviewConversionCostManyPerViewUsd
                 }
-                "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewAdvertiser
-                }
-                "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_PARTNER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewPartner
-                }
-                "METRIC_TRUEVIEW_CONVERSION_COST_ONE_PER_VIEW_USD" => {
-                    ParametersMetricsItems::MetricTrueviewConversionCostOnePerViewUsd
-                }
                 "METRIC_TRUEVIEW_CONVERSION_MANY_PER_VIEW" => {
                     ParametersMetricsItems::MetricTrueviewConversionManyPerView
                 }
-                "METRIC_TRUEVIEW_CONVERSION_ONE_PER_VIEW" => {
-                    ParametersMetricsItems::MetricTrueviewConversionOnePerView
-                }
                 "METRIC_TRUEVIEW_CONVERSION_RATE_ONE_PER_VIEW" => {
                     ParametersMetricsItems::MetricTrueviewConversionRateOnePerView
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewAdvertiser
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_PARTNER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewPartner
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_MANY_PER_VIEW_USD" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueManyPerViewUsd
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_ADVERTISER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewAdvertiser
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_PARTNER" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewPartner
-                }
-                "METRIC_TRUEVIEW_CONVERSION_VALUE_ONE_PER_VIEW_USD" => {
-                    ParametersMetricsItems::MetricTrueviewConversionValueOnePerViewUsd
-                }
-                "METRIC_TRUEVIEW_COST_CONVERSION_MANY_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewCostConversionManyPerViewRatio
-                }
-                "METRIC_TRUEVIEW_COST_CONVERSION_ONE_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewCostConversionOnePerViewRatio
                 }
                 "METRIC_TRUEVIEW_CPV_ADVERTISER" => {
                     ParametersMetricsItems::MetricTrueviewCpvAdvertiser
@@ -4324,12 +3886,6 @@ pub mod schemas {
                 }
                 "METRIC_TRUEVIEW_UNIQUE_VIEWERS" => {
                     ParametersMetricsItems::MetricTrueviewUniqueViewers
-                }
-                "METRIC_TRUEVIEW_VALUE_CONVERSION_MANY_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewValueConversionManyPerViewRatio
-                }
-                "METRIC_TRUEVIEW_VALUE_CONVERSION_ONE_PER_VIEW_RATIO" => {
-                    ParametersMetricsItems::MetricTrueviewValueConversionOnePerViewRatio
                 }
                 "METRIC_TRUEVIEW_VIEW_RATE" => ParametersMetricsItems::MetricTrueviewViewRate,
                 "METRIC_TRUEVIEW_VIEW_THROUGH_CONVERSION" => {
@@ -6182,7 +5738,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -6190,8 +5746,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -6231,7 +5799,7 @@ pub mod resources {
     pub mod lineitems {
         pub mod params {}
         pub struct LineitemsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> LineitemsActions<'a> {
@@ -6278,7 +5846,7 @@ pub mod resources {
         #[doc = "Created via [LineitemsActions::downloadlineitems()](struct.LineitemsActions.html#method.downloadlineitems)"]
         #[derive(Debug, Clone)]
         pub struct DownloadlineitemsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::DownloadLineItemsRequest,
             alt: Option<crate::params::Alt>,
@@ -6377,7 +5945,10 @@ pub mod resources {
                 output.push_str("lineitems/downloadlineitems");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6397,7 +5968,7 @@ pub mod resources {
         #[doc = "Created via [LineitemsActions::uploadlineitems()](struct.LineitemsActions.html#method.uploadlineitems)"]
         #[derive(Debug, Clone)]
         pub struct UploadlineitemsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UploadLineItemsRequest,
             alt: Option<crate::params::Alt>,
@@ -6496,7 +6067,10 @@ pub mod resources {
                 output.push_str("lineitems/uploadlineitems");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6517,7 +6091,7 @@ pub mod resources {
     pub mod queries {
         pub mod params {}
         pub struct QueriesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> QueriesActions<'a> {
@@ -6607,7 +6181,7 @@ pub mod resources {
         #[doc = "Created via [QueriesActions::createquery()](struct.QueriesActions.html#method.createquery)"]
         #[derive(Debug, Clone)]
         pub struct CreatequeryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Query,
             alt: Option<crate::params::Alt>,
@@ -6704,7 +6278,10 @@ pub mod resources {
                 output.push_str("query");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6724,7 +6301,7 @@ pub mod resources {
         #[doc = "Created via [QueriesActions::deletequery()](struct.QueriesActions.html#method.deletequery)"]
         #[derive(Debug, Clone)]
         pub struct DeletequeryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             query_id: i64,
             alt: Option<crate::params::Alt>,
@@ -6779,7 +6356,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6799,7 +6379,7 @@ pub mod resources {
         #[doc = "Created via [QueriesActions::getquery()](struct.QueriesActions.html#method.getquery)"]
         #[derive(Debug, Clone)]
         pub struct GetqueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             query_id: i64,
             alt: Option<crate::params::Alt>,
@@ -6903,7 +6483,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6923,7 +6506,7 @@ pub mod resources {
         #[doc = "Created via [QueriesActions::listqueries()](struct.QueriesActions.html#method.listqueries)"]
         #[derive(Debug, Clone)]
         pub struct ListqueriesRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -7020,7 +6603,10 @@ pub mod resources {
                 output.push_str("queries");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7040,7 +6626,7 @@ pub mod resources {
         #[doc = "Created via [QueriesActions::runquery()](struct.QueriesActions.html#method.runquery)"]
         #[derive(Debug, Clone)]
         pub struct RunqueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RunQueryRequest,
             query_id: i64,
@@ -7097,7 +6683,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7118,7 +6707,7 @@ pub mod resources {
     pub mod reports {
         pub mod params {}
         pub struct ReportsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ReportsActions<'a> {
@@ -7144,7 +6733,7 @@ pub mod resources {
         #[doc = "Created via [ReportsActions::listreports()](struct.ReportsActions.html#method.listreports)"]
         #[derive(Debug, Clone)]
         pub struct ListreportsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             query_id: i64,
             alt: Option<crate::params::Alt>,
@@ -7251,7 +6840,10 @@ pub mod resources {
                 output.push_str("/reports");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7272,7 +6864,7 @@ pub mod resources {
     pub mod sdf {
         pub mod params {}
         pub struct SdfActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SdfActions<'a> {
@@ -7301,7 +6893,7 @@ pub mod resources {
         #[doc = "Created via [SdfActions::download()](struct.SdfActions.html#method.download)"]
         #[derive(Debug, Clone)]
         pub struct DownloadRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::DownloadRequest,
             alt: Option<crate::params::Alt>,
@@ -7400,7 +6992,10 @@ pub mod resources {
                 output.push_str("sdf/download");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7435,9 +7030,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -7479,7 +7072,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

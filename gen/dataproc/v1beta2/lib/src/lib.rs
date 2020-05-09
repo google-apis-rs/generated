@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [autoscaling_policies](resources/projects/locations/autoscaling_policies/struct.AutoscalingPoliciesActions.html)\n          * [*create*](resources/projects/locations/autoscaling_policies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/autoscaling_policies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/autoscaling_policies/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/autoscaling_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/autoscaling_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/autoscaling_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/autoscaling_policies/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/locations/autoscaling_policies/struct.UpdateRequestBuilder.html)\n        * [workflow_templates](resources/projects/locations/workflow_templates/struct.WorkflowTemplatesActions.html)\n          * [*create*](resources/projects/locations/workflow_templates/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/workflow_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/workflow_templates/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/workflow_templates/struct.GetIamPolicyRequestBuilder.html), [*instantiate*](resources/projects/locations/workflow_templates/struct.InstantiateRequestBuilder.html), [*instantiateInline*](resources/projects/locations/workflow_templates/struct.InstantiateInlineRequestBuilder.html), [*list*](resources/projects/locations/workflow_templates/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/workflow_templates/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/workflow_templates/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/locations/workflow_templates/struct.UpdateRequestBuilder.html)\n      * [regions](resources/projects/regions/struct.RegionsActions.html)\n        * [autoscaling_policies](resources/projects/regions/autoscaling_policies/struct.AutoscalingPoliciesActions.html)\n          * [*create*](resources/projects/regions/autoscaling_policies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/autoscaling_policies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/autoscaling_policies/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/autoscaling_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/autoscaling_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/autoscaling_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/autoscaling_policies/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/regions/autoscaling_policies/struct.UpdateRequestBuilder.html)\n        * [clusters](resources/projects/regions/clusters/struct.ClustersActions.html)\n          * [*create*](resources/projects/regions/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/clusters/struct.DeleteRequestBuilder.html), [*diagnose*](resources/projects/regions/clusters/struct.DiagnoseRequestBuilder.html), [*get*](resources/projects/regions/clusters/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/clusters/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/clusters/struct.ListRequestBuilder.html), [*patch*](resources/projects/regions/clusters/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/clusters/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/clusters/struct.TestIamPermissionsRequestBuilder.html)\n        * [jobs](resources/projects/regions/jobs/struct.JobsActions.html)\n          * [*cancel*](resources/projects/regions/jobs/struct.CancelRequestBuilder.html), [*delete*](resources/projects/regions/jobs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/jobs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/jobs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/jobs/struct.ListRequestBuilder.html), [*patch*](resources/projects/regions/jobs/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/jobs/struct.SetIamPolicyRequestBuilder.html), [*submit*](resources/projects/regions/jobs/struct.SubmitRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/jobs/struct.TestIamPermissionsRequestBuilder.html)\n        * [operations](resources/projects/regions/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/regions/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/regions/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/operations/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/operations/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/operations/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/operations/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/operations/struct.TestIamPermissionsRequestBuilder.html)\n        * [workflow_templates](resources/projects/regions/workflow_templates/struct.WorkflowTemplatesActions.html)\n          * [*create*](resources/projects/regions/workflow_templates/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/workflow_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/workflow_templates/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/workflow_templates/struct.GetIamPolicyRequestBuilder.html), [*instantiate*](resources/projects/regions/workflow_templates/struct.InstantiateRequestBuilder.html), [*instantiateInline*](resources/projects/regions/workflow_templates/struct.InstantiateInlineRequestBuilder.html), [*list*](resources/projects/regions/workflow_templates/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/workflow_templates/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/workflow_templates/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/regions/workflow_templates/struct.UpdateRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [autoscaling_policies](resources/projects/locations/autoscaling_policies/struct.AutoscalingPoliciesActions.html)\n          * [*create*](resources/projects/locations/autoscaling_policies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/autoscaling_policies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/autoscaling_policies/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/autoscaling_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/autoscaling_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/autoscaling_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/autoscaling_policies/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/locations/autoscaling_policies/struct.UpdateRequestBuilder.html)\n        * [workflow_templates](resources/projects/locations/workflow_templates/struct.WorkflowTemplatesActions.html)\n          * [*create*](resources/projects/locations/workflow_templates/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/workflow_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/workflow_templates/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/workflow_templates/struct.GetIamPolicyRequestBuilder.html), [*instantiate*](resources/projects/locations/workflow_templates/struct.InstantiateRequestBuilder.html), [*instantiateInline*](resources/projects/locations/workflow_templates/struct.InstantiateInlineRequestBuilder.html), [*list*](resources/projects/locations/workflow_templates/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/workflow_templates/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/workflow_templates/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/locations/workflow_templates/struct.UpdateRequestBuilder.html)\n      * [regions](resources/projects/regions/struct.RegionsActions.html)\n        * [autoscaling_policies](resources/projects/regions/autoscaling_policies/struct.AutoscalingPoliciesActions.html)\n          * [*create*](resources/projects/regions/autoscaling_policies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/autoscaling_policies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/autoscaling_policies/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/autoscaling_policies/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/autoscaling_policies/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/autoscaling_policies/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/autoscaling_policies/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/regions/autoscaling_policies/struct.UpdateRequestBuilder.html)\n        * [clusters](resources/projects/regions/clusters/struct.ClustersActions.html)\n          * [*create*](resources/projects/regions/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/clusters/struct.DeleteRequestBuilder.html), [*diagnose*](resources/projects/regions/clusters/struct.DiagnoseRequestBuilder.html), [*get*](resources/projects/regions/clusters/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/clusters/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/clusters/struct.ListRequestBuilder.html), [*patch*](resources/projects/regions/clusters/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/clusters/struct.SetIamPolicyRequestBuilder.html), [*start*](resources/projects/regions/clusters/struct.StartRequestBuilder.html), [*stop*](resources/projects/regions/clusters/struct.StopRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/clusters/struct.TestIamPermissionsRequestBuilder.html)\n        * [jobs](resources/projects/regions/jobs/struct.JobsActions.html)\n          * [*cancel*](resources/projects/regions/jobs/struct.CancelRequestBuilder.html), [*delete*](resources/projects/regions/jobs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/jobs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/jobs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/jobs/struct.ListRequestBuilder.html), [*patch*](resources/projects/regions/jobs/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/jobs/struct.SetIamPolicyRequestBuilder.html), [*submit*](resources/projects/regions/jobs/struct.SubmitRequestBuilder.html), [*submitAsOperation*](resources/projects/regions/jobs/struct.SubmitAsOperationRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/jobs/struct.TestIamPermissionsRequestBuilder.html)\n        * [operations](resources/projects/regions/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/regions/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/regions/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/operations/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/operations/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/regions/operations/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/operations/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/operations/struct.TestIamPermissionsRequestBuilder.html)\n        * [workflow_templates](resources/projects/regions/workflow_templates/struct.WorkflowTemplatesActions.html)\n          * [*create*](resources/projects/regions/workflow_templates/struct.CreateRequestBuilder.html), [*delete*](resources/projects/regions/workflow_templates/struct.DeleteRequestBuilder.html), [*get*](resources/projects/regions/workflow_templates/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/regions/workflow_templates/struct.GetIamPolicyRequestBuilder.html), [*instantiate*](resources/projects/regions/workflow_templates/struct.InstantiateRequestBuilder.html), [*instantiateInline*](resources/projects/regions/workflow_templates/struct.InstantiateInlineRequestBuilder.html), [*list*](resources/projects/regions/workflow_templates/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/regions/workflow_templates/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/regions/workflow_templates/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/regions/workflow_templates/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -20,7 +24,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub accelerator_count: ::std::option::Option<i32>,
-        #[doc = "Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypesExamples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If you are using the Cloud Dataproc Auto Zone Placement feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80."]
+        #[doc = "Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes)Examples * https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-k80."]
         #[serde(
             rename = "acceleratorTypeUri",
             default,
@@ -51,7 +55,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AutoscalingConfig {
-        #[doc = "Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]\nprojects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Cloud Dataproc region."]
+        #[doc = "Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]\nprojects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region."]
         #[serde(
             rename = "policyUri",
             default,
@@ -219,7 +223,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource. members can have the following values:\nallUsers: A special identifier that represents anyone who is  on the internet; with or without a Google account.\nallAuthenticatedUsers: A special identifier that represents anyone  who is authenticated with a Google account or a service account.\nuser:{emailid}: An email address that represents a specific Google  account. For example, alice@example.com .\nserviceAccount:{emailid}: An email address that represents a service  account. For example, my-other-app@appspot.gserviceaccount.com.\ngroup:{emailid}: An email address that represents a Google group.  For example, admins@example.com.\ndomain:{domain}: The G Suite domain (primary) that represents all the  users of that domain. For example, google.com or example.com."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource. members can have the following values:\nallUsers: A special identifier that represents anyone who is  on the internet; with or without a Google account.\nallAuthenticatedUsers: A special identifier that represents anyone  who is authenticated with a Google account or a service account.\nuser:{emailid}: An email address that represents a specific Google  account. For example, alice@example.com .\nserviceAccount:{emailid}: An email address that represents a service  account. For example, my-other-app@appspot.gserviceaccount.com.\ngroup:{emailid}: An email address that represents a Google group.  For example, admins@example.com.\ndeleted:user:{emailid}?uid={uniqueid}: An email address (plus unique  identifier) representing a user that has been recently deleted. For  example, alice@example.com?uid=123456789012345678901. If the user is  recovered, this value reverts to user:{emailid} and the recovered user  retains the role in the binding.\ndeleted:serviceAccount:{emailid}?uid={uniqueid}: An email address (plus  unique identifier) representing a service account that has been recently  deleted. For example,  my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901.  If the service account is undeleted, this value reverts to  serviceAccount:{emailid} and the undeleted service account retains the  role in the binding.\ndeleted:group:{emailid}?uid={uniqueid}: An email address (plus unique  identifier) representing a Google group that has been recently  deleted. For example, admins@example.com?uid=123456789012345678901. If  the group is recovered, this value reverts to group:{emailid} and the  recovered group retains the role in the binding.\ndomain:{domain}: The G Suite domain (primary) that represents all the  users of that domain. For example, google.com or example.com."]
         #[serde(
             rename = "members",
             default,
@@ -288,14 +292,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_name: ::std::option::Option<String>,
-        #[doc = "Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when it creates the cluster."]
+        #[doc = "Output only. A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster."]
         #[serde(
             rename = "clusterUuid",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_uuid: ::std::option::Option<String>,
-        #[doc = "Required. The cluster config. Note that Cloud Dataproc may set default values, and values may change when clusters are updated."]
+        #[doc = "Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated."]
         #[serde(
             rename = "config",
             default,
@@ -368,7 +372,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub autoscaling_config: ::std::option::Option<crate::schemas::AutoscalingConfig>,
-        #[doc = "Optional. A Google Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Cloud Dataproc staging bucket)."]
+        #[doc = "Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging bucket (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket))."]
         #[serde(
             rename = "configBucket",
             default,
@@ -396,6 +400,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gce_cluster_config: ::std::option::Option<crate::schemas::GceClusterConfig>,
+        #[doc = "Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config."]
+        #[serde(
+            rename = "gkeClusterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gke_cluster_config: ::std::option::Option<crate::schemas::GkeClusterConfig>,
         #[doc = "Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's <code>role</code> metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget):\nROLE=$(curl -H Metadata-Flavor:Google\nhttp://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role)\nif [[ \"${ROLE}\" == 'Master' ]]; then\n... master specific actions ...\nelse\n... worker specific actions ...\nfi"]
         #[serde(
             rename = "initializationActions",
@@ -818,7 +829,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub state: ::std::option::Option<crate::schemas::ClusterStatusState>,
-        #[doc = "Output only. Time when this state was entered."]
+        #[doc = "Output only. Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json))."]
         #[serde(
             rename = "stateStartTime",
             default,
@@ -853,6 +864,12 @@ pub mod schemas {
         Error,
         #[doc = "The cluster is currently running and healthy. It is ready for use."]
         Running,
+        #[doc = "The cluster is being started. It is not ready for use."]
+        Starting,
+        #[doc = "The cluster is currently stopped. It is not ready for use."]
+        Stopped,
+        #[doc = "The cluster is being stopped. It cannot be used."]
+        Stopping,
         #[doc = "The cluster state is unknown."]
         Unknown,
         #[doc = "The cluster is being updated. It continues to accept and process jobs."]
@@ -865,6 +882,9 @@ pub mod schemas {
                 ClusterStatusState::Deleting => "DELETING",
                 ClusterStatusState::Error => "ERROR",
                 ClusterStatusState::Running => "RUNNING",
+                ClusterStatusState::Starting => "STARTING",
+                ClusterStatusState::Stopped => "STOPPED",
+                ClusterStatusState::Stopping => "STOPPING",
                 ClusterStatusState::Unknown => "UNKNOWN",
                 ClusterStatusState::Updating => "UPDATING",
             }
@@ -883,6 +903,9 @@ pub mod schemas {
                 "DELETING" => ClusterStatusState::Deleting,
                 "ERROR" => ClusterStatusState::Error,
                 "RUNNING" => ClusterStatusState::Running,
+                "STARTING" => ClusterStatusState::Starting,
+                "STOPPED" => ClusterStatusState::Stopped,
+                "STOPPING" => ClusterStatusState::Stopping,
                 "UNKNOWN" => ClusterStatusState::Unknown,
                 "UPDATING" => ClusterStatusState::Updating,
                 _ => return Err(()),
@@ -913,6 +936,9 @@ pub mod schemas {
                 "DELETING" => ClusterStatusState::Deleting,
                 "ERROR" => ClusterStatusState::Error,
                 "RUNNING" => ClusterStatusState::Running,
+                "STARTING" => ClusterStatusState::Starting,
+                "STOPPED" => ClusterStatusState::Stopped,
+                "STOPPING" => ClusterStatusState::Stopping,
                 "UNKNOWN" => ClusterStatusState::Unknown,
                 "UPDATING" => ClusterStatusState::Updating,
                 _ => {
@@ -936,7 +962,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ClusterStatusSubstate {
-        #[doc = "The agent-reported status is out of date (may occur if Cloud Dataproc loses communication with Agent).Applies to RUNNING state."]
+        #[doc = "The agent-reported status is out of date (may occur if Dataproc loses communication with Agent).Applies to RUNNING state."]
         StaleStatus,
         #[doc = "The cluster is known to be in an unhealthy state (for example, critical daemons are not running or HDFS capacity is exhausted).Applies to RUNNING state."]
         Unhealthy,
@@ -1092,7 +1118,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub boot_disk_type: ::std::option::Option<String>,
-        #[doc = "Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."]
+        #[doc = "Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries."]
         #[serde(
             rename = "numLocalSsds",
             default,
@@ -1216,28 +1242,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in Common Expression Language syntax.The application context of the containing message determines which well-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language syntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression."]
         #[serde(
             rename = "title",
             default,
@@ -1282,7 +1308,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the \"default\" network of the project is used, if it exists. Cannot be a \"Custom Subnet Network\" (see Using Subnetworks for more information).A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default\nprojects/[project_id]/regions/global/default\ndefault"]
+        #[doc = "Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the \"default\" network of the project is used, if it exists. Cannot be a \"Custom Subnet Network\" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default\nprojects/[project_id]/regions/global/default\ndefault"]
         #[serde(
             rename = "networkUri",
             default,
@@ -1296,7 +1322,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reservation_affinity: ::std::option::Option<crate::schemas::ReservationAffinity>,
-        #[doc = "Optional. The service account of the instances. Defaults to the default Compute Engine service account. Custom service accounts need permissions equivalent to the following IAM roles:\nroles/logging.logWriter\nroles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/service-accounts#custom_service_accounts for more information). Example: [account_id]@[project_id].iam.gserviceaccount.com"]
+        #[doc = "Optional. The Dataproc service account (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/service-accounts#service_accounts_in_cloud_dataproc) (also see VM Data Plane identity (https://cloud.google.com/dataproc/docs/concepts/iam/dataproc-principals#vm_service_account_data_plane_identity)) used by Dataproc cluster VM instances to access Google Cloud Platform services.If not specified, the Compute Engine default service account (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used."]
         #[serde(
             rename = "serviceAccount",
             default,
@@ -1317,14 +1343,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub subnetwork_uri: ::std::option::Option<String>,
-        #[doc = "The Compute Engine tags to add to all instances (see Tagging instances)."]
+        #[doc = "The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags))."]
         #[serde(
             rename = "tags",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tags: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the \"global\" region. If omitted in a non-global Cloud Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]\nprojects/[project_id]/zones/[zone]\nus-central1-f"]
+        #[doc = "Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the \"global\" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]\nprojects/[project_id]/zones/[zone]\nus-central1-f"]
         #[serde(
             rename = "zoneUri",
             default,
@@ -1416,6 +1442,38 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GkeClusterConfig {
+        #[doc = "Optional. A target for the deployment."]
+        #[serde(
+            rename = "namespacedGkeDeploymentTarget",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub namespaced_gke_deployment_target:
+            ::std::option::Option<crate::schemas::NamespacedGkeDeploymentTarget>,
+    }
+    impl ::google_field_selector::FieldSelector for GkeClusterConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GkeClusterConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct HadoopJob {
         #[doc = "Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip."]
         #[serde(
@@ -1466,7 +1524,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub main_jar_file_uri: ::std::option::Option<String>,
-        #[doc = "Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code."]
+        #[doc = "Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code."]
         #[serde(
             rename = "properties",
             default,
@@ -1511,7 +1569,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub jar_file_uris: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code."]
+        #[doc = "Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code."]
         #[serde(
             rename = "properties",
             default,
@@ -1608,7 +1666,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct InstanceGroupConfig {
-        #[doc = "Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This feature is still under development. It may be changed before final release."]
+        #[doc = "Optional. The Compute Engine accelerator configuration for these instances."]
         #[serde(
             rename = "accelerators",
             default,
@@ -1622,28 +1680,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disk_config: ::std::option::Option<crate::schemas::DiskConfig>,
-        #[doc = "Optional. The Compute Engine image resource used for cluster instances. It can be specified or may be inferred from SoftwareConfig.image_version."]
+        #[doc = "Optional. The Compute Engine image resource used for cluster instances.The URI can represent an image or image family.Image examples:\nhttps://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]\nprojects/[project_id]/global/images/[image-id]\nimage-idImage family examples. Dataproc will use the most recent image from the family:\nhttps://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]\nprojects/[project_id]/global/images/family/[custom-image-family-name]If the URI is unspecified, it will be inferred from SoftwareConfig.image_version or the system default."]
         #[serde(
             rename = "imageUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image_uri: ::std::option::Option<String>,
-        #[doc = "Output only. The list of instance names. Cloud Dataproc derives the names from cluster_name, num_instances, and the instance group."]
+        #[doc = "Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the instance group."]
         #[serde(
             rename = "instanceNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. Specifies that this instance group contains preemptible instances."]
+        #[doc = "Output only. Specifies that this instance group contains preemptible instances."]
         #[serde(
             rename = "isPreemptible",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_preemptible: ::std::option::Option<bool>,
-        #[doc = "Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nprojects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nn1-standard-2Auto Zone Exception: If you are using the Cloud Dataproc Auto Zone Placement feature, you must use the short name of the machine type resource, for example, n1-standard-2."]
+        #[doc = "Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or short name are valid. Examples:\nhttps://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nprojects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2\nn1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, n1-standard-2."]
         #[serde(
             rename = "machineTypeUri",
             default,
@@ -1657,7 +1715,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub managed_group_config: ::std::option::Option<crate::schemas::ManagedGroupConfig>,
-        #[doc = "Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud Dataproc\u{2192}Minimum CPU Platform."]
+        #[doc = "Specifies the minimum cpu platform for the Instance Group. See Dataproc -> Minimum CPU Platform (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu)."]
         #[serde(
             rename = "minCpuPlatform",
             default,
@@ -1671,6 +1729,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_instances: ::std::option::Option<i32>,
+        #[doc = "Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE."]
+        #[serde(
+            rename = "preemptibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub preemptibility:
+            ::std::option::Option<crate::schemas::InstanceGroupConfigPreemptibility>,
     }
     impl ::google_field_selector::FieldSelector for InstanceGroupConfig {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1678,6 +1744,88 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for InstanceGroupConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum InstanceGroupConfigPreemptibility {
+        #[doc = "Instances are non-preemptible.This option is allowed for all instance groups and is the only valid value for Master and Worker instance groups."]
+        NonPreemptible,
+        #[doc = "Preemptibility is unspecified, the system will choose the appropriate setting for each instance group."]
+        PreemptibilityUnspecified,
+        #[doc = "Instances are preemptible.This option is allowed only for secondary worker groups."]
+        Preemptible,
+    }
+    impl InstanceGroupConfigPreemptibility {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                InstanceGroupConfigPreemptibility::NonPreemptible => "NON_PREEMPTIBLE",
+                InstanceGroupConfigPreemptibility::PreemptibilityUnspecified => {
+                    "PREEMPTIBILITY_UNSPECIFIED"
+                }
+                InstanceGroupConfigPreemptibility::Preemptible => "PREEMPTIBLE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InstanceGroupConfigPreemptibility {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InstanceGroupConfigPreemptibility {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InstanceGroupConfigPreemptibility, ()> {
+            Ok(match s {
+                "NON_PREEMPTIBLE" => InstanceGroupConfigPreemptibility::NonPreemptible,
+                "PREEMPTIBILITY_UNSPECIFIED" => {
+                    InstanceGroupConfigPreemptibility::PreemptibilityUnspecified
+                }
+                "PREEMPTIBLE" => InstanceGroupConfigPreemptibility::Preemptible,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for InstanceGroupConfigPreemptibility {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for InstanceGroupConfigPreemptibility {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for InstanceGroupConfigPreemptibility {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NON_PREEMPTIBLE" => InstanceGroupConfigPreemptibility::NonPreemptible,
+                "PREEMPTIBILITY_UNSPECIFIED" => {
+                    InstanceGroupConfigPreemptibility::PreemptibilityUnspecified
+                }
+                "PREEMPTIBLE" => InstanceGroupConfigPreemptibility::Preemptible,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for InstanceGroupConfigPreemptibility {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InstanceGroupConfigPreemptibility {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1738,6 +1886,13 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Job {
+        #[doc = "Output only. Indicates whether the job is completed. If the value is false, the job is still in progress. If true, the job is completed, and status.state field will indicate if it was successful, failed, or cancelled."]
+        #[serde(
+            rename = "done",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub done: ::std::option::Option<bool>,
         #[doc = "Output only. If present, the location of miscellaneous control files which may be used as part of job setup and handling. If not present, control files may be placed in the same location as driver_output_uri."]
         #[serde(
             rename = "driverControlFilesUri",
@@ -1752,14 +1907,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub driver_output_resource_uri: ::std::option::Option<String>,
-        #[doc = "Job is a Hadoop job."]
+        #[doc = "Optional. Job is a Hadoop job."]
         #[serde(
             rename = "hadoopJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hadoop_job: ::std::option::Option<crate::schemas::HadoopJob>,
-        #[doc = "Job is a Hive job."]
+        #[doc = "Optional. Job is a Hive job."]
         #[serde(
             rename = "hiveJob",
             default,
@@ -1780,7 +1935,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Job is a Pig job."]
+        #[doc = "Optional. Job is a Pig job."]
         #[serde(
             rename = "pigJob",
             default,
@@ -1794,14 +1949,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub placement: ::std::option::Option<crate::schemas::JobPlacement>,
-        #[doc = "Job is a Presto job"]
+        #[doc = "Optional. Job is a Presto job."]
         #[serde(
             rename = "prestoJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub presto_job: ::std::option::Option<crate::schemas::PrestoJob>,
-        #[doc = "Job is a Pyspark job."]
+        #[doc = "Optional. Job is a PySpark job."]
         #[serde(
             rename = "pysparkJob",
             default,
@@ -1822,21 +1977,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scheduling: ::std::option::Option<crate::schemas::JobScheduling>,
-        #[doc = "Job is a Spark job."]
+        #[doc = "Optional. Job is a Spark job."]
         #[serde(
             rename = "sparkJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spark_job: ::std::option::Option<crate::schemas::SparkJob>,
-        #[doc = "Job is a SparkR job."]
+        #[doc = "Optional. Job is a SparkR job."]
         #[serde(
             rename = "sparkRJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spark_r_job: ::std::option::Option<crate::schemas::SparkRJob>,
-        #[doc = "Job is a SparkSql job."]
+        #[doc = "Optional. Job is a SparkSql job."]
         #[serde(
             rename = "sparkSqlJob",
             default,
@@ -1894,6 +2049,58 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct JobMetadata {
+        #[doc = "Output only. The job id."]
+        #[serde(
+            rename = "jobId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub job_id: ::std::option::Option<String>,
+        #[doc = "Output only. Operation type."]
+        #[serde(
+            rename = "operationType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub operation_type: ::std::option::Option<String>,
+        #[doc = "Output only. Job submission time."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "Output only. Most recent job status."]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status: ::std::option::Option<crate::schemas::JobStatus>,
+    }
+    impl ::google_field_selector::FieldSelector for JobMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for JobMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct JobPlacement {
         #[doc = "Required. The name of the cluster where the job will be submitted."]
         #[serde(
@@ -1902,7 +2109,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_name: ::std::option::Option<String>,
-        #[doc = "Output only. A cluster UUID generated by the Cloud Dataproc service when the job is submitted."]
+        #[doc = "Output only. A cluster UUID generated by the Dataproc service when the job is submitted."]
         #[serde(
             rename = "clusterUuid",
             default,
@@ -1933,7 +2140,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct JobReference {
-        #[doc = "Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server."]
+        #[doc = "Optional. The job ID, which must be unique within the project. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server."]
         #[serde(
             rename = "jobId",
             default,
@@ -2002,7 +2209,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct JobStatus {
-        #[doc = "Output only. Optional job state details, such as an error description if the state is <code>ERROR</code>."]
+        #[doc = "Output only. Optional Job state details, such as an error description if the state is <code>ERROR</code>."]
         #[serde(
             rename = "details",
             default,
@@ -2156,7 +2363,7 @@ pub mod schemas {
     pub enum JobStatusSubstate {
         #[doc = "The Job has been received and is awaiting execution (it may be waiting for a condition to be met). See the \"details\" field for the reason for the delay.Applies to RUNNING state."]
         Queued,
-        #[doc = "The agent-reported status is out of date, which may be caused by a loss of communication between the agent and Cloud Dataproc. If the agent does not send a timely update, the job will fail.Applies to RUNNING state."]
+        #[doc = "The agent-reported status is out of date, which may be caused by a loss of communication between the agent and Dataproc. If the agent does not send a timely update, the job will fail.Applies to RUNNING state."]
         StaleStatus,
         #[doc = "The Job is submitted to the agent.Applies to RUNNING state."]
         Submitted,
@@ -2274,7 +2481,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cross_realm_trust_shared_password_uri: ::std::option::Option<String>,
-        #[doc = "Optional. Flag to indicate whether to Kerberize the cluster."]
+        #[doc = "Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster."]
         #[serde(
             rename = "enableKerberos",
             default,
@@ -2375,28 +2582,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LifecycleConfig {
-        #[doc = "Optional. The time when cluster will be auto-deleted."]
+        #[doc = "Optional. The time when cluster will be auto-deleted. (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json))."]
         #[serde(
             rename = "autoDeleteTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_delete_time: ::std::option::Option<String>,
-        #[doc = "Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Valid range: 10m, 14d.Example: \"1d\", to delete the cluster 1 day after its creation.."]
+        #[doc = "Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json))."]
         #[serde(
             rename = "autoDeleteTtl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_delete_ttl: ::std::option::Option<String>,
-        #[doc = "Optional. The duration to keep the cluster alive while idling. Passing this threshold will cause the cluster to be deleted. Valid range: 10m, 14d.Example: \"10m\", the minimum value, to delete the cluster when it has had no jobs running for 10 minutes."]
+        #[doc = "Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)."]
         #[serde(
             rename = "idleDeleteTtl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub idle_delete_ttl: ::std::option::Option<String>,
-        #[doc = "Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness."]
+        #[doc = "Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json))."]
         #[serde(
             rename = "idleStartTime",
             default,
@@ -2811,6 +3018,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct NamespacedGkeDeploymentTarget {
+        #[doc = "Optional. A namespace within the GKE cluster to deploy into."]
+        #[serde(
+            rename = "clusterNamespace",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_namespace: ::std::option::Option<String>,
+        #[doc = "Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'"]
+        #[serde(
+            rename = "targetGkeCluster",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub target_gke_cluster: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for NamespacedGkeDeploymentTarget {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for NamespacedGkeDeploymentTarget {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct NodeInitializationAction {
         #[doc = "Required. Cloud Storage URI of executable file."]
         #[serde(
@@ -2819,7 +3064,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub executable_file: ::std::option::Option<String>,
-        #[doc = "Optional. Amount of time executable has to complete. Default is 10 minutes. Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period."]
+        #[doc = "Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period."]
         #[serde(
             rename = "executionTimeout",
             default,
@@ -2900,14 +3145,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OrderedJob {
-        #[doc = "Job is a Hadoop job."]
+        #[doc = "Optional. Job is a Hadoop job."]
         #[serde(
             rename = "hadoopJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hadoop_job: ::std::option::Option<crate::schemas::HadoopJob>,
-        #[doc = "Job is a Hive job."]
+        #[doc = "Optional. Job is a Hive job."]
         #[serde(
             rename = "hiveJob",
             default,
@@ -2921,7 +3166,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Job is a Pig job."]
+        #[doc = "Optional. Job is a Pig job."]
         #[serde(
             rename = "pigJob",
             default,
@@ -2935,7 +3180,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub prerequisite_step_ids: ::std::option::Option<Vec<String>>,
-        #[doc = "Job is a Pyspark job."]
+        #[doc = "Optional. Job is a Presto job."]
+        #[serde(
+            rename = "prestoJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub presto_job: ::std::option::Option<crate::schemas::PrestoJob>,
+        #[doc = "Optional. Job is a PySpark job."]
         #[serde(
             rename = "pysparkJob",
             default,
@@ -2949,14 +3201,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub scheduling: ::std::option::Option<crate::schemas::JobScheduling>,
-        #[doc = "Job is a Spark job."]
+        #[doc = "Optional. Job is a Spark job."]
         #[serde(
             rename = "sparkJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spark_job: ::std::option::Option<crate::schemas::SparkJob>,
-        #[doc = "Job is a SparkSql job."]
+        #[doc = "Optional. Job is a SparkR job."]
+        #[serde(
+            rename = "sparkRJob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spark_r_job: ::std::option::Option<crate::schemas::SparkRJob>,
+        #[doc = "Optional. Job is a SparkSql job."]
         #[serde(
             rename = "sparkSqlJob",
             default,
@@ -3053,7 +3312,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
-        #[doc = "Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code."]
+        #[doc = "Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code."]
         #[serde(
             rename = "properties",
             default,
@@ -3105,21 +3364,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Policy {
-        #[doc = "Associates a list of members to a role. bindings with no members will result in an error."]
+        #[doc = "Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.If no etag is provided in the call to setIamPolicy, then the existing policy is overwritten."]
+        #[doc = "etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the etag in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An etag is returned in the response to getIamPolicy, and systems are expected to put that etag in the request to setIamPolicy to ensure that their change will be applied to the same version of the policy.Important: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset."]
+        #[doc = "Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations:\nGetting a policy that includes a conditional role binding\nAdding a conditional role binding to a policy\nChanging a conditional role binding in a policy\nRemoving any role binding, with or without a condition, from a policy  that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset."]
         #[serde(
             rename = "version",
             default,
@@ -3265,7 +3524,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub main_python_file_uri: ::std::option::Option<String>,
-        #[doc = "Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
+        #[doc = "Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
         #[serde(
             rename = "properties",
             default,
@@ -3561,7 +3820,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SoftwareConfig {
-        #[doc = "Optional. The version of software inside the cluster. It must be one of the supported Cloud Dataproc Versions, such as \"1.2\" (including a subminor version, such as \"1.2.29\"), or the \"preview\" version. If unspecified, it defaults to the latest Debian version."]
+        #[doc = "Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_cloud_dataproc_versions), such as \"1.2\" (including a subminor version, such as \"1.2.29\"), or the \"preview\" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version."]
         #[serde(
             rename = "imageVersion",
             default,
@@ -3576,7 +3835,7 @@ pub mod schemas {
         )]
         pub optional_components:
             ::std::option::Option<Vec<crate::schemas::SoftwareConfigOptionalComponentsItems>>,
-        #[doc = "Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings:\ncapacity-scheduler: capacity-scheduler.xml\ncore: core-site.xml\ndistcp: distcp-default.xml\nhdfs: hdfs-site.xml\nhive: hive-site.xml\nmapred: mapred-site.xml\npig: pig.properties\nspark: spark-defaults.conf\nyarn: yarn-site.xmlFor more information, see Cluster properties."]
+        #[doc = "Optional. The properties to set on daemon config files.Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. The following are supported prefixes and their mappings:\ncapacity-scheduler: capacity-scheduler.xml\ncore: core-site.xml\ndistcp: distcp-default.xml\nhdfs: hdfs-site.xml\nhive: hive-site.xml\nmapred: mapred-site.xml\npig: pig.properties\nspark: spark-defaults.conf\nyarn: yarn-site.xmlFor more information, see Cluster properties (https://cloud.google.com/dataproc/docs/concepts/cluster-properties)."]
         #[serde(
             rename = "properties",
             default,
@@ -3598,11 +3857,16 @@ pub mod schemas {
     pub enum SoftwareConfigOptionalComponentsItems {
         Anaconda,
         ComponentUnspecified,
+        Docker,
         Druid,
+        Flink,
+        Hbase,
         HiveWebhcat,
         Jupyter,
         Kerberos,
         Presto,
+        Ranger,
+        Solr,
         Zeppelin,
         Zookeeper,
     }
@@ -3613,11 +3877,16 @@ pub mod schemas {
                 SoftwareConfigOptionalComponentsItems::ComponentUnspecified => {
                     "COMPONENT_UNSPECIFIED"
                 }
+                SoftwareConfigOptionalComponentsItems::Docker => "DOCKER",
                 SoftwareConfigOptionalComponentsItems::Druid => "DRUID",
+                SoftwareConfigOptionalComponentsItems::Flink => "FLINK",
+                SoftwareConfigOptionalComponentsItems::Hbase => "HBASE",
                 SoftwareConfigOptionalComponentsItems::HiveWebhcat => "HIVE_WEBHCAT",
                 SoftwareConfigOptionalComponentsItems::Jupyter => "JUPYTER",
                 SoftwareConfigOptionalComponentsItems::Kerberos => "KERBEROS",
                 SoftwareConfigOptionalComponentsItems::Presto => "PRESTO",
+                SoftwareConfigOptionalComponentsItems::Ranger => "RANGER",
+                SoftwareConfigOptionalComponentsItems::Solr => "SOLR",
                 SoftwareConfigOptionalComponentsItems::Zeppelin => "ZEPPELIN",
                 SoftwareConfigOptionalComponentsItems::Zookeeper => "ZOOKEEPER",
             }
@@ -3636,11 +3905,16 @@ pub mod schemas {
                 "COMPONENT_UNSPECIFIED" => {
                     SoftwareConfigOptionalComponentsItems::ComponentUnspecified
                 }
+                "DOCKER" => SoftwareConfigOptionalComponentsItems::Docker,
                 "DRUID" => SoftwareConfigOptionalComponentsItems::Druid,
+                "FLINK" => SoftwareConfigOptionalComponentsItems::Flink,
+                "HBASE" => SoftwareConfigOptionalComponentsItems::Hbase,
                 "HIVE_WEBHCAT" => SoftwareConfigOptionalComponentsItems::HiveWebhcat,
                 "JUPYTER" => SoftwareConfigOptionalComponentsItems::Jupyter,
                 "KERBEROS" => SoftwareConfigOptionalComponentsItems::Kerberos,
                 "PRESTO" => SoftwareConfigOptionalComponentsItems::Presto,
+                "RANGER" => SoftwareConfigOptionalComponentsItems::Ranger,
+                "SOLR" => SoftwareConfigOptionalComponentsItems::Solr,
                 "ZEPPELIN" => SoftwareConfigOptionalComponentsItems::Zeppelin,
                 "ZOOKEEPER" => SoftwareConfigOptionalComponentsItems::Zookeeper,
                 _ => return Err(()),
@@ -3671,11 +3945,16 @@ pub mod schemas {
                 "COMPONENT_UNSPECIFIED" => {
                     SoftwareConfigOptionalComponentsItems::ComponentUnspecified
                 }
+                "DOCKER" => SoftwareConfigOptionalComponentsItems::Docker,
                 "DRUID" => SoftwareConfigOptionalComponentsItems::Druid,
+                "FLINK" => SoftwareConfigOptionalComponentsItems::Flink,
+                "HBASE" => SoftwareConfigOptionalComponentsItems::Hbase,
                 "HIVE_WEBHCAT" => SoftwareConfigOptionalComponentsItems::HiveWebhcat,
                 "JUPYTER" => SoftwareConfigOptionalComponentsItems::Jupyter,
                 "KERBEROS" => SoftwareConfigOptionalComponentsItems::Kerberos,
                 "PRESTO" => SoftwareConfigOptionalComponentsItems::Presto,
+                "RANGER" => SoftwareConfigOptionalComponentsItems::Ranger,
+                "SOLR" => SoftwareConfigOptionalComponentsItems::Solr,
                 "ZEPPELIN" => SoftwareConfigOptionalComponentsItems::Zeppelin,
                 "ZOOKEEPER" => SoftwareConfigOptionalComponentsItems::Zookeeper,
                 _ => {
@@ -3759,7 +4038,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub main_jar_file_uri: ::std::option::Option<String>,
-        #[doc = "Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
+        #[doc = "Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
         #[serde(
             rename = "properties",
             default,
@@ -3825,7 +4104,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub main_r_file_uri: ::std::option::Option<String>,
-        #[doc = "Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
+        #[doc = "Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code."]
         #[serde(
             rename = "properties",
             default,
@@ -3870,7 +4149,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub logging_config: ::std::option::Option<crate::schemas::LoggingConfig>,
-        #[doc = "Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Cloud Dataproc API may be overwritten."]
+        #[doc = "Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten."]
         #[serde(
             rename = "properties",
             default,
@@ -3909,6 +4188,44 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StartClusterRequest {
+        #[doc = "Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster with specified UUID does not exist."]
+        #[serde(
+            rename = "clusterUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_uuid: ::std::option::Option<String>,
+        #[doc = "Optional. A unique id used to identify the request. If the server receives two StartClusterRequest requests with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters."]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub request_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for StartClusterRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StartClusterRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
@@ -3940,6 +4257,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Status {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StopClusterRequest {
+        #[doc = "Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND) if cluster with specified UUID does not exist."]
+        #[serde(
+            rename = "clusterUuid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cluster_uuid: ::std::option::Option<String>,
+        #[doc = "Optional. A unique id used to identify the request. If the server receives two StopClusterRequest requests with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters."]
+        #[serde(
+            rename = "requestId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub request_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for StopClusterRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StopClusterRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4610,28 +4965,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct YarnApplication {
-        #[doc = "Required. The application name."]
+        #[doc = "Output only. The application name."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Required. The numerical progress of the application, from 1 to 100."]
+        #[doc = "Output only. The numerical progress of the application, from 1 to 100."]
         #[serde(
             rename = "progress",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress: ::std::option::Option<f32>,
-        #[doc = "Required. The application state."]
+        #[doc = "Output only. The application state."]
         #[serde(
             rename = "state",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub state: ::std::option::Option<crate::schemas::YarnApplicationState>,
-        #[doc = "Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access."]
+        #[doc = "Output only. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access."]
         #[serde(
             rename = "trackingUrl",
             default,
@@ -4906,7 +5261,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -4914,8 +5269,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -4934,7 +5301,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -4959,7 +5326,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -4976,7 +5343,7 @@ pub mod resources {
             pub mod autoscaling_policies {
                 pub mod params {}
                 pub struct AutoscalingPoliciesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> AutoscalingPoliciesActions<'a> {
@@ -5089,7 +5456,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -5165,7 +5532,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::create()](struct.AutoscalingPoliciesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AutoscalingPolicy,
                     parent: String,
@@ -5305,7 +5672,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5329,7 +5697,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::delete()](struct.AutoscalingPoliciesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5464,7 +5832,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5488,7 +5857,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::get()](struct.AutoscalingPoliciesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5625,7 +5994,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5649,7 +6019,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::get_iam_policy()](struct.AutoscalingPoliciesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -5791,7 +6161,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -5819,7 +6190,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::list()](struct.AutoscalingPoliciesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -6072,7 +6443,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6109,7 +6481,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::set_iam_policy()](struct.AutoscalingPoliciesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -6247,7 +6619,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -6271,7 +6644,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::test_iam_permissions()](struct.AutoscalingPoliciesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -6411,7 +6784,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -6435,7 +6809,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::update()](struct.AutoscalingPoliciesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AutoscalingPolicy,
                     name: String,
@@ -6574,7 +6948,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -6599,7 +6974,7 @@ pub mod resources {
             pub mod workflow_templates {
                 pub mod params {}
                 pub struct WorkflowTemplatesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> WorkflowTemplatesActions<'a> {
@@ -6693,7 +7068,7 @@ pub mod resources {
                             options_requested_policy_version: None,
                         }
                     }
-                    #[doc = "Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty."]
+                    #[doc = "Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty."]
                     pub fn instantiate(
                         &self,
                         request: crate::schemas::InstantiateWorkflowTemplateRequest,
@@ -6717,7 +7092,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty."]
+                    #[doc = "Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty."]
                     pub fn instantiate_inline(
                         &self,
                         request: crate::schemas::WorkflowTemplate,
@@ -6764,7 +7139,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -6840,7 +7215,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::create()](struct.WorkflowTemplatesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WorkflowTemplate,
                     parent: String,
@@ -6980,7 +7355,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7004,7 +7380,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::delete()](struct.WorkflowTemplatesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     version: Option<i32>,
@@ -7145,7 +7521,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("version", &self.version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -7170,7 +7547,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::get()](struct.WorkflowTemplatesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     version: Option<i32>,
@@ -7313,7 +7690,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("version", &self.version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -7338,7 +7716,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::get_iam_policy()](struct.WorkflowTemplatesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -7480,7 +7858,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -7508,7 +7887,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::instantiate()](struct.WorkflowTemplatesActions.html#method.instantiate)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::InstantiateWorkflowTemplateRequest,
                     name: String,
@@ -7646,7 +8025,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7670,7 +8050,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::instantiate_inline()](struct.WorkflowTemplatesActions.html#method.instantiate_inline)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateInlineRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WorkflowTemplate,
                     parent: String,
@@ -7820,7 +8200,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("instanceId", &self.instance_id)]);
                         let req = req.query(&[("requestId", &self.request_id)]);
@@ -7846,7 +8227,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::list()](struct.WorkflowTemplatesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -8099,7 +8480,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -8136,7 +8518,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::set_iam_policy()](struct.WorkflowTemplatesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -8274,7 +8656,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8298,7 +8681,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::test_iam_permissions()](struct.WorkflowTemplatesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -8438,7 +8821,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8462,7 +8846,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::update()](struct.WorkflowTemplatesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WorkflowTemplate,
                     name: String,
@@ -8601,7 +8985,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8627,7 +9012,7 @@ pub mod resources {
         pub mod regions {
             pub mod params {}
             pub struct RegionsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> RegionsActions<'a> {
@@ -8675,7 +9060,7 @@ pub mod resources {
             pub mod autoscaling_policies {
                 pub mod params {}
                 pub struct AutoscalingPoliciesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> AutoscalingPoliciesActions<'a> {
@@ -8788,7 +9173,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -8864,7 +9249,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::create()](struct.AutoscalingPoliciesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AutoscalingPolicy,
                     parent: String,
@@ -9004,7 +9389,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9028,7 +9414,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::delete()](struct.AutoscalingPoliciesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -9163,7 +9549,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9187,7 +9574,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::get()](struct.AutoscalingPoliciesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -9324,7 +9711,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9348,7 +9736,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::get_iam_policy()](struct.AutoscalingPoliciesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -9490,7 +9878,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -9518,7 +9907,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::list()](struct.AutoscalingPoliciesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -9771,7 +10160,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -9808,7 +10198,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::set_iam_policy()](struct.AutoscalingPoliciesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -9946,7 +10336,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9970,7 +10361,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::test_iam_permissions()](struct.AutoscalingPoliciesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -10110,7 +10501,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -10134,7 +10526,7 @@ pub mod resources {
                 #[doc = "Created via [AutoscalingPoliciesActions::update()](struct.AutoscalingPoliciesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AutoscalingPolicy,
                     name: String,
@@ -10273,7 +10665,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -10298,14 +10691,14 @@ pub mod resources {
             pub mod clusters {
                 pub mod params {}
                 pub struct ClustersActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ClustersActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata."]
+                    #[doc = "Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata)."]
                     pub fn create(
                         &self,
                         request: crate::schemas::Cluster,
@@ -10332,7 +10725,7 @@ pub mod resources {
                             request_id: None,
                         }
                     }
-                    #[doc = "Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata."]
+                    #[doc = "Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata)."]
                     pub fn delete(
                         &self,
                         project_id: impl Into<String>,
@@ -10360,7 +10753,7 @@ pub mod resources {
                             request_id: None,
                         }
                     }
-                    #[doc = "Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata. After the operation completes, Operation.response contains DiagnoseClusterResults."]
+                    #[doc = "Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata). After the operation completes, Operation.response contains Empty."]
                     pub fn diagnose(
                         &self,
                         request: crate::schemas::DiagnoseClusterRequest,
@@ -10437,7 +10830,7 @@ pub mod resources {
                             options_requested_policy_version: None,
                         }
                     }
-                    #[doc = "Lists all regions/{region}/clusters in a project."]
+                    #[doc = "Lists all regions/{region}/clusters in a project alphabetically."]
                     pub fn list(
                         &self,
                         project_id: impl Into<String>,
@@ -10464,7 +10857,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata."]
+                    #[doc = "Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata)."]
                     pub fn patch(
                         &self,
                         request: crate::schemas::Cluster,
@@ -10495,7 +10888,7 @@ pub mod resources {
                             update_mask: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -10517,6 +10910,62 @@ pub mod resources {
                             upload_type: None,
                             xgafv: None,
                             resource: resource.into(),
+                        }
+                    }
+                    #[doc = "Starts a cluster in a project."]
+                    pub fn start(
+                        &self,
+                        request: crate::schemas::StartClusterRequest,
+                        project_id: impl Into<String>,
+                        region: impl Into<String>,
+                        cluster_name: impl Into<String>,
+                    ) -> StartRequestBuilder {
+                        StartRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            request,
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            project_id: project_id.into(),
+                            region: region.into(),
+                            cluster_name: cluster_name.into(),
+                        }
+                    }
+                    #[doc = "Stops a cluster in a project."]
+                    pub fn stop(
+                        &self,
+                        request: crate::schemas::StopClusterRequest,
+                        project_id: impl Into<String>,
+                        region: impl Into<String>,
+                        cluster_name: impl Into<String>,
+                    ) -> StopRequestBuilder {
+                        StopRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            request,
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            project_id: project_id.into(),
+                            region: region.into(),
+                            cluster_name: cluster_name.into(),
                         }
                     }
                     #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
@@ -10547,7 +10996,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::create()](struct.ClustersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Cluster,
                     project_id: String,
@@ -10700,7 +11149,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("requestId", &self.request_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -10725,7 +11175,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::delete()](struct.ClustersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     project_id: String,
                     region: String,
@@ -10890,7 +11340,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("clusterUuid", &self.cluster_uuid)]);
                         let req = req.query(&[("requestId", &self.request_id)]);
@@ -10916,7 +11367,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::diagnose()](struct.ClustersActions.html#method.diagnose)"]
                 #[derive(Debug, Clone)]
                 pub struct DiagnoseRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DiagnoseClusterRequest,
                     project_id: String,
@@ -11072,7 +11523,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11096,7 +11548,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::get()](struct.ClustersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     project_id: String,
                     region: String,
@@ -11249,7 +11701,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11273,7 +11726,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::get_iam_policy()](struct.ClustersActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -11415,7 +11868,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -11443,7 +11897,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::list()](struct.ClustersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     project_id: String,
                     region: String,
@@ -11711,7 +12165,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -11749,7 +12204,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::patch()](struct.ClustersActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Cluster,
                     project_id: String,
@@ -11771,7 +12226,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> PatchRequestBuilder<'a> {
-                    #[doc = "Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher."]
+                    #[doc = "Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and higher."]
                     pub fn graceful_decommission_timeout(
                         mut self,
                         value: impl Into<String>,
@@ -11925,7 +12380,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[(
                             "gracefulDecommissionTimeout",
@@ -11955,7 +12411,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::set_iam_policy()](struct.ClustersActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -12093,7 +12549,370 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                #[doc = "Created via [ClustersActions::start()](struct.ClustersActions.html#method.start)"]
+                #[derive(Debug, Clone)]
+                pub struct StartRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    request: crate::schemas::StartClusterRequest,
+                    project_id: String,
+                    region: String,
+                    cluster_name: String,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> StartRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        let req = req.json(&self.request);
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dataproc.googleapis.com/".to_owned();
+                        output.push_str("v1beta2/projects/");
+                        {
+                            let var_as_str = &self.project_id;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/regions/");
+                        {
+                            let var_as_str = &self.region;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/clusters/");
+                        {
+                            let var_as_str = &self.cluster_name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str(":start");
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                #[doc = "Created via [ClustersActions::stop()](struct.ClustersActions.html#method.stop)"]
+                #[derive(Debug, Clone)]
+                pub struct StopRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    request: crate::schemas::StopClusterRequest,
+                    project_id: String,
+                    region: String,
+                    cluster_name: String,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> StopRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        let req = req.json(&self.request);
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dataproc.googleapis.com/".to_owned();
+                        output.push_str("v1beta2/projects/");
+                        {
+                            let var_as_str = &self.project_id;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/regions/");
+                        {
+                            let var_as_str = &self.region;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/clusters/");
+                        {
+                            let var_as_str = &self.cluster_name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str(":stop");
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12117,7 +12936,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::test_iam_permissions()](struct.ClustersActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -12257,7 +13076,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12359,14 +13179,14 @@ pub mod resources {
                     }
                 }
                 pub struct JobsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> JobsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get."]
+                    #[doc = "Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list) or regions/{region}/jobs.get (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get)."]
                     pub fn cancel(
                         &self,
                         request: crate::schemas::CancelJobRequest,
@@ -12527,7 +13347,7 @@ pub mod resources {
                             update_mask: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -12577,6 +13397,32 @@ pub mod resources {
                             region: region.into(),
                         }
                     }
+                    #[doc = "Submits job to a cluster."]
+                    pub fn submit_as_operation(
+                        &self,
+                        request: crate::schemas::SubmitJobRequest,
+                        project_id: impl Into<String>,
+                        region: impl Into<String>,
+                    ) -> SubmitAsOperationRequestBuilder {
+                        SubmitAsOperationRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            request,
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            project_id: project_id.into(),
+                            region: region.into(),
+                        }
+                    }
                     #[doc = "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning."]
                     pub fn test_iam_permissions(
                         &self,
@@ -12605,7 +13451,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::cancel()](struct.JobsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CancelJobRequest,
                     project_id: String,
@@ -12761,7 +13607,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12785,7 +13632,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::delete()](struct.JobsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     project_id: String,
                     region: String,
@@ -12938,7 +13785,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12962,7 +13810,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::get()](struct.JobsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     project_id: String,
                     region: String,
@@ -13115,7 +13963,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -13139,7 +13988,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::get_iam_policy()](struct.JobsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -13281,7 +14130,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -13309,7 +14159,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::list()](struct.JobsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     project_id: String,
                     region: String,
@@ -13592,7 +14442,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("clusterName", &self.cluster_name)]);
                         let req = req.query(&[("filter", &self.filter)]);
@@ -13632,7 +14483,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::patch()](struct.JobsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Job,
                     project_id: String,
@@ -13793,7 +14644,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -13818,7 +14670,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::set_iam_policy()](struct.JobsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -13956,7 +14808,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -13980,7 +14833,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::submit()](struct.JobsActions.html#method.submit)"]
                 #[derive(Debug, Clone)]
                 pub struct SubmitRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SubmitJobRequest,
                     project_id: String,
@@ -14127,7 +14980,180 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                #[doc = "Created via [JobsActions::submit_as_operation()](struct.JobsActions.html#method.submit_as_operation)"]
+                #[derive(Debug, Clone)]
+                pub struct SubmitAsOperationRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    request: crate::schemas::SubmitJobRequest,
+                    project_id: String,
+                    region: String,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> SubmitAsOperationRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::Operation, crate::Error> {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        let req = req.json(&self.request);
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dataproc.googleapis.com/".to_owned();
+                        output.push_str("v1beta2/projects/");
+                        {
+                            let var_as_str = &self.project_id;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/regions/");
+                        {
+                            let var_as_str = &self.region;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::SIMPLE,
+                            ));
+                        }
+                        output.push_str("/jobs:submitAsOperation");
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14151,7 +15177,7 @@ pub mod resources {
                 #[doc = "Created via [JobsActions::test_iam_permissions()](struct.JobsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -14291,7 +15317,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14316,7 +15343,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -14425,7 +15452,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -14477,7 +15504,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -14613,7 +15640,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14637,7 +15665,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -14772,7 +15800,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14796,7 +15825,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -14931,7 +15960,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14955,7 +15985,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get_iam_policy()](struct.OperationsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -15097,7 +16127,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -15125,7 +16156,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -15383,7 +16414,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -15421,7 +16453,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::set_iam_policy()](struct.OperationsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -15559,7 +16591,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -15583,7 +16616,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::test_iam_permissions()](struct.OperationsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -15723,7 +16756,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -15748,7 +16782,7 @@ pub mod resources {
             pub mod workflow_templates {
                 pub mod params {}
                 pub struct WorkflowTemplatesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> WorkflowTemplatesActions<'a> {
@@ -15842,7 +16876,7 @@ pub mod resources {
                             options_requested_policy_version: None,
                         }
                     }
-                    #[doc = "Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty."]
+                    #[doc = "Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty."]
                     pub fn instantiate(
                         &self,
                         request: crate::schemas::InstantiateWorkflowTemplateRequest,
@@ -15866,7 +16900,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty."]
+                    #[doc = "Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty."]
                     pub fn instantiate_inline(
                         &self,
                         request: crate::schemas::WorkflowTemplate,
@@ -15913,7 +16947,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -15989,7 +17023,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::create()](struct.WorkflowTemplatesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WorkflowTemplate,
                     parent: String,
@@ -16129,7 +17163,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -16153,7 +17188,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::delete()](struct.WorkflowTemplatesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     version: Option<i32>,
@@ -16294,7 +17329,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("version", &self.version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -16319,7 +17355,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::get()](struct.WorkflowTemplatesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     version: Option<i32>,
@@ -16462,7 +17498,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("version", &self.version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -16487,7 +17524,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::get_iam_policy()](struct.WorkflowTemplatesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -16629,7 +17666,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -16657,7 +17695,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::instantiate()](struct.WorkflowTemplatesActions.html#method.instantiate)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::InstantiateWorkflowTemplateRequest,
                     name: String,
@@ -16795,7 +17833,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -16819,7 +17858,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::instantiate_inline()](struct.WorkflowTemplatesActions.html#method.instantiate_inline)"]
                 #[derive(Debug, Clone)]
                 pub struct InstantiateInlineRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WorkflowTemplate,
                     parent: String,
@@ -16969,7 +18008,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("instanceId", &self.instance_id)]);
                         let req = req.query(&[("requestId", &self.request_id)]);
@@ -16995,7 +18035,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::list()](struct.WorkflowTemplatesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -17248,7 +18288,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -17285,7 +18326,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::set_iam_policy()](struct.WorkflowTemplatesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -17423,7 +18464,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -17447,7 +18489,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::test_iam_permissions()](struct.WorkflowTemplatesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -17587,7 +18629,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -17611,7 +18654,7 @@ pub mod resources {
                 #[doc = "Created via [WorkflowTemplatesActions::update()](struct.WorkflowTemplatesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WorkflowTemplate,
                     name: String,
@@ -17750,7 +18793,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -17791,9 +18835,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -17835,7 +18877,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

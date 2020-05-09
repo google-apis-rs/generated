@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("datafusion1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190617")
+            .version("0.1.0-20200318")
             .about("Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for\n    quickly building and managing data pipelines. It provides a graphical interface to increase\n    time efficiency and reduce complexity, and allows business users, developers, and data\n    scientists to easily and reliably build scalable data integration solutions to cleanse,\n    prepare, blend, transfer and transform data without having to wrestle with infrastructure.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -85,7 +85,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances2 = instances2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             instances2 = instances2.subcommand(mcmd);
         }
         {

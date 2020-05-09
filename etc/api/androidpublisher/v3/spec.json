@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/TLnERLo0-FLmQ-PlDas-A_sA-xs\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/5ocisXdwit5hctWzufQPzR8_VBc\"",
   "discoveryVersion": "v1",
   "id": "androidpublisher:v3",
   "name": "androidpublisher",
   "canonicalName": "Android Publisher",
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20190917",
+  "revision": "20200428",
   "title": "Google Play Developer API",
   "description": "Accesses Android application developers' Google Play accounts.",
   "ownerDomain": "google.com",
@@ -151,6 +151,10 @@
       "properties": {
         "binary": {
           "description": "Information about the binary payload of this APK.",
+          "$ref": "ApkBinary"
+        },
+        "testBinary": {
+          "description": null,
           "$ref": "ApkBinary"
         },
         "versionCode": {
@@ -445,6 +449,60 @@
       "additionalProperties": null,
       "items": null
     },
+    "Control": {
+      "id": "Control",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "modRanges": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ModRange"
+          }
+        },
+        "stratifiedSamplings": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "StratifiedSampling"
+          }
+        },
+        "versionCodes": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "CountryTargeting": {
       "id": "CountryTargeting",
       "description": null,
@@ -666,6 +724,64 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DeviceSpec": {
+      "id": "DeviceSpec",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "screenDensity": {
+          "description": null,
+          "type": "integer",
+          "format": "uint32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "supportedAbis": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "supportedLocales": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -1078,7 +1194,7 @@
           "$ref": "Price"
         },
         "gracePeriod": {
-          "description": "Grace period of the subscription, specified in ISO 8601 format. It will allow developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values = \"P3D\" (three days) and \"P7D\" (seven days)",
+          "description": "Grace period of the subscription, specified in ISO 8601 format. It will allow developers to give their subscribers a grace period when the payment for the new recurrence period is declined. Acceptable values = \"P3D\" (three days), \"P7D\" (seven days), \"P14D\" (fourteen days), and \"P30D\" (thirty days)",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1132,10 +1248,6 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
-        },
-        "season": {
-          "description": "Definition of a season for a seasonal subscription. Can be defined only for yearly subscriptions.",
-          "$ref": "Season"
         },
         "sku": {
           "description": "The stock-keeping-unit (SKU) of the product, unique within an app.",
@@ -1477,28 +1589,28 @@
       "additionalProperties": null,
       "items": null
     },
-    "MonthDay": {
-      "id": "MonthDay",
+    "ModRange": {
+      "id": "ModRange",
       "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "day": {
-          "description": "Day of a month, value in [1, 31] range. Valid range depends on the specified month.",
-          "type": "integer",
-          "format": "uint32",
+        "end": {
+          "description": null,
+          "type": "string",
+          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
-        "month": {
-          "description": "Month of a year. e.g. 1 = JAN, 2 = FEB etc.",
-          "type": "integer",
-          "format": "uint32",
+        "start": {
+          "description": null,
+          "type": "string",
+          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -1641,6 +1753,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "productId": {
+          "description": "The inapp product SKU.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "purchaseState": {
           "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Canceled \n- Pending",
           "type": "integer",
@@ -1661,8 +1783,28 @@
           "additionalProperties": null,
           "items": null
         },
+        "purchaseToken": {
+          "description": "The purchase token generated to identify this purchase.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "purchaseType": {
           "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code) \n- Rewarded (i.e. from watching a video ad instead of paying)",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "quantity": {
+          "description": "The quantity associated with the purchase of the inapp product.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1692,26 +1834,6 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "Prorate": {
-      "id": "Prorate",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "defaultPrice": {
-          "description": "Default price cannot be zero and must be less than the full subscription price. Default price is always in the developer's Checkout merchant currency. Targeted countries have their prices set automatically based on the default_price.",
-          "$ref": "Price"
-        },
-        "start": {
-          "description": "Defines the first day on which the price takes effect.",
-          "$ref": "MonthDay"
         }
       },
       "additionalProperties": null,
@@ -1857,20 +1979,16 @@
       "additionalProperties": null,
       "items": null
     },
-    "Season": {
-      "id": "Season",
+    "Sampling": {
+      "id": "Sampling",
       "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "end": {
-          "description": "Inclusive end date of the recurrence period.",
-          "$ref": "MonthDay"
-        },
-        "prorations": {
-          "description": "Optionally present list of prorations for the season. Each proration is a one-off discounted entry into a subscription. Each proration contains the first date on which the discount is available and the new pricing information.",
+        "modRanges": {
+          "description": null,
           "type": "array",
           "format": null,
           "enum": [],
@@ -1878,12 +1996,100 @@
           "properties": {},
           "additionalProperties": null,
           "items": {
-            "$ref": "Prorate"
+            "$ref": "ModRange"
           }
         },
-        "start": {
-          "description": "Inclusive start date of the recurrence period.",
-          "$ref": "MonthDay"
+        "modulus": {
+          "description": null,
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "salt": {
+          "description": null,
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "stratifiedSamplings": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "StratifiedSampling"
+          }
+        },
+        "useAndroidId": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "StratifiedSampling": {
+      "id": "StratifiedSampling",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "modRanges": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ModRange"
+          }
+        },
+        "stratum": {
+          "description": null,
+          "$ref": "Stratum"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Stratum": {
+      "id": "Stratum",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "brand": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -2071,6 +2277,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "externalAccountId": {
+          "description": "User account identifier in the third-party service. Only present if account linking happened as part of the subscription purchase flow.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "familyName": {
           "description": "The family name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'.",
           "type": "string",
@@ -2179,8 +2395,28 @@
           "additionalProperties": null,
           "items": null
         },
+        "promotionCode": {
+          "description": "The promotion code applied on this purchase. This field is only set if a vanity code promotion is applied when the subscription was purchased.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "promotionType": {
+          "description": "The type of promotion applied on this purchase. This field is only set if a promotion is applied when the subscription was purchased. Possible values are:  \n- One time code \n- Vanity code",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "purchaseType": {
-          "description": "The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account)",
+          "description": "The type of purchase of the subscription. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code)",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2273,6 +2509,46 @@
       "additionalProperties": null,
       "items": null
     },
+    "SystemApkVariantsCreateRequest": {
+      "id": "SystemApkVariantsCreateRequest",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "deviceSpec": {
+          "description": null,
+          "$ref": "DeviceSpec"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SystemApkVariantsListResponse": {
+      "id": "SystemApkVariantsListResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "variants": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Variant"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Testers": {
       "id": "Testers",
       "description": null,
@@ -2281,6 +2557,60 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "autoEnrolledAndroidGroups": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "autoEnrolledGoogleGroups": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "excludedGoogleGroups": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "googleGroups": {
           "description": "A list of all Google Groups, as email addresses, that define testers for this track.",
           "type": "array",
@@ -2409,9 +2739,31 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "controls": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Control"
+          }
+        },
         "countryTargeting": {
           "description": null,
           "$ref": "CountryTargeting"
+        },
+        "inAppUpdatePriority": {
+          "description": "In-app update priority of the release. All newly added APKs in the release will be considered at this priority. in_app_update_priority can take values between [0, 5]. 5 is the highest priority. Default priority is 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         },
         "name": {
           "description": "The release name, used to identify this release in the Play Console UI. Not required to be unique. This is optional, if not set it will be generated from the version_name in the APKs.",
@@ -2422,6 +2774,18 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "pinnedVersions": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TrackReleasePin"
+          }
         },
         "releaseNotes": {
           "description": "The description of what is new in the app in this release.",
@@ -2434,6 +2798,20 @@
           "items": {
             "$ref": "LocalizedText"
           }
+        },
+        "rollbackEnabled": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sampling": {
+          "description": null,
+          "$ref": "Sampling"
         },
         "status": {
           "description": "The desired status of this release.",
@@ -2472,6 +2850,168 @@
             "additionalProperties": null,
             "items": null
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TrackReleasePin": {
+      "id": "TrackReleasePin",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "targetings": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TrackReleasePinPinTargeting"
+          }
+        },
+        "versionCodes": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TrackReleasePinPinTargeting": {
+      "id": "TrackReleasePinPinTargeting",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "countryCodes": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "devices": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TrackReleasePinPinTargetingDevicePin"
+          }
+        },
+        "phoneskyVersions": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "sdkVersions": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TrackReleasePinPinTargetingDevicePin": {
+      "id": "TrackReleasePinPinTargetingDevicePin",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "brand": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "device": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "product": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -2621,6 +3161,32 @@
           "description": "Number of users who have given this review a thumbs up",
           "type": "integer",
           "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Variant": {
+      "id": "Variant",
+      "description": "Represents the variant of a generated system APK from an uploaded App Bundle.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "deviceSpec": {
+          "description": null,
+          "$ref": "DeviceSpec"
+        },
+        "variantId": {
+          "description": null,
+          "type": "integer",
+          "format": "uint32",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -3051,7 +3617,7 @@
                 "accept": [
                   "application/octet-stream"
                 ],
-                "maxSize": "2GB",
+                "maxSize": "10GB",
                 "protocols": {
                   "simple": {
                     "multipart": true,
@@ -3073,7 +3639,7 @@
               "id": "androidpublisher.edits.deobfuscationfiles.upload",
               "path": "{packageName}/edits/{editId}/apks/{apkVersionCode}/deobfuscationFiles/{deobfuscationFileType}",
               "httpMethod": "POST",
-              "description": "Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it will be replaced.",
+              "description": "Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn more about deobfuscation files.",
               "parameters": {
                 "apkVersionCode": {
                   "description": "The version code of the APK whose deobfuscation file is being uploaded.",
@@ -3100,9 +3666,11 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "nativeCode",
                     "proguard"
                   ],
                   "enumDescriptions": [
+                    "",
                     ""
                   ],
                   "repeated": false
@@ -3122,7 +3690,7 @@
                   "repeated": false
                 },
                 "packageName": {
-                  "description": "Unique identifier of the Android app for which the deobfuscatiuon files are being uploaded; for example, \"com.spiffygame\".",
+                  "description": "Unique identifier of the Android app for which the deobfuscation files are being uploaded; for example, \"com.spiffygame\".",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3761,6 +4329,8 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "automotiveScreenshots",
+                    "daydreamStereoImage",
                     "featureGraphic",
                     "icon",
                     "phoneScreenshots",
@@ -3772,6 +4342,8 @@
                     "wearScreenshots"
                   ],
                   "enumDescriptions": [
+                    "",
+                    "",
                     "",
                     "",
                     "",
@@ -3862,6 +4434,8 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "automotiveScreenshots",
+                    "daydreamStereoImage",
                     "featureGraphic",
                     "icon",
                     "phoneScreenshots",
@@ -3873,6 +4447,8 @@
                     "wearScreenshots"
                   ],
                   "enumDescriptions": [
+                    "",
+                    "",
                     "",
                     "",
                     "",
@@ -3964,6 +4540,8 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "automotiveScreenshots",
+                    "daydreamStereoImage",
                     "featureGraphic",
                     "icon",
                     "phoneScreenshots",
@@ -3975,6 +4553,8 @@
                     "wearScreenshots"
                   ],
                   "enumDescriptions": [
+                    "",
+                    "",
                     "",
                     "",
                     "",
@@ -4066,6 +4646,8 @@
                   "maximum": null,
                   "pattern": null,
                   "enum": [
+                    "automotiveScreenshots",
+                    "daydreamStereoImage",
                     "featureGraphic",
                     "icon",
                     "phoneScreenshots",
@@ -4077,6 +4659,8 @@
                     "wearScreenshots"
                   ],
                   "enumDescriptions": [
+                    "",
+                    "",
                     "",
                     "",
                     "",
@@ -5722,7 +6306,7 @@
             "accept": [
               "application/octet-stream"
             ],
-            "maxSize": "2GB",
+            "maxSize": "10GB",
             "protocols": {
               "simple": {
                 "multipart": true,
@@ -6696,6 +7280,254 @@
           "mediaUpload": null
         }
       }
+    },
+    "systemapks": {
+      "resources": {
+        "variants": {
+          "resources": {},
+          "methods": {
+            "create": {
+              "id": "androidpublisher.systemapks.variants.create",
+              "path": "{packageName}/systemApks/{versionCode}/variants",
+              "httpMethod": "POST",
+              "description": "Creates a new variant of APK which is suitable for inclusion in a system image.",
+              "parameters": {
+                "packageName": {
+                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "versionCode": {
+                  "description": "The version code of the App Bundle.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "packageName",
+                "versionCode"
+              ],
+              "request": {
+                "$ref": "SystemApkVariantsCreateRequest"
+              },
+              "response": {
+                "$ref": "Variant"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidpublisher"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "download": {
+              "id": "androidpublisher.systemapks.variants.download",
+              "path": "{packageName}/systemApks/{versionCode}/variants/{variantId}:download",
+              "httpMethod": "GET",
+              "description": "Download a previously created APK which is suitable for inclusion in a system image.",
+              "parameters": {
+                "packageName": {
+                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "variantId": {
+                  "description": null,
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "versionCode": {
+                  "description": "The version code of the App Bundle.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "packageName",
+                "versionCode",
+                "variantId"
+              ],
+              "request": null,
+              "response": null,
+              "scopes": [
+                "https://www.googleapis.com/auth/androidpublisher"
+              ],
+              "supportsMediaDownload": true,
+              "useMediaDownloadService": true,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "androidpublisher.systemapks.variants.get",
+              "path": "{packageName}/systemApks/{versionCode}/variants/{variantId}",
+              "httpMethod": "GET",
+              "description": "Returns a previously created system APK variant.",
+              "parameters": {
+                "packageName": {
+                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "variantId": {
+                  "description": "Unique identifier for this variant.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "integer",
+                  "format": "uint32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "versionCode": {
+                  "description": "The version code of the App Bundle.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "packageName",
+                "versionCode",
+                "variantId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "Variant"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidpublisher"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "androidpublisher.systemapks.variants.list",
+              "path": "{packageName}/systemApks/{versionCode}/variants",
+              "httpMethod": "GET",
+              "description": "Returns the list of previously created system APK variants.",
+              "parameters": {
+                "packageName": {
+                  "description": "Unique identifier for the Android app; for example, \"com.spiffygame\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "versionCode": {
+                  "description": "The version code of the App Bundle.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "packageName",
+                "versionCode"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "SystemApkVariantsListResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/androidpublisher"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
+      "methods": {}
     }
   },
   "methods": {}

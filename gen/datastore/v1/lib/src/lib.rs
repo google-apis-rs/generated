@@ -1,4 +1,10 @@
-#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*allocateIds*](resources/projects/struct.AllocateIdsRequestBuilder.html), [*beginTransaction*](resources/projects/struct.BeginTransactionRequestBuilder.html), [*commit*](resources/projects/struct.CommitRequestBuilder.html), [*export*](resources/projects/struct.ExportRequestBuilder.html), [*import*](resources/projects/struct.ImportRequestBuilder.html), [*lookup*](resources/projects/struct.LookupRequestBuilder.html), [*reserveIds*](resources/projects/struct.ReserveIdsRequestBuilder.html), [*rollback*](resources/projects/struct.RollbackRequestBuilder.html), [*runQuery*](resources/projects/struct.RunQueryRequestBuilder.html)\n      * [indexes](resources/projects/indexes/struct.IndexesActions.html)\n        * [*get*](resources/projects/indexes/struct.GetRequestBuilder.html), [*list*](resources/projects/indexes/struct.ListRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*allocateIds*](resources/projects/struct.AllocateIdsRequestBuilder.html), [*beginTransaction*](resources/projects/struct.BeginTransactionRequestBuilder.html), [*commit*](resources/projects/struct.CommitRequestBuilder.html), [*export*](resources/projects/struct.ExportRequestBuilder.html), [*import*](resources/projects/struct.ImportRequestBuilder.html), [*lookup*](resources/projects/struct.LookupRequestBuilder.html), [*reserveIds*](resources/projects/struct.ReserveIdsRequestBuilder.html), [*rollback*](resources/projects/struct.RollbackRequestBuilder.html), [*runQuery*](resources/projects/struct.RunQueryRequestBuilder.html)\n      * [indexes](resources/projects/indexes/struct.IndexesActions.html)\n        * [*create*](resources/projects/indexes/struct.CreateRequestBuilder.html), [*delete*](resources/projects/indexes/struct.DeleteRequestBuilder.html), [*get*](resources/projects/indexes/struct.GetRequestBuilder.html), [*list*](resources/projects/indexes/struct.ListRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and manage your Google Cloud Datastore data\n\n`https://www.googleapis.com/auth/datastore`"]
+    pub const DATASTORE: &str = "https://www.googleapis.com/auth/datastore";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +19,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AllocateIdsRequest {
-        #[doc = "A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only."]
+        #[doc = "Required. A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only."]
         #[serde(
             rename = "keys",
             default,
@@ -1410,7 +1416,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Location for the export metadata and data files.\n\nThe full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So output_url_prefix should be of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the\nname of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud\nStorage namespace path (this is not a Cloud Datastore namespace). For more\ninformation about Cloud Storage namespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nThe resulting files will be nested deeper than the specified URL prefix.\nThe final output URL will be provided in the\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url field. That\nvalue should be used for subsequent ImportEntities operations.\n\nBy nesting the data files deeper, the same Cloud Storage bucket can be used\nin multiple ExportEntities operations without conflict."]
+        #[doc = "Required. Location for the export metadata and data files.\n\nThe full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So output_url_prefix should be of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the\nname of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud\nStorage namespace path (this is not a Cloud Datastore namespace). For more\ninformation about Cloud Storage namespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nThe resulting files will be nested deeper than the specified URL prefix.\nThe final output URL will be provided in the\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url field. That\nvalue should be used for subsequent ImportEntities operations.\n\nBy nesting the data files deeper, the same Cloud Storage bucket can be used\nin multiple ExportEntities operations without conflict."]
         #[serde(
             rename = "outputUrlPrefix",
             default,
@@ -1541,7 +1547,7 @@ pub mod schemas {
         )]
         pub entity_filter:
             ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1EntityFilter>,
-        #[doc = "The full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So input_url should be of the form:\n`gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where\n`BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is\nan optional Cloud Storage namespace path (this is not a Cloud Datastore\nnamespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written\nby the ExportEntities operation. For more information about Cloud Storage\nnamespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nFor more information, see\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url."]
+        #[doc = "Required. The full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So input_url should be of the form:\n`gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where\n`BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is\nan optional Cloud Storage namespace path (this is not a Cloud Datastore\nnamespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written\nby the ExportEntities operation. For more information about Cloud Storage\nnamespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nFor more information, see\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url."]
         #[serde(
             rename = "inputUrl",
             default,
@@ -1579,35 +1585,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDatastoreAdminV1Index {
-        #[doc = "The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.\nRequired."]
+        #[doc = "Required. The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED."]
         #[serde(
             rename = "ancestor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ancestor: ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexAncestor>,
-        #[doc = "The resource ID of the index.\nOutput only."]
+        #[doc = "Output only. The resource ID of the index."]
         #[serde(
             rename = "indexId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub index_id: ::std::option::Option<String>,
-        #[doc = "The entity kind to which this index applies.\nRequired."]
+        #[doc = "Required. The entity kind to which this index applies."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Project ID.\nOutput only."]
+        #[doc = "Output only. Project ID."]
         #[serde(
             rename = "projectId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project_id: ::std::option::Option<String>,
-        #[doc = "An ordered sequence of property names and their index attributes.\nRequired."]
+        #[doc = "Required. An ordered sequence of property names and their index attributes."]
         #[serde(
             rename = "properties",
             default,
@@ -1615,7 +1621,7 @@ pub mod schemas {
         )]
         pub properties:
             ::std::option::Option<Vec<crate::schemas::GoogleDatastoreAdminV1IndexedProperty>>,
-        #[doc = "The state of the index.\nOutput only."]
+        #[doc = "Output only. The state of the index."]
         #[serde(
             rename = "state",
             default,
@@ -1860,7 +1866,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDatastoreAdminV1IndexedProperty {
-        #[doc = "The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.\nRequired."]
+        #[doc = "Required. The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED."]
         #[serde(
             rename = "direction",
             default,
@@ -1868,7 +1874,7 @@ pub mod schemas {
         )]
         pub direction:
             ::std::option::Option<crate::schemas::GoogleDatastoreAdminV1IndexedPropertyDirection>,
-        #[doc = "The property name to index.\nRequired."]
+        #[doc = "Required. The property name to index."]
         #[serde(
             rename = "name",
             default,
@@ -2310,7 +2316,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LookupRequest {
-        #[doc = "Keys of entities to look up."]
+        #[doc = "Required. Keys of entities to look up."]
         #[serde(
             rename = "keys",
             default,
@@ -3378,7 +3384,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub database_id: ::std::option::Option<String>,
-        #[doc = "A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated."]
+        #[doc = "Required. A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated."]
         #[serde(
             rename = "keys",
             default,
@@ -3433,7 +3439,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RollbackRequest {
-        #[doc = "The transaction identifier, returned by a call to\nDatastore.BeginTransaction."]
+        #[doc = "Required. The transaction identifier, returned by a call to\nDatastore.BeginTransaction."]
         #[serde(
             rename = "transaction",
             default,
@@ -3944,7 +3950,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3952,8 +3958,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3972,7 +3990,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -4213,7 +4231,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::allocate_ids()](struct.ProjectsActions.html#method.allocate_ids)"]
         #[derive(Debug, Clone)]
         pub struct AllocateIdsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AllocateIdsRequest,
             project_id: String,
@@ -4345,7 +4363,10 @@ pub mod resources {
                 output.push_str(":allocateIds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4369,7 +4390,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::begin_transaction()](struct.ProjectsActions.html#method.begin_transaction)"]
         #[derive(Debug, Clone)]
         pub struct BeginTransactionRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BeginTransactionRequest,
             project_id: String,
@@ -4501,7 +4522,10 @@ pub mod resources {
                 output.push_str(":beginTransaction");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4525,7 +4549,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::commit()](struct.ProjectsActions.html#method.commit)"]
         #[derive(Debug, Clone)]
         pub struct CommitRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CommitRequest,
             project_id: String,
@@ -4657,7 +4681,10 @@ pub mod resources {
                 output.push_str(":commit");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4681,7 +4708,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::export()](struct.ProjectsActions.html#method.export)"]
         #[derive(Debug, Clone)]
         pub struct ExportRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleDatastoreAdminV1ExportEntitiesRequest,
             project_id: String,
@@ -4813,7 +4840,10 @@ pub mod resources {
                 output.push_str(":export");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4837,7 +4867,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::import()](struct.ProjectsActions.html#method.import)"]
         #[derive(Debug, Clone)]
         pub struct ImportRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleDatastoreAdminV1ImportEntitiesRequest,
             project_id: String,
@@ -4969,7 +4999,10 @@ pub mod resources {
                 output.push_str(":import");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4993,7 +5026,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::lookup()](struct.ProjectsActions.html#method.lookup)"]
         #[derive(Debug, Clone)]
         pub struct LookupRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LookupRequest,
             project_id: String,
@@ -5125,7 +5158,10 @@ pub mod resources {
                 output.push_str(":lookup");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5149,7 +5185,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::reserve_ids()](struct.ProjectsActions.html#method.reserve_ids)"]
         #[derive(Debug, Clone)]
         pub struct ReserveIdsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReserveIdsRequest,
             project_id: String,
@@ -5281,7 +5317,10 @@ pub mod resources {
                 output.push_str(":reserveIds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5305,7 +5344,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::rollback()](struct.ProjectsActions.html#method.rollback)"]
         #[derive(Debug, Clone)]
         pub struct RollbackRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RollbackRequest,
             project_id: String,
@@ -5437,7 +5476,10 @@ pub mod resources {
                 output.push_str(":rollback");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5461,7 +5503,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::run_query()](struct.ProjectsActions.html#method.run_query)"]
         #[derive(Debug, Clone)]
         pub struct RunQueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RunQueryRequest,
             project_id: String,
@@ -5593,7 +5635,10 @@ pub mod resources {
                 output.push_str(":runQuery");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5617,12 +5662,60 @@ pub mod resources {
         pub mod indexes {
             pub mod params {}
             pub struct IndexesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> IndexesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
+                }
+                #[doc = "Creates the specified index.\nA newly created index's initial state is `CREATING`. On completion of the\nreturned google.longrunning.Operation, the state will be `READY`.\nIf the index already exists, the call will return an `ALREADY_EXISTS`\nstatus.\n\nDuring index creation, the process could result in an error, in which\ncase the index will move to the `ERROR` state. The process can be recovered\nby fixing the data that caused the error, removing the index with\ndelete, then\nre-creating the index with create.\n\nIndexes with a single property cannot be created."]
+                pub fn create(
+                    &self,
+                    request: crate::schemas::GoogleDatastoreAdminV1Index,
+                    project_id: impl Into<String>,
+                ) -> CreateRequestBuilder {
+                    CreateRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        project_id: project_id.into(),
+                    }
+                }
+                #[doc = "Deletes an existing index.\nAn index can only be deleted if it is in a `READY` or `ERROR` state. On\nsuccessful execution of the request, the index will be in a `DELETING`\nstate. And on completion of the\nreturned google.longrunning.Operation, the index will be removed.\n\nDuring index deletion, the process could result in an error, in which\ncase the index will move to the `ERROR` state. The process can be recovered\nby fixing the data that caused the error, followed by calling\ndelete again."]
+                pub fn delete(
+                    &self,
+                    project_id: impl Into<String>,
+                    index_id: impl Into<String>,
+                ) -> DeleteRequestBuilder {
+                    DeleteRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        project_id: project_id.into(),
+                        index_id: index_id.into(),
+                    }
                 }
                 #[doc = "Gets an index."]
                 pub fn get(
@@ -5671,10 +5764,344 @@ pub mod resources {
                     }
                 }
             }
+            #[doc = "Created via [IndexesActions::create()](struct.IndexesActions.html#method.create)"]
+            #[derive(Debug, Clone)]
+            pub struct CreateRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::GoogleDatastoreAdminV1Index,
+                project_id: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> CreateRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
+                {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
+                {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://datastore.googleapis.com/".to_owned();
+                    output.push_str("v1/projects/");
+                    {
+                        let var_as_str = &self.project_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/indexes");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [IndexesActions::delete()](struct.IndexesActions.html#method.delete)"]
+            #[derive(Debug, Clone)]
+            pub struct DeleteRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                project_id: String,
+                index_id: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> DeleteRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
+                {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
+                {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://datastore.googleapis.com/".to_owned();
+                    output.push_str("v1/projects/");
+                    {
+                        let var_as_str = &self.project_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output.push_str("/indexes/");
+                    {
+                        let var_as_str = &self.index_id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::SIMPLE,
+                        ));
+                    }
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
             #[doc = "Created via [IndexesActions::get()](struct.IndexesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 index_id: String,
@@ -5817,7 +6244,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5841,7 +6271,7 @@ pub mod resources {
             #[doc = "Created via [IndexesActions::list()](struct.IndexesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 filter: Option<String>,
@@ -6100,7 +6530,10 @@ pub mod resources {
                     output.push_str("/indexes");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -6139,7 +6572,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -6229,7 +6662,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -6362,7 +6795,10 @@ pub mod resources {
                     output.push_str(":cancel");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6386,7 +6822,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -6518,7 +6954,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6542,7 +6981,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -6676,7 +7115,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6700,7 +7142,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -6959,7 +7401,10 @@ pub mod resources {
                     output.push_str("/operations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -7013,9 +7458,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -7057,7 +7500,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

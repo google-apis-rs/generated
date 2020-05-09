@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("androidenterprise1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190917")
+            .version("0.1.0-20200429")
             .about("Manages the deployment of apps to Android for Work users.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,9 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut devices0 = SubCommand::with_name("devices")
             .setting(AppSettings::ColoredHelp)
-            .about(
-                "methods: force_report_upload, get, get_state, list, patch, set_state and update",
-            );
+            .about("methods: force_report_upload, get, get_state, list, set_state and update");
         {
             let mcmd = SubCommand::with_name("force_report_upload").about("Uploads a report containing any changes in app states on the device since the last report was generated. You can call this method up to 3 times every 24 hours for a given device.");
             devices0 = devices0.subcommand(mcmd);
@@ -53,11 +51,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Retrieves the IDs of all of a user\'s devices.");
-            devices0 = devices0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates the device policy. This method supports patch semantics.");
             devices0 = devices0.subcommand(mcmd);
         }
         {
@@ -135,7 +128,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut entitlements0 = SubCommand::with_name("entitlements")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, list, patch and update");
+            .about("methods: delete, get, list and update");
         {
             let mcmd = SubCommand::with_name("delete")
                 .about("Removes an entitlement to an app for a user.");
@@ -148,10 +141,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists all entitlements for the specified user. Only the ID is set.");
-            entitlements0 = entitlements0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about("Adds or updates an entitlement to an app for a user. This method supports patch semantics.");
             entitlements0 = entitlements0.subcommand(mcmd);
         }
         {
@@ -182,7 +171,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut installs0 = SubCommand::with_name("installs")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, list, patch and update");
+            .about("methods: delete, get, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Requests to remove an app from a device. A call to get or list will still show the app as installed on the device until it is actually removed.");
             installs0 = installs0.subcommand(mcmd);
@@ -198,17 +187,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             installs0 = installs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary. This method supports patch semantics.");
-            installs0 = installs0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("update").about("Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary.");
             installs0 = installs0.subcommand(mcmd);
         }
         let mut managedconfigurationsfordevice0 =
             SubCommand::with_name("managedconfigurationsfordevice")
                 .setting(AppSettings::ColoredHelp)
-                .about("methods: delete, get, list, patch and update");
+                .about("methods: delete, get, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about(
                 "Removes a per-device managed configuration for an app for the specified device.",
@@ -225,17 +210,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Adds or updates a per-device managed configuration for an app for the specified device. This method supports patch semantics.");
-            managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("update").about("Adds or updates a per-device managed configuration for an app for the specified device.");
             managedconfigurationsfordevice0 = managedconfigurationsfordevice0.subcommand(mcmd);
         }
         let mut managedconfigurationsforuser0 =
             SubCommand::with_name("managedconfigurationsforuser")
                 .setting(AppSettings::ColoredHelp)
-                .about("methods: delete, get, list, patch and update");
+                .about("methods: delete, get, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about(
                 "Removes a per-user managed configuration for an app for the specified user.",
@@ -248,10 +229,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about("Lists all the per-user managed configurations for the specified user. Only the ID is set.");
-            managedconfigurationsforuser0 = managedconfigurationsforuser0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about("Adds or updates the managed configuration settings for an app for the specified user. If you support the Managed configurations iframe, you can apply managed configurations to a user by specifying an mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply managed configurations by passing a list of managed properties. This method supports patch semantics.");
             managedconfigurationsforuser0 = managedconfigurationsforuser0.subcommand(mcmd);
         }
         {
@@ -326,7 +303,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut storelayoutclusters0 = SubCommand::with_name("storelayoutclusters")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
+            .about("methods: delete, get, insert, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes a cluster.");
             storelayoutclusters0 = storelayoutclusters0.subcommand(mcmd);
@@ -345,17 +322,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             storelayoutclusters0 = storelayoutclusters0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a cluster. This method supports patch semantics.");
-            storelayoutclusters0 = storelayoutclusters0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("update").about("Updates a cluster.");
             storelayoutclusters0 = storelayoutclusters0.subcommand(mcmd);
         }
         let mut storelayoutpages0 = SubCommand::with_name("storelayoutpages")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
+            .about("methods: delete, get, insert, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes a store page.");
             storelayoutpages0 = storelayoutpages0.subcommand(mcmd);
@@ -374,19 +346,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             storelayoutpages0 = storelayoutpages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about(
-                "Updates the content of a store page. This method supports patch semantics.",
-            );
-            storelayoutpages0 = storelayoutpages0.subcommand(mcmd);
-        }
-        {
             let mcmd =
                 SubCommand::with_name("update").about("Updates the content of a store page.");
             storelayoutpages0 = storelayoutpages0.subcommand(mcmd);
         }
         let mut users0 = SubCommand::with_name("users")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: delete, generate_authentication_token, generate_token, get, get_available_product_set, insert, list, patch, revoke_device_access, revoke_token, set_available_product_set and update");
+                        .about("methods: delete, generate_authentication_token, generate_token, get, get_available_product_set, insert, list, revoke_device_access, revoke_token, set_available_product_set and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Deleted an EMM-managed user.");
             users0 = users0.subcommand(mcmd);
@@ -417,10 +383,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             users0 = users0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the details of an EMM-managed user.\n\nCan be used with EMM-managed users only (not Google managed users). Pass the new details in the Users resource in the request body. Only the displayName field can be changed. Other fields must either be unset or have the currently active value. This method supports patch semantics.");
-            users0 = users0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("revoke_device_access").about("Revokes access to all devices currently provisioned to the user. The user will no longer be able to use the managed Play store on any of their managed devices.\n\nThis call only works with EMM-managed accounts.");
             users0 = users0.subcommand(mcmd);
         }
@@ -439,7 +401,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut webapps0 = SubCommand::with_name("webapps")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
+            .about("methods: delete, get, insert, list and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes an existing web app.");
             webapps0 = webapps0.subcommand(mcmd);
@@ -456,11 +418,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Retrieves the details of all web apps for a given enterprise.");
-            webapps0 = webapps0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates an existing web app. This method supports patch semantics.");
             webapps0 = webapps0.subcommand(mcmd);
         }
         {

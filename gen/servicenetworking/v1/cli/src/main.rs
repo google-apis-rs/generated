@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("servicenetworking1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190918")
+            .version("0.1.0-20200508")
             .about("Provides automatic management of network configurations necessary for certain services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -53,21 +53,35 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             operations0 = operations0.subcommand(mcmd);
         }
         let mut services0 = SubCommand::with_name("services")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: add_subnetwork and search_range");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: add_subnetwork, disable_vpc_service_controls, enable_vpc_service_controls, search_range and validate");
         {
-            let mcmd = SubCommand::with_name("add_subnetwork").about("For service producers, provisions a new subnet in a\npeered service\'s shared VPC network in the requested region and with the\nrequested size that\'s expressed as a CIDR range (number of leading bits of\nipV4 network mask). The method checks against the assigned allocated ranges\nto find a non-conflicting IP address range. The method will reuse a subnet\nif subsequent calls contain the same subnet name, region, and prefix\nlength. This method will make producer\'s tenant project to be a shared VPC\nservice project as needed. The response from the `get` operation will be of\ntype `Subnetwork` if the operation successfully completes.");
+            let mcmd = SubCommand::with_name("add_subnetwork").about("For service producers, provisions a new subnet in a peered service\'s shared\nVPC network in the requested region and with the requested size that\'s\nexpressed as a CIDR range (number of leading bits of ipV4 network mask).\nThe method checks against the assigned allocated ranges to find a\nnon-conflicting IP address range. The method will reuse a subnet if\nsubsequent calls contain the same subnet name, region, and prefix length.\nThis method will make producer\'s tenant project to be a shared VPC service\nproject as needed.");
             services0 = services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_range").about("Service producers can use this method to find a currently unused range\nwithin consumer allocated ranges.   This returned range is not reserved,\nand not guaranteed to remain unused.\nIt will validate previously provided allocated ranges, find\nnon-conflicting sub-range of requested size (expressed in\nnumber of leading bits of ipv4 network mask, as in CIDR range\nnotation).\nOperation<response: Range>");
+            let mcmd = SubCommand::with_name("disable_vpc_service_controls")
+                .about("Disables VPC service controls for a connection.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("enable_vpc_service_controls")
+                .about("Enables VPC service controls for a connection.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("search_range").about("Service producers can use this method to find a currently unused range\nwithin consumer allocated ranges. This returned range is not reserved,\nand not guaranteed to remain unused. It will validate previously provided\nallocated ranges, find non-conflicting sub-range of requested size\n(expressed in number of leading bits of ipv4 network mask, as in CIDR range\nnotation).");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("validate").about("Service producers use this method to validate if the consumer provided\nnetwork, project and requested range are valid. This allows them to use\na fail-fast mechanism for consumer requests, and not have to wait for\nAddSubnetwork operation completion to determine if user request is invalid.");
             services0 = services0.subcommand(mcmd);
         }
         let mut connections1 = SubCommand::with_name("connections")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a private connection that establishes a VPC Network Peering\nconnection to a VPC network in the service producer\'s organization.\nThe administrator of the service consumer\'s VPC network invokes this\nmethod. The administrator must assign one or more allocated IP ranges for\nprovisioning subnetworks in the service producer\'s VPC network. This\nconnection is used for all supported services in the service producer\'s\norganization, so it only needs to be invoked once. The response from the\n`get` operation will be of type `Connection` if the operation successfully\ncompletes.");
+            let mcmd = SubCommand::with_name("create").about("Creates a private connection that establishes a VPC Network Peering\nconnection to a VPC network in the service producer\'s organization.\nThe administrator of the service consumer\'s VPC network invokes this\nmethod. The administrator must assign one or more allocated IP ranges for\nprovisioning subnetworks in the service producer\'s VPC network. This\nconnection is used for all supported services in the service producer\'s\norganization, so it only needs to be invoked once.");
             connections1 = connections1.subcommand(mcmd);
         }
         {
@@ -75,9 +89,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             connections1 = connections1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the allocated ranges that are assigned to a connection.\nThe response from the `get` operation will be of type `Connection` if the\noperation successfully completes.");
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates the allocated ranges that are assigned to a connection.");
             connections1 = connections1.subcommand(mcmd);
         }
+        let mut roles1 = SubCommand::with_name("roles")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: add");
+        {
+            let mcmd = SubCommand::with_name("add").about("Service producers can use this method to add roles in the shared VPC host\nproject. Each role is bound to the provided member. Each role must be\nselected from within a whitelisted set of roles. Each role is applied at\nonly the granularity specified in the whitelist.");
+            roles1 = roles1.subcommand(mcmd);
+        }
+        services0 = services0.subcommand(roles1);
         services0 = services0.subcommand(connections1);
         app = app.subcommand(services0);
         app = app.subcommand(operations0);

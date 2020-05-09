@@ -1,4 +1,12 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*patchTraces*](resources/projects/struct.PatchTracesRequestBuilder.html)\n      * [traces](resources/projects/traces/struct.TracesActions.html)\n        * [*get*](resources/projects/traces/struct.GetRequestBuilder.html), [*list*](resources/projects/traces/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Write Trace data for a project or application\n\n`https://www.googleapis.com/auth/trace.append`"]
+    pub const TRACE_APPEND: &str = "https://www.googleapis.com/auth/trace.append";
+    #[doc = "Read Trace data for a project or application\n\n`https://www.googleapis.com/auth/trace.readonly`"]
+    pub const TRACE_READONLY: &str = "https://www.googleapis.com/auth/trace.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -148,7 +156,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "ID of the parent span, if any. Optional."]
+        #[doc = "Optional. ID of the parent span, if any."]
         #[serde(
             rename = "parentSpanId",
             default,
@@ -440,7 +448,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -448,8 +456,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -468,14 +488,14 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Sends new traces to Stackdriver Trace or updates existing traces. If the ID\nof a trace that you send matches that of an existing trace, any fields\nin the existing trace and its spans are overwritten by the provided values,\nand any new fields provided are merged with the existing trace data. If the\nID does not match, a new trace is created."]
+            #[doc = "Sends new traces to Stackdriver Trace or updates existing traces. If the ID\nof a trace that you send matches that of an existing trace, any fields\nin the existing trace and its spans are overwritten by the provided values,\nand any new fields provided are merged with the existing trace data. If the\nID does not match, a new trace is created.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated."]
             pub fn patch_traces(
                 &self,
                 request: crate::schemas::Traces,
@@ -510,7 +530,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::patch_traces()](struct.ProjectsActions.html#method.patch_traces)"]
         #[derive(Debug, Clone)]
         pub struct PatchTracesRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Traces,
             project_id: String,
@@ -640,7 +660,10 @@ pub mod resources {
                 output.push_str("/traces");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -742,14 +765,14 @@ pub mod resources {
                 }
             }
             pub struct TracesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> TracesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Gets a single trace by its ID."]
+                #[doc = "Gets a single trace by its ID.\nIn this case, getting for traces is considered an active developer method,\neven though it is technically a read-only method."]
                 pub fn get(
                     &self,
                     project_id: impl Into<String>,
@@ -773,7 +796,7 @@ pub mod resources {
                         trace_id: trace_id.into(),
                     }
                 }
-                #[doc = "Returns of a list of traces that match the specified filter conditions."]
+                #[doc = "Returns of a list of traces that match the specified filter conditions.\nIn this case, listing for traces is considered an active developer method,\neven though it is technically a read-only method."]
                 pub fn list(&self, project_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -803,7 +826,7 @@ pub mod resources {
             #[doc = "Created via [TracesActions::get()](struct.TracesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 trace_id: String,
@@ -944,7 +967,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -968,7 +994,7 @@ pub mod resources {
             #[doc = "Created via [TracesActions::list()](struct.TracesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 end_time: Option<String>,
@@ -996,22 +1022,22 @@ pub mod resources {
                     self.end_time = Some(value.into());
                     self
                 }
-                #[doc = "An optional filter against labels for the request.\n\nBy default, searches use prefix matching. To specify exact match, prepend\na plus symbol (`+`) to the search term.\nMultiple terms are ANDed. Syntax:\n\n* `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root\n  span starts with `NAME_PREFIX`.\n* `+root:NAME` or `+NAME`: Return traces where any root span's name is\n  exactly `NAME`.\n* `span:NAME_PREFIX`: Return traces where any span starts with\n  `NAME_PREFIX`.\n* `+span:NAME`: Return traces where any span's name is exactly\n  `NAME`.\n* `latency:DURATION`: Return traces whose overall latency is\n  greater or equal to than `DURATION`. Accepted units are nanoseconds\n  (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For\n  example, `latency:24ms` returns traces whose overall latency\n  is greater than or equal to 24 milliseconds.\n* `label:LABEL_KEY`: Return all traces containing the specified\n  label key (exact match, case-sensitive) regardless of the key:value\n  pair's value (including empty values).\n* `LABEL_KEY:VALUE_PREFIX`: Return all traces containing the specified\n  label key (exact match, case-sensitive) whose value starts with\n  `VALUE_PREFIX`. Both a key and a value must be specified.\n* `+LABEL_KEY:VALUE`: Return all traces containing a key:value pair\n  exactly matching the specified text. Both a key and a value must be\n  specified.\n* `method:VALUE`: Equivalent to `/http/method:VALUE`.\n* `url:VALUE`: Equivalent to `/http/url:VALUE`."]
+                #[doc = "Optional. A filter against labels for the request.\n\nBy default, searches use prefix matching. To specify exact match, prepend\na plus symbol (`+`) to the search term.\nMultiple terms are ANDed. Syntax:\n\n* `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root\n  span starts with `NAME_PREFIX`.\n* `+root:NAME` or `+NAME`: Return traces where any root span's name is\n  exactly `NAME`.\n* `span:NAME_PREFIX`: Return traces where any span starts with\n  `NAME_PREFIX`.\n* `+span:NAME`: Return traces where any span's name is exactly\n  `NAME`.\n* `latency:DURATION`: Return traces whose overall latency is\n  greater or equal to than `DURATION`. Accepted units are nanoseconds\n  (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For\n  example, `latency:24ms` returns traces whose overall latency\n  is greater than or equal to 24 milliseconds.\n* `label:LABEL_KEY`: Return all traces containing the specified\n  label key (exact match, case-sensitive) regardless of the key:value\n  pair's value (including empty values).\n* `LABEL_KEY:VALUE_PREFIX`: Return all traces containing the specified\n  label key (exact match, case-sensitive) whose value starts with\n  `VALUE_PREFIX`. Both a key and a value must be specified.\n* `+LABEL_KEY:VALUE`: Return all traces containing a key:value pair\n  exactly matching the specified text. Both a key and a value must be\n  specified.\n* `method:VALUE`: Equivalent to `/http/method:VALUE`.\n* `url:VALUE`: Equivalent to `/http/url:VALUE`."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Field used to sort the returned traces. Optional.\nCan be one of the following:\n\n* `trace_id`\n* `name` (`name` field of root span in the trace)\n* `duration` (difference between `end_time` and `start_time` fields of\n  the root span)\n* `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted."]
+                #[doc = "Optional. Field used to sort the returned traces.\nCan be one of the following:\n\n* `trace_id`\n* `name` (`name` field of root span in the trace)\n* `duration` (difference between `end_time` and `start_time` fields of\n  the root span)\n* `start` (`start_time` field of the root span)\n\nDescending order can be specified by appending `desc` to the sort field\n(for example, `name desc`).\n\nOnly one sort field is permitted."]
                 pub fn order_by(mut self, value: impl Into<String>) -> Self {
                     self.order_by = Some(value.into());
                     self
                 }
-                #[doc = "Maximum number of traces to return. If not specified or <= 0, the\nimplementation selects a reasonable value.  The implementation may\nreturn fewer traces than the requested page size. Optional."]
+                #[doc = "Optional. Maximum number of traces to return. If not specified or <= 0, the\nimplementation selects a reasonable value.  The implementation may\nreturn fewer traces than the requested page size."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request. Optional."]
+                #[doc = "Token identifying the page of results to return. If provided, use the\nvalue of the `next_page_token` field from a previous request."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
@@ -1021,7 +1047,7 @@ pub mod resources {
                     self.start_time = Some(value.into());
                     self
                 }
-                #[doc = "Type of data returned for traces in the list. Optional. Default is\n`MINIMAL`."]
+                #[doc = "Optional. Type of data returned for traces in the list. Default is\n`MINIMAL`."]
                 pub fn view(
                     mut self,
                     value: crate::resources::projects::traces::params::ListView,
@@ -1246,7 +1272,10 @@ pub mod resources {
                     output.push_str("/traces");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("endTime", &self.end_time)]);
                     let req = req.query(&[("filter", &self.filter)]);
@@ -1304,9 +1333,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1348,7 +1375,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -7,9 +7,9 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v4",
-  "revision": "20190917",
+  "revision": "20200502",
   "title": "Safe Browsing API",
-  "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.",
+  "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. The Safe Browsing APIs are for non-commercial use only. If you need to use APIs to detect malicious URLs for commercial purposes – meaning “for sale or revenue-generating purposes” – please refer to the Web Risk API.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -282,7 +282,7 @@
           "items": null
         },
         "maxDatabaseEntries": {
-          "description": "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set.",
+          "description": "Sets the maximum number of entries that the client is willing to have\nin the local database for the specified list. This should be a power of\n2 between 2**10 and 2**20. If zero, no database size limit is set.",
           "type": "integer",
           "format": "int32",
           "enum": [],

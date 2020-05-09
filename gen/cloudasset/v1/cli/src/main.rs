@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudasset1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190907")
+            .version("0.1.0-20200508")
             .about("The cloud asset API manages the history and inventory of cloud resources.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -33,6 +33,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .help("Provide more output to aid with debugging")
                 .multiple(false)
                 .takes_value(false));
+        let mut feeds0 = SubCommand::with_name("feeds")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a feed in a parent project/folder/organization to listen to its\nasset updates.");
+            feeds0 = feeds0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes an asset feed.");
+            feeds0 = feeds0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets details about an asset feed.");
+            feeds0 = feeds0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists all asset feeds in a parent project/folder/organization.");
+            feeds0 = feeds0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates an asset feed configuration.");
+            feeds0 = feeds0.subcommand(mcmd);
+        }
         let mut operations0 = SubCommand::with_name("operations")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
@@ -53,6 +77,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         app = app.subcommand(v_10);
         app = app.subcommand(operations0);
+        app = app.subcommand(feeds0);
 
         Self { app }
     }

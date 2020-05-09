@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*complete*](resources/projects/struct.CompleteRequestBuilder.html)\n      * [client_events](resources/projects/client_events/struct.ClientEventsActions.html)\n        * [*create*](resources/projects/client_events/struct.CreateRequestBuilder.html)\n      * [companies](resources/projects/companies/struct.CompaniesActions.html)\n        * [*create*](resources/projects/companies/struct.CreateRequestBuilder.html), [*delete*](resources/projects/companies/struct.DeleteRequestBuilder.html), [*get*](resources/projects/companies/struct.GetRequestBuilder.html), [*list*](resources/projects/companies/struct.ListRequestBuilder.html), [*patch*](resources/projects/companies/struct.PatchRequestBuilder.html)\n      * [jobs](resources/projects/jobs/struct.JobsActions.html)\n        * [*batchDelete*](resources/projects/jobs/struct.BatchDeleteRequestBuilder.html), [*create*](resources/projects/jobs/struct.CreateRequestBuilder.html), [*delete*](resources/projects/jobs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/jobs/struct.GetRequestBuilder.html), [*list*](resources/projects/jobs/struct.ListRequestBuilder.html), [*patch*](resources/projects/jobs/struct.PatchRequestBuilder.html), [*search*](resources/projects/jobs/struct.SearchRequestBuilder.html), [*searchForAlert*](resources/projects/jobs/struct.SearchForAlertRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*get*](resources/projects/operations/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Manage job postings\n\n`https://www.googleapis.com/auth/jobs`"]
+    pub const JOBS: &str = "https://www.googleapis.com/auth/jobs";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -1884,7 +1890,7 @@ pub mod schemas {
         )]
         pub importance_level:
             ::std::option::Option<crate::schemas::CustomRankingInfoImportanceLevel>,
-        #[doc = "Required. Controls over how job documents get ranked on top of existing relevance\nscore (determined by API algorithm). The product of ranking expression\nand relevance score is used to determine job's final ranking position.\n\nThe syntax for this expression is a subset of Google SQL syntax.\n\nSupported operators are: +, -, *, /, where the left and right side of\nthe operator is either a numeric Job.custom_attributes key,\ninteger/double value or an expression that can be evaluated to a number.\n\nParenthesis are supported to adjust calculation precedence. The\nexpression must be < 100 characters in length.\n\nSample ranking expression\n(year + 25) * 0.25 - (freshness / 0.5)"]
+        #[doc = "Required. Controls over how job documents get ranked on top of existing relevance\nscore (determined by API algorithm). A combination of the ranking\nexpression and relevance score is used to determine job's final ranking\nposition.\n\nThe syntax for this expression is a subset of Google SQL syntax.\n\nSupported operators are: +, -, *, /, where the left and right side of\nthe operator is either a numeric Job.custom_attributes key,\ninteger/double value or an expression that can be evaluated to a number.\n\nParenthesis are supported to adjust calculation precedence. The\nexpression must be < 100 characters in length.\n\nThe expression is considered invalid for a job if the expression\nreferences custom attributes that are not populated on the job or if the\nexpression results in a divide by zero. If an expression is invalid for a\njob, that job is demoted to the end of the results.\n\nSample ranking expression\n(year + 25) * 0.25 - (freshness / 0.5)"]
         #[serde(
             rename = "rankingExpression",
             default,
@@ -4011,6 +4017,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub query: ::std::option::Option<String>,
+        #[doc = "The language code of query. For example, \"en-US\". This field helps to\nbetter interpret the query.\n\nIf a value isn't specified, the query language code is automatically\ndetected, which may not be accurate.\n\nLanguage code should be in BCP-47 format, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\n[Tags for Identifying Languages](https://tools.ietf.org/html/bcp47)."]
+        #[serde(
+            rename = "queryLanguageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub query_language_code: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for JobQuery {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -4815,6 +4828,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct MendelDebugInput {
+        #[doc = "When a request spans multiple servers, a MendelDebugInput may travel with\nthe request and take effect in all the servers. This field is a map of\nnamespaces to NamespacedMendelDebugInput protos. In a single server, up to\ntwo NamespacedMendelDebugInput protos are applied:\n\n1. NamespacedMendelDebugInput with the global namespace (key == \"\").\n1. NamespacedMendelDebugInput with the server's namespace.\n   When both NamespacedMendelDebugInput protos are present, they are merged.\n   See go/mendel-debug-forcing for more details."]
+        #[serde(
+            rename = "namespacedDebugInput",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub namespaced_debug_input: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::NamespacedDebugInput>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for MendelDebugInput {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for MendelDebugInput {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Money {
         #[doc = "The 3-letter currency code defined in ISO 4217."]
         #[serde(
@@ -4845,6 +4891,128 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Money {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NamespacedDebugInput {
+        #[doc = "Set of experiment names to be absolutely forced.\nThese experiments will be forced without evaluating the conditions."]
+        #[serde(
+            rename = "absolutelyForcedExpNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub absolutely_forced_exp_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Set of experiment tags to be absolutely forced.\nThe experiments with these tags will be forced without evaluating the\nconditions."]
+        #[serde(
+            rename = "absolutelyForcedExpTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub absolutely_forced_exp_tags: ::std::option::Option<Vec<String>>,
+        #[doc = "Set of experiment ids to be absolutely forced.\nThese ids will be forced without evaluating the conditions."]
+        #[serde(
+            rename = "absolutelyForcedExps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub absolutely_forced_exps: ::std::option::Option<Vec<i32>>,
+        #[doc = "Set of experiment names to be conditionally forced.\nThese experiments will be forced only if their conditions and their\nparent domain's conditions are true."]
+        #[serde(
+            rename = "conditionallyForcedExpNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub conditionally_forced_exp_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Set of experiment tags to be conditionally forced.\nThe experiments with these tags will be forced only if their conditions\nand their parent domain's conditions are true."]
+        #[serde(
+            rename = "conditionallyForcedExpTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub conditionally_forced_exp_tags: ::std::option::Option<Vec<String>>,
+        #[doc = "Set of experiment ids to be conditionally forced.\nThese ids will be forced only if their conditions and their parent\ndomain's conditions are true."]
+        #[serde(
+            rename = "conditionallyForcedExps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub conditionally_forced_exps: ::std::option::Option<Vec<i32>>,
+        #[doc = "If true, disable automatic enrollment selection (at all diversion\npoints). Automatic enrollment selection means experiment selection\nprocess based on the experiment's automatic enrollment condition. This\ndoes not disable selection of forced experiments."]
+        #[serde(
+            rename = "disableAutomaticEnrollmentSelection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_automatic_enrollment_selection: ::std::option::Option<bool>,
+        #[doc = "Set of experiment names to be disabled.\nIf an experiment is disabled, it is never selected nor forced.\nIf an aggregate experiment is disabled, its partitions are disabled\ntogether. If an experiment with an enrollment is disabled, the enrollment\nis disabled together. If a name corresponds to a domain, the domain\nitself and all descendant experiments and domains are disabled together."]
+        #[serde(
+            rename = "disableExpNames",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_exp_names: ::std::option::Option<Vec<String>>,
+        #[doc = "Set of experiment tags to be disabled. All experiments that are tagged\nwith one or more of these tags are disabled.\nIf an experiment is disabled, it is never selected nor forced.\nIf an aggregate experiment is disabled, its partitions are disabled\ntogether. If an experiment with an enrollment is disabled, the enrollment\nis disabled together."]
+        #[serde(
+            rename = "disableExpTags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_exp_tags: ::std::option::Option<Vec<String>>,
+        #[doc = "Set of experiment ids to be disabled.\nIf an experiment is disabled, it is never selected nor forced.\nIf an aggregate experiment is disabled, its partitions are disabled\ntogether. If an experiment with an enrollment is disabled, the enrollment\nis disabled together. If an ID corresponds to a domain, the domain itself\nand all descendant experiments and domains are disabled together."]
+        #[serde(
+            rename = "disableExps",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_exps: ::std::option::Option<Vec<i32>>,
+        #[doc = "If true, disable manual enrollment selection (at all diversion points).\nManual enrollment selection means experiment selection process based on\nthe request's manual enrollment states (a.k.a. opt-in experiments).\nThis does not disable selection of forced experiments."]
+        #[serde(
+            rename = "disableManualEnrollmentSelection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_manual_enrollment_selection: ::std::option::Option<bool>,
+        #[doc = "If true, disable organic experiment selection (at all diversion points).\nOrganic selection means experiment selection process based on traffic\nallocation and diversion condition evaluation.\nThis does not disable selection of forced experiments.\n\nThis is useful in cases when it is not known whether experiment selection\nbehavior is responsible for a error or breakage. Disabling organic\nselection may help to isolate the cause of a given problem."]
+        #[serde(
+            rename = "disableOrganicSelection",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_organic_selection: ::std::option::Option<bool>,
+        #[doc = "Flags to force in a particular experiment state.\nMap from flag name to flag value."]
+        #[serde(
+            rename = "forcedFlags",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub forced_flags: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Rollouts to force in a particular experiment state.\nMap from rollout name to rollout value."]
+        #[serde(
+            rename = "forcedRollouts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub forced_rollouts: ::std::option::Option<::std::collections::BTreeMap<String, bool>>,
+    }
+    impl ::google_field_selector::FieldSelector for NamespacedDebugInput {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for NamespacedDebugInput {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5040,7 +5208,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub revision: ::std::option::Option<i32>,
-        #[doc = "Optional. Additional, country-specific, sorting code. This is not used\nin most regions. Where it is used, the value is either a string like\n\"CEDEX\", optionally followed by a number (e.g. \"CEDEX 7\"), or just a number\nalone, representing the \"sector code\" (Jamaica), \"delivery area indicator\"\n(Malawi) or \"post office indicator\" (e.g. C\u{f4}te d'Ivoire)."]
+        #[doc = "Optional. Additional, country-specific, sorting code. This is not used\nin most regions. Where it is used, the value is either a string like\n\"CEDEX\", optionally followed by a number (e.g. \"CEDEX 7\"), or just a number\nalone, representing the \"sector code\" (Jamaica), \"delivery area indicator\"\n(Malawi) or \"post office indicator\" (e.g. Côte d'Ivoire)."]
         #[serde(
             rename = "sortingCode",
             default,
@@ -5336,7 +5504,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub job_view: ::std::option::Option<crate::schemas::SearchJobsRequestJobView>,
-        #[doc = "Optional. An integer that specifies the current offset (that is, starting result\nlocation, amongst the jobs deemed by the API as relevant) in search\nresults. This field is only considered if page_token is unset.\n\nFor example, 0 means to  return results starting from the first matching\njob, and 10 means to return from the 11th job. This can be used for\npagination, (for example, pageSize = 10 and offset = 10 means to return\nfrom the second page)."]
+        #[doc = "Optional. An integer that specifies the current offset (that is, starting result\nlocation, amongst the jobs deemed by the API as relevant) in search\nresults. This field is only considered if page_token is unset.\n\nThe maximum allowed value is 5000. Otherwise an error is thrown.\n\nFor example, 0 means to  return results starting from the first matching\njob, and 10 means to return from the 11th job. This can be used for\npagination, (for example, pageSize = 10 and offset = 10 means to return\nfrom the second page)."]
         #[serde(
             rename = "offset",
             default,
@@ -6098,7 +6266,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -6106,8 +6274,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -6277,7 +6457,7 @@ pub mod resources {
             }
         }
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -6344,7 +6524,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::complete()](struct.ProjectsActions.html#method.complete)"]
         #[derive(Debug, Clone)]
         pub struct CompleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             company_name: Option<String>,
@@ -6522,7 +6702,10 @@ pub mod resources {
                 output.push_str(":complete");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("companyName", &self.company_name)]);
                 let req = req.query(&[("languageCode", &self.language_code)]);
@@ -6553,7 +6736,7 @@ pub mod resources {
         pub mod client_events {
             pub mod params {}
             pub struct ClientEventsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ClientEventsActions<'a> {
@@ -6588,7 +6771,7 @@ pub mod resources {
             #[doc = "Created via [ClientEventsActions::create()](struct.ClientEventsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CreateClientEventRequest,
                 parent: String,
@@ -6723,7 +6906,10 @@ pub mod resources {
                     output.push_str("/clientEvents");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6748,7 +6934,7 @@ pub mod resources {
         pub mod companies {
             pub mod params {}
             pub struct CompaniesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> CompaniesActions<'a> {
@@ -6867,7 +7053,7 @@ pub mod resources {
             #[doc = "Created via [CompaniesActions::create()](struct.CompaniesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CreateCompanyRequest,
                 parent: String,
@@ -7002,7 +7188,10 @@ pub mod resources {
                     output.push_str("/companies");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7026,7 +7215,7 @@ pub mod resources {
             #[doc = "Created via [CompaniesActions::delete()](struct.CompaniesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -7158,7 +7347,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7182,7 +7374,7 @@ pub mod resources {
             #[doc = "Created via [CompaniesActions::get()](struct.CompaniesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -7314,7 +7506,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7338,7 +7533,7 @@ pub mod resources {
             #[doc = "Created via [CompaniesActions::list()](struct.CompaniesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -7589,7 +7784,10 @@ pub mod resources {
                     output.push_str("/companies");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -7627,7 +7825,7 @@ pub mod resources {
             #[doc = "Created via [CompaniesActions::patch()](struct.CompaniesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateCompanyRequest,
                 name: String,
@@ -7761,7 +7959,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7868,7 +8069,7 @@ pub mod resources {
                 }
             }
             pub struct JobsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> JobsActions<'a> {
@@ -8060,7 +8261,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::batch_delete()](struct.JobsActions.html#method.batch_delete)"]
             #[derive(Debug, Clone)]
             pub struct BatchDeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchDeleteJobsRequest,
                 parent: String,
@@ -8195,7 +8396,10 @@ pub mod resources {
                     output.push_str("/jobs:batchDelete");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8219,7 +8423,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::create()](struct.JobsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CreateJobRequest,
                 parent: String,
@@ -8352,7 +8556,10 @@ pub mod resources {
                     output.push_str("/jobs");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8376,7 +8583,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::delete()](struct.JobsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -8508,7 +8715,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8532,7 +8742,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::get()](struct.JobsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -8662,7 +8872,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8686,7 +8899,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::list()](struct.JobsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 filter: Option<String>,
@@ -8944,7 +9157,10 @@ pub mod resources {
                     output.push_str("/jobs");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("jobView", &self.job_view)]);
@@ -8983,7 +9199,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::patch()](struct.JobsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateJobRequest,
                 name: String,
@@ -9115,7 +9331,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9139,7 +9358,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::search()](struct.JobsActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SearchJobsRequest,
                 parent: String,
@@ -9274,7 +9493,10 @@ pub mod resources {
                     output.push_str("/jobs:search");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9298,7 +9520,7 @@ pub mod resources {
             #[doc = "Created via [JobsActions::search_for_alert()](struct.JobsActions.html#method.search_for_alert)"]
             #[derive(Debug, Clone)]
             pub struct SearchForAlertRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SearchJobsRequest,
                 parent: String,
@@ -9433,7 +9655,10 @@ pub mod resources {
                     output.push_str("/jobs:searchForAlert");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9458,7 +9683,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -9488,7 +9713,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -9620,7 +9845,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9660,9 +9888,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -9704,7 +9930,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

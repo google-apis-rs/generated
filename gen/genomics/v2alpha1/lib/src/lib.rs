@@ -1,4 +1,10 @@
-#![doc = "# Resources and Methods\n    * [pipelines](resources/pipelines/struct.PipelinesActions.html)\n      * [*run*](resources/pipelines/struct.RunRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n    * [workers](resources/workers/struct.WorkersActions.html)\n      * [*checkIn*](resources/workers/struct.CheckInRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [pipelines](resources/pipelines/struct.PipelinesActions.html)\n      * [*run*](resources/pipelines/struct.RunRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n      * [workers](resources/projects/workers/struct.WorkersActions.html)\n        * [*checkIn*](resources/projects/workers/struct.CheckInRequestBuilder.html)\n    * [workers](resources/workers/struct.WorkersActions.html)\n      * [*checkIn*](resources/workers/struct.CheckInRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and manage Genomics data\n\n`https://www.googleapis.com/auth/genomics`"]
+    pub const GENOMICS: &str = "https://www.googleapis.com/auth/genomics";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -280,6 +286,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "A list of timestamped events."]
+        #[serde(
+            rename = "events",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub events: ::std::option::Option<Vec<crate::schemas::TimestampedEvent>>,
         #[doc = "The operation has finished with the given result."]
         #[serde(
             rename = "result",
@@ -1594,6 +1607,33 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct TimestampedEvent {
+        #[doc = "The event data."]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The time when the event happened."]
+        #[serde(
+            rename = "timestamp",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub timestamp: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for TimestampedEvent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TimestampedEvent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -2037,7 +2077,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2045,8 +2085,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2079,7 +2131,7 @@ pub mod resources {
     pub mod pipelines {
         pub mod params {}
         pub struct PipelinesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PipelinesActions<'a> {
@@ -2109,7 +2161,7 @@ pub mod resources {
         #[doc = "Created via [PipelinesActions::run()](struct.PipelinesActions.html#method.run)"]
         #[derive(Debug, Clone)]
         pub struct RunRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RunPipelineRequest,
             access_token: Option<String>,
@@ -2232,7 +2284,10 @@ pub mod resources {
                 output.push_str("v2alpha1/pipelines:run");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2257,7 +2312,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -2271,11 +2326,18 @@ pub mod resources {
                     auth: self.auth_ref(),
                 }
             }
+            #[doc = "Actions that can be performed on the workers resource"]
+            pub fn workers(&self) -> crate::resources::projects::workers::WorkersActions {
+                crate::resources::projects::workers::WorkersActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
         }
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -2351,7 +2413,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CancelOperationRequest,
                 name: String,
@@ -2486,7 +2548,10 @@ pub mod resources {
                     output.push_str(":cancel");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2510,7 +2575,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2642,7 +2707,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2666,7 +2734,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -2916,7 +2984,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2952,11 +3023,209 @@ pub mod resources {
                 }
             }
         }
+        pub mod workers {
+            pub mod params {}
+            pub struct WorkersActions<'a> {
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            }
+            impl<'a> WorkersActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
+                #[doc = "The worker uses this method to retrieve the assigned operation and\nprovide periodic status updates."]
+                pub fn check_in(
+                    &self,
+                    request: crate::schemas::CheckInRequest,
+                    id: impl Into<String>,
+                ) -> CheckInRequestBuilder {
+                    CheckInRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        id: id.into(),
+                    }
+                }
+            }
+            #[doc = "Created via [WorkersActions::check_in()](struct.WorkersActions.html#method.check_in)"]
+            #[derive(Debug, Clone)]
+            pub struct CheckInRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::CheckInRequest,
+                id: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> CheckInRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::CheckInResponse, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::CheckInResponse, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://genomics.googleapis.com/".to_owned();
+                    output.push_str("v2alpha1/");
+                    {
+                        let var_as_str = &self.id;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str(":checkIn");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+        }
     }
     pub mod workers {
         pub mod params {}
         pub struct WorkersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> WorkersActions<'a> {
@@ -2991,7 +3260,7 @@ pub mod resources {
         #[doc = "Created via [WorkersActions::check_in()](struct.WorkersActions.html#method.check_in)"]
         #[derive(Debug, Clone)]
         pub struct CheckInRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CheckInRequest,
             id: String,
@@ -3123,7 +3392,10 @@ pub mod resources {
                 output.push_str(":checkIn");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3162,9 +3434,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3206,7 +3476,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

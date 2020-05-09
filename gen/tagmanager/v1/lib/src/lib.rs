@@ -1,4 +1,25 @@
 #![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [*get*](resources/accounts/struct.GetRequestBuilder.html), [*list*](resources/accounts/struct.ListRequestBuilder.html), [*update*](resources/accounts/struct.UpdateRequestBuilder.html)\n      * [containers](resources/accounts/containers/struct.ContainersActions.html)\n        * [*create*](resources/accounts/containers/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/struct.ListRequestBuilder.html), [*update*](resources/accounts/containers/struct.UpdateRequestBuilder.html)\n        * [environments](resources/accounts/containers/environments/struct.EnvironmentsActions.html)\n          * [*create*](resources/accounts/containers/environments/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/environments/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/environments/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/environments/struct.ListRequestBuilder.html), [*update*](resources/accounts/containers/environments/struct.UpdateRequestBuilder.html)\n        * [folders](resources/accounts/containers/folders/struct.FoldersActions.html)\n          * [*create*](resources/accounts/containers/folders/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/folders/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/folders/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/folders/struct.ListRequestBuilder.html), [*update*](resources/accounts/containers/folders/struct.UpdateRequestBuilder.html)\n          * [entities](resources/accounts/containers/folders/entities/struct.EntitiesActions.html)\n            * [*list*](resources/accounts/containers/folders/entities/struct.ListRequestBuilder.html)\n        * [move_folders](resources/accounts/containers/move_folders/struct.MoveFoldersActions.html)\n          * [*update*](resources/accounts/containers/move_folders/struct.UpdateRequestBuilder.html)\n        * [reauthorize_environments](resources/accounts/containers/reauthorize_environments/struct.ReauthorizeEnvironmentsActions.html)\n          * [*update*](resources/accounts/containers/reauthorize_environments/struct.UpdateRequestBuilder.html)\n        * [tags](resources/accounts/containers/tags/struct.TagsActions.html)\n          * [*create*](resources/accounts/containers/tags/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/tags/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/tags/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/tags/struct.ListRequestBuilder.html), [*update*](resources/accounts/containers/tags/struct.UpdateRequestBuilder.html)\n        * [triggers](resources/accounts/containers/triggers/struct.TriggersActions.html)\n          * [*create*](resources/accounts/containers/triggers/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/triggers/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/triggers/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/triggers/struct.ListRequestBuilder.html), [*update*](resources/accounts/containers/triggers/struct.UpdateRequestBuilder.html)\n        * [variables](resources/accounts/containers/variables/struct.VariablesActions.html)\n          * [*create*](resources/accounts/containers/variables/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/variables/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/variables/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/variables/struct.ListRequestBuilder.html), [*update*](resources/accounts/containers/variables/struct.UpdateRequestBuilder.html)\n        * [versions](resources/accounts/containers/versions/struct.VersionsActions.html)\n          * [*create*](resources/accounts/containers/versions/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/containers/versions/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/containers/versions/struct.GetRequestBuilder.html), [*list*](resources/accounts/containers/versions/struct.ListRequestBuilder.html), [*publish*](resources/accounts/containers/versions/struct.PublishRequestBuilder.html), [*restore*](resources/accounts/containers/versions/struct.RestoreRequestBuilder.html), [*undelete*](resources/accounts/containers/versions/struct.UndeleteRequestBuilder.html), [*update*](resources/accounts/containers/versions/struct.UpdateRequestBuilder.html)\n      * [permissions](resources/accounts/permissions/struct.PermissionsActions.html)\n        * [*create*](resources/accounts/permissions/struct.CreateRequestBuilder.html), [*delete*](resources/accounts/permissions/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/permissions/struct.GetRequestBuilder.html), [*list*](resources/accounts/permissions/struct.ListRequestBuilder.html), [*update*](resources/accounts/permissions/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Delete your Google Tag Manager containers\n\n`https://www.googleapis.com/auth/tagmanager.delete.containers`"]
+    pub const TAGMANAGER_DELETE_CONTAINERS: &str =
+        "https://www.googleapis.com/auth/tagmanager.delete.containers";
+    #[doc = "Manage your Google Tag Manager container and its subcomponents, excluding versioning and publishing\n\n`https://www.googleapis.com/auth/tagmanager.edit.containers`"]
+    pub const TAGMANAGER_EDIT_CONTAINERS: &str =
+        "https://www.googleapis.com/auth/tagmanager.edit.containers";
+    #[doc = "Manage your Google Tag Manager container versions\n\n`https://www.googleapis.com/auth/tagmanager.edit.containerversions`"]
+    pub const TAGMANAGER_EDIT_CONTAINERVERSIONS: &str =
+        "https://www.googleapis.com/auth/tagmanager.edit.containerversions";
+    #[doc = "View and manage your Google Tag Manager accounts\n\n`https://www.googleapis.com/auth/tagmanager.manage.accounts`"]
+    pub const TAGMANAGER_MANAGE_ACCOUNTS: &str =
+        "https://www.googleapis.com/auth/tagmanager.manage.accounts";
+    #[doc = "Manage user permissions of your Google Tag Manager account and container\n\n`https://www.googleapis.com/auth/tagmanager.manage.users`"]
+    pub const TAGMANAGER_MANAGE_USERS: &str =
+        "https://www.googleapis.com/auth/tagmanager.manage.users";
+    #[doc = "Publish your Google Tag Manager container versions\n\n`https://www.googleapis.com/auth/tagmanager.publish`"]
+    pub const TAGMANAGER_PUBLISH: &str = "https://www.googleapis.com/auth/tagmanager.publish";
+    #[doc = "View your Google Tag Manager container and its subcomponents\n\n`https://www.googleapis.com/auth/tagmanager.readonly`"]
+    pub const TAGMANAGER_READONLY: &str = "https://www.googleapis.com/auth/tagmanager.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -20,21 +41,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Account as computed at storage time. This value is recomputed whenever the account is modified."]
+        #[doc = "The fingerprint of the GTM Account as computed at storage time.\nThis value is recomputed whenever the account is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Account display name."]
+        #[doc = "Account display name.\n@mutable tagmanager.accounts.create\n@mutable tagmanager.accounts.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Whether the account shares data anonymously with Google and others."]
+        #[doc = "Whether the account shares data anonymously with Google and others.\n@mutable tagmanager.accounts.create\n@mutable tagmanager.accounts.update"]
         #[serde(
             rename = "shareData",
             default,
@@ -65,7 +86,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccountAccess {
-        #[doc = "List of Account permissions. Valid account permissions are read and manage."]
+        #[doc = "List of Account permissions.\nValid account permissions are <code>read</code> and <code>manage</code>.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "permission",
             default,
@@ -181,14 +202,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Condition {
-        #[doc = "A list of named parameters (key/value), depending on the condition's type. Notes: \n\n* For binary operators, include parameters named arg0 and arg1 for specifying the left and right operands, respectively. \n* At this time, the left operand (arg0) must be a reference to a variable. \n* For case-insensitive Regex matching, include a boolean parameter named ignore_case that is set to true. If not specified or set to any other value, the matching will be case sensitive. \n* To negate an operator, include a boolean parameter named negate boolean parameter that is set to true."]
+        #[doc = "A list of named parameters (key/value), depending on the condition's type.\nNotes:<ul>\n\n<li>For binary operators, include parameters named <code>arg0</code> and\n   <code>arg1</code> for specifying the left and right operands,\n   respectively.</li>\n<li>At this time, the left operand (<code>arg0</code>) must be a reference\n    to a variable.</li>\n<li>For case-insensitive Regex matching, include a boolean parameter named\n    <code>ignore_case</code> that is set to <code>true</code>.\n    If not specified or set to any other value, the matching will be case\n    sensitive.</li>\n<li>To negate an operator, include a boolean parameter named\n    <code>negate</code> boolean parameter that is set to <code>true</code>.\n    </li>\n</ul>\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "parameter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parameter: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The type of operator for this condition."]
+        #[doc = "The type of operator for this condition.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "type",
             default,
@@ -338,14 +359,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "Optional list of domain names associated with the Container."]
+        #[doc = "Optional list of domain names associated with the Container.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "domainName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub domain_name: ::std::option::Option<Vec<String>>,
-        #[doc = "List of enabled built-in variables. Valid values include: pageUrl, pageHostname, pagePath, referrer, event, clickElement, clickClasses, clickId, clickTarget, clickUrl, clickText, formElement, formClasses, formId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine, newHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState, historySource, containerVersion, debugMode, randomNumber, containerId."]
+        #[doc = "List of enabled built-in variables. Valid values include: <code>pageUrl,\npageHostname, pagePath, referrer, event, clickElement, clickClasses,\nclickId, clickTarget, clickUrl, clickText, formElement, formClasses,\nformId, formTarget, formUrl, formText, errorMessage, errorUrl, errorLine,\nnewHistoryFragment, oldHistoryFragment, newHistoryState, oldHistoryState,\nhistorySource, containerVersion, debugMode, randomNumber,\ncontainerId</code>.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "enabledBuiltInVariable",
             default,
@@ -353,21 +374,21 @@ pub mod schemas {
         )]
         pub enabled_built_in_variable:
             ::std::option::Option<Vec<crate::schemas::ContainerEnabledBuiltInVariableItems>>,
-        #[doc = "The fingerprint of the GTM Container as computed at storage time. This value is recomputed whenever the account is modified."]
+        #[doc = "The fingerprint of the GTM Container as computed at storage time.  This\nvalue is recomputed whenever the account is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Container display name."]
+        #[doc = "Container display name.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Container Notes."]
+        #[doc = "Container Notes.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "notes",
             default,
@@ -381,21 +402,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub public_id: ::std::option::Option<String>,
-        #[doc = "Container Country ID."]
+        #[doc = "Container Country ID.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "timeZoneCountryId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub time_zone_country_id: ::std::option::Option<String>,
-        #[doc = "Container Time Zone ID."]
+        #[doc = "Container Time Zone ID.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "timeZoneId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub time_zone_id: ::std::option::Option<String>,
-        #[doc = "List of Usage Contexts for the Container. Valid values include: web, android, ios."]
+        #[doc = "List of Usage Contexts for the Container. Valid values include: <code>web,\nandroid, ios</code>.\n@mutable tagmanager.accounts.containers.create\n@mutable tagmanager.accounts.containers.update"]
         #[serde(
             rename = "usageContext",
             default,
@@ -484,6 +505,7 @@ pub mod schemas {
         FirebaseEventParameterProductId,
         FirebaseEventParameterQuantity,
         FirebaseEventParameterValue,
+        FirstPartyServingUrl,
         FormClasses,
         FormElement,
         FormId,
@@ -522,7 +544,7 @@ pub mod schemas {
     }
     impl ContainerEnabledBuiltInVariableItems {
         pub fn as_str(self) -> &'static str {
-            match self { ContainerEnabledBuiltInVariableItems :: AdvertiserId => "advertiserId" , ContainerEnabledBuiltInVariableItems :: AdvertisingTrackingEnabled => "advertisingTrackingEnabled" , ContainerEnabledBuiltInVariableItems :: AmpBrowserLanguage => "ampBrowserLanguage" , ContainerEnabledBuiltInVariableItems :: AmpCanonicalHost => "ampCanonicalHost" , ContainerEnabledBuiltInVariableItems :: AmpCanonicalPath => "ampCanonicalPath" , ContainerEnabledBuiltInVariableItems :: AmpCanonicalUrl => "ampCanonicalUrl" , ContainerEnabledBuiltInVariableItems :: AmpClientId => "ampClientId" , ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollX => "ampClientMaxScrollX" , ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollY => "ampClientMaxScrollY" , ContainerEnabledBuiltInVariableItems :: AmpClientScreenHeight => "ampClientScreenHeight" , ContainerEnabledBuiltInVariableItems :: AmpClientScreenWidth => "ampClientScreenWidth" , ContainerEnabledBuiltInVariableItems :: AmpClientScrollX => "ampClientScrollX" , ContainerEnabledBuiltInVariableItems :: AmpClientScrollY => "ampClientScrollY" , ContainerEnabledBuiltInVariableItems :: AmpClientTimestamp => "ampClientTimestamp" , ContainerEnabledBuiltInVariableItems :: AmpClientTimezone => "ampClientTimezone" , ContainerEnabledBuiltInVariableItems :: AmpGtmEvent => "ampGtmEvent" , ContainerEnabledBuiltInVariableItems :: AmpPageDownloadTime => "ampPageDownloadTime" , ContainerEnabledBuiltInVariableItems :: AmpPageLoadTime => "ampPageLoadTime" , ContainerEnabledBuiltInVariableItems :: AmpPageViewId => "ampPageViewId" , ContainerEnabledBuiltInVariableItems :: AmpReferrer => "ampReferrer" , ContainerEnabledBuiltInVariableItems :: AmpTitle => "ampTitle" , ContainerEnabledBuiltInVariableItems :: AmpTotalEngagedTime => "ampTotalEngagedTime" , ContainerEnabledBuiltInVariableItems :: AppId => "appId" , ContainerEnabledBuiltInVariableItems :: AppName => "appName" , ContainerEnabledBuiltInVariableItems :: AppVersionCode => "appVersionCode" , ContainerEnabledBuiltInVariableItems :: AppVersionName => "appVersionName" , ContainerEnabledBuiltInVariableItems :: ClickClasses => "clickClasses" , ContainerEnabledBuiltInVariableItems :: ClickElement => "clickElement" , ContainerEnabledBuiltInVariableItems :: ClickId => "clickId" , ContainerEnabledBuiltInVariableItems :: ClickTarget => "clickTarget" , ContainerEnabledBuiltInVariableItems :: ClickText => "clickText" , ContainerEnabledBuiltInVariableItems :: ClickUrl => "clickUrl" , ContainerEnabledBuiltInVariableItems :: ContainerId => "containerId" , ContainerEnabledBuiltInVariableItems :: ContainerVersion => "containerVersion" , ContainerEnabledBuiltInVariableItems :: DebugMode => "debugMode" , ContainerEnabledBuiltInVariableItems :: DeviceName => "deviceName" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityFirstTime => "elementVisibilityFirstTime" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityRatio => "elementVisibilityRatio" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityRecentTime => "elementVisibilityRecentTime" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityTime => "elementVisibilityTime" , ContainerEnabledBuiltInVariableItems :: EnvironmentName => "environmentName" , ContainerEnabledBuiltInVariableItems :: ErrorLine => "errorLine" , ContainerEnabledBuiltInVariableItems :: ErrorMessage => "errorMessage" , ContainerEnabledBuiltInVariableItems :: ErrorUrl => "errorUrl" , ContainerEnabledBuiltInVariableItems :: Event => "event" , ContainerEnabledBuiltInVariableItems :: EventName => "eventName" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaign => "firebaseEventParameterCampaign" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAclid => "firebaseEventParameterCampaignAclid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAnid => "firebaseEventParameterCampaignAnid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignClickTimestamp => "firebaseEventParameterCampaignClickTimestamp" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignContent => "firebaseEventParameterCampaignContent" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignCp1 => "firebaseEventParameterCampaignCp1" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignGclid => "firebaseEventParameterCampaignGclid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignSource => "firebaseEventParameterCampaignSource" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignTerm => "firebaseEventParameterCampaignTerm" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCurrency => "firebaseEventParameterCurrency" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkAcceptTime => "firebaseEventParameterDynamicLinkAcceptTime" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkLinkid => "firebaseEventParameterDynamicLinkLinkid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageDeviceTime => "firebaseEventParameterNotificationMessageDeviceTime" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageId => "firebaseEventParameterNotificationMessageId" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageName => "firebaseEventParameterNotificationMessageName" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageTime => "firebaseEventParameterNotificationMessageTime" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationTopic => "firebaseEventParameterNotificationTopic" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousAppVersion => "firebaseEventParameterPreviousAppVersion" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousOsVersion => "firebaseEventParameterPreviousOsVersion" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPrice => "firebaseEventParameterPrice" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterProductId => "firebaseEventParameterProductId" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterQuantity => "firebaseEventParameterQuantity" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterValue => "firebaseEventParameterValue" , ContainerEnabledBuiltInVariableItems :: FormClasses => "formClasses" , ContainerEnabledBuiltInVariableItems :: FormElement => "formElement" , ContainerEnabledBuiltInVariableItems :: FormId => "formId" , ContainerEnabledBuiltInVariableItems :: FormTarget => "formTarget" , ContainerEnabledBuiltInVariableItems :: FormText => "formText" , ContainerEnabledBuiltInVariableItems :: FormUrl => "formUrl" , ContainerEnabledBuiltInVariableItems :: HistorySource => "historySource" , ContainerEnabledBuiltInVariableItems :: HtmlId => "htmlId" , ContainerEnabledBuiltInVariableItems :: Language => "language" , ContainerEnabledBuiltInVariableItems :: NewHistoryFragment => "newHistoryFragment" , ContainerEnabledBuiltInVariableItems :: NewHistoryState => "newHistoryState" , ContainerEnabledBuiltInVariableItems :: NewHistoryUrl => "newHistoryUrl" , ContainerEnabledBuiltInVariableItems :: OldHistoryFragment => "oldHistoryFragment" , ContainerEnabledBuiltInVariableItems :: OldHistoryState => "oldHistoryState" , ContainerEnabledBuiltInVariableItems :: OldHistoryUrl => "oldHistoryUrl" , ContainerEnabledBuiltInVariableItems :: OsVersion => "osVersion" , ContainerEnabledBuiltInVariableItems :: PageHostname => "pageHostname" , ContainerEnabledBuiltInVariableItems :: PagePath => "pagePath" , ContainerEnabledBuiltInVariableItems :: PageUrl => "pageUrl" , ContainerEnabledBuiltInVariableItems :: Platform => "platform" , ContainerEnabledBuiltInVariableItems :: RandomNumber => "randomNumber" , ContainerEnabledBuiltInVariableItems :: Referrer => "referrer" , ContainerEnabledBuiltInVariableItems :: Resolution => "resolution" , ContainerEnabledBuiltInVariableItems :: ScrollDepthDirection => "scrollDepthDirection" , ContainerEnabledBuiltInVariableItems :: ScrollDepthThreshold => "scrollDepthThreshold" , ContainerEnabledBuiltInVariableItems :: ScrollDepthUnits => "scrollDepthUnits" , ContainerEnabledBuiltInVariableItems :: SdkVersion => "sdkVersion" , ContainerEnabledBuiltInVariableItems :: VideoCurrentTime => "videoCurrentTime" , ContainerEnabledBuiltInVariableItems :: VideoDuration => "videoDuration" , ContainerEnabledBuiltInVariableItems :: VideoPercent => "videoPercent" , ContainerEnabledBuiltInVariableItems :: VideoProvider => "videoProvider" , ContainerEnabledBuiltInVariableItems :: VideoStatus => "videoStatus" , ContainerEnabledBuiltInVariableItems :: VideoTitle => "videoTitle" , ContainerEnabledBuiltInVariableItems :: VideoUrl => "videoUrl" , ContainerEnabledBuiltInVariableItems :: VideoVisible => "videoVisible" , }
+            match self { ContainerEnabledBuiltInVariableItems :: AdvertiserId => "advertiserId" , ContainerEnabledBuiltInVariableItems :: AdvertisingTrackingEnabled => "advertisingTrackingEnabled" , ContainerEnabledBuiltInVariableItems :: AmpBrowserLanguage => "ampBrowserLanguage" , ContainerEnabledBuiltInVariableItems :: AmpCanonicalHost => "ampCanonicalHost" , ContainerEnabledBuiltInVariableItems :: AmpCanonicalPath => "ampCanonicalPath" , ContainerEnabledBuiltInVariableItems :: AmpCanonicalUrl => "ampCanonicalUrl" , ContainerEnabledBuiltInVariableItems :: AmpClientId => "ampClientId" , ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollX => "ampClientMaxScrollX" , ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollY => "ampClientMaxScrollY" , ContainerEnabledBuiltInVariableItems :: AmpClientScreenHeight => "ampClientScreenHeight" , ContainerEnabledBuiltInVariableItems :: AmpClientScreenWidth => "ampClientScreenWidth" , ContainerEnabledBuiltInVariableItems :: AmpClientScrollX => "ampClientScrollX" , ContainerEnabledBuiltInVariableItems :: AmpClientScrollY => "ampClientScrollY" , ContainerEnabledBuiltInVariableItems :: AmpClientTimestamp => "ampClientTimestamp" , ContainerEnabledBuiltInVariableItems :: AmpClientTimezone => "ampClientTimezone" , ContainerEnabledBuiltInVariableItems :: AmpGtmEvent => "ampGtmEvent" , ContainerEnabledBuiltInVariableItems :: AmpPageDownloadTime => "ampPageDownloadTime" , ContainerEnabledBuiltInVariableItems :: AmpPageLoadTime => "ampPageLoadTime" , ContainerEnabledBuiltInVariableItems :: AmpPageViewId => "ampPageViewId" , ContainerEnabledBuiltInVariableItems :: AmpReferrer => "ampReferrer" , ContainerEnabledBuiltInVariableItems :: AmpTitle => "ampTitle" , ContainerEnabledBuiltInVariableItems :: AmpTotalEngagedTime => "ampTotalEngagedTime" , ContainerEnabledBuiltInVariableItems :: AppId => "appId" , ContainerEnabledBuiltInVariableItems :: AppName => "appName" , ContainerEnabledBuiltInVariableItems :: AppVersionCode => "appVersionCode" , ContainerEnabledBuiltInVariableItems :: AppVersionName => "appVersionName" , ContainerEnabledBuiltInVariableItems :: ClickClasses => "clickClasses" , ContainerEnabledBuiltInVariableItems :: ClickElement => "clickElement" , ContainerEnabledBuiltInVariableItems :: ClickId => "clickId" , ContainerEnabledBuiltInVariableItems :: ClickTarget => "clickTarget" , ContainerEnabledBuiltInVariableItems :: ClickText => "clickText" , ContainerEnabledBuiltInVariableItems :: ClickUrl => "clickUrl" , ContainerEnabledBuiltInVariableItems :: ContainerId => "containerId" , ContainerEnabledBuiltInVariableItems :: ContainerVersion => "containerVersion" , ContainerEnabledBuiltInVariableItems :: DebugMode => "debugMode" , ContainerEnabledBuiltInVariableItems :: DeviceName => "deviceName" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityFirstTime => "elementVisibilityFirstTime" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityRatio => "elementVisibilityRatio" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityRecentTime => "elementVisibilityRecentTime" , ContainerEnabledBuiltInVariableItems :: ElementVisibilityTime => "elementVisibilityTime" , ContainerEnabledBuiltInVariableItems :: EnvironmentName => "environmentName" , ContainerEnabledBuiltInVariableItems :: ErrorLine => "errorLine" , ContainerEnabledBuiltInVariableItems :: ErrorMessage => "errorMessage" , ContainerEnabledBuiltInVariableItems :: ErrorUrl => "errorUrl" , ContainerEnabledBuiltInVariableItems :: Event => "event" , ContainerEnabledBuiltInVariableItems :: EventName => "eventName" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaign => "firebaseEventParameterCampaign" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAclid => "firebaseEventParameterCampaignAclid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAnid => "firebaseEventParameterCampaignAnid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignClickTimestamp => "firebaseEventParameterCampaignClickTimestamp" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignContent => "firebaseEventParameterCampaignContent" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignCp1 => "firebaseEventParameterCampaignCp1" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignGclid => "firebaseEventParameterCampaignGclid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignSource => "firebaseEventParameterCampaignSource" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignTerm => "firebaseEventParameterCampaignTerm" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCurrency => "firebaseEventParameterCurrency" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkAcceptTime => "firebaseEventParameterDynamicLinkAcceptTime" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkLinkid => "firebaseEventParameterDynamicLinkLinkid" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageDeviceTime => "firebaseEventParameterNotificationMessageDeviceTime" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageId => "firebaseEventParameterNotificationMessageId" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageName => "firebaseEventParameterNotificationMessageName" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageTime => "firebaseEventParameterNotificationMessageTime" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationTopic => "firebaseEventParameterNotificationTopic" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousAppVersion => "firebaseEventParameterPreviousAppVersion" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousOsVersion => "firebaseEventParameterPreviousOsVersion" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPrice => "firebaseEventParameterPrice" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterProductId => "firebaseEventParameterProductId" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterQuantity => "firebaseEventParameterQuantity" , ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterValue => "firebaseEventParameterValue" , ContainerEnabledBuiltInVariableItems :: FirstPartyServingUrl => "firstPartyServingUrl" , ContainerEnabledBuiltInVariableItems :: FormClasses => "formClasses" , ContainerEnabledBuiltInVariableItems :: FormElement => "formElement" , ContainerEnabledBuiltInVariableItems :: FormId => "formId" , ContainerEnabledBuiltInVariableItems :: FormTarget => "formTarget" , ContainerEnabledBuiltInVariableItems :: FormText => "formText" , ContainerEnabledBuiltInVariableItems :: FormUrl => "formUrl" , ContainerEnabledBuiltInVariableItems :: HistorySource => "historySource" , ContainerEnabledBuiltInVariableItems :: HtmlId => "htmlId" , ContainerEnabledBuiltInVariableItems :: Language => "language" , ContainerEnabledBuiltInVariableItems :: NewHistoryFragment => "newHistoryFragment" , ContainerEnabledBuiltInVariableItems :: NewHistoryState => "newHistoryState" , ContainerEnabledBuiltInVariableItems :: NewHistoryUrl => "newHistoryUrl" , ContainerEnabledBuiltInVariableItems :: OldHistoryFragment => "oldHistoryFragment" , ContainerEnabledBuiltInVariableItems :: OldHistoryState => "oldHistoryState" , ContainerEnabledBuiltInVariableItems :: OldHistoryUrl => "oldHistoryUrl" , ContainerEnabledBuiltInVariableItems :: OsVersion => "osVersion" , ContainerEnabledBuiltInVariableItems :: PageHostname => "pageHostname" , ContainerEnabledBuiltInVariableItems :: PagePath => "pagePath" , ContainerEnabledBuiltInVariableItems :: PageUrl => "pageUrl" , ContainerEnabledBuiltInVariableItems :: Platform => "platform" , ContainerEnabledBuiltInVariableItems :: RandomNumber => "randomNumber" , ContainerEnabledBuiltInVariableItems :: Referrer => "referrer" , ContainerEnabledBuiltInVariableItems :: Resolution => "resolution" , ContainerEnabledBuiltInVariableItems :: ScrollDepthDirection => "scrollDepthDirection" , ContainerEnabledBuiltInVariableItems :: ScrollDepthThreshold => "scrollDepthThreshold" , ContainerEnabledBuiltInVariableItems :: ScrollDepthUnits => "scrollDepthUnits" , ContainerEnabledBuiltInVariableItems :: SdkVersion => "sdkVersion" , ContainerEnabledBuiltInVariableItems :: VideoCurrentTime => "videoCurrentTime" , ContainerEnabledBuiltInVariableItems :: VideoDuration => "videoDuration" , ContainerEnabledBuiltInVariableItems :: VideoPercent => "videoPercent" , ContainerEnabledBuiltInVariableItems :: VideoProvider => "videoProvider" , ContainerEnabledBuiltInVariableItems :: VideoStatus => "videoStatus" , ContainerEnabledBuiltInVariableItems :: VideoTitle => "videoTitle" , ContainerEnabledBuiltInVariableItems :: VideoUrl => "videoUrl" , ContainerEnabledBuiltInVariableItems :: VideoVisible => "videoVisible" , }
         }
     }
     impl ::std::convert::AsRef<str> for ContainerEnabledBuiltInVariableItems {
@@ -533,7 +555,7 @@ pub mod schemas {
     impl ::std::str::FromStr for ContainerEnabledBuiltInVariableItems {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ContainerEnabledBuiltInVariableItems, ()> {
-            Ok ( match s { "advertiserId" => ContainerEnabledBuiltInVariableItems :: AdvertiserId , "advertisingTrackingEnabled" => ContainerEnabledBuiltInVariableItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => ContainerEnabledBuiltInVariableItems :: AmpBrowserLanguage , "ampCanonicalHost" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalHost , "ampCanonicalPath" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalPath , "ampCanonicalUrl" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalUrl , "ampClientId" => ContainerEnabledBuiltInVariableItems :: AmpClientId , "ampClientMaxScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenHeight , "ampClientScreenWidth" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenWidth , "ampClientScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollX , "ampClientScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollY , "ampClientTimestamp" => ContainerEnabledBuiltInVariableItems :: AmpClientTimestamp , "ampClientTimezone" => ContainerEnabledBuiltInVariableItems :: AmpClientTimezone , "ampGtmEvent" => ContainerEnabledBuiltInVariableItems :: AmpGtmEvent , "ampPageDownloadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageDownloadTime , "ampPageLoadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageLoadTime , "ampPageViewId" => ContainerEnabledBuiltInVariableItems :: AmpPageViewId , "ampReferrer" => ContainerEnabledBuiltInVariableItems :: AmpReferrer , "ampTitle" => ContainerEnabledBuiltInVariableItems :: AmpTitle , "ampTotalEngagedTime" => ContainerEnabledBuiltInVariableItems :: AmpTotalEngagedTime , "appId" => ContainerEnabledBuiltInVariableItems :: AppId , "appName" => ContainerEnabledBuiltInVariableItems :: AppName , "appVersionCode" => ContainerEnabledBuiltInVariableItems :: AppVersionCode , "appVersionName" => ContainerEnabledBuiltInVariableItems :: AppVersionName , "clickClasses" => ContainerEnabledBuiltInVariableItems :: ClickClasses , "clickElement" => ContainerEnabledBuiltInVariableItems :: ClickElement , "clickId" => ContainerEnabledBuiltInVariableItems :: ClickId , "clickTarget" => ContainerEnabledBuiltInVariableItems :: ClickTarget , "clickText" => ContainerEnabledBuiltInVariableItems :: ClickText , "clickUrl" => ContainerEnabledBuiltInVariableItems :: ClickUrl , "containerId" => ContainerEnabledBuiltInVariableItems :: ContainerId , "containerVersion" => ContainerEnabledBuiltInVariableItems :: ContainerVersion , "debugMode" => ContainerEnabledBuiltInVariableItems :: DebugMode , "deviceName" => ContainerEnabledBuiltInVariableItems :: DeviceName , "elementVisibilityFirstTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityTime , "environmentName" => ContainerEnabledBuiltInVariableItems :: EnvironmentName , "errorLine" => ContainerEnabledBuiltInVariableItems :: ErrorLine , "errorMessage" => ContainerEnabledBuiltInVariableItems :: ErrorMessage , "errorUrl" => ContainerEnabledBuiltInVariableItems :: ErrorUrl , "event" => ContainerEnabledBuiltInVariableItems :: Event , "eventName" => ContainerEnabledBuiltInVariableItems :: EventName , "firebaseEventParameterCampaign" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterValue , "formClasses" => ContainerEnabledBuiltInVariableItems :: FormClasses , "formElement" => ContainerEnabledBuiltInVariableItems :: FormElement , "formId" => ContainerEnabledBuiltInVariableItems :: FormId , "formTarget" => ContainerEnabledBuiltInVariableItems :: FormTarget , "formText" => ContainerEnabledBuiltInVariableItems :: FormText , "formUrl" => ContainerEnabledBuiltInVariableItems :: FormUrl , "historySource" => ContainerEnabledBuiltInVariableItems :: HistorySource , "htmlId" => ContainerEnabledBuiltInVariableItems :: HtmlId , "language" => ContainerEnabledBuiltInVariableItems :: Language , "newHistoryFragment" => ContainerEnabledBuiltInVariableItems :: NewHistoryFragment , "newHistoryState" => ContainerEnabledBuiltInVariableItems :: NewHistoryState , "newHistoryUrl" => ContainerEnabledBuiltInVariableItems :: NewHistoryUrl , "oldHistoryFragment" => ContainerEnabledBuiltInVariableItems :: OldHistoryFragment , "oldHistoryState" => ContainerEnabledBuiltInVariableItems :: OldHistoryState , "oldHistoryUrl" => ContainerEnabledBuiltInVariableItems :: OldHistoryUrl , "osVersion" => ContainerEnabledBuiltInVariableItems :: OsVersion , "pageHostname" => ContainerEnabledBuiltInVariableItems :: PageHostname , "pagePath" => ContainerEnabledBuiltInVariableItems :: PagePath , "pageUrl" => ContainerEnabledBuiltInVariableItems :: PageUrl , "platform" => ContainerEnabledBuiltInVariableItems :: Platform , "randomNumber" => ContainerEnabledBuiltInVariableItems :: RandomNumber , "referrer" => ContainerEnabledBuiltInVariableItems :: Referrer , "resolution" => ContainerEnabledBuiltInVariableItems :: Resolution , "scrollDepthDirection" => ContainerEnabledBuiltInVariableItems :: ScrollDepthDirection , "scrollDepthThreshold" => ContainerEnabledBuiltInVariableItems :: ScrollDepthThreshold , "scrollDepthUnits" => ContainerEnabledBuiltInVariableItems :: ScrollDepthUnits , "sdkVersion" => ContainerEnabledBuiltInVariableItems :: SdkVersion , "videoCurrentTime" => ContainerEnabledBuiltInVariableItems :: VideoCurrentTime , "videoDuration" => ContainerEnabledBuiltInVariableItems :: VideoDuration , "videoPercent" => ContainerEnabledBuiltInVariableItems :: VideoPercent , "videoProvider" => ContainerEnabledBuiltInVariableItems :: VideoProvider , "videoStatus" => ContainerEnabledBuiltInVariableItems :: VideoStatus , "videoTitle" => ContainerEnabledBuiltInVariableItems :: VideoTitle , "videoUrl" => ContainerEnabledBuiltInVariableItems :: VideoUrl , "videoVisible" => ContainerEnabledBuiltInVariableItems :: VideoVisible , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "advertiserId" => ContainerEnabledBuiltInVariableItems :: AdvertiserId , "advertisingTrackingEnabled" => ContainerEnabledBuiltInVariableItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => ContainerEnabledBuiltInVariableItems :: AmpBrowserLanguage , "ampCanonicalHost" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalHost , "ampCanonicalPath" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalPath , "ampCanonicalUrl" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalUrl , "ampClientId" => ContainerEnabledBuiltInVariableItems :: AmpClientId , "ampClientMaxScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenHeight , "ampClientScreenWidth" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenWidth , "ampClientScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollX , "ampClientScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollY , "ampClientTimestamp" => ContainerEnabledBuiltInVariableItems :: AmpClientTimestamp , "ampClientTimezone" => ContainerEnabledBuiltInVariableItems :: AmpClientTimezone , "ampGtmEvent" => ContainerEnabledBuiltInVariableItems :: AmpGtmEvent , "ampPageDownloadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageDownloadTime , "ampPageLoadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageLoadTime , "ampPageViewId" => ContainerEnabledBuiltInVariableItems :: AmpPageViewId , "ampReferrer" => ContainerEnabledBuiltInVariableItems :: AmpReferrer , "ampTitle" => ContainerEnabledBuiltInVariableItems :: AmpTitle , "ampTotalEngagedTime" => ContainerEnabledBuiltInVariableItems :: AmpTotalEngagedTime , "appId" => ContainerEnabledBuiltInVariableItems :: AppId , "appName" => ContainerEnabledBuiltInVariableItems :: AppName , "appVersionCode" => ContainerEnabledBuiltInVariableItems :: AppVersionCode , "appVersionName" => ContainerEnabledBuiltInVariableItems :: AppVersionName , "clickClasses" => ContainerEnabledBuiltInVariableItems :: ClickClasses , "clickElement" => ContainerEnabledBuiltInVariableItems :: ClickElement , "clickId" => ContainerEnabledBuiltInVariableItems :: ClickId , "clickTarget" => ContainerEnabledBuiltInVariableItems :: ClickTarget , "clickText" => ContainerEnabledBuiltInVariableItems :: ClickText , "clickUrl" => ContainerEnabledBuiltInVariableItems :: ClickUrl , "containerId" => ContainerEnabledBuiltInVariableItems :: ContainerId , "containerVersion" => ContainerEnabledBuiltInVariableItems :: ContainerVersion , "debugMode" => ContainerEnabledBuiltInVariableItems :: DebugMode , "deviceName" => ContainerEnabledBuiltInVariableItems :: DeviceName , "elementVisibilityFirstTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityTime , "environmentName" => ContainerEnabledBuiltInVariableItems :: EnvironmentName , "errorLine" => ContainerEnabledBuiltInVariableItems :: ErrorLine , "errorMessage" => ContainerEnabledBuiltInVariableItems :: ErrorMessage , "errorUrl" => ContainerEnabledBuiltInVariableItems :: ErrorUrl , "event" => ContainerEnabledBuiltInVariableItems :: Event , "eventName" => ContainerEnabledBuiltInVariableItems :: EventName , "firebaseEventParameterCampaign" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => ContainerEnabledBuiltInVariableItems :: FirstPartyServingUrl , "formClasses" => ContainerEnabledBuiltInVariableItems :: FormClasses , "formElement" => ContainerEnabledBuiltInVariableItems :: FormElement , "formId" => ContainerEnabledBuiltInVariableItems :: FormId , "formTarget" => ContainerEnabledBuiltInVariableItems :: FormTarget , "formText" => ContainerEnabledBuiltInVariableItems :: FormText , "formUrl" => ContainerEnabledBuiltInVariableItems :: FormUrl , "historySource" => ContainerEnabledBuiltInVariableItems :: HistorySource , "htmlId" => ContainerEnabledBuiltInVariableItems :: HtmlId , "language" => ContainerEnabledBuiltInVariableItems :: Language , "newHistoryFragment" => ContainerEnabledBuiltInVariableItems :: NewHistoryFragment , "newHistoryState" => ContainerEnabledBuiltInVariableItems :: NewHistoryState , "newHistoryUrl" => ContainerEnabledBuiltInVariableItems :: NewHistoryUrl , "oldHistoryFragment" => ContainerEnabledBuiltInVariableItems :: OldHistoryFragment , "oldHistoryState" => ContainerEnabledBuiltInVariableItems :: OldHistoryState , "oldHistoryUrl" => ContainerEnabledBuiltInVariableItems :: OldHistoryUrl , "osVersion" => ContainerEnabledBuiltInVariableItems :: OsVersion , "pageHostname" => ContainerEnabledBuiltInVariableItems :: PageHostname , "pagePath" => ContainerEnabledBuiltInVariableItems :: PagePath , "pageUrl" => ContainerEnabledBuiltInVariableItems :: PageUrl , "platform" => ContainerEnabledBuiltInVariableItems :: Platform , "randomNumber" => ContainerEnabledBuiltInVariableItems :: RandomNumber , "referrer" => ContainerEnabledBuiltInVariableItems :: Referrer , "resolution" => ContainerEnabledBuiltInVariableItems :: Resolution , "scrollDepthDirection" => ContainerEnabledBuiltInVariableItems :: ScrollDepthDirection , "scrollDepthThreshold" => ContainerEnabledBuiltInVariableItems :: ScrollDepthThreshold , "scrollDepthUnits" => ContainerEnabledBuiltInVariableItems :: ScrollDepthUnits , "sdkVersion" => ContainerEnabledBuiltInVariableItems :: SdkVersion , "videoCurrentTime" => ContainerEnabledBuiltInVariableItems :: VideoCurrentTime , "videoDuration" => ContainerEnabledBuiltInVariableItems :: VideoDuration , "videoPercent" => ContainerEnabledBuiltInVariableItems :: VideoPercent , "videoProvider" => ContainerEnabledBuiltInVariableItems :: VideoProvider , "videoStatus" => ContainerEnabledBuiltInVariableItems :: VideoStatus , "videoTitle" => ContainerEnabledBuiltInVariableItems :: VideoTitle , "videoUrl" => ContainerEnabledBuiltInVariableItems :: VideoUrl , "videoVisible" => ContainerEnabledBuiltInVariableItems :: VideoVisible , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for ContainerEnabledBuiltInVariableItems {
@@ -555,7 +577,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "advertiserId" => ContainerEnabledBuiltInVariableItems :: AdvertiserId , "advertisingTrackingEnabled" => ContainerEnabledBuiltInVariableItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => ContainerEnabledBuiltInVariableItems :: AmpBrowserLanguage , "ampCanonicalHost" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalHost , "ampCanonicalPath" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalPath , "ampCanonicalUrl" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalUrl , "ampClientId" => ContainerEnabledBuiltInVariableItems :: AmpClientId , "ampClientMaxScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenHeight , "ampClientScreenWidth" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenWidth , "ampClientScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollX , "ampClientScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollY , "ampClientTimestamp" => ContainerEnabledBuiltInVariableItems :: AmpClientTimestamp , "ampClientTimezone" => ContainerEnabledBuiltInVariableItems :: AmpClientTimezone , "ampGtmEvent" => ContainerEnabledBuiltInVariableItems :: AmpGtmEvent , "ampPageDownloadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageDownloadTime , "ampPageLoadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageLoadTime , "ampPageViewId" => ContainerEnabledBuiltInVariableItems :: AmpPageViewId , "ampReferrer" => ContainerEnabledBuiltInVariableItems :: AmpReferrer , "ampTitle" => ContainerEnabledBuiltInVariableItems :: AmpTitle , "ampTotalEngagedTime" => ContainerEnabledBuiltInVariableItems :: AmpTotalEngagedTime , "appId" => ContainerEnabledBuiltInVariableItems :: AppId , "appName" => ContainerEnabledBuiltInVariableItems :: AppName , "appVersionCode" => ContainerEnabledBuiltInVariableItems :: AppVersionCode , "appVersionName" => ContainerEnabledBuiltInVariableItems :: AppVersionName , "clickClasses" => ContainerEnabledBuiltInVariableItems :: ClickClasses , "clickElement" => ContainerEnabledBuiltInVariableItems :: ClickElement , "clickId" => ContainerEnabledBuiltInVariableItems :: ClickId , "clickTarget" => ContainerEnabledBuiltInVariableItems :: ClickTarget , "clickText" => ContainerEnabledBuiltInVariableItems :: ClickText , "clickUrl" => ContainerEnabledBuiltInVariableItems :: ClickUrl , "containerId" => ContainerEnabledBuiltInVariableItems :: ContainerId , "containerVersion" => ContainerEnabledBuiltInVariableItems :: ContainerVersion , "debugMode" => ContainerEnabledBuiltInVariableItems :: DebugMode , "deviceName" => ContainerEnabledBuiltInVariableItems :: DeviceName , "elementVisibilityFirstTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityTime , "environmentName" => ContainerEnabledBuiltInVariableItems :: EnvironmentName , "errorLine" => ContainerEnabledBuiltInVariableItems :: ErrorLine , "errorMessage" => ContainerEnabledBuiltInVariableItems :: ErrorMessage , "errorUrl" => ContainerEnabledBuiltInVariableItems :: ErrorUrl , "event" => ContainerEnabledBuiltInVariableItems :: Event , "eventName" => ContainerEnabledBuiltInVariableItems :: EventName , "firebaseEventParameterCampaign" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterValue , "formClasses" => ContainerEnabledBuiltInVariableItems :: FormClasses , "formElement" => ContainerEnabledBuiltInVariableItems :: FormElement , "formId" => ContainerEnabledBuiltInVariableItems :: FormId , "formTarget" => ContainerEnabledBuiltInVariableItems :: FormTarget , "formText" => ContainerEnabledBuiltInVariableItems :: FormText , "formUrl" => ContainerEnabledBuiltInVariableItems :: FormUrl , "historySource" => ContainerEnabledBuiltInVariableItems :: HistorySource , "htmlId" => ContainerEnabledBuiltInVariableItems :: HtmlId , "language" => ContainerEnabledBuiltInVariableItems :: Language , "newHistoryFragment" => ContainerEnabledBuiltInVariableItems :: NewHistoryFragment , "newHistoryState" => ContainerEnabledBuiltInVariableItems :: NewHistoryState , "newHistoryUrl" => ContainerEnabledBuiltInVariableItems :: NewHistoryUrl , "oldHistoryFragment" => ContainerEnabledBuiltInVariableItems :: OldHistoryFragment , "oldHistoryState" => ContainerEnabledBuiltInVariableItems :: OldHistoryState , "oldHistoryUrl" => ContainerEnabledBuiltInVariableItems :: OldHistoryUrl , "osVersion" => ContainerEnabledBuiltInVariableItems :: OsVersion , "pageHostname" => ContainerEnabledBuiltInVariableItems :: PageHostname , "pagePath" => ContainerEnabledBuiltInVariableItems :: PagePath , "pageUrl" => ContainerEnabledBuiltInVariableItems :: PageUrl , "platform" => ContainerEnabledBuiltInVariableItems :: Platform , "randomNumber" => ContainerEnabledBuiltInVariableItems :: RandomNumber , "referrer" => ContainerEnabledBuiltInVariableItems :: Referrer , "resolution" => ContainerEnabledBuiltInVariableItems :: Resolution , "scrollDepthDirection" => ContainerEnabledBuiltInVariableItems :: ScrollDepthDirection , "scrollDepthThreshold" => ContainerEnabledBuiltInVariableItems :: ScrollDepthThreshold , "scrollDepthUnits" => ContainerEnabledBuiltInVariableItems :: ScrollDepthUnits , "sdkVersion" => ContainerEnabledBuiltInVariableItems :: SdkVersion , "videoCurrentTime" => ContainerEnabledBuiltInVariableItems :: VideoCurrentTime , "videoDuration" => ContainerEnabledBuiltInVariableItems :: VideoDuration , "videoPercent" => ContainerEnabledBuiltInVariableItems :: VideoPercent , "videoProvider" => ContainerEnabledBuiltInVariableItems :: VideoProvider , "videoStatus" => ContainerEnabledBuiltInVariableItems :: VideoStatus , "videoTitle" => ContainerEnabledBuiltInVariableItems :: VideoTitle , "videoUrl" => ContainerEnabledBuiltInVariableItems :: VideoUrl , "videoVisible" => ContainerEnabledBuiltInVariableItems :: VideoVisible , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "advertiserId" => ContainerEnabledBuiltInVariableItems :: AdvertiserId , "advertisingTrackingEnabled" => ContainerEnabledBuiltInVariableItems :: AdvertisingTrackingEnabled , "ampBrowserLanguage" => ContainerEnabledBuiltInVariableItems :: AmpBrowserLanguage , "ampCanonicalHost" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalHost , "ampCanonicalPath" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalPath , "ampCanonicalUrl" => ContainerEnabledBuiltInVariableItems :: AmpCanonicalUrl , "ampClientId" => ContainerEnabledBuiltInVariableItems :: AmpClientId , "ampClientMaxScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollX , "ampClientMaxScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientMaxScrollY , "ampClientScreenHeight" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenHeight , "ampClientScreenWidth" => ContainerEnabledBuiltInVariableItems :: AmpClientScreenWidth , "ampClientScrollX" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollX , "ampClientScrollY" => ContainerEnabledBuiltInVariableItems :: AmpClientScrollY , "ampClientTimestamp" => ContainerEnabledBuiltInVariableItems :: AmpClientTimestamp , "ampClientTimezone" => ContainerEnabledBuiltInVariableItems :: AmpClientTimezone , "ampGtmEvent" => ContainerEnabledBuiltInVariableItems :: AmpGtmEvent , "ampPageDownloadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageDownloadTime , "ampPageLoadTime" => ContainerEnabledBuiltInVariableItems :: AmpPageLoadTime , "ampPageViewId" => ContainerEnabledBuiltInVariableItems :: AmpPageViewId , "ampReferrer" => ContainerEnabledBuiltInVariableItems :: AmpReferrer , "ampTitle" => ContainerEnabledBuiltInVariableItems :: AmpTitle , "ampTotalEngagedTime" => ContainerEnabledBuiltInVariableItems :: AmpTotalEngagedTime , "appId" => ContainerEnabledBuiltInVariableItems :: AppId , "appName" => ContainerEnabledBuiltInVariableItems :: AppName , "appVersionCode" => ContainerEnabledBuiltInVariableItems :: AppVersionCode , "appVersionName" => ContainerEnabledBuiltInVariableItems :: AppVersionName , "clickClasses" => ContainerEnabledBuiltInVariableItems :: ClickClasses , "clickElement" => ContainerEnabledBuiltInVariableItems :: ClickElement , "clickId" => ContainerEnabledBuiltInVariableItems :: ClickId , "clickTarget" => ContainerEnabledBuiltInVariableItems :: ClickTarget , "clickText" => ContainerEnabledBuiltInVariableItems :: ClickText , "clickUrl" => ContainerEnabledBuiltInVariableItems :: ClickUrl , "containerId" => ContainerEnabledBuiltInVariableItems :: ContainerId , "containerVersion" => ContainerEnabledBuiltInVariableItems :: ContainerVersion , "debugMode" => ContainerEnabledBuiltInVariableItems :: DebugMode , "deviceName" => ContainerEnabledBuiltInVariableItems :: DeviceName , "elementVisibilityFirstTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityFirstTime , "elementVisibilityRatio" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRatio , "elementVisibilityRecentTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityRecentTime , "elementVisibilityTime" => ContainerEnabledBuiltInVariableItems :: ElementVisibilityTime , "environmentName" => ContainerEnabledBuiltInVariableItems :: EnvironmentName , "errorLine" => ContainerEnabledBuiltInVariableItems :: ErrorLine , "errorMessage" => ContainerEnabledBuiltInVariableItems :: ErrorMessage , "errorUrl" => ContainerEnabledBuiltInVariableItems :: ErrorUrl , "event" => ContainerEnabledBuiltInVariableItems :: Event , "eventName" => ContainerEnabledBuiltInVariableItems :: EventName , "firebaseEventParameterCampaign" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaign , "firebaseEventParameterCampaignAclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAclid , "firebaseEventParameterCampaignAnid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignAnid , "firebaseEventParameterCampaignClickTimestamp" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignClickTimestamp , "firebaseEventParameterCampaignContent" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignContent , "firebaseEventParameterCampaignCp1" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignCp1 , "firebaseEventParameterCampaignGclid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignGclid , "firebaseEventParameterCampaignSource" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignSource , "firebaseEventParameterCampaignTerm" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCampaignTerm , "firebaseEventParameterCurrency" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterCurrency , "firebaseEventParameterDynamicLinkAcceptTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkAcceptTime , "firebaseEventParameterDynamicLinkLinkid" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterDynamicLinkLinkid , "firebaseEventParameterNotificationMessageDeviceTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageDeviceTime , "firebaseEventParameterNotificationMessageId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageId , "firebaseEventParameterNotificationMessageName" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageName , "firebaseEventParameterNotificationMessageTime" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationMessageTime , "firebaseEventParameterNotificationTopic" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterNotificationTopic , "firebaseEventParameterPreviousAppVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousAppVersion , "firebaseEventParameterPreviousOsVersion" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPreviousOsVersion , "firebaseEventParameterPrice" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterPrice , "firebaseEventParameterProductId" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterProductId , "firebaseEventParameterQuantity" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterQuantity , "firebaseEventParameterValue" => ContainerEnabledBuiltInVariableItems :: FirebaseEventParameterValue , "firstPartyServingUrl" => ContainerEnabledBuiltInVariableItems :: FirstPartyServingUrl , "formClasses" => ContainerEnabledBuiltInVariableItems :: FormClasses , "formElement" => ContainerEnabledBuiltInVariableItems :: FormElement , "formId" => ContainerEnabledBuiltInVariableItems :: FormId , "formTarget" => ContainerEnabledBuiltInVariableItems :: FormTarget , "formText" => ContainerEnabledBuiltInVariableItems :: FormText , "formUrl" => ContainerEnabledBuiltInVariableItems :: FormUrl , "historySource" => ContainerEnabledBuiltInVariableItems :: HistorySource , "htmlId" => ContainerEnabledBuiltInVariableItems :: HtmlId , "language" => ContainerEnabledBuiltInVariableItems :: Language , "newHistoryFragment" => ContainerEnabledBuiltInVariableItems :: NewHistoryFragment , "newHistoryState" => ContainerEnabledBuiltInVariableItems :: NewHistoryState , "newHistoryUrl" => ContainerEnabledBuiltInVariableItems :: NewHistoryUrl , "oldHistoryFragment" => ContainerEnabledBuiltInVariableItems :: OldHistoryFragment , "oldHistoryState" => ContainerEnabledBuiltInVariableItems :: OldHistoryState , "oldHistoryUrl" => ContainerEnabledBuiltInVariableItems :: OldHistoryUrl , "osVersion" => ContainerEnabledBuiltInVariableItems :: OsVersion , "pageHostname" => ContainerEnabledBuiltInVariableItems :: PageHostname , "pagePath" => ContainerEnabledBuiltInVariableItems :: PagePath , "pageUrl" => ContainerEnabledBuiltInVariableItems :: PageUrl , "platform" => ContainerEnabledBuiltInVariableItems :: Platform , "randomNumber" => ContainerEnabledBuiltInVariableItems :: RandomNumber , "referrer" => ContainerEnabledBuiltInVariableItems :: Referrer , "resolution" => ContainerEnabledBuiltInVariableItems :: Resolution , "scrollDepthDirection" => ContainerEnabledBuiltInVariableItems :: ScrollDepthDirection , "scrollDepthThreshold" => ContainerEnabledBuiltInVariableItems :: ScrollDepthThreshold , "scrollDepthUnits" => ContainerEnabledBuiltInVariableItems :: ScrollDepthUnits , "sdkVersion" => ContainerEnabledBuiltInVariableItems :: SdkVersion , "videoCurrentTime" => ContainerEnabledBuiltInVariableItems :: VideoCurrentTime , "videoDuration" => ContainerEnabledBuiltInVariableItems :: VideoDuration , "videoPercent" => ContainerEnabledBuiltInVariableItems :: VideoPercent , "videoProvider" => ContainerEnabledBuiltInVariableItems :: VideoProvider , "videoStatus" => ContainerEnabledBuiltInVariableItems :: VideoStatus , "videoTitle" => ContainerEnabledBuiltInVariableItems :: VideoTitle , "videoUrl" => ContainerEnabledBuiltInVariableItems :: VideoUrl , "videoVisible" => ContainerEnabledBuiltInVariableItems :: VideoVisible , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector for ContainerEnabledBuiltInVariableItems {
@@ -666,14 +688,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ContainerAccess {
-        #[doc = "GTM Container ID."]
+        #[doc = "GTM Container ID.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "containerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "List of Container permissions. Valid container permissions are: read, edit, delete, publish."]
+        #[doc = "List of Container permissions.\nValid container permissions are: <code>read, edit, delete, publish</code>.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "permission",
             default,
@@ -824,7 +846,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deleted: ::std::option::Option<bool>,
-        #[doc = "The fingerprint of the GTM Container Version as computed at storage time. This value is recomputed whenever the container version is modified."]
+        #[doc = "The fingerprint of the GTM Container Version as computed at\nstorage time. This value is recomputed whenever the container version is\nmodified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -838,14 +860,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub folder: ::std::option::Option<Vec<crate::schemas::Folder>>,
-        #[doc = "Container version display name."]
+        #[doc = "Container version display name.\n@mutable tagmanager.accounts.containers.versions.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this container version in the container."]
+        #[doc = "User notes on how to apply this container version in the\ncontainer.\n@mutable tagmanager.accounts.containers.versions.update"]
         #[serde(
             rename = "notes",
             default,
@@ -1019,7 +1041,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "The creation of this version may be for quick preview and shouldn't be saved."]
+        #[doc = "The creation of this version may be for quick preview and\nshouldn't be saved."]
         #[serde(
             rename = "quickPreview",
             default,
@@ -1117,21 +1139,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = ""]
         #[serde(
             rename = "containerVersionId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_version_id: ::std::option::Option<String>,
-        #[doc = "The environment description. Can be set or changed only on USER type environments."]
+        #[doc = "The environment description. Can be set or changed only on USER type\nenvironments.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Whether or not to enable debug by default on for the environment."]
+        #[doc = "Whether or not to enable debug by default on for the environment.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "enableDebug",
             default,
@@ -1145,14 +1166,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub environment_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM environment as computed at storage time. This value is recomputed whenever the environment is modified."]
+        #[doc = "The fingerprint of the GTM environment as computed at storage time.\nThis value is recomputed whenever the environment is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "The environment display name. Can be set or changed only on USER type environments."]
+        #[doc = "The environment display name. Can be set or changed only on USER type\nenvironments.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "name",
             default,
@@ -1166,7 +1187,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::EnvironmentType>,
-        #[doc = "Default preview page url for the environment."]
+        #[doc = "Default preview page url for the environment.\n@mutable tagmanager.accounts.containers.environments.create\n@mutable tagmanager.accounts.containers.environments.update"]
         #[serde(
             rename = "url",
             default,
@@ -1186,9 +1207,13 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum EnvironmentType {
+        #[doc = "Used for Draft environment, which points to the single draft in\nthe container."]
         Draft,
+        #[doc = "Used for Latest environment, which points to the latest created container\nversion."]
         Latest,
+        #[doc = "Used for Live environment, which points to the live published container\nversion."]
         Live,
+        #[doc = "Used for user defined environments."]
         User,
     }
     impl EnvironmentType {
@@ -1288,7 +1313,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Folder as computed at storage time. This value is recomputed whenever the folder is modified."]
+        #[doc = "The fingerprint of the GTM Folder as computed at storage time.\nThis value is recomputed whenever the folder is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -1302,7 +1327,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub folder_id: ::std::option::Option<String>,
-        #[doc = "Folder display name."]
+        #[doc = "Folder display name.\n@mutable tagmanager.accounts.containers.folders.create\n@mutable tagmanager.accounts.containers.folders.update"]
         #[serde(
             rename = "name",
             default,
@@ -1679,21 +1704,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "For mobile containers only: A list of rule IDs for disabling conditional macros; the macro is enabled if one of the enabling rules is true while all the disabling rules are false. Treated as an unordered set."]
+        #[doc = "For mobile containers only: A list of rule IDs for disabling conditional\nmacros; the macro is enabled if one of the enabling rules is true while all\nthe disabling rules are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "disablingRuleId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disabling_rule_id: ::std::option::Option<Vec<String>>,
-        #[doc = "For mobile containers only: A list of rule IDs for enabling conditional macros; the macro is enabled if one of the enabling rules is true while all the disabling rules are false. Treated as an unordered set."]
+        #[doc = "For mobile containers only: A list of rule IDs for enabling conditional\nmacros; the macro is enabled if one of the enabling rules is true while all\nthe disabling rules are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "enablingRuleId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enabling_rule_id: ::std::option::Option<Vec<String>>,
-        #[doc = "The fingerprint of the GTM Macro as computed at storage time. This value is recomputed whenever the macro is modified."]
+        #[doc = "The fingerprint of the GTM Macro as computed at storage time.\nThis value is recomputed whenever the macro is modified."]
         #[serde(
             rename = "fingerprint",
             default,
@@ -1707,21 +1732,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub macro_id: ::std::option::Option<String>,
-        #[doc = "Macro display name."]
+        #[doc = "Macro display name.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this macro in the container."]
+        #[doc = "User notes on how to apply this macro in the container.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "notes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "The macro's parameters."]
+        #[doc = "The macro's parameters.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -1735,14 +1760,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_folder_id: ::std::option::Option<String>,
-        #[doc = "GTM Macro Type."]
+        #[doc = "GTM Macro Type.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The end timestamp in milliseconds to schedule a macro."]
+        #[doc = "The end timestamp in milliseconds to schedule a macro.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "scheduleEndMs",
             default,
@@ -1750,7 +1775,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub schedule_end_ms: ::std::option::Option<i64>,
-        #[doc = "The start timestamp in milliseconds to schedule a macro."]
+        #[doc = "The start timestamp in milliseconds to schedule a macro.\n@mutable tagmanager.accounts.containers.macros.create\n@mutable tagmanager.accounts.containers.macros.update"]
         #[serde(
             rename = "scheduleStartMs",
             default,
@@ -1782,35 +1807,35 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Parameter {
-        #[doc = "The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map values. Ignored for list values."]
+        #[doc = "The named key that uniquely identifies a parameter.  Required for top-level\nparameters, as well as map values.  Ignored for list values.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "This list parameter's parameters (keys will be ignored)."]
+        #[doc = "This list parameter's parameters (keys will be ignored).\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "list",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub list: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "This map parameter's parameters (must have keys; keys must be unique)."]
+        #[doc = "This map parameter's parameters (must have keys; keys must be unique).\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "map",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub map: ::std::option::Option<Vec<crate::schemas::Parameter>>,
-        #[doc = "The parameter type. Valid values are: \n\n* boolean: The value represents a boolean, represented as 'true' or 'false' \n* integer: The value represents a 64-bit signed integer value, in base 10 \n* list: A list of parameters should be specified \n* map: A map of parameters should be specified \n* template: The value represents any text; this can include variable references (even variable references that might return non-string types) \n* trigger_reference: The value represents a trigger, represented as the trigger id"]
+        #[doc = "The parameter type.  Valid values are:<ul>\n\n<li><code>boolean</code>: The value represents a boolean, represented as\n    'true' or 'false'</li>\n<li><code>integer</code>: The value represents a 64-bit signed integer\n    value, in base 10</li>\n<li><code>list</code>: A list of parameters should be specified</li>\n<li><code>map</code>: A map of parameters should be specified</li>\n<li><code>template</code>: The value represents any text; this can include\n    variable references (even variable references that might return\n    non-string types)</li>\n<li><code>trigger_reference</code>: The value represents a trigger,\n    represented as the trigger id</li>\n<li><code>tag_reference</code>: The value represents a tag, represented as\n    the tag name</li>\n</ul>\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::ParameterType>,
-        #[doc = "A parameter's value (may contain variable references such as \"{{myVariable}}\") as appropriate to the specified type."]
+        #[doc = "A parameter's value (may contain variable references such as\n\"{{myVariable}}\")\nas appropriate to the specified type.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "value",
             default,
@@ -1834,6 +1859,8 @@ pub mod schemas {
         Integer,
         List,
         Map,
+        TagReference,
+        #[doc = "May include variable references (such as \"{{myVariable}}\")."]
         Template,
         TriggerReference,
     }
@@ -1844,6 +1871,7 @@ pub mod schemas {
                 ParameterType::Integer => "integer",
                 ParameterType::List => "list",
                 ParameterType::Map => "map",
+                ParameterType::TagReference => "tagReference",
                 ParameterType::Template => "template",
                 ParameterType::TriggerReference => "triggerReference",
             }
@@ -1862,6 +1890,7 @@ pub mod schemas {
                 "integer" => ParameterType::Integer,
                 "list" => ParameterType::List,
                 "map" => ParameterType::Map,
+                "tagReference" => ParameterType::TagReference,
                 "template" => ParameterType::Template,
                 "triggerReference" => ParameterType::TriggerReference,
                 _ => return Err(()),
@@ -1892,6 +1921,7 @@ pub mod schemas {
                 "integer" => ParameterType::Integer,
                 "list" => ParameterType::List,
                 "map" => ParameterType::Map,
+                "tagReference" => ParameterType::TagReference,
                 "template" => ParameterType::Template,
                 "triggerReference" => ParameterType::TriggerReference,
                 _ => {
@@ -1971,7 +2001,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "The list of conditions that make up this rule (implicit AND between them)."]
+        #[doc = "The list of conditions that make up this rule (implicit AND between them).\n@mutable tagmanager.accounts.containers.rules.create\n@mutable tagmanager.accounts.containers.rules.update"]
         #[serde(
             rename = "condition",
             default,
@@ -1985,21 +2015,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Rule as computed at storage time. This value is recomputed whenever the rule is modified."]
+        #[doc = "The fingerprint of the GTM Rule as computed at storage time.\nThis value is recomputed whenever the rule is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Rule display name."]
+        #[doc = "Rule display name.\n@mutable tagmanager.accounts.containers.rules.create\n@mutable tagmanager.accounts.containers.rules.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this rule in the container."]
+        #[doc = "User notes on how to apply this rule in the container.\n@mutable tagmanager.accounts.containers.rules.create\n@mutable tagmanager.accounts.containers.rules.update"]
         #[serde(
             rename = "notes",
             default,
@@ -2037,7 +2067,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetupTag {
-        #[doc = "If true, fire the main tag if and only if the setup tag fires successfully. If false, fire the main tag regardless of setup tag firing status."]
+        #[doc = "If true, fire the main tag if and only if the setup tag fires\nsuccessfully.\nIf false, fire the main tag regardless of setup tag firing status."]
         #[serde(
             rename = "stopOnSetupFailure",
             default,
@@ -2082,14 +2112,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "Blocking rule IDs. If any of the listed rules evaluate to true, the tag will not fire."]
+        #[doc = "Blocking rule IDs. If any of the listed rules evaluate to true, the tag\nwill not fire.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "blockingRuleId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub blocking_rule_id: ::std::option::Option<Vec<String>>,
-        #[doc = "Blocking trigger IDs. If any of the listed triggers evaluate to true, the tag will not fire."]
+        #[doc = "Blocking trigger IDs. If any of the listed triggers evaluate to true, the\ntag\nwill not fire.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "blockingTriggerId",
             default,
@@ -2103,49 +2133,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "The fingerprint of the GTM Tag as computed at storage time. This value is recomputed whenever the tag is modified."]
+        #[doc = "The fingerprint of the GTM Tag as computed at storage time.\nThis value is recomputed whenever the tag is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Firing rule IDs. A tag will fire when any of the listed rules are true and all of its blockingRuleIds (if any specified) are false."]
+        #[doc = "Firing rule IDs. A tag will fire when any of the listed rules are true and\nall of its <code>blockingRuleIds</code> (if any specified) are false.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "firingRuleId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub firing_rule_id: ::std::option::Option<Vec<String>>,
-        #[doc = "Firing trigger IDs. A tag will fire when any of the listed triggers are true and all of its blockingTriggerIds (if any specified) are false."]
+        #[doc = "Firing trigger IDs. A tag will fire when any of the listed triggers are\ntrue and all of its <code>blockingTriggerIds</code> (if any specified) are\nfalse.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "firingTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub firing_trigger_id: ::std::option::Option<Vec<String>>,
-        #[doc = "If set to true, this tag will only fire in the live environment (e.g. not in preview or debug mode)."]
+        #[doc = "If set to true, this tag will only fire in the live environment (e.g. not\nin preview or debug mode).\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "liveOnly",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub live_only: ::std::option::Option<bool>,
-        #[doc = "Tag display name."]
+        #[doc = "Tag display name.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this tag in the container."]
+        #[doc = "User notes on how to apply this tag in the container.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "notes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "The tag's parameters."]
+        #[doc = "The tag's parameters.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -2159,28 +2189,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_folder_id: ::std::option::Option<String>,
-        #[doc = "True if the tag is paused."]
+        #[doc = "True if the tag is paused.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "paused",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub paused: ::std::option::Option<bool>,
-        #[doc = "User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags with higher numeric value fire first. A tag's priority can be a positive or negative value. The default value is 0."]
+        #[doc = "User defined numeric priority of the tag. Tags are fired asynchronously in\norder of priority. Tags with higher numeric value fire first. A tag's\npriority can be a positive or negative value. The default value is 0.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "priority",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub priority: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "GTM Tag Type."]
+        #[doc = "GTM Tag Type.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The end timestamp in milliseconds to schedule a tag."]
+        #[doc = "The end timestamp in milliseconds to schedule a tag.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "scheduleEndMs",
             default,
@@ -2188,7 +2218,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub schedule_end_ms: ::std::option::Option<i64>,
-        #[doc = "The start timestamp in milliseconds to schedule a tag."]
+        #[doc = "The start timestamp in milliseconds to schedule a tag.\n@mutable tagmanager.accounts.containers.tags.create\n@mutable tagmanager.accounts.containers.tags.update"]
         #[serde(
             rename = "scheduleStartMs",
             default,
@@ -2237,8 +2267,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TagTagFiringOption {
+        #[doc = "Tag can only be fired per event but can be fired multiple times per load\n(e.g., app load or page load)."]
         OncePerEvent,
+        #[doc = "Tag can only be fired per load (e.g., app load or page load)."]
         OncePerLoad,
+        #[doc = "Tag can be fired multiple times per event."]
         Unlimited,
     }
     impl TagTagFiringOption {
@@ -2321,7 +2354,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TeardownTag {
-        #[doc = "If true, fire the teardown tag if and only if the main tag fires successfully. If false, fire the teardown tag regardless of main tag firing status."]
+        #[doc = "If true, fire the teardown tag if and only if the main tag fires\nsuccessfully.\nIf false, fire the teardown tag regardless of main tag firing status."]
         #[serde(
             rename = "stopTeardownOnFailure",
             default,
@@ -2366,14 +2399,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "Used in the case of auto event tracking."]
+        #[doc = "Used in the case of auto event tracking.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "autoEventFilter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub auto_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Whether or not we should only fire tags if the form submit or link click event is not cancelled by some other event handler (e.g. because of validation). Only valid for Form Submission and Link Click triggers."]
+        #[doc = "Whether or not we should only fire tags if the form submit or link click\nevent is not cancelled by some other event handler (e.g. because of\nvalidation). Only valid for Form Submission and Link Click triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "checkValidation",
             default,
@@ -2387,84 +2420,84 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP Visibility trigger."]
+        #[doc = "A visibility trigger minimum continuous visible time (in milliseconds).\nOnly valid for AMP Visibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "continuousTimeMinMilliseconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub continuous_time_min_milliseconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Used in the case of custom event, which is fired iff all Conditions are true."]
+        #[doc = "Used in the case of custom event, which is fired iff all Conditions are\ntrue.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "customEventFilter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub custom_event_filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Name of the GTM event that is fired. Only valid for Timer triggers."]
+        #[doc = "Name of the GTM event that is fired. Only valid for Timer triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "eventName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_name: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "The trigger will only fire iff all Conditions are true."]
+        #[doc = "The trigger will only fire iff all Conditions are true.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "filter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "The fingerprint of the GTM Trigger as computed at storage time. This value is recomputed whenever the trigger is modified."]
+        #[doc = "The fingerprint of the GTM Trigger as computed at storage time.\nThis value is recomputed whenever the trigger is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers."]
+        #[doc = "List of integer percentage values for scroll triggers. The trigger will\nfire when each percentage is reached when the view is scrolled\nhorizontally. Only valid for AMP scroll triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "horizontalScrollPercentageList",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub horizontal_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers."]
+        #[doc = "Time between triggering recurring Timer Events (in milliseconds). Only\nvalid for Timer triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "interval",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub interval: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger."]
+        #[doc = "Time between Timer Events to fire (in seconds). Only valid for AMP Timer\ntrigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "intervalSeconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub interval_seconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will continue to fire GTM events until the user leaves the page. Only valid for Timer triggers."]
+        #[doc = "Limit of the number of GTM events this Timer Trigger will fire. If no limit\nis set, we will continue to fire GTM events until the user leaves the page.\nOnly valid for Timer triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "limit",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub limit: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger."]
+        #[doc = "Max time to fire Timer Events (in seconds). Only valid for AMP Timer\ntrigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "maxTimerLengthSeconds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_timer_length_seconds: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Trigger display name."]
+        #[doc = "Trigger display name.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Additional parameters."]
+        #[doc = "Additional parameters.\n@mutable tagmanager.accounts.containers.workspaces.triggers.create\n@mutable tagmanager.accounts.containers.workspaces.triggers.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -2478,21 +2511,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_folder_id: ::std::option::Option<String>,
-        #[doc = "Defines the data layer event that causes this trigger."]
+        #[doc = "Defines the data layer event that causes this trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::TriggerType>,
-        #[doc = "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP Click trigger."]
+        #[doc = "A click trigger CSS selector (i.e. \"a\", \"button\" etc.). Only valid for AMP\nClick trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "selector",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub selector: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility trigger."]
+        #[doc = "A visibility trigger minimum total visible time (in milliseconds).\nOnly valid for AMP Visibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "totalTimeMinMilliseconds",
             default,
@@ -2506,49 +2539,49 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub trigger_id: ::std::option::Option<String>,
-        #[doc = "Globally unique id of the trigger that auto-generates this (a Form Submit, Link Click or Timer listener) if any. Used to make incompatible auto-events work together with trigger filtering based on trigger ids. This value is populated during output generation since the tags implied by triggers don't exist until then. Only valid for Form Submit, Link Click and Timer triggers."]
+        #[doc = "Globally unique id of the trigger that auto-generates this (a Form Submit,\nLink Click or Timer listener) if any. Used to make incompatible auto-events\nwork together with trigger filtering based on trigger ids. This value is\npopulated during output generation since the tags implied by triggers don't\nexist until then. Only valid for Form Submit, Link Click and Timer\ntriggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "uniqueTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub unique_trigger_id: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled vertically. Only valid for AMP scroll triggers."]
+        #[doc = "List of integer percentage values for scroll triggers. The trigger will\nfire when each percentage is reached when the view is scrolled vertically.\nOnly valid for AMP scroll triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "verticalScrollPercentageList",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub vertical_scroll_percentage_list: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP Visibility trigger."]
+        #[doc = "A visibility trigger CSS selector (i.e. \"#id\"). Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "visibilitySelector",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visibility_selector: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger."]
+        #[doc = "A visibility trigger maximum percent visibility. Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "visiblePercentageMax",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_percentage_max: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger."]
+        #[doc = "A visibility trigger minimum percent visibility. Only valid for AMP\nVisibility trigger.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "visiblePercentageMin",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub visible_percentage_min: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "Whether or not we should delay the form submissions or link opening until all of the tags have fired (by preventing the default action and later simulating the default action). Only valid for Form Submission and Link Click triggers."]
+        #[doc = "Whether or not we should delay the form submissions or link opening\nuntil all of the tags have fired (by preventing the default\naction and later simulating the default action). Only valid for\nForm Submission and Link Click triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "waitForTags",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub wait_for_tags: ::std::option::Option<crate::schemas::Parameter>,
-        #[doc = "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags' above evaluates to true. Only valid for Form Submission and Link Click triggers."]
+        #[doc = "How long to wait (in milliseconds) for tags to fire when 'waits_for_tags'\nabove evaluates to <code>true</code>.  Only valid for Form Submission and\nLink Click triggers.\n@mutable tagmanager.accounts.containers.triggers.create\n@mutable tagmanager.accounts.containers.triggers.update"]
         #[serde(
             rename = "waitForTagsTimeout",
             default,
@@ -2716,7 +2749,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UserAccess {
-        #[doc = "GTM Account access permissions."]
+        #[doc = "GTM Account access permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "accountAccess",
             default,
@@ -2730,14 +2763,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub account_id: ::std::option::Option<String>,
-        #[doc = "GTM Container access permissions."]
+        #[doc = "GTM Container access permissions.\n@mutable tagmanager.accounts.permissions.create\n@mutable tagmanager.accounts.permissions.update"]
         #[serde(
             rename = "containerAccess",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_access: ::std::option::Option<Vec<crate::schemas::ContainerAccess>>,
-        #[doc = "User's email address."]
+        #[doc = "User's email address.\n@mutable tagmanager.accounts.permissions.create"]
         #[serde(
             rename = "emailAddress",
             default,
@@ -2789,42 +2822,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub container_id: ::std::option::Option<String>,
-        #[doc = "For mobile containers only: A list of trigger IDs for disabling conditional variables; the variable is enabled if one of the enabling trigger is true while all the disabling trigger are false. Treated as an unordered set."]
+        #[doc = "For mobile containers only: A list of trigger IDs for disabling conditional\nvariables; the variable is enabled if one of the enabling trigger is true\nwhile all the disabling trigger are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "disablingTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disabling_trigger_id: ::std::option::Option<Vec<String>>,
-        #[doc = "For mobile containers only: A list of trigger IDs for enabling conditional variables; the variable is enabled if one of the enabling triggers is true while all the disabling triggers are false. Treated as an unordered set."]
+        #[doc = "For mobile containers only: A list of trigger IDs for enabling conditional\nvariables; the variable is enabled if one of the enabling triggers is true\nwhile all the disabling triggers are false. Treated as an unordered set.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "enablingTriggerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enabling_trigger_id: ::std::option::Option<Vec<String>>,
-        #[doc = "The fingerprint of the GTM Variable as computed at storage time. This value is recomputed whenever the variable is modified."]
+        #[doc = "The fingerprint of the GTM Variable as computed at storage time.\nThis value is recomputed whenever the variable is modified."]
         #[serde(
             rename = "fingerprint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fingerprint: ::std::option::Option<String>,
-        #[doc = "Variable display name."]
+        #[doc = "Variable display name.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "User notes on how to apply this variable in the container."]
+        #[doc = "User notes on how to apply this variable in the container.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "notes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notes: ::std::option::Option<String>,
-        #[doc = "The variable's parameters."]
+        #[doc = "The variable's parameters.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "parameter",
             default,
@@ -2838,14 +2871,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_folder_id: ::std::option::Option<String>,
-        #[doc = "GTM Variable Type."]
+        #[doc = "GTM Variable Type.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The end timestamp in milliseconds to schedule a variable."]
+        #[doc = "The end timestamp in milliseconds to schedule a variable.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "scheduleEndMs",
             default,
@@ -2853,7 +2886,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub schedule_end_ms: ::std::option::Option<i64>,
-        #[doc = "The start timestamp in milliseconds to schedule a variable."]
+        #[doc = "The start timestamp in milliseconds to schedule a variable.\n@mutable tagmanager.accounts.containers.variables.create\n@mutable tagmanager.accounts.containers.variables.update"]
         #[serde(
             rename = "scheduleStartMs",
             default,
@@ -2885,11 +2918,17 @@ pub mod params {
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
+        #[doc = "Media download with context-dependent Content-Type"]
+        Media,
+        #[doc = "Responses with Content-Type of application/x-protobuf"]
+        Proto,
     }
     impl Alt {
         pub fn as_str(self) -> &'static str {
             match self {
                 Alt::Json => "json",
+                Alt::Media => "media",
+                Alt::Proto => "proto",
             }
         }
     }
@@ -2903,6 +2942,8 @@ pub mod params {
         fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
             Ok(match s {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => return Err(()),
             })
         }
@@ -2928,6 +2969,8 @@ pub mod params {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2947,9 +2990,80 @@ pub mod params {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum Xgafv {
+        #[doc = "v1 error format"]
+        _1,
+        #[doc = "v2 error format"]
+        _2,
+    }
+    impl Xgafv {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                Xgafv::_1 => "1",
+                Xgafv::_2 => "2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for Xgafv {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for Xgafv {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for Xgafv {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2957,8 +3071,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2977,7 +3103,7 @@ pub mod resources {
     pub mod accounts {
         pub mod params {}
         pub struct AccountsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AccountsActions<'a> {
@@ -2989,13 +3115,17 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     account_id: account_id.into(),
                 }
             }
@@ -3004,13 +3134,17 @@ pub mod resources {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                 }
             }
             #[doc = "Updates a GTM Account."]
@@ -3023,13 +3157,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     account_id: account_id.into(),
                     fingerprint: None,
                 }
@@ -3054,18 +3192,32 @@ pub mod resources {
         #[doc = "Created via [AccountsActions::get()](struct.AccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             account_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -3081,14 +3233,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3146,8 +3308,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                output.push_str("accounts/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("tagmanager/v1/accounts/");
                 {
                     let var_as_str = &self.account_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -3157,15 +3319,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3177,17 +3346,31 @@ pub mod resources {
         #[doc = "Created via [AccountsActions::list()](struct.AccountsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -3203,14 +3386,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3270,19 +3463,26 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                output.push_str("accounts");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("tagmanager/v1/accounts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3294,23 +3494,37 @@ pub mod resources {
         #[doc = "Created via [AccountsActions::update()](struct.AccountsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Account,
             account_id: String,
             fingerprint: Option<String>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "When provided, this fingerprint must match the fingerprint of the account in storage."]
+            #[doc = "When provided, this fingerprint must match the fingerprint of the account\nin storage."]
             pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                 self.fingerprint = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3328,14 +3542,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3394,8 +3618,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                output.push_str("accounts/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("tagmanager/v1/accounts/");
                 {
                     let var_as_str = &self.account_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -3405,16 +3629,23 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3426,7 +3657,7 @@ pub mod resources {
         pub mod containers {
             pub mod params {}
             pub struct ContainersActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ContainersActions<'a> {
@@ -3443,13 +3674,17 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                     }
                 }
@@ -3462,13 +3697,17 @@ pub mod resources {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                         container_id: container_id.into(),
                     }
@@ -3482,13 +3721,17 @@ pub mod resources {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                         container_id: container_id.into(),
                     }
@@ -3498,13 +3741,17 @@ pub mod resources {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                     }
                 }
@@ -3519,13 +3766,17 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                         container_id: container_id.into(),
                         fingerprint: None,
@@ -3605,19 +3856,33 @@ pub mod resources {
             #[doc = "Created via [ContainersActions::create()](struct.ContainersActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Container,
                 account_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -3633,14 +3898,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -3704,8 +3979,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -3716,15 +3991,22 @@ pub mod resources {
                     output.push_str("/containers");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -3736,19 +4018,33 @@ pub mod resources {
             #[doc = "Created via [ContainersActions::delete()](struct.ContainersActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 container_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> DeleteRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -3764,14 +4060,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 pub fn execute(self) -> Result<(), crate::Error> {
@@ -3780,8 +4086,8 @@ pub mod resources {
                     Ok(())
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -3799,15 +4105,22 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -3819,19 +4132,33 @@ pub mod resources {
             #[doc = "Created via [ContainersActions::get()](struct.ContainersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 container_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -3847,14 +4174,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -3917,8 +4254,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -3936,15 +4273,22 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -3956,18 +4300,32 @@ pub mod resources {
             #[doc = "Created via [ContainersActions::list()](struct.ContainersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -3983,14 +4341,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -4053,8 +4421,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -4065,15 +4433,22 @@ pub mod resources {
                     output.push_str("/containers");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -4085,24 +4460,38 @@ pub mod resources {
             #[doc = "Created via [ContainersActions::update()](struct.ContainersActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Container,
                 account_id: String,
                 container_id: String,
                 fingerprint: Option<String>,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> UpdateRequestBuilder<'a> {
-                #[doc = "When provided, this fingerprint must match the fingerprint of the container in storage."]
+                #[doc = "When provided, this fingerprint must match the fingerprint of the\ncontainer in storage."]
                 pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                     self.fingerprint = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4120,14 +4509,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -4191,8 +4590,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -4210,16 +4609,23 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -4231,7 +4637,7 @@ pub mod resources {
             pub mod environments {
                 pub mod params {}
                 pub struct EnvironmentsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> EnvironmentsActions<'a> {
@@ -4249,13 +4655,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -4270,13 +4680,17 @@ pub mod resources {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             environment_id: environment_id.into(),
@@ -4292,13 +4706,17 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             environment_id: environment_id.into(),
@@ -4313,13 +4731,17 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -4336,13 +4758,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             environment_id: environment_id.into(),
@@ -4353,20 +4779,34 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::create()](struct.EnvironmentsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Environment,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -4382,14 +4822,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -4453,8 +4903,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -4476,15 +4926,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -4496,20 +4951,34 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::delete()](struct.EnvironmentsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     environment_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -4525,14 +4994,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -4541,8 +5020,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -4571,15 +5050,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -4591,20 +5075,34 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::get()](struct.EnvironmentsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     environment_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -4620,14 +5118,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -4690,8 +5198,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -4720,15 +5228,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -4740,19 +5253,33 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::list()](struct.EnvironmentsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -4768,14 +5295,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -4840,8 +5377,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -4863,15 +5400,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -4883,25 +5425,39 @@ pub mod resources {
                 #[doc = "Created via [EnvironmentsActions::update()](struct.EnvironmentsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Environment,
                     account_id: String,
                     container_id: String,
                     environment_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the environment in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the\nenvironment in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4919,14 +5475,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -4990,8 +5556,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -5020,16 +5586,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -5042,7 +5613,7 @@ pub mod resources {
             pub mod folders {
                 pub mod params {}
                 pub struct FoldersActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> FoldersActions<'a> {
@@ -5060,13 +5631,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -5081,13 +5656,17 @@ pub mod resources {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             folder_id: folder_id.into(),
@@ -5103,13 +5682,17 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             folder_id: folder_id.into(),
@@ -5124,13 +5707,17 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -5147,13 +5734,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             folder_id: folder_id.into(),
@@ -5174,20 +5765,34 @@ pub mod resources {
                 #[doc = "Created via [FoldersActions::create()](struct.FoldersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Folder,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -5203,14 +5808,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -5274,8 +5889,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -5297,15 +5912,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -5317,20 +5937,34 @@ pub mod resources {
                 #[doc = "Created via [FoldersActions::delete()](struct.FoldersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     folder_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -5346,14 +5980,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -5362,8 +6006,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -5392,15 +6036,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -5412,20 +6061,34 @@ pub mod resources {
                 #[doc = "Created via [FoldersActions::get()](struct.FoldersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     folder_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -5441,14 +6104,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -5511,8 +6184,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -5541,15 +6214,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -5561,19 +6239,33 @@ pub mod resources {
                 #[doc = "Created via [FoldersActions::list()](struct.FoldersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -5589,14 +6281,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -5661,8 +6363,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -5684,15 +6386,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -5704,25 +6411,39 @@ pub mod resources {
                 #[doc = "Created via [FoldersActions::update()](struct.FoldersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Folder,
                     account_id: String,
                     container_id: String,
                     folder_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the folder in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the folder in\nstorage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5740,14 +6461,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -5811,8 +6542,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -5841,16 +6572,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -5862,7 +6598,7 @@ pub mod resources {
                 pub mod entities {
                     pub mod params {}
                     pub struct EntitiesActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> EntitiesActions<'a> {
@@ -5879,13 +6615,17 @@ pub mod resources {
                             ListRequestBuilder {
                                 reqwest: &self.reqwest,
                                 auth: self.auth_ref(),
+                                access_token: None,
                                 alt: None,
+                                callback: None,
                                 fields: None,
                                 key: None,
                                 oauth_token: None,
                                 pretty_print: None,
                                 quota_user: None,
-                                user_ip: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
                                 account_id: account_id.into(),
                                 container_id: container_id.into(),
                                 folder_id: folder_id.into(),
@@ -5895,20 +6635,34 @@ pub mod resources {
                     #[doc = "Created via [EntitiesActions::list()](struct.EntitiesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         account_id: String,
                         container_id: String,
                         folder_id: String,
+                        access_token: Option<String>,
                         alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
                         fields: Option<String>,
                         key: Option<String>,
                         oauth_token: Option<String>,
                         pretty_print: Option<bool>,
                         quota_user: Option<String>,
-                        user_ip: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
                         #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                         pub fn key(mut self, value: impl Into<String>) -> Self {
                             self.key = Some(value.into());
@@ -5924,14 +6678,24 @@ pub mod resources {
                             self.pretty_print = Some(value);
                             self
                         }
-                        #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                         pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                             self.quota_user = Some(value.into());
                             self
                         }
-                        #[doc = "Deprecated. Please use quotaUser instead."]
-                        pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                            self.user_ip = Some(value.into());
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
                             self
                         }
                         #[doc = r" Execute the given operation. The fields requested are"]
@@ -5997,8 +6761,8 @@ pub mod resources {
                             Ok(crate::error_from_response(req.send()?)?.json()?)
                         }
                         fn _path(&self) -> String {
-                            let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                            output.push_str("accounts/");
+                            let mut output = "https://www.googleapis.com/".to_owned();
+                            output.push_str("tagmanager/v1/accounts/");
                             {
                                 let var_as_str = &self.account_id;
                                 output.extend(::percent_encoding::utf8_percent_encode(
@@ -6028,16 +6792,20 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
                             let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
                             let req = req.query(&[("fields", &self.fields)]);
                             let req = req.query(&[("key", &self.key)]);
                             let req = req.query(&[("oauth_token", &self.oauth_token)]);
                             let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                             let req = req.query(&[("quotaUser", &self.quota_user)]);
-                            let req = req.query(&[("userIp", &self.user_ip)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
                             let req = req.bearer_auth(
                                 self.auth
                                     .access_token()
@@ -6051,7 +6819,7 @@ pub mod resources {
             pub mod move_folders {
                 pub mod params {}
                 pub struct MoveFoldersActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> MoveFoldersActions<'a> {
@@ -6070,13 +6838,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             folder_id: folder_id.into(),
@@ -6089,7 +6861,7 @@ pub mod resources {
                 #[doc = "Created via [MoveFoldersActions::update()](struct.MoveFoldersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Folder,
                     account_id: String,
@@ -6098,13 +6870,17 @@ pub mod resources {
                     tag_id: Option<Vec<String>>,
                     trigger_id: Option<Vec<String>>,
                     variable_id: Option<Vec<String>>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
                     #[doc = "The tags to be moved to the folder."]
@@ -6122,6 +6898,16 @@ pub mod resources {
                         self.variable_id = Some(value.into());
                         self
                     }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -6137,14 +6923,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -6154,8 +6950,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -6184,18 +6980,23 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("tagId", &self.tag_id)]);
                         let req = req.query(&[("triggerId", &self.trigger_id)]);
                         let req = req.query(&[("variableId", &self.variable_id)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -6208,7 +7009,7 @@ pub mod resources {
             pub mod reauthorize_environments {
                 pub mod params {}
                 pub struct ReauthorizeEnvironmentsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ReauthorizeEnvironmentsActions<'a> {
@@ -6227,13 +7028,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             environment_id: environment_id.into(),
@@ -6243,21 +7048,35 @@ pub mod resources {
                 #[doc = "Created via [ReauthorizeEnvironmentsActions::update()](struct.ReauthorizeEnvironmentsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Environment,
                     account_id: String,
                     container_id: String,
                     environment_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -6273,14 +7092,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -6344,8 +7173,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -6374,15 +7203,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -6395,7 +7229,7 @@ pub mod resources {
             pub mod tags {
                 pub mod params {}
                 pub struct TagsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> TagsActions<'a> {
@@ -6413,13 +7247,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -6434,13 +7272,17 @@ pub mod resources {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             tag_id: tag_id.into(),
@@ -6456,13 +7298,17 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             tag_id: tag_id.into(),
@@ -6477,13 +7323,17 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -6500,13 +7350,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             tag_id: tag_id.into(),
@@ -6517,20 +7371,34 @@ pub mod resources {
                 #[doc = "Created via [TagsActions::create()](struct.TagsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Tag,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -6546,14 +7414,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -6617,8 +7495,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -6640,15 +7518,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -6660,20 +7543,34 @@ pub mod resources {
                 #[doc = "Created via [TagsActions::delete()](struct.TagsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     tag_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -6689,14 +7586,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -6705,8 +7612,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -6735,15 +7642,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -6755,20 +7667,34 @@ pub mod resources {
                 #[doc = "Created via [TagsActions::get()](struct.TagsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     tag_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -6784,14 +7710,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -6854,8 +7790,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -6884,15 +7820,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -6904,19 +7845,33 @@ pub mod resources {
                 #[doc = "Created via [TagsActions::list()](struct.TagsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -6932,14 +7887,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -7004,8 +7969,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7027,15 +7992,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -7047,25 +8017,39 @@ pub mod resources {
                 #[doc = "Created via [TagsActions::update()](struct.TagsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Tag,
                     account_id: String,
                     container_id: String,
                     tag_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the tag in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the tag in\nstorage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7083,14 +8067,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -7154,8 +8148,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7184,16 +8178,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -7206,7 +8205,7 @@ pub mod resources {
             pub mod triggers {
                 pub mod params {}
                 pub struct TriggersActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> TriggersActions<'a> {
@@ -7224,13 +8223,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -7245,13 +8248,17 @@ pub mod resources {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             trigger_id: trigger_id.into(),
@@ -7267,13 +8274,17 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             trigger_id: trigger_id.into(),
@@ -7288,13 +8299,17 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -7311,13 +8326,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             trigger_id: trigger_id.into(),
@@ -7328,20 +8347,34 @@ pub mod resources {
                 #[doc = "Created via [TriggersActions::create()](struct.TriggersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Trigger,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -7357,14 +8390,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -7428,8 +8471,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7451,15 +8494,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -7471,20 +8519,34 @@ pub mod resources {
                 #[doc = "Created via [TriggersActions::delete()](struct.TriggersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     trigger_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -7500,14 +8562,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -7516,8 +8588,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7546,15 +8618,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -7566,20 +8643,34 @@ pub mod resources {
                 #[doc = "Created via [TriggersActions::get()](struct.TriggersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     trigger_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -7595,14 +8686,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -7665,8 +8766,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7695,15 +8796,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -7715,19 +8821,33 @@ pub mod resources {
                 #[doc = "Created via [TriggersActions::list()](struct.TriggersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -7743,14 +8863,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -7815,8 +8945,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7838,15 +8968,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -7858,25 +8993,39 @@ pub mod resources {
                 #[doc = "Created via [TriggersActions::update()](struct.TriggersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Trigger,
                     account_id: String,
                     container_id: String,
                     trigger_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the trigger in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the trigger\nin storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7894,14 +9043,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -7965,8 +9124,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -7995,16 +9154,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -8017,7 +9181,7 @@ pub mod resources {
             pub mod variables {
                 pub mod params {}
                 pub struct VariablesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> VariablesActions<'a> {
@@ -8035,13 +9199,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -8056,13 +9224,17 @@ pub mod resources {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             variable_id: variable_id.into(),
@@ -8078,13 +9250,17 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             variable_id: variable_id.into(),
@@ -8099,13 +9275,17 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -8122,13 +9302,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             variable_id: variable_id.into(),
@@ -8139,20 +9323,34 @@ pub mod resources {
                 #[doc = "Created via [VariablesActions::create()](struct.VariablesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Variable,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -8168,14 +9366,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -8239,8 +9447,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -8262,15 +9470,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -8282,20 +9495,34 @@ pub mod resources {
                 #[doc = "Created via [VariablesActions::delete()](struct.VariablesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     variable_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -8311,14 +9538,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -8327,8 +9564,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -8357,15 +9594,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -8377,20 +9619,34 @@ pub mod resources {
                 #[doc = "Created via [VariablesActions::get()](struct.VariablesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     variable_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -8406,14 +9662,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -8476,8 +9742,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -8506,15 +9772,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -8526,19 +9797,33 @@ pub mod resources {
                 #[doc = "Created via [VariablesActions::list()](struct.VariablesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -8554,14 +9839,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -8626,8 +9921,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -8649,15 +9944,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -8669,25 +9969,39 @@ pub mod resources {
                 #[doc = "Created via [VariablesActions::update()](struct.VariablesActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Variable,
                     account_id: String,
                     container_id: String,
                     variable_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the variable in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the variable\nin storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8705,14 +10019,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -8776,8 +10100,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -8806,16 +10130,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -8828,7 +10157,7 @@ pub mod resources {
             pub mod versions {
                 pub mod params {}
                 pub struct VersionsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> VersionsActions<'a> {
@@ -8846,13 +10175,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                         }
@@ -8867,13 +10200,17 @@ pub mod resources {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             container_version_id: container_version_id.into(),
@@ -8889,13 +10226,17 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             container_version_id: container_version_id.into(),
@@ -8910,13 +10251,17 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             headers: None,
@@ -8933,20 +10278,24 @@ pub mod resources {
                         PublishRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             container_version_id: container_version_id.into(),
                             fingerprint: None,
                         }
                     }
-                    #[doc = "Restores a Container Version. This will overwrite the container's current configuration (including its variables, triggers and tags). The operation will not have any effect on the version that is being served (i.e. the published version)."]
+                    #[doc = "Restores a Container Version. This will overwrite the container's current\nconfiguration (including its variables, triggers and tags). The operation\nwill not have any effect on the version that is being served (i.e. the\npublished version)."]
                     pub fn restore(
                         &self,
                         account_id: impl Into<String>,
@@ -8956,13 +10305,17 @@ pub mod resources {
                         RestoreRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             container_version_id: container_version_id.into(),
@@ -8978,13 +10331,17 @@ pub mod resources {
                         UndeleteRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             container_version_id: container_version_id.into(),
@@ -9002,13 +10359,17 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
+                            access_token: None,
                             alt: None,
+                            callback: None,
                             fields: None,
                             key: None,
                             oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
-                            user_ip: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
                             account_id: account_id.into(),
                             container_id: container_id.into(),
                             container_version_id: container_version_id.into(),
@@ -9019,20 +10380,34 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::create()](struct.VersionsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CreateContainerVersionRequestVersionOptions,
                     account_id: String,
                     container_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -9048,14 +10423,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -9121,8 +10506,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -9144,15 +10529,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -9164,20 +10554,34 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::delete()](struct.VersionsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     container_version_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -9193,14 +10597,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     pub fn execute(self) -> Result<(), crate::Error> {
@@ -9209,8 +10623,8 @@ pub mod resources {
                         Ok(())
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -9239,15 +10653,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -9259,20 +10678,34 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::get()](struct.VersionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     container_version_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -9288,14 +10721,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -9360,8 +10803,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -9390,15 +10833,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -9410,19 +10858,23 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::list()](struct.VersionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     headers: Option<bool>,
                     include_deleted: Option<bool>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
                     #[doc = "Retrieve headers only when true."]
@@ -9435,6 +10887,16 @@ pub mod resources {
                         self.include_deleted = Some(value);
                         self
                     }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -9450,14 +10912,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -9522,8 +10994,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -9545,17 +11017,22 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("headers", &self.headers)]);
                         let req = req.query(&[("includeDeleted", &self.include_deleted)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -9567,24 +11044,38 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::publish()](struct.VersionsActions.html#method.publish)"]
                 #[derive(Debug, Clone)]
                 pub struct PublishRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     container_version_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> PublishRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the container version in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the\ncontainer version in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9602,14 +11093,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -9674,8 +11175,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -9705,16 +11206,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -9726,20 +11232,34 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::restore()](struct.VersionsActions.html#method.restore)"]
                 #[derive(Debug, Clone)]
                 pub struct RestoreRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     container_version_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> RestoreRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -9755,14 +11275,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -9827,8 +11357,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -9858,15 +11388,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -9878,20 +11413,34 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::undelete()](struct.VersionsActions.html#method.undelete)"]
                 #[derive(Debug, Clone)]
                 pub struct UndeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     container_id: String,
                     container_version_id: String,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UndeleteRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
@@ -9907,14 +11456,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -9979,8 +11538,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -10010,15 +11569,20 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -10030,25 +11594,39 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::update()](struct.VersionsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ContainerVersion,
                     account_id: String,
                     container_id: String,
                     container_version_id: String,
                     fingerprint: Option<String>,
+                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
                     oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
-                    user_ip: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> UpdateRequestBuilder<'a> {
-                    #[doc = "When provided, this fingerprint must match the fingerprint of the container version in storage."]
+                    #[doc = "When provided, this fingerprint must match the fingerprint of the\ncontainer version in storage."]
                     pub fn fingerprint(mut self, value: impl Into<String>) -> Self {
                         self.fingerprint = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
                         self
                     }
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -10066,14 +11644,24 @@ pub mod resources {
                         self.pretty_print = Some(value);
                         self
                     }
-                    #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                     pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                         self.quota_user = Some(value.into());
                         self
                     }
-                    #[doc = "Deprecated. Please use quotaUser instead."]
-                    pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                        self.user_ip = Some(value.into());
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
                         self
                     }
                     #[doc = r" Execute the given operation. The fields requested are"]
@@ -10139,8 +11727,8 @@ pub mod resources {
                         Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
-                        let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                        output.push_str("accounts/");
+                        let mut output = "https://www.googleapis.com/".to_owned();
+                        output.push_str("tagmanager/v1/accounts/");
                         {
                             let var_as_str = &self.account_id;
                             output.extend(::percent_encoding::utf8_percent_encode(
@@ -10169,16 +11757,21 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("fingerprint", &self.fingerprint)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
                         let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
-                        let req = req.query(&[("userIp", &self.user_ip)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
                         let req = req.bearer_auth(
                             self.auth
                                 .access_token()
@@ -10192,7 +11785,7 @@ pub mod resources {
         pub mod permissions {
             pub mod params {}
             pub struct PermissionsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> PermissionsActions<'a> {
@@ -10209,17 +11802,21 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                     }
                 }
-                #[doc = "Removes a user from the account, revoking access to it and all of its containers."]
+                #[doc = "Removes a user from the account, revoking access to it and all of its\ncontainers."]
                 pub fn delete(
                     &self,
                     account_id: impl Into<String>,
@@ -10228,13 +11825,17 @@ pub mod resources {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                         permission_id: permission_id.into(),
                     }
@@ -10248,29 +11849,37 @@ pub mod resources {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                         permission_id: permission_id.into(),
                     }
                 }
-                #[doc = "List all users that have access to the account along with Account and Container Permissions granted to each of them."]
+                #[doc = "List all users that have access to the account along with Account and\nContainer Permissions granted to each of them."]
                 pub fn list(&self, account_id: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                     }
                 }
@@ -10285,13 +11894,17 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         account_id: account_id.into(),
                         permission_id: permission_id.into(),
                     }
@@ -10300,19 +11913,33 @@ pub mod resources {
             #[doc = "Created via [PermissionsActions::create()](struct.PermissionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UserAccess,
                 account_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> CreateRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -10328,14 +11955,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -10399,8 +12036,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -10411,15 +12048,22 @@ pub mod resources {
                     output.push_str("/permissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -10431,19 +12075,33 @@ pub mod resources {
             #[doc = "Created via [PermissionsActions::delete()](struct.PermissionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 permission_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> DeleteRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -10459,14 +12117,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 pub fn execute(self) -> Result<(), crate::Error> {
@@ -10475,8 +12143,8 @@ pub mod resources {
                     Ok(())
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -10494,15 +12162,22 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -10514,19 +12189,33 @@ pub mod resources {
             #[doc = "Created via [PermissionsActions::get()](struct.PermissionsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 permission_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -10542,14 +12231,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -10612,8 +12311,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -10631,15 +12330,22 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -10651,18 +12357,32 @@ pub mod resources {
             #[doc = "Created via [PermissionsActions::list()](struct.PermissionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -10678,14 +12398,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -10750,8 +12480,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -10762,15 +12492,22 @@ pub mod resources {
                     output.push_str("/permissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -10782,20 +12519,34 @@ pub mod resources {
             #[doc = "Created via [PermissionsActions::update()](struct.PermissionsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UserAccess,
                 account_id: String,
                 permission_id: String,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> UpdateRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
@@ -10811,14 +12562,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -10882,8 +12643,8 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/tagmanager/v1/".to_owned();
-                    output.push_str("accounts/");
+                    let mut output = "https://www.googleapis.com/".to_owned();
+                    output.push_str("tagmanager/v1/accounts/");
                     {
                         let var_as_str = &self.account_id;
                         output.extend(::percent_encoding::utf8_percent_encode(
@@ -10901,15 +12662,22 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -10937,9 +12705,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -10981,7 +12747,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

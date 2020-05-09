@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("games1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190905")
+            .version("0.1.0-20200416")
             .about("The API for Google Play Game Services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -155,28 +155,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("update")
                 .about("Registers a push token for the current user and application.");
             pushtokens0 = pushtokens0.subcommand(mcmd);
-        }
-        let mut quest_milestones0 = SubCommand::with_name("quest_milestones")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: claim");
-        {
-            let mcmd = SubCommand::with_name("claim").about("Report that a reward for the milestone corresponding to milestoneId for the quest corresponding to questId has been claimed by the currently authorized user.");
-            quest_milestones0 = quest_milestones0.subcommand(mcmd);
-        }
-        let mut quests0 = SubCommand::with_name("quests")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: accept and list");
-        {
-            let mcmd = SubCommand::with_name("accept").about(
-                "Indicates that the currently authorized user will participate in the quest.",
-            );
-            quests0 = quests0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about(
-                "Get a list of quests for your application and the currently authenticated player.",
-            );
-            quests0 = quests0.subcommand(mcmd);
         }
         let mut revisions0 = SubCommand::with_name("revisions")
             .setting(AppSettings::ColoredHelp)
@@ -324,8 +302,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(scores0);
         app = app.subcommand(rooms0);
         app = app.subcommand(revisions0);
-        app = app.subcommand(quests0);
-        app = app.subcommand(quest_milestones0);
         app = app.subcommand(pushtokens0);
         app = app.subcommand(players0);
         app = app.subcommand(metagame0);

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("remotebuildexecution1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190917")
+            .version("0.1.0-20200505")
             .about("Supplies a Remote Execution API service for tools such as bazel.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -66,14 +66,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
             .about("sub-resources: operations");
-        let mut v_10 = SubCommand::with_name("v_1")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: watch");
-        {
-            let mcmd = SubCommand::with_name("watch")
-                .about("Start a streaming RPC to get watch information from the server.");
-            v_10 = v_10.subcommand(mcmd);
-        }
         let mut operations1 = SubCommand::with_name("operations")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
@@ -82,7 +74,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             operations1 = operations1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(operations1);
-        app = app.subcommand(v_10);
         app = app.subcommand(projects0);
         app = app.subcommand(operations0);
         app = app.subcommand(media0);

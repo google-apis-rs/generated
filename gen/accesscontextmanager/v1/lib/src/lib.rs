@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [access_policies](resources/access_policies/struct.AccessPoliciesActions.html)\n      * [*create*](resources/access_policies/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/struct.GetRequestBuilder.html), [*list*](resources/access_policies/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/struct.PatchRequestBuilder.html)\n      * [access_levels](resources/access_policies/access_levels/struct.AccessLevelsActions.html)\n        * [*create*](resources/access_policies/access_levels/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/access_levels/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/access_levels/struct.GetRequestBuilder.html), [*list*](resources/access_policies/access_levels/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/access_levels/struct.PatchRequestBuilder.html)\n      * [service_perimeters](resources/access_policies/service_perimeters/struct.ServicePerimetersActions.html)\n        * [*create*](resources/access_policies/service_perimeters/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/service_perimeters/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/service_perimeters/struct.GetRequestBuilder.html), [*list*](resources/access_policies/service_perimeters/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/service_perimeters/struct.PatchRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [access_policies](resources/access_policies/struct.AccessPoliciesActions.html)\n      * [*create*](resources/access_policies/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/struct.GetRequestBuilder.html), [*list*](resources/access_policies/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/struct.PatchRequestBuilder.html)\n      * [access_levels](resources/access_policies/access_levels/struct.AccessLevelsActions.html)\n        * [*create*](resources/access_policies/access_levels/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/access_levels/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/access_levels/struct.GetRequestBuilder.html), [*list*](resources/access_policies/access_levels/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/access_levels/struct.PatchRequestBuilder.html), [*replaceAll*](resources/access_policies/access_levels/struct.ReplaceAllRequestBuilder.html)\n      * [service_perimeters](resources/access_policies/service_perimeters/struct.ServicePerimetersActions.html)\n        * [*commit*](resources/access_policies/service_perimeters/struct.CommitRequestBuilder.html), [*create*](resources/access_policies/service_perimeters/struct.CreateRequestBuilder.html), [*delete*](resources/access_policies/service_perimeters/struct.DeleteRequestBuilder.html), [*get*](resources/access_policies/service_perimeters/struct.GetRequestBuilder.html), [*list*](resources/access_policies/service_perimeters/struct.ListRequestBuilder.html), [*patch*](resources/access_policies/service_perimeters/struct.PatchRequestBuilder.html), [*replaceAll*](resources/access_policies/service_perimeters/struct.ReplaceAllRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -20,13 +24,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub basic: ::std::option::Option<crate::schemas::BasicLevel>,
-        #[doc = "Output only. Time the `AccessLevel` was created in UTC."]
+        #[doc = "A `CustomLevel` written in the Common Expression Language."]
         #[serde(
-            rename = "createTime",
+            rename = "custom",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub create_time: ::std::option::Option<String>,
+        pub custom: ::std::option::Option<crate::schemas::CustomLevel>,
         #[doc = "Description of the `AccessLevel` and its use. Does not affect behavior."]
         #[serde(
             rename = "description",
@@ -34,7 +38,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`"]
+        #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length\nof the `short_name` component is 50 characters."]
         #[serde(
             rename = "name",
             default,
@@ -48,13 +52,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "Output only. Time the `AccessLevel` was updated in UTC."]
-        #[serde(
-            rename = "updateTime",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccessLevel {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -79,13 +76,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AccessPolicy {
-        #[doc = "Output only. Time the `AccessPolicy` was created in UTC."]
+        #[doc = "Output only. An opaque identifier for the current version of the\n`AccessPolicy`. This will always be a strongly validated etag, meaning that\ntwo Access Polices will be identical if and only if their etags are\nidentical. Clients should not expect this to be in any specific format."]
         #[serde(
-            rename = "createTime",
+            rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub create_time: ::std::option::Option<String>,
+        pub etag: ::std::option::Option<String>,
         #[doc = "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`"]
         #[serde(
             rename = "name",
@@ -107,13 +104,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "Output only. Time the `AccessPolicy` was updated in UTC."]
-        #[serde(
-            rename = "updateTime",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for AccessPolicy {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -270,6 +260,68 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CommitServicePerimetersRequest {
+        #[doc = "Optional. The etag for the version of the Access Policy that this\ncommit operation is to be performed on. If, at the time of commit, the\netag for the Access Policy stored in Access Context Manager is different\nfrom the specified etag, then the commit operation will not be performed\nand the call will fail. This field is not required. If etag is not\nprovided, the operation will be performed as if a valid etag is provided."]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CommitServicePerimetersRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CommitServicePerimetersRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CommitServicePerimetersResponse {
+        #[doc = "List of all the Service Perimeter instances in\nthe Access Policy."]
+        #[serde(
+            rename = "servicePerimeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_perimeters: ::std::option::Option<Vec<crate::schemas::ServicePerimeter>>,
+    }
+    impl ::google_field_selector::FieldSelector for CommitServicePerimetersResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CommitServicePerimetersResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Condition {
         #[doc = "Device specific restrictions, all restrictions must hold for the\nCondition to be true. If not specified, all devices are allowed."]
         #[serde(
@@ -320,6 +372,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Condition {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomLevel {
+        #[doc = "Required. A Cloud CEL expression evaluating to a boolean."]
+        #[serde(
+            rename = "expr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub expr: ::std::option::Option<crate::schemas::Expr>,
+    }
+    impl ::google_field_selector::FieldSelector for CustomLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CustomLevel {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -605,6 +688,58 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Expr {
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
+        #[serde(
+            rename = "expression",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub expression: ::std::option::Option<String>,
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub location: ::std::option::Option<String>,
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Expr {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Expr {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ListAccessLevelsResponse {
         #[doc = "List of the Access Level instances."]
         #[serde(
@@ -811,7 +946,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub os_type: ::std::option::Option<crate::schemas::OsConstraintOsType>,
-        #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to Dasher domain policies, and the caller has permission to call\nthe API targeted by the request."]
+        #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to domain policies, and the caller has permission to call\nthe API targeted by the request."]
         #[serde(
             rename = "requireVerifiedChromeOs",
             default,
@@ -831,6 +966,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum OsConstraintOsType {
+        #[doc = "An Android operating system."]
+        Android,
         #[doc = "A desktop ChromeOS operating system."]
         DesktopChromeOs,
         #[doc = "A desktop Linux operating system."]
@@ -839,16 +976,20 @@ pub mod schemas {
         DesktopMac,
         #[doc = "A desktop Windows operating system."]
         DesktopWindows,
+        #[doc = "An iOS operating system."]
+        Ios,
         #[doc = "The operating system of the device is not specified or not known."]
         OsUnspecified,
     }
     impl OsConstraintOsType {
         pub fn as_str(self) -> &'static str {
             match self {
+                OsConstraintOsType::Android => "ANDROID",
                 OsConstraintOsType::DesktopChromeOs => "DESKTOP_CHROME_OS",
                 OsConstraintOsType::DesktopLinux => "DESKTOP_LINUX",
                 OsConstraintOsType::DesktopMac => "DESKTOP_MAC",
                 OsConstraintOsType::DesktopWindows => "DESKTOP_WINDOWS",
+                OsConstraintOsType::Ios => "IOS",
                 OsConstraintOsType::OsUnspecified => "OS_UNSPECIFIED",
             }
         }
@@ -862,10 +1003,12 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<OsConstraintOsType, ()> {
             Ok(match s {
+                "ANDROID" => OsConstraintOsType::Android,
                 "DESKTOP_CHROME_OS" => OsConstraintOsType::DesktopChromeOs,
                 "DESKTOP_LINUX" => OsConstraintOsType::DesktopLinux,
                 "DESKTOP_MAC" => OsConstraintOsType::DesktopMac,
                 "DESKTOP_WINDOWS" => OsConstraintOsType::DesktopWindows,
+                "IOS" => OsConstraintOsType::Ios,
                 "OS_UNSPECIFIED" => OsConstraintOsType::OsUnspecified,
                 _ => return Err(()),
             })
@@ -891,10 +1034,12 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ANDROID" => OsConstraintOsType::Android,
                 "DESKTOP_CHROME_OS" => OsConstraintOsType::DesktopChromeOs,
                 "DESKTOP_LINUX" => OsConstraintOsType::DesktopLinux,
                 "DESKTOP_MAC" => OsConstraintOsType::DesktopMac,
                 "DESKTOP_WINDOWS" => OsConstraintOsType::DesktopWindows,
+                "IOS" => OsConstraintOsType::Ios,
                 "OS_UNSPECIFIED" => OsConstraintOsType::OsUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -927,14 +1072,145 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct ServicePerimeter {
-        #[doc = "Output only. Time the `ServicePerimeter` was created in UTC."]
+    pub struct ReplaceAccessLevelsRequest {
+        #[doc = "Required. The desired Access Levels that should\nreplace all existing Access Levels in the\nAccess Policy."]
         #[serde(
-            rename = "createTime",
+            rename = "accessLevels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub create_time: ::std::option::Option<String>,
+        pub access_levels: ::std::option::Option<Vec<crate::schemas::AccessLevel>>,
+        #[doc = "Optional. The etag for the version of the Access Policy that this\nreplace operation is to be performed on. If, at the time of replace, the\netag for the Access Policy stored in Access Context Manager is different\nfrom the specified etag, then the replace operation will not be performed\nand the call will fail. This field is not required. If etag is not\nprovided, the operation will be performed as if a valid etag is provided."]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ReplaceAccessLevelsRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReplaceAccessLevelsRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReplaceAccessLevelsResponse {
+        #[doc = "List of the Access Level instances."]
+        #[serde(
+            rename = "accessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub access_levels: ::std::option::Option<Vec<crate::schemas::AccessLevel>>,
+    }
+    impl ::google_field_selector::FieldSelector for ReplaceAccessLevelsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReplaceAccessLevelsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReplaceServicePerimetersRequest {
+        #[doc = "Optional. The etag for the version of the Access Policy that this\nreplace operation is to be performed on. If, at the time of replace, the\netag for the Access Policy stored in Access Context Manager is different\nfrom the specified etag, then the replace operation will not be performed\nand the call will fail. This field is not required. If etag is not\nprovided, the operation will be performed as if a valid etag is provided."]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Required. The desired Service Perimeters that should\nreplace all existing Service Perimeters in the\nAccess Policy."]
+        #[serde(
+            rename = "servicePerimeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_perimeters: ::std::option::Option<Vec<crate::schemas::ServicePerimeter>>,
+    }
+    impl ::google_field_selector::FieldSelector for ReplaceServicePerimetersRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReplaceServicePerimetersRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReplaceServicePerimetersResponse {
+        #[doc = "List of the Service Perimeter instances."]
+        #[serde(
+            rename = "servicePerimeters",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_perimeters: ::std::option::Option<Vec<crate::schemas::ServicePerimeter>>,
+    }
+    impl ::google_field_selector::FieldSelector for ReplaceServicePerimetersResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReplaceServicePerimetersResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ServicePerimeter {
         #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
         #[serde(
             rename = "description",
@@ -956,6 +1232,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub perimeter_type: ::std::option::Option<crate::schemas::ServicePerimeterPerimeterType>,
+        #[doc = "Proposed (or dry run) ServicePerimeter configuration. This configuration\nallows to specify and test ServicePerimeter configuration without enforcing\nactual access restrictions. Only allowed to be set when the\n\"use_explicit_dry_run_spec\" flag is set."]
+        #[serde(
+            rename = "spec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spec: ::std::option::Option<crate::schemas::ServicePerimeterConfig>,
         #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted services and access levels that determine perimeter\ncontent and boundaries."]
         #[serde(
             rename = "status",
@@ -970,13 +1253,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
-        #[doc = "Output only. Time the `ServicePerimeter` was updated in UTC."]
+        #[doc = "Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly\nexists  for all Service Perimeters, and that spec is identical to the\nstatus for those Service Perimeters. When this flag is set, it inhibits the\ngeneration of the implicit spec, thereby allowing the user to explicitly\nprovide a configuration (\"spec\") to use in a dry-run version of the Service\nPerimeter. This allows the user to test changes to the enforced config\n(\"status\") without actually enforcing them. This testing is done through\nanalyzing the differences between currently enforced and suggested\nrestrictions. use_explicit_dry_run_spec must bet set to True if any of the\nfields in the spec are set to non-default values."]
         #[serde(
-            rename = "updateTime",
+            rename = "useExplicitDryRunSpec",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub update_time: ::std::option::Option<String>,
+        pub use_explicit_dry_run_spec: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for ServicePerimeter {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1072,27 +1355,34 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ServicePerimeterConfig {
-        #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via GCP calls\nwith request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
+        #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via Google\nCloud calls with request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
         #[serde(
             rename = "accessLevels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub access_levels: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of GCP resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
+        #[doc = "A list of Google Cloud resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
         #[serde(
             rename = "resources",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resources: ::std::option::Option<Vec<String>>,
-        #[doc = "GCP services that are subject to the Service Perimeter restrictions. For\nexample, if `storage.googleapis.com` is specified, access to the storage\nbuckets inside the perimeter must meet the perimeter's access restrictions."]
+        #[doc = "Google Cloud services that are subject to the Service Perimeter\nrestrictions. For example, if `storage.googleapis.com` is specified, access\nto the storage buckets inside the perimeter must meet the perimeter's\naccess restrictions."]
         #[serde(
             rename = "restrictedServices",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub restricted_services: ::std::option::Option<Vec<String>>,
+        #[doc = "Configuration for APIs allowed within Perimeter."]
+        #[serde(
+            rename = "vpcAccessibleServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub vpc_accessible_services: ::std::option::Option<crate::schemas::VpcAccessibleServices>,
     }
     impl ::google_field_selector::FieldSelector for ServicePerimeterConfig {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1135,6 +1425,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Status {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VpcAccessibleServices {
+        #[doc = "The list of APIs usable within the Service Perimeter. Must be empty\nunless 'enable_restriction' is True."]
+        #[serde(
+            rename = "allowedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub allowed_services: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether to restrict API calls within the Service Perimeter to the list of\nAPIs specified in 'allowed_services'."]
+        #[serde(
+            rename = "enableRestriction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_restriction: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for VpcAccessibleServices {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for VpcAccessibleServices {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1290,7 +1618,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1298,8 +1626,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1325,7 +1665,7 @@ pub mod resources {
     pub mod access_policies {
         pub mod params {}
         pub struct AccessPoliciesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AccessPoliciesActions<'a> {
@@ -1458,7 +1798,7 @@ pub mod resources {
         #[doc = "Created via [AccessPoliciesActions::create()](struct.AccessPoliciesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AccessPolicy,
             access_token: Option<String>,
@@ -1581,7 +1921,10 @@ pub mod resources {
                 output.push_str("v1/accessPolicies");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1605,7 +1948,7 @@ pub mod resources {
         #[doc = "Created via [AccessPoliciesActions::delete()](struct.AccessPoliciesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1734,7 +2077,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1758,7 +2104,7 @@ pub mod resources {
         #[doc = "Created via [AccessPoliciesActions::get()](struct.AccessPoliciesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1887,7 +2233,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1911,7 +2260,7 @@ pub mod resources {
         #[doc = "Created via [AccessPoliciesActions::list()](struct.AccessPoliciesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_size: Option<i32>,
             page_token: Option<String>,
@@ -2150,7 +2499,10 @@ pub mod resources {
                 output.push_str("v1/accessPolicies");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2188,7 +2540,7 @@ pub mod resources {
         #[doc = "Created via [AccessPoliciesActions::patch()](struct.AccessPoliciesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AccessPolicy,
             name: String,
@@ -2325,7 +2677,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("updateMask", &self.update_mask)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2509,7 +2864,7 @@ pub mod resources {
                 }
             }
             pub struct AccessLevelsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> AccessLevelsActions<'a> {
@@ -2626,11 +2981,35 @@ pub mod resources {
                         update_mask: None,
                     }
                 }
+                #[doc = "Replace all existing Access Levels in an Access\nPolicy with\nthe Access Levels provided. This\nis done atomically. The longrunning operation from this RPC will have a\nsuccessful status once all replacements have propagated to long-lasting\nstorage. Replacements containing errors will result in an error response\nfor the first error encountered.  Replacement will be cancelled on error,\nexisting Access Levels will not be\naffected. Operation.response field will contain\nReplaceAccessLevelsResponse. Removing Access Levels contained in existing\nService Perimeters will result in\nerror."]
+                pub fn replace_all(
+                    &self,
+                    request: crate::schemas::ReplaceAccessLevelsRequest,
+                    parent: impl Into<String>,
+                ) -> ReplaceAllRequestBuilder {
+                    ReplaceAllRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                    }
+                }
             }
             #[doc = "Created via [AccessLevelsActions::create()](struct.AccessLevelsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AccessLevel,
                 parent: String,
@@ -2765,7 +3144,10 @@ pub mod resources {
                     output.push_str("/accessLevels");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2789,7 +3171,7 @@ pub mod resources {
             #[doc = "Created via [AccessLevelsActions::delete()](struct.AccessLevelsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2921,7 +3303,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2945,7 +3330,7 @@ pub mod resources {
             #[doc = "Created via [AccessLevelsActions::get()](struct.AccessLevelsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_level_format: Option<
@@ -3088,7 +3473,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("accessLevelFormat", &self.access_level_format)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -3113,7 +3501,7 @@ pub mod resources {
             #[doc = "Created via [AccessLevelsActions::list()](struct.AccessLevelsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 access_level_format: Option<
@@ -3371,7 +3759,10 @@ pub mod resources {
                     output.push_str("/accessLevels");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("accessLevelFormat", &self.access_level_format)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3409,7 +3800,7 @@ pub mod resources {
             #[doc = "Created via [AccessLevelsActions::patch()](struct.AccessLevelsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AccessLevel,
                 name: String,
@@ -3549,9 +3940,174 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [AccessLevelsActions::replace_all()](struct.AccessLevelsActions.html#method.replace_all)"]
+            #[derive(Debug, Clone)]
+            pub struct ReplaceAllRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::ReplaceAccessLevelsRequest,
+                parent: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> ReplaceAllRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://accesscontextmanager.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/accessLevels:replaceAll");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -3575,14 +4131,38 @@ pub mod resources {
         pub mod service_perimeters {
             pub mod params {}
             pub struct ServicePerimetersActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ServicePerimetersActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Create an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered."]
+                #[doc = "Commit the dry-run spec for all the Service Perimeters in an\nAccess Policy.\nA commit operation on a Service Perimeter involves copying its `spec` field\nto that Service Perimeter's `status` field. Only Service Perimeters with\n`use_explicit_dry_run_spec` field set to true are affected by a commit\noperation. The longrunning operation from this RPC will have a successful\nstatus once the dry-run specs for all the Service Perimeters have been\ncommitted. If a commit fails, it will cause the longrunning operation to\nreturn an error response and the entire commit operation will be cancelled.\nWhen successful, Operation.response field will contain\nCommitServicePerimetersResponse. The `dry_run` and the `spec` fields will\nbe cleared after a successful commit operation."]
+                pub fn commit(
+                    &self,
+                    request: crate::schemas::CommitServicePerimetersRequest,
+                    parent: impl Into<String>,
+                ) -> CommitRequestBuilder {
+                    CommitRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                    }
+                }
+                #[doc = "Create a Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered."]
                 pub fn create(
                     &self,
                     request: crate::schemas::ServicePerimeter,
@@ -3606,7 +4186,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Delete an Service Perimeter by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Service Perimeter has been\nremoved from long-lasting storage."]
+                #[doc = "Delete a Service Perimeter by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Service Perimeter has been\nremoved from long-lasting storage."]
                 pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -3625,7 +4205,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Get an Service Perimeter by resource\nname."]
+                #[doc = "Get a Service Perimeter by resource\nname."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -3665,7 +4245,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Update an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nchanges to the Service Perimeter have\npropagated to long-lasting storage. Service Perimeter containing\nerrors will result in an error response for the first error encountered."]
+                #[doc = "Update a Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nchanges to the Service Perimeter have\npropagated to long-lasting storage. Service Perimeter containing\nerrors will result in an error response for the first error encountered."]
                 pub fn patch(
                     &self,
                     request: crate::schemas::ServicePerimeter,
@@ -3690,11 +4270,197 @@ pub mod resources {
                         update_mask: None,
                     }
                 }
+                #[doc = "Replace all existing Service Perimeters in an\nAccess Policy\nwith the Service Perimeters provided.\nThis is done atomically. The longrunning operation from this\nRPC will have a successful status once all replacements have propagated to\nlong-lasting storage. Replacements containing errors will result in an\nerror response for the first error encountered. Replacement will be\ncancelled on error, existing Service Perimeters will not be\naffected. Operation.response field will contain\nReplaceServicePerimetersResponse."]
+                pub fn replace_all(
+                    &self,
+                    request: crate::schemas::ReplaceServicePerimetersRequest,
+                    parent: impl Into<String>,
+                ) -> ReplaceAllRequestBuilder {
+                    ReplaceAllRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                    }
+                }
+            }
+            #[doc = "Created via [ServicePerimetersActions::commit()](struct.ServicePerimetersActions.html#method.commit)"]
+            #[derive(Debug, Clone)]
+            pub struct CommitRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::CommitServicePerimetersRequest,
+                parent: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> CommitRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://accesscontextmanager.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/servicePerimeters:commit");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
             }
             #[doc = "Created via [ServicePerimetersActions::create()](struct.ServicePerimetersActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ServicePerimeter,
                 parent: String,
@@ -3829,7 +4595,10 @@ pub mod resources {
                     output.push_str("/servicePerimeters");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3853,7 +4622,7 @@ pub mod resources {
             #[doc = "Created via [ServicePerimetersActions::delete()](struct.ServicePerimetersActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3985,7 +4754,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4009,7 +4781,7 @@ pub mod resources {
             #[doc = "Created via [ServicePerimetersActions::get()](struct.ServicePerimetersActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4141,7 +4913,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4165,7 +4940,7 @@ pub mod resources {
             #[doc = "Created via [ServicePerimetersActions::list()](struct.ServicePerimetersActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -4415,7 +5190,10 @@ pub mod resources {
                     output.push_str("/servicePerimeters");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4452,7 +5230,7 @@ pub mod resources {
             #[doc = "Created via [ServicePerimetersActions::patch()](struct.ServicePerimetersActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ServicePerimeter,
                 name: String,
@@ -4592,9 +5370,174 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [ServicePerimetersActions::replace_all()](struct.ServicePerimetersActions.html#method.replace_all)"]
+            #[derive(Debug, Clone)]
+            pub struct ReplaceAllRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::ReplaceServicePerimetersRequest,
+                parent: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> ReplaceAllRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://accesscontextmanager.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/servicePerimeters:replaceAll");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -4619,7 +5562,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -4714,7 +5657,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CancelOperationRequest,
             name: String,
@@ -4844,7 +5787,10 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4868,7 +5814,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -4995,7 +5941,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5019,7 +5968,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -5148,7 +6097,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5172,7 +6124,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             filter: Option<String>,
@@ -5417,7 +6369,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -5470,9 +6425,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -5514,7 +6467,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

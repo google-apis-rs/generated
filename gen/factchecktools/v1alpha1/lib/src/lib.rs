@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [claims](resources/claims/struct.ClaimsActions.html)\n      * [*search*](resources/claims/struct.SearchRequestBuilder.html)\n    * [pages](resources/pages/struct.PagesActions.html)\n      * [*create*](resources/pages/struct.CreateRequestBuilder.html), [*delete*](resources/pages/struct.DeleteRequestBuilder.html), [*get*](resources/pages/struct.GetRequestBuilder.html), [*list*](resources/pages/struct.ListRequestBuilder.html), [*update*](resources/pages/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View your email address\n\n`https://www.googleapis.com/auth/userinfo.email`"]
+    pub const USERINFO_EMAIL: &str = "https://www.googleapis.com/auth/userinfo.email";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -142,7 +146,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rating_explanation: ::std::option::Option<String>,
-        #[doc = "A numeric rating of this claim, in the range worstRating \u{2014} bestRating\ninclusive.<br>\nCorresponds to `ClaimReview.reviewRating.ratingValue`."]
+        #[doc = "A numeric rating of this claim, in the range worstRating — bestRating\ninclusive.<br>\nCorresponds to `ClaimReview.reviewRating.ratingValue`."]
         #[serde(
             rename = "ratingValue",
             default,
@@ -751,7 +755,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -759,8 +763,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -786,7 +802,7 @@ pub mod resources {
     pub mod claims {
         pub mod params {}
         pub struct ClaimsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ClaimsActions<'a> {
@@ -822,7 +838,7 @@ pub mod resources {
         #[doc = "Created via [ClaimsActions::search()](struct.ClaimsActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language_code: Option<String>,
             max_age_days: Option<i32>,
@@ -1077,7 +1093,10 @@ pub mod resources {
                 output.push_str("v1alpha1/claims:search");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("languageCode", &self.language_code)]);
                 let req = req.query(&[("maxAgeDays", &self.max_age_days)]);
@@ -1123,7 +1142,7 @@ pub mod resources {
     pub mod pages {
         pub mod params {}
         pub struct PagesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PagesActions<'a> {
@@ -1241,7 +1260,7 @@ pub mod resources {
         #[doc = "Created via [PagesActions::create()](struct.PagesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage,
             access_token: Option<String>,
@@ -1370,7 +1389,10 @@ pub mod resources {
                 output.push_str("v1alpha1/pages");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1394,7 +1416,7 @@ pub mod resources {
         #[doc = "Created via [PagesActions::delete()](struct.PagesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1523,7 +1545,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1547,7 +1572,7 @@ pub mod resources {
         #[doc = "Created via [PagesActions::get()](struct.PagesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1682,7 +1707,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1706,7 +1734,7 @@ pub mod resources {
         #[doc = "Created via [PagesActions::list()](struct.PagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             offset: Option<i32>,
             organization: Option<String>,
@@ -1950,7 +1978,10 @@ pub mod resources {
                 output.push_str("v1alpha1/pages");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("offset", &self.offset)]);
                 let req = req.query(&[("organization", &self.organization)]);
@@ -1990,7 +2021,7 @@ pub mod resources {
         #[doc = "Created via [PagesActions::update()](struct.PagesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleFactcheckingFactchecktoolsV1Alpha1ClaimReviewMarkupPage,
             name: String,
@@ -2127,7 +2158,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2166,9 +2200,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -2210,7 +2242,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

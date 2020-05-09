@@ -7,9 +7,9 @@
   "canonicalName": "Security Command Center",
   "fullyEncodeReservedExpansion": true,
   "version": "v1p1alpha1",
-  "revision": "20190913",
-  "title": "Cloud Security Command Center API",
-  "description": "Cloud Security Command Center API provides access to temporal views of assets and findings within an organization.",
+  "revision": "20200410",
+  "title": "Security Command Center API",
+  "description": "Security Command Center API provides access to temporal views of assets and findings within an organization.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -218,6 +218,155 @@
       "additionalProperties": null,
       "items": null
     },
+    "Finding": {
+      "id": "Finding",
+      "description": "Security Command Center finding.\n\nA finding is a record of assessment data like security, risk, health, or\nprivacy, that is ingested into Security Command Center for presentation,\nnotification, analysis, policy testing, and enforcement. For example, a\ncross-site scripting (XSS) vulnerability in an App Engine application is a\nfinding.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "category": {
+          "description": "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "createTime": {
+          "description": "The time at which the finding was created in Security Command Center.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "eventTime": {
+          "description": "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "externalUri": {
+          "description": "The URI that, if available, points to a web page outside of Security\nCommand Center where additional information about the finding can be found.\nThis field is guaranteed to be either empty or a well formed URL.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parent": {
+          "description": "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/{organization_id}/sources/{source_id}\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceName": {
+          "description": "For findings on Google Cloud resources, the full resource\nname of the Google Cloud resource this finding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nWhen the finding is for a non-Google Cloud resource, the resourceName can\nbe a customer or partner defined string. This field is immutable after\ncreation time.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "securityMarks": {
+          "description": "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding.",
+          "$ref": "SecurityMarks"
+        },
+        "sourceProperties": {
+          "description": "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "state": {
+          "description": "The state of the finding.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1NotificationMessage": {
+      "id": "GoogleCloudSecuritycenterV1NotificationMessage",
+      "description": "Cloud SCC's Notification",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "finding": {
+          "description": "If it's a Finding based notification config, this field will be\npopulated.",
+          "$ref": "Finding"
+        },
+        "notificationConfigName": {
+          "description": "Name of the notification config that generated current notification.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse": {
       "id": "GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse",
       "description": "Response of asset discovery run",
@@ -293,6 +442,473 @@
             "Asset discovery run completed successfully.",
             "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
             "Asset discovery run was killed and terminated."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1Asset": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1Asset",
+      "description": "Security Command Center representation of a Google Cloud\nresource.\n\nThe Asset is a Security Command Center resource that captures information\nabout a single Google Cloud resource. All modifications to an Asset are only\nwithin the context of Security Command Center and don't affect the referenced\nGoogle Cloud resource.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "createTime": {
+          "description": "The time at which the asset was created in Security Command Center.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "iamPolicy": {
+          "description": "Cloud IAM Policy information associated with the Google Cloud resource\ndescribed by the Security Command Center asset. This information is managed\nand defined by the Google Cloud resource and cannot be modified by the\nuser.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1IamPolicy"
+        },
+        "name": {
+          "description": "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/assets/{asset_id}\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceProperties": {
+          "description": "Resource managed properties. These properties are managed and defined by\nthe Google Cloud resource and cannot be modified by the user.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "securityCenterProperties": {
+          "description": "Security Command Center managed properties. These properties are managed by\nSecurity Command Center and cannot be modified by the user.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties"
+        },
+        "securityMarks": {
+          "description": "User specified security marks. These marks are entirely managed by the user\nand come from the SecurityMarks resource that belongs to the asset.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1SecurityMarks"
+        },
+        "updateTime": {
+          "description": "The time at which the asset was last updated, added, or deleted in Cloud\nSCC.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1Finding": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1Finding",
+      "description": "Security Command Center finding.\n\nA finding is a record of assessment data (security, risk, health or privacy)\ningested into Security Command Center for presentation, notification,\nanalysis, policy testing, and enforcement. For example, an XSS vulnerability\nin an App Engine application is a finding.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "category": {
+          "description": "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "createTime": {
+          "description": "The time at which the finding was created in Security Command Center.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "eventTime": {
+          "description": "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "externalUri": {
+          "description": "The URI that, if available, points to a web page outside of Security\nCommand Center where additional information about the finding can be found.\nThis field is guaranteed to be either empty or a well formed URL.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parent": {
+          "description": "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/{organization_id}/sources/{source_id}\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceName": {
+          "description": "For findings on Google Cloud resources, the full resource\nname of the Google Cloud resource this finding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nWhen the finding is for a non-Google Cloud resource, the resourceName can\nbe a customer or partner defined string. This field is immutable after\ncreation time.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "securityMarks": {
+          "description": "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1SecurityMarks"
+        },
+        "sourceProperties": {
+          "description": "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "state": {
+          "description": "The state of the finding.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ACTIVE",
+            "INACTIVE"
+          ],
+          "enumDescriptions": [
+            "Unspecified state.",
+            "The finding requires attention and has not been addressed yet.",
+            "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1IamPolicy": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1IamPolicy",
+      "description": "Cloud IAM Policy information associated with the Google Cloud resource\ndescribed by the Security Command Center asset. This information is managed\nand defined by the Google Cloud resource and cannot be modified by the\nuser.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "policyBlob": {
+          "description": "The JSON representation of the Policy associated with the asset.\nSee https://cloud.google.com/iam/docs/reference/rest/v1/Policy for\nformat details.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1NotificationMessage": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1NotificationMessage",
+      "description": "Security Command Center's Notification",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "finding": {
+          "description": "If it's a Finding based notification config, this field will be\npopulated.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1Finding"
+        },
+        "notificationConfigName": {
+          "description": "Name of the notification config that generated current notification.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "temporalAsset": {
+          "description": "If it's an asset based notification config, this field will be\npopulated.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1TemporalAsset"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse",
+      "description": "Response of asset discovery run",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "duration": {
+          "description": "The duration between asset discovery run start and end",
+          "type": "string",
+          "format": "google-duration",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "state": {
+          "description": "The state of an asset discovery run.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "COMPLETED",
+            "SUPERSEDED",
+            "TERMINATED"
+          ],
+          "enumDescriptions": [
+            "Asset discovery run state was unspecified.",
+            "Asset discovery run completed successfully.",
+            "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority.",
+            "Asset discovery run was killed and terminated."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1SecurityCenterProperties",
+      "description": "Security Command Center managed properties. These properties are managed by\nSecurity Command Center and cannot be modified by the user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "resourceDisplayName": {
+          "description": "The user defined display name for this resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceName": {
+          "description": "The full resource name of the Google Cloud resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceOwners": {
+          "description": "Owners of the Google Cloud resource.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "resourceParent": {
+          "description": "The full resource name of the immediate parent of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceParentDisplayName": {
+          "description": "The user defined display name for the parent of this resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceProject": {
+          "description": "The full resource name of the project the resource belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceProjectDisplayName": {
+          "description": "The user defined display name for the project of this resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resourceType": {
+          "description": "The type of the Google Cloud resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nSecurity Command Center and/or the producer of the resource and is\nimmutable after create time.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1SecurityMarks": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1SecurityMarks",
+      "description": "User specified security marks that are attached to the parent Security\nCommand Center resource. Security marks are scoped within a Security Command\nCenter organization -- they can be modified and viewed by all users who have\nproper permissions on the organization.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "marks": {
+          "description": "Mutable user specified security marks belonging to the parent resource.\nConstraints are as follows:\n\n  * Keys and values are treated as case insensitive\n  * Keys must be between 1 - 256 characters (inclusive)\n  * Keys must be letters, numbers, underscores, or dashes\n  * Values have leading and trailing whitespace trimmed, remaining\n    characters must be between 1 - 4096 characters (inclusive)",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "name": {
+          "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1TemporalAsset": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1TemporalAsset",
+      "description": "Wrapper over asset object that also captures the state change for the asset\ne.g. if it was a newly created asset vs updated or deleted asset.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "asset": {
+          "description": "Asset data that includes attributes, properties and marks about the asset.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1Asset"
+        },
+        "changeType": {
+          "description": "Represents if the asset was created/updated/deleted.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "CHANGE_TYPE_UNSPECIFIED",
+            "CREATED",
+            "UPDATED",
+            "DELETED"
+          ],
+          "enumDescriptions": [
+            "Unspecified or default.",
+            "Newly created Asset",
+            "Asset was updated.",
+            "Asset was deleted."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -404,6 +1020,47 @@
             "additionalProperties": null,
             "items": null
           },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SecurityMarks": {
+      "id": "SecurityMarks",
+      "description": "User specified security marks that are attached to the parent Security\nCommand Center resource. Security marks are scoped within a Security Command\nCenter organization -- they can be modified and viewed by all users who have\nproper permissions on the organization.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "marks": {
+          "description": "Mutable user specified security marks belonging to the parent resource.\nConstraints are as follows:\n\n  * Keys and values are treated as case insensitive\n  * Keys must be between 1 - 256 characters (inclusive)\n  * Keys must be letters, numbers, underscores, or dashes\n  * Values have leading and trailing whitespace trimmed, remaining\n    characters must be between 1 - 4096 characters (inclusive)",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "name": {
+          "description": "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
           "items": null
         }
       },

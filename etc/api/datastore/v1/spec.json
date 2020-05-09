@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190804",
+  "revision": "20200405",
   "title": "Cloud Datastore API",
   "description": "Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.\n",
   "ownerDomain": "google.com",
@@ -219,7 +219,7 @@
       "enumDescriptions": [],
       "properties": {
         "keys": {
-          "description": "A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only.",
+          "description": "Required. A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -761,7 +761,7 @@
           "items": null
         },
         "outputUrlPrefix": {
-          "description": "Location for the export metadata and data files.\n\nThe full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So output_url_prefix should be of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the\nname of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud\nStorage namespace path (this is not a Cloud Datastore namespace). For more\ninformation about Cloud Storage namespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nThe resulting files will be nested deeper than the specified URL prefix.\nThe final output URL will be provided in the\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url field. That\nvalue should be used for subsequent ImportEntities operations.\n\nBy nesting the data files deeper, the same Cloud Storage bucket can be used\nin multiple ExportEntities operations without conflict.",
+          "description": "Required. Location for the export metadata and data files.\n\nThe full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So output_url_prefix should be of the\nform: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the\nname of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud\nStorage namespace path (this is not a Cloud Datastore namespace). For more\ninformation about Cloud Storage namespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nThe resulting files will be nested deeper than the specified URL prefix.\nThe final output URL will be provided in the\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url field. That\nvalue should be used for subsequent ImportEntities operations.\n\nBy nesting the data files deeper, the same Cloud Storage bucket can be used\nin multiple ExportEntities operations without conflict.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -847,7 +847,7 @@
           "$ref": "GoogleDatastoreAdminV1EntityFilter"
         },
         "inputUrl": {
-          "description": "The full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So input_url should be of the form:\n`gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where\n`BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is\nan optional Cloud Storage namespace path (this is not a Cloud Datastore\nnamespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written\nby the ExportEntities operation. For more information about Cloud Storage\nnamespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nFor more information, see\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url.",
+          "description": "Required. The full resource URL of the external storage location. Currently, only\nGoogle Cloud Storage is supported. So input_url should be of the form:\n`gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where\n`BUCKET_NAME` is the name of the Cloud Storage bucket, `NAMESPACE_PATH` is\nan optional Cloud Storage namespace path (this is not a Cloud Datastore\nnamespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written\nby the ExportEntities operation. For more information about Cloud Storage\nnamespace paths, see\n[Object name\nconsiderations](https://cloud.google.com/storage/docs/naming#object-considerations).\n\nFor more information, see\ngoogle.datastore.admin.v1.ExportEntitiesResponse.output_url.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -888,7 +888,7 @@
       "enumDescriptions": [],
       "properties": {
         "ancestor": {
-          "description": "The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.\nRequired.",
+          "description": "Required. The index's ancestor mode.  Must not be ANCESTOR_MODE_UNSPECIFIED.",
           "type": "string",
           "format": null,
           "enum": [
@@ -906,7 +906,7 @@
           "items": null
         },
         "indexId": {
-          "description": "The resource ID of the index.\nOutput only.",
+          "description": "Output only. The resource ID of the index.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -916,7 +916,7 @@
           "items": null
         },
         "kind": {
-          "description": "The entity kind to which this index applies.\nRequired.",
+          "description": "Required. The entity kind to which this index applies.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -926,7 +926,7 @@
           "items": null
         },
         "projectId": {
-          "description": "Project ID.\nOutput only.",
+          "description": "Output only. Project ID.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -936,7 +936,7 @@
           "items": null
         },
         "properties": {
-          "description": "An ordered sequence of property names and their index attributes.\nRequired.",
+          "description": "Required. An ordered sequence of property names and their index attributes.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -948,7 +948,7 @@
           }
         },
         "state": {
-          "description": "The state of the index.\nOutput only.",
+          "description": "Output only. The state of the index.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1012,7 +1012,7 @@
       "enumDescriptions": [],
       "properties": {
         "direction": {
-          "description": "The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.\nRequired.",
+          "description": "Required. The indexed property's direction.  Must not be DIRECTION_UNSPECIFIED.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1030,7 +1030,7 @@
           "items": null
         },
         "name": {
-          "description": "The property name to index.\nRequired.",
+          "description": "Required. The property name to index.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1666,7 +1666,7 @@
       "enumDescriptions": [],
       "properties": {
         "keys": {
-          "description": "Keys of entities to look up.",
+          "description": "Required. Keys of entities to look up.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2301,7 +2301,7 @@
           "items": null
         },
         "keys": {
-          "description": "A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated.",
+          "description": "Required. A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2336,7 +2336,7 @@
       "enumDescriptions": [],
       "properties": {
         "transaction": {
-          "description": "The transaction identifier, returned by a call to\nDatastore.BeginTransaction.",
+          "description": "Required. The transaction identifier, returned by a call to\nDatastore.BeginTransaction.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -2616,6 +2616,99 @@
         "indexes": {
           "resources": {},
           "methods": {
+            "create": {
+              "id": "datastore.projects.indexes.create",
+              "path": "v1/projects/{projectId}/indexes",
+              "httpMethod": "POST",
+              "description": "Creates the specified index.\nA newly created index's initial state is `CREATING`. On completion of the\nreturned google.longrunning.Operation, the state will be `READY`.\nIf the index already exists, the call will return an `ALREADY_EXISTS`\nstatus.\n\nDuring index creation, the process could result in an error, in which\ncase the index will move to the `ERROR` state. The process can be recovered\nby fixing the data that caused the error, removing the index with\ndelete, then\nre-creating the index with create.\n\nIndexes with a single property cannot be created.",
+              "parameters": {
+                "projectId": {
+                  "description": "Project ID against which to make the request.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "projectId"
+              ],
+              "request": {
+                "$ref": "GoogleDatastoreAdminV1Index"
+              },
+              "response": {
+                "$ref": "GoogleLongrunningOperation"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/datastore"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "datastore.projects.indexes.delete",
+              "path": "v1/projects/{projectId}/indexes/{indexId}",
+              "httpMethod": "DELETE",
+              "description": "Deletes an existing index.\nAn index can only be deleted if it is in a `READY` or `ERROR` state. On\nsuccessful execution of the request, the index will be in a `DELETING`\nstate. And on completion of the\nreturned google.longrunning.Operation, the index will be removed.\n\nDuring index deletion, the process could result in an error, in which\ncase the index will move to the `ERROR` state. The process can be recovered\nby fixing the data that caused the error, followed by calling\ndelete again.",
+              "parameters": {
+                "indexId": {
+                  "description": "The resource ID of the index to delete.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "projectId": {
+                  "description": "Project ID against which to make the request.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "projectId",
+                "indexId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleLongrunningOperation"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/datastore"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
             "get": {
               "id": "datastore.projects.indexes.get",
               "path": "v1/projects/{projectId}/indexes/{indexId}",
@@ -2959,7 +3052,7 @@
           "description": "Allocates IDs for the given keys, which is useful for referencing an entity\nbefore it is inserted.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -2999,7 +3092,7 @@
           "description": "Begins a new transaction.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3039,7 +3132,7 @@
           "description": "Commits a transaction, optionally creating, deleting or modifying some\nentities.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3079,7 +3172,7 @@
           "description": "Exports a copy of all or a subset of entities from Google Cloud Datastore\nto another storage system, such as Google Cloud Storage. Recent updates to\nentities may not be reflected in the export. The export occurs in the\nbackground and its progress can be monitored and managed via the\nOperation resource that is created. The output of an export may only be\nused once the associated operation is done. If an export operation is\ncancelled before completion it may leave partial data behind in Google\nCloud Storage.",
           "parameters": {
             "projectId": {
-              "description": "Project ID against which to make the request.",
+              "description": "Required. Project ID against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3119,7 +3212,7 @@
           "description": "Imports entities into Google Cloud Datastore. Existing entities with the\nsame key are overwritten. The import occurs in the background and its\nprogress can be monitored and managed via the Operation resource that is\ncreated. If an ImportEntities operation is cancelled, it is possible\nthat a subset of the data has already been imported to Cloud Datastore.",
           "parameters": {
             "projectId": {
-              "description": "Project ID against which to make the request.",
+              "description": "Required. Project ID against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3159,7 +3252,7 @@
           "description": "Looks up entities by key.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3199,7 +3292,7 @@
           "description": "Prevents the supplied keys' IDs from being auto-allocated by Cloud\nDatastore.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3239,7 +3332,7 @@
           "description": "Rolls back a transaction.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,
@@ -3279,7 +3372,7 @@
           "description": "Queries for entities.",
           "parameters": {
             "projectId": {
-              "description": "The ID of the project against which to make the request.",
+              "description": "Required. The ID of the project against which to make the request.",
               "default": null,
               "location": "path",
               "required": true,

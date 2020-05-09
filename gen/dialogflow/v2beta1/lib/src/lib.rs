@@ -1,5 +1,45 @@
-#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*agent_method*](resources/projects/struct.AgentMethodRequestBuilder.html), [*deleteAgent*](resources/projects/struct.DeleteAgentRequestBuilder.html), [*getAgent*](resources/projects/struct.GetAgentRequestBuilder.html)\n      * [agent](resources/projects/agent/struct.AgentActions.html)\n        * [*export*](resources/projects/agent/struct.ExportRequestBuilder.html), [*getValidationResult*](resources/projects/agent/struct.GetValidationResultRequestBuilder.html), [*import*](resources/projects/agent/struct.ImportRequestBuilder.html), [*restore*](resources/projects/agent/struct.RestoreRequestBuilder.html), [*search*](resources/projects/agent/struct.SearchRequestBuilder.html), [*train*](resources/projects/agent/struct.TrainRequestBuilder.html)\n        * [entity_types](resources/projects/agent/entity_types/struct.EntityTypesActions.html)\n          * [*batchDelete*](resources/projects/agent/entity_types/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/agent/entity_types/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/agent/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/entity_types/struct.PatchRequestBuilder.html)\n          * [entities](resources/projects/agent/entity_types/entities/struct.EntitiesActions.html)\n            * [*batchCreate*](resources/projects/agent/entity_types/entities/struct.BatchCreateRequestBuilder.html), [*batchDelete*](resources/projects/agent/entity_types/entities/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/agent/entity_types/entities/struct.BatchUpdateRequestBuilder.html)\n        * [environments](resources/projects/agent/environments/struct.EnvironmentsActions.html)\n          * [users](resources/projects/agent/environments/users/struct.UsersActions.html)\n            * [sessions](resources/projects/agent/environments/users/sessions/struct.SessionsActions.html)\n              * [*deleteContexts*](resources/projects/agent/environments/users/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/agent/environments/users/sessions/struct.DetectIntentRequestBuilder.html)\n              * [contexts](resources/projects/agent/environments/users/sessions/contexts/struct.ContextsActions.html)\n                * [*create*](resources/projects/agent/environments/users/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/environments/users/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/environments/users/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/environments/users/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/environments/users/sessions/contexts/struct.PatchRequestBuilder.html)\n              * [entity_types](resources/projects/agent/environments/users/sessions/entity_types/struct.EntityTypesActions.html)\n                * [*create*](resources/projects/agent/environments/users/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/environments/users/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/environments/users/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/environments/users/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/environments/users/sessions/entity_types/struct.PatchRequestBuilder.html)\n        * [intents](resources/projects/agent/intents/struct.IntentsActions.html)\n          * [*batchDelete*](resources/projects/agent/intents/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/agent/intents/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/agent/intents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/intents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/intents/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/intents/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/intents/struct.PatchRequestBuilder.html)\n        * [knowledge_bases](resources/projects/agent/knowledge_bases/struct.KnowledgeBasesActions.html)\n          * [*create*](resources/projects/agent/knowledge_bases/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/knowledge_bases/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/knowledge_bases/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/knowledge_bases/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/knowledge_bases/struct.PatchRequestBuilder.html)\n          * [documents](resources/projects/agent/knowledge_bases/documents/struct.DocumentsActions.html)\n            * [*create*](resources/projects/agent/knowledge_bases/documents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/knowledge_bases/documents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/knowledge_bases/documents/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/knowledge_bases/documents/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/knowledge_bases/documents/struct.PatchRequestBuilder.html), [*reload*](resources/projects/agent/knowledge_bases/documents/struct.ReloadRequestBuilder.html)\n        * [sessions](resources/projects/agent/sessions/struct.SessionsActions.html)\n          * [*deleteContexts*](resources/projects/agent/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/agent/sessions/struct.DetectIntentRequestBuilder.html)\n          * [contexts](resources/projects/agent/sessions/contexts/struct.ContextsActions.html)\n            * [*create*](resources/projects/agent/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/sessions/contexts/struct.PatchRequestBuilder.html)\n          * [entity_types](resources/projects/agent/sessions/entity_types/struct.EntityTypesActions.html)\n            * [*create*](resources/projects/agent/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/sessions/entity_types/struct.PatchRequestBuilder.html)\n      * [knowledge_bases](resources/projects/knowledge_bases/struct.KnowledgeBasesActions.html)\n        * [*create*](resources/projects/knowledge_bases/struct.CreateRequestBuilder.html), [*delete*](resources/projects/knowledge_bases/struct.DeleteRequestBuilder.html), [*get*](resources/projects/knowledge_bases/struct.GetRequestBuilder.html), [*list*](resources/projects/knowledge_bases/struct.ListRequestBuilder.html), [*patch*](resources/projects/knowledge_bases/struct.PatchRequestBuilder.html)\n        * [documents](resources/projects/knowledge_bases/documents/struct.DocumentsActions.html)\n          * [*create*](resources/projects/knowledge_bases/documents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/knowledge_bases/documents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/knowledge_bases/documents/struct.GetRequestBuilder.html), [*list*](resources/projects/knowledge_bases/documents/struct.ListRequestBuilder.html), [*patch*](resources/projects/knowledge_bases/documents/struct.PatchRequestBuilder.html), [*reload*](resources/projects/knowledge_bases/documents/struct.ReloadRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*agent_method*](resources/projects/locations/struct.AgentMethodRequestBuilder.html), [*deleteAgent*](resources/projects/locations/struct.DeleteAgentRequestBuilder.html), [*getAgent*](resources/projects/locations/struct.GetAgentRequestBuilder.html)\n        * [agent](resources/projects/locations/agent/struct.AgentActions.html)\n          * [*export*](resources/projects/locations/agent/struct.ExportRequestBuilder.html), [*import*](resources/projects/locations/agent/struct.ImportRequestBuilder.html), [*restore*](resources/projects/locations/agent/struct.RestoreRequestBuilder.html), [*train*](resources/projects/locations/agent/struct.TrainRequestBuilder.html)\n          * [entity_types](resources/projects/locations/agent/entity_types/struct.EntityTypesActions.html)\n            * [*batchDelete*](resources/projects/locations/agent/entity_types/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/locations/agent/entity_types/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/locations/agent/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/entity_types/struct.PatchRequestBuilder.html)\n            * [entities](resources/projects/locations/agent/entity_types/entities/struct.EntitiesActions.html)\n              * [*batchCreate*](resources/projects/locations/agent/entity_types/entities/struct.BatchCreateRequestBuilder.html), [*batchDelete*](resources/projects/locations/agent/entity_types/entities/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/locations/agent/entity_types/entities/struct.BatchUpdateRequestBuilder.html)\n          * [environments](resources/projects/locations/agent/environments/struct.EnvironmentsActions.html)\n            * [users](resources/projects/locations/agent/environments/users/struct.UsersActions.html)\n              * [sessions](resources/projects/locations/agent/environments/users/sessions/struct.SessionsActions.html)\n                * [*deleteContexts*](resources/projects/locations/agent/environments/users/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/locations/agent/environments/users/sessions/struct.DetectIntentRequestBuilder.html)\n                * [contexts](resources/projects/locations/agent/environments/users/sessions/contexts/struct.ContextsActions.html)\n                  * [*create*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.PatchRequestBuilder.html)\n                * [entity_types](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.EntityTypesActions.html)\n                  * [*create*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.PatchRequestBuilder.html)\n          * [intents](resources/projects/locations/agent/intents/struct.IntentsActions.html)\n            * [*batchDelete*](resources/projects/locations/agent/intents/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/locations/agent/intents/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/locations/agent/intents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/intents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/intents/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/intents/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/intents/struct.PatchRequestBuilder.html)\n          * [sessions](resources/projects/locations/agent/sessions/struct.SessionsActions.html)\n            * [*deleteContexts*](resources/projects/locations/agent/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/locations/agent/sessions/struct.DetectIntentRequestBuilder.html)\n            * [contexts](resources/projects/locations/agent/sessions/contexts/struct.ContextsActions.html)\n              * [*create*](resources/projects/locations/agent/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/sessions/contexts/struct.PatchRequestBuilder.html)\n            * [entity_types](resources/projects/locations/agent/sessions/entity_types/struct.EntityTypesActions.html)\n              * [*create*](resources/projects/locations/agent/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/sessions/entity_types/struct.PatchRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*deleteAgent*](resources/projects/struct.DeleteAgentRequestBuilder.html), [*getAgent*](resources/projects/struct.GetAgentRequestBuilder.html), [*setAgent*](resources/projects/struct.SetAgentRequestBuilder.html)\n      * [agent](resources/projects/agent/struct.AgentActions.html)\n        * [*export*](resources/projects/agent/struct.ExportRequestBuilder.html), [*getFulfillment*](resources/projects/agent/struct.GetFulfillmentRequestBuilder.html), [*getValidationResult*](resources/projects/agent/struct.GetValidationResultRequestBuilder.html), [*import*](resources/projects/agent/struct.ImportRequestBuilder.html), [*restore*](resources/projects/agent/struct.RestoreRequestBuilder.html), [*search*](resources/projects/agent/struct.SearchRequestBuilder.html), [*train*](resources/projects/agent/struct.TrainRequestBuilder.html), [*updateFulfillment*](resources/projects/agent/struct.UpdateFulfillmentRequestBuilder.html)\n        * [entity_types](resources/projects/agent/entity_types/struct.EntityTypesActions.html)\n          * [*batchDelete*](resources/projects/agent/entity_types/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/agent/entity_types/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/agent/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/entity_types/struct.PatchRequestBuilder.html)\n          * [entities](resources/projects/agent/entity_types/entities/struct.EntitiesActions.html)\n            * [*batchCreate*](resources/projects/agent/entity_types/entities/struct.BatchCreateRequestBuilder.html), [*batchDelete*](resources/projects/agent/entity_types/entities/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/agent/entity_types/entities/struct.BatchUpdateRequestBuilder.html)\n        * [environments](resources/projects/agent/environments/struct.EnvironmentsActions.html)\n          * [*list*](resources/projects/agent/environments/struct.ListRequestBuilder.html)\n          * [users](resources/projects/agent/environments/users/struct.UsersActions.html)\n            * [sessions](resources/projects/agent/environments/users/sessions/struct.SessionsActions.html)\n              * [*deleteContexts*](resources/projects/agent/environments/users/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/agent/environments/users/sessions/struct.DetectIntentRequestBuilder.html)\n              * [contexts](resources/projects/agent/environments/users/sessions/contexts/struct.ContextsActions.html)\n                * [*create*](resources/projects/agent/environments/users/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/environments/users/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/environments/users/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/environments/users/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/environments/users/sessions/contexts/struct.PatchRequestBuilder.html)\n              * [entity_types](resources/projects/agent/environments/users/sessions/entity_types/struct.EntityTypesActions.html)\n                * [*create*](resources/projects/agent/environments/users/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/environments/users/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/environments/users/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/environments/users/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/environments/users/sessions/entity_types/struct.PatchRequestBuilder.html)\n        * [intents](resources/projects/agent/intents/struct.IntentsActions.html)\n          * [*batchDelete*](resources/projects/agent/intents/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/agent/intents/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/agent/intents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/intents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/intents/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/intents/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/intents/struct.PatchRequestBuilder.html)\n        * [knowledge_bases](resources/projects/agent/knowledge_bases/struct.KnowledgeBasesActions.html)\n          * [*create*](resources/projects/agent/knowledge_bases/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/knowledge_bases/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/knowledge_bases/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/knowledge_bases/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/knowledge_bases/struct.PatchRequestBuilder.html)\n          * [documents](resources/projects/agent/knowledge_bases/documents/struct.DocumentsActions.html)\n            * [*create*](resources/projects/agent/knowledge_bases/documents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/knowledge_bases/documents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/knowledge_bases/documents/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/knowledge_bases/documents/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/knowledge_bases/documents/struct.PatchRequestBuilder.html), [*reload*](resources/projects/agent/knowledge_bases/documents/struct.ReloadRequestBuilder.html)\n        * [sessions](resources/projects/agent/sessions/struct.SessionsActions.html)\n          * [*deleteContexts*](resources/projects/agent/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/agent/sessions/struct.DetectIntentRequestBuilder.html)\n          * [contexts](resources/projects/agent/sessions/contexts/struct.ContextsActions.html)\n            * [*create*](resources/projects/agent/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/sessions/contexts/struct.PatchRequestBuilder.html)\n          * [entity_types](resources/projects/agent/sessions/entity_types/struct.EntityTypesActions.html)\n            * [*create*](resources/projects/agent/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/agent/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/agent/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/agent/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/agent/sessions/entity_types/struct.PatchRequestBuilder.html)\n      * [knowledge_bases](resources/projects/knowledge_bases/struct.KnowledgeBasesActions.html)\n        * [*create*](resources/projects/knowledge_bases/struct.CreateRequestBuilder.html), [*delete*](resources/projects/knowledge_bases/struct.DeleteRequestBuilder.html), [*get*](resources/projects/knowledge_bases/struct.GetRequestBuilder.html), [*list*](resources/projects/knowledge_bases/struct.ListRequestBuilder.html), [*patch*](resources/projects/knowledge_bases/struct.PatchRequestBuilder.html)\n        * [documents](resources/projects/knowledge_bases/documents/struct.DocumentsActions.html)\n          * [*create*](resources/projects/knowledge_bases/documents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/knowledge_bases/documents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/knowledge_bases/documents/struct.GetRequestBuilder.html), [*list*](resources/projects/knowledge_bases/documents/struct.ListRequestBuilder.html), [*patch*](resources/projects/knowledge_bases/documents/struct.PatchRequestBuilder.html), [*reload*](resources/projects/knowledge_bases/documents/struct.ReloadRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*deleteAgent*](resources/projects/locations/struct.DeleteAgentRequestBuilder.html), [*getAgent*](resources/projects/locations/struct.GetAgentRequestBuilder.html), [*setAgent*](resources/projects/locations/struct.SetAgentRequestBuilder.html)\n        * [agent](resources/projects/locations/agent/struct.AgentActions.html)\n          * [*export*](resources/projects/locations/agent/struct.ExportRequestBuilder.html), [*fulfillment*](resources/projects/locations/agent/struct.FulfillmentRequestBuilder.html), [*getFulfillment*](resources/projects/locations/agent/struct.GetFulfillmentRequestBuilder.html), [*import*](resources/projects/locations/agent/struct.ImportRequestBuilder.html), [*restore*](resources/projects/locations/agent/struct.RestoreRequestBuilder.html), [*train*](resources/projects/locations/agent/struct.TrainRequestBuilder.html)\n          * [entity_types](resources/projects/locations/agent/entity_types/struct.EntityTypesActions.html)\n            * [*batchDelete*](resources/projects/locations/agent/entity_types/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/locations/agent/entity_types/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/locations/agent/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/entity_types/struct.PatchRequestBuilder.html)\n            * [entities](resources/projects/locations/agent/entity_types/entities/struct.EntitiesActions.html)\n              * [*batchCreate*](resources/projects/locations/agent/entity_types/entities/struct.BatchCreateRequestBuilder.html), [*batchDelete*](resources/projects/locations/agent/entity_types/entities/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/locations/agent/entity_types/entities/struct.BatchUpdateRequestBuilder.html)\n          * [environments](resources/projects/locations/agent/environments/struct.EnvironmentsActions.html)\n            * [*list*](resources/projects/locations/agent/environments/struct.ListRequestBuilder.html)\n            * [users](resources/projects/locations/agent/environments/users/struct.UsersActions.html)\n              * [sessions](resources/projects/locations/agent/environments/users/sessions/struct.SessionsActions.html)\n                * [*deleteContexts*](resources/projects/locations/agent/environments/users/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/locations/agent/environments/users/sessions/struct.DetectIntentRequestBuilder.html)\n                * [contexts](resources/projects/locations/agent/environments/users/sessions/contexts/struct.ContextsActions.html)\n                  * [*create*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/environments/users/sessions/contexts/struct.PatchRequestBuilder.html)\n                * [entity_types](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.EntityTypesActions.html)\n                  * [*create*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/environments/users/sessions/entity_types/struct.PatchRequestBuilder.html)\n          * [intents](resources/projects/locations/agent/intents/struct.IntentsActions.html)\n            * [*batchDelete*](resources/projects/locations/agent/intents/struct.BatchDeleteRequestBuilder.html), [*batchUpdate*](resources/projects/locations/agent/intents/struct.BatchUpdateRequestBuilder.html), [*create*](resources/projects/locations/agent/intents/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/intents/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/intents/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/intents/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/intents/struct.PatchRequestBuilder.html)\n          * [sessions](resources/projects/locations/agent/sessions/struct.SessionsActions.html)\n            * [*deleteContexts*](resources/projects/locations/agent/sessions/struct.DeleteContextsRequestBuilder.html), [*detectIntent*](resources/projects/locations/agent/sessions/struct.DetectIntentRequestBuilder.html)\n            * [contexts](resources/projects/locations/agent/sessions/contexts/struct.ContextsActions.html)\n              * [*create*](resources/projects/locations/agent/sessions/contexts/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/sessions/contexts/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/sessions/contexts/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/sessions/contexts/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/sessions/contexts/struct.PatchRequestBuilder.html)\n            * [entity_types](resources/projects/locations/agent/sessions/entity_types/struct.EntityTypesActions.html)\n              * [*create*](resources/projects/locations/agent/sessions/entity_types/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/agent/sessions/entity_types/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/agent/sessions/entity_types/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/agent/sessions/entity_types/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/agent/sessions/entity_types/struct.PatchRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/projects/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View, manage and query your Dialogflow agents\n\n`https://www.googleapis.com/auth/dialogflow`"]
+    pub const DIALOGFLOW: &str = "https://www.googleapis.com/auth/dialogflow";
+}
 pub mod schemas {
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2AnnotatedMessagePart {
+        #[doc = "The [Dialogflow system entity\ntype](https://cloud.google.com/dialogflow/docs/reference/system-entities)\nof this message part. If this is empty, Dialogflow could not annotate the\nphrase part with a system entity."]
+        #[serde(
+            rename = "entityType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity_type: ::std::option::Option<String>,
+        #[doc = "The [Dialogflow system entity formatted value\n](https://cloud.google.com/dialogflow/docs/reference/system-entities) of\nthis message part. For example for a system entity of type\n`@sys.unit-currency`, this may contain:\n\n<pre>\n{\n  \"amount\": 5,\n  \"currency\": \"USD\"\n}\n</pre>"]
+        #[serde(
+            rename = "formattedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formatted_value: ::std::option::Option<::serde_json::Value>,
+        #[doc = "A part of a message possibly annotated with an entity."]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2AnnotatedMessagePart {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2AnnotatedMessagePart {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -256,7 +296,7 @@ pub mod schemas {
     pub enum GoogleCloudDialogflowV2Beta1AgentMatchMode {
         #[doc = "Best for agents with a small number of examples in intents and/or wide\nuse of templates syntax and composite entities."]
         MatchModeHybrid,
-        #[doc = "Can be used for agents with a large number of examples in intents,\nespecially the ones using @sys.any or very large developer entities."]
+        #[doc = "Can be used for agents with a large number of examples in intents,\nespecially the ones using @sys.any or very large custom entities."]
         MatchModeMlOnly,
         #[doc = "Not specified."]
         MatchModeUnspecified,
@@ -518,7 +558,7 @@ pub mod schemas {
         pub entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeEntity>,
         >,
-        #[doc = "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
         #[serde(
             rename = "languageCode",
             default,
@@ -553,14 +593,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1BatchDeleteEntitiesRequest {
-        #[doc = "Required. The canonical `values` of the entities to delete. Note that\nthese are not fully-qualified names, i.e. they don't start with\n`projects/<Project ID>`."]
+        #[doc = "Required. The reference `values` of the entities to delete. Note that\nthese are not fully-qualified names, i.e. they don't start with\n`projects/<Project ID>`."]
         #[serde(
             rename = "entityValues",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_values: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
         #[serde(
             rename = "languageCode",
             default,
@@ -663,7 +703,7 @@ pub mod schemas {
         pub entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeEntity>,
         >,
-        #[doc = "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
         #[serde(
             rename = "languageCode",
             default,
@@ -720,7 +760,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_type_batch_uri: ::std::option::Option<String>,
-        #[doc = "Optional. The language of entity synonyms defined in `entity_types`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
         #[serde(
             rename = "languageCode",
             default,
@@ -811,7 +851,7 @@ pub mod schemas {
         pub intent_view: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1BatchUpdateIntentsRequestIntentView,
         >,
-        #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intents`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
         #[serde(
             rename = "languageCode",
             default,
@@ -934,21 +974,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1Context {
-        #[doc = "Optional. The number of conversational query requests after which the\ncontext expires. If set to `0` (the default) the context expires\nimmediately. Contexts expire automatically after 20 minutes if there\nare no matching queries."]
+        #[doc = "Optional. The number of conversational query requests after which the\ncontext expires. The default is `0`. If set to `0`, the context expires\nimmediately. Contexts expire automatically after 20 minutes if there\nare no matching queries."]
         #[serde(
             rename = "lifespanCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub lifespan_count: ::std::option::Option<i32>,
-        #[doc = "Required. The unique identifier of the context. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,\nor `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session ID>/contexts/<Context ID>`.\n\nThe `Context ID` is always converted to lowercase, may only contain\ncharacters in a-zA-Z0-9_-% and may be at most 250 bytes long.\n\nIf `Environment ID` is not specified, we assume default 'draft'\nenvironment. If `User ID` is not specified, we assume default '-' user."]
+        #[doc = "Required. The unique identifier of the context. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,\nor `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session ID>/contexts/<Context ID>`.\n\nThe `Context ID` is always converted to lowercase, may only contain\ncharacters in a-zA-Z0-9_-% and may be at most 250 bytes long.\n\nIf `Environment ID` is not specified, we assume default 'draft'\nenvironment. If `User ID` is not specified, we assume default '-' user.\n\nThe following context names are reserved for internal use by Dialogflow.\nYou should not use these contexts or create contexts with these names:\n\n* `__system_counters__`\n* `*_id_dialog_context`\n* `*_dialog_params_size`"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of parameters associated with this context.\nRefer to [this\ndoc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)\nfor syntax."]
+        #[doc = "Optional. The collection of parameters associated with this context.\n\nDepending on your protocol or client library language, this is a\nmap, associative array, symbol table, dictionary, or JSON object\ncomposed of a collection of (MapKey, MapValue) pairs:\n\n* MapKey type: string\n* MapKey value: parameter name\n* MapValue type:\n  * If parameter's entity type is a composite entity: map\n  * Else: string or number, depending on parameter value type\n* MapValue value:\n  * If parameter's entity type is a composite entity:\n    map from composite entity property names to property values\n  * Else: parameter value"]
         #[serde(
             rename = "parameters",
             default,
@@ -969,14 +1009,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1DetectIntentRequest {
-        #[doc = "Optional. The natural language speech audio to be processed. This field\nshould be populated iff `query_input` is set to an input audio config.\nA single request can contain up to 1 minute of speech audio data."]
+        #[doc = "The natural language speech audio to be processed. This field\nshould be populated iff `query_input` is set to an input audio config.\nA single request can contain up to 1 minute of speech audio data."]
         #[serde(
             rename = "inputAudio",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_audio: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Optional. Instructs the speech synthesizer how to generate the output\naudio. If this field is not set and agent-level speech synthesizer is not\nconfigured, no output audio is generated."]
+        #[doc = "Instructs the speech synthesizer how to generate the output\naudio. If this field is not set and agent-level speech synthesizer is not\nconfigured, no output audio is generated."]
         #[serde(
             rename = "outputAudioConfig",
             default,
@@ -984,6 +1024,13 @@ pub mod schemas {
         )]
         pub output_audio_config:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1OutputAudioConfig>,
+        #[doc = "Mask for output_audio_config indicating which settings in this\nrequest-level config should override speech synthesizer settings defined at\nagent-level.\n\nIf unspecified or empty, output_audio_config replaces the agent-level\nconfig in its entirety."]
+        #[serde(
+            rename = "outputAudioConfigMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_audio_config_mask: ::std::option::Option<String>,
         #[doc = "Required. The input specification. It can be set to:\n\n1. an audio config\n   which instructs the speech recognizer how to process the speech audio,\n\n1. a conversational query in the form of text, or\n\n1. an event that specifies which intent to trigger."]
         #[serde(
             rename = "queryInput",
@@ -992,7 +1039,7 @@ pub mod schemas {
         )]
         pub query_input:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1QueryInput>,
-        #[doc = "Optional. The parameters of this query."]
+        #[doc = "The parameters of this query."]
         #[serde(
             rename = "queryParams",
             default,
@@ -1069,18 +1116,7 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1Document {
         #[doc = "The raw content of the document. This field is only permitted for\nEXTRACTIVE_QA and FAQ knowledge types.\nNote: This field is in the process of being deprecated, please use\nraw_content instead."]
         #[serde(
@@ -1103,6 +1139,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. If true, we try to automatically reload the document every day\n(at a time picked by the system). If false or unspecified, we don't try\nto automatically reload the document.\n\nCurrently you can only enable automatic reload for documents sourced from\na public url, see `source` field for the source types.\n\nReload status can be tracked in `latest_reload_status`. If a reload\nfails, we will keep the document unchanged.\n\nIf a reload fails with internal errors, the system will try to reload the\ndocument on the next day.\nIf a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the\nsystem will not try to reload the document anymore. You need to manually\nreload the document successfully by calling `ReloadDocument` and clear the\nerrors."]
+        #[serde(
+            rename = "enableAutoReload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_auto_reload: ::std::option::Option<bool>,
         #[doc = "Required. The knowledge type of document content."]
         #[serde(
             rename = "knowledgeTypes",
@@ -1112,6 +1155,14 @@ pub mod schemas {
         pub knowledge_types: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2Beta1DocumentKnowledgeTypesItems>,
         >,
+        #[doc = "Output only. The time and status of the latest reload.\nThis reload may have been triggered automatically or manually\nand may not have succeeded."]
+        #[serde(
+            rename = "latestReloadStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub latest_reload_status:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1DocumentReloadStatus>,
         #[doc = "Required. The MIME type of this document."]
         #[serde(
             rename = "mimeType",
@@ -1119,7 +1170,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mime_type: ::std::option::Option<String>,
-        #[doc = "The document resource name.\nThe name must be empty when creating a document.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>/documents/<Document ID>`."]
+        #[doc = "Optional. The document resource name.\nThe name must be empty when creating a document.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>/documents/<Document ID>`."]
         #[serde(
             rename = "name",
             default,
@@ -1201,6 +1252,33 @@ pub mod schemas {
     impl ::google_field_selector::ToFieldType
         for GoogleCloudDialogflowV2Beta1DocumentKnowledgeTypesItems
     {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2Beta1DocumentReloadStatus {
+        #[doc = "Output only. The status of a reload attempt or the initial load."]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status: ::std::option::Option<crate::schemas::GoogleRpcStatus>,
+        #[doc = "Output only. The time of a reload attempt.\nThis reload may have been triggered automatically or manually and may\nnot have succeeded."]
+        #[serde(
+            rename = "time",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1DocumentReloadStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1DocumentReloadStatus {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1339,9 +1417,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1EntityTypeKind {
-        #[doc = "List entity types contain a set of entries that do not map to canonical\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."]
+        #[doc = "List entity types contain a set of entries that do not map to reference\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."]
         KindList,
-        #[doc = "Map entity types allow mapping of a group of synonyms to a canonical\nvalue."]
+        #[doc = "Map entity types allow mapping of a group of synonyms to a reference\nvalue."]
         KindMap,
         #[doc = "Regexp entity types allow to specify regular expressions in entries\nvalues."]
         KindRegexp,
@@ -1472,7 +1550,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub synonyms: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The primary value associated with this entity entry.\nFor example, if the entity type is *vegetable*, the value could be\n*scallions*.\n\nFor `KIND_MAP` entity types:\n\n* A canonical value to be used in place of synonyms.\n\nFor `KIND_LIST` entity types:\n\n* A string that can contain references to other entity types (with or\n  without aliases)."]
+        #[doc = "Required. The primary value associated with this entity entry.\nFor example, if the entity type is *vegetable*, the value could be\n*scallions*.\n\nFor `KIND_MAP` entity types:\n\n* A reference value to be used in place of synonyms.\n\nFor `KIND_LIST` entity types:\n\n* A string that can contain references to other entity types (with or\n  without aliases)."]
         #[serde(
             rename = "value",
             default,
@@ -1486,6 +1564,155 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1EntityTypeEntity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1Environment {
+        #[doc = "Optional. The agent version loaded into this environment.\nFormat: `projects/<Project ID>/agent/versions/<Version ID>`."]
+        #[serde(
+            rename = "agentVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub agent_version: ::std::option::Option<String>,
+        #[doc = "Optional. The developer-provided description for this environment.\nThe maximum length is 500 characters. If exceeded, the request is rejected."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Output only. The unique identifier of this agent environment.\nFormat: `projects/<Project ID>/agent/environments/<Environment ID>`.\nFor Environment ID, \"-\" is reserved for 'draft' environment."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. The state of this environment. This field is read-only, i.e., it cannot be\nset by create and update methods."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1EnvironmentState>,
+        #[doc = "Output only. The last update time of this environment. This field is read-only, i.e., it\ncannot be set by create and update methods."]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1Environment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1Environment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2Beta1EnvironmentState {
+        #[doc = "Loading."]
+        Loading,
+        #[doc = "Running."]
+        Running,
+        #[doc = "Not specified. This value is not used."]
+        StateUnspecified,
+        #[doc = "Stopped."]
+        Stopped,
+    }
+    impl GoogleCloudDialogflowV2Beta1EnvironmentState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudDialogflowV2Beta1EnvironmentState::Loading => "LOADING",
+                GoogleCloudDialogflowV2Beta1EnvironmentState::Running => "RUNNING",
+                GoogleCloudDialogflowV2Beta1EnvironmentState::StateUnspecified => {
+                    "STATE_UNSPECIFIED"
+                }
+                GoogleCloudDialogflowV2Beta1EnvironmentState::Stopped => "STOPPED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2Beta1EnvironmentState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2Beta1EnvironmentState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2Beta1EnvironmentState, ()> {
+            Ok(match s {
+                "LOADING" => GoogleCloudDialogflowV2Beta1EnvironmentState::Loading,
+                "RUNNING" => GoogleCloudDialogflowV2Beta1EnvironmentState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2Beta1EnvironmentState::StateUnspecified
+                }
+                "STOPPED" => GoogleCloudDialogflowV2Beta1EnvironmentState::Stopped,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1EnvironmentState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1EnvironmentState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1EnvironmentState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "LOADING" => GoogleCloudDialogflowV2Beta1EnvironmentState::Loading,
+                "RUNNING" => GoogleCloudDialogflowV2Beta1EnvironmentState::Running,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2Beta1EnvironmentState::StateUnspecified
+                }
+                "STOPPED" => GoogleCloudDialogflowV2Beta1EnvironmentState::Stopped,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1EnvironmentState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1EnvironmentState {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1506,7 +1733,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of parameters associated with the event."]
+        #[doc = "The collection of parameters associated with the event.\n\nDepending on your protocol or client library language, this is a\nmap, associative array, symbol table, dictionary, or JSON object\ncomposed of a collection of (MapKey, MapValue) pairs:\n\n* MapKey type: string\n* MapKey value: parameter name\n* MapValue type:\n  * If parameter's entity type is a composite entity: map\n  * Else: string or number, depending on parameter value type\n* MapValue value:\n  * If parameter's entity type is a composite entity:\n    map from composite entity property names to property values\n  * Else: parameter value"]
         #[serde(
             rename = "parameters",
             default,
@@ -1569,7 +1796,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1ExportAgentResponse {
-        #[doc = "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer' \\\n  $(gcloud auth application-default print-access-token) \\\n  -H 'Accept: application/json'\n  --compressed \\\n  | grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n  | base64 --decode > &lt;agent zip file&gt;</pre>"]
+        #[doc = "Zip compressed raw byte content for agent."]
         #[serde(
             rename = "agentContent",
             default,
@@ -1590,6 +1817,244 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1ExportAgentResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1Fulfillment {
+        #[doc = "Optional. The human-readable name of the fulfillment, unique within the agent."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Optional. Whether fulfillment is enabled."]
+        #[serde(
+            rename = "enabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enabled: ::std::option::Option<bool>,
+        #[doc = "Optional. The field defines whether the fulfillment is enabled for certain features."]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub features: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1FulfillmentFeature>,
+        >,
+        #[doc = "Configuration for a generic web service."]
+        #[serde(
+            rename = "genericWebService",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub generic_web_service: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1FulfillmentGenericWebService,
+        >,
+        #[doc = "Required. The unique identifier of the fulfillment.\nFormat: `projects/<Project ID>/agent/fulfillment`."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1Fulfillment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1Fulfillment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1FulfillmentFeature {
+        #[doc = "The type of the feature that enabled for fulfillment."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2Beta1FulfillmentFeatureType,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1FulfillmentFeature {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1FulfillmentFeature {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        #[doc = "Fulfillment is enabled for SmallTalk."]
+        Smalltalk,
+        #[doc = "Feature type not specified."]
+        TypeUnspecified,
+    }
+    impl GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudDialogflowV2Beta1FulfillmentFeatureType::Smalltalk => "SMALLTALK",
+                GoogleCloudDialogflowV2Beta1FulfillmentFeatureType::TypeUnspecified => {
+                    "TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2Beta1FulfillmentFeatureType, ()> {
+            Ok(match s {
+                "SMALLTALK" => GoogleCloudDialogflowV2Beta1FulfillmentFeatureType::Smalltalk,
+                "TYPE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2Beta1FulfillmentFeatureType::TypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "SMALLTALK" => GoogleCloudDialogflowV2Beta1FulfillmentFeatureType::Smalltalk,
+                "TYPE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2Beta1FulfillmentFeatureType::TypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1FulfillmentFeatureType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1FulfillmentGenericWebService {
+        #[doc = "Optional. Indicates if generic web service is created through Cloud Functions\nintegration. Defaults to false."]
+        #[serde(
+            rename = "isCloudFunction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub is_cloud_function: ::std::option::Option<bool>,
+        #[doc = "Optional. The password for HTTP Basic authentication."]
+        #[serde(
+            rename = "password",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub password: ::std::option::Option<String>,
+        #[doc = "Optional. The HTTP request headers to send together with fulfillment requests."]
+        #[serde(
+            rename = "requestHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub request_headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "Required. The fulfillment URI for receiving POST requests.\nIt must use https protocol."]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub uri: ::std::option::Option<String>,
+        #[doc = "Optional. The user name for HTTP Basic authentication."]
+        #[serde(
+            rename = "username",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub username: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1FulfillmentGenericWebService
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2Beta1FulfillmentGenericWebService
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1638,7 +2103,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1ImportAgentRequest {
-        #[doc = "The agent to import.\n\nExample for how to import an agent via the command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:import'\\\n   -X POST \\\n   -H 'Authorization: Bearer'\\\n   $(gcloud auth application-default print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --data-binary \"{\n      'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>"]
+        #[doc = "Zip compressed raw byte content for agent."]
         #[serde(
             rename = "agentContent",
             default,
@@ -1676,7 +2141,7 @@ pub mod schemas {
         pub audio_encoding: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1InputAudioConfigAudioEncoding,
         >,
-        #[doc = "Optional. If `true`, Dialogflow returns SpeechWordInfo in\nStreamingRecognitionResult with information about the recognized speech\nwords, e.g. start and end time offsets. If false or unspecified, Speech\ndoesn't return any word-level information."]
+        #[doc = "If `true`, Dialogflow returns SpeechWordInfo in\nStreamingRecognitionResult with information about the recognized speech\nwords, e.g. start and end time offsets. If false or unspecified, Speech\ndoesn't return any word-level information."]
         #[serde(
             rename = "enableWordInfo",
             default,
@@ -1690,14 +2155,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "Optional. Which Speech model to select for the given request. Select the\nmodel best suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the InputAudioConfig.\nIf enhanced speech model is enabled for the agent and an enhanced\nversion of the specified model for the language does not exist, then the\nspeech is recognized using the standard version of the specified model.\nRefer to\n[Cloud Speech API\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)\nfor more details."]
+        #[doc = "Which Speech model to select for the given request. Select the\nmodel best suited to your domain to get best results. If a model is not\nexplicitly specified, then we auto-select a model based on the parameters\nin the InputAudioConfig.\nIf enhanced speech model is enabled for the agent and an enhanced\nversion of the specified model for the language does not exist, then the\nspeech is recognized using the standard version of the specified model.\nRefer to\n[Cloud Speech API\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)\nfor more details."]
         #[serde(
             rename = "model",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub model: ::std::option::Option<String>,
-        #[doc = "Optional. Which variant of the Speech model to use."]
+        #[doc = "Which variant of the Speech model to use."]
         #[serde(
             rename = "modelVariant",
             default,
@@ -1706,7 +2171,7 @@ pub mod schemas {
         pub model_variant: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1InputAudioConfigModelVariant,
         >,
-        #[doc = "Optional. A list of strings containing words and phrases that the speech\nrecognizer should recognize with higher likelihood.\n\nSee [the Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)\nfor more details."]
+        #[doc = "A list of strings containing words and phrases that the speech\nrecognizer should recognize with higher likelihood.\n\nSee [the Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)\nfor more details.\n\nThis field is deprecated. Please use [speech_contexts]() instead. If you\nspecify both [phrase_hints]() and [speech_contexts](), Dialogflow will\ntreat the [phrase_hints]() as a single additional [SpeechContext]()."]
         #[serde(
             rename = "phraseHints",
             default,
@@ -1720,14 +2185,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sample_rate_hertz: ::std::option::Option<i32>,
-        #[doc = "Optional. If `false` (default), recognition does not cease until the\nclient closes the stream.\nIf `true`, the recognizer will detect a single spoken utterance in input\naudio. Recognition ceases when it detects the audio's voice has\nstopped or paused. In this case, once a detected intent is received, the\nclient should close the stream and start a new request with a new stream as\nneeded.\nNote: This setting is relevant only for streaming methods.\nNote: When specified, InputAudioConfig.single_utterance takes precedence\nover StreamingDetectIntentRequest.single_utterance."]
+        #[doc = "If `false` (default), recognition does not cease until the\nclient closes the stream.\nIf `true`, the recognizer will detect a single spoken utterance in input\naudio. Recognition ceases when it detects the audio's voice has\nstopped or paused. In this case, once a detected intent is received, the\nclient should close the stream and start a new request with a new stream as\nneeded.\nNote: This setting is relevant only for streaming methods.\nNote: When specified, InputAudioConfig.single_utterance takes precedence\nover StreamingDetectIntentRequest.single_utterance."]
         #[serde(
             rename = "singleUtterance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub single_utterance: ::std::option::Option<bool>,
-        #[doc = "Optional. Context information to assist speech recognition.\n\nSee [the Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)\nfor more details."]
+        #[doc = "Context information to assist speech recognition.\n\nSee [the Cloud Speech\ndocumentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)\nfor more details."]
         #[serde(
             rename = "speechContexts",
             default,
@@ -1918,14 +2383,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_interaction: ::std::option::Option<bool>,
-        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent."]
+        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent.\nEvent names are limited to 150 characters."]
         #[serde(
             rename = "events",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub events: ::std::option::Option<Vec<String>>,
-        #[doc = "Read-only. Information about all followup intents that have this intent as\na direct or indirect parent. We populate this field only in the output."]
+        #[doc = "Output only. Information about all followup intents that have this intent as\na direct or indirect parent. We populate this field only in the output."]
         #[serde(
             rename = "followupIntentInfo",
             default,
@@ -1970,7 +2435,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ml_enabled: ::std::option::Option<bool>,
-        #[doc = "The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[doc = "Optional. The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
         #[serde(
             rename = "name",
             default,
@@ -1993,14 +2458,14 @@ pub mod schemas {
         )]
         pub parameters:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentParameter>>,
-        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or BatchUpdateIntents, in order to\nmake this intent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[doc = "Optional. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or\nBatchUpdateIntents, in order to make this\nintent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
         #[serde(
             rename = "parentFollowupIntentName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_followup_intent_name: ::std::option::Option<String>,
-        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities. If this is zero or unspecified, we use the default\npriority 500000.\n\nNegative numbers mean that the intent is disabled."]
+        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities.\n\n* If the supplied value is unspecified or 0, the service\n  translates the value to 500,000, which corresponds to the\n  `Normal` priority in the console.\n* If the supplied value is negative, the intent is ignored\n  in runtime detect intent requests."]
         #[serde(
             rename = "priority",
             default,
@@ -2014,7 +2479,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reset_contexts: ::std::option::Option<bool>,
-        #[doc = "Read-only. The unique identifier of the root intent in the chain of\nfollowup intents. It identifies the correct followup intents chain for\nthis intent. We populate this field only in the output.\n\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[doc = "Output only. The unique identifier of the root intent in the chain of\nfollowup intents. It identifies the correct followup intents chain for\nthis intent.\n\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
         #[serde(
             rename = "rootFollowupIntentName",
             default,
@@ -2315,7 +2780,7 @@ pub mod schemas {
         pub media_content: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageMediaContent,
         >,
-        #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
+        #[doc = "A custom platform-specific response."]
         #[serde(
             rename = "payload",
             default,
@@ -2442,7 +2907,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1IntentMessagePlatform {
-        #[doc = "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>"]
+        #[doc = "Google Assistant\nSee [Dialogflow webhook\nformat](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)"]
         ActionsOnGoogle,
         #[doc = "Facebook."]
         Facebook,
@@ -3281,6 +3746,13 @@ pub mod schemas {
         pub items: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessageListSelectItem>,
         >,
+        #[doc = "Optional. Subtitle of the list."]
+        #[serde(
+            rename = "subtitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub subtitle: ::std::option::Option<String>,
         #[doc = "Optional. The overall title of the list."]
         #[serde(
             rename = "title",
@@ -5218,6 +5690,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
+        #[doc = "Language which represents the KnowledgeBase. When the KnowledgeBase is\ncreated/updated, this is populated for all non en-us languages. If not\npopulated, the default language en-us applies."]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub language_code: ::std::option::Option<String>,
         #[doc = "The knowledge base resource name.\nThe name must be empty when creating a knowledge base.\nFormat: `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`."]
         #[serde(
             rename = "name",
@@ -5249,7 +5728,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1KnowledgeOperationMetadata {
-        #[doc = "Required. The current state of this operation."]
+        #[doc = "Required. Output only. The current state of this operation."]
         #[serde(
             rename = "state",
             default,
@@ -5434,18 +5913,7 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1ListDocumentsResponse {
         #[doc = "The list of documents."]
         #[serde(
@@ -5510,6 +5978,47 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1ListEntityTypesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse {
+        #[doc = "The list of agent environments. There will be a maximum number of items\nreturned based on the page_size field in the request."]
+        #[serde(
+            rename = "environments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub environments:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1Environment>>,
+        #[doc = "Token to retrieve the next page of results, or empty if there are no\nmore results in the list."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5630,7 +6139,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1OriginalDetectIntentRequest {
-        #[doc = "Optional. This field is set to the value of the `QueryParameters.payload`\nfield passed in the request. Some integrations that query a Dialogflow\nagent may provide additional information in the payload.\n\nIn particular for the Telephony Gateway this field has the form:\n\n<pre>{\n \"telephony\": {\n   \"caller_id\": \"+18558363987\"\n }\n}</pre>\n\nNote: The caller ID field (`caller_id`) will be redacted for Standard\nEdition agents and populated with the caller ID in [E.164\nformat](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents."]
+        #[doc = "Optional. This field is set to the value of the `QueryParameters.payload`\nfield passed in the request. Some integrations that query a Dialogflow\nagent may provide additional information in the payload.\n\nIn particular, for the Dialogflow Phone Gateway integration, this field has\nthe form:\n\n<pre>{\n \"telephony\": {\n   \"caller_id\": \"+18558363987\"\n }\n}</pre>\n\nNote: The caller ID field (`caller_id`) will be redacted for Standard\nEdition agents and populated with the caller ID in [E.164\nformat](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents."]
         #[serde(
             rename = "payload",
             default,
@@ -5680,14 +6189,14 @@ pub mod schemas {
         pub audio_encoding: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1OutputAudioConfigAudioEncoding,
         >,
-        #[doc = "Optional. The synthesis sample rate (in hertz) for this audio. If not\nprovided, then the synthesizer will use the default sample rate based on\nthe audio encoding. If this is different from the voice's natural sample\nrate, then the synthesizer will honor this request by converting to the\ndesired sample rate (which might result in worse audio quality)."]
+        #[doc = "The synthesis sample rate (in hertz) for this audio. If not\nprovided, then the synthesizer will use the default sample rate based on\nthe audio encoding. If this is different from the voice's natural sample\nrate, then the synthesizer will honor this request by converting to the\ndesired sample rate (which might result in worse audio quality)."]
         #[serde(
             rename = "sampleRateHertz",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sample_rate_hertz: ::std::option::Option<i32>,
-        #[doc = "Optional. Configuration of how speech should be synthesized."]
+        #[doc = "Configuration of how speech should be synthesized."]
         #[serde(
             rename = "synthesizeSpeechConfig",
             default,
@@ -5711,7 +6220,7 @@ pub mod schemas {
     pub enum GoogleCloudDialogflowV2Beta1OutputAudioConfigAudioEncoding {
         #[doc = "Uncompressed 16-bit signed little-endian samples (Linear PCM).\nAudio content returned as LINEAR16 also contains a WAV header."]
         OutputAudioEncodingLinear16,
-        #[doc = "MP3 audio."]
+        #[doc = "MP3 audio at 32kbps."]
         OutputAudioEncodingMp3,
         #[doc = "Opus encoded audio wrapped in an ogg container. The result will be a\nfile which can be played natively on Android, and in browsers (at least\nChrome and Firefox). The quality of the encoding is considerably higher\nthan MP3 while using approximately the same bitrate."]
         OutputAudioEncodingOggOpus,
@@ -5810,7 +6319,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Beta1QueryParameters {
-        #[doc = "Optional. The collection of contexts to be activated before this query is\nexecuted."]
+        #[doc = "The collection of contexts to be activated before this query is\nexecuted."]
         #[serde(
             rename = "contexts",
             default,
@@ -5818,21 +6327,21 @@ pub mod schemas {
         )]
         pub contexts:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1Context>>,
-        #[doc = "Optional. The geo location of this conversational query."]
+        #[doc = "The geo location of this conversational query."]
         #[serde(
             rename = "geoLocation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub geo_location: ::std::option::Option<crate::schemas::GoogleTypeLatLng>,
-        #[doc = "Optional. KnowledgeBases to get alternative results from. If not set, the\nKnowledgeBases enabled in the agent (through UI) will be used.\nFormat:  `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`."]
+        #[doc = "KnowledgeBases to get alternative results from. If not set, the\nKnowledgeBases enabled in the agent (through UI) will be used.\nFormat:  `projects/<Project ID>/knowledgeBases/<Knowledge Base ID>`."]
         #[serde(
             rename = "knowledgeBaseNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub knowledge_base_names: ::std::option::Option<Vec<String>>,
-        #[doc = "Optional. This field can be used to pass custom data into the webhook\nassociated with the agent. Arbitrary JSON objects are supported."]
+        #[doc = "This field can be used to pass custom data to your webhook.\nArbitrary JSON objects are supported.\nIf supplied, the value is used to populate the\n`WebhookRequest.original_detect_intent_request.payload`\nfield sent to your webhook."]
         #[serde(
             rename = "payload",
             default,
@@ -5840,14 +6349,14 @@ pub mod schemas {
         )]
         pub payload:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Optional. Specifies whether to delete all contexts in the current session\nbefore the new ones are activated."]
+        #[doc = "Specifies whether to delete all contexts in the current session\nbefore the new ones are activated."]
         #[serde(
             rename = "resetContexts",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reset_contexts: ::std::option::Option<bool>,
-        #[doc = "Optional. Configures the type of sentiment analysis to perform. If not\nprovided, sentiment analysis is not performed.\nNote: Sentiment Analysis is only currently available for Enterprise Edition\nagents."]
+        #[doc = "Configures the type of sentiment analysis to perform. If not\nprovided, sentiment analysis is not performed.\nNote: Sentiment Analysis is only currently available for Enterprise Edition\nagents."]
         #[serde(
             rename = "sentimentAnalysisRequestConfig",
             default,
@@ -5856,7 +6365,7 @@ pub mod schemas {
         pub sentiment_analysis_request_config: ::std::option::Option<
             crate::schemas::GoogleCloudDialogflowV2Beta1SentimentAnalysisRequestConfig,
         >,
-        #[doc = "Optional. Additional session entity types to replace or extend developer\nentity types with. The entity synonyms apply to all languages and persist\nfor the session of this query."]
+        #[doc = "Additional session entity types to replace or extend developer\nentity types with. The entity synonyms apply to all languages and persist\nfor the session of this query."]
         #[serde(
             rename = "sessionEntityTypes",
             default,
@@ -5865,13 +6374,28 @@ pub mod schemas {
         pub session_entity_types: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType>,
         >,
-        #[doc = "Optional. The time zone of this conversational query from the\n[time zone database](https://www.iana.org/time-zones), e.g.,\nAmerica/New_York, Europe/Paris. If not provided, the time zone specified in\nagent settings is used."]
+        #[doc = "For mega agent query, directly specify which sub agents to query.\nIf any specified sub agent is not linked to the mega agent, an error will\nbe returned. If empty, Dialogflow will decide which sub agents to query.\nIf specified for a non-mega-agent query, will be silently ignored."]
+        #[serde(
+            rename = "subAgents",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sub_agents:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1SubAgent>>,
+        #[doc = "The time zone of this conversational query from the\n[time zone database](https://www.iana.org/time-zones), e.g.,\nAmerica/New_York, Europe/Paris. If not provided, the time zone specified in\nagent settings is used."]
         #[serde(
             rename = "timeZone",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub time_zone: ::std::option::Option<String>,
+        #[doc = "This field can be used to pass HTTP headers for a webhook\ncall. These headers will be sent to webhook alone with the headers that\nhave been configured through Dialogflow web console. The headers defined\nwithin this field will overwrite the headers configured through Dialogflow\nconsole if there is a conflict. Header names are case-insensitive.\nGoogle's specified headers are not allowed. Including: \"Host\",\n\"Content-Length\", \"Connection\", \"From\", \"User-Agent\", \"Accept-Encoding\",\n\"If-Modified-Since\", \"If-None-Match\", \"X-Forwarded-For\", etc."]
+        #[serde(
+            rename = "webhookHeaders",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub webhook_headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1QueryParameters {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -5899,7 +6423,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub all_required_params_present: ::std::option::Option<bool>,
-        #[doc = "The free-form diagnostic info. For example, this field could contain\nwebhook call latency. The string keys of the Struct's fields map can change\nwithout notice."]
+        #[doc = "Free-form diagnostic information for the associated detect intent request.\nThe fields of this data can change without notice, so you should not write\ncode that depends on its structure.\nThe data may contain:\n\n* webhook call latency\n* webhook errors"]
         #[serde(
             rename = "diagnosticInfo",
             default,
@@ -5959,7 +6483,7 @@ pub mod schemas {
         )]
         pub output_contexts:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1Context>>,
-        #[doc = "The collection of extracted parameters."]
+        #[doc = "The collection of extracted parameters.\n\nDepending on your protocol or client library language, this is a\nmap, associative array, symbol table, dictionary, or JSON object\ncomposed of a collection of (MapKey, MapValue) pairs:\n\n* MapKey type: string\n* MapKey value: parameter name\n* MapValue type:\n  * If parameter's entity type is a composite entity: map\n  * Else: string or number, depending on parameter value type\n* MapValue value:\n  * If parameter's entity type is a composite entity:\n    map from composite entity property names to property values\n  * Else: parameter value"]
         #[serde(
             rename = "parameters",
             default,
@@ -6029,7 +6553,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1ReloadDocumentRequest {
-        #[doc = "The path of gcs source file for reloading document content."]
+        #[doc = "Optional. The path for a Cloud Storage source file for reloading document content.\nIf not provided, the Document's existing source will be reloaded."]
         #[serde(
             rename = "gcsSource",
             default,
@@ -6061,7 +6585,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1RestoreAgentRequest {
-        #[doc = "The agent to restore.\n\nExample for how to restore an agent via the command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/&lt;project_id&gt;/agent:restore'\\\n   -X POST \\\n   -H 'Authorization: Bearer' \\\n   $(gcloud auth application-default print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --data-binary \"{\n       'agentContent': '$(cat &lt;agent zip file&gt; | base64 -w 0)'\n   }\"</pre>"]
+        #[doc = "Zip compressed raw byte content for agent."]
         #[serde(
             rename = "agentContent",
             default,
@@ -6157,7 +6681,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1SentimentAnalysisRequestConfig {
-        #[doc = "Optional. Instructs the service to perform sentiment analysis on\n`query_text`. If not provided, sentiment analysis is not performed on\n`query_text`."]
+        #[doc = "Instructs the service to perform sentiment analysis on\n`query_text`. If not provided, sentiment analysis is not performed on\n`query_text`."]
         #[serde(
             rename = "analyzeQueryTextSentiment",
             default,
@@ -6226,7 +6750,7 @@ pub mod schemas {
         pub entities: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2Beta1EntityTypeEntity>,
         >,
-        #[doc = "Required. Indicates whether the additional data should override or\nsupplement the developer entity type definition."]
+        #[doc = "Required. Indicates whether the additional data should override or\nsupplement the custom entity type definition."]
         #[serde(
             rename = "entityOverrideMode",
             default,
@@ -6255,9 +6779,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2Beta1SessionEntityTypeEntityOverrideMode {
-        #[doc = "The collection of session entities overrides the collection of entities\nin the corresponding developer entity type."]
+        #[doc = "The collection of session entities overrides the collection of entities\nin the corresponding custom entity type."]
         EntityOverrideModeOverride,
-        #[doc = "The collection of session entities extends the collection of entities in\nthe corresponding developer entity type.\n\nNote: Even in this override mode calls to `ListSessionEntityTypes`,\n`GetSessionEntityType`, `CreateSessionEntityType` and\n`UpdateSessionEntityType` only return the additional entities added in\nthis session entity type. If you want to get the supplemented list,\nplease call EntityTypes.GetEntityType on the developer entity type\nand merge."]
+        #[doc = "The collection of session entities extends the collection of entities in\nthe corresponding custom entity type.\n\nNote: Even in this override mode calls to `ListSessionEntityTypes`,\n`GetSessionEntityType`, `CreateSessionEntityType` and\n`UpdateSessionEntityType` only return the additional entities added in\nthis session entity type. If you want to get the supplemented list,\nplease call EntityTypes.GetEntityType on the custom entity type\nand merge."]
         EntityOverrideModeSupplement,
         #[doc = "Not specified. This value should be never used."]
         EntityOverrideModeUnspecified,
@@ -6348,6 +6872,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1SpeechContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2Beta1SubAgent {
+        #[doc = "Optional. The unique identifier (`environment name` in dialogflow console)\nof this sub-agent environment. Assumes draft environment if `environment`\nis not set."]
+        #[serde(
+            rename = "environment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub environment: ::std::option::Option<String>,
+        #[doc = "Required. The project of this agent.\nFormat: `projects/<Project ID>`."]
+        #[serde(
+            rename = "project",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub project: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Beta1SubAgent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Beta1SubAgent {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -6654,7 +7216,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2Beta1VoiceSelectionParams {
-        #[doc = "Optional. The name of the voice. If not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
+        #[doc = "Optional. The name of the voice. If not set, the service will choose a\nvoice based on the other parameters such as language_code and\nssml_gender."]
         #[serde(
             rename = "name",
             default,
@@ -6808,7 +7370,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_interaction: ::std::option::Option<bool>,
-        #[doc = "Optional. Makes the platform immediately invoke another `DetectIntent` call\ninternally with the specified event as input.\nWhen this field is set, Dialogflow ignores the `fulfillment_text`,\n`fulfillment_messages`, and `payload` fields."]
+        #[doc = "Optional. Invokes the supplied events.\nWhen this field is set, Dialogflow ignores the `fulfillment_text`,\n`fulfillment_messages`, and `payload` fields."]
         #[serde(
             rename = "followupEventInput",
             default,
@@ -6816,7 +7378,7 @@ pub mod schemas {
         )]
         pub followup_event_input:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Beta1EventInput>,
-        #[doc = "Optional. The collection of rich messages to present to the user. This\nvalue is passed directly to `QueryResult.fulfillment_messages`."]
+        #[doc = "Optional. The rich response messages intended for the end-user.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.fulfillment_messages sent to the integration or API caller."]
         #[serde(
             rename = "fulfillmentMessages",
             default,
@@ -6824,14 +7386,14 @@ pub mod schemas {
         )]
         pub fulfillment_messages:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1IntentMessage>>,
-        #[doc = "Optional. The text to be shown on the screen. This value is passed directly\nto `QueryResult.fulfillment_text`."]
+        #[doc = "Optional. The text response message intended for the end-user.\nIt is recommended to use `fulfillment_messages.text.text[0]` instead.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.fulfillment_text sent to the integration or API caller."]
         #[serde(
             rename = "fulfillmentText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fulfillment_text: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of output contexts. This value is passed directly\nto `QueryResult.output_contexts`."]
+        #[doc = "Optional. The collection of output contexts that will overwrite currently\nactive contexts for the session and reset their lifespans.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.output_contexts sent to the integration or API caller."]
         #[serde(
             rename = "outputContexts",
             default,
@@ -6839,7 +7401,7 @@ pub mod schemas {
         )]
         pub output_contexts:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Beta1Context>>,
-        #[doc = "Optional. This value is passed directly to `QueryResult.webhook_payload`.\nSee the related `fulfillment_messages[i].payload field`, which may be used\nas an alternative to this field.\n\nThis field can be used for Actions on Google responses.\nIt should have a structure similar to the JSON message shown here. For more\ninformation, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"google\": {\n    \"expectUserResponse\": true,\n    \"richResponse\": {\n      \"items\": [\n        {\n          \"simpleResponse\": {\n            \"textToSpeech\": \"this is a simple response\"\n          }\n        }\n      ]\n    }\n  }\n}</pre>"]
+        #[doc = "Optional. This field can be used to pass custom data from your webhook to the\nintegration or API caller. Arbitrary JSON objects are supported.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.webhook_payload sent to the integration or API caller.\nThis field is also used by the\n[Google Assistant\nintegration](https://cloud.google.com/dialogflow/docs/integrations/aog)\nfor rich response messages.\nSee the format definition at [Google Assistant Dialogflow webhook\nformat](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)"]
         #[serde(
             rename = "payload",
             default,
@@ -6847,7 +7409,16 @@ pub mod schemas {
         )]
         pub payload:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Optional. This value is passed directly to `QueryResult.webhook_source`."]
+        #[doc = "Optional. Additional session entity types to replace or extend developer\nentity types with. The entity synonyms apply to all languages and persist\nfor the session. Setting this data from a webhook overwrites\nthe session entity types that have been set using `detectIntent`,\n`streamingDetectIntent` or SessionEntityType management methods."]
+        #[serde(
+            rename = "sessionEntityTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub session_entity_types: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType>,
+        >,
+        #[doc = "Optional. A custom field used to identify the webhook source.\nArbitrary strings are supported.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.webhook_source sent to the integration or API caller."]
         #[serde(
             rename = "source",
             default,
@@ -6867,21 +7438,21 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2Context {
-        #[doc = "Optional. The number of conversational query requests after which the\ncontext expires. If set to `0` (the default) the context expires\nimmediately. Contexts expire automatically after 20 minutes if there\nare no matching queries."]
+        #[doc = "Optional. The number of conversational query requests after which the\ncontext expires. The default is `0`. If set to `0`, the context expires\nimmediately. Contexts expire automatically after 20 minutes if there\nare no matching queries."]
         #[serde(
             rename = "lifespanCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub lifespan_count: ::std::option::Option<i32>,
-        #[doc = "Required. The unique identifier of the context. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`.\n\nThe `Context ID` is always converted to lowercase, may only contain\ncharacters in [a-zA-Z0-9_-%] and may be at most 250 bytes long."]
+        #[doc = "Required. The unique identifier of the context. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/contexts/<Context ID>`,\nor `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session ID>/contexts/<Context ID>`.\n\nThe `Context ID` is always converted to lowercase, may only contain\ncharacters in a-zA-Z0-9_-% and may be at most 250 bytes long.\n\nIf `Environment ID` is not specified, we assume default 'draft'\nenvironment. If `User ID` is not specified, we assume default '-' user.\n\nThe following context names are reserved for internal use by Dialogflow.\nYou should not use these contexts or create contexts with these names:\n\n* `__system_counters__`\n* `*_id_dialog_context`\n* `*_dialog_params_size`"]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of parameters associated with this context.\nRefer to [this\ndoc](https://cloud.google.com/dialogflow/docs/intents-actions-parameters)\nfor syntax."]
+        #[doc = "Optional. The collection of parameters associated with this context.\n\nDepending on your protocol or client library language, this is a\nmap, associative array, symbol table, dictionary, or JSON object\ncomposed of a collection of (MapKey, MapValue) pairs:\n\n* MapKey type: string\n* MapKey value: parameter name\n* MapValue type:\n  * If parameter's entity type is a composite entity: map\n  * Else: string or number, depending on parameter value type\n* MapValue value:\n  * If parameter's entity type is a composite entity:\n    map from composite entity property names to property values\n  * Else: parameter value"]
         #[serde(
             rename = "parameters",
             default,
@@ -6896,6 +7467,166 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Context {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2ConversationEvent {
+        #[doc = "The unique identifier of the conversation this notification\nrefers to.\nFormat: `projects/<Project ID>/conversations/<Conversation ID>`."]
+        #[serde(
+            rename = "conversation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub conversation: ::std::option::Option<String>,
+        #[doc = "More detailed information about an error. Only set for type\nUNRECOVERABLE_ERROR_IN_PHONE_CALL."]
+        #[serde(
+            rename = "errorStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub error_status: ::std::option::Option<crate::schemas::GoogleRpcStatus>,
+        #[doc = "Payload of NEW_MESSAGE event."]
+        #[serde(
+            rename = "newMessagePayload",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub new_message_payload:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2Message>,
+        #[doc = "The type of the event that this notification refers to."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2ConversationEventType>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2ConversationEvent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2ConversationEvent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2ConversationEventType {
+        #[doc = "An existing conversation has closed. This is fired when a telephone call\nis terminated, or a conversation is closed via the API."]
+        ConversationFinished,
+        #[doc = "A new conversation has been opened. This is fired when a telephone call\nis answered, or a conversation is created via the API."]
+        ConversationStarted,
+        #[doc = "An existing conversation has received notification from Dialogflow that\nhuman intervention is required."]
+        HumanInterventionNeeded,
+        #[doc = "An existing conversation has received a new message, either from API or\ntelephony. It is configured in\nConversationProfile.new_message_event_notification_config"]
+        NewMessage,
+        #[doc = "Type not set."]
+        TypeUnspecified,
+        #[doc = "Unrecoverable error during a telephone call.\n\nIn general non-recoverable errors only occur if something was\nmisconfigured in the ConversationProfile corresponding to the call. After\na non-recoverable error, Dialogflow may stop responding.\n\nWe don't fire this event:\n\n* in an API call because we can directly return the error, or,\n* when we can recover from an error."]
+        UnrecoverableError,
+    }
+    impl GoogleCloudDialogflowV2ConversationEventType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudDialogflowV2ConversationEventType::ConversationFinished => {
+                    "CONVERSATION_FINISHED"
+                }
+                GoogleCloudDialogflowV2ConversationEventType::ConversationStarted => {
+                    "CONVERSATION_STARTED"
+                }
+                GoogleCloudDialogflowV2ConversationEventType::HumanInterventionNeeded => {
+                    "HUMAN_INTERVENTION_NEEDED"
+                }
+                GoogleCloudDialogflowV2ConversationEventType::NewMessage => "NEW_MESSAGE",
+                GoogleCloudDialogflowV2ConversationEventType::TypeUnspecified => "TYPE_UNSPECIFIED",
+                GoogleCloudDialogflowV2ConversationEventType::UnrecoverableError => {
+                    "UNRECOVERABLE_ERROR"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2ConversationEventType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2ConversationEventType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2ConversationEventType, ()> {
+            Ok(match s {
+                "CONVERSATION_FINISHED" => {
+                    GoogleCloudDialogflowV2ConversationEventType::ConversationFinished
+                }
+                "CONVERSATION_STARTED" => {
+                    GoogleCloudDialogflowV2ConversationEventType::ConversationStarted
+                }
+                "HUMAN_INTERVENTION_NEEDED" => {
+                    GoogleCloudDialogflowV2ConversationEventType::HumanInterventionNeeded
+                }
+                "NEW_MESSAGE" => GoogleCloudDialogflowV2ConversationEventType::NewMessage,
+                "TYPE_UNSPECIFIED" => GoogleCloudDialogflowV2ConversationEventType::TypeUnspecified,
+                "UNRECOVERABLE_ERROR" => {
+                    GoogleCloudDialogflowV2ConversationEventType::UnrecoverableError
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2ConversationEventType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2ConversationEventType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2ConversationEventType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CONVERSATION_FINISHED" => {
+                    GoogleCloudDialogflowV2ConversationEventType::ConversationFinished
+                }
+                "CONVERSATION_STARTED" => {
+                    GoogleCloudDialogflowV2ConversationEventType::ConversationStarted
+                }
+                "HUMAN_INTERVENTION_NEEDED" => {
+                    GoogleCloudDialogflowV2ConversationEventType::HumanInterventionNeeded
+                }
+                "NEW_MESSAGE" => GoogleCloudDialogflowV2ConversationEventType::NewMessage,
+                "TYPE_UNSPECIFIED" => GoogleCloudDialogflowV2ConversationEventType::TypeUnspecified,
+                "UNRECOVERABLE_ERROR" => {
+                    GoogleCloudDialogflowV2ConversationEventType::UnrecoverableError
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2ConversationEventType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2ConversationEventType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -7049,9 +7780,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2EntityTypeKind {
-        #[doc = "List entity types contain a set of entries that do not map to canonical\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."]
+        #[doc = "List entity types contain a set of entries that do not map to reference\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."]
         KindList,
-        #[doc = "Map entity types allow mapping of a group of synonyms to a canonical\nvalue."]
+        #[doc = "Map entity types allow mapping of a group of synonyms to a reference\nvalue."]
         KindMap,
         #[doc = "Regexp entity types allow to specify regular expressions in entries\nvalues."]
         KindRegexp,
@@ -7148,7 +7879,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub synonyms: ::std::option::Option<Vec<String>>,
-        #[doc = "Required. The primary value associated with this entity entry.\nFor example, if the entity type is *vegetable*, the value could be\n*scallions*.\n\nFor `KIND_MAP` entity types:\n\n* A canonical value to be used in place of synonyms.\n\nFor `KIND_LIST` entity types:\n\n* A string that can contain references to other entity types (with or\n  without aliases)."]
+        #[doc = "Required. The primary value associated with this entity entry.\nFor example, if the entity type is *vegetable*, the value could be\n*scallions*.\n\nFor `KIND_MAP` entity types:\n\n* A reference value to be used in place of synonyms.\n\nFor `KIND_LIST` entity types:\n\n* A string that can contain references to other entity types (with or\n  without aliases)."]
         #[serde(
             rename = "value",
             default,
@@ -7182,7 +7913,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of parameters associated with the event."]
+        #[doc = "The collection of parameters associated with the event.\n\nDepending on your protocol or client library language, this is a\nmap, associative array, symbol table, dictionary, or JSON object\ncomposed of a collection of (MapKey, MapValue) pairs:\n\n* MapKey type: string\n* MapKey value: parameter name\n* MapValue type:\n  * If parameter's entity type is a composite entity: map\n  * Else: string or number, depending on parameter value type\n* MapValue value:\n  * If parameter's entity type is a composite entity:\n    map from composite entity property names to property values\n  * Else: parameter value"]
         #[serde(
             rename = "parameters",
             default,
@@ -7214,7 +7945,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudDialogflowV2ExportAgentResponse {
-        #[doc = "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\n<pre>curl \\\n  'https://dialogflow.googleapis.com/v2/projects/&lt;project_id&gt;/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer' \\\n  $(gcloud auth application-default print-access-token) \\\n  -H 'Accept: application/json'\n  --compressed \\\n  | grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n  | base64 --decode > &lt;agent zip file&gt;</pre>"]
+        #[doc = "Zip compressed raw byte content for agent."]
         #[serde(
             rename = "agentContent",
             default,
@@ -7264,7 +7995,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent."]
+        #[doc = "Optional. The collection of event names that trigger the intent.\nIf the collection of input contexts is not empty, all of the contexts must\nbe present in the active user session for an event to trigger this intent.\nEvent names are limited to 150 characters."]
         #[serde(
             rename = "events",
             default,
@@ -7302,14 +8033,14 @@ pub mod schemas {
         )]
         pub messages:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessage>>,
-        #[doc = "Optional. Indicates whether Machine Learning is disabled for the intent.\nNote: If `ml_diabled` setting is set to true, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off."]
+        #[doc = "Optional. Indicates whether Machine Learning is disabled for the intent.\nNote: If `ml_disabled` setting is set to true, then this intent is not\ntaken into account during inference in `ML ONLY` match mode. Also,\nauto-markup in the UI is turned off."]
         #[serde(
             rename = "mlDisabled",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ml_disabled: ::std::option::Option<bool>,
-        #[doc = "The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[doc = "Optional. The unique identifier of this intent.\nRequired for Intents.UpdateIntent and Intents.BatchUpdateIntents\nmethods.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
         #[serde(
             rename = "name",
             default,
@@ -7332,14 +8063,14 @@ pub mod schemas {
         )]
         pub parameters:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentParameter>>,
-        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or BatchUpdateIntents, in order to\nmake this intent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
+        #[doc = "Read-only after creation. The unique identifier of the parent intent in the\nchain of followup intents. You can set this field when creating an intent,\nfor example with CreateIntent or\nBatchUpdateIntents, in order to make this\nintent a followup intent.\n\nIt identifies the parent followup intent.\nFormat: `projects/<Project ID>/agent/intents/<Intent ID>`."]
         #[serde(
             rename = "parentFollowupIntentName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_followup_intent_name: ::std::option::Option<String>,
-        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities. If this is zero or unspecified, we use the default\npriority 500000.\n\nNegative numbers mean that the intent is disabled."]
+        #[doc = "Optional. The priority of this intent. Higher numbers represent higher\npriorities.\n\n* If the supplied value is unspecified or 0, the service\n  translates the value to 500,000, which corresponds to the\n  `Normal` priority in the console.\n* If the supplied value is negative, the intent is ignored\n  in runtime detect intent requests."]
         #[serde(
             rename = "priority",
             default,
@@ -7657,6 +8388,15 @@ pub mod schemas {
         )]
         pub basic_card:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageBasicCard>,
+        #[doc = "Browse carousel card for Actions on Google."]
+        #[serde(
+            rename = "browseCarouselCard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub browse_carousel_card: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard,
+        >,
         #[doc = "The card response."]
         #[serde(
             rename = "card",
@@ -7697,7 +8437,15 @@ pub mod schemas {
         )]
         pub list_select:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageListSelect>,
-        #[doc = "Returns a response containing a custom, platform-specific payload.\nSee the Intent.Message.Platform type for a description of the\nstructure that may be required for your platform."]
+        #[doc = "The media content card for Actions on Google."]
+        #[serde(
+            rename = "mediaContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub media_content:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageMediaContent>,
+        #[doc = "A custom platform-specific response."]
         #[serde(
             rename = "payload",
             default,
@@ -7738,6 +8486,14 @@ pub mod schemas {
         )]
         pub suggestions:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageSuggestions>,
+        #[doc = "Table card for Actions on Google."]
+        #[serde(
+            rename = "tableCard",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub table_card:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageTableCard>,
         #[doc = "The text response."]
         #[serde(
             rename = "text",
@@ -7758,7 +8514,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudDialogflowV2IntentMessagePlatform {
-        #[doc = "Actions on Google.\nWhen using Actions on Google, you can choose one of the specific\nIntent.Message types that mention support for Actions on Google,\nor you can use the advanced Intent.Message.payload field.\nThe payload field provides access to AoG features not available in the\nspecific message types.\nIf using the Intent.Message.payload field, it should have a structure\nsimilar to the JSON message shown here. For more information, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"expectUserResponse\": true,\n  \"isSsml\": false,\n  \"noInputPrompts\": [],\n  \"richResponse\": {\n    \"items\": [\n      {\n        \"simpleResponse\": {\n          \"displayText\": \"hi\",\n          \"textToSpeech\": \"hello\"\n        }\n      }\n    ],\n    \"suggestions\": [\n      {\n        \"title\": \"Say this\"\n      },\n      {\n        \"title\": \"or this\"\n      }\n    ]\n  },\n  \"systemIntent\": {\n    \"data\": {\n      \"@type\": \"type.googleapis.com/google.actions.v2.OptionValueSpec\",\n      \"listSelect\": {\n        \"items\": [\n          {\n            \"optionInfo\": {\n              \"key\": \"key1\",\n              \"synonyms\": [\n                \"key one\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          },\n          {\n            \"optionInfo\": {\n              \"key\": \"key2\",\n              \"synonyms\": [\n                \"key two\"\n              ]\n            },\n            \"title\": \"must not be empty, but unique\"\n          }\n        ]\n      }\n    },\n    \"intent\": \"actions.intent.OPTION\"\n  }\n}</pre>"]
+        #[doc = "Google Assistant\nSee [Dialogflow webhook\nformat](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)"]
         ActionsOnGoogle,
         #[doc = "Facebook."]
         Facebook,
@@ -7768,7 +8524,7 @@ pub mod schemas {
         Kik,
         #[doc = "Line."]
         Line,
-        #[doc = "Not specified."]
+        #[doc = "Default platform."]
         PlatformUnspecified,
         #[doc = "Skype."]
         Skype,
@@ -8031,6 +8787,173 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard { # [ doc = "Optional. Settings for displaying the image. Applies to every image in\nitems." ] # [ serde ( rename = "imageDisplayOptions" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub image_display_options : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions > , # [ doc = "Required. List of items in the Browse Carousel Card. Minimum of two\nitems, maximum of ten." ] # [ serde ( rename = "items" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub items : :: std :: option :: Option < Vec < crate :: schemas :: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem > > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions {
+        #[doc = "Pad the gaps between image and image frame with a blurred copy of the\nsame image."]
+        BlurredBackground,
+        #[doc = "Image is scaled such that the image width and height match or exceed\nthe container dimensions. This may crop the top and bottom of the\nimage if the scaled image height is greater than the container\nheight, or crop the left and right of the image if the scaled image\nwidth is greater than the container width. This is similar to \"Zoom\nMode\" on a widescreen TV when playing a 4:3 video."]
+        Cropped,
+        #[doc = "Fill the gaps between the image and the image container with gray\nbars."]
+        Gray,
+        #[doc = "Fill the gaps between the image and the image container with gray\nbars."]
+        ImageDisplayOptionsUnspecified,
+        #[doc = "Fill the gaps between the image and the image container with white\nbars."]
+        White,
+    }
+    impl GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: BlurredBackground => "BLURRED_BACKGROUND" , GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: Cropped => "CROPPED" , GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: Gray => "GRAY" , GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: ImageDisplayOptionsUnspecified => "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" , GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: White => "WHITE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions,
+            (),
+        > {
+            Ok ( match s { "BLURRED_BACKGROUND" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: BlurredBackground , "CROPPED" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: Cropped , "GRAY" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: Gray , "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: ImageDisplayOptionsUnspecified , "WHITE" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: White , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "BLURRED_BACKGROUND" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: BlurredBackground , "CROPPED" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: Cropped , "GRAY" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: Gray , "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: ImageDisplayOptionsUnspecified , "WHITE" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions :: White , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem { # [ doc = "Optional. Description of the carousel item. Maximum of four lines of\ntext." ] # [ serde ( rename = "description" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub description : :: std :: option :: Option < String > , # [ doc = "Optional. Text that appears at the bottom of the Browse Carousel\nCard. Maximum of one line of text." ] # [ serde ( rename = "footer" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub footer : :: std :: option :: Option < String > , # [ doc = "Optional. Hero image for the carousel item." ] # [ serde ( rename = "image" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub image : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2IntentMessageImage > , # [ doc = "Required. Action to present to the user." ] # [ serde ( rename = "openUriAction" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub open_uri_action : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction > , # [ doc = "Required. Title of the carousel item. Maximum of two lines of text." ] # [ serde ( rename = "title" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub title : :: std :: option :: Option < String > , }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction { # [ doc = "Required. URL" ] # [ serde ( rename = "url" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub url : :: std :: option :: Option < String > , # [ doc = "Optional. Specifies the type of viewer that is used when opening\nthe URL. Defaults to opening via web browser." ] # [ serde ( rename = "urlTypeHint" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub url_type_hint : :: std :: option :: Option < crate :: schemas :: GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint > , }
+    impl :: google_field_selector :: FieldSelector for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint
+    {
+        #[doc = "Url would be an amp action"]
+        AmpAction,
+        #[doc = "URL that points directly to AMP content, or to a canonical URL\nwhich refers to AMP content via <link rel=\"amphtml\">."]
+        AmpContent,
+        #[doc = "Unspecified"]
+        UrlTypeHintUnspecified,
+    }
+    impl GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { pub fn as_str ( self ) -> & 'static str { match self { GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpAction => "AMP_ACTION" , GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpContent => "AMP_CONTENT" , GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: UrlTypeHintUnspecified => "URL_TYPE_HINT_UNSPECIFIED" , } } }
+    impl :: std :: convert :: AsRef < str > for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn as_ref ( & self ) -> & str { self . as_str ( ) } }
+    impl :: std :: str :: FromStr for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { type Err = ( ) ; fn from_str ( s : & str ) -> :: std :: result :: Result < GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint , ( ) > { Ok ( match s { "AMP_ACTION" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpAction , "AMP_CONTENT" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpContent , "URL_TYPE_HINT_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: UrlTypeHintUnspecified , _ => return Err ( ( ) ) , } ) } }
+    impl :: std :: fmt :: Display for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn fmt ( & self , f : & mut std :: fmt :: Formatter < '_ > ) -> :: std :: fmt :: Result { f . write_str ( self . as_str ( ) ) } }
+    impl :: serde :: Serialize for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn serialize < S > ( & self , serializer : S ) -> :: std :: result :: Result < S :: Ok , S :: Error > where S : :: serde :: ser :: Serializer { serializer . serialize_str ( self . as_str ( ) ) } }
+    impl < 'de > :: serde :: Deserialize < 'de > for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn deserialize < D > ( deserializer : D ) -> :: std :: result :: Result < Self , D :: Error > where D : :: serde :: de :: Deserializer < 'de > , { let value : & 'de str = < & str > :: deserialize ( deserializer ) ? ; Ok ( match value { "AMP_ACTION" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpAction , "AMP_CONTENT" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: AmpContent , "URL_TYPE_HINT_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint :: UrlTypeHintUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } ) } }
+    impl :: google_field_selector :: FieldSelector for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn fields ( ) -> Vec < :: google_field_selector :: Field > { Vec :: new ( ) } }
+    impl :: google_field_selector :: ToFieldType for GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint { fn field_type ( ) -> :: google_field_selector :: FieldType { :: google_field_selector :: FieldType :: Leaf } }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleCloudDialogflowV2IntentMessageCard {
         #[doc = "Optional. The collection of card buttons."]
         #[serde(
@@ -8214,6 +9137,126 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleCloudDialogflowV2IntentMessageColumnProperties {
+        #[doc = "Required. Column heading."]
+        #[serde(
+            rename = "header",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header: ::std::option::Option<String>,
+        #[doc = "Optional. Defines text alignment for all cells in this column."]
+        #[serde(
+            rename = "horizontalAlignment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub horizontal_alignment: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageColumnProperties
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageColumnProperties {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment {
+        #[doc = "Text is centered in the column."]
+        Center,
+        #[doc = "Text is aligned to the leading edge of the column."]
+        HorizontalAlignmentUnspecified,
+        #[doc = "Text is aligned to the leading edge of the column."]
+        Leading,
+        #[doc = "Text is aligned to the trailing edge of the column."]
+        Trailing,
+    }
+    impl GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Center => "CENTER" , GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: HorizontalAlignmentUnspecified => "HORIZONTAL_ALIGNMENT_UNSPECIFIED" , GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Leading => "LEADING" , GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Trailing => "TRAILING" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment,
+            (),
+        > {
+            Ok ( match s { "CENTER" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Center , "HORIZONTAL_ALIGNMENT_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: HorizontalAlignmentUnspecified , "LEADING" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Leading , "TRAILING" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Trailing , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "CENTER" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Center , "HORIZONTAL_ALIGNMENT_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: HorizontalAlignmentUnspecified , "LEADING" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Leading , "TRAILING" => GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment :: Trailing , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleCloudDialogflowV2IntentMessageImage {
         #[doc = "Optional. A text description of the image to be used for accessibility,\ne.g., screen readers."]
         #[serde(
@@ -8304,6 +9347,13 @@ pub mod schemas {
         pub items: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessageListSelectItem>,
         >,
+        #[doc = "Optional. Subtitle of the list."]
+        #[serde(
+            rename = "subtitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub subtitle: ::std::option::Option<String>,
         #[doc = "Optional. The overall title of the list."]
         #[serde(
             rename = "title",
@@ -8372,6 +9422,176 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageListSelectItem {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageMediaContent {
+        #[doc = "Required. List of media objects."]
+        #[serde(
+            rename = "mediaObjects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub media_objects: ::std::option::Option<
+            Vec<
+                crate::schemas::GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject,
+            >,
+        >,
+        #[doc = "Optional. What type of media is the content (ie \"audio\")."]
+        #[serde(
+            rename = "mediaType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub media_type: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2IntentMessageMediaContentMediaType,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessageMediaContent {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageMediaContent {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        #[doc = "Response media type is audio."]
+        Audio,
+        #[doc = "Unspecified."]
+        ResponseMediaTypeUnspecified,
+    }
+    impl GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2IntentMessageMediaContentMediaType :: Audio => "AUDIO" , GoogleCloudDialogflowV2IntentMessageMediaContentMediaType :: ResponseMediaTypeUnspecified => "RESPONSE_MEDIA_TYPE_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2IntentMessageMediaContentMediaType, ()>
+        {
+            Ok ( match s { "AUDIO" => GoogleCloudDialogflowV2IntentMessageMediaContentMediaType :: Audio , "RESPONSE_MEDIA_TYPE_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageMediaContentMediaType :: ResponseMediaTypeUnspecified , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "AUDIO" => GoogleCloudDialogflowV2IntentMessageMediaContentMediaType :: Audio , "RESPONSE_MEDIA_TYPE_UNSPECIFIED" => GoogleCloudDialogflowV2IntentMessageMediaContentMediaType :: ResponseMediaTypeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2IntentMessageMediaContentMediaType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
+        #[doc = "Required. Url where the media is stored."]
+        #[serde(
+            rename = "contentUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content_url: ::std::option::Option<String>,
+        #[doc = "Optional. Description of media card."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. Icon to display above media content."]
+        #[serde(
+            rename = "icon",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub icon: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageImage>,
+        #[doc = "Optional. Image to display above media content."]
+        #[serde(
+            rename = "largeImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub large_image:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageImage>,
+        #[doc = "Required. Name of media card."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -8592,6 +9812,149 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageSuggestions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageTableCard {
+        #[doc = "Optional. List of buttons for the card."]
+        #[serde(
+            rename = "buttons",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub buttons: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessageBasicCardButton>,
+        >,
+        #[doc = "Optional. Display properties for the columns in this table."]
+        #[serde(
+            rename = "columnProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_properties: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessageColumnProperties>,
+        >,
+        #[doc = "Optional. Image which should be displayed on the card."]
+        #[serde(
+            rename = "image",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub image: ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2IntentMessageImage>,
+        #[doc = "Optional. Rows in this table of data."]
+        #[serde(
+            rename = "rows",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rows: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessageTableCardRow>,
+        >,
+        #[doc = "Optional. Subtitle to the title."]
+        #[serde(
+            rename = "subtitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub subtitle: ::std::option::Option<String>,
+        #[doc = "Required. Title of the card."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessageTableCard {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageTableCard {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageTableCardCell {
+        #[doc = "Required. Text in this cell."]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessageTableCardCell {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageTableCardCell {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2IntentMessageTableCardRow {
+        #[doc = "Optional. List of cells that make up this row."]
+        #[serde(
+            rename = "cells",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cells: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessageTableCardCell>,
+        >,
+        #[doc = "Optional. Whether to add a visual divider after this row."]
+        #[serde(
+            rename = "dividerAfter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub divider_after: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2IntentMessageTableCardRow {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2IntentMessageTableCardRow {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -8899,8 +10262,189 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2Message {
+        #[doc = "Required. The message content."]
+        #[serde(
+            rename = "content",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub content: ::std::option::Option<String>,
+        #[doc = "Output only. The time when the message was created."]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Optional. The message language.\nThis should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)\nlanguage tag. Example: \"en-US\"."]
+        #[serde(
+            rename = "languageCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub language_code: ::std::option::Option<String>,
+        #[doc = "Output only. The annotation for the message."]
+        #[serde(
+            rename = "messageAnnotation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub message_annotation:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2MessageAnnotation>,
+        #[doc = "The unique identifier of the message.\nFormat: `projects/<Project ID>/conversations/<Conversation ID>/messages/<Message ID>`."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Output only. The participant that sends this message."]
+        #[serde(
+            rename = "participant",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub participant: ::std::option::Option<String>,
+        #[doc = "Output only. The role of the participant."]
+        #[serde(
+            rename = "participantRole",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub participant_role:
+            ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2MessageParticipantRole>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2Message {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2Message {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2MessageParticipantRole {
+        #[doc = "Participant is an automated agent, such as a Dialogflow agent."]
+        AutomatedAgent,
+        #[doc = "Participant is an end user that has called or chatted with\nDialogflow services."]
+        EndUser,
+        #[doc = "Participant is a human agent."]
+        HumanAgent,
+        #[doc = "Participant role not set."]
+        RoleUnspecified,
+    }
+    impl GoogleCloudDialogflowV2MessageParticipantRole {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudDialogflowV2MessageParticipantRole::AutomatedAgent => "AUTOMATED_AGENT",
+                GoogleCloudDialogflowV2MessageParticipantRole::EndUser => "END_USER",
+                GoogleCloudDialogflowV2MessageParticipantRole::HumanAgent => "HUMAN_AGENT",
+                GoogleCloudDialogflowV2MessageParticipantRole::RoleUnspecified => {
+                    "ROLE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2MessageParticipantRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2MessageParticipantRole {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2MessageParticipantRole, ()> {
+            Ok(match s {
+                "AUTOMATED_AGENT" => GoogleCloudDialogflowV2MessageParticipantRole::AutomatedAgent,
+                "END_USER" => GoogleCloudDialogflowV2MessageParticipantRole::EndUser,
+                "HUMAN_AGENT" => GoogleCloudDialogflowV2MessageParticipantRole::HumanAgent,
+                "ROLE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2MessageParticipantRole::RoleUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2MessageParticipantRole {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2MessageParticipantRole {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2MessageParticipantRole {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AUTOMATED_AGENT" => GoogleCloudDialogflowV2MessageParticipantRole::AutomatedAgent,
+                "END_USER" => GoogleCloudDialogflowV2MessageParticipantRole::EndUser,
+                "HUMAN_AGENT" => GoogleCloudDialogflowV2MessageParticipantRole::HumanAgent,
+                "ROLE_UNSPECIFIED" => {
+                    GoogleCloudDialogflowV2MessageParticipantRole::RoleUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2MessageParticipantRole {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2MessageParticipantRole {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudDialogflowV2MessageAnnotation {
+        #[doc = "Indicates whether the text message contains entities."]
+        #[serde(
+            rename = "containEntities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub contain_entities: ::std::option::Option<bool>,
+        #[doc = "The collection of annotated message parts ordered by their\nposition in the message. You can recover the annotated message by\nconcatenating [AnnotatedMessagePart.text]."]
+        #[serde(
+            rename = "parts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parts:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2AnnotatedMessagePart>>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2MessageAnnotation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2MessageAnnotation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2OriginalDetectIntentRequest {
-        #[doc = "Optional. This field is set to the value of the `QueryParameters.payload`\nfield passed in the request. Some integrations that query a Dialogflow\nagent may provide additional information in the payload.\n\nIn particular for the Telephony Gateway this field has the form:\n\n<pre>{\n \"telephony\": {\n   \"caller_id\": \"+18558363987\"\n }\n}</pre>\n\nNote: The caller ID field (`caller_id`) will be redacted for Standard\nEdition agents and populated with the caller ID in [E.164\nformat](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents."]
+        #[doc = "Optional. This field is set to the value of the `QueryParameters.payload`\nfield passed in the request. Some integrations that query a Dialogflow\nagent may provide additional information in the payload.\n\nIn particular, for the Dialogflow Phone Gateway integration, this field has\nthe form:\n\n<pre>{\n \"telephony\": {\n   \"caller_id\": \"+18558363987\"\n }\n}</pre>\n\nNote: The caller ID field (`caller_id`) will be redacted for Standard\nEdition agents and populated with the caller ID in [E.164\nformat](https://en.wikipedia.org/wiki/E.164) for Enterprise Edition agents."]
         #[serde(
             rename = "payload",
             default,
@@ -8949,7 +10493,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub all_required_params_present: ::std::option::Option<bool>,
-        #[doc = "The free-form diagnostic info. For example, this field could contain\nwebhook call latency. The string keys of the Struct's fields map can change\nwithout notice."]
+        #[doc = "Free-form diagnostic information for the associated detect intent request.\nThe fields of this data can change without notice, so you should not write\ncode that depends on its structure.\nThe data may contain:\n\n* webhook call latency\n* webhook errors"]
         #[serde(
             rename = "diagnosticInfo",
             default,
@@ -9001,7 +10545,7 @@ pub mod schemas {
         )]
         pub output_contexts:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Context>>,
-        #[doc = "The collection of extracted parameters."]
+        #[doc = "The collection of extracted parameters.\n\nDepending on your protocol or client library language, this is a\nmap, associative array, symbol table, dictionary, or JSON object\ncomposed of a collection of (MapKey, MapValue) pairs:\n\n* MapKey type: string\n* MapKey value: parameter name\n* MapValue type:\n  * If parameter's entity type is a composite entity: map\n  * Else: string or number, depending on parameter value type\n* MapValue value:\n  * If parameter's entity type is a composite entity:\n    map from composite entity property names to property values\n  * Else: parameter value"]
         #[serde(
             rename = "parameters",
             default,
@@ -9109,6 +10653,118 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV2SessionEntityType {
+        #[doc = "Required. The collection of entities associated with this session entity\ntype."]
+        #[serde(
+            rename = "entities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entities:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2EntityTypeEntity>>,
+        #[doc = "Required. Indicates whether the additional data should override or\nsupplement the custom entity type definition."]
+        #[serde(
+            rename = "entityOverrideMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity_override_mode: ::std::option::Option<
+            crate::schemas::GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode,
+        >,
+        #[doc = "Required. The unique identifier of this session entity type. Format:\n`projects/<Project ID>/agent/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`, or `projects/<Project ID>/agent/environments/<Environment ID>/users/<User ID>/sessions/<Session ID>/entityTypes/<Entity Type Display Name>`.\nIf `Environment ID` is not specified, we assume default 'draft'\nenvironment. If `User ID` is not specified, we assume default '-' user.\n\n`<Entity Type Display Name>` must be the display name of an existing entity\ntype in the same agent that will be overridden or supplemented."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV2SessionEntityType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2SessionEntityType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        #[doc = "The collection of session entities overrides the collection of entities\nin the corresponding custom entity type."]
+        EntityOverrideModeOverride,
+        #[doc = "The collection of session entities extends the collection of entities in\nthe corresponding custom entity type.\n\nNote: Even in this override mode calls to `ListSessionEntityTypes`,\n`GetSessionEntityType`, `CreateSessionEntityType` and\n`UpdateSessionEntityType` only return the additional entities added in\nthis session entity type. If you want to get the supplemented list,\nplease call EntityTypes.GetEntityType on the custom entity type\nand merge."]
+        EntityOverrideModeSupplement,
+        #[doc = "Not specified. This value should be never used."]
+        EntityOverrideModeUnspecified,
+    }
+    impl GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride => "ENTITY_OVERRIDE_MODE_OVERRIDE" , GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement => "ENTITY_OVERRIDE_MODE_SUPPLEMENT" , GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified => "ENTITY_OVERRIDE_MODE_UNSPECIFIED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode, ()>
+        {
+            Ok ( match s { "ENTITY_OVERRIDE_MODE_OVERRIDE" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride , "ENTITY_OVERRIDE_MODE_SUPPLEMENT" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement , "ENTITY_OVERRIDE_MODE_UNSPECIFIED" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "ENTITY_OVERRIDE_MODE_OVERRIDE" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeOverride , "ENTITY_OVERRIDE_MODE_SUPPLEMENT" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeSupplement , "ENTITY_OVERRIDE_MODE_UNSPECIFIED" => GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode :: EntityOverrideModeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudDialogflowV2SessionEntityTypeEntityOverrideMode
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2WebhookRequest {
         #[doc = "Optional. The contents of the original request that was passed to\n`[Streaming]DetectIntent` call."]
@@ -9154,7 +10810,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudDialogflowV2WebhookResponse {
-        #[doc = "Optional. Makes the platform immediately invoke another `DetectIntent` call\ninternally with the specified event as input.\nWhen this field is set, Dialogflow ignores the `fulfillment_text`,\n`fulfillment_messages`, and `payload` fields."]
+        #[doc = "Optional. Invokes the supplied events.\nWhen this field is set, Dialogflow ignores the `fulfillment_text`,\n`fulfillment_messages`, and `payload` fields."]
         #[serde(
             rename = "followupEventInput",
             default,
@@ -9162,7 +10818,7 @@ pub mod schemas {
         )]
         pub followup_event_input:
             ::std::option::Option<crate::schemas::GoogleCloudDialogflowV2EventInput>,
-        #[doc = "Optional. The collection of rich messages to present to the user. This\nvalue is passed directly to `QueryResult.fulfillment_messages`."]
+        #[doc = "Optional. The rich response messages intended for the end-user.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.fulfillment_messages sent to the integration or API caller."]
         #[serde(
             rename = "fulfillmentMessages",
             default,
@@ -9170,14 +10826,14 @@ pub mod schemas {
         )]
         pub fulfillment_messages:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2IntentMessage>>,
-        #[doc = "Optional. The text to be shown on the screen. This value is passed directly\nto `QueryResult.fulfillment_text`."]
+        #[doc = "Optional. The text response message intended for the end-user.\nIt is recommended to use `fulfillment_messages.text.text[0]` instead.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.fulfillment_text sent to the integration or API caller."]
         #[serde(
             rename = "fulfillmentText",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fulfillment_text: ::std::option::Option<String>,
-        #[doc = "Optional. The collection of output contexts. This value is passed directly\nto `QueryResult.output_contexts`."]
+        #[doc = "Optional. The collection of output contexts that will overwrite currently\nactive contexts for the session and reset their lifespans.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.output_contexts sent to the integration or API caller."]
         #[serde(
             rename = "outputContexts",
             default,
@@ -9185,7 +10841,7 @@ pub mod schemas {
         )]
         pub output_contexts:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2Context>>,
-        #[doc = "Optional. This value is passed directly to `QueryResult.webhook_payload`.\nSee the related `fulfillment_messages[i].payload field`, which may be used\nas an alternative to this field.\n\nThis field can be used for Actions on Google responses.\nIt should have a structure similar to the JSON message shown here. For more\ninformation, see\n[Actions on Google Webhook\nFormat](https://developers.google.com/actions/dialogflow/webhook)\n\n<pre>{\n  \"google\": {\n    \"expectUserResponse\": true,\n    \"richResponse\": {\n      \"items\": [\n        {\n          \"simpleResponse\": {\n            \"textToSpeech\": \"this is a simple response\"\n          }\n        }\n      ]\n    }\n  }\n}</pre>"]
+        #[doc = "Optional. This field can be used to pass custom data from your webhook to the\nintegration or API caller. Arbitrary JSON objects are supported.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.webhook_payload sent to the integration or API caller.\nThis field is also used by the\n[Google Assistant\nintegration](https://cloud.google.com/dialogflow/docs/integrations/aog)\nfor rich response messages.\nSee the format definition at [Google Assistant Dialogflow webhook\nformat](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)"]
         #[serde(
             rename = "payload",
             default,
@@ -9193,7 +10849,15 @@ pub mod schemas {
         )]
         pub payload:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Optional. This value is passed directly to `QueryResult.webhook_source`."]
+        #[doc = "Optional. Additional session entity types to replace or extend developer\nentity types with. The entity synonyms apply to all languages and persist\nfor the session. Setting this data from a webhook overwrites\nthe session entity types that have been set using `detectIntent`,\n`streamingDetectIntent` or SessionEntityType management methods."]
+        #[serde(
+            rename = "sessionEntityTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub session_entity_types:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudDialogflowV2SessionEntityType>>,
+        #[doc = "Optional. A custom field used to identify the webhook source.\nArbitrary strings are supported.\nWhen provided, Dialogflow uses this field to populate\nQueryResult.webhook_source sent to the integration or API caller."]
         #[serde(
             rename = "source",
             default,
@@ -9207,6 +10871,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV2WebhookResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudDialogflowV3Alpha1ExportAgentResponse {
+        #[doc = "Uncompressed raw byte content for agent."]
+        #[serde(
+            rename = "agentContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub agent_content: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "The URI to a file containing the exported agent. This field is populated\nonly if `agent_uri` is specified in ExportAgentRequest."]
+        #[serde(
+            rename = "agentUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub agent_uri: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudDialogflowV3Alpha1ExportAgentResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudDialogflowV3Alpha1ExportAgentResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -9527,7 +11229,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -9535,8 +11237,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -9555,37 +11269,12 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
-            }
-            #[doc = "Creates/updates the specified agent."]
-            pub fn agent_method(
-                &self,
-                request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
-                parent: impl Into<String>,
-            ) -> AgentMethodRequestBuilder {
-                AgentMethodRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    parent: parent.into(),
-                    update_mask: None,
-                }
             }
             #[doc = "Deletes the specified agent."]
             pub fn delete_agent(&self, parent: impl Into<String>) -> DeleteAgentRequestBuilder {
@@ -9625,6 +11314,31 @@ pub mod resources {
                     parent: parent.into(),
                 }
             }
+            #[doc = "Creates/updates the specified agent."]
+            pub fn set_agent(
+                &self,
+                request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
+                parent: impl Into<String>,
+            ) -> SetAgentRequestBuilder {
+                SetAgentRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    parent: parent.into(),
+                    update_mask: None,
+                }
+            }
             #[doc = "Actions that can be performed on the agent resource"]
             pub fn agent(&self) -> crate::resources::projects::agent::AgentActions {
                 crate::resources::projects::agent::AgentActions {
@@ -9656,175 +11370,10 @@ pub mod resources {
                 }
             }
         }
-        #[doc = "Created via [ProjectsActions::agent_method()](struct.ProjectsActions.html#method.agent_method)"]
-        #[derive(Debug, Clone)]
-        pub struct AgentMethodRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
-            parent: String,
-            update_mask: Option<String>,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a> AgentMethodRequestBuilder<'a> {
-            #[doc = "Optional. The mask to control which fields get updated."]
-            pub fn update_mask(mut self, value: impl Into<String>) -> Self {
-                self.update_mask = Some(value.into());
-                self
-            }
-            #[doc = "OAuth access token."]
-            pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(mut self, value: impl Into<String>) -> Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                self.xgafv = Some(value);
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
-            {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
-            {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://dialogflow.googleapis.com/".to_owned();
-                output.push_str("v2beta1/");
-                {
-                    let var_as_str = &self.parent;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::RESERVED,
-                    ));
-                }
-                output.push_str("/agent");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("updateMask", &self.update_mask)]);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
         #[doc = "Created via [ProjectsActions::delete_agent()](struct.ProjectsActions.html#method.delete_agent)"]
         #[derive(Debug, Clone)]
         pub struct DeleteAgentRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             access_token: Option<String>,
@@ -9954,7 +11503,10 @@ pub mod resources {
                 output.push_str("/agent");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -9978,7 +11530,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::get_agent()](struct.ProjectsActions.html#method.get_agent)"]
         #[derive(Debug, Clone)]
         pub struct GetAgentRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             access_token: Option<String>,
@@ -10110,8 +11662,179 @@ pub mod resources {
                 output.push_str("/agent");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ProjectsActions::set_agent()](struct.ProjectsActions.html#method.set_agent)"]
+        #[derive(Debug, Clone)]
+        pub struct SetAgentRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
+            parent: String,
+            update_mask: Option<String>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> SetAgentRequestBuilder<'a> {
+            #[doc = "Optional. The mask to control which fields get updated."]
+            pub fn update_mask(mut self, value: impl Into<String>) -> Self {
+                self.update_mask = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
+            {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
+            {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                output.push_str("v2beta1/");
+                {
+                    let var_as_str = &self.parent;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str("/agent");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("updateMask", &self.update_mask)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("callback", &self.callback)]);
@@ -10134,7 +11857,7 @@ pub mod resources {
         pub mod agent {
             pub mod params {}
             pub struct AgentActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> AgentActions<'a> {
@@ -10163,6 +11886,28 @@ pub mod resources {
                         upload_type: None,
                         xgafv: None,
                         parent: parent.into(),
+                    }
+                }
+                #[doc = "Retrieves the fulfillment."]
+                pub fn get_fulfillment(
+                    &self,
+                    name: impl Into<String>,
+                ) -> GetFulfillmentRequestBuilder {
+                    GetFulfillmentRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        name: name.into(),
                     }
                 }
                 #[doc = "Gets agent validation result. Agent validation is performed during\ntraining time and is updated automatically when training is completed."]
@@ -10236,7 +11981,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Returns the list of agents.\n\nSince there is at most one conversational agent per project, this method is\nuseful primarily for listing all agents across projects the caller has\naccess to. One can achieve that with a wildcard project collection id \"-\".\nRefer to [List\nSub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections)."]
+                #[doc = "Returns the list of agents.\nSince there is at most one conversational agent per project, this method is\nuseful primarily for listing all agents across projects the caller has\naccess to. One can achieve that with a wildcard project collection id \"-\".\nRefer to [List\nSub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections)."]
                 pub fn search(&self, parent: impl Into<String>) -> SearchRequestBuilder {
                     SearchRequestBuilder {
                         reqwest: &self.reqwest,
@@ -10279,6 +12024,31 @@ pub mod resources {
                         upload_type: None,
                         xgafv: None,
                         parent: parent.into(),
+                    }
+                }
+                #[doc = "Updates the fulfillment."]
+                pub fn update_fulfillment(
+                    &self,
+                    request: crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment,
+                    name: impl Into<String>,
+                ) -> UpdateFulfillmentRequestBuilder {
+                    UpdateFulfillmentRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        name: name.into(),
+                        update_mask: None,
                     }
                 }
                 #[doc = "Actions that can be performed on the entity_types resource"]
@@ -10333,7 +12103,7 @@ pub mod resources {
             #[doc = "Created via [AgentActions::export()](struct.AgentActions.html#method.export)"]
             #[derive(Debug, Clone)]
             pub struct ExportRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudDialogflowV2Beta1ExportAgentRequest,
                 parent: String,
@@ -10470,8 +12240,172 @@ pub mod resources {
                     output.push_str("/agent:export");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [AgentActions::get_fulfillment()](struct.AgentActions.html#method.get_fulfillment)"]
+            #[derive(Debug, Clone)]
+            pub struct GetFulfillmentRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                name: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> GetFulfillmentRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                    output.push_str("v2beta1/");
+                    {
+                        let var_as_str = &self.name;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -10494,7 +12428,7 @@ pub mod resources {
             #[doc = "Created via [AgentActions::get_validation_result()](struct.AgentActions.html#method.get_validation_result)"]
             #[derive(Debug, Clone)]
             pub struct GetValidationResultRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 language_code: Option<String>,
@@ -10639,7 +12573,10 @@ pub mod resources {
                     output.push_str("/agent/validationResult");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("languageCode", &self.language_code)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -10664,7 +12601,7 @@ pub mod resources {
             #[doc = "Created via [AgentActions::import()](struct.AgentActions.html#method.import)"]
             #[derive(Debug, Clone)]
             pub struct ImportRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudDialogflowV2Beta1ImportAgentRequest,
                 parent: String,
@@ -10801,7 +12738,10 @@ pub mod resources {
                     output.push_str("/agent:import");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10825,7 +12765,7 @@ pub mod resources {
             #[doc = "Created via [AgentActions::restore()](struct.AgentActions.html#method.restore)"]
             #[derive(Debug, Clone)]
             pub struct RestoreRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudDialogflowV2Beta1RestoreAgentRequest,
                 parent: String,
@@ -10962,7 +12902,10 @@ pub mod resources {
                     output.push_str("/agent:restore");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10986,7 +12929,7 @@ pub mod resources {
             #[doc = "Created via [AgentActions::search()](struct.AgentActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -11247,7 +13190,10 @@ pub mod resources {
                     output.push_str("/agent:search");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -11284,7 +13230,7 @@ pub mod resources {
             #[doc = "Created via [AgentActions::train()](struct.AgentActions.html#method.train)"]
             #[derive(Debug, Clone)]
             pub struct TrainRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudDialogflowV2Beta1TrainAgentRequest,
                 parent: String,
@@ -11421,8 +13367,181 @@ pub mod resources {
                     output.push_str("/agent:train");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [AgentActions::update_fulfillment()](struct.AgentActions.html#method.update_fulfillment)"]
+            #[derive(Debug, Clone)]
+            pub struct UpdateFulfillmentRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment,
+                name: String,
+                update_mask: Option<String>,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> UpdateFulfillmentRequestBuilder<'a> {
+                #[doc = "Required. The mask to control which fields get updated. If the mask is not\npresent, all fields will be updated."]
+                pub fn update_mask(mut self, value: impl Into<String>) -> Self {
+                    self.update_mask = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                    output.push_str("v2beta1/");
+                    {
+                        let var_as_str = &self.name;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                    let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -11445,14 +13564,14 @@ pub mod resources {
             pub mod entity_types {
                 pub mod params {}
                 pub struct EntityTypesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> EntityTypesActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Deletes entity types in the specified agent.\n\nOperation <response: google.protobuf.Empty>"]
+                    #[doc = "Deletes entity types in the specified agent.\nOperation <response: google.protobuf.Empty>"]
                     pub fn batch_delete(
                         &self,
                         request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchDeleteEntityTypesRequest,
@@ -11476,7 +13595,7 @@ pub mod resources {
                             parent: parent.into(),
                         }
                     }
-                    #[doc = "Updates/Creates multiple entity types in the specified agent.\n\nOperation <response: BatchUpdateEntityTypesResponse>"]
+                    #[doc = "Updates/Creates multiple entity types in the specified agent.\nOperation <response: BatchUpdateEntityTypesResponse>"]
                     pub fn batch_update(
                         &self,
                         request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchUpdateEntityTypesRequest,
@@ -11626,7 +13745,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::batch_delete()](struct.EntityTypesActions.html#method.batch_delete)"]
                 #[derive(Debug, Clone)]
                 pub struct BatchDeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request:
                         crate::schemas::GoogleCloudDialogflowV2Beta1BatchDeleteEntityTypesRequest,
@@ -11767,7 +13886,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11791,7 +13911,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::batch_update()](struct.EntityTypesActions.html#method.batch_update)"]
                 #[derive(Debug, Clone)]
                 pub struct BatchUpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request:
                         crate::schemas::GoogleCloudDialogflowV2Beta1BatchUpdateEntityTypesRequest,
@@ -11932,7 +14052,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11956,7 +14077,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::create()](struct.EntityTypesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1EntityType,
                     parent: String,
@@ -11974,7 +14095,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "Optional. The language of entity synonyms defined in `entity_type`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -12102,7 +14223,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("languageCode", &self.language_code)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -12127,7 +14249,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::delete()](struct.EntityTypesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -12264,7 +14386,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12288,7 +14411,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::get()](struct.EntityTypesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     language_code: Option<String>,
@@ -12305,7 +14428,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
-                    #[doc = "Optional. The language to retrieve entity synonyms for. If not specified,\nthe agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -12431,7 +14554,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("languageCode", &self.language_code)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -12456,7 +14580,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::list()](struct.EntityTypesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     language_code: Option<String>,
@@ -12475,7 +14599,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "Optional. The language to list entity synonyms for. If not specified,\nthe agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -12727,7 +14851,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("languageCode", &self.language_code)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -12765,7 +14890,7 @@ pub mod resources {
                 #[doc = "Created via [EntityTypesActions::patch()](struct.EntityTypesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1EntityType,
                     name: String,
@@ -12784,7 +14909,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> PatchRequestBuilder<'a> {
-                    #[doc = "Optional. The language of entity synonyms defined in `entity_type`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -12916,7 +15041,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("languageCode", &self.language_code)]);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -12942,7 +15068,7 @@ pub mod resources {
                 pub mod entities {
                     pub mod params {}
                     pub struct EntitiesActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> EntitiesActions<'a> {
@@ -13025,7 +15151,7 @@ pub mod resources {
                     #[doc = "Created via [EntitiesActions::batch_create()](struct.EntitiesActions.html#method.batch_create)"]
                     #[derive(Debug, Clone)]
                     pub struct BatchCreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request:
                             crate::schemas::GoogleCloudDialogflowV2Beta1BatchCreateEntitiesRequest,
@@ -13167,7 +15293,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -13192,7 +15318,7 @@ pub mod resources {
                     #[doc = "Created via [EntitiesActions::batch_delete()](struct.EntitiesActions.html#method.batch_delete)"]
                     #[derive(Debug, Clone)]
                     pub struct BatchDeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request:
                             crate::schemas::GoogleCloudDialogflowV2Beta1BatchDeleteEntitiesRequest,
@@ -13334,7 +15460,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -13359,7 +15485,7 @@ pub mod resources {
                     #[doc = "Created via [EntitiesActions::batch_update()](struct.EntitiesActions.html#method.batch_update)"]
                     #[derive(Debug, Clone)]
                     pub struct BatchUpdateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request:
                             crate::schemas::GoogleCloudDialogflowV2Beta1BatchUpdateEntitiesRequest,
@@ -13501,7 +15627,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -13528,12 +15654,33 @@ pub mod resources {
             pub mod environments {
                 pub mod params {}
                 pub struct EnvironmentsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> EnvironmentsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
+                    }
+                    #[doc = "Returns the list of all non-draft environments of the specified agent."]
+                    pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
+                        ListRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            parent: parent.into(),
+                            page_size: None,
+                            page_token: None,
+                        }
                     }
                     #[doc = "Actions that can be performed on the users resource"]
                     pub fn users(
@@ -13546,10 +15693,313 @@ pub mod resources {
                         }
                     }
                 }
+                #[doc = "Created via [EnvironmentsActions::list()](struct.EnvironmentsActions.html#method.list)"]
+                #[derive(Debug, Clone)]
+                pub struct ListRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    parent: String,
+                    page_size: Option<i32>,
+                    page_token: Option<String>,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "Optional. The maximum number of items to return in a single page. By default 100 and\nat most 1000."]
+                    pub fn page_size(mut self, value: i32) -> Self {
+                        self.page_size = Some(value);
+                        self
+                    }
+                    #[doc = "Optional. The next_page_token value returned from a previous list request."]
+                    pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                        self.page_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                    #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                    #[doc = r" populated fields in the yielded items will be determined by the"]
+                    #[doc = r" `FieldSelector` implementation."]
+                    pub fn iter_environments<T>(self) -> crate::iter::PageItemIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.iter_environments_with_fields(fields)
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                    #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                    #[doc = r" the server."]
+                    pub fn iter_environments_with_default_fields(
+                        self,
+                    ) -> crate::iter::PageItemIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2Beta1Environment,
+                    > {
+                        self.iter_environments_with_fields(None::<String>)
+                    }
+                    #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                    #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                    #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                    #[doc = r" primarily be used during developement and debugging as fetching"]
+                    #[doc = r" all fields can be expensive both in bandwidth and server"]
+                    #[doc = r" resources."]
+                    pub fn iter_environments_with_all_fields(
+                        self,
+                    ) -> crate::iter::PageItemIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2Beta1Environment,
+                    > {
+                        self.iter_environments_with_fields(Some("*"))
+                    }
+                    pub fn iter_environments_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> crate::iter::PageItemIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: AsRef<str>,
+                    {
+                        self.fields = Some({
+                            let mut selector = concat!("nextPageToken,", "environments").to_owned();
+                            let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                            if !items_fields.is_empty() {
+                                selector.push_str("(");
+                                selector.push_str(items_fields);
+                                selector.push_str(")");
+                            }
+                            selector
+                        });
+                        crate::iter::PageItemIter::new(self, "environments")
+                    }
+                    pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.iter_with_fields(fields)
+                    }
+                    pub fn iter_with_default_fields(
+                        self,
+                    ) -> crate::iter::PageIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                    > {
+                        self.iter_with_fields(None::<&str>)
+                    }
+                    pub fn iter_with_all_fields(
+                        self,
+                    ) -> crate::iter::PageIter<
+                        Self,
+                        crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                    > {
+                        self.iter_with_fields(Some("*"))
+                    }
+                    pub fn iter_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> crate::iter::PageIter<Self, T>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: AsRef<str>,
+                    {
+                        let mut fields =
+                            fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                        if !fields.is_empty() {
+                            match fields.chars().rev().nth(0) {
+                                Some(',') | None => {}
+                                _ => fields.push_str(","),
+                            }
+                            fields.push_str("nextPageToken");
+                            self.fields = Some(fields);
+                        }
+                        crate::iter::PageIter::new(self)
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                        crate::Error,
+                    > {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                        crate::Error,
+                    > {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                        output.push_str("v2beta1/");
+                        {
+                            let var_as_str = &self.parent;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output.push_str("/environments");
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("pageSize", &self.page_size)]);
+                        let req = req.query(&[("pageToken", &self.page_token)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
+                    fn set_page_token(&mut self, value: String) {
+                        self.page_token = value.into();
+                    }
+                    fn execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        self._execute()
+                    }
+                }
                 pub mod users {
                     pub mod params {}
                     pub struct UsersActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> UsersActions<'a> {
@@ -13563,7 +16013,7 @@ pub mod resources {
                     pub mod sessions {
                         pub mod params {}
                         pub struct SessionsActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> SessionsActions<'a> {
@@ -13626,7 +16076,7 @@ pub mod resources {
                         #[doc = "Created via [SessionsActions::delete_contexts()](struct.SessionsActions.html#method.delete_contexts)"]
                         #[derive(Debug, Clone)]
                         pub struct DeleteContextsRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             access_token: Option<String>,
@@ -13765,7 +16215,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -13790,7 +16240,7 @@ pub mod resources {
                         #[doc = "Created via [SessionsActions::detect_intent()](struct.SessionsActions.html#method.detect_intent)"]
                         #[derive(Debug, Clone)]
                         pub struct DetectIntentRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request:
                                 crate::schemas::GoogleCloudDialogflowV2Beta1DetectIntentRequest,
@@ -13936,7 +16386,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -13961,7 +16411,7 @@ pub mod resources {
                         pub mod contexts {
                             pub mod params {}
                             pub struct ContextsActions<'a> {
-                                pub(crate) reqwest: &'a reqwest::Client,
+                                pub(crate) reqwest: &'a reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             }
                             impl<'a> ContextsActions<'a> {
@@ -14086,7 +16536,7 @@ pub mod resources {
                             #[doc = "Created via [ContextsActions::create()](struct.ContextsActions.html#method.create)"]
                             #[derive(Debug, Clone)]
                             pub struct CreateRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                                 parent: String,
@@ -14232,7 +16682,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -14258,7 +16708,7 @@ pub mod resources {
                             #[doc = "Created via [ContextsActions::delete()](struct.ContextsActions.html#method.delete)"]
                             #[derive(Debug, Clone)]
                             pub struct DeleteRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 name: String,
                                 access_token: Option<String>,
@@ -14397,7 +16847,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -14423,7 +16873,7 @@ pub mod resources {
                             #[doc = "Created via [ContextsActions::get()](struct.ContextsActions.html#method.get)"]
                             #[derive(Debug, Clone)]
                             pub struct GetRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 name: String,
                                 access_token: Option<String>,
@@ -14566,7 +17016,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -14592,7 +17042,7 @@ pub mod resources {
                             #[doc = "Created via [ContextsActions::list()](struct.ContextsActions.html#method.list)"]
                             #[derive(Debug, Clone)]
                             pub struct ListRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 page_size: Option<i32>,
@@ -14842,7 +17292,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -14881,7 +17331,7 @@ pub mod resources {
                             #[doc = "Created via [ContextsActions::patch()](struct.ContextsActions.html#method.patch)"]
                             #[derive(Debug, Clone)]
                             pub struct PatchRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                                 name: String,
@@ -15032,7 +17482,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                     let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -15060,7 +17510,7 @@ pub mod resources {
                         pub mod entity_types {
                             pub mod params {}
                             pub struct EntityTypesActions<'a> {
-                                pub(crate) reqwest: &'a reqwest::Client,
+                                pub(crate) reqwest: &'a reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             }
                             impl<'a> EntityTypesActions<'a> {
@@ -15185,7 +17635,7 @@ pub mod resources {
                             #[doc = "Created via [EntityTypesActions::create()](struct.EntityTypesActions.html#method.create)"]
                             #[derive(Debug, Clone)]
                             pub struct CreateRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 request:
                                     crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType,
@@ -15332,7 +17782,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -15358,7 +17808,7 @@ pub mod resources {
                             #[doc = "Created via [EntityTypesActions::delete()](struct.EntityTypesActions.html#method.delete)"]
                             #[derive(Debug, Clone)]
                             pub struct DeleteRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 name: String,
                                 access_token: Option<String>,
@@ -15497,7 +17947,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -15523,7 +17973,7 @@ pub mod resources {
                             #[doc = "Created via [EntityTypesActions::get()](struct.EntityTypesActions.html#method.get)"]
                             #[derive(Debug, Clone)]
                             pub struct GetRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 name: String,
                                 access_token: Option<String>,
@@ -15666,7 +18116,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -15692,7 +18142,7 @@ pub mod resources {
                             #[doc = "Created via [EntityTypesActions::list()](struct.EntityTypesActions.html#method.list)"]
                             #[derive(Debug, Clone)]
                             pub struct ListRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 page_size: Option<i32>,
@@ -15945,7 +18395,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -15984,7 +18434,7 @@ pub mod resources {
                             #[doc = "Created via [EntityTypesActions::patch()](struct.EntityTypesActions.html#method.patch)"]
                             #[derive(Debug, Clone)]
                             pub struct PatchRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 request:
                                     crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType,
@@ -16136,7 +18586,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                     let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -16462,7 +18912,7 @@ pub mod resources {
                     }
                 }
                 pub struct IntentsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> IntentsActions<'a> {
@@ -16637,7 +19087,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::batch_delete()](struct.IntentsActions.html#method.batch_delete)"]
                 #[derive(Debug, Clone)]
                 pub struct BatchDeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1BatchDeleteIntentsRequest,
                     parent: String,
@@ -16777,7 +19227,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -16801,7 +19252,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::batch_update()](struct.IntentsActions.html#method.batch_update)"]
                 #[derive(Debug, Clone)]
                 pub struct BatchUpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1BatchUpdateIntentsRequest,
                     parent: String,
@@ -16941,7 +19392,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -16965,7 +19417,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::create()](struct.IntentsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1Intent,
                     parent: String,
@@ -16994,7 +19446,7 @@ pub mod resources {
                         self.intent_view = Some(value);
                         self
                     }
-                    #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intent`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -17122,7 +19574,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("intentView", &self.intent_view)]);
                         let req = req.query(&[("languageCode", &self.language_code)]);
@@ -17148,7 +19601,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::delete()](struct.IntentsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -17285,7 +19738,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -17309,7 +19763,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::get()](struct.IntentsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     intent_view:
@@ -17336,7 +19790,7 @@ pub mod resources {
                         self.intent_view = Some(value);
                         self
                     }
-                    #[doc = "Optional. The language to retrieve training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -17462,7 +19916,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("intentView", &self.intent_view)]);
                         let req = req.query(&[("languageCode", &self.language_code)]);
@@ -17488,7 +19943,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::list()](struct.IntentsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     intent_view:
@@ -17517,7 +19972,7 @@ pub mod resources {
                         self.intent_view = Some(value);
                         self
                     }
-                    #[doc = "Optional. The language to list training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -17769,7 +20224,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("intentView", &self.intent_view)]);
                         let req = req.query(&[("languageCode", &self.language_code)]);
@@ -17808,7 +20264,7 @@ pub mod resources {
                 #[doc = "Created via [IntentsActions::patch()](struct.IntentsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1Intent,
                     name: String,
@@ -17837,7 +20293,7 @@ pub mod resources {
                         self.intent_view = Some(value);
                         self
                     }
-                    #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intent`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                    #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                     pub fn language_code(mut self, value: impl Into<String>) -> Self {
                         self.language_code = Some(value.into());
                         self
@@ -17969,7 +20425,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("intentView", &self.intent_view)]);
                         let req = req.query(&[("languageCode", &self.language_code)]);
@@ -17997,7 +20454,7 @@ pub mod resources {
             pub mod knowledge_bases {
                 pub mod params {}
                 pub struct KnowledgeBasesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> KnowledgeBasesActions<'a> {
@@ -18120,7 +20577,7 @@ pub mod resources {
                 #[doc = "Created via [KnowledgeBasesActions::create()](struct.KnowledgeBasesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeBase,
                     parent: String,
@@ -18264,7 +20721,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -18288,7 +20746,7 @@ pub mod resources {
                 #[doc = "Created via [KnowledgeBasesActions::delete()](struct.KnowledgeBasesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     force: Option<bool>,
@@ -18431,7 +20889,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("force", &self.force)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -18456,7 +20915,7 @@ pub mod resources {
                 #[doc = "Created via [KnowledgeBasesActions::get()](struct.KnowledgeBasesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -18597,7 +21056,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -18621,7 +21081,7 @@ pub mod resources {
                 #[doc = "Created via [KnowledgeBasesActions::list()](struct.KnowledgeBasesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -18887,7 +21347,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -18924,7 +21385,7 @@ pub mod resources {
                 #[doc = "Created via [KnowledgeBasesActions::patch()](struct.KnowledgeBasesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeBase,
                     name: String,
@@ -19073,7 +21534,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -19098,14 +21560,14 @@ pub mod resources {
                 pub mod documents {
                     pub mod params {}
                     pub struct DocumentsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> DocumentsActions<'a> {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\nmetadata: KnowledgeOperationMetadata>"]
+                        #[doc = "Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                         pub fn create(
                             &self,
                             request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
@@ -19129,7 +21591,7 @@ pub mod resources {
                                 parent: parent.into(),
                             }
                         }
-                        #[doc = "Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: google.protobuf.Empty,\nmetadata: KnowledgeOperationMetadata>"]
+                        #[doc = "Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                         pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                             DeleteRequestBuilder {
                                 reqwest: &self.reqwest,
@@ -19188,7 +21650,7 @@ pub mod resources {
                                 page_token: None,
                             }
                         }
-                        #[doc = "Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\nmetadata: KnowledgeOperationMetadata>"]
+                        #[doc = "Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                         pub fn patch(
                             &self,
                             request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
@@ -19213,7 +21675,7 @@ pub mod resources {
                                 update_mask: None,
                             }
                         }
-                        #[doc = "Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\nmetadata: KnowledgeOperationMetadata>"]
+                        #[doc = "Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                         pub fn reload(
                             &self,
                             request : crate :: schemas :: GoogleCloudDialogflowV2Beta1ReloadDocumentRequest,
@@ -19241,7 +21703,7 @@ pub mod resources {
                     #[doc = "Created via [DocumentsActions::create()](struct.DocumentsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
                         parent: String,
@@ -19382,7 +21844,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -19407,7 +21869,7 @@ pub mod resources {
                     #[doc = "Created via [DocumentsActions::delete()](struct.DocumentsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -19545,7 +22007,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -19570,7 +22032,7 @@ pub mod resources {
                     #[doc = "Created via [DocumentsActions::get()](struct.DocumentsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -19712,7 +22174,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -19737,7 +22199,7 @@ pub mod resources {
                     #[doc = "Created via [DocumentsActions::list()](struct.DocumentsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         page_size: Option<i32>,
@@ -20007,7 +22469,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -20045,7 +22507,7 @@ pub mod resources {
                     #[doc = "Created via [DocumentsActions::patch()](struct.DocumentsActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
                         name: String,
@@ -20191,7 +22653,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -20217,7 +22679,7 @@ pub mod resources {
                     #[doc = "Created via [DocumentsActions::reload()](struct.DocumentsActions.html#method.reload)"]
                     #[derive(Debug, Clone)]
                     pub struct ReloadRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1ReloadDocumentRequest,
                         name: String,
@@ -20358,7 +22820,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -20385,7 +22847,7 @@ pub mod resources {
             pub mod sessions {
                 pub mod params {}
                 pub struct SessionsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> SessionsActions<'a> {
@@ -20459,7 +22921,7 @@ pub mod resources {
                 #[doc = "Created via [SessionsActions::delete_contexts()](struct.SessionsActions.html#method.delete_contexts)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteContextsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     access_token: Option<String>,
@@ -20597,7 +23059,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -20621,7 +23084,7 @@ pub mod resources {
                 #[doc = "Created via [SessionsActions::detect_intent()](struct.SessionsActions.html#method.detect_intent)"]
                 #[derive(Debug, Clone)]
                 pub struct DetectIntentRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1DetectIntentRequest,
                     session: String,
@@ -20765,7 +23228,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -20789,7 +23253,7 @@ pub mod resources {
                 pub mod contexts {
                     pub mod params {}
                     pub struct ContextsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> ContextsActions<'a> {
@@ -20908,7 +23372,7 @@ pub mod resources {
                     #[doc = "Created via [ContextsActions::create()](struct.ContextsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                         parent: String,
@@ -21049,7 +23513,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -21074,7 +23538,7 @@ pub mod resources {
                     #[doc = "Created via [ContextsActions::delete()](struct.ContextsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -21212,7 +23676,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -21237,7 +23701,7 @@ pub mod resources {
                     #[doc = "Created via [ContextsActions::get()](struct.ContextsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -21375,7 +23839,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -21400,7 +23864,7 @@ pub mod resources {
                     #[doc = "Created via [ContextsActions::list()](struct.ContextsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         page_size: Option<i32>,
@@ -21669,7 +24133,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -21707,7 +24171,7 @@ pub mod resources {
                     #[doc = "Created via [ContextsActions::patch()](struct.ContextsActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                         name: String,
@@ -21853,7 +24317,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -21880,7 +24344,7 @@ pub mod resources {
                 pub mod entity_types {
                     pub mod params {}
                     pub struct EntityTypesActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> EntityTypesActions<'a> {
@@ -21999,7 +24463,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::create()](struct.EntityTypesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType,
                         parent: String,
@@ -22144,7 +24608,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -22169,7 +24633,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::delete()](struct.EntityTypesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -22307,7 +24771,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -22332,7 +24796,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::get()](struct.EntityTypesActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -22474,7 +24938,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -22499,7 +24963,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::list()](struct.EntityTypesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         page_size: Option<i32>,
@@ -22747,7 +25211,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -22785,7 +25249,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::patch()](struct.EntityTypesActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType,
                         name: String,
@@ -22935,7 +25399,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -22964,7 +25428,7 @@ pub mod resources {
         pub mod knowledge_bases {
             pub mod params {}
             pub struct KnowledgeBasesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> KnowledgeBasesActions<'a> {
@@ -23094,7 +25558,7 @@ pub mod resources {
             #[doc = "Created via [KnowledgeBasesActions::create()](struct.KnowledgeBasesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeBase,
                 parent: String,
@@ -23231,7 +25695,10 @@ pub mod resources {
                     output.push_str("/knowledgeBases");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -23255,7 +25722,7 @@ pub mod resources {
             #[doc = "Created via [KnowledgeBasesActions::delete()](struct.KnowledgeBasesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 force: Option<bool>,
@@ -23393,7 +25860,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("force", &self.force)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -23418,7 +25888,7 @@ pub mod resources {
             #[doc = "Created via [KnowledgeBasesActions::get()](struct.KnowledgeBasesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -23552,7 +26022,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -23576,7 +26049,7 @@ pub mod resources {
             #[doc = "Created via [KnowledgeBasesActions::list()](struct.KnowledgeBasesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -23837,7 +26310,10 @@ pub mod resources {
                     output.push_str("/knowledgeBases");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -23874,7 +26350,7 @@ pub mod resources {
             #[doc = "Created via [KnowledgeBasesActions::patch()](struct.KnowledgeBasesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GoogleCloudDialogflowV2Beta1KnowledgeBase,
                 name: String,
@@ -24016,7 +26492,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -24041,14 +26520,14 @@ pub mod resources {
             pub mod documents {
                 pub mod params {}
                 pub struct DocumentsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> DocumentsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\nmetadata: KnowledgeOperationMetadata>"]
+                    #[doc = "Creates a new document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                     pub fn create(
                         &self,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
@@ -24072,7 +26551,7 @@ pub mod resources {
                             parent: parent.into(),
                         }
                     }
-                    #[doc = "Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: google.protobuf.Empty,\nmetadata: KnowledgeOperationMetadata>"]
+                    #[doc = "Deletes the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                     pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
@@ -24131,7 +26610,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\nmetadata: KnowledgeOperationMetadata>"]
+                    #[doc = "Updates the specified document.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                     pub fn patch(
                         &self,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
@@ -24156,7 +26635,7 @@ pub mod resources {
                             update_mask: None,
                         }
                     }
-                    #[doc = "Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`.\n\nOperation <response: Document,\nmetadata: KnowledgeOperationMetadata>"]
+                    #[doc = "Reloads the specified document from its specified source, content_uri or\ncontent. The previously loaded content of the document will be deleted.\nNote: Even when the content of the document has not changed, there still\nmay be side effects because of internal implementation changes.\n\nNote: The `projects.agent.knowledgeBases.documents` resource is deprecated;\nonly use `projects.knowledgeBases.documents`."]
                     pub fn reload(
                         &self,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1ReloadDocumentRequest,
@@ -24184,7 +26663,7 @@ pub mod resources {
                 #[doc = "Created via [DocumentsActions::create()](struct.DocumentsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
                     parent: String,
@@ -24324,7 +26803,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -24348,7 +26828,7 @@ pub mod resources {
                 #[doc = "Created via [DocumentsActions::delete()](struct.DocumentsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -24485,7 +26965,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -24509,7 +26990,7 @@ pub mod resources {
                 #[doc = "Created via [DocumentsActions::get()](struct.DocumentsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -24646,7 +27127,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -24670,7 +27152,7 @@ pub mod resources {
                 #[doc = "Created via [DocumentsActions::list()](struct.DocumentsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -24935,7 +27417,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -24972,7 +27455,7 @@ pub mod resources {
                 #[doc = "Created via [DocumentsActions::patch()](struct.DocumentsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1Document,
                     name: String,
@@ -25117,7 +27600,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -25142,7 +27626,7 @@ pub mod resources {
                 #[doc = "Created via [DocumentsActions::reload()](struct.DocumentsActions.html#method.reload)"]
                 #[derive(Debug, Clone)]
                 pub struct ReloadRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1ReloadDocumentRequest,
                     name: String,
@@ -25282,7 +27766,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -25308,37 +27793,12 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
-                }
-                #[doc = "Creates/updates the specified agent."]
-                pub fn agent_method(
-                    &self,
-                    request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
-                    parent: impl Into<String>,
-                ) -> AgentMethodRequestBuilder {
-                    AgentMethodRequestBuilder {
-                        reqwest: &self.reqwest,
-                        auth: self.auth_ref(),
-                        request,
-                        access_token: None,
-                        alt: None,
-                        callback: None,
-                        fields: None,
-                        key: None,
-                        oauth_token: None,
-                        pretty_print: None,
-                        quota_user: None,
-                        upload_protocol: None,
-                        upload_type: None,
-                        xgafv: None,
-                        parent: parent.into(),
-                        update_mask: None,
-                    }
                 }
                 #[doc = "Deletes the specified agent."]
                 pub fn delete_agent(&self, parent: impl Into<String>) -> DeleteAgentRequestBuilder {
@@ -25378,6 +27838,31 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
+                #[doc = "Creates/updates the specified agent."]
+                pub fn set_agent(
+                    &self,
+                    request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
+                    parent: impl Into<String>,
+                ) -> SetAgentRequestBuilder {
+                    SetAgentRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                        update_mask: None,
+                    }
+                }
                 #[doc = "Actions that can be performed on the agent resource"]
                 pub fn agent(&self) -> crate::resources::projects::locations::agent::AgentActions {
                     crate::resources::projects::locations::agent::AgentActions {
@@ -25396,178 +27881,10 @@ pub mod resources {
                     }
                 }
             }
-            #[doc = "Created via [LocationsActions::agent_method()](struct.LocationsActions.html#method.agent_method)"]
-            #[derive(Debug, Clone)]
-            pub struct AgentMethodRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
-                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-                request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
-                parent: String,
-                update_mask: Option<String>,
-                access_token: Option<String>,
-                alt: Option<crate::params::Alt>,
-                callback: Option<String>,
-                fields: Option<String>,
-                key: Option<String>,
-                oauth_token: Option<String>,
-                pretty_print: Option<bool>,
-                quota_user: Option<String>,
-                upload_protocol: Option<String>,
-                upload_type: Option<String>,
-                xgafv: Option<crate::params::Xgafv>,
-            }
-            impl<'a> AgentMethodRequestBuilder<'a> {
-                #[doc = "Optional. The mask to control which fields get updated."]
-                pub fn update_mask(mut self, value: impl Into<String>) -> Self {
-                    self.update_mask = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
-                #[doc = "JSONP"]
-                pub fn callback(mut self, value: impl Into<String>) -> Self {
-                    self.callback = Some(value.into());
-                    self
-                }
-                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-                pub fn key(mut self, value: impl Into<String>) -> Self {
-                    self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
-                    self
-                }
-                #[doc = "Returns response with indentations and line breaks."]
-                pub fn pretty_print(mut self, value: bool) -> Self {
-                    self.pretty_print = Some(value);
-                    self
-                }
-                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                    self.quota_user = Some(value.into());
-                    self
-                }
-                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                    self.upload_protocol = Some(value.into());
-                    self
-                }
-                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                    self.upload_type = Some(value.into());
-                    self
-                }
-                #[doc = "V1 error format."]
-                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                    self.xgafv = Some(value);
-                    self
-                }
-                #[doc = r" Execute the given operation. The fields requested are"]
-                #[doc = r" determined by the FieldSelector attribute of the return type."]
-                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-                #[doc = r" are not generic over the return type and deserialize the"]
-                #[doc = r" response into an auto-generated struct will all possible"]
-                #[doc = r" fields."]
-                pub fn execute<T>(self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.execute_with_fields(fields)
-                }
-                #[doc = r" Execute the given operation. This will not provide any"]
-                #[doc = r" `fields` selector indicating that the server will determine"]
-                #[doc = r" the fields returned. This typically includes the most common"]
-                #[doc = r" fields, but it will not include every possible attribute of"]
-                #[doc = r" the response resource."]
-                pub fn execute_with_default_fields(
-                    self,
-                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
-                {
-                    self.execute_with_fields(None::<&str>)
-                }
-                #[doc = r" Execute the given operation. This will provide a `fields`"]
-                #[doc = r" selector of `*`. This will include every attribute of the"]
-                #[doc = r" response resource and should be limited to use during"]
-                #[doc = r" development or debugging."]
-                pub fn execute_with_all_fields(
-                    self,
-                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
-                {
-                    self.execute_with_fields(Some("*"))
-                }
-                #[doc = r" Execute the given operation. This will use the `fields`"]
-                #[doc = r" selector provided and will deserialize the response into"]
-                #[doc = r" whatever return value is provided."]
-                pub fn execute_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: Into<String>,
-                {
-                    self.fields = fields.map(Into::into);
-                    self._execute()
-                }
-                fn _execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    let req = self._request(&self._path())?;
-                    let req = req.json(&self.request);
-                    Ok(crate::error_from_response(req.send()?)?.json()?)
-                }
-                fn _path(&self) -> String {
-                    let mut output = "https://dialogflow.googleapis.com/".to_owned();
-                    output.push_str("v2beta1/");
-                    {
-                        let var_as_str = &self.parent;
-                        output.extend(::percent_encoding::utf8_percent_encode(
-                            &var_as_str,
-                            crate::RESERVED,
-                        ));
-                    }
-                    output.push_str("/agent");
-                    output
-                }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                    let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("updateMask", &self.update_mask)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
-                    let req = req.query(&[("alt", &self.alt)]);
-                    let req = req.query(&[("callback", &self.callback)]);
-                    let req = req.query(&[("fields", &self.fields)]);
-                    let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                    let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                    let req = req.query(&[("uploadType", &self.upload_type)]);
-                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
-                    Ok(req)
-                }
-            }
             #[doc = "Created via [LocationsActions::delete_agent()](struct.LocationsActions.html#method.delete_agent)"]
             #[derive(Debug, Clone)]
             pub struct DeleteAgentRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 access_token: Option<String>,
@@ -25700,7 +28017,10 @@ pub mod resources {
                     output.push_str("/agent");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -25724,7 +28044,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get_agent()](struct.LocationsActions.html#method.get_agent)"]
             #[derive(Debug, Clone)]
             pub struct GetAgentRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 access_token: Option<String>,
@@ -25859,8 +28179,182 @@ pub mod resources {
                     output.push_str("/agent");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [LocationsActions::set_agent()](struct.LocationsActions.html#method.set_agent)"]
+            #[derive(Debug, Clone)]
+            pub struct SetAgentRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::GoogleCloudDialogflowV2Beta1Agent,
+                parent: String,
+                update_mask: Option<String>,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> SetAgentRequestBuilder<'a> {
+                #[doc = "Optional. The mask to control which fields get updated."]
+                pub fn update_mask(mut self, value: impl Into<String>) -> Self {
+                    self.update_mask = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
+                {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Agent, crate::Error>
+                {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                    output.push_str("v2beta1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/agent");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -25883,7 +28377,7 @@ pub mod resources {
             pub mod agent {
                 pub mod params {}
                 pub struct AgentActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> AgentActions<'a> {
@@ -25912,6 +28406,53 @@ pub mod resources {
                             upload_type: None,
                             xgafv: None,
                             parent: parent.into(),
+                        }
+                    }
+                    #[doc = "Updates the fulfillment."]
+                    pub fn fulfillment(
+                        &self,
+                        request: crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment,
+                        name: impl Into<String>,
+                    ) -> FulfillmentRequestBuilder {
+                        FulfillmentRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            request,
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            name: name.into(),
+                            update_mask: None,
+                        }
+                    }
+                    #[doc = "Retrieves the fulfillment."]
+                    pub fn get_fulfillment(
+                        &self,
+                        name: impl Into<String>,
+                    ) -> GetFulfillmentRequestBuilder {
+                        GetFulfillmentRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            name: name.into(),
                         }
                     }
                     #[doc = "Imports the specified agent from a ZIP file.\n\nUploads new intents and entity types without deleting the existing ones.\nIntents and entity types with the same name are replaced with the new\nversions from ImportAgentRequest.\n\nOperation <response: google.protobuf.Empty>"]
@@ -26016,7 +28557,7 @@ pub mod resources {
                 #[doc = "Created via [AgentActions::export()](struct.AgentActions.html#method.export)"]
                 #[derive(Debug, Clone)]
                 pub struct ExportRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1ExportAgentRequest,
                     parent: String,
@@ -26156,8 +28697,342 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                #[doc = "Created via [AgentActions::fulfillment()](struct.AgentActions.html#method.fulfillment)"]
+                #[derive(Debug, Clone)]
+                pub struct FulfillmentRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    request: crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment,
+                    name: String,
+                    update_mask: Option<String>,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> FulfillmentRequestBuilder<'a> {
+                    #[doc = "Required. The mask to control which fields get updated. If the mask is not\npresent, all fields will be updated."]
+                    pub fn update_mask(mut self, value: impl Into<String>) -> Self {
+                        self.update_mask = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                    {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                    {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        let req = req.json(&self.request);
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                        output.push_str("v2beta1/");
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("updateMask", &self.update_mask)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+                #[doc = "Created via [AgentActions::get_fulfillment()](struct.AgentActions.html#method.get_fulfillment)"]
+                #[derive(Debug, Clone)]
+                pub struct GetFulfillmentRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    name: String,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> GetFulfillmentRequestBuilder<'a> {
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                    {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::GoogleCloudDialogflowV2Beta1Fulfillment, crate::Error>
+                    {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                        output.push_str("v2beta1/");
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
@@ -26180,7 +29055,7 @@ pub mod resources {
                 #[doc = "Created via [AgentActions::import()](struct.AgentActions.html#method.import)"]
                 #[derive(Debug, Clone)]
                 pub struct ImportRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1ImportAgentRequest,
                     parent: String,
@@ -26320,7 +29195,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26344,7 +29220,7 @@ pub mod resources {
                 #[doc = "Created via [AgentActions::restore()](struct.AgentActions.html#method.restore)"]
                 #[derive(Debug, Clone)]
                 pub struct RestoreRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1RestoreAgentRequest,
                     parent: String,
@@ -26484,7 +29360,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26508,7 +29385,7 @@ pub mod resources {
                 #[doc = "Created via [AgentActions::train()](struct.AgentActions.html#method.train)"]
                 #[derive(Debug, Clone)]
                 pub struct TrainRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleCloudDialogflowV2Beta1TrainAgentRequest,
                     parent: String,
@@ -26648,7 +29525,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26672,14 +29550,14 @@ pub mod resources {
                 pub mod entity_types {
                     pub mod params {}
                     pub struct EntityTypesActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> EntityTypesActions<'a> {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "Deletes entity types in the specified agent.\n\nOperation <response: google.protobuf.Empty>"]
+                        #[doc = "Deletes entity types in the specified agent.\nOperation <response: google.protobuf.Empty>"]
                         pub fn batch_delete(
                             &self,
                             request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchDeleteEntityTypesRequest,
@@ -26703,7 +29581,7 @@ pub mod resources {
                                 parent: parent.into(),
                             }
                         }
-                        #[doc = "Updates/Creates multiple entity types in the specified agent.\n\nOperation <response: BatchUpdateEntityTypesResponse>"]
+                        #[doc = "Updates/Creates multiple entity types in the specified agent.\nOperation <response: BatchUpdateEntityTypesResponse>"]
                         pub fn batch_update(
                             &self,
                             request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchUpdateEntityTypesRequest,
@@ -26845,7 +29723,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [EntityTypesActions::batch_delete()](struct.EntityTypesActions.html#method.batch_delete)"]
                     #[derive(Debug, Clone)]
-                    pub struct BatchDeleteRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchDeleteEntityTypesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct BatchDeleteRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchDeleteEntityTypesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> BatchDeleteRequestBuilder<'a> {
                         #[doc = "OAuth access token."]
                         pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -26971,7 +29849,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -26995,7 +29873,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [EntityTypesActions::batch_update()](struct.EntityTypesActions.html#method.batch_update)"]
                     #[derive(Debug, Clone)]
-                    pub struct BatchUpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchUpdateEntityTypesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct BatchUpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchUpdateEntityTypesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> BatchUpdateRequestBuilder<'a> {
                         #[doc = "OAuth access token."]
                         pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -27121,7 +29999,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -27146,7 +30024,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::create()](struct.EntityTypesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1EntityType,
                         parent: String,
@@ -27164,7 +30042,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> CreateRequestBuilder<'a> {
-                        #[doc = "Optional. The language of entity synonyms defined in `entity_type`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -27297,7 +30175,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("languageCode", &self.language_code)]);
@@ -27323,7 +30201,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::delete()](struct.EntityTypesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -27461,7 +30339,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -27486,7 +30364,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::get()](struct.EntityTypesActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         language_code: Option<String>,
@@ -27503,7 +30381,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetRequestBuilder<'a> {
-                        #[doc = "Optional. The language to retrieve entity synonyms for. If not specified,\nthe agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -27634,7 +30512,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("languageCode", &self.language_code)]);
@@ -27660,7 +30538,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::list()](struct.EntityTypesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         language_code: Option<String>,
@@ -27679,7 +30557,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Optional. The language to list entity synonyms for. If not specified,\nthe agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -27936,7 +30814,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("languageCode", &self.language_code)]);
@@ -27975,7 +30853,7 @@ pub mod resources {
                     #[doc = "Created via [EntityTypesActions::patch()](struct.EntityTypesActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1EntityType,
                         name: String,
@@ -27994,7 +30872,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> PatchRequestBuilder<'a> {
-                        #[doc = "Optional. The language of entity synonyms defined in `entity_type`. If not\nspecified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -28131,7 +31009,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("languageCode", &self.language_code)]);
@@ -28158,7 +31036,7 @@ pub mod resources {
                     pub mod entities {
                         pub mod params {}
                         pub struct EntitiesActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> EntitiesActions<'a> {
@@ -28240,7 +31118,7 @@ pub mod resources {
                         }
                         #[doc = "Created via [EntitiesActions::batch_create()](struct.EntitiesActions.html#method.batch_create)"]
                         #[derive(Debug, Clone)]
-                        pub struct BatchCreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchCreateEntitiesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                        pub struct BatchCreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchCreateEntitiesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> BatchCreateRequestBuilder<'a> {
                             #[doc = "OAuth access token."]
                             pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -28366,7 +31244,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -28390,7 +31268,7 @@ pub mod resources {
                         }
                         #[doc = "Created via [EntitiesActions::batch_delete()](struct.EntitiesActions.html#method.batch_delete)"]
                         #[derive(Debug, Clone)]
-                        pub struct BatchDeleteRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchDeleteEntitiesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                        pub struct BatchDeleteRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchDeleteEntitiesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> BatchDeleteRequestBuilder<'a> {
                             #[doc = "OAuth access token."]
                             pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -28516,7 +31394,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -28540,7 +31418,7 @@ pub mod resources {
                         }
                         #[doc = "Created via [EntitiesActions::batch_update()](struct.EntitiesActions.html#method.batch_update)"]
                         #[derive(Debug, Clone)]
-                        pub struct BatchUpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchUpdateEntitiesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                        pub struct BatchUpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1BatchUpdateEntitiesRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> BatchUpdateRequestBuilder<'a> {
                             #[doc = "OAuth access token."]
                             pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -28666,7 +31544,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -28693,21 +31571,350 @@ pub mod resources {
                 pub mod environments {
                     pub mod params {}
                     pub struct EnvironmentsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> EnvironmentsActions<'a> {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
+                        #[doc = "Returns the list of all non-draft environments of the specified agent."]
+                        pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
+                            ListRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                parent: parent.into(),
+                                page_size: None,
+                                page_token: None,
+                            }
+                        }
                         #[doc = "Actions that can be performed on the users resource"]pub fn users ( & self ) -> crate :: resources :: projects :: locations :: agent :: environments :: users :: UsersActions{
                             crate :: resources :: projects :: locations :: agent :: environments :: users :: UsersActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                        }
+                    }
+                    #[doc = "Created via [EnvironmentsActions::list()](struct.EnvironmentsActions.html#method.list)"]
+                    #[derive(Debug, Clone)]
+                    pub struct ListRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        parent: String,
+                        page_size: Option<i32>,
+                        page_token: Option<String>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> ListRequestBuilder<'a> {
+                        #[doc = "Optional. The maximum number of items to return in a single page. By default 100 and\nat most 1000."]
+                        pub fn page_size(mut self, value: i32) -> Self {
+                            self.page_size = Some(value);
+                            self
+                        }
+                        #[doc = "Optional. The next_page_token value returned from a previous list request."]
+                        pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                            self.page_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                        #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                        #[doc = r" populated fields in the yielded items will be determined by the"]
+                        #[doc = r" `FieldSelector` implementation."]
+                        pub fn iter_environments<T>(self) -> crate::iter::PageItemIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_environments_with_fields(fields)
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                        #[doc = r" the server."]
+                        pub fn iter_environments_with_default_fields(
+                            self,
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2Beta1Environment,
+                        > {
+                            self.iter_environments_with_fields(None::<String>)
+                        }
+                        #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                        #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                        #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                        #[doc = r" primarily be used during developement and debugging as fetching"]
+                        #[doc = r" all fields can be expensive both in bandwidth and server"]
+                        #[doc = r" resources."]
+                        pub fn iter_environments_with_all_fields(
+                            self,
+                        ) -> crate::iter::PageItemIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2Beta1Environment,
+                        > {
+                            self.iter_environments_with_fields(Some("*"))
+                        }
+                        pub fn iter_environments_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageItemIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            self.fields = Some({
+                                let mut selector =
+                                    concat!("nextPageToken,", "environments").to_owned();
+                                let items_fields =
+                                    fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                                if !items_fields.is_empty() {
+                                    selector.push_str("(");
+                                    selector.push_str(items_fields);
+                                    selector.push_str(")");
+                                }
+                                selector
+                            });
+                            crate::iter::PageItemIter::new(self, "environments")
+                        }
+                        pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.iter_with_fields(fields)
+                        }
+                        pub fn iter_with_default_fields(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                        > {
+                            self.iter_with_fields(None::<&str>)
+                        }
+                        pub fn iter_with_all_fields(
+                            self,
+                        ) -> crate::iter::PageIter<
+                            Self,
+                            crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                        > {
+                            self.iter_with_fields(Some("*"))
+                        }
+                        pub fn iter_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> crate::iter::PageIter<Self, T>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: AsRef<str>,
+                        {
+                            let mut fields =
+                                fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                            if !fields.is_empty() {
+                                match fields.chars().rev().nth(0) {
+                                    Some(',') | None => {}
+                                    _ => fields.push_str(","),
+                                }
+                                fields.push_str("nextPageToken");
+                                self.fields = Some(fields);
+                            }
+                            crate::iter::PageIter::new(self)
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                            crate::Error,
+                        > {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<
+                            crate::schemas::GoogleCloudDialogflowV2Beta1ListEnvironmentsResponse,
+                            crate::Error,
+                        > {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://dialogflow.googleapis.com/".to_owned();
+                            output.push_str("v2beta1/");
+                            {
+                                let var_as_str = &self.parent;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str("/environments");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[("pageSize", &self.page_size)]);
+                            let req = req.query(&[("pageToken", &self.page_token)]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                    impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
+                        fn set_page_token(&mut self, value: String) {
+                            self.page_token = value.into();
+                        }
+                        fn execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            self._execute()
                         }
                     }
                     pub mod users {
                         pub mod params {}
                         pub struct UsersActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> UsersActions<'a> {
@@ -28721,7 +31928,7 @@ pub mod resources {
                         pub mod sessions {
                             pub mod params {}
                             pub struct SessionsActions<'a> {
-                                pub(crate) reqwest: &'a reqwest::Client,
+                                pub(crate) reqwest: &'a reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             }
                             impl<'a> SessionsActions<'a> {
@@ -28784,7 +31991,7 @@ pub mod resources {
                             #[doc = "Created via [SessionsActions::delete_contexts()](struct.SessionsActions.html#method.delete_contexts)"]
                             #[derive(Debug, Clone)]
                             pub struct DeleteContextsRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 access_token: Option<String>,
@@ -28924,7 +32131,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -28950,7 +32157,7 @@ pub mod resources {
                             #[doc = "Created via [SessionsActions::detect_intent()](struct.SessionsActions.html#method.detect_intent)"]
                             #[derive(Debug, Clone)]
                             pub struct DetectIntentRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 request:
                                     crate::schemas::GoogleCloudDialogflowV2Beta1DetectIntentRequest,
@@ -29085,7 +32292,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -29111,7 +32318,7 @@ pub mod resources {
                             pub mod contexts {
                                 pub mod params {}
                                 pub struct ContextsActions<'a> {
-                                    pub(crate) reqwest: &'a reqwest::Client,
+                                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 }
                                 impl<'a> ContextsActions<'a> {
@@ -29239,7 +32446,7 @@ pub mod resources {
                                 #[doc = "Created via [ContextsActions::create()](struct.ContextsActions.html#method.create)"]
                                 #[derive(Debug, Clone)]
                                 pub struct CreateRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                                     parent: String,
@@ -29391,7 +32598,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::POST, path);
@@ -29419,7 +32626,7 @@ pub mod resources {
                                 #[doc = "Created via [ContextsActions::delete()](struct.ContextsActions.html#method.delete)"]
                                 #[derive(Debug, Clone)]
                                 pub struct DeleteRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     name: String,
                                     access_token: Option<String>,
@@ -29564,7 +32771,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::DELETE, path);
@@ -29592,7 +32799,7 @@ pub mod resources {
                                 #[doc = "Created via [ContextsActions::get()](struct.ContextsActions.html#method.get)"]
                                 #[derive(Debug, Clone)]
                                 pub struct GetRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     name: String,
                                     access_token: Option<String>,
@@ -29741,7 +32948,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -29769,7 +32976,7 @@ pub mod resources {
                                 #[doc = "Created via [ContextsActions::list()](struct.ContextsActions.html#method.list)"]
                                 #[derive(Debug, Clone)]
                                 pub struct ListRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     parent: String,
                                     page_size: Option<i32>,
@@ -30015,7 +33222,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -30056,7 +33263,7 @@ pub mod resources {
                                 #[doc = "Created via [ContextsActions::patch()](struct.ContextsActions.html#method.patch)"]
                                 #[derive(Debug, Clone)]
                                 pub struct PatchRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                                     name: String,
@@ -30213,7 +33420,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::PATCH, path);
@@ -30243,7 +33450,7 @@ pub mod resources {
                             pub mod entity_types {
                                 pub mod params {}
                                 pub struct EntityTypesActions<'a> {
-                                    pub(crate) reqwest: &'a reqwest::Client,
+                                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 }
                                 impl<'a> EntityTypesActions<'a> {
@@ -30370,7 +33577,7 @@ pub mod resources {
                                 }
                                 #[doc = "Created via [EntityTypesActions::create()](struct.EntityTypesActions.html#method.create)"]
                                 #[derive(Debug, Clone)]
-                                pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1SessionEntityType , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                                pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1SessionEntityType , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                                 impl<'a> CreateRequestBuilder<'a> {
                                     #[doc = "OAuth access token."]
                                     pub fn access_token(
@@ -30495,7 +33702,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::POST, path);
@@ -30523,7 +33730,7 @@ pub mod resources {
                                 #[doc = "Created via [EntityTypesActions::delete()](struct.EntityTypesActions.html#method.delete)"]
                                 #[derive(Debug, Clone)]
                                 pub struct DeleteRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     name: String,
                                     access_token: Option<String>,
@@ -30668,7 +33875,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::DELETE, path);
@@ -30696,7 +33903,7 @@ pub mod resources {
                                 #[doc = "Created via [EntityTypesActions::get()](struct.EntityTypesActions.html#method.get)"]
                                 #[derive(Debug, Clone)]
                                 pub struct GetRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     name: String,
                                     access_token: Option<String>,
@@ -30833,7 +34040,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -30861,7 +34068,7 @@ pub mod resources {
                                 #[doc = "Created via [EntityTypesActions::list()](struct.EntityTypesActions.html#method.list)"]
                                 #[derive(Debug, Clone)]
                                 pub struct ListRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     parent: String,
                                     page_size: Option<i32>,
@@ -31108,7 +34315,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -31148,7 +34355,7 @@ pub mod resources {
                                 }
                                 #[doc = "Created via [EntityTypesActions::patch()](struct.EntityTypesActions.html#method.patch)"]
                                 #[derive(Debug, Clone)]
-                                pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1SessionEntityType , name : String , update_mask : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                                pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1SessionEntityType , name : String , update_mask : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                                 impl<'a> PatchRequestBuilder<'a> {
                                     #[doc = "Optional. The mask to control which fields get updated."]
                                     pub fn update_mask(mut self, value: impl Into<String>) -> Self {
@@ -31277,7 +34484,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::PATCH, path);
@@ -31631,7 +34838,7 @@ pub mod resources {
                         }
                     }
                     pub struct IntentsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> IntentsActions<'a> {
@@ -31806,7 +35013,7 @@ pub mod resources {
                     #[doc = "Created via [IntentsActions::batch_delete()](struct.IntentsActions.html#method.batch_delete)"]
                     #[derive(Debug, Clone)]
                     pub struct BatchDeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request:
                             crate::schemas::GoogleCloudDialogflowV2Beta1BatchDeleteIntentsRequest,
@@ -31948,7 +35155,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -31973,7 +35180,7 @@ pub mod resources {
                     #[doc = "Created via [IntentsActions::batch_update()](struct.IntentsActions.html#method.batch_update)"]
                     #[derive(Debug, Clone)]
                     pub struct BatchUpdateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request:
                             crate::schemas::GoogleCloudDialogflowV2Beta1BatchUpdateIntentsRequest,
@@ -32115,7 +35322,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -32139,7 +35346,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [IntentsActions::create()](struct.IntentsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
-                    pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1Intent , parent : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: CreateIntentView > , language_code : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1Intent , parent : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: CreateIntentView > , language_code : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> CreateRequestBuilder<'a> {
                         #[doc = "Optional. The resource view to apply to the returned intent."]
                         pub fn intent_view(
@@ -32149,7 +35356,7 @@ pub mod resources {
                             self.intent_view = Some(value);
                             self
                         }
-                        #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intent`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -32278,7 +35485,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("intentView", &self.intent_view)]);
@@ -32305,7 +35512,7 @@ pub mod resources {
                     #[doc = "Created via [IntentsActions::delete()](struct.IntentsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -32443,7 +35650,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -32467,7 +35674,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [IntentsActions::get()](struct.IntentsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
-                    pub struct GetRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , name : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: GetIntentView > , language_code : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct GetRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , name : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: GetIntentView > , language_code : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> GetRequestBuilder<'a> {
                         #[doc = "Optional. The resource view to apply to the returned intent."]
                         pub fn intent_view(
@@ -32477,7 +35684,7 @@ pub mod resources {
                             self.intent_view = Some(value);
                             self
                         }
-                        #[doc = "Optional. The language to retrieve training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -32604,7 +35811,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("intentView", &self.intent_view)]);
@@ -32630,7 +35837,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [IntentsActions::list()](struct.IntentsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
-                    pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: ListIntentView > , language_code : Option < String > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: ListIntentView > , language_code : Option < String > , page_size : Option < i32 > , page_token : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
                         #[doc = "Optional. The resource view to apply to the returned intent."]
                         pub fn intent_view(
@@ -32640,7 +35847,7 @@ pub mod resources {
                             self.intent_view = Some(value);
                             self
                         }
-                        #[doc = "Optional. The language to list training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -32896,7 +36103,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("intentView", &self.intent_view)]);
@@ -32935,7 +36142,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [IntentsActions::patch()](struct.IntentsActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
-                    pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1Intent , name : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: PatchIntentView > , language_code : Option < String > , update_mask : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleCloudDialogflowV2Beta1Intent , name : String , intent_view : Option < crate :: resources :: projects :: locations :: agent :: intents :: params :: PatchIntentView > , language_code : Option < String > , update_mask : Option < String > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> PatchRequestBuilder<'a> {
                         #[doc = "Optional. The resource view to apply to the returned intent."]
                         pub fn intent_view(
@@ -32945,7 +36152,7 @@ pub mod resources {
                             self.intent_view = Some(value);
                             self
                         }
-                        #[doc = "Optional. The language of training phrases, parameters and rich messages\ndefined in `intent`. If not specified, the agent's default language is\nused. [Many\nlanguages](https://cloud.google.com/dialogflow/docs/reference/language)\nare supported. Note: languages must be enabled in the agent before they can\nbe used."]
+                        #[doc = "Optional. The language used to access language-specific data.\nIf not specified, the agent's default language is used.\nFor more information, see\n[Multilingual intent and entity\ndata](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity)."]
                         pub fn language_code(mut self, value: impl Into<String>) -> Self {
                             self.language_code = Some(value.into());
                             self
@@ -33078,7 +36285,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("intentView", &self.intent_view)]);
@@ -33107,7 +36314,7 @@ pub mod resources {
                 pub mod sessions {
                     pub mod params {}
                     pub struct SessionsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> SessionsActions<'a> {
@@ -33170,7 +36377,7 @@ pub mod resources {
                     #[doc = "Created via [SessionsActions::delete_contexts()](struct.SessionsActions.html#method.delete_contexts)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteContextsRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         access_token: Option<String>,
@@ -33309,7 +36516,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -33334,7 +36541,7 @@ pub mod resources {
                     #[doc = "Created via [SessionsActions::detect_intent()](struct.SessionsActions.html#method.detect_intent)"]
                     #[derive(Debug, Clone)]
                     pub struct DetectIntentRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::GoogleCloudDialogflowV2Beta1DetectIntentRequest,
                         session: String,
@@ -33479,7 +36686,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -33504,7 +36711,7 @@ pub mod resources {
                     pub mod contexts {
                         pub mod params {}
                         pub struct ContextsActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> ContextsActions<'a> {
@@ -33623,7 +36830,7 @@ pub mod resources {
                         #[doc = "Created via [ContextsActions::create()](struct.ContextsActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                             parent: String,
@@ -33768,7 +36975,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -33793,7 +37000,7 @@ pub mod resources {
                         #[doc = "Created via [ContextsActions::delete()](struct.ContextsActions.html#method.delete)"]
                         #[derive(Debug, Clone)]
                         pub struct DeleteRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -33931,7 +37138,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -33956,7 +37163,7 @@ pub mod resources {
                         #[doc = "Created via [ContextsActions::get()](struct.ContextsActions.html#method.get)"]
                         #[derive(Debug, Clone)]
                         pub struct GetRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -34098,7 +37305,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -34123,7 +37330,7 @@ pub mod resources {
                         #[doc = "Created via [ContextsActions::list()](struct.ContextsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             page_size: Option<i32>,
@@ -34393,7 +37600,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -34431,7 +37638,7 @@ pub mod resources {
                         #[doc = "Created via [ContextsActions::patch()](struct.ContextsActions.html#method.patch)"]
                         #[derive(Debug, Clone)]
                         pub struct PatchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::GoogleCloudDialogflowV2Beta1Context,
                             name: String,
@@ -34581,7 +37788,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                 let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -34608,7 +37815,7 @@ pub mod resources {
                     pub mod entity_types {
                         pub mod params {}
                         pub struct EntityTypesActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> EntityTypesActions<'a> {
@@ -34727,7 +37934,7 @@ pub mod resources {
                         #[doc = "Created via [EntityTypesActions::create()](struct.EntityTypesActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType,
                             parent: String,
@@ -34872,7 +38079,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -34897,7 +38104,7 @@ pub mod resources {
                         #[doc = "Created via [EntityTypesActions::delete()](struct.EntityTypesActions.html#method.delete)"]
                         #[derive(Debug, Clone)]
                         pub struct DeleteRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -35035,7 +38242,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -35060,7 +38267,7 @@ pub mod resources {
                         #[doc = "Created via [EntityTypesActions::get()](struct.EntityTypesActions.html#method.get)"]
                         #[derive(Debug, Clone)]
                         pub struct GetRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -35202,7 +38409,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -35227,7 +38434,7 @@ pub mod resources {
                         #[doc = "Created via [EntityTypesActions::list()](struct.EntityTypesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             page_size: Option<i32>,
@@ -35475,7 +38682,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -35513,7 +38720,7 @@ pub mod resources {
                         #[doc = "Created via [EntityTypesActions::patch()](struct.EntityTypesActions.html#method.patch)"]
                         #[derive(Debug, Clone)]
                         pub struct PatchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::GoogleCloudDialogflowV2Beta1SessionEntityType,
                             name: String,
@@ -35663,7 +38870,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                 let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -35692,7 +38899,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -35763,7 +38970,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -35901,7 +39108,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -35925,7 +39133,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -36062,7 +39270,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -36086,7 +39295,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -36349,7 +39558,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -36389,7 +39599,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -36460,7 +39670,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -36593,7 +39803,10 @@ pub mod resources {
                     output.push_str(":cancel");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -36617,7 +39830,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -36751,7 +39964,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -36775,7 +39991,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -37034,7 +40250,10 @@ pub mod resources {
                     output.push_str("/operations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -37088,9 +40307,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -37132,7 +40349,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

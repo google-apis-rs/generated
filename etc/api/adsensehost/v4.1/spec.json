@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/4Y1S6rvcBRA92AbFNkjhqZs-1ic\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "adsensehost:v4.1",
   "name": "adsensehost",
   "canonicalName": "AdSense Host",
   "fullyEncodeReservedExpansion": null,
   "version": "v4.1",
-  "revision": "20190919",
+  "revision": "20200506",
   "title": "AdSense Host API",
   "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
   "ownerDomain": "google.com",
@@ -2194,6 +2194,20 @@
           "httpMethod": "GET",
           "description": "Create an association session for initiating an association with an AdSense user.",
           "parameters": {
+            "callbackUrl": {
+              "description": "The URL to redirect the user to once association is completed. It receives a token parameter that can then be used to retrieve the associated account.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "productCode": {
               "description": "Products to associate with the user.",
               "default": null,

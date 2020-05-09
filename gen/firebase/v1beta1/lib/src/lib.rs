@@ -1,4 +1,15 @@
 #![doc = "# Resources and Methods\n    * [available_projects](resources/available_projects/struct.AvailableProjectsActions.html)\n      * [*list*](resources/available_projects/struct.ListRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*addFirebase*](resources/projects/struct.AddFirebaseRequestBuilder.html), [*addGoogleAnalytics*](resources/projects/struct.AddGoogleAnalyticsRequestBuilder.html), [*get*](resources/projects/struct.GetRequestBuilder.html), [*getAdminSdkConfig*](resources/projects/struct.GetAdminSdkConfigRequestBuilder.html), [*getAnalyticsDetails*](resources/projects/struct.GetAnalyticsDetailsRequestBuilder.html), [*list*](resources/projects/struct.ListRequestBuilder.html), [*patch*](resources/projects/struct.PatchRequestBuilder.html), [*removeAnalytics*](resources/projects/struct.RemoveAnalyticsRequestBuilder.html), [*searchApps*](resources/projects/struct.SearchAppsRequestBuilder.html)\n      * [android_apps](resources/projects/android_apps/struct.AndroidAppsActions.html)\n        * [*create*](resources/projects/android_apps/struct.CreateRequestBuilder.html), [*get*](resources/projects/android_apps/struct.GetRequestBuilder.html), [*getConfig*](resources/projects/android_apps/struct.GetConfigRequestBuilder.html), [*list*](resources/projects/android_apps/struct.ListRequestBuilder.html), [*patch*](resources/projects/android_apps/struct.PatchRequestBuilder.html)\n        * [sha](resources/projects/android_apps/sha/struct.ShaActions.html)\n          * [*create*](resources/projects/android_apps/sha/struct.CreateRequestBuilder.html), [*delete*](resources/projects/android_apps/sha/struct.DeleteRequestBuilder.html), [*list*](resources/projects/android_apps/sha/struct.ListRequestBuilder.html)\n      * [available_locations](resources/projects/available_locations/struct.AvailableLocationsActions.html)\n        * [*list*](resources/projects/available_locations/struct.ListRequestBuilder.html)\n      * [default_location](resources/projects/default_location/struct.DefaultLocationActions.html)\n        * [*finalize*](resources/projects/default_location/struct.FinalizeRequestBuilder.html)\n      * [ios_apps](resources/projects/ios_apps/struct.IosAppsActions.html)\n        * [*create*](resources/projects/ios_apps/struct.CreateRequestBuilder.html), [*get*](resources/projects/ios_apps/struct.GetRequestBuilder.html), [*getConfig*](resources/projects/ios_apps/struct.GetConfigRequestBuilder.html), [*list*](resources/projects/ios_apps/struct.ListRequestBuilder.html), [*patch*](resources/projects/ios_apps/struct.PatchRequestBuilder.html)\n      * [web_apps](resources/projects/web_apps/struct.WebAppsActions.html)\n        * [*create*](resources/projects/web_apps/struct.CreateRequestBuilder.html), [*get*](resources/projects/web_apps/struct.GetRequestBuilder.html), [*getConfig*](resources/projects/web_apps/struct.GetConfigRequestBuilder.html), [*list*](resources/projects/web_apps/struct.ListRequestBuilder.html), [*patch*](resources/projects/web_apps/struct.PatchRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform.read-only`"]
+    pub const CLOUD_PLATFORM_READ_ONLY: &str =
+        "https://www.googleapis.com/auth/cloud-platform.read-only";
+    #[doc = "View and administer all your Firebase data and settings\n\n`https://www.googleapis.com/auth/firebase`"]
+    pub const FIREBASE: &str = "https://www.googleapis.com/auth/firebase";
+    #[doc = "View all your Firebase data and settings\n\n`https://www.googleapis.com/auth/firebase.readonly`"]
+    pub const FIREBASE_READONLY: &str = "https://www.googleapis.com/auth/firebase.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -155,7 +166,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub analytics_property: ::std::option::Option<crate::schemas::AnalyticsProperty>,
-        #[doc = "A map of `AppId` to `StreamId` for each Firebase App in the specified\n`FirebaseProject`. Each `AppId` and `StreamId` appears only once."]
+        #[doc = "For Android Apps and iOS Apps: A map of `app` to `streamId` for each\nFirebase App in the specified `FirebaseProject`. Each `app` and\n`streamId` appears only once.<br>\n<br>\nFor Web Apps: A map of `app` to `streamId` and `measurementId` for each\nFirebase App in the specified `FirebaseProject`. Each `app`, `streamId`,\nand `measurementId` appears only once."]
         #[serde(
             rename = "streamMappings",
             default,
@@ -984,13 +995,27 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Location {
-        #[doc = "The ID of the default GCP resource location. It must be one of the\navailable\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations)."]
+        #[doc = "Products and services that are available in the GCP resource location."]
+        #[serde(
+            rename = "features",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub features: ::std::option::Option<Vec<crate::schemas::LocationFeaturesItems>>,
+        #[doc = "The ID of the GCP resource location. It will be one of the available [GCP\nresource\nlocations](https://firebase.google.com/docs/projects/locations#types)."]
         #[serde(
             rename = "locationId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location_id: ::std::option::Option<String>,
+        #[doc = "Indicates whether the GCP resource location is a [regional or\nmulti-regional\nlocation](https://firebase.google.com/docs/projects/locations#types)\nfor data replication."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::LocationType>,
     }
     impl ::google_field_selector::FieldSelector for Location {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -998,6 +1023,159 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Location {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum LocationFeaturesItems {
+        DefaultStorage,
+        Firestore,
+        Functions,
+        LocationFeatureUnspecified,
+    }
+    impl LocationFeaturesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                LocationFeaturesItems::DefaultStorage => "DEFAULT_STORAGE",
+                LocationFeaturesItems::Firestore => "FIRESTORE",
+                LocationFeaturesItems::Functions => "FUNCTIONS",
+                LocationFeaturesItems::LocationFeatureUnspecified => "LOCATION_FEATURE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LocationFeaturesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LocationFeaturesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LocationFeaturesItems, ()> {
+            Ok(match s {
+                "DEFAULT_STORAGE" => LocationFeaturesItems::DefaultStorage,
+                "FIRESTORE" => LocationFeaturesItems::Firestore,
+                "FUNCTIONS" => LocationFeaturesItems::Functions,
+                "LOCATION_FEATURE_UNSPECIFIED" => LocationFeaturesItems::LocationFeatureUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for LocationFeaturesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for LocationFeaturesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for LocationFeaturesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEFAULT_STORAGE" => LocationFeaturesItems::DefaultStorage,
+                "FIRESTORE" => LocationFeaturesItems::Firestore,
+                "FUNCTIONS" => LocationFeaturesItems::Functions,
+                "LOCATION_FEATURE_UNSPECIFIED" => LocationFeaturesItems::LocationFeatureUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for LocationFeaturesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for LocationFeaturesItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum LocationType {
+        #[doc = "Used internally for distinguishing unset values and is not intended for\nexternal use."]
+        LocationTypeUnspecified,
+        #[doc = "The location is a multi-regional location.\n<br>Data in a multi-region location is replicated in multiple regions.\nWithin each region, data is replicated in multiple zones."]
+        MultiRegional,
+        #[doc = "The location is a regional location.\n<br>Data in a regional location is replicated in multiple zones within a\nregion."]
+        Regional,
+    }
+    impl LocationType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                LocationType::LocationTypeUnspecified => "LOCATION_TYPE_UNSPECIFIED",
+                LocationType::MultiRegional => "MULTI_REGIONAL",
+                LocationType::Regional => "REGIONAL",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LocationType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LocationType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LocationType, ()> {
+            Ok(match s {
+                "LOCATION_TYPE_UNSPECIFIED" => LocationType::LocationTypeUnspecified,
+                "MULTI_REGIONAL" => LocationType::MultiRegional,
+                "REGIONAL" => LocationType::Regional,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for LocationType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for LocationType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for LocationType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "LOCATION_TYPE_UNSPECIFIED" => LocationType::LocationTypeUnspecified,
+                "MULTI_REGIONAL" => LocationType::MultiRegional,
+                "REGIONAL" => LocationType::Regional,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for LocationType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for LocationType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1431,13 +1609,20 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct StreamMapping {
-        #[doc = "The fully qualified resource name of the Firebase App associated with the\nGoogle Analytics data stream, in the format:\n<br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>\nor\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>"]
+        #[doc = "The fully qualified resource name of the Firebase App associated with the\nGoogle Analytics data stream, in the format:\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>\nor\n<code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>\nor\n<code>projects/<var>projectId</var>/webApps/<var>appId</var></code>"]
         #[serde(
             rename = "app",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub app: ::std::option::Option<String>,
+        #[doc = "Applicable for Firebase Web Apps only.<br>\n<br>The unique Google-assigned identifier of the Google Analytics web\nstream associated with the Firebase Web App. Firebase SDKs use this ID to\ninteract with Google Analytics APIs.\n<br>\n<br>Learn more about this ID and Google Analytics web streams in the\n[Analytics\ndocumentation](https://support.google.com/analytics/topic/9303475)."]
+        #[serde(
+            rename = "measurementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub measurement_id: ::std::option::Option<String>,
         #[doc = "The unique Google-assigned identifier of the Google Analytics data stream\nassociated with the Firebase App.\n<br>\n<br>Learn more about Google Analytics data streams in the\n[Analytics\ndocumentation](https://support.google.com/analytics/answer/9303323)."]
         #[serde(
             rename = "streamId",
@@ -1602,6 +1787,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location_id: ::std::option::Option<String>,
+        #[doc = "The unique Google-assigned identifier of the Google Analytics web stream\nassociated with the Firebase Web App. Firebase SDKs use this ID to interact\nwith Google Analytics APIs.\n<br>\n<br>This field is only present if the App is linked to a web stream in a\nGoogle Analytics App + Web property. Learn more about this ID and Google\nAnalytics web streams in the [Analytics\ndocumentation](https://support.google.com/analytics/topic/9303475).\n<br>\n<br>To generate a `measurementId` and link the Web App with a Google\nAnalytics web stream, call\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics)."]
+        #[serde(
+            rename = "measurementId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub measurement_id: ::std::option::Option<String>,
         #[doc = "The sender ID for use with Firebase Cloud Messaging."]
         #[serde(
             rename = "messagingSenderId",
@@ -1785,7 +1977,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1793,8 +1985,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1829,7 +2033,7 @@ pub mod resources {
     pub mod available_projects {
         pub mod params {}
         pub struct AvailableProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AvailableProjectsActions<'a> {
@@ -1860,7 +2064,7 @@ pub mod resources {
         #[doc = "Created via [AvailableProjectsActions::list()](struct.AvailableProjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_size: Option<i32>,
             page_token: Option<String>,
@@ -2093,7 +2297,10 @@ pub mod resources {
                 output.push_str("v1beta1/availableProjects");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2131,7 +2338,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -2161,7 +2368,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -2290,7 +2497,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2315,14 +2525,14 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Adds Firebase resources to the specified existing\n[Google Cloud Platform (GCP) `Project`]\n(https://cloud.google.com/resource-manager/reference/rest/v1/projects).\n<br>\n<br>Since a FirebaseProject is actually also a GCP `Project`, a\n`FirebaseProject` uses underlying GCP identifiers (most importantly,\nthe `projectId`) as its own for easy interop with GCP APIs.\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\na FirebaseProject; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status. The `Operation` is automatically deleted after\ncompletion, so there is no need to call\nDeleteOperation.\n<br>\n<br>This method does not modify any billing account information on the\nunderlying GCP `Project`.\n<br>\n<br>To call `AddFirebase`, a member must be an Editor or Owner for the\nexisting GCP `Project`. Service accounts cannot call `AddFirebase`."]
+            #[doc = "Adds Firebase resources to the specified existing\n[Google Cloud Platform (GCP) `Project`]\n(https://cloud.google.com/resource-manager/reference/rest/v1/projects).\n<br>\n<br>Since a FirebaseProject is actually also a GCP `Project`, a\n`FirebaseProject` uses underlying GCP identifiers (most importantly,\nthe `projectId`) as its own for easy interop with GCP APIs.\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\na FirebaseProject; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status. The `Operation` is automatically deleted after\ncompletion, so there is no need to call\nDeleteOperation.\n<br>\n<br>This method does not modify any billing account information on the\nunderlying GCP `Project`.\n<br>\n<br>To call `AddFirebase`, a project member or service account must have\nthe following permissions (the IAM roles of Editor and Owner contain these\npermissions):\n`firebase.projects.update`, `resourcemanager.projects.get`,\n`serviceusage.services.enable`, and `serviceusage.services.get`."]
             pub fn add_firebase(
                 &self,
                 request: crate::schemas::AddFirebaseRequest,
@@ -2346,7 +2556,7 @@ pub mod resources {
                     project: project.into(),
                 }
             }
-            #[doc = "Links a FirebaseProject with an existing\n[Google Analytics account](http://www.google.com/analytics/).\n<br>\n<br>Using this call, you can either:\n\n<ul>\n<li>Provision a new Google Analytics property and associate the new\nproperty with your `FirebaseProject`.</li>\n<li>Associate an existing Google Analytics property with your\n`FirebaseProject`.</li>\n</ul>\n<br>\nNote that when you call `AddGoogleAnalytics`:\n<ul>\n<li>Any Firebase Apps already in your `FirebaseProject` are\nautomatically provisioned as new <em>data streams</em> in the Google\nAnalytics property.</li>\n<li>Any <em>data streams</em> already in the Google Analytics property are\nautomatically associated with their corresponding Firebase Apps (only\napplies when an app's `packageName` or `bundleId` match those for an\nexisting data stream).</li>\n</ul>\nLearn more about the hierarchy and structure of Google Analytics\naccounts in the\n[Analytics\ndocumentation](https://support.google.com/analytics/answer/9303323).\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\nan AnalyticsDetails; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status.\n<br>\n<br>To call `AddGoogleAnalytics`, a member must be an Owner for\nthe existing `FirebaseProject` and have the\n[`Edit` permission](https://support.google.com/analytics/answer/2884495)\nfor the Google Analytics account.\n<br>\n<br>If a `FirebaseProject` already has Google Analytics enabled, and you\ncall `AddGoogleAnalytics` using an `analyticsPropertyId` that's different\nfrom the currently associated property, then the call will fail. Analytics\nmay have already been enabled in the Firebase console or by specifying\n`timeZone` and `regionCode` in the call to\n[`AddFirebase`](../../v1beta1/projects/addFirebase)."]
+            #[doc = "Links a FirebaseProject with an existing\n[Google Analytics account](http://www.google.com/analytics/).\n<br>\n<br>Using this call, you can either:\n\n<ul>\n<li>Specify an `analyticsAccountId` to provision a new Google Analytics\nproperty within the specified account and associate the new property with\nyour `FirebaseProject`.</li>\n<li>Specify an existing `analyticsPropertyId` to associate the property\nwith your `FirebaseProject`.</li>\n</ul>\n<br>\nNote that when you call `AddGoogleAnalytics`:\n<ol>\n<li>The first check determines if any existing data streams in the\nGoogle Analytics property correspond to any existing Firebase Apps in your\n`FirebaseProject` (based on the `packageName` or `bundleId` associated with\nthe data stream). Then, as applicable, the data streams and apps are\nlinked. Note that this auto-linking only applies to Android Apps and iOS\nApps.</li>\n<li>If no corresponding data streams are found for your Firebase Apps,\nnew data streams are provisioned in the Google Analytics property\nfor each of your Firebase Apps. Note that a new data stream is always\nprovisioned for a Web App even if it was previously associated with a\ndata stream in your Analytics property.</li>\n</ol>\nLearn more about the hierarchy and structure of Google Analytics\naccounts in the\n[Analytics\ndocumentation](https://support.google.com/analytics/answer/9303323).\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\nan AnalyticsDetails; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status.\n<br>\n<br>To call `AddGoogleAnalytics`, a member must be an Owner for\nthe existing `FirebaseProject` and have the\n[`Edit` permission](https://support.google.com/analytics/answer/2884495)\nfor the Google Analytics account.\n<br>\n<br>If a `FirebaseProject` already has Google Analytics enabled, and you\ncall `AddGoogleAnalytics` using an `analyticsPropertyId` that's different\nfrom the currently associated property, then the call will fail. Analytics\nmay have already been enabled in the Firebase console or by specifying\n`timeZone` and `regionCode` in the call to\n[`AddFirebase`](../../v1beta1/projects/addFirebase)."]
             pub fn add_google_analytics(
                 &self,
                 request: crate::schemas::AddGoogleAnalyticsRequest,
@@ -2478,7 +2688,7 @@ pub mod resources {
                     update_mask: None,
                 }
             }
-            #[doc = "Unlinks the specified `FirebaseProject` from its Google Analytics account.\n<br>\n<br>This call removes the association of the specified `FirebaseProject`\nwith its current Google Analytics property. However, this call does not\ndelete the Google Analytics resources, such as the Google Analytics\nproperty or any data streams.\n<br>\n<br>These resources may be re-associated later to the `FirebaseProject` by\ncalling\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and\nspecifying the same `analyticsPropertyId`.\n<br>\n<br>To call `RemoveAnalytics`, a member must be an Owner for\nthe `FirebaseProject`."]
+            #[doc = "Unlinks the specified `FirebaseProject` from its Google Analytics account.\n<br>\n<br>This call removes the association of the specified `FirebaseProject`\nwith its current Google Analytics property. However, this call does not\ndelete the Google Analytics resources, such as the Google Analytics\nproperty or any data streams.\n<br>\n<br>These resources may be re-associated later to the `FirebaseProject` by\ncalling\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and\nspecifying the same `analyticsPropertyId`. For Android Apps and iOS Apps,\nthis call re-links data streams with their corresponding apps. However,\nfor Web Apps, this call provisions a <em>new</em> data stream for each Web\nApp.\n<br>\n<br>To call `RemoveAnalytics`, a member must be an Owner for\nthe `FirebaseProject`."]
             pub fn remove_analytics(
                 &self,
                 request: crate::schemas::RemoveAnalyticsRequest,
@@ -2569,7 +2779,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::add_firebase()](struct.ProjectsActions.html#method.add_firebase)"]
         #[derive(Debug, Clone)]
         pub struct AddFirebaseRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AddFirebaseRequest,
             project: String,
@@ -2701,7 +2911,10 @@ pub mod resources {
                 output.push_str(":addFirebase");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2725,7 +2938,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::add_google_analytics()](struct.ProjectsActions.html#method.add_google_analytics)"]
         #[derive(Debug, Clone)]
         pub struct AddGoogleAnalyticsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AddGoogleAnalyticsRequest,
             parent: String,
@@ -2857,7 +3070,10 @@ pub mod resources {
                 output.push_str(":addGoogleAnalytics");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2881,7 +3097,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::get()](struct.ProjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3010,7 +3226,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3034,7 +3253,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::get_admin_sdk_config()](struct.ProjectsActions.html#method.get_admin_sdk_config)"]
         #[derive(Debug, Clone)]
         pub struct GetAdminSdkConfigRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3163,7 +3382,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3187,7 +3409,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::get_analytics_details()](struct.ProjectsActions.html#method.get_analytics_details)"]
         #[derive(Debug, Clone)]
         pub struct GetAnalyticsDetailsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3316,7 +3538,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3340,7 +3565,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::list()](struct.ProjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_size: Option<i32>,
             page_token: Option<String>,
@@ -3573,7 +3798,10 @@ pub mod resources {
                 output.push_str("v1beta1/projects");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3610,7 +3838,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::patch()](struct.ProjectsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::FirebaseProject,
             name: String,
@@ -3747,7 +3975,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("updateMask", &self.update_mask)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -3772,7 +4003,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::remove_analytics()](struct.ProjectsActions.html#method.remove_analytics)"]
         #[derive(Debug, Clone)]
         pub struct RemoveAnalyticsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RemoveAnalyticsRequest,
             parent: String,
@@ -3902,7 +4133,10 @@ pub mod resources {
                 output.push_str(":removeAnalytics");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3926,7 +4160,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::search_apps()](struct.ProjectsActions.html#method.search_apps)"]
         #[derive(Debug, Clone)]
         pub struct SearchAppsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             page_size: Option<i32>,
@@ -4168,7 +4402,10 @@ pub mod resources {
                 output.push_str(":searchApps");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4205,7 +4442,7 @@ pub mod resources {
         pub mod android_apps {
             pub mod params {}
             pub struct AndroidAppsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> AndroidAppsActions<'a> {
@@ -4331,7 +4568,7 @@ pub mod resources {
             #[doc = "Created via [AndroidAppsActions::create()](struct.AndroidAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AndroidApp,
                 parent: String,
@@ -4466,7 +4703,10 @@ pub mod resources {
                     output.push_str("/androidApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4490,7 +4730,7 @@ pub mod resources {
             #[doc = "Created via [AndroidAppsActions::get()](struct.AndroidAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4622,7 +4862,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4646,7 +4889,7 @@ pub mod resources {
             #[doc = "Created via [AndroidAppsActions::get_config()](struct.AndroidAppsActions.html#method.get_config)"]
             #[derive(Debug, Clone)]
             pub struct GetConfigRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4778,7 +5021,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4802,7 +5048,7 @@ pub mod resources {
             #[doc = "Created via [AndroidAppsActions::list()](struct.AndroidAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -5047,7 +5293,10 @@ pub mod resources {
                     output.push_str("/androidApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -5084,7 +5333,7 @@ pub mod resources {
             #[doc = "Created via [AndroidAppsActions::patch()](struct.AndroidAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AndroidApp,
                 name: String,
@@ -5224,7 +5473,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -5249,7 +5501,7 @@ pub mod resources {
             pub mod sha {
                 pub mod params {}
                 pub struct ShaActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ShaActions<'a> {
@@ -5322,7 +5574,7 @@ pub mod resources {
                 #[doc = "Created via [ShaActions::create()](struct.ShaActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ShaCertificate,
                     parent: String,
@@ -5460,7 +5712,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5484,7 +5737,7 @@ pub mod resources {
                 #[doc = "Created via [ShaActions::delete()](struct.ShaActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5619,7 +5872,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5643,7 +5897,7 @@ pub mod resources {
                 #[doc = "Created via [ShaActions::list()](struct.ShaActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     access_token: Option<String>,
@@ -5781,7 +6035,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5807,14 +6062,14 @@ pub mod resources {
         pub mod available_locations {
             pub mod params {}
             pub struct AvailableLocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> AvailableLocationsActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Returns a list of valid Google Cloud Platform (GCP) resource locations for\nthe specified Project (including a FirebaseProject).\n<br>\n<br>The default GCP resource location of a project defines the geographical\nlocation where project resources, such as Cloud Firestore, will be\nprovisioned by default.\n<br>\n<br>The returned list are the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations). <br>\n<br>This call checks for any location restrictions for the specified\nProject and, thus, might return a subset of all possible GCP resource\nlocations. To list all GCP resource locations (regardless of any\nrestrictions), call the endpoint without specifying a `projectId` (that is,\n`/v1beta1/{parent=projects/-}/listAvailableLocations`).\n<br>\n<br>To call `ListAvailableLocations` with a specified project, a member\nmust be at minimum a Viewer of the project. Calls without a specified\nproject do not require any specific project permissions."]
+                #[doc = "Returns a list of valid Google Cloud Platform (GCP) resource locations for\nthe specified Project (including a FirebaseProject).\n<br>\n<br>One of these locations can be selected as the Project's [*default* GCP\nresource location](https://firebase.google.com/docs/projects/locations),\nwhich is the geographical location where project resources, such as Cloud\nFirestore, will be provisioned by default. However, if the default GCP\nresource location has already been set for the Project, then this setting\ncannot be changed.\n<br>\n<br>This call checks for any possible\n[location\nrestrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)\nfor the specified Project and, thus, might return a subset of all possible\nGCP resource locations. To list all GCP resource locations (regardless of\nany restrictions), call the endpoint without specifying a `projectId` (that\nis, `/v1beta1/{parent=projects/-}/listAvailableLocations`).\n<br>\n<br>To call `ListAvailableLocations` with a specified project, a member\nmust be at minimum a Viewer of the project. Calls without a specified\nproject do not require any specific project permissions."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -5839,7 +6094,7 @@ pub mod resources {
             #[doc = "Created via [AvailableLocationsActions::list()](struct.AvailableLocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -6086,7 +6341,10 @@ pub mod resources {
                     output.push_str("/availableLocations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6124,7 +6382,7 @@ pub mod resources {
         pub mod default_location {
             pub mod params {}
             pub struct DefaultLocationActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DefaultLocationActions<'a> {
@@ -6159,7 +6417,7 @@ pub mod resources {
             #[doc = "Created via [DefaultLocationActions::finalize()](struct.DefaultLocationActions.html#method.finalize)"]
             #[derive(Debug, Clone)]
             pub struct FinalizeRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::FinalizeDefaultLocationRequest,
                 parent: String,
@@ -6294,7 +6552,10 @@ pub mod resources {
                     output.push_str("/defaultLocation:finalize");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6319,7 +6580,7 @@ pub mod resources {
         pub mod ios_apps {
             pub mod params {}
             pub struct IosAppsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> IosAppsActions<'a> {
@@ -6438,7 +6699,7 @@ pub mod resources {
             #[doc = "Created via [IosAppsActions::create()](struct.IosAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::IosApp,
                 parent: String,
@@ -6573,7 +6834,10 @@ pub mod resources {
                     output.push_str("/iosApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6597,7 +6861,7 @@ pub mod resources {
             #[doc = "Created via [IosAppsActions::get()](struct.IosAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -6729,7 +6993,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6753,7 +7020,7 @@ pub mod resources {
             #[doc = "Created via [IosAppsActions::get_config()](struct.IosAppsActions.html#method.get_config)"]
             #[derive(Debug, Clone)]
             pub struct GetConfigRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -6885,7 +7152,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6909,7 +7179,7 @@ pub mod resources {
             #[doc = "Created via [IosAppsActions::list()](struct.IosAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -7154,7 +7424,10 @@ pub mod resources {
                     output.push_str("/iosApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -7191,7 +7464,7 @@ pub mod resources {
             #[doc = "Created via [IosAppsActions::patch()](struct.IosAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::IosApp,
                 name: String,
@@ -7331,7 +7604,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -7357,7 +7633,7 @@ pub mod resources {
         pub mod web_apps {
             pub mod params {}
             pub struct WebAppsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> WebAppsActions<'a> {
@@ -7476,7 +7752,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::create()](struct.WebAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WebApp,
                 parent: String,
@@ -7611,7 +7887,10 @@ pub mod resources {
                     output.push_str("/webApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7635,7 +7914,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::get()](struct.WebAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -7767,7 +8046,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7791,7 +8073,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::get_config()](struct.WebAppsActions.html#method.get_config)"]
             #[derive(Debug, Clone)]
             pub struct GetConfigRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -7923,7 +8205,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7947,7 +8232,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::list()](struct.WebAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -8192,7 +8477,10 @@ pub mod resources {
                     output.push_str("/webApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -8229,7 +8517,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::patch()](struct.WebAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WebApp,
                 name: String,
@@ -8369,7 +8657,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -8410,9 +8701,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -8454,7 +8743,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

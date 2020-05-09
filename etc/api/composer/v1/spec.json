@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Composer",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190827",
+  "revision": "20200421",
   "title": "Cloud Composer API",
   "description": "Manages Apache Airflow environments on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -260,7 +260,7 @@
           "items": null
         },
         "name": {
-          "description": "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"",
+          "description": "The resource name of the environment, in the form:\n\"projects/{projectId}/locations/{locationId}/environments/{environmentId}\"\n\nEnvironmentId must start with a lowercase letter followed by up to 63\nlowercase letters, numbers, or hyphens, and cannot end with a hyphen.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -369,9 +369,75 @@
           "additionalProperties": null,
           "items": null
         },
+        "privateEnvironmentConfig": {
+          "description": "The configuration used for the Private IP Cloud Composer environment.",
+          "$ref": "PrivateEnvironmentConfig"
+        },
         "softwareConfig": {
           "description": "The configuration settings for software inside the environment.",
           "$ref": "SoftwareConfig"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IPAllocationPolicy": {
+      "id": "IPAllocationPolicy",
+      "description": "Configuration for controlling how IPs are allocated in the\nGKE cluster running the Apache Airflow software.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "clusterIpv4CidrBlock": {
+          "description": "Optional. The IP address range used to allocate IP addresses to pods in\nthe GKE cluster.\n\nThis field is applicable only when `use_ip_aliases` is true.\n\nSet to blank to have GKE choose a range with the default size.\n\nSet to /netmask (e.g. `/14`) to have GKE choose a range with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "clusterSecondaryRangeName": {
+          "description": "Optional. The name of the GKE cluster's secondary range used to allocate\nIP addresses to pods.\n\nThis field is applicable only when `use_ip_aliases` is true.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "servicesIpv4CidrBlock": {
+          "description": "Optional. The IP address range of the services IP addresses in this\nGKE cluster.\n\nThis field is applicable only when `use_ip_aliases` is true.\n\nSet to blank to have GKE choose a range with the default size.\n\nSet to /netmask (e.g. `/14`) to have GKE choose a range with a specific\nnetmask.\n\nSet to a\n[CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)\nnotation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g.\n`10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range\nto use.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "servicesSecondaryRangeName": {
+          "description": "Optional. The name of the services' secondary range used to allocate\nIP addresses to the GKE cluster.\n\nThis field is applicable only when `use_ip_aliases` is true.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "useIpAliases": {
+          "description": "Optional. Whether or not to enable Alias IPs in the GKE cluster.\nIf `true`, a VPC-native cluster is created.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -546,6 +612,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "ipAllocationPolicy": {
+          "description": "Optional. The configuration for controlling how IPs are allocated in the GKE cluster.",
+          "$ref": "IPAllocationPolicy"
         },
         "location": {
           "description": "Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which\nto deploy the VMs used to run the Apache Airflow software, specified as a\n[relative resource\nname](/apis/design/resource_names#relative_resource_name). For example:\n\"projects/{projectId}/zones/{zoneId}\".\n\nThis `location` must belong to the enclosing environment's project and\nlocation. If both this field and `nodeConfig.machineType` are specified,\n`nodeConfig.machineType` must belong to this `location`; if both are\nunspecified, the service will pick a zone in the Compute Engine region\ncorresponding to the Cloud Composer location, and propagate that choice to\nboth fields. If only one field (`location` or `nodeConfig.machineType`) is\nspecified, the location information from the specified field will be\npropagated to the unspecified field.",
@@ -799,6 +869,104 @@
             "",
             "The operation is no longer running but did not succeed."
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PrivateClusterConfig": {
+      "id": "PrivateClusterConfig",
+      "description": "Configuration options for the private GKE cluster in a Cloud Composer\nenvironment.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enablePrivateEndpoint": {
+          "description": "Optional. If `true`, access to the public endpoint of the GKE cluster is\ndenied.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "masterIpv4CidrBlock": {
+          "description": "Optional. The CIDR block from which IPv4 range for GKE master will be reserved. If\nleft blank, the default value of '172.16.0.0/23' is used.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "masterIpv4ReservedRange": {
+          "description": "Output only. The IP range in CIDR notation to use for the hosted master network. This\nrange is used for assigning internal IP addresses to the GKE cluster\nmaster or set of masters and to the internal load balancer virtual IP.\nThis range must not overlap with any other ranges in use\nwithin the cluster's network.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "PrivateEnvironmentConfig": {
+      "id": "PrivateEnvironmentConfig",
+      "description": "The configuration information for configuring a Private IP Cloud Composer\nenvironment.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "cloudSqlIpv4CidrBlock": {
+          "description": "Optional. The CIDR block from which IP range in tenant project will be reserved for\nCloud SQL. Needs to be disjoint from `web_server_ipv4_cidr_block`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enablePrivateEnvironment": {
+          "description": "Optional. If `true`, a Private IP Cloud Composer environment is created.\nIf this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be\nset to true.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "privateClusterConfig": {
+          "description": "Optional. Configuration for the private GKE cluster for a Private IP\nCloud Composer environment.",
+          "$ref": "PrivateClusterConfig"
+        },
+        "webServerIpv4CidrBlock": {
+          "description": "Optional. The CIDR block from which IP range for web server will be reserved. Needs\nto be disjoint from `private_cluster_config.master_ipv4_cidr_block` and\n`cloud_sql_ipv4_cidr_block`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "webServerIpv4ReservedRange": {
+          "description": "Output only. The IP range reserved for the tenant project's App Engine VMs.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null

@@ -7,7 +7,7 @@
   "canonicalName": "BigQuery Data Transfer",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190904",
+  "revision": "20200408",
   "title": "BigQuery Data Transfer API",
   "description": "Schedule queries or transfer external data from SaaS applications to Google BigQuery on a regular basis.",
   "ownerDomain": "google.com",
@@ -264,12 +264,14 @@
           "enum": [
             "AUTHORIZATION_TYPE_UNSPECIFIED",
             "AUTHORIZATION_CODE",
-            "GOOGLE_PLUS_AUTHORIZATION_CODE"
+            "GOOGLE_PLUS_AUTHORIZATION_CODE",
+            "FIRST_PARTY_OAUTH"
           ],
           "enumDescriptions": [
             "Type unspecified.",
             "Use OAuth 2 authorization codes that can be exchanged\nfor a refresh token on the backend.",
-            "Return an authorization code for a given Google+ page that can then be\nexchanged for a refresh token on the backend."
+            "Return an authorization code for a given Google+ page that can then be\nexchanged for a refresh token on the backend.",
+            "Use First Party OAuth based on Loas Owned Clients. First Party OAuth\ndoesn't require a refresh token to get an offline access token. Instead,\nit uses a client-signed JWT assertion to retrieve an access token."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -673,6 +675,28 @@
       "additionalProperties": null,
       "items": null
     },
+    "EmailPreferences": {
+      "id": "EmailPreferences",
+      "description": "Represents preferences for sending email notifications for transfer run\nevents.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enableFailureEmail": {
+          "description": "If true, email notifications will be sent on transfer run failures.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Empty": {
       "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
@@ -985,7 +1009,7 @@
       "enumDescriptions": [],
       "properties": {
         "endTime": {
-          "description": "End time of the range of transfer runs. For example,\n`\"2017-05-30T00:00:00+00:00\"`.",
+          "description": "Required. End time of the range of transfer runs. For example,\n`\"2017-05-30T00:00:00+00:00\"`.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -995,7 +1019,7 @@
           "items": null
         },
         "startTime": {
-          "description": "Start time of the range of transfer runs. For example,\n`\"2017-05-25T00:00:00+00:00\"`.",
+          "description": "Required. Start time of the range of transfer runs. For example,\n`\"2017-05-25T00:00:00+00:00\"`.",
           "type": "string",
           "format": "google-datetime",
           "enum": [],
@@ -1241,6 +1265,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "emailPreferences": {
+          "description": "Email notifications will be sent according to these preferences\nto the email address of the user who owns this transfer config.",
+          "$ref": "EmailPreferences"
+        },
         "name": {
           "description": "The resource name of the transfer config.\nTransfer config names have the form of\n`projects/{project_id}/locations/{region}/transferConfigs/{config_id}`.\nThe name is automatically generated based on the config_id specified in\nCreateTransferConfigRequest along with project_id and region. If config_id\nis not provided, usually a uuid, even though it is not guaranteed or\nrequired, will be generated for config_id.",
           "type": "string",
@@ -1255,6 +1283,16 @@
           "description": "Output only. Next time when data transfer will run.",
           "type": "string",
           "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "notificationPubsubTopic": {
+          "description": "Pub/Sub topic where notifications will be sent after transfer runs\nassociated with this transfer config finish.",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -1422,6 +1460,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "emailPreferences": {
+          "description": "Output only. Email notifications will be sent according to these\npreferences to the email address of the user who owns the transfer config\nthis run was derived from.",
+          "$ref": "EmailPreferences"
+        },
         "endTime": {
           "description": "Output only. Time when transfer run ended.\nParameter ignored by server for input requests.",
           "type": "string",
@@ -1438,6 +1480,16 @@
         },
         "name": {
           "description": "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "notificationPubsubTopic": {
+          "description": "Output only. Pub/Sub topic where a notification will be sent after this\ntransfer run finishes",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1567,7 +1619,7 @@
               "description": "Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn't support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config.",
               "parameters": {
                 "name": {
-                  "description": "The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}`",
+                  "description": "Required. The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}` or\n`projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1609,7 +1661,7 @@
               "description": "Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering.",
               "parameters": {
                 "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}`",
+                  "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}` or\n`projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1677,7 +1729,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}`",
+                  "description": "Required. The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}` or\n`projects/{project_id}/locations/{location_id}",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1724,7 +1776,7 @@
                   "description": "Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn't support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config.",
                   "parameters": {
                     "name": {
-                      "description": "The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}`",
+                      "description": "Required. The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}` or\n`projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1766,7 +1818,7 @@
                   "description": "Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering.",
                   "parameters": {
                     "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}`",
+                      "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}` or\n`projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1834,7 +1886,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}`",
+                      "description": "Required. The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}` or\n`projects/{project_id}/locations/{location_id}",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1930,7 +1982,7 @@
                               "repeated": false
                             },
                             "parent": {
-                              "description": "Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.",
+                              "description": "Required. Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`",
                               "default": null,
                               "location": "path",
                               "required": true,
@@ -1974,7 +2026,7 @@
                       "description": "Deletes the specified transfer run.",
                       "parameters": {
                         "name": {
-                          "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                          "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2012,7 +2064,7 @@
                       "description": "Returns information about the particular transfer run.",
                       "parameters": {
                         "name": {
-                          "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                          "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2080,7 +2132,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                          "description": "Required. Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2176,7 +2228,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The BigQuery project id where the transfer configuration should be created.\nMust be in the format projects/{project_id}/locations/{location_id}\nIf specified location and location of the destination bigquery dataset\ndo not match - the request will fail.",
+                      "description": "Required. The BigQuery project id where the transfer configuration should be created.\nMust be in the format projects/{project_id}/locations/{location_id} or\nprojects/{project_id}. If specified location and location of the\ndestination bigquery dataset do not match - the request will fail.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2185,6 +2237,20 @@
                       "minimum": null,
                       "maximum": null,
                       "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "serviceAccountName": {
+                      "description": "Optional service account name. If this field is set, transfer config will\nbe created with this service account credentials. It requires that\nrequesting user calling this API has permissions to act as this service\naccount.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -2229,7 +2295,7 @@
                   "description": "Deletes a data transfer configuration,\nincluding any associated transfer runs and logs.",
                   "parameters": {
                     "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                      "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2267,7 +2333,7 @@
                   "description": "Returns information about a data transfer config.",
                   "parameters": {
                     "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                      "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2349,7 +2415,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}`.",
+                      "description": "Required. The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}` or\n`projects/{project_id}/locations/{location_id}`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2416,8 +2482,22 @@
                       "enumDescriptions": [],
                       "repeated": false
                     },
+                    "serviceAccountName": {
+                      "description": "Optional service account name. If this field is set and\n\"service_account_name\" is set in update_mask, transfer config will be\nupdated to use this service account credentials. It requires that\nrequesting user calling this API has permissions to act as this service\naccount.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
                     "updateMask": {
-                      "description": "Required list of fields to be updated in this request.",
+                      "description": "Required. Required list of fields to be updated in this request.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2470,7 +2550,7 @@
                   "description": "Creates transfer runs for a time range [start_time, end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.\nDEPRECATED: use StartManualTransferRuns instead.",
                   "parameters": {
                     "parent": {
-                      "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                      "description": "Required. Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2510,7 +2590,7 @@
                   "description": "Start manual transfer runs to be executed now with schedule_time equal to\ncurrent time. The transfer runs can be created for a time range where the\nrun_time is between start_time (inclusive) and end_time (exclusive), or for\na specific run_time.",
                   "parameters": {
                     "parent": {
-                      "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                      "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2732,7 +2812,7 @@
                           "repeated": false
                         },
                         "parent": {
-                          "description": "Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.",
+                          "description": "Required. Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`",
                           "default": null,
                           "location": "path",
                           "required": true,
@@ -2776,7 +2856,7 @@
                   "description": "Deletes the specified transfer run.",
                   "parameters": {
                     "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                      "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2814,7 +2894,7 @@
                   "description": "Returns information about the particular transfer run.",
                   "parameters": {
                     "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                      "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2882,7 +2962,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                      "description": "Required. Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2978,7 +3058,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The BigQuery project id where the transfer configuration should be created.\nMust be in the format projects/{project_id}/locations/{location_id}\nIf specified location and location of the destination bigquery dataset\ndo not match - the request will fail.",
+                  "description": "Required. The BigQuery project id where the transfer configuration should be created.\nMust be in the format projects/{project_id}/locations/{location_id} or\nprojects/{project_id}. If specified location and location of the\ndestination bigquery dataset do not match - the request will fail.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2987,6 +3067,20 @@
                   "minimum": null,
                   "maximum": null,
                   "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "serviceAccountName": {
+                  "description": "Optional service account name. If this field is set, transfer config will\nbe created with this service account credentials. It requires that\nrequesting user calling this API has permissions to act as this service\naccount.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
@@ -3031,7 +3125,7 @@
               "description": "Deletes a data transfer configuration,\nincluding any associated transfer runs and logs.",
               "parameters": {
                 "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                  "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3069,7 +3163,7 @@
               "description": "Returns information about a data transfer config.",
               "parameters": {
                 "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                  "description": "Required. The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3151,7 +3245,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}`.",
+                  "description": "Required. The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}` or\n`projects/{project_id}/locations/{location_id}`",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3218,8 +3312,22 @@
                   "enumDescriptions": [],
                   "repeated": false
                 },
+                "serviceAccountName": {
+                  "description": "Optional service account name. If this field is set and\n\"service_account_name\" is set in update_mask, transfer config will be\nupdated to use this service account credentials. It requires that\nrequesting user calling this API has permissions to act as this service\naccount.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
                 "updateMask": {
-                  "description": "Required list of fields to be updated in this request.",
+                  "description": "Required. Required list of fields to be updated in this request.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3272,7 +3380,7 @@
               "description": "Creates transfer runs for a time range [start_time, end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.\nDEPRECATED: use StartManualTransferRuns instead.",
               "parameters": {
                 "parent": {
-                  "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                  "description": "Required. Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3312,7 +3420,7 @@
               "description": "Start manual transfer runs to be executed now with schedule_time equal to\ncurrent time. The transfer runs can be created for a time range where the\nrun_time is between start_time (inclusive) and end_time (exclusive), or for\na specific run_time.",
               "parameters": {
                 "parent": {
-                  "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                  "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}` or\n`projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.",
                   "default": null,
                   "location": "path",
                   "required": true,

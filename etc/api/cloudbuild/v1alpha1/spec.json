@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Build",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20190824",
+  "revision": "20200506",
   "title": "Cloud Build API",
   "description": "Creates and manages builds on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -423,6 +423,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "queueTtl": {
+          "description": "TTL in queue for this build. If provided and the build is enqueued longer\nthan this value, the build will expire and the build status will be\n`EXPIRED`.\n\nThe TTL starts ticking from create_time.",
+          "type": "string",
+          "format": "google-duration",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "results": {
           "description": "Output only. Results of the build.",
           "$ref": "Results"
@@ -469,7 +479,8 @@
             "FAILURE",
             "INTERNAL_ERROR",
             "TIMEOUT",
-            "CANCELLED"
+            "CANCELLED",
+            "EXPIRED"
           ],
           "enumDescriptions": [
             "Status of the build is unknown.",
@@ -479,7 +490,8 @@
             "Build or step failed to complete successfully.",
             "Build or step failed due to an internal cause.",
             "Build or step took longer than was allowed.",
-            "Build or step was canceled by a user."
+            "Build or step was canceled by a user.",
+            "Build was enqueued for longer than the value of `queue_ttl`."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -766,7 +778,7 @@
           }
         },
         "workerPool": {
-          "description": "Option to specify a `WorkerPool` for the build. User specifies the pool\nwith the format \"[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]\".\nThis is an experimental field.",
+          "description": "Option to specify a `WorkerPool` for the build.\nFormat: projects/{project}/workerPools/{workerPool}\n\nThis field is experimental.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -897,7 +909,8 @@
             "FAILURE",
             "INTERNAL_ERROR",
             "TIMEOUT",
-            "CANCELLED"
+            "CANCELLED",
+            "EXPIRED"
           ],
           "enumDescriptions": [
             "Status of the build is unknown.",
@@ -907,7 +920,8 @@
             "Build or step failed to complete successfully.",
             "Build or step failed due to an internal cause.",
             "Build or step took longer than was allowed.",
-            "Build or step was canceled by a user."
+            "Build or step was canceled by a user.",
+            "Build was enqueued for longer than the value of `queue_ttl`."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1176,6 +1190,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "invertRegex": {
+          "description": "Only trigger a build if the revision regex does NOT match the revision\nregex.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "projectId": {
           "description": "ID of the project that owns the Cloud Source Repository. If omitted, the\nproject ID requesting the build is assumed.",
           "type": "string",
@@ -1187,13 +1211,32 @@
           "items": null
         },
         "repoName": {
-          "description": "Name of the Cloud Source Repository. If omitted, the name \"default\" is\nassumed.",
+          "description": "Required. Name of the Cloud Source Repository.",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
+          "items": null
+        },
+        "substitutions": {
+          "description": "Substitutions to use in a triggered build.\nShould only be used with RunBuildTrigger",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
           "items": null
         },
         "tagName": {
@@ -1643,7 +1686,7 @@
             "Status of the `WorkerPool` is unknown.",
             "`WorkerPool` is being created.",
             "`WorkerPool` is running.",
-            "`WorkerPool` is being deleting: cancelling builds and draining workers.",
+            "`WorkerPool` is being deleted: cancelling builds and draining workers.",
             "`WorkerPool` is deleted."
           ],
           "properties": {},
@@ -1689,7 +1732,7 @@
               "id": "cloudbuild.projects.workerPools.create",
               "path": "v1alpha1/{+parent}/workerPools",
               "httpMethod": "POST",
-              "description": "Creates a `WorkerPool` to run the builds, and returns the new worker pool.\n\nThis API is experimental.",
+              "description": "Creates a `WorkerPool` to run the builds, and returns the new worker pool.",
               "parameters": {
                 "parent": {
                   "description": "ID of the parent project.",
@@ -1728,7 +1771,7 @@
               "id": "cloudbuild.projects.workerPools.delete",
               "path": "v1alpha1/{+name}",
               "httpMethod": "DELETE",
-              "description": "Deletes a `WorkerPool` by its project ID and WorkerPool name.\n\nThis API is experimental.",
+              "description": "Deletes a `WorkerPool` by its project ID and WorkerPool name.",
               "parameters": {
                 "name": {
                   "description": "The field will contain name of the resource requested, for example:\n\"projects/project-1/workerPools/workerpool-name\"",
@@ -1765,7 +1808,7 @@
               "id": "cloudbuild.projects.workerPools.get",
               "path": "v1alpha1/{+name}",
               "httpMethod": "GET",
-              "description": "Returns information about a `WorkerPool`.\n\nThis API is experimental.",
+              "description": "Returns information about a `WorkerPool`.",
               "parameters": {
                 "name": {
                   "description": "The field will contain name of the resource requested, for example:\n\"projects/project-1/workerPools/workerpool-name\"",
@@ -1802,7 +1845,7 @@
               "id": "cloudbuild.projects.workerPools.list",
               "path": "v1alpha1/{+parent}/workerPools",
               "httpMethod": "GET",
-              "description": "List project's `WorkerPool`s.\n\nThis API is experimental.",
+              "description": "List project's `WorkerPool`s.",
               "parameters": {
                 "parent": {
                   "description": "ID of the parent project.",
@@ -1839,7 +1882,7 @@
               "id": "cloudbuild.projects.workerPools.patch",
               "path": "v1alpha1/{+name}",
               "httpMethod": "PATCH",
-              "description": "Update a `WorkerPool`.\n\nThis API is experimental.",
+              "description": "Update a `WorkerPool`.",
               "parameters": {
                 "name": {
                   "description": "The field will contain name of the resource requested, for example:\n\"projects/project-1/workerPools/workerpool-name\"",

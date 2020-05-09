@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("accessapproval1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
+            .version("0.1.0-20200501")
             .about("An API for controlling access to data by Google personnel.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -34,8 +34,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .multiple(false)
                 .takes_value(false));
         let mut folders0 = SubCommand::with_name("folders")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get_access_approval_settings and update_access_approval_settings");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: delete_access_approval_settings, get_access_approval_settings and update_access_approval_settings");
+        {
+            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization.\nThis will have the effect of disabling Access Approval for the project,\nfolder, or organization, but only if all ancestors also have Access\nApproval disabled. If Access Approval is enabled at a higher level of the\nhierarchy, then Access Approval will still be enabled at this level as\nthe settings are inherited.");
+            folders0 = folders0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get_access_approval_settings")
                 .about("Gets the settings associated with a project, folder, or organization.");
@@ -46,8 +50,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             folders0 = folders0.subcommand(mcmd);
         }
         let mut organizations0 = SubCommand::with_name("organizations")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get_access_approval_settings and update_access_approval_settings");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: delete_access_approval_settings, get_access_approval_settings and update_access_approval_settings");
+        {
+            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization.\nThis will have the effect of disabling Access Approval for the project,\nfolder, or organization, but only if all ancestors also have Access\nApproval disabled. If Access Approval is enabled at a higher level of the\nhierarchy, then Access Approval will still be enabled at this level as\nthe settings are inherited.");
+            organizations0 = organizations0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get_access_approval_settings")
                 .about("Gets the settings associated with a project, folder, or organization.");
@@ -58,8 +66,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             organizations0 = organizations0.subcommand(mcmd);
         }
         let mut projects0 = SubCommand::with_name("projects")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get_access_approval_settings and update_access_approval_settings");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: delete_access_approval_settings, get_access_approval_settings and update_access_approval_settings");
+        {
+            let mcmd = SubCommand::with_name("delete_access_approval_settings").about("Deletes the settings associated with a project, folder, or organization.\nThis will have the effect of disabling Access Approval for the project,\nfolder, or organization, but only if all ancestors also have Access\nApproval disabled. If Access Approval is enabled at a higher level of the\nhierarchy, then Access Approval will still be enabled at this level as\nthe settings are inherited.");
+            projects0 = projects0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get_access_approval_settings")
                 .about("Gets the settings associated with a project, folder, or organization.");

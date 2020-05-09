@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/QUNtd1eq8NSrmGV9rTcNK9M4pII\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/fNryYM4MPhrN-NYY08Uoq8Hns0w\"",
   "discoveryVersion": "v1",
   "id": "tasks:v1",
   "name": "tasks",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190702",
+  "revision": "20200330",
   "title": "Tasks API",
   "description": "Manages your tasks and task lists.",
   "ownerDomain": "google.com",
@@ -607,7 +607,7 @@
           "id": "tasks.tasklists.insert",
           "path": "users/@me/lists",
           "httpMethod": "POST",
-          "description": "Creates a new task list and adds it to the authenticated user's task lists.",
+          "description": "Creates a new task list and adds it to the authenticated user's task lists. Fails with HTTP code 403 or 429 after reaching the storage limit of 2,000 lists.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -900,7 +900,7 @@
           "id": "tasks.tasks.insert",
           "path": "lists/{tasklist}/tasks",
           "httpMethod": "POST",
-          "description": "Creates a new task on the specified task list.",
+          "description": "Creates a new task on the specified task list. Fails with HTTP code 403 or 429 after reaching the storage limit of 100,000 tasks per account.",
           "parameters": {
             "parent": {
               "description": "Parent task identifier. If the task is created at the top level, this parameter is omitted. Optional.",

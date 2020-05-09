@@ -7,9 +7,9 @@
   "canonicalName": "Cloud OS Login",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190907",
+  "revision": "20200504",
   "title": "Cloud OS Login API",
-  "description": "You can use OS Login to manage access to your VM instances using IAM roles. For more information, read [OS Login](/compute/docs/oslogin/).",
+  "description": "You can use OS Login to manage access to your VM instances using IAM roles.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
@@ -246,7 +246,7 @@
       "enumDescriptions": [],
       "properties": {
         "name": {
-          "description": "A unique user ID.",
+          "description": "Required. A unique user ID.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -324,6 +324,16 @@
         },
         "homeDirectory": {
           "description": "The path to the home directory for this account.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Output only. The canonical resource name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -441,6 +451,16 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "name": {
+          "description": "Output only. The canonical resource name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -460,7 +480,7 @@
               "description": "Deletes a POSIX account.",
               "parameters": {
                 "name": {
-                  "description": "A reference to the POSIX account to update. POSIX accounts are identified\nby the project ID they are associated with. A reference to the POSIX\naccount is in format `users/{user}/projects/{project}`.",
+                  "description": "Required. A reference to the POSIX account to update. POSIX accounts are identified\nby the project ID they are associated with. A reference to the POSIX\naccount is in format `users/{user}/projects/{project}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -503,7 +523,7 @@
               "description": "Deletes an SSH public key.",
               "parameters": {
                 "name": {
-                  "description": "The fingerprint of the public key to update. Public keys are identified by\ntheir SHA-256 fingerprint. The fingerprint of the public key is in format\n`users/{user}/sshPublicKeys/{fingerprint}`.",
+                  "description": "Required. The fingerprint of the public key to update. Public keys are identified by\ntheir SHA-256 fingerprint. The fingerprint of the public key is in format\n`users/{user}/sshPublicKeys/{fingerprint}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -541,7 +561,7 @@
               "description": "Retrieves an SSH public key.",
               "parameters": {
                 "name": {
-                  "description": "The fingerprint of the public key to retrieve. Public keys are identified\nby their SHA-256 fingerprint. The fingerprint of the public key is in\nformat `users/{user}/sshPublicKeys/{fingerprint}`.",
+                  "description": "Required. The fingerprint of the public key to retrieve. Public keys are identified\nby their SHA-256 fingerprint. The fingerprint of the public key is in\nformat `users/{user}/sshPublicKeys/{fingerprint}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -579,7 +599,7 @@
               "description": "Updates an SSH public key and returns the profile information. This method\nsupports patch semantics.",
               "parameters": {
                 "name": {
-                  "description": "The fingerprint of the public key to update. Public keys are identified by\ntheir SHA-256 fingerprint. The fingerprint of the public key is in format\n`users/{user}/sshPublicKeys/{fingerprint}`.",
+                  "description": "Required. The fingerprint of the public key to update. Public keys are identified by\ntheir SHA-256 fingerprint. The fingerprint of the public key is in format\n`users/{user}/sshPublicKeys/{fingerprint}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -637,7 +657,7 @@
           "description": "Retrieves the profile information used for logging in to a virtual machine\non Google Compute Engine.",
           "parameters": {
             "name": {
-              "description": "The unique ID for the user in format `users/{user}`.",
+              "description": "Required. The unique ID for the user in format `users/{user}`.",
               "default": null,
               "location": "path",
               "required": true,
@@ -703,7 +723,7 @@
           "description": "Adds an SSH public key and returns the profile information. Default POSIX\naccount information is set when no username and UID exist as part of the\nlogin profile.",
           "parameters": {
             "parent": {
-              "description": "The unique ID for the user in format `users/{user}`.",
+              "description": "Required. The unique ID for the user in format `users/{user}`.",
               "default": null,
               "location": "path",
               "required": true,

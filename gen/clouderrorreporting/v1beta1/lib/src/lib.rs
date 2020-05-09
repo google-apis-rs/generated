@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*deleteEvents*](resources/projects/struct.DeleteEventsRequestBuilder.html)\n      * [events](resources/projects/events/struct.EventsActions.html)\n        * [*list*](resources/projects/events/struct.ListRequestBuilder.html), [*report*](resources/projects/events/struct.ReportRequestBuilder.html)\n      * [group_stats](resources/projects/group_stats/struct.GroupStatsActions.html)\n        * [*list*](resources/projects/group_stats/struct.ListRequestBuilder.html)\n      * [groups](resources/projects/groups/struct.GroupsActions.html)\n        * [*get*](resources/projects/groups/struct.GetRequestBuilder.html), [*update*](resources/projects/groups/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -148,7 +152,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub group_id: ::std::option::Option<String>,
-        #[doc = "The group resource name.\nExample: <code>projects/my-project-123/groups/my-groupid</code>"]
+        #[doc = "The group resource name.\nExample: <code>projects/my-project-123/groups/CNSgkpnppqKCUw</code>"]
         #[serde(
             rename = "name",
             default,
@@ -455,28 +459,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ReportedErrorEvent {
-        #[doc = "[Optional] A description of the context in which the error occurred."]
+        #[doc = "Optional. A description of the context in which the error occurred."]
         #[serde(
             rename = "context",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context: ::std::option::Option<crate::schemas::ErrorContext>,
-        #[doc = "[Optional] Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used."]
+        #[doc = "Optional. Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used."]
         #[serde(
             rename = "eventTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_time: ::std::option::Option<String>,
-        #[doc = "[Required] The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of\n  [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of\n  [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of\n  [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned\n  by V8.\n* **Ruby**: Must contain frames returned by\n  [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of\n  [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\n  and contain the result of\n  [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of\n  [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
+        #[doc = "Required. The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of\n  [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of\n  [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of\n  [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned\n  by V8.\n* **Ruby**: Must contain frames returned by\n  [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of\n  [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\n  and contain the result of\n  [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of\n  [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."]
         #[serde(
             rename = "message",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub message: ::std::option::Option<String>,
-        #[doc = "[Required] The service context in which this error has occurred."]
+        #[doc = "Required. The service context in which this error has occurred."]
         #[serde(
             rename = "serviceContext",
             default,
@@ -850,7 +854,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -858,8 +862,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -878,7 +894,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -934,7 +950,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::delete_events()](struct.ProjectsActions.html#method.delete_events)"]
         #[derive(Debug, Clone)]
         pub struct DeleteEventsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project_name: String,
             access_token: Option<String>,
@@ -1064,7 +1080,10 @@ pub mod resources {
                 output.push_str("/events");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1174,7 +1193,7 @@ pub mod resources {
                 }
             }
             pub struct EventsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> EventsActions<'a> {
@@ -1207,7 +1226,7 @@ pub mod resources {
                         time_range_period: None,
                     }
                 }
-                #[doc = "Report an individual error event.\n\nThis endpoint accepts **either** an OAuth token,\n**or** an [API key](https://support.google.com/cloud/answer/6158862)\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\n`POST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456`"]
+                #[doc = "Report an individual error event.\n\nThis endpoint accepts **either** an OAuth token,\n**or** an [API key](https://support.google.com/cloud/answer/6158862)\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\n`POST https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`"]
                 pub fn report(
                     &self,
                     request: crate::schemas::ReportedErrorEvent,
@@ -1235,7 +1254,7 @@ pub mod resources {
             #[doc = "Created via [EventsActions::list()](struct.EventsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_name: String,
                 group_id: Option<String>,
@@ -1259,32 +1278,32 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "[Required] The group for which events shall be returned."]
+                #[doc = "Required. The group for which events shall be returned."]
                 pub fn group_id(mut self, value: impl Into<String>) -> Self {
                     self.group_id = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The maximum number of results to return per response."]
+                #[doc = "Optional. The maximum number of results to return per response."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "[Optional] A `next_page_token` provided by a previous response."]
+                #[doc = "Optional. A `next_page_token` provided by a previous response."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
+                #[doc = "Optional. The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
                 pub fn service_filter_resource_type(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_resource_type = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
+                #[doc = "Optional. The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
                 pub fn service_filter_service(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_service = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
+                #[doc = "Optional. The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
                 pub fn service_filter_version(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_version = Some(value.into());
                     self
@@ -1514,7 +1533,10 @@ pub mod resources {
                     output.push_str("/events");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("groupId", &self.group_id)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -1559,7 +1581,7 @@ pub mod resources {
             #[doc = "Created via [EventsActions::report()](struct.EventsActions.html#method.report)"]
             #[derive(Debug, Clone)]
             pub struct ReportRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ReportedErrorEvent,
                 project_name: String,
@@ -1696,7 +1718,10 @@ pub mod resources {
                     output.push_str("/events:report");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1967,7 +1992,7 @@ pub mod resources {
                 }
             }
             pub struct GroupStatsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> GroupStatsActions<'a> {
@@ -2008,7 +2033,7 @@ pub mod resources {
             #[doc = "Created via [GroupStatsActions::list()](struct.GroupStatsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_name: String,
                 alignment: Option<crate::resources::projects::group_stats::params::ListAlignment>,
@@ -2036,7 +2061,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "[Optional] The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`."]
+                #[doc = "Optional. The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`."]
                 pub fn alignment(
                     mut self,
                     value: crate::resources::projects::group_stats::params::ListAlignment,
@@ -2044,17 +2069,17 @@ pub mod resources {
                     self.alignment = Some(value);
                     self
                 }
-                #[doc = "[Optional] Time where the timed counts shall be aligned if rounded\nalignment is chosen. Default is 00:00 UTC."]
+                #[doc = "Optional. Time where the timed counts shall be aligned if rounded\nalignment is chosen. Default is 00:00 UTC."]
                 pub fn alignment_time(mut self, value: impl Into<String>) -> Self {
                     self.alignment_time = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] List all <code>ErrorGroupStats</code> with these IDs."]
+                #[doc = "Optional. List all <code>ErrorGroupStats</code> with these IDs."]
                 pub fn group_id(mut self, value: impl Into<Vec<String>>) -> Self {
                     self.group_id = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The sort order in which the results are returned.\nDefault is `COUNT_DESC`."]
+                #[doc = "Optional. The sort order in which the results are returned.\nDefault is `COUNT_DESC`."]
                 pub fn order(
                     mut self,
                     value: crate::resources::projects::group_stats::params::ListOrder,
@@ -2062,27 +2087,27 @@ pub mod resources {
                     self.order = Some(value);
                     self
                 }
-                #[doc = "[Optional] The maximum number of results to return per response.\nDefault is 20."]
+                #[doc = "Optional. The maximum number of results to return per response.\nDefault is 20."]
                 pub fn page_size(mut self, value: i32) -> Self {
                     self.page_size = Some(value);
                     self
                 }
-                #[doc = "[Optional] A `next_page_token` provided by a previous response. To view\nadditional results, pass this token along with the identical query\nparameters as the first request."]
+                #[doc = "Optional. A `next_page_token` provided by a previous response. To view\nadditional results, pass this token along with the identical query\nparameters as the first request."]
                 pub fn page_token(mut self, value: impl Into<String>) -> Self {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
+                #[doc = "Optional. The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type)."]
                 pub fn service_filter_resource_type(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_resource_type = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
+                #[doc = "Optional. The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service)."]
                 pub fn service_filter_service(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_service = Some(value.into());
                     self
                 }
-                #[doc = "[Optional] The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
+                #[doc = "Optional. The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version)."]
                 pub fn service_filter_version(mut self, value: impl Into<String>) -> Self {
                     self.service_filter_version = Some(value.into());
                     self
@@ -2095,7 +2120,7 @@ pub mod resources {
                     self.time_range_period = Some(value);
                     self
                 }
-                #[doc = "[Optional] The preferred duration for a single returned `TimedCount`.\nIf not set, no timed counts are returned."]
+                #[doc = "Optional. The preferred duration for a single returned `TimedCount`.\nIf not set, no timed counts are returned."]
                 pub fn timed_count_duration(mut self, value: impl Into<String>) -> Self {
                     self.timed_count_duration = Some(value.into());
                     self
@@ -2319,7 +2344,10 @@ pub mod resources {
                     output.push_str("/groupStats");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("alignment", &self.alignment)]);
                     let req = req.query(&[("alignmentTime", &self.alignment_time)]);
@@ -2369,7 +2397,7 @@ pub mod resources {
         pub mod groups {
             pub mod params {}
             pub struct GroupsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> GroupsActions<'a> {
@@ -2423,7 +2451,7 @@ pub mod resources {
             #[doc = "Created via [GroupsActions::get()](struct.GroupsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 group_name: String,
                 access_token: Option<String>,
@@ -2555,7 +2583,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2579,7 +2610,7 @@ pub mod resources {
             #[doc = "Created via [GroupsActions::update()](struct.GroupsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ErrorGroup,
                 name: String,
@@ -2713,7 +2744,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2753,9 +2787,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -2797,7 +2829,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

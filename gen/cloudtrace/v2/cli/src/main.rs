@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudtrace2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190904")
-            .about("Sends application trace data to Stackdriver Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Trace API directly. If you are looking to instrument your application for Stackdriver Trace, we recommend using OpenCensus.\n")
+            .version("0.1.0-20200504")
+            .about("Sends application trace data to Cloud Trace for viewing. Trace data is collected for all App Engine applications by default. Trace data from other applications can be provided using this API. This library is used to interact with the Cloud Trace API directly. If you are looking to instrument your application for Cloud Trace, we recommend using OpenCensus.\n")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -40,16 +40,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: batch_write");
         {
-            let mcmd = SubCommand::with_name("batch_write").about(
-                "Sends new spans to new or existing traces. You cannot update\nexisting spans.",
-            );
+            let mcmd = SubCommand::with_name("batch_write").about("Sends new spans to new or existing traces. You cannot update\nexisting spans.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated.");
             traces1 = traces1.subcommand(mcmd);
         }
         let mut spans2 = SubCommand::with_name("spans")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create_span");
         {
-            let mcmd = SubCommand::with_name("create_span").about("Creates a new span.");
+            let mcmd = SubCommand::with_name("create_span").about("Creates a new span.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated.");
             spans2 = spans2.subcommand(mcmd);
         }
         traces1 = traces1.subcommand(spans2);

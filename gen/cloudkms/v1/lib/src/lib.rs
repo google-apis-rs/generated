@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [key_rings](resources/projects/locations/key_rings/struct.KeyRingsActions.html)\n          * [*create*](resources/projects/locations/key_rings/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/key_rings/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/key_rings/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/key_rings/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/key_rings/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/key_rings/struct.TestIamPermissionsRequestBuilder.html)\n          * [crypto_keys](resources/projects/locations/key_rings/crypto_keys/struct.CryptoKeysActions.html)\n            * [*create*](resources/projects/locations/key_rings/crypto_keys/struct.CreateRequestBuilder.html), [*decrypt*](resources/projects/locations/key_rings/crypto_keys/struct.DecryptRequestBuilder.html), [*encrypt*](resources/projects/locations/key_rings/crypto_keys/struct.EncryptRequestBuilder.html), [*get*](resources/projects/locations/key_rings/crypto_keys/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/key_rings/crypto_keys/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/key_rings/crypto_keys/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/key_rings/crypto_keys/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/key_rings/crypto_keys/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/key_rings/crypto_keys/struct.TestIamPermissionsRequestBuilder.html), [*updatePrimaryVersion*](resources/projects/locations/key_rings/crypto_keys/struct.UpdatePrimaryVersionRequestBuilder.html)\n            * [crypto_key_versions](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.CryptoKeyVersionsActions.html)\n              * [*asymmetricDecrypt*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.AsymmetricDecryptRequestBuilder.html), [*asymmetricSign*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.AsymmetricSignRequestBuilder.html), [*create*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.CreateRequestBuilder.html), [*destroy*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.DestroyRequestBuilder.html), [*get*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.GetRequestBuilder.html), [*getPublicKey*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.GetPublicKeyRequestBuilder.html), [*import*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.PatchRequestBuilder.html), [*restore*](resources/projects/locations/key_rings/crypto_keys/crypto_key_versions/struct.RestoreRequestBuilder.html)\n          * [import_jobs](resources/projects/locations/key_rings/import_jobs/struct.ImportJobsActions.html)\n            * [*create*](resources/projects/locations/key_rings/import_jobs/struct.CreateRequestBuilder.html), [*get*](resources/projects/locations/key_rings/import_jobs/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/key_rings/import_jobs/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/key_rings/import_jobs/struct.ListRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/key_rings/import_jobs/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/key_rings/import_jobs/struct.TestIamPermissionsRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and manage your keys and secrets stored in Cloud Key Management Service\n\n`https://www.googleapis.com/auth/cloudkms`"]
+    pub const CLOUDKMS: &str = "https://www.googleapis.com/auth/cloudkms";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -301,7 +307,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(
             rename = "members",
             default,
@@ -367,14 +373,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_rotation_time: ::std::option::Option<String>,
-        #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nAll keys with purpose\nENCRYPT_DECRYPT have a\nprimary. For other keys, this field will be omitted."]
+        #[doc = "Output only. A copy of the \"primary\" CryptoKeyVersion that will be used\nby Encrypt when this CryptoKey is given\nin EncryptRequest.name.\n\nThe CryptoKey's primary version can be updated via\nUpdateCryptoKeyPrimaryVersion.\n\nKeys with purpose\nENCRYPT_DECRYPT may have a\nprimary. For other keys, this field will be omitted."]
         #[serde(
             rename = "primary",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub primary: ::std::option::Option<crate::schemas::CryptoKeyVersion>,
-        #[doc = "The immutable purpose of this CryptoKey."]
+        #[doc = "Immutable. The immutable purpose of this CryptoKey."]
         #[serde(
             rename = "purpose",
             default,
@@ -535,6 +541,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destroy_time: ::std::option::Option<String>,
+        #[doc = "ExternalProtectionLevelOptions stores a group of additional fields for\nconfiguring a CryptoKeyVersion that are specific to the\nEXTERNAL protection level."]
+        #[serde(
+            rename = "externalProtectionLevelOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_protection_level_options:
+            ::std::option::Option<crate::schemas::ExternalProtectionLevelOptions>,
         #[doc = "Output only. The time this CryptoKeyVersion's key material was\ngenerated."]
         #[serde(
             rename = "generateTime",
@@ -604,6 +618,8 @@ pub mod schemas {
         EcSignP256Sha256,
         #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
         EcSignP384Sha384,
+        #[doc = "Algorithm representing symmetric encryption by an external key manager."]
+        ExternalSymmetricEncryption,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
@@ -639,6 +655,9 @@ pub mod schemas {
                 }
                 CryptoKeyVersionAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
                 CryptoKeyVersionAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                CryptoKeyVersionAlgorithm::ExternalSymmetricEncryption => {
+                    "EXTERNAL_SYMMETRIC_ENCRYPTION"
+                }
                 CryptoKeyVersionAlgorithm::GoogleSymmetricEncryption => {
                     "GOOGLE_SYMMETRIC_ENCRYPTION"
                 }
@@ -679,6 +698,9 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => CryptoKeyVersionAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => CryptoKeyVersionAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => {
+                    CryptoKeyVersionAlgorithm::ExternalSymmetricEncryption
+                }
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     CryptoKeyVersionAlgorithm::GoogleSymmetricEncryption
                 }
@@ -731,6 +753,9 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => CryptoKeyVersionAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => CryptoKeyVersionAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => {
+                    CryptoKeyVersionAlgorithm::ExternalSymmetricEncryption
+                }
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     CryptoKeyVersionAlgorithm::GoogleSymmetricEncryption
                 }
@@ -775,6 +800,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyVersionProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
         #[doc = "Crypto operations are performed in a Hardware Security Module."]
         Hsm,
         #[doc = "Not specified."]
@@ -785,6 +812,7 @@ pub mod schemas {
     impl CryptoKeyVersionProtectionLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                CryptoKeyVersionProtectionLevel::External => "EXTERNAL",
                 CryptoKeyVersionProtectionLevel::Hsm => "HSM",
                 CryptoKeyVersionProtectionLevel::ProtectionLevelUnspecified => {
                     "PROTECTION_LEVEL_UNSPECIFIED"
@@ -802,6 +830,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionProtectionLevel, ()> {
             Ok(match s {
+                "EXTERNAL" => CryptoKeyVersionProtectionLevel::External,
                 "HSM" => CryptoKeyVersionProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     CryptoKeyVersionProtectionLevel::ProtectionLevelUnspecified
@@ -831,6 +860,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "EXTERNAL" => CryptoKeyVersionProtectionLevel::External,
                 "HSM" => CryptoKeyVersionProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     CryptoKeyVersionProtectionLevel::ProtectionLevelUnspecified
@@ -1009,6 +1039,8 @@ pub mod schemas {
         EcSignP256Sha256,
         #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
         EcSignP384Sha384,
+        #[doc = "Algorithm representing symmetric encryption by an external key manager."]
+        ExternalSymmetricEncryption,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
@@ -1044,6 +1076,9 @@ pub mod schemas {
                 }
                 CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
                 CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                CryptoKeyVersionTemplateAlgorithm::ExternalSymmetricEncryption => {
+                    "EXTERNAL_SYMMETRIC_ENCRYPTION"
+                }
                 CryptoKeyVersionTemplateAlgorithm::GoogleSymmetricEncryption => {
                     "GOOGLE_SYMMETRIC_ENCRYPTION"
                 }
@@ -1100,6 +1135,9 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => {
+                    CryptoKeyVersionTemplateAlgorithm::ExternalSymmetricEncryption
+                }
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     CryptoKeyVersionTemplateAlgorithm::GoogleSymmetricEncryption
                 }
@@ -1168,6 +1206,9 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => CryptoKeyVersionTemplateAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => CryptoKeyVersionTemplateAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => {
+                    CryptoKeyVersionTemplateAlgorithm::ExternalSymmetricEncryption
+                }
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     CryptoKeyVersionTemplateAlgorithm::GoogleSymmetricEncryption
                 }
@@ -1228,6 +1269,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum CryptoKeyVersionTemplateProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
         #[doc = "Crypto operations are performed in a Hardware Security Module."]
         Hsm,
         #[doc = "Not specified."]
@@ -1238,6 +1281,7 @@ pub mod schemas {
     impl CryptoKeyVersionTemplateProtectionLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                CryptoKeyVersionTemplateProtectionLevel::External => "EXTERNAL",
                 CryptoKeyVersionTemplateProtectionLevel::Hsm => "HSM",
                 CryptoKeyVersionTemplateProtectionLevel::ProtectionLevelUnspecified => {
                     "PROTECTION_LEVEL_UNSPECIFIED"
@@ -1255,6 +1299,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<CryptoKeyVersionTemplateProtectionLevel, ()> {
             Ok(match s {
+                "EXTERNAL" => CryptoKeyVersionTemplateProtectionLevel::External,
                 "HSM" => CryptoKeyVersionTemplateProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     CryptoKeyVersionTemplateProtectionLevel::ProtectionLevelUnspecified
@@ -1284,6 +1329,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "EXTERNAL" => CryptoKeyVersionTemplateProtectionLevel::External,
                 "HSM" => CryptoKeyVersionTemplateProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     CryptoKeyVersionTemplateProtectionLevel::ProtectionLevelUnspecified
@@ -1321,7 +1367,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DecryptRequest {
-        #[doc = "Optional data that must match the data originally supplied in\nEncryptRequest.additional_authenticated_data."]
+        #[doc = "Optional. Optional data that must match the data originally supplied in\nEncryptRequest.additional_authenticated_data."]
         #[serde(
             rename = "additionalAuthenticatedData",
             default,
@@ -1459,7 +1505,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EncryptRequest {
-        #[doc = "Optional data that, if specified, must also be provided during decryption\nthrough DecryptRequest.additional_authenticated_data.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the AAD must be no larger than\n64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
+        #[doc = "Optional. Optional data that, if specified, must also be provided during decryption\nthrough DecryptRequest.additional_authenticated_data.\n\nThe maximum size depends on the key version's\nprotection_level. For\nSOFTWARE keys, the AAD must be no larger than\n64KiB. For HSM keys, the combined length of the\nplaintext and additional_authenticated_data fields must be no larger than\n8KiB."]
         #[serde(
             rename = "additionalAuthenticatedData",
             default,
@@ -1535,28 +1581,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(
             rename = "title",
             default,
@@ -1570,6 +1616,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Expr {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExternalProtectionLevelOptions {
+        #[doc = "The URI for an external resource that this CryptoKeyVersion represents."]
+        #[serde(
+            rename = "externalKeyUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_key_uri: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ExternalProtectionLevelOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ExternalProtectionLevelOptions {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1602,7 +1679,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub import_job: ::std::option::Option<String>,
-        #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
+        #[doc = "Wrapped key material produced with\nRSA_OAEP_3072_SHA1_AES_256\nor\nRSA_OAEP_4096_SHA1_AES_256.\n\nThis field contains the concatenation of two wrapped keys:\n\n<ol>\n  <li>An ephemeral AES-256 wrapping key wrapped with the\n      public_key using RSAES-OAEP with SHA-1,\n      MGF1 with SHA-1, and an empty label.\n  </li>\n  <li>The key to be imported, wrapped with the ephemeral AES-256 key\n      using AES-KWP (RFC 5649).\n  </li>\n</ol>\n\nIf importing symmetric key material, it is expected that the unwrapped\nkey contains plain bytes. If importing asymmetric key material, it is\nexpected that the unwrapped key is in PKCS#8-encoded DER format (the\nPrivateKeyInfo structure from RFC 5208).\n\nThis format is the same as the format produced by PKCS#11 mechanism\nCKM_RSA_AES_KEY_WRAP."]
         #[serde(
             rename = "rsaAesWrappedKey",
             default,
@@ -1628,6 +1705,8 @@ pub mod schemas {
         EcSignP256Sha256,
         #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
         EcSignP384Sha384,
+        #[doc = "Algorithm representing symmetric encryption by an external key manager."]
+        ExternalSymmetricEncryption,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
@@ -1663,6 +1742,9 @@ pub mod schemas {
                 }
                 ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
                 ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                ImportCryptoKeyVersionRequestAlgorithm::ExternalSymmetricEncryption => {
+                    "EXTERNAL_SYMMETRIC_ENCRYPTION"
+                }
                 ImportCryptoKeyVersionRequestAlgorithm::GoogleSymmetricEncryption => {
                     "GOOGLE_SYMMETRIC_ENCRYPTION"
                 }
@@ -1719,6 +1801,9 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::ExternalSymmetricEncryption
+                }
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     ImportCryptoKeyVersionRequestAlgorithm::GoogleSymmetricEncryption
                 }
@@ -1787,6 +1872,9 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => ImportCryptoKeyVersionRequestAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => {
+                    ImportCryptoKeyVersionRequestAlgorithm::ExternalSymmetricEncryption
+                }
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => {
                     ImportCryptoKeyVersionRequestAlgorithm::GoogleSymmetricEncryption
                 }
@@ -1893,7 +1981,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub generate_time: ::std::option::Option<String>,
-        #[doc = "Required and immutable. The wrapping method to be used for incoming\nkey material."]
+        #[doc = "Required. Immutable. The wrapping method to be used for incoming key material."]
         #[serde(
             rename = "importMethod",
             default,
@@ -1907,7 +1995,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Required and immutable. The protection level of the ImportJob. This\nmust match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
+        #[doc = "Required. Immutable. The protection level of the ImportJob. This must match the\nprotection_level of the\nversion_template on the CryptoKey you\nattempt to import into."]
         #[serde(
             rename = "protectionLevel",
             default,
@@ -2017,6 +2105,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ImportJobProtectionLevel {
+        #[doc = "Crypto operations are performed by an external key manager."]
+        External,
         #[doc = "Crypto operations are performed in a Hardware Security Module."]
         Hsm,
         #[doc = "Not specified."]
@@ -2027,6 +2117,7 @@ pub mod schemas {
     impl ImportJobProtectionLevel {
         pub fn as_str(self) -> &'static str {
             match self {
+                ImportJobProtectionLevel::External => "EXTERNAL",
                 ImportJobProtectionLevel::Hsm => "HSM",
                 ImportJobProtectionLevel::ProtectionLevelUnspecified => {
                     "PROTECTION_LEVEL_UNSPECIFIED"
@@ -2044,6 +2135,7 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ImportJobProtectionLevel, ()> {
             Ok(match s {
+                "EXTERNAL" => ImportJobProtectionLevel::External,
                 "HSM" => ImportJobProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     ImportJobProtectionLevel::ProtectionLevelUnspecified
@@ -2073,6 +2165,7 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "EXTERNAL" => ImportJobProtectionLevel::External,
                 "HSM" => ImportJobProtectionLevel::Hsm,
                 "PROTECTION_LEVEL_UNSPECIFIED" => {
                     ImportJobProtectionLevel::ProtectionLevelUnspecified
@@ -2605,6 +2698,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocationMetadata {
+        #[doc = "Indicates whether CryptoKeys with\nprotection_level\nEXTERNAL can be created in this location."]
+        #[serde(
+            rename = "ekmAvailable",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ekm_available: ::std::option::Option<bool>,
         #[doc = "Indicates whether CryptoKeys with\nprotection_level\nHSM can be created in this location."]
         #[serde(
             rename = "hsmAvailable",
@@ -2643,21 +2743,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Deprecated."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
         #[serde(
             rename = "version",
             default,
@@ -2721,6 +2821,8 @@ pub mod schemas {
         EcSignP256Sha256,
         #[doc = "ECDSA on the NIST P-384 curve with a SHA384 digest."]
         EcSignP384Sha384,
+        #[doc = "Algorithm representing symmetric encryption by an external key manager."]
+        ExternalSymmetricEncryption,
         #[doc = "Creates symmetric encryption keys."]
         GoogleSymmetricEncryption,
         #[doc = "RSAES-OAEP 2048 bit key with a SHA256 digest."]
@@ -2756,6 +2858,7 @@ pub mod schemas {
                 }
                 PublicKeyAlgorithm::EcSignP256Sha256 => "EC_SIGN_P256_SHA256",
                 PublicKeyAlgorithm::EcSignP384Sha384 => "EC_SIGN_P384_SHA384",
+                PublicKeyAlgorithm::ExternalSymmetricEncryption => "EXTERNAL_SYMMETRIC_ENCRYPTION",
                 PublicKeyAlgorithm::GoogleSymmetricEncryption => "GOOGLE_SYMMETRIC_ENCRYPTION",
                 PublicKeyAlgorithm::RsaDecryptOaep2048Sha256 => "RSA_DECRYPT_OAEP_2048_SHA256",
                 PublicKeyAlgorithm::RsaDecryptOaep3072Sha256 => "RSA_DECRYPT_OAEP_3072_SHA256",
@@ -2786,6 +2889,7 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => PublicKeyAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => PublicKeyAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => PublicKeyAlgorithm::ExternalSymmetricEncryption,
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => PublicKeyAlgorithm::GoogleSymmetricEncryption,
                 "RSA_DECRYPT_OAEP_2048_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep2048Sha256,
                 "RSA_DECRYPT_OAEP_3072_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep3072Sha256,
@@ -2828,6 +2932,7 @@ pub mod schemas {
                 }
                 "EC_SIGN_P256_SHA256" => PublicKeyAlgorithm::EcSignP256Sha256,
                 "EC_SIGN_P384_SHA384" => PublicKeyAlgorithm::EcSignP384Sha384,
+                "EXTERNAL_SYMMETRIC_ENCRYPTION" => PublicKeyAlgorithm::ExternalSymmetricEncryption,
                 "GOOGLE_SYMMETRIC_ENCRYPTION" => PublicKeyAlgorithm::GoogleSymmetricEncryption,
                 "RSA_DECRYPT_OAEP_2048_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep2048Sha256,
                 "RSA_DECRYPT_OAEP_3072_SHA256" => PublicKeyAlgorithm::RsaDecryptOaep3072Sha256,
@@ -2997,7 +3102,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateCryptoKeyPrimaryVersionRequest {
-        #[doc = "The id of the child CryptoKeyVersion to use as primary."]
+        #[doc = "Required. The id of the child CryptoKeyVersion to use as primary."]
         #[serde(
             rename = "cryptoKeyVersionId",
             default,
@@ -3197,7 +3302,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3205,8 +3310,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3225,7 +3342,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -3243,7 +3360,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -3305,7 +3422,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3437,7 +3554,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3461,7 +3581,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -3712,7 +3832,10 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3750,7 +3873,7 @@ pub mod resources {
             pub mod key_rings {
                 pub mod params {}
                 pub struct KeyRingsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> KeyRingsActions<'a> {
@@ -3847,7 +3970,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -3905,7 +4028,7 @@ pub mod resources {
                 #[doc = "Created via [KeyRingsActions::create()](struct.KeyRingsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::KeyRing,
                     parent: String,
@@ -4049,7 +4172,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("keyRingId", &self.key_ring_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -4074,7 +4198,7 @@ pub mod resources {
                 #[doc = "Created via [KeyRingsActions::get()](struct.KeyRingsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4209,7 +4333,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4233,7 +4358,7 @@ pub mod resources {
                 #[doc = "Created via [KeyRingsActions::get_iam_policy()](struct.KeyRingsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -4250,7 +4375,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetIamPolicyRequestBuilder<'a> {
-                    #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                    #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                     pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                         self.options_requested_policy_version = Some(value);
                         self
@@ -4375,7 +4500,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -4403,7 +4529,7 @@ pub mod resources {
                 #[doc = "Created via [KeyRingsActions::list()](struct.KeyRingsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     filter: Option<String>,
@@ -4433,12 +4559,12 @@ pub mod resources {
                         self.order_by = Some(value.into());
                         self
                     }
-                    #[doc = "Optional limit on the number of KeyRings to include in the\nresponse.  Further KeyRings can subsequently be obtained by\nincluding the ListKeyRingsResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default."]
+                    #[doc = "Optional. Optional limit on the number of KeyRings to include in the\nresponse.  Further KeyRings can subsequently be obtained by\nincluding the ListKeyRingsResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default."]
                     pub fn page_size(mut self, value: i32) -> Self {
                         self.page_size = Some(value);
                         self
                     }
-                    #[doc = "Optional pagination token, returned earlier via\nListKeyRingsResponse.next_page_token."]
+                    #[doc = "Optional. Optional pagination token, returned earlier via\nListKeyRingsResponse.next_page_token."]
                     pub fn page_token(mut self, value: impl Into<String>) -> Self {
                         self.page_token = Some(value.into());
                         self
@@ -4668,7 +4794,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("orderBy", &self.order_by)]);
@@ -4707,7 +4834,7 @@ pub mod resources {
                 #[doc = "Created via [KeyRingsActions::set_iam_policy()](struct.KeyRingsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -4845,7 +4972,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4869,7 +4997,7 @@ pub mod resources {
                 #[doc = "Created via [KeyRingsActions::test_iam_permissions()](struct.KeyRingsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -5009,7 +5137,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5114,7 +5243,7 @@ pub mod resources {
                         }
                     }
                     pub struct CryptoKeysActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> CryptoKeysActions<'a> {
@@ -5286,7 +5415,7 @@ pub mod resources {
                                 update_mask: None,
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -5365,7 +5494,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::create()](struct.CryptoKeysActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::CryptoKey,
                         parent: String,
@@ -5518,7 +5647,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("cryptoKeyId", &self.crypto_key_id)]);
@@ -5548,7 +5677,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::decrypt()](struct.CryptoKeysActions.html#method.decrypt)"]
                     #[derive(Debug, Clone)]
                     pub struct DecryptRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::DecryptRequest,
                         name: String,
@@ -5689,7 +5818,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -5714,7 +5843,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::encrypt()](struct.CryptoKeysActions.html#method.encrypt)"]
                     #[derive(Debug, Clone)]
                     pub struct EncryptRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::EncryptRequest,
                         name: String,
@@ -5855,7 +5984,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -5880,7 +6009,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::get()](struct.CryptoKeysActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -6018,7 +6147,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -6043,7 +6172,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::get_iam_policy()](struct.CryptoKeysActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         resource: String,
                         options_requested_policy_version: Option<i32>,
@@ -6060,7 +6189,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -6186,7 +6315,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[(
@@ -6214,7 +6343,7 @@ pub mod resources {
                     }
                     #[doc = "Created via [CryptoKeysActions::list()](struct.CryptoKeysActions.html#method.list)"]
                     #[derive(Debug, Clone)]
-                    pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , version_view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: params :: ListVersionView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                    pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , version_view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: params :: ListVersionView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                     impl<'a> ListRequestBuilder<'a> {
                         #[doc = "Optional. Only include resources that match the filter in the response. For\nmore information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
@@ -6226,12 +6355,12 @@ pub mod resources {
                             self.order_by = Some(value.into());
                             self
                         }
-                        #[doc = "Optional limit on the number of CryptoKeys to include in the\nresponse.  Further CryptoKeys can subsequently be obtained by\nincluding the ListCryptoKeysResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default."]
+                        #[doc = "Optional. Optional limit on the number of CryptoKeys to include in the\nresponse.  Further CryptoKeys can subsequently be obtained by\nincluding the ListCryptoKeysResponse.next_page_token in a subsequent\nrequest.  If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "Optional pagination token, returned earlier via\nListCryptoKeysResponse.next_page_token."]
+                        #[doc = "Optional. Optional pagination token, returned earlier via\nListCryptoKeysResponse.next_page_token."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -6474,7 +6603,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -6515,7 +6644,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::patch()](struct.CryptoKeysActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::CryptoKey,
                         name: String,
@@ -6533,7 +6662,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> PatchRequestBuilder<'a> {
-                        #[doc = "Required list of fields to be updated in this request."]
+                        #[doc = "Required. List of fields to be updated in this request."]
                         pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                             self.update_mask = Some(value.into());
                             self
@@ -6661,7 +6790,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -6687,7 +6816,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::set_iam_policy()](struct.CryptoKeysActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::SetIamPolicyRequest,
                         resource: String,
@@ -6826,7 +6955,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -6851,7 +6980,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::test_iam_permissions()](struct.CryptoKeysActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::TestIamPermissionsRequest,
                         resource: String,
@@ -6992,7 +7121,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7017,7 +7146,7 @@ pub mod resources {
                     #[doc = "Created via [CryptoKeysActions::update_primary_version()](struct.CryptoKeysActions.html#method.update_primary_version)"]
                     #[derive(Debug, Clone)]
                     pub struct UpdatePrimaryVersionRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::UpdateCryptoKeyPrimaryVersionRequest,
                         name: String,
@@ -7158,7 +7287,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7267,7 +7396,7 @@ pub mod resources {
                             }
                         }
                         pub struct CryptoKeyVersionsActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> CryptoKeyVersionsActions<'a> {
@@ -7512,7 +7641,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::asymmetric_decrypt()](struct.CryptoKeyVersionsActions.html#method.asymmetric_decrypt)"]
                         #[derive(Debug, Clone)]
                         pub struct AsymmetricDecryptRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::AsymmetricDecryptRequest,
                             name: String,
@@ -7653,7 +7782,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -7678,7 +7807,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::asymmetric_sign()](struct.CryptoKeyVersionsActions.html#method.asymmetric_sign)"]
                         #[derive(Debug, Clone)]
                         pub struct AsymmetricSignRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::AsymmetricSignRequest,
                             name: String,
@@ -7819,7 +7948,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -7844,7 +7973,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::create()](struct.CryptoKeyVersionsActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::CryptoKeyVersion,
                             parent: String,
@@ -7985,7 +8114,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8010,7 +8139,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::destroy()](struct.CryptoKeyVersionsActions.html#method.destroy)"]
                         #[derive(Debug, Clone)]
                         pub struct DestroyRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::DestroyCryptoKeyVersionRequest,
                             name: String,
@@ -8151,7 +8280,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8176,7 +8305,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::get()](struct.CryptoKeyVersionsActions.html#method.get)"]
                         #[derive(Debug, Clone)]
                         pub struct GetRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -8314,7 +8443,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8339,7 +8468,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::get_public_key()](struct.CryptoKeyVersionsActions.html#method.get_public_key)"]
                         #[derive(Debug, Clone)]
                         pub struct GetPublicKeyRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -8478,7 +8607,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8503,7 +8632,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::import()](struct.CryptoKeyVersionsActions.html#method.import)"]
                         #[derive(Debug, Clone)]
                         pub struct ImportRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::ImportCryptoKeyVersionRequest,
                             parent: String,
@@ -8644,7 +8773,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8668,7 +8797,7 @@ pub mod resources {
                         }
                         #[doc = "Created via [CryptoKeyVersionsActions::list()](struct.CryptoKeyVersionsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
-                        pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: params :: ListView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                        pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , view : Option < crate :: resources :: projects :: locations :: key_rings :: crypto_keys :: crypto_key_versions :: params :: ListView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> ListRequestBuilder<'a> {
                             #[doc = "Optional. Only include resources that match the filter in the response. For\nmore information, see\n[Sorting and filtering list\nresults](https://cloud.google.com/kms/docs/sorting-and-filtering)."]
                             pub fn filter(mut self, value: impl Into<String>) -> Self {
@@ -8680,12 +8809,12 @@ pub mod resources {
                                 self.order_by = Some(value.into());
                                 self
                             }
-                            #[doc = "Optional limit on the number of CryptoKeyVersions to\ninclude in the response. Further CryptoKeyVersions can\nsubsequently be obtained by including the\nListCryptoKeyVersionsResponse.next_page_token in a subsequent request.\nIf unspecified, the server will pick an appropriate default."]
+                            #[doc = "Optional. Optional limit on the number of CryptoKeyVersions to\ninclude in the response. Further CryptoKeyVersions can\nsubsequently be obtained by including the\nListCryptoKeyVersionsResponse.next_page_token in a subsequent request.\nIf unspecified, the server will pick an appropriate default."]
                             pub fn page_size(mut self, value: i32) -> Self {
                                 self.page_size = Some(value);
                                 self
                             }
-                            #[doc = "Optional pagination token, returned earlier via\nListCryptoKeyVersionsResponse.next_page_token."]
+                            #[doc = "Optional. Optional pagination token, returned earlier via\nListCryptoKeyVersionsResponse.next_page_token."]
                             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                                 self.page_token = Some(value.into());
                                 self
@@ -8934,7 +9063,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("filter", &self.filter)]);
@@ -8975,7 +9104,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::patch()](struct.CryptoKeyVersionsActions.html#method.patch)"]
                         #[derive(Debug, Clone)]
                         pub struct PatchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::CryptoKeyVersion,
                             name: String,
@@ -8993,7 +9122,7 @@ pub mod resources {
                             xgafv: Option<crate::params::Xgafv>,
                         }
                         impl<'a> PatchRequestBuilder<'a> {
-                            #[doc = "Required list of fields to be updated in this request."]
+                            #[doc = "Required. List of fields to be updated in this request."]
                             pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                                 self.update_mask = Some(value.into());
                                 self
@@ -9121,7 +9250,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                 let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -9147,7 +9276,7 @@ pub mod resources {
                         #[doc = "Created via [CryptoKeyVersionsActions::restore()](struct.CryptoKeyVersionsActions.html#method.restore)"]
                         #[derive(Debug, Clone)]
                         pub struct RestoreRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::RestoreCryptoKeyVersionRequest,
                             name: String,
@@ -9288,7 +9417,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9315,7 +9444,7 @@ pub mod resources {
                 pub mod import_jobs {
                     pub mod params {}
                     pub struct ImportJobsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> ImportJobsActions<'a> {
@@ -9412,7 +9541,7 @@ pub mod resources {
                                 page_token: None,
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -9464,7 +9593,7 @@ pub mod resources {
                     #[doc = "Created via [ImportJobsActions::create()](struct.ImportJobsActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::ImportJob,
                         parent: String,
@@ -9611,7 +9740,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("importJobId", &self.import_job_id)]);
@@ -9637,7 +9766,7 @@ pub mod resources {
                     #[doc = "Created via [ImportJobsActions::get()](struct.ImportJobsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -9775,7 +9904,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -9800,7 +9929,7 @@ pub mod resources {
                     #[doc = "Created via [ImportJobsActions::get_iam_policy()](struct.ImportJobsActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         resource: String,
                         options_requested_policy_version: Option<i32>,
@@ -9817,7 +9946,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -9943,7 +10072,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[(
@@ -9972,7 +10101,7 @@ pub mod resources {
                     #[doc = "Created via [ImportJobsActions::list()](struct.ImportJobsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         filter: Option<String>,
@@ -10002,12 +10131,12 @@ pub mod resources {
                             self.order_by = Some(value.into());
                             self
                         }
-                        #[doc = "Optional limit on the number of ImportJobs to include in the\nresponse. Further ImportJobs can subsequently be obtained by\nincluding the ListImportJobsResponse.next_page_token in a subsequent\nrequest. If unspecified, the server will pick an appropriate default."]
+                        #[doc = "Optional. Optional limit on the number of ImportJobs to include in the\nresponse. Further ImportJobs can subsequently be obtained by\nincluding the ListImportJobsResponse.next_page_token in a subsequent\nrequest. If unspecified, the server will pick an appropriate default."]
                         pub fn page_size(mut self, value: i32) -> Self {
                             self.page_size = Some(value);
                             self
                         }
-                        #[doc = "Optional pagination token, returned earlier via\nListImportJobsResponse.next_page_token."]
+                        #[doc = "Optional. Optional pagination token, returned earlier via\nListImportJobsResponse.next_page_token."]
                         pub fn page_token(mut self, value: impl Into<String>) -> Self {
                             self.page_token = Some(value.into());
                             self
@@ -10242,7 +10371,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -10282,7 +10411,7 @@ pub mod resources {
                     #[doc = "Created via [ImportJobsActions::set_iam_policy()](struct.ImportJobsActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::SetIamPolicyRequest,
                         resource: String,
@@ -10421,7 +10550,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -10446,7 +10575,7 @@ pub mod resources {
                     #[doc = "Created via [ImportJobsActions::test_iam_permissions()](struct.ImportJobsActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::TestIamPermissionsRequest,
                         resource: String,
@@ -10587,7 +10716,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -10630,9 +10759,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -10674,7 +10801,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

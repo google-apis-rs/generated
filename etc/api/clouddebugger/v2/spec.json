@@ -5,10 +5,10 @@
   "id": "clouddebugger:v2",
   "name": "clouddebugger",
   "canonicalName": "Cloud Debugger",
-  "fullyEncodeReservedExpansion": null,
+  "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190614",
-  "title": "Stackdriver Debugger API",
+  "revision": "20200501",
+  "title": "Cloud Debugger API",
   "description": "Examines the call stack and variables of a running application without stopping or slowing it down.\n",
   "ownerDomain": "google.com",
   "ownerName": "Google",
@@ -254,7 +254,7 @@
     },
     "Breakpoint": {
       "id": "Breakpoint",
-      "description": "Represents the breakpoint specification, status and results.",
+      "description": "------------------------------------------------------------------------------\n## Breakpoint (the resource)\n\nRepresents the breakpoint specification, status and results.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -272,6 +272,16 @@
             "Capture stack frame and variables and update the breakpoint.\nThe data is only captured once. After that the breakpoint is set\nin a final state.",
             "Log each breakpoint hit. The breakpoint remains active until\ndeleted or expired."
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "canaryExpireTime": {
+          "description": "The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value\nis meaningless when the breakpoint is not in CANARY_ACTIVE state.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -419,6 +429,28 @@
             "$ref": "StackFrame"
           }
         },
+        "state": {
+          "description": "The current state of the breakpoint.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "STATE_CANARY_PENDING_AGENTS",
+            "STATE_CANARY_ACTIVE",
+            "STATE_ROLLING_TO_ALL",
+            "STATE_IS_FINAL"
+          ],
+          "enumDescriptions": [
+            "Breakpoint state UNSPECIFIED.",
+            "Enabling canary but no agents are available.",
+            "Enabling canary and successfully assigning canary agents.",
+            "Breakpoint rolling out to all agents.",
+            "Breakpoint is hit/complete/failed."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "status": {
           "description": "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n*   `Invalid line number` referring to location\n*   `Field f not found in class C` referring to condition",
           "$ref": "StatusMessage"
@@ -555,6 +587,28 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "canaryMode": {
+          "description": "Used when setting breakpoint canary for this debuggee.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "CANARY_MODE_UNSPECIFIED",
+            "CANARY_MODE_ALWAYS_ENABLED",
+            "CANARY_MODE_ALWAYS_DISABLED",
+            "CANARY_MODE_DEFAULT_ENABLED",
+            "CANARY_MODE_DEFAULT_DISABLED"
+          ],
+          "enumDescriptions": [
+            "CANARY_MODE_UNSPECIFIED is equivalent to CANARY_MODE_ALWAYS_DISABLED so\nthat if the debuggee is not configured to use the canary feature, the\nfeature will be disabled.",
+            "Always enable breakpoint canary regardless of the value of breakpoint's\ncanary option.",
+            "Always disable breakpoint canary regardless of the value of breakpoint's\ncanary option.",
+            "Depends on the breakpoint's canary option. Enable canary by default if\nthe breakpoint's canary option is not specified.",
+            "Depends on the breakpoint's canary option. Disable canary by default if\nthe breakpoint's canary option is not specified."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1003,7 +1057,7 @@
       "enumDescriptions": [],
       "properties": {
         "debuggee": {
-          "description": "Debuggee information to register.\nThe fields `project`, `uniquifier`, `description` and `agent_version`\nof the debuggee must be set.",
+          "description": "Required. Debuggee information to register.\nThe fields `project`, `uniquifier`, `description` and `agent_version`\nof the debuggee must be set.",
           "$ref": "Debuggee"
         }
       },
@@ -1018,6 +1072,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "agentId": {
+          "description": "A unique ID generated for the agent.\nEach RegisterDebuggee request will generate a new agent ID.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "debuggee": {
           "description": "Debuggee resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields).\nIf the field `is_disabled` is set to `true`, the agent should disable\nitself by removing all breakpoints and detaching from the application.\nIt should however continue to poll `RegisterDebuggee` until reenabled.",
           "$ref": "Debuggee"
@@ -1061,7 +1125,7 @@
       "enumDescriptions": [],
       "properties": {
         "breakpoint": {
-          "description": "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fileds).",
+          "description": "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields).",
           "$ref": "Breakpoint"
         }
       },
@@ -1220,6 +1284,7 @@
             "BREAKPOINT_CONDITION",
             "BREAKPOINT_EXPRESSION",
             "BREAKPOINT_AGE",
+            "BREAKPOINT_CANARY_FAILED",
             "VARIABLE_NAME",
             "VARIABLE_VALUE"
           ],
@@ -1229,6 +1294,7 @@
             "Status applies to the breakpoint and is related to its condition.",
             "Status applies to the breakpoint and is related to its expressions.",
             "Status applies to the breakpoint and is related to its age.",
+            "Status applies to the breakpoint when the breakpoint failed to exit the\ncanary state.",
             "Status applies to the entire variable.",
             "Status applies to variable value (variable name is valid)."
           ],
@@ -1249,7 +1315,7 @@
       "enumDescriptions": [],
       "properties": {
         "breakpoint": {
-          "description": "Updated breakpoint information.\nThe field `id` must be set.\nThe agent must echo all Breakpoint specification fields in the update.",
+          "description": "Required. Updated breakpoint information.\nThe field `id` must be set.\nThe agent must echo all Breakpoint specification fields in the update.",
           "$ref": "Breakpoint"
         }
       },
@@ -1350,8 +1416,22 @@
                   "httpMethod": "GET",
                   "description": "Returns the list of all active breakpoints for the debuggee.\n\nThe breakpoint specification (`location`, `condition`, and `expressions`\nfields) is semantically immutable, although the field values may\nchange. For example, an agent may update the location line number\nto reflect the actual line where the breakpoint was set, but this\ndoesn't change the breakpoint semantics.\n\nThis means that an agent does not need to check if a breakpoint has changed\nwhen it encounters the same breakpoint on a successive call.\nMoreover, an agent should remember the breakpoints that are completed\nuntil the controller removes them from the active list to avoid\nsetting those breakpoints again.",
                   "parameters": {
+                    "agentId": {
+                      "description": "Identifies the agent.\nThis is the ID returned in the RegisterDebuggee response.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
                     "debuggeeId": {
-                      "description": "Identifies the debuggee.",
+                      "description": "Required. Identifies the debuggee.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1417,7 +1497,7 @@
                   "description": "Updates the breakpoint state or mutable fields.\nThe entire Breakpoint message must be sent back to the controller service.\n\nUpdates to active breakpoint fields are only allowed if the new value\ndoes not change the breakpoint specification. Updates to the `location`,\n`condition` and `expressions` fields should not alter the breakpoint\nsemantics. These may only make changes such as canonicalizing a value\nor snapping the location to the correct line of code.",
                   "parameters": {
                     "debuggeeId": {
-                      "description": "Identifies the debuggee being debugged.",
+                      "description": "Required. Identifies the debuggee being debugged.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1511,7 +1591,7 @@
                   "description": "Deletes the breakpoint from the debuggee.",
                   "parameters": {
                     "breakpointId": {
-                      "description": "ID of the breakpoint to delete.",
+                      "description": "Required. ID of the breakpoint to delete.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1525,7 +1605,7 @@
                       "repeated": false
                     },
                     "clientVersion": {
-                      "description": "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
+                      "description": "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -1539,7 +1619,7 @@
                       "repeated": false
                     },
                     "debuggeeId": {
-                      "description": "ID of the debuggee whose breakpoint to delete.",
+                      "description": "Required. ID of the debuggee whose breakpoint to delete.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1578,7 +1658,7 @@
                   "description": "Gets breakpoint information.",
                   "parameters": {
                     "breakpointId": {
-                      "description": "ID of the breakpoint to get.",
+                      "description": "Required. ID of the breakpoint to get.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1592,7 +1672,7 @@
                       "repeated": false
                     },
                     "clientVersion": {
-                      "description": "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
+                      "description": "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -1606,7 +1686,7 @@
                       "repeated": false
                     },
                     "debuggeeId": {
-                      "description": "ID of the debuggee whose breakpoint to get.",
+                      "description": "Required. ID of the debuggee whose breakpoint to get.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1662,7 +1742,7 @@
                       "repeated": false
                     },
                     "clientVersion": {
-                      "description": "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
+                      "description": "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -1676,7 +1756,7 @@
                       "repeated": false
                     },
                     "debuggeeId": {
-                      "description": "ID of the debuggee whose breakpoints to list.",
+                      "description": "Required. ID of the debuggee whose breakpoints to list.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1769,8 +1849,26 @@
                   "httpMethod": "POST",
                   "description": "Sets the breakpoint to the debuggee.",
                   "parameters": {
+                    "canaryOption": {
+                      "description": "The canary option set by the user upon setting breakpoint.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [
+                        "CANARY_OPTION_UNSPECIFIED",
+                        "CANARY_OPTION_TRY_ENABLE",
+                        "CANARY_OPTION_TRY_DISABLE"
+                      ],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
                     "clientVersion": {
-                      "description": "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
+                      "description": "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -1784,7 +1882,7 @@
                       "repeated": false
                     },
                     "debuggeeId": {
-                      "description": "ID of the debuggee where the breakpoint is to be set.",
+                      "description": "Required. ID of the debuggee where the breakpoint is to be set.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1828,7 +1926,7 @@
               "description": "Lists all the debuggees that the user has access to.",
               "parameters": {
                 "clientVersion": {
-                  "description": "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
+                  "description": "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`).",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -1856,7 +1954,7 @@
                   "repeated": false
                 },
                 "project": {
-                  "description": "Project number of a Google Cloud project whose debuggees to list.",
+                  "description": "Required. Project number of a Google Cloud project whose debuggees to list.",
                   "default": null,
                   "location": "query",
                   "required": false,

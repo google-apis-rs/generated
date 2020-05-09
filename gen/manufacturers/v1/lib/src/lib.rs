@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [products](resources/accounts/products/struct.ProductsActions.html)\n        * [*delete*](resources/accounts/products/struct.DeleteRequestBuilder.html), [*get*](resources/accounts/products/struct.GetRequestBuilder.html), [*list*](resources/accounts/products/struct.ListRequestBuilder.html), [*update*](resources/accounts/products/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Manage your product listings for Google Manufacturer Center\n\n`https://www.googleapis.com/auth/manufacturercenter`"]
+    pub const MANUFACTURERCENTER: &str = "https://www.googleapis.com/auth/manufacturercenter";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -195,6 +199,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub release_date: ::std::option::Option<String>,
+        #[doc = "Rich product content. For more information, see\nhttps://support.google.com/manufacturers/answer/9389865"]
+        #[serde(
+            rename = "richProductContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rich_product_content: ::std::option::Option<Vec<String>>,
         #[doc = "The scent of the product. For more information, see\nhttps://support.google.com/manufacturers/answer/6124116#scent."]
         #[serde(
             rename = "scent",
@@ -816,7 +827,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub destination: ::std::option::Option<String>,
-        #[doc = "The server-generated type of the issue, for example,\n\u{201c}INCORRECT_TEXT_FORMATTING\u{201d}, \u{201c}IMAGE_NOT_SERVEABLE\u{201d}, etc."]
+        #[doc = "The server-generated type of the issue, for example,\n“INCORRECT_TEXT_FORMATTING”, “IMAGE_NOT_SERVEABLE”, etc."]
         #[serde(
             rename = "type",
             default,
@@ -1371,7 +1382,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1379,8 +1390,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1399,7 +1422,7 @@ pub mod resources {
     pub mod accounts {
         pub mod params {}
         pub struct AccountsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AccountsActions<'a> {
@@ -1572,7 +1595,7 @@ pub mod resources {
                 }
             }
             pub struct ProductsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ProductsActions<'a> {
@@ -1680,7 +1703,7 @@ pub mod resources {
             #[doc = "Created via [ProductsActions::delete()](struct.ProductsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 name: String,
@@ -1821,7 +1844,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1845,7 +1871,7 @@ pub mod resources {
             #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 name: String,
@@ -1995,7 +2021,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("include", &self.include)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -2020,7 +2049,7 @@ pub mod resources {
             #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 include:
@@ -2277,7 +2306,10 @@ pub mod resources {
                     output.push_str("/products");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("include", &self.include)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2315,7 +2347,7 @@ pub mod resources {
             #[doc = "Created via [ProductsActions::update()](struct.ProductsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Attributes,
                 parent: String,
@@ -2458,7 +2490,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2498,9 +2533,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -2542,7 +2575,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

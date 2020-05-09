@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/4XBvQkN5hQomez2poc7wKcvRjxM\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/C0vgwgSkNuwxiJI-C0iMb3JKMEQ\"",
   "discoveryVersion": "v1",
   "id": "dns:v1",
   "name": "dns",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190903",
+  "revision": "20191205",
   "title": "Google Cloud DNS API",
   "description": "Configures and serves authoritative DNS records.",
   "ownerDomain": "google.com",
@@ -713,6 +713,10 @@
             "items": null
           }
         },
+        "peeringConfig": {
+          "description": "The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.",
+          "$ref": "ManagedZonePeeringConfig"
+        },
         "privateVisibilityConfig": {
           "description": "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.",
           "$ref": "ManagedZonePrivateVisibilityConfig"
@@ -914,6 +918,74 @@
           "items": {
             "$ref": "Operation"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ManagedZonePeeringConfig": {
+      "id": "ManagedZonePeeringConfig",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfig\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "targetNetwork": {
+          "description": "The network with which to peer.",
+          "$ref": "ManagedZonePeeringConfigTargetNetwork"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ManagedZonePeeringConfigTargetNetwork": {
+      "id": "ManagedZonePeeringConfigTargetNetwork",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "deactivateTime": {
+          "description": "The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZonePeeringConfigTargetNetwork\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "networkUrl": {
+          "description": "The fully qualified URL of the VPC network to forward queries to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1271,6 +1343,16 @@
         },
         "enableInboundForwarding": {
           "description": "Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address will be allocated from each of the sub-networks that are bound to this policy.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enableLogging": {
+          "description": "Controls whether logging is enabled for the networks bound to this policy. Defaults to no logging if not set.",
           "type": "boolean",
           "format": null,
           "enum": [],

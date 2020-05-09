@@ -1,4 +1,12 @@
 #![doc = "# Resources and Methods\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*list*](resources/activities/struct.ListRequestBuilder.html), [*watch*](resources/activities/struct.WatchRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*stop*](resources/channels/struct.StopRequestBuilder.html)\n    * [customer_usage_reports](resources/customer_usage_reports/struct.CustomerUsageReportsActions.html)\n      * [*get*](resources/customer_usage_reports/struct.GetRequestBuilder.html)\n    * [entity_usage_reports](resources/entity_usage_reports/struct.EntityUsageReportsActions.html)\n      * [*get*](resources/entity_usage_reports/struct.GetRequestBuilder.html)\n    * [user_usage_report](resources/user_usage_report/struct.UserUsageReportActions.html)\n      * [*get*](resources/user_usage_report/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View audit reports for your G Suite domain\n\n`https://www.googleapis.com/auth/admin.reports.audit.readonly`"]
+    pub const ADMIN_REPORTS_AUDIT_READONLY: &str =
+        "https://www.googleapis.com/auth/admin.reports.audit.readonly";
+    #[doc = "View usage reports for your G Suite domain\n\n`https://www.googleapis.com/auth/admin.reports.usage.readonly`"]
+    pub const ADMIN_REPORTS_USAGE_READONLY: &str =
+        "https://www.googleapis.com/auth/admin.reports.usage.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -20,21 +28,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Each record in read response."]
+        #[doc = "Each activity record in the response."]
         #[serde(
             rename = "items",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Activity>>,
-        #[doc = "Kind of list response this is."]
+        #[doc = "The type of API resource. For an activity report, the value is reports#activities."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Token for retrieving the next page"]
+        #[doc = "Token for retrieving the follow-on next page of the report. The nextPageToken value is used in the request's pageToken query string."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -79,7 +87,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "Activity events."]
+        #[doc = "Activity events in the report."]
         #[serde(
             rename = "events",
             default,
@@ -93,21 +101,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<crate::schemas::ActivityId>,
-        #[doc = "IP Address of the user doing the action."]
+        #[doc = "IP address of the user doing the action. This is the Internet Protocol (IP) address of the user when logging into G Suite which may or may not reflect the user's physical location. For example, the IP address can be the user's proxy server's address or a virtual private network (VPN) address. The API supports IPv4 and IPv6."]
         #[serde(
             rename = "ipAddress",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ip_address: ::std::option::Option<String>,
-        #[doc = "Kind of resource this is."]
+        #[doc = "The type of API resource. For an activity report, the value is audit#activity."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Domain of source customer."]
+        #[doc = "This is the domain that is affected by the report's event. For example domain of Admin console or the Drive application's document owner."]
         #[serde(
             rename = "ownerDomain",
             default,
@@ -138,28 +146,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityActor {
-        #[doc = "User or OAuth 2LO request."]
+        #[doc = "The type of actor."]
         #[serde(
             rename = "callerType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub caller_type: ::std::option::Option<String>,
-        #[doc = "Email address of the user."]
+        #[doc = "The primary email address of the actor. May be absent if there is no email address associated with the actor."]
         #[serde(
             rename = "email",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub email: ::std::option::Option<String>,
-        #[doc = "For OAuth 2LO API requests, consumer_key of the requestor."]
+        #[doc = "Only present when callerType is KEY. Can be the consumer_key of the requestor for OAuth 2LO API requests or an identifier for robot accounts."]
         #[serde(
             rename = "key",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "Obfuscated user id of the user."]
+        #[doc = "The unique G Suite profile ID of the actor. May be absent if the actor is not a G Suite user."]
         #[serde(
             rename = "profileId",
             default,
@@ -190,14 +198,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityEventsItems {
-        #[doc = "Name of event."]
+        #[doc = "Name of the event. This is the specific name of the activity reported by the API. And each eventName is related to a specific G Suite service or feature which the API organizes into types of events.\nFor eventName request parameters in general:\n\n* If no eventName is given, the report returns all possible instances of an eventName.\n* When you request an eventName, the API's response returns all activities which contain that eventName. It is possible that the returned activities will have other eventName properties in addition to the one requested.  \n  For more information about eventName properties, see the list of event names for various applications above in applicationName."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Parameter value pairs for various applications."]
+        #[doc = "Parameter value pairs for various applications. For more information about eventName parameters, see the list of event names for various applications above in applicationName."]
         #[serde(
             rename = "parameters",
             default,
@@ -205,7 +213,7 @@ pub mod schemas {
         )]
         pub parameters:
             ::std::option::Option<Vec<crate::schemas::ActivityEventsItemsParametersItems>>,
-        #[doc = "Type of event."]
+        #[doc = "Type of event. The G Suite service or feature that an administrator changes is identified in the type property which identifies an event using the eventName property. For a full list of the API's type categories, see the list of event names for various applications above in applicationName."]
         #[serde(
             rename = "type",
             default,
@@ -243,7 +251,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bool_value: ::std::option::Option<bool>,
-        #[doc = "Integral value of the parameter."]
+        #[doc = "Integer value of the parameter."]
         #[serde(
             rename = "intValue",
             default,
@@ -251,7 +259,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub int_value: ::std::option::Option<i64>,
-        #[doc = "Nested value of the parameter."]
+        #[doc = "Nested parameter value pairs associated with this parameter. Complex value type for a parameter are returned as a list of parameter values. For example, the address parameter may have a value as [{parameter: [{name: city, value: abc}]}]"]
         #[serde(
             rename = "messageValue",
             default,
@@ -259,14 +267,14 @@ pub mod schemas {
         )]
         pub message_value:
             ::std::option::Option<crate::schemas::ActivityEventsItemsParametersItemsMessageValue>,
-        #[doc = "Multi-int value of the parameter."]
+        #[doc = "Integer values of the parameter."]
         #[serde(
             rename = "multiIntValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub multi_int_value: ::std::option::Option<Vec<i64>>,
-        #[doc = "Nested values of the parameter."]
+        #[doc = "List of messageValue objects."]
         #[serde(
             rename = "multiMessageValue",
             default,
@@ -275,7 +283,7 @@ pub mod schemas {
         pub multi_message_value: ::std::option::Option<
             Vec<crate::schemas::ActivityEventsItemsParametersItemsMultiMessageValueItems>,
         >,
-        #[doc = "Multi-string value of the parameter."]
+        #[doc = "String values of the parameter."]
         #[serde(
             rename = "multiValue",
             default,
@@ -320,7 +328,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityEventsItemsParametersItemsMessageValue {
-        #[doc = "Looping to get parameter values."]
+        #[doc = "Parameter values"]
         #[serde(
             rename = "parameter",
             default,
@@ -351,7 +359,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityEventsItemsParametersItemsMultiMessageValueItems {
-        #[doc = "Parameter value."]
+        #[doc = "Parameter values"]
         #[serde(
             rename = "parameter",
             default,
@@ -386,21 +394,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ActivityId {
-        #[doc = "Application name to which the event belongs."]
+        #[doc = "Application name to which the event belongs. For possible values see the list of applications above in applicationName."]
         #[serde(
             rename = "applicationName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub application_name: ::std::option::Option<String>,
-        #[doc = "Obfuscated customer ID of the source customer."]
+        #[doc = "The unique identifier for a G suite account."]
         #[serde(
             rename = "customerId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub customer_id: ::std::option::Option<String>,
-        #[doc = "Time of occurrence of the activity."]
+        #[doc = "Time of occurrence of the activity. This is in UNIX epoch time in seconds."]
         #[serde(
             rename = "time",
             default,
@@ -541,7 +549,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bool_value: ::std::option::Option<bool>,
-        #[doc = "Integral value of the parameter."]
+        #[doc = "Integer value of the parameter."]
         #[serde(
             rename = "intValue",
             default,
@@ -556,7 +564,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub multi_bool_value: ::std::option::Option<Vec<bool>>,
-        #[doc = "Multiple integral values of the parameter."]
+        #[doc = "Multiple integer values of the parameter."]
         #[serde(
             rename = "multiIntValue",
             default,
@@ -597,7 +605,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct UsageReport {
-        #[doc = "The date to which the record belongs."]
+        #[doc = "The date of the report request."]
         #[serde(
             rename = "date",
             default,
@@ -618,14 +626,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "The kind of object."]
+        #[doc = "The type of API resource. For a usage report, the value is admin#reports#usageReport."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Parameter value pairs for various applications."]
+        #[doc = "Parameter value pairs for various applications. For the Customers usage report parameters and values, see the customer usage parameters reference."]
         #[serde(
             rename = "parameters",
             default,
@@ -656,7 +664,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UsageReportEntity {
-        #[doc = "Obfuscated customer id for the record."]
+        #[doc = "The unique identifier of the customer's account."]
         #[serde(
             rename = "customerId",
             default,
@@ -670,21 +678,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub entity_id: ::std::option::Option<String>,
-        #[doc = "Obfuscated user id for the record."]
+        #[doc = "The user's immutable G Suite profile identifier."]
         #[serde(
             rename = "profileId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub profile_id: ::std::option::Option<String>,
-        #[doc = "The type of item, can be customer, user, or entity (aka. object)."]
+        #[doc = "The type of item. The value is customer."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "user's email. Only relevant if entity.type = \"USER\""]
+        #[doc = "The user's email address. Only relevant if entity.type = \"USER\""]
         #[serde(
             rename = "userEmail",
             default,
@@ -711,14 +719,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bool_value: ::std::option::Option<bool>,
-        #[doc = "RFC 3339 formatted value of the parameter."]
+        #[doc = "The RFC 3339 formatted value of the parameter, for example 2010-10-28T10:26:35.000Z."]
         #[serde(
             rename = "datetimeValue",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub datetime_value: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "Integral value of the parameter."]
+        #[doc = "Integer value of the parameter."]
         #[serde(
             rename = "intValue",
             default,
@@ -734,7 +742,6 @@ pub mod schemas {
         )]
         pub msg_value:
             ::std::option::Option<Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>>,
-        #[doc = "The name of the parameter."]
         #[serde(
             rename = "name",
             default,
@@ -768,14 +775,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<String>,
-        #[doc = "The kind of object."]
+        #[doc = "The type of API resource. For a usage report, the value is admin#reports#usageReports."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Token for retrieving the next page"]
+        #[doc = "Token to specify next page. A report with multiple pages has a nextPageToken property in the response. For your follow-on requests getting all of the report's pages, enter the nextPageToken value in the pageToken query string."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -789,7 +796,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub usage_reports: ::std::option::Option<Vec<crate::schemas::UsageReport>>,
-        #[doc = "Warnings if any."]
+        #[doc = "Warnings, if any."]
         #[serde(
             rename = "warnings",
             default,
@@ -820,21 +827,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UsageReportsWarningsItems {
-        #[doc = "Machine readable code / warning type."]
+        #[doc = "Machine readable code or warning type. The warning code value is 200."]
         #[serde(
             rename = "code",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub code: ::std::option::Option<String>,
-        #[doc = "Key-Value pairs to give detailed information on the warning."]
+        #[doc = "Key-value pairs to give detailed information on the warning."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<Vec<crate::schemas::UsageReportsWarningsItemsDataItems>>,
-        #[doc = "Human readable message for the warning."]
+        #[doc = "The human readable messages for a warning are:\n\n* Data is not available warning - Sorry, data for date yyyy-mm-dd for application \"application name\" is not available.\n* Partial data is available warning - Data for date yyyy-mm-dd for application \"application name\" is not available right now, please try again after a few hours."]
         #[serde(
             rename = "message",
             default,
@@ -960,7 +967,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -968,8 +975,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1018,20 +1037,313 @@ impl Client {
 }
 pub mod resources {
     pub mod activities {
-        pub mod params {}
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum ListApplicationName {
+                #[doc = "The G Suite Access Transparency activity reports return information about different types of Access Transparency activity events."]
+                AccessTransparency,
+                #[doc = "The Admin console application's activity reports return account information about different types of administrator activity events."]
+                Admin,
+                #[doc = "The G Suite Calendar application's activity reports return information about various Calendar activity events."]
+                Calendar,
+                #[doc = "The Chat activity reports return information about various Chat activity events."]
+                Chat,
+                #[doc = "The Google Drive application's activity reports return information about various Google Drive activity events. The Drive activity report is only available for G Suite Business customers."]
+                Drive,
+                #[doc = "The Google Cloud Platform application's activity reports return information about various GCP activity events."]
+                Gcp,
+                #[doc = "The Google+ application's activity reports return information about various Google+ activity events."]
+                Gplus,
+                #[doc = "The Google Groups application's activity reports return information about various Groups activity events."]
+                Groups,
+                #[doc = "The Enterprise Groups activity reports return information about various Enterprise group activity events."]
+                GroupsEnterprise,
+                #[doc = "The Jamboard activity reports return information about various Jamboard activity events."]
+                Jamboard,
+                #[doc = "The Login application's activity reports return account information about different types of Login activity events."]
+                Login,
+                #[doc = "The Meet Audit activity report return information about different types of Meet Audit activity events."]
+                Meet,
+                #[doc = "The Mobile Audit activity report return information about different types of Mobile Audit activity events."]
+                Mobile,
+                #[doc = "The Rules activity report return information about different types of Rules activity events."]
+                Rules,
+                #[doc = "The SAML activity report return information about different types of SAML activity events."]
+                Saml,
+                #[doc = "The Token application's activity reports return account information about different types of Token activity events."]
+                Token,
+                #[doc = "The User Accounts application's activity reports return account information about different types of User Accounts activity events."]
+                UserAccounts,
+            }
+            impl ListApplicationName {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        ListApplicationName::AccessTransparency => "access_transparency",
+                        ListApplicationName::Admin => "admin",
+                        ListApplicationName::Calendar => "calendar",
+                        ListApplicationName::Chat => "chat",
+                        ListApplicationName::Drive => "drive",
+                        ListApplicationName::Gcp => "gcp",
+                        ListApplicationName::Gplus => "gplus",
+                        ListApplicationName::Groups => "groups",
+                        ListApplicationName::GroupsEnterprise => "groups_enterprise",
+                        ListApplicationName::Jamboard => "jamboard",
+                        ListApplicationName::Login => "login",
+                        ListApplicationName::Meet => "meet",
+                        ListApplicationName::Mobile => "mobile",
+                        ListApplicationName::Rules => "rules",
+                        ListApplicationName::Saml => "saml",
+                        ListApplicationName::Token => "token",
+                        ListApplicationName::UserAccounts => "user_accounts",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for ListApplicationName {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for ListApplicationName {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<ListApplicationName, ()> {
+                    Ok(match s {
+                        "access_transparency" => ListApplicationName::AccessTransparency,
+                        "admin" => ListApplicationName::Admin,
+                        "calendar" => ListApplicationName::Calendar,
+                        "chat" => ListApplicationName::Chat,
+                        "drive" => ListApplicationName::Drive,
+                        "gcp" => ListApplicationName::Gcp,
+                        "gplus" => ListApplicationName::Gplus,
+                        "groups" => ListApplicationName::Groups,
+                        "groups_enterprise" => ListApplicationName::GroupsEnterprise,
+                        "jamboard" => ListApplicationName::Jamboard,
+                        "login" => ListApplicationName::Login,
+                        "meet" => ListApplicationName::Meet,
+                        "mobile" => ListApplicationName::Mobile,
+                        "rules" => ListApplicationName::Rules,
+                        "saml" => ListApplicationName::Saml,
+                        "token" => ListApplicationName::Token,
+                        "user_accounts" => ListApplicationName::UserAccounts,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for ListApplicationName {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for ListApplicationName {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for ListApplicationName {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "access_transparency" => ListApplicationName::AccessTransparency,
+                        "admin" => ListApplicationName::Admin,
+                        "calendar" => ListApplicationName::Calendar,
+                        "chat" => ListApplicationName::Chat,
+                        "drive" => ListApplicationName::Drive,
+                        "gcp" => ListApplicationName::Gcp,
+                        "gplus" => ListApplicationName::Gplus,
+                        "groups" => ListApplicationName::Groups,
+                        "groups_enterprise" => ListApplicationName::GroupsEnterprise,
+                        "jamboard" => ListApplicationName::Jamboard,
+                        "login" => ListApplicationName::Login,
+                        "meet" => ListApplicationName::Meet,
+                        "mobile" => ListApplicationName::Mobile,
+                        "rules" => ListApplicationName::Rules,
+                        "saml" => ListApplicationName::Saml,
+                        "token" => ListApplicationName::Token,
+                        "user_accounts" => ListApplicationName::UserAccounts,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for ListApplicationName {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for ListApplicationName {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum WatchApplicationName {
+                #[doc = "The G Suite Access Transparency activity reports return information about different types of Access Transparency activity events."]
+                AccessTransparency,
+                #[doc = "The Admin console application's activity reports return account information about different types of administrator activity events."]
+                Admin,
+                #[doc = "The G Suite Calendar application's activity reports return information about various Calendar activity events."]
+                Calendar,
+                #[doc = "The Chat activity reports return information about various Chat activity events."]
+                Chat,
+                #[doc = "The Google Drive application's activity reports return information about various Google Drive activity events. The Drive activity report is only available for G Suite Business customers."]
+                Drive,
+                #[doc = "The Google Cloud Platform application's activity reports return information about various GCP activity events."]
+                Gcp,
+                #[doc = "The Google+ application's activity reports return information about various Google+ activity events."]
+                Gplus,
+                #[doc = "The Google Groups application's activity reports return information about various Groups activity events."]
+                Groups,
+                #[doc = "The Enterprise Groups activity reports return information about various Enterprise group activity events."]
+                GroupsEnterprise,
+                #[doc = "The Jamboard activity reports return information about various Jamboard activity events."]
+                Jamboard,
+                #[doc = "The Login application's activity reports return account information about different types of Login activity events."]
+                Login,
+                #[doc = "The Meet Audit activity report return information about different types of Meet Audit activity events."]
+                Meet,
+                #[doc = "The Mobile Audit activity report return information about different types of Mobile Audit activity events."]
+                Mobile,
+                #[doc = "The Rules activity report return information about different types of Rules activity events."]
+                Rules,
+                #[doc = "The SAML activity report return information about different types of SAML activity events."]
+                Saml,
+                #[doc = "The Token application's activity reports return account information about different types of Token activity events."]
+                Token,
+                #[doc = "The User Accounts application's activity reports return account information about different types of User Accounts activity events."]
+                UserAccounts,
+            }
+            impl WatchApplicationName {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        WatchApplicationName::AccessTransparency => "access_transparency",
+                        WatchApplicationName::Admin => "admin",
+                        WatchApplicationName::Calendar => "calendar",
+                        WatchApplicationName::Chat => "chat",
+                        WatchApplicationName::Drive => "drive",
+                        WatchApplicationName::Gcp => "gcp",
+                        WatchApplicationName::Gplus => "gplus",
+                        WatchApplicationName::Groups => "groups",
+                        WatchApplicationName::GroupsEnterprise => "groups_enterprise",
+                        WatchApplicationName::Jamboard => "jamboard",
+                        WatchApplicationName::Login => "login",
+                        WatchApplicationName::Meet => "meet",
+                        WatchApplicationName::Mobile => "mobile",
+                        WatchApplicationName::Rules => "rules",
+                        WatchApplicationName::Saml => "saml",
+                        WatchApplicationName::Token => "token",
+                        WatchApplicationName::UserAccounts => "user_accounts",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for WatchApplicationName {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for WatchApplicationName {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<WatchApplicationName, ()> {
+                    Ok(match s {
+                        "access_transparency" => WatchApplicationName::AccessTransparency,
+                        "admin" => WatchApplicationName::Admin,
+                        "calendar" => WatchApplicationName::Calendar,
+                        "chat" => WatchApplicationName::Chat,
+                        "drive" => WatchApplicationName::Drive,
+                        "gcp" => WatchApplicationName::Gcp,
+                        "gplus" => WatchApplicationName::Gplus,
+                        "groups" => WatchApplicationName::Groups,
+                        "groups_enterprise" => WatchApplicationName::GroupsEnterprise,
+                        "jamboard" => WatchApplicationName::Jamboard,
+                        "login" => WatchApplicationName::Login,
+                        "meet" => WatchApplicationName::Meet,
+                        "mobile" => WatchApplicationName::Mobile,
+                        "rules" => WatchApplicationName::Rules,
+                        "saml" => WatchApplicationName::Saml,
+                        "token" => WatchApplicationName::Token,
+                        "user_accounts" => WatchApplicationName::UserAccounts,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for WatchApplicationName {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for WatchApplicationName {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for WatchApplicationName {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "access_transparency" => WatchApplicationName::AccessTransparency,
+                        "admin" => WatchApplicationName::Admin,
+                        "calendar" => WatchApplicationName::Calendar,
+                        "chat" => WatchApplicationName::Chat,
+                        "drive" => WatchApplicationName::Drive,
+                        "gcp" => WatchApplicationName::Gcp,
+                        "gplus" => WatchApplicationName::Gplus,
+                        "groups" => WatchApplicationName::Groups,
+                        "groups_enterprise" => WatchApplicationName::GroupsEnterprise,
+                        "jamboard" => WatchApplicationName::Jamboard,
+                        "login" => WatchApplicationName::Login,
+                        "meet" => WatchApplicationName::Meet,
+                        "mobile" => WatchApplicationName::Mobile,
+                        "rules" => WatchApplicationName::Rules,
+                        "saml" => WatchApplicationName::Saml,
+                        "token" => WatchApplicationName::Token,
+                        "user_accounts" => WatchApplicationName::UserAccounts,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for WatchApplicationName {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for WatchApplicationName {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+        }
         pub struct ActivitiesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ActivitiesActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieves a list of activities for a specific customer and application."]
+            #[doc = "Retrieves a list of activities for a specific customer's account and application such as the Admin console application or the Google Drive application. For more information, see the guides for administrator and Google Drive activity reports. For more information about the activity report's parameters, see the activity parameters reference guides."]
             pub fn list(
                 &self,
                 user_key: impl Into<String>,
-                application_name: impl Into<String>,
+                application_name: crate::resources::activities::params::ListApplicationName,
             ) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1044,7 +1356,7 @@ pub mod resources {
                     quota_user: None,
                     user_ip: None,
                     user_key: user_key.into(),
-                    application_name: application_name.into(),
+                    application_name,
                     actor_ip_address: None,
                     customer_id: None,
                     end_time: None,
@@ -1056,12 +1368,12 @@ pub mod resources {
                     start_time: None,
                 }
             }
-            #[doc = "Push changes to activities"]
+            #[doc = "Start receiving notifications for account activities. For more information, see Receiving Push Notifications."]
             pub fn watch(
                 &self,
                 request: crate::schemas::Channel,
                 user_key: impl Into<String>,
-                application_name: impl Into<String>,
+                application_name: crate::resources::activities::params::WatchApplicationName,
             ) -> WatchRequestBuilder {
                 WatchRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1075,7 +1387,7 @@ pub mod resources {
                     quota_user: None,
                     user_ip: None,
                     user_key: user_key.into(),
-                    application_name: application_name.into(),
+                    application_name,
                     actor_ip_address: None,
                     customer_id: None,
                     end_time: None,
@@ -1091,10 +1403,10 @@ pub mod resources {
         #[doc = "Created via [ActivitiesActions::list()](struct.ActivitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_key: String,
-            application_name: String,
+            application_name: crate::resources::activities::params::ListApplicationName,
             actor_ip_address: Option<String>,
             customer_id: Option<String>,
             end_time: Option<String>,
@@ -1113,47 +1425,47 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "IP Address of host where the event was performed. Supports both IPv4 and IPv6 addresses."]
+            #[doc = "The Internet Protocol (IP) Address of host where the event was performed. This is an additional way to filter a report's summary using the IP address of the user whose activity is being reported. This IP address may or may not reflect the user's physical location. For example, the IP address can be the user's proxy server's address or a virtual private network (VPN) address. This parameter supports both IPv4 and IPv6 address versions."]
             pub fn actor_ip_address(mut self, value: impl Into<String>) -> Self {
                 self.actor_ip_address = Some(value.into());
                 self
             }
-            #[doc = "Represents the customer for which the data is to be fetched."]
+            #[doc = "The unique ID of the customer to retrieve data for."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
             }
-            #[doc = "Return events which occurred at or before this time."]
+            #[doc = "Sets the end of the range of time shown in the report. The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the approximate time of the API request. An API report has three basic time concepts:\n\n* Date of the API's request for a report: When the API created and retrieved the report. \n* Report's start time: The beginning of the timespan shown in the report. The startTime must be before the endTime (if specified) and the current time when the request is made, or the API returns an error. \n* Report's end time: The end of the timespan shown in the report. For example, the timespan of events summarized in a report can start in April and end in May. The report itself can be requested in August.  If the endTime is not specified, the report returns all activities from the startTime until the current time or the most recent 180 days if the startTime is more than 180 days in the past."]
             pub fn end_time(mut self, value: impl Into<String>) -> Self {
                 self.end_time = Some(value.into());
                 self
             }
-            #[doc = "Name of the event being queried."]
+            #[doc = "The name of the event being queried by the API. Each eventName is related to a specific G Suite service or feature which the API organizes into types of events. An example is the Google Calendar events in the Admin console application's reports. The Calendar Settings type structure has all of the Calendar eventName activities reported by the API. When an administrator changes a Calendar setting, the API reports this activity in the Calendar Settings type and eventName parameters. For more information about eventName query strings and parameters, see the list of event names for various applications above in applicationName."]
             pub fn event_name(mut self, value: impl Into<String>) -> Self {
                 self.event_name = Some(value.into());
                 self
             }
-            #[doc = "Event parameters in the form [parameter1 name][operator][parameter1 value],[parameter2 name][operator][parameter2 value],..."]
+            #[doc = "The filters query string is a comma-separated list. The list is composed of event parameters that are manipulated by relational operators. Event parameters are in the form [parameter1 name][relational operator][parameter1 value],[parameter2 name][relational operator][parameter2 value],... \nThese event parameters are associated with a specific eventName. An empty report is returned if the filtered request's parameter does not belong to the eventName. For more information about eventName parameters, see the list of event names for various applications above in applicationName.\n\nIn the following Admin Activity example, the <> operator is URL-encoded in the request's query string (%3C%3E):\nGET...&eventName=CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS\n\nIn the following Drive example, the list can be a view or edit event's doc_id parameter with a value that is manipulated by an 'equal to' (==) or 'not equal to' (<>) relational operator. In the first example, the report returns each edited document's doc_id. In the second example, the report returns each viewed document's doc_id that equals the value 12345 and does not return any viewed document's which have a doc_id value of 98765. The <> operator is URL-encoded in the request's query string (%3C%3E):\n\nGET...&eventName=edit&filters=doc_id GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765\n\nThe relational operators include:\n\n* == - 'equal to'. \n* <> - 'not equal to'. It is URL-encoded (%3C%3E). \n* < - 'less than'. It is URL-encoded (%3C). \n* <= - 'less than or equal to'. It is URL-encoded (%3C=). \n* \n   > \n   > * 'greater than'. It is URL-encoded (%3E). \n\n* \n   > \n   > = - 'greater than or equal to'. It is URL-encoded (%3E=).  \n   > Note: The API doesn't accept multiple values of a parameter. If a particular parameter is supplied more than once in the API request, the API only accepts the last value of that request parameter.\n   > In addition, if an invalid request parameter is supplied in the API request, the API ignores that request parameter and returns the response corresponding to the remaining valid request parameters. If no parameters are requested, all parameters are returned."]
             pub fn filters(mut self, value: impl Into<String>) -> Self {
                 self.filters = Some(value.into());
                 self
             }
-            #[doc = "Number of activity records to be shown in each page."]
+            #[doc = "Determines how many activity records are shown on each response page. For example, if the request sets maxResults=1 and the report has two activities, the report has two pages. The response's nextPageToken property has the token to the second page. The maxResults query string is optional in the request. The default value is 1000."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "the organizational unit's(OU) ID to filter activities from users belonging to a specific OU or one of its sub-OU(s)"]
+            #[doc = "ID of the organizational unit to report on. Activity records will be shown only for users who belong to the specified organizational unit. Data before Dec 17, 2018 doesn't appear in the filtered results."]
             pub fn org_unit_id(mut self, value: impl Into<String>) -> Self {
                 self.org_unit_id = Some(value.into());
                 self
             }
-            #[doc = "Token to specify next page."]
+            #[doc = "The token to specify next page. A report with multiple pages has a nextPageToken property in the response. In your follow-on request getting the next page of the report, enter the nextPageToken value in the pageToken query string."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Return events which occurred at or after this time."]
+            #[doc = "Sets the beginning of the range of time shown in the report. The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns all activities from startTime until endTime. The startTime must be before the endTime (if specified) and the current time when the request is made, or the API returns an error."]
             pub fn start_time(mut self, value: impl Into<String>) -> Self {
                 self.start_time = Some(value.into());
                 self
@@ -1349,7 +1661,8 @@ pub mod resources {
                 }
                 output.push_str("/applications/");
                 {
-                    let var_as_str = &self.application_name;
+                    let var_as_string = self.application_name.to_string();
+                    let var_as_str = &var_as_string;
                     output.extend(::percent_encoding::utf8_percent_encode(
                         &var_as_str,
                         crate::SIMPLE,
@@ -1357,7 +1670,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("actorIpAddress", &self.actor_ip_address)]);
                 let req = req.query(&[("customerId", &self.customer_id)]);
@@ -1397,11 +1713,11 @@ pub mod resources {
         #[doc = "Created via [ActivitiesActions::watch()](struct.ActivitiesActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             user_key: String,
-            application_name: String,
+            application_name: crate::resources::activities::params::WatchApplicationName,
             actor_ip_address: Option<String>,
             customer_id: Option<String>,
             end_time: Option<String>,
@@ -1420,47 +1736,47 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> WatchRequestBuilder<'a> {
-            #[doc = "IP Address of host where the event was performed. Supports both IPv4 and IPv6 addresses."]
+            #[doc = "The Internet Protocol (IP) Address of host where the event was performed. This is an additional way to filter a report's summary using the IP address of the user whose activity is being reported. This IP address may or may not reflect the user's physical location. For example, the IP address can be the user's proxy server's address or a virtual private network (VPN) address. This parameter supports both IPv4 and IPv6 address versions."]
             pub fn actor_ip_address(mut self, value: impl Into<String>) -> Self {
                 self.actor_ip_address = Some(value.into());
                 self
             }
-            #[doc = "Represents the customer for which the data is to be fetched."]
+            #[doc = "The unique ID of the customer to retrieve data for."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
             }
-            #[doc = "Return events which occurred at or before this time."]
+            #[doc = "Sets the end of the range of time shown in the report. The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The default value is the approximate time of the API request. An API report has three basic time concepts:\n\n* Date of the API's request for a report: When the API created and retrieved the report. \n* Report's start time: The beginning of the timespan shown in the report. The startTime must be before the endTime (if specified) and the current time when the request is made, or the API returns an error. \n* Report's end time: The end of the timespan shown in the report. For example, the timespan of events summarized in a report can start in April and end in May. The report itself can be requested in August.  If the endTime is not specified, the report returns all activities from the startTime until the current time or the most recent 180 days if the startTime is more than 180 days in the past."]
             pub fn end_time(mut self, value: impl Into<String>) -> Self {
                 self.end_time = Some(value.into());
                 self
             }
-            #[doc = "Name of the event being queried."]
+            #[doc = "The name of the event being queried by the API. Each eventName is related to a specific G Suite service or feature which the API organizes into types of events. An example is the Google Calendar events in the Admin console application's reports. The Calendar Settings type structure has all of the Calendar eventName activities reported by the API. When an administrator changes a Calendar setting, the API reports this activity in the Calendar Settings type and eventName parameters. For more information about eventName query strings and parameters, see the list of event names for various applications above in applicationName."]
             pub fn event_name(mut self, value: impl Into<String>) -> Self {
                 self.event_name = Some(value.into());
                 self
             }
-            #[doc = "Event parameters in the form [parameter1 name][operator][parameter1 value],[parameter2 name][operator][parameter2 value],..."]
+            #[doc = "The filters query string is a comma-separated list. The list is composed of event parameters that are manipulated by relational operators. Event parameters are in the form [parameter1 name][relational operator][parameter1 value],[parameter2 name][relational operator][parameter2 value],... \nThese event parameters are associated with a specific eventName. An empty report is returned if the filtered request's parameter does not belong to the eventName. For more information about eventName parameters, see the list of event names for various applications above in applicationName.\n\nIn the following Admin Activity example, the <> operator is URL-encoded in the request's query string (%3C%3E):\nGET...&eventName=CHANGE_CALENDAR_SETTING &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS\n\nIn the following Drive example, the list can be a view or edit event's doc_id parameter with a value that is manipulated by an 'equal to' (==) or 'not equal to' (<>) relational operator. In the first example, the report returns each edited document's doc_id. In the second example, the report returns each viewed document's doc_id that equals the value 12345 and does not return any viewed document's which have a doc_id value of 98765. The <> operator is URL-encoded in the request's query string (%3C%3E):\n\nGET...&eventName=edit&filters=doc_id GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765\n\nThe relational operators include:\n\n* == - 'equal to'. \n* <> - 'not equal to'. It is URL-encoded (%3C%3E). \n* < - 'less than'. It is URL-encoded (%3C). \n* <= - 'less than or equal to'. It is URL-encoded (%3C=). \n* \n   > \n   > * 'greater than'. It is URL-encoded (%3E). \n\n* \n   > \n   > = - 'greater than or equal to'. It is URL-encoded (%3E=).  \n   > Note: The API doesn't accept multiple values of a parameter. If a particular parameter is supplied more than once in the API request, the API only accepts the last value of that request parameter.\n   > In addition, if an invalid request parameter is supplied in the API request, the API ignores that request parameter and returns the response corresponding to the remaining valid request parameters. If no parameters are requested, all parameters are returned."]
             pub fn filters(mut self, value: impl Into<String>) -> Self {
                 self.filters = Some(value.into());
                 self
             }
-            #[doc = "Number of activity records to be shown in each page."]
+            #[doc = "Determines how many activity records are shown on each response page. For example, if the request sets maxResults=1 and the report has two activities, the report has two pages. The response's nextPageToken property has the token to the second page. The maxResults query string is optional in the request. The default value is 1000."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "the organizational unit's(OU) ID to filter activities from users belonging to a specific OU or one of its sub-OU(s)"]
+            #[doc = "ID of the organizational unit to report on. Activity records will be shown only for users who belong to the specified organizational unit. Data before Dec 17, 2018 doesn't appear in the filtered results."]
             pub fn org_unit_id(mut self, value: impl Into<String>) -> Self {
                 self.org_unit_id = Some(value.into());
                 self
             }
-            #[doc = "Token to specify next page."]
+            #[doc = "The token to specify next page. A report with multiple pages has a nextPageToken property in the response. In your follow-on request getting the next page of the report, enter the nextPageToken value in the pageToken query string."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Return events which occurred at or after this time."]
+            #[doc = "Sets the beginning of the range of time shown in the report. The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns all activities from startTime until endTime. The startTime must be before the endTime (if specified) and the current time when the request is made, or the API returns an error."]
             pub fn start_time(mut self, value: impl Into<String>) -> Self {
                 self.start_time = Some(value.into());
                 self
@@ -1557,7 +1873,8 @@ pub mod resources {
                 }
                 output.push_str("/applications/");
                 {
-                    let var_as_str = &self.application_name;
+                    let var_as_string = self.application_name.to_string();
+                    let var_as_str = &var_as_string;
                     output.extend(::percent_encoding::utf8_percent_encode(
                         &var_as_str,
                         crate::SIMPLE,
@@ -1566,7 +1883,10 @@ pub mod resources {
                 output.push_str("/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("actorIpAddress", &self.actor_ip_address)]);
                 let req = req.query(&[("customerId", &self.customer_id)]);
@@ -1596,7 +1916,7 @@ pub mod resources {
     pub mod channels {
         pub mod params {}
         pub struct ChannelsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ChannelsActions<'a> {
@@ -1622,7 +1942,7 @@ pub mod resources {
         #[doc = "Created via [ChannelsActions::stop()](struct.ChannelsActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             alt: Option<crate::params::Alt>,
@@ -1670,7 +1990,10 @@ pub mod resources {
                 output.push_str("/admin/reports_v1/channels/stop");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1691,14 +2014,14 @@ pub mod resources {
     pub mod customer_usage_reports {
         pub mod params {}
         pub struct CustomerUsageReportsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> CustomerUsageReportsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieves a report which is a collection of properties / statistics for a specific customer."]
+            #[doc = "Retrieves a report which is a collection of properties and statistics for a specific customer's account. For more information, see the Customers Usage Report guide. For more information about the customer report's parameters, see the Customers Usage parameters reference guides."]
             pub fn get(&self, date: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1720,7 +2043,7 @@ pub mod resources {
         #[doc = "Created via [CustomerUsageReportsActions::get()](struct.CustomerUsageReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             date: String,
             customer_id: Option<String>,
@@ -1735,17 +2058,17 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Represents the customer for which the data is to be fetched."]
+            #[doc = "The unique ID of the customer to retrieve data for."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
             }
-            #[doc = "Token to specify next page."]
+            #[doc = "Token to specify next page. A report with multiple pages has a nextPageToken property in the response. For your follow-on requests getting all of the report's pages, enter the nextPageToken value in the pageToken query string."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Represents the application name, parameter name pairs to fetch in csv as app_name1:param_name1, app_name2:param_name2."]
+            #[doc = "The parameters query string is a comma-separated list of event parameters that refine a report's results. The parameter is associated with a specific application. The application values for the Customers usage report include accounts, app_maker, apps_scripts, calendar, classroom, cros, docs, gmail, gplus, device_management, meet, and sites.\nA parameters query string is in the CSV form of app_name1:param_name1, app_name2:param_name2.\nNote: The API doesn't accept multiple values of a parameter. If a particular parameter is supplied more than once in the API request, the API only accepts the last value of that request parameter.\nIn addition, if an invalid request parameter is supplied in the API request, the API ignores that request parameter and returns the response corresponding to the remaining valid request parameters.\n\nAn example of an invalid request parameter is one that does not belong to the application. If no parameters are requested, all parameters are returned."]
             pub fn parameters(mut self, value: impl Into<String>) -> Self {
                 self.parameters = Some(value.into());
                 self
@@ -2000,7 +2323,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2033,20 +2359,158 @@ pub mod resources {
         }
     }
     pub mod entity_usage_reports {
-        pub mod params {}
+        pub mod params {
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum GetEntityType {
+                #[doc = "Returns a report on Google+ communities."]
+                GplusCommunities,
+            }
+            impl GetEntityType {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        GetEntityType::GplusCommunities => "gplus_communities",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for GetEntityType {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetEntityType {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetEntityType, ()> {
+                    Ok(match s {
+                        "gplus_communities" => GetEntityType::GplusCommunities,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for GetEntityType {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for GetEntityType {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for GetEntityType {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "gplus_communities" => GetEntityType::GplusCommunities,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for GetEntityType {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for GetEntityType {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+            pub enum GetEntityKey {
+                #[doc = "Returns activity events for all users."]
+                All,
+                #[doc = "Represents an app-specific identifier for the entity. For details on how to obtain the entityKey for a particular entityType, see the Entities Usage parameters reference guides."]
+                EntityKey,
+            }
+            impl GetEntityKey {
+                pub fn as_str(self) -> &'static str {
+                    match self {
+                        GetEntityKey::All => "all",
+                        GetEntityKey::EntityKey => "entityKey",
+                    }
+                }
+            }
+            impl ::std::convert::AsRef<str> for GetEntityKey {
+                fn as_ref(&self) -> &str {
+                    self.as_str()
+                }
+            }
+            impl ::std::str::FromStr for GetEntityKey {
+                type Err = ();
+                fn from_str(s: &str) -> ::std::result::Result<GetEntityKey, ()> {
+                    Ok(match s {
+                        "all" => GetEntityKey::All,
+                        "entityKey" => GetEntityKey::EntityKey,
+                        _ => return Err(()),
+                    })
+                }
+            }
+            impl ::std::fmt::Display for GetEntityKey {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                    f.write_str(self.as_str())
+                }
+            }
+            impl ::serde::Serialize for GetEntityKey {
+                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+                where
+                    S: ::serde::ser::Serializer,
+                {
+                    serializer.serialize_str(self.as_str())
+                }
+            }
+            impl<'de> ::serde::Deserialize<'de> for GetEntityKey {
+                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                where
+                    D: ::serde::de::Deserializer<'de>,
+                {
+                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                    Ok(match value {
+                        "all" => GetEntityKey::All,
+                        "entityKey" => GetEntityKey::EntityKey,
+                        _ => {
+                            return Err(::serde::de::Error::custom(format!(
+                                "invalid enum for #name: {}",
+                                value
+                            )))
+                        }
+                    })
+                }
+            }
+            impl ::google_field_selector::FieldSelector for GetEntityKey {
+                fn fields() -> Vec<::google_field_selector::Field> {
+                    Vec::new()
+                }
+            }
+            impl ::google_field_selector::ToFieldType for GetEntityKey {
+                fn field_type() -> ::google_field_selector::FieldType {
+                    ::google_field_selector::FieldType::Leaf
+                }
+            }
+        }
         pub struct EntityUsageReportsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> EntityUsageReportsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieves a report which is a collection of properties / statistics for a set of objects."]
+            #[doc = "Retrieves a report which is a collection of properties and statistics for entities used by users within the account. For more information, see the Entities Usage Report guide. For more information about the entities report's parameters, see the Entities Usage parameters reference guides."]
             pub fn get(
                 &self,
-                entity_type: impl Into<String>,
-                entity_key: impl Into<String>,
+                entity_type: crate::resources::entity_usage_reports::params::GetEntityType,
+                entity_key: crate::resources::entity_usage_reports::params::GetEntityKey,
                 date: impl Into<String>,
             ) -> GetRequestBuilder {
                 GetRequestBuilder {
@@ -2059,8 +2523,8 @@ pub mod resources {
                     pretty_print: None,
                     quota_user: None,
                     user_ip: None,
-                    entity_type: entity_type.into(),
-                    entity_key: entity_key.into(),
+                    entity_type,
+                    entity_key,
                     date: date.into(),
                     customer_id: None,
                     filters: None,
@@ -2073,10 +2537,10 @@ pub mod resources {
         #[doc = "Created via [EntityUsageReportsActions::get()](struct.EntityUsageReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            entity_type: String,
-            entity_key: String,
+            entity_type: crate::resources::entity_usage_reports::params::GetEntityType,
+            entity_key: crate::resources::entity_usage_reports::params::GetEntityKey,
             date: String,
             customer_id: Option<String>,
             filters: Option<String>,
@@ -2092,27 +2556,27 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Represents the customer for which the data is to be fetched."]
+            #[doc = "The unique ID of the customer to retrieve data for."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
             }
-            #[doc = "Represents the set of filters including parameter operator value."]
+            #[doc = "The filters query string is a comma-separated list of an application's event parameters where the parameter's value is manipulated by a relational operator. The filters query string includes the name of the application whose usage is returned in the report. The application values for the Entities usage report include accounts, docs, and gmail.\nFilters are in the form [application name]:[parameter name][relational operator][parameter value],....\n\nIn this example, the <> 'not equal to' operator is URL-encoded in the request's query string (%3C%3E):\nGET https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/dates/2017-12-01 ?parameters=gplus:community_name,gplus:num_total_members &filters=gplus:num_total_members>0\n\nThe relational operators include:\n\n* == - 'equal to'. \n* <> - 'not equal to'. It is URL-encoded (%3C%3E). \n* < - 'less than'. It is URL-encoded (%3C). \n* <= - 'less than or equal to'. It is URL-encoded (%3C=). \n* \n   > \n   > * 'greater than'. It is URL-encoded (%3E). \n\n* \n   > \n   > = - 'greater than or equal to'. It is URL-encoded (%3E=).  Filters can only be applied to numeric parameters."]
             pub fn filters(mut self, value: impl Into<String>) -> Self {
                 self.filters = Some(value.into());
                 self
             }
-            #[doc = "Maximum number of results to return. Maximum allowed is 1000"]
+            #[doc = "Determines how many activity records are shown on each response page. For example, if the request sets maxResults=1 and the report has two activities, the report has two pages. The response's nextPageToken property has the token to the second page."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Token to specify next page."]
+            #[doc = "Token to specify next page. A report with multiple pages has a nextPageToken property in the response. In your follow-on request getting the next page of the report, enter the nextPageToken value in the pageToken query string."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Represents the application name, parameter name pairs to fetch in csv as app_name1:param_name1, app_name2:param_name2."]
+            #[doc = "The parameters query string is a comma-separated list of event parameters that refine a report's results. The parameter is associated with a specific application. The application values for the Entities usage report are only gplus.\nA parameter query string is in the CSV form of [app_name1:param_name1], [app_name2:param_name2]....\nNote: The API doesn't accept multiple values of a parameter. If a particular parameter is supplied more than once in the API request, the API only accepts the last value of that request parameter.\nIn addition, if an invalid request parameter is supplied in the API request, the API ignores that request parameter and returns the response corresponding to the remaining valid request parameters.\n\nAn example of an invalid request parameter is one that does not belong to the application. If no parameters are requested, all parameters are returned."]
             pub fn parameters(mut self, value: impl Into<String>) -> Self {
                 self.parameters = Some(value.into());
                 self
@@ -2359,7 +2823,8 @@ pub mod resources {
                 let mut output = "https://www.googleapis.com/admin/reports/v1/".to_owned();
                 output.push_str("usage/");
                 {
-                    let var_as_str = &self.entity_type;
+                    let var_as_string = self.entity_type.to_string();
+                    let var_as_str = &var_as_string;
                     output.extend(::percent_encoding::utf8_percent_encode(
                         &var_as_str,
                         crate::SIMPLE,
@@ -2367,7 +2832,8 @@ pub mod resources {
                 }
                 output.push_str("/");
                 {
-                    let var_as_str = &self.entity_key;
+                    let var_as_string = self.entity_key.to_string();
+                    let var_as_str = &var_as_string;
                     output.extend(::percent_encoding::utf8_percent_encode(
                         &var_as_str,
                         crate::SIMPLE,
@@ -2383,7 +2849,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("filters", &self.filters)]);
@@ -2420,14 +2889,14 @@ pub mod resources {
     pub mod user_usage_report {
         pub mod params {}
         pub struct UserUsageReportActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> UserUsageReportActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieves a report which is a collection of properties / statistics for a set of users."]
+            #[doc = "Retrieves a report which is a collection of properties and statistics for a set of users with the account. For more information, see the User Usage Report guide. For more information about the user report's parameters, see the Users Usage parameters reference guides."]
             pub fn get(
                 &self,
                 user_key: impl Into<String>,
@@ -2457,7 +2926,7 @@ pub mod resources {
         #[doc = "Created via [UserUsageReportActions::get()](struct.UserUsageReportActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_key: String,
             date: String,
@@ -2476,32 +2945,32 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Represents the customer for which the data is to be fetched."]
+            #[doc = "The unique ID of the customer to retrieve data for."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
             }
-            #[doc = "Represents the set of filters including parameter operator value."]
+            #[doc = "The filters query string is a comma-separated list of an application's event parameters where the parameter's value is manipulated by a relational operator. The filters query string includes the name of the application whose usage is returned in the report. The application values for the Users Usage Report include accounts, docs, and gmail.\nFilters are in the form [application name]:[parameter name][relational operator][parameter value],....\n\nIn this example, the <> 'not equal to' operator is URL-encoded in the request's query string (%3C%3E):\nGET https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-03 ?parameters=accounts:last_login_time &filters=accounts:last_login_time>2010-10-28T10:26:35.000Z\n\nThe relational operators include:\n\n* == - 'equal to'. \n* <> - 'not equal to'. It is URL-encoded (%3C%3E). \n* < - 'less than'. It is URL-encoded (%3C). \n* <= - 'less than or equal to'. It is URL-encoded (%3C=). \n* \n   > \n   > * 'greater than'. It is URL-encoded (%3E). \n\n* \n   > \n   > = - 'greater than or equal to'. It is URL-encoded (%3E=)."]
             pub fn filters(mut self, value: impl Into<String>) -> Self {
                 self.filters = Some(value.into());
                 self
             }
-            #[doc = "Maximum number of results to return. Maximum allowed is 1000"]
+            #[doc = "Determines how many activity records are shown on each response page. For example, if the request sets maxResults=1 and the report has two activities, the report has two pages. The response's nextPageToken property has the token to the second page.\nThe maxResults query string is optional."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "the organizational unit's ID to filter usage parameters from users belonging to a specific OU or one of its sub-OU(s)."]
+            #[doc = "ID of the organizational unit to report on. User activity will be shown only for users who belong to the specified organizational unit. Data before Dec 17, 2018 doesn't appear in the filtered results."]
             pub fn org_unit_id(mut self, value: impl Into<String>) -> Self {
                 self.org_unit_id = Some(value.into());
                 self
             }
-            #[doc = "Token to specify next page."]
+            #[doc = "Token to specify next page. A report with multiple pages has a nextPageToken property in the response. In your follow-on request getting the next page of the report, enter the nextPageToken value in the pageToken query string."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Represents the application name, parameter name pairs to fetch in csv as app_name1:param_name1, app_name2:param_name2."]
+            #[doc = "The parameters query string is a comma-separated list of event parameters that refine a report's results. The parameter is associated with a specific application. The application values for the Customers usage report include accounts, app_maker, apps_scripts, calendar, classroom, cros, docs, gmail, gplus, device_management, meet, and sites.\nA parameters query string is in the CSV form of app_name1:param_name1, app_name2:param_name2.\nNote: The API doesn't accept multiple values of a parameter.\nIf a particular parameter is supplied more than once in the API request, the API only accepts the last value of that request parameter. In addition, if an invalid request parameter is supplied in the API request, the API ignores that request parameter and returns the response corresponding to the remaining valid request parameters.\n\nAn example of an invalid request parameter is one that does not belong to the application. If no parameters are requested, all parameters are returned."]
             pub fn parameters(mut self, value: impl Into<String>) -> Self {
                 self.parameters = Some(value.into());
                 self
@@ -2764,7 +3233,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("filters", &self.filters)]);
@@ -2816,9 +3288,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -2860,7 +3330,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

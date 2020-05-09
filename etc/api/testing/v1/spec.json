@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190915",
+  "revision": "20200506",
   "title": "Cloud Testing API",
   "description": "Allows developers to run automated tests for their mobile applications on Google infrastructure.",
   "ownerDomain": "google.com",
@@ -386,6 +386,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "shardingOption": {
+          "description": "The option to run tests in multiple shards in parallel.",
+          "$ref": "ShardingOption"
+        },
         "testApk": {
           "description": "Required. The APK containing the test code to be executed.",
           "$ref": "FileReference"
@@ -705,6 +709,16 @@
             "additionalProperties": null,
             "items": null
           }
+        },
+        "thumbnailUrl": {
+          "description": "URL of a thumbnail image of the device.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1651,7 +1665,7 @@
     },
     "IosModel": {
       "id": "IosModel",
-      "description": "A description of an iOS device tests may be run on.\nNext tag: 10",
+      "description": "A description of an iOS device tests may be run on.\nNext tag: 12",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1821,6 +1835,50 @@
       "additionalProperties": null,
       "items": null
     },
+    "IosTestLoop": {
+      "id": "IosTestLoop",
+      "description": "A test of an iOS application that implements one or more game loop scenarios.\nThis test type accepts an archived application (.ipa file) and a list of\ninteger scenarios that will be executed on the app sequentially.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "appBundleId": {
+          "description": "Output only. The bundle id for the application under test.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "appIpa": {
+          "description": "Required. The .ipa of the application to test.",
+          "$ref": "FileReference"
+        },
+        "scenarios": {
+          "description": "The list of scenarios that should be run during the test. Defaults to the\nsingle scenario 0 if unspecified.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "IosTestSetup": {
       "id": "IosTestSetup",
       "description": "A description of how to set up an iOS device prior to running the test.",
@@ -1939,6 +1997,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "testSpecialEntitlements": {
+          "description": "The option to test special app entitlements. Setting this would re-sign the\napp having special entitlements with an explicit application-identifier.\nCurrently supports testing aps-environment entitlement.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "testsZip": {
           "description": "Required. The .zip containing the .xctestrun file and the contents of the\nDerivedData/Build/Products directory.\nThe .xctestrun file in this zip is ignored if the xctestrun field is\nspecified.",
           "$ref": "FileReference"
@@ -2026,6 +2094,30 @@
             "properties": {},
             "additionalProperties": null,
             "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ManualSharding": {
+      "id": "ManualSharding",
+      "description": "Shards test cases into the specified groups of packages, classes, and/or\nmethods.\n\nWith manual sharding enabled, specifying test targets via\nenvironment_variables or in InstrumentationTest is invalid.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "testTargetsForShard": {
+          "description": "Required. Group of packages, classes, and/or test methods to be run for\neach shard. The number of shard_test_targets must be >= 1 and <= 50.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TestTargetsForShard"
           }
         }
       },
@@ -2326,6 +2418,62 @@
       "additionalProperties": null,
       "items": null
     },
+    "Shard": {
+      "id": "Shard",
+      "description": "Output only. Details about the shard.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "numShards": {
+          "description": "Output only. The total number of shards.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "shardIndex": {
+          "description": "Output only. The index of the shard among all the shards.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "testTargetsForShard": {
+          "description": "Output only. Test targets for each shard.",
+          "$ref": "TestTargetsForShard"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ShardingOption": {
+      "id": "ShardingOption",
+      "description": "Options for enabling sharding.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "manualSharding": {
+          "description": "Shards test cases into the specified groups of packages, classes, and/or\nmethods.",
+          "$ref": "ManualSharding"
+        },
+        "uniformSharding": {
+          "description": "Uniformly shards test cases given a total number of shards.",
+          "$ref": "UniformSharding"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "StartActivityIntent": {
       "id": "StartActivityIntent",
       "description": "A starting intent specified by an action, uri, and categories.",
@@ -2366,6 +2514,28 @@
           "description": "URI for the action.",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SystraceSetup": {
+      "id": "SystraceSetup",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "durationSeconds": {
+          "description": "Systrace duration in seconds.\nShould be between 1 and 30 seconds. 0 disables systrace.",
+          "type": "integer",
+          "format": "int32",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -2485,6 +2655,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "shard": {
+          "description": "Output only. Details about the shard.",
+          "$ref": "Shard"
         },
         "state": {
           "description": "Output only. Indicates the current progress of the test execution\n(e.g., FINISHED).",
@@ -2606,6 +2780,9 @@
             "TEST_NOT_APP_HOSTED",
             "PLIST_CANNOT_BE_PARSED",
             "TEST_ONLY_APK",
+            "MALFORMED_IPA",
+            "MISSING_URL_SCHEME",
+            "MALFORMED_APP_BUNDLE",
             "NO_CODE_APK",
             "INVALID_INPUT_APK",
             "INVALID_APK_PREVIEW_SDK"
@@ -2640,6 +2817,9 @@
             "XC tests which run on physical devices must have\n\"IsAppHostedTestBundle\" == \"true\" in the xctestrun file.",
             "An Info.plist file in the XCTest zip could not be parsed.",
             "The APK is marked as \"testOnly\".\nDeprecated and not currently used.",
+            "The input IPA could not be parsed.",
+            "The application doesn't register the game loop URL scheme.",
+            "The iOS application bundle (.app) couldn't be processed.",
             "APK contains no code.\nSee also\nhttps://developer.android.com/guide/topics/manifest/application-element.html#code",
             "Either the provided input APK path was malformed,\nthe APK file does not exist, or the user does not have permission to\naccess the APK file.",
             "APK is built for a preview SDK which is unsupported"
@@ -2833,6 +3013,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "systrace": {
+          "description": "Systrace configuration for the run.\nIf set a systrace will be taken, starting on test start and lasting for the\nconfigured duration. The systrace file thus obtained is put in the results\nbucket together with the other artifacts from the run.",
+          "$ref": "SystraceSetup"
         }
       },
       "additionalProperties": null,
@@ -2878,6 +3062,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "iosTestLoop": {
+          "description": "An iOS application with a test loop.",
+          "$ref": "IosTestLoop"
+        },
         "iosTestSetup": {
           "description": "Test setup requirements for iOS.",
           "$ref": "IosTestSetup"
@@ -2899,6 +3087,36 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TestTargetsForShard": {
+      "id": "TestTargetsForShard",
+      "description": "Test targets for a shard.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "testTargets": {
+          "description": "Group of packages, classes, and/or test methods to be run for each shard.\nThe targets need to be specified in AndroidJUnitRunner argument format. For\nexample, “package com.my.packages” “class com.my.package.MyClass”.\n\nThe number of shard_test_targets must be greater than 0.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -3082,6 +3300,28 @@
           "description": "Packet loss ratio (0.0 - 1.0).",
           "type": "number",
           "format": "float",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "UniformSharding": {
+      "id": "UniformSharding",
+      "description": "Uniformly shards test cases given a total number of shards.\n\nFor Instrumentation test, it will be translated to “-e numShard” “-e\nshardIndex” AndroidJUnitRunner arguments. With uniform sharding enabled,\nspecifying these sharding arguments via environment_variables is invalid.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "numShards": {
+          "description": "Required. Total number of shards. The number must be >= 1 and <= 50.",
+          "type": "integer",
+          "format": "int32",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},

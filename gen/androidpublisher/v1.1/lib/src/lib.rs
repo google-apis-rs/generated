@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [inapppurchases](resources/inapppurchases/struct.InapppurchasesActions.html)\n      * [*get*](resources/inapppurchases/struct.GetRequestBuilder.html)\n    * [purchases](resources/purchases/struct.PurchasesActions.html)\n      * [*cancel*](resources/purchases/struct.CancelRequestBuilder.html), [*get*](resources/purchases/struct.GetRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [inapppurchases](resources/inapppurchases/struct.InapppurchasesActions.html)\n      * [*get*](resources/inapppurchases/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your Google Play Developer account\n\n`https://www.googleapis.com/auth/androidpublisher`"]
+    pub const ANDROIDPUBLISHER: &str = "https://www.googleapis.com/auth/androidpublisher";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -74,60 +78,6 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct SubscriptionPurchase {
-        #[doc = "Whether the subscription will automatically be renewed when it reaches its current expiry time."]
-        #[serde(
-            rename = "autoRenewing",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub auto_renewing: ::std::option::Option<bool>,
-        #[doc = "Time at which the subscription was granted, in milliseconds since the Epoch."]
-        #[serde(
-            rename = "initiationTimestampMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub initiation_timestamp_msec: ::std::option::Option<i64>,
-        #[doc = "This kind represents a subscriptionPurchase object in the androidpublisher service."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Time at which the subscription will expire, in milliseconds since the Epoch."]
-        #[serde(
-            rename = "validUntilTimestampMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub valid_until_timestamp_msec: ::std::option::Option<i64>,
-    }
-    impl ::google_field_selector::FieldSelector for SubscriptionPurchase {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for SubscriptionPurchase {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
 }
 pub mod params {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -198,7 +148,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -206,8 +156,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -221,19 +183,12 @@ impl Client {
             auth: self.auth_ref(),
         }
     }
-    #[doc = "Actions that can be performed on the purchases resource"]
-    pub fn purchases(&self) -> crate::resources::purchases::PurchasesActions {
-        crate::resources::purchases::PurchasesActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
 }
 pub mod resources {
     pub mod inapppurchases {
         pub mod params {}
         pub struct InapppurchasesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> InapppurchasesActions<'a> {
@@ -266,7 +221,7 @@ pub mod resources {
         #[doc = "Created via [InapppurchasesActions::get()](struct.InapppurchasesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             package_name: String,
             product_id: String,
@@ -389,299 +344,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-    }
-    pub mod purchases {
-        pub mod params {}
-        pub struct PurchasesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> PurchasesActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Cancels a user's subscription purchase. The subscription remains valid until its expiration time."]
-            pub fn cancel(
+            fn _request(
                 &self,
-                package_name: impl Into<String>,
-                subscription_id: impl Into<String>,
-                token: impl Into<String>,
-            ) -> CancelRequestBuilder {
-                CancelRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    package_name: package_name.into(),
-                    subscription_id: subscription_id.into(),
-                    token: token.into(),
-                }
-            }
-            #[doc = "Checks whether a user's subscription purchase is valid and returns its expiry time."]
-            pub fn get(
-                &self,
-                package_name: impl Into<String>,
-                subscription_id: impl Into<String>,
-                token: impl Into<String>,
-            ) -> GetRequestBuilder {
-                GetRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    package_name: package_name.into(),
-                    subscription_id: subscription_id.into(),
-                    token: token.into(),
-                }
-            }
-        }
-        #[doc = "Created via [PurchasesActions::cancel()](struct.PurchasesActions.html#method.cancel)"]
-        #[derive(Debug, Clone)]
-        pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            package_name: String,
-            subscription_id: String,
-            token: String,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> CancelRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output =
-                    "https://www.googleapis.com/androidpublisher/v1.1/applications/".to_owned();
-                {
-                    let var_as_str = &self.package_name;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/subscriptions/");
-                {
-                    let var_as_str = &self.subscription_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/purchases/");
-                {
-                    let var_as_str = &self.token;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/cancel");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [PurchasesActions::get()](struct.PurchasesActions.html#method.get)"]
-        #[derive(Debug, Clone)]
-        pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            package_name: String,
-            subscription_id: String,
-            token: String,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> GetRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::SubscriptionPurchase, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::SubscriptionPurchase, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output =
-                    "https://www.googleapis.com/androidpublisher/v1.1/applications/".to_owned();
-                {
-                    let var_as_str = &self.package_name;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/subscriptions/");
-                {
-                    let var_as_str = &self.subscription_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/purchases/");
-                {
-                    let var_as_str = &self.token;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -716,9 +382,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -760,7 +424,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

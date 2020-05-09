@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("content2d1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190910")
+            .version("0.1.0-20200428")
             .about("Manages product items, inventory, and Merchant Center accounts for Google Shopping.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut accounts0 = SubCommand::with_name("accounts")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: authinfo, claimwebsite, custombatch, delete, get, insert, link, list and update");
+                        .about("methods: authinfo, claimwebsite, custombatch, delete, get, insert, link, list, listlinks and update");
         {
             let mcmd = SubCommand::with_name("authinfo")
                 .about("Returns information about the authenticated user.");
@@ -71,6 +71,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists the sub-accounts in your Merchant Center account.");
+            accounts0 = accounts0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("listlinks")
+                .about("Returns the list of accounts linked to your Merchant Center account.");
             accounts0 = accounts0.subcommand(mcmd);
         }
         {
@@ -226,6 +231,20 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 SubCommand::with_name("update").about("Updates the LIA settings of the account.");
             liasettings0 = liasettings0.subcommand(mcmd);
         }
+        let mut localinventory0 = SubCommand::with_name("localinventory")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: custombatch and insert");
+        {
+            let mcmd = SubCommand::with_name("custombatch").about(
+                "Updates local inventory for multiple products or stores in a single request.",
+            );
+            localinventory0 = localinventory0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert")
+                .about("Update the local inventory of a product in your Merchant Center account.");
+            localinventory0 = localinventory0.subcommand(mcmd);
+        }
         let mut orderinvoices0 = SubCommand::with_name("orderinvoices")
             .setting(AppSettings::ColoredHelp)
             .about("methods: createchargeinvoice and createrefundinvoice");
@@ -234,7 +253,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orderinvoices0 = orderinvoices0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("createrefundinvoice").about("Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using createChargeInvoice. All amounts (except for the summary) are incremental with respect to the previous invoice.");
+            let mcmd = SubCommand::with_name("createrefundinvoice").about("Creates a refund invoice for one or more shipment groups, and triggers a refund for orderinvoice enabled orders. This can only be used for line items that have previously been charged using `createChargeInvoice`. All amounts (except for the summary) are incremental with respect to the previous invoice.");
             orderinvoices0 = orderinvoices0.subcommand(mcmd);
         }
         let mut orderreports0 = SubCommand::with_name("orderreports")
@@ -251,7 +270,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut orderreturns0 = SubCommand::with_name("orderreturns")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: acknowledge, get, list and process");
+        {
+            let mcmd = SubCommand::with_name("acknowledge")
+                .about("Acks an order return in your Merchant Center account.");
+            orderreturns0 = orderreturns0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get")
                 .about("Retrieves an order return from your Merchant Center account.");
@@ -260,6 +284,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists order returns in your Merchant Center account.");
+            orderreturns0 = orderreturns0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("process")
+                .about("Processes return in your Merchant Center account.");
             orderreturns0 = orderreturns0.subcommand(mcmd);
         }
         let mut orders0 = SubCommand::with_name("orders")
@@ -271,7 +300,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orders0 = orders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("advancetestorder").about("Sandbox only. Moves a test order from state \"inProgress\" to state \"pendingShipment\".");
+            let mcmd = SubCommand::with_name("advancetestorder").about("Sandbox only. Moves a test order from state \"`inProgress`\" to state \"`pendingShipment`\".");
             orders0 = orders0.subcommand(mcmd);
         }
         {
@@ -416,8 +445,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             products0 = products0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists the products in your Merchant Center account.");
+            let mcmd = SubCommand::with_name("list").about("Lists the products in your Merchant Center account. The response might contain fewer items than specified by maxResults. Rely on nextPageToken to determine if there are more items to be requested.");
             products0 = products0.subcommand(mcmd);
         }
         let mut productstatuses0 = SubCommand::with_name("productstatuses")
@@ -437,6 +465,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists the statuses of the products in your Merchant Center account.");
             productstatuses0 = productstatuses0.subcommand(mcmd);
+        }
+        let mut pubsubnotificationsettings0 = SubCommand::with_name("pubsubnotificationsettings")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get and update");
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves a Merchant Center account\'s pubsub notification settings.");
+            pubsubnotificationsettings0 = pubsubnotificationsettings0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("update").about("Register a Merchant Center account for pubsub notifications. Note that cloud topic name should not be provided as part of the request.");
+            pubsubnotificationsettings0 = pubsubnotificationsettings0.subcommand(mcmd);
         }
         let mut regionalinventory0 = SubCommand::with_name("regionalinventory")
             .setting(AppSettings::ColoredHelp)
@@ -507,9 +547,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Lists the return policies of the Merchant Center account.");
             returnpolicy0 = returnpolicy0.subcommand(mcmd);
         }
+        let mut settlementreports0 = SubCommand::with_name("settlementreports")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get and list");
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Retrieves a settlement report from your Merchant Center account.");
+            settlementreports0 = settlementreports0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of settlement reports from your Merchant Center account.");
+            settlementreports0 = settlementreports0.subcommand(mcmd);
+        }
+        let mut settlementtransactions0 = SubCommand::with_name("settlementtransactions")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of transactions for the settlement.");
+            settlementtransactions0 = settlementtransactions0.subcommand(mcmd);
+        }
         let mut shippingsettings0 = SubCommand::with_name("shippingsettings")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: custombatch, get, getsupportedcarriers, getsupportedholidays, list and update");
+                        .about("methods: custombatch, get, getsupportedcarriers, getsupportedholidays, getsupportedpickupservices, list and update");
         {
             let mcmd = SubCommand::with_name("custombatch").about("Retrieves and updates the shipping settings of multiple accounts in a single request.");
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
@@ -530,6 +591,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("getsupportedpickupservices")
+                .about("Retrieves supported pickup services for an account.");
+            shippingsettings0 = shippingsettings0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("list").about(
                 "Lists the shipping settings of the sub-accounts in your Merchant Center account.",
             );
@@ -541,9 +607,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         app = app.subcommand(shippingsettings0);
+        app = app.subcommand(settlementtransactions0);
+        app = app.subcommand(settlementreports0);
         app = app.subcommand(returnpolicy0);
         app = app.subcommand(returnaddress0);
         app = app.subcommand(regionalinventory0);
+        app = app.subcommand(pubsubnotificationsettings0);
         app = app.subcommand(productstatuses0);
         app = app.subcommand(products0);
         app = app.subcommand(pos0);
@@ -551,6 +620,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(orderreturns0);
         app = app.subcommand(orderreports0);
         app = app.subcommand(orderinvoices0);
+        app = app.subcommand(localinventory0);
         app = app.subcommand(liasettings0);
         app = app.subcommand(datafeedstatuses0);
         app = app.subcommand(datafeeds0);

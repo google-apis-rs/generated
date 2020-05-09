@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("gamesConfiguration1_configuration")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190905")
-            .about("The Publishing API for Google Play Game Services.")
+            .version("0.1.0-20200416")
+            .about("The Google Play Game Services Publishing API allows developers to configure their games in Game Services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut achievement_configurations0 = SubCommand::with_name("achievement_configurations")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
+            .about("methods: delete, get, insert, list and update");
         {
             let mcmd = SubCommand::with_name("delete")
                 .about("Delete the achievement configuration with the given ID.");
@@ -58,10 +58,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             achievement_configurations0 = achievement_configurations0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Update the metadata of the achievement configuration with the given ID. This method supports patch semantics.");
-            achievement_configurations0 = achievement_configurations0.subcommand(mcmd);
-        }
-        {
             let mcmd = SubCommand::with_name("update")
                 .about("Update the metadata of the achievement configuration with the given ID.");
             achievement_configurations0 = achievement_configurations0.subcommand(mcmd);
@@ -76,7 +72,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut leaderboard_configurations0 = SubCommand::with_name("leaderboard_configurations")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
+            .about("methods: delete, get, insert, list and update");
         {
             let mcmd = SubCommand::with_name("delete")
                 .about("Delete the leaderboard configuration with the given ID.");
@@ -96,10 +92,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Returns a list of the leaderboard configurations in this application.");
-            leaderboard_configurations0 = leaderboard_configurations0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about("Update the metadata of the leaderboard configuration with the given ID. This method supports patch semantics.");
             leaderboard_configurations0 = leaderboard_configurations0.subcommand(mcmd);
         }
         {

@@ -1,5 +1,85 @@
 #![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n    * [speech](resources/speech/struct.SpeechActions.html)\n      * [*longrunningrecognize*](resources/speech/struct.LongrunningrecognizeRequestBuilder.html), [*recognize*](resources/speech/struct.RecognizeRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ClassItem {
+        #[doc = "The class item's value."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ClassItem {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ClassItem {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomClass {
+        #[doc = "If this custom class is a resource, the custom_class_id is the resource id\nof the CustomClass. Case sensitive."]
+        #[serde(
+            rename = "customClassId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_class_id: ::std::option::Option<String>,
+        #[doc = "A collection of class items."]
+        #[serde(
+            rename = "items",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub items: ::std::option::Option<Vec<crate::schemas::ClassItem>>,
+        #[doc = "The resource name of the custom class."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CustomClass {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CustomClass {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
@@ -61,6 +141,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
+        #[doc = "Output only. The URI of the audio file being transcribed. Empty if the audio was sent\nas byte content. "]
+        #[serde(
+            rename = "uri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub uri: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for LongRunningRecognizeMetadata {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -174,6 +261,71 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Phrase {
+        #[doc = "Hint Boost. Overrides the boost set at the phrase set level.\nPositive value will increase the probability that a specific phrase will\nbe recognized over other similar sounding phrases. The higher the boost,\nthe higher the chance of false positive recognition as well. Negative\nboost values would correspond to anti-biasing. Anti-biasing is not\nenabled, so negative boost will simply be ignored. Though `boost` can\naccept a wide range of positive values, most use cases are best served\nwith values between 0 and 20. We recommend using a binary search approach\nto finding the optimal value for your use case. Speech recognition\nwill skip PhraseSets with a boost value of 0."]
+        #[serde(
+            rename = "boost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub boost: ::std::option::Option<f32>,
+        #[doc = "The phrase itself."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Phrase {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Phrase {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct PhraseSet {
+        #[doc = "Hint Boost. Positive value will increase the probability that a specific\nphrase will be recognized over other similar sounding phrases. The higher\nthe boost, the higher the chance of false positive recognition as well.\nNegative boost values would correspond to anti-biasing. Anti-biasing is not\nenabled, so negative boost will simply be ignored. Though `boost` can\naccept a wide range of positive values, most use cases are best served with\nvalues between 0 (exclusive) and 20. We recommend using a binary search\napproach to finding the optimal value for your use case. Speech recognition\nwill skip PhraseSets with a boost value of 0."]
+        #[serde(
+            rename = "boost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub boost: ::std::option::Option<f32>,
+        #[doc = "The resource name of the phrase set."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "A list of word and phrases."]
+        #[serde(
+            rename = "phrases",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub phrases: ::std::option::Option<Vec<crate::schemas::Phrase>>,
+    }
+    impl ::google_field_selector::FieldSelector for PhraseSet {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PhraseSet {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -215,6 +367,13 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct RecognitionConfig {
+        #[doc = "Speech adaptation configuration improves the accuracy of speech\nrecognition. When speech adaptation is set it supersedes the\n`speech_contexts` field. For more information, see the [speech\nadaptation](https://cloud.google.com/speech-to-text/docs/context-strength)\ndocumentation."]
+        #[serde(
+            rename = "adaptation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub adaptation: ::std::option::Option<crate::schemas::SpeechAdaptation>,
         #[doc = "A list of up to 3 additional\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags,\nlisting possible alternative languages of the supplied audio.\nSee [Language\nSupport](https://cloud.google.com/speech-to-text/docs/languages) for a list\nof the currently supported language codes. If alternative languages are\nlisted, recognition result will contain recognition in the most likely\nlanguage detected including the main language_code. The recognition result\nwill include the language tag of the language detected in the audio. Note:\nThis feature is only supported for Voice Command and Voice Search use cases\nand performance may vary for other use cases (e.g., phone call\ntranscription)."]
         #[serde(
             rename = "alternativeLanguageCodes",
@@ -243,7 +402,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub diarization_speaker_count: ::std::option::Option<i32>,
-        #[doc = "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature."]
+        #[doc = "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses."]
         #[serde(
             rename = "enableAutomaticPunctuation",
             default,
@@ -364,7 +523,7 @@ pub mod schemas {
         Flac,
         #[doc = "Uncompressed 16-bit signed little-endian samples (Linear PCM)."]
         Linear16,
-        #[doc = "MP3 audio. Support all standard MP3 bitrates (which range from 32-320\nkbps). When using this encoding, `sample_rate_hertz` can be optionally\nunset if not known."]
+        #[doc = "MP3 audio. Support all standard MP3 bitrates (which range from 32-320\nkbps). When using this encoding, `sample_rate_hertz` has to match the\nsample rate of the file being used."]
         Mp3,
         #[doc = "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law."]
         Mulaw,
@@ -963,13 +1122,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub config: ::std::option::Option<crate::schemas::RecognitionConfig>,
-        #[doc = "The name of the model to use for recognition."]
-        #[serde(
-            rename = "name",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for RecognizeRequest {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1037,6 +1189,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_speaker_count: ::std::option::Option<i32>,
+        #[doc = "Output only. Unused."]
+        #[serde(
+            rename = "speakerTag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub speaker_tag: ::std::option::Option<i32>,
     }
     impl ::google_field_selector::FieldSelector for SpeakerDiarizationConfig {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1044,6 +1203,35 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for SpeakerDiarizationConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct SpeechAdaptation {
+        #[doc = "A collection of custom classes. To specify the classes inline, leave the\nclass' `name` blank and fill in the rest of its fields, giving it a unique\n`custom_class_id`. Refer to the inline defined class in phrase hints by its\n`custom_class_id`."]
+        #[serde(
+            rename = "customClasses",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_classes: ::std::option::Option<Vec<crate::schemas::CustomClass>>,
+        #[doc = "A collection of phrase sets. To specify the hints inline, leave the\nphrase set's `name` blank and fill in the rest of its fields. Any\nphrase set can use any custom class."]
+        #[serde(
+            rename = "phraseSets",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub phrase_sets: ::std::option::Option<Vec<crate::schemas::PhraseSet>>,
+    }
+    impl ::google_field_selector::FieldSelector for SpeechAdaptation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SpeechAdaptation {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1131,7 +1319,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub channel_tag: ::std::option::Option<i32>,
-        #[doc = "The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag\nof the language in this result. This language code was detected to have\nthe most likelihood of being spoken in the audio."]
+        #[doc = "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag\nof the language in this result. This language code was detected to have\nthe most likelihood of being spoken in the audio."]
         #[serde(
             rename = "languageCode",
             default,
@@ -1202,7 +1390,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative."]
+        #[doc = "Output only. A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative."]
         #[serde(
             rename = "speakerTag",
             default,
@@ -1385,7 +1573,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1393,8 +1581,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1427,7 +1627,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -1479,7 +1679,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1608,7 +1808,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1632,7 +1835,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             filter: Option<String>,
             name: Option<String>,
@@ -1875,7 +2078,10 @@ pub mod resources {
                 output.push_str("v1p1beta1/operations");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("name", &self.name)]);
@@ -1915,7 +2121,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1933,7 +2139,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -1954,7 +2160,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -2006,7 +2212,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -2141,7 +2347,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -2165,7 +2372,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -2424,7 +2631,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2465,7 +2673,7 @@ pub mod resources {
     pub mod speech {
         pub mod params {}
         pub struct SpeechActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SpeechActions<'a> {
@@ -2520,7 +2728,7 @@ pub mod resources {
         #[doc = "Created via [SpeechActions::longrunningrecognize()](struct.SpeechActions.html#method.longrunningrecognize)"]
         #[derive(Debug, Clone)]
         pub struct LongrunningrecognizeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LongRunningRecognizeRequest,
             access_token: Option<String>,
@@ -2643,7 +2851,10 @@ pub mod resources {
                 output.push_str("v1p1beta1/speech:longrunningrecognize");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2667,7 +2878,7 @@ pub mod resources {
         #[doc = "Created via [SpeechActions::recognize()](struct.SpeechActions.html#method.recognize)"]
         #[derive(Debug, Clone)]
         pub struct RecognizeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RecognizeRequest,
             access_token: Option<String>,
@@ -2790,7 +3001,10 @@ pub mod resources {
                 output.push_str("v1p1beta1/speech:recognize");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2829,9 +3043,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -2873,7 +3085,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

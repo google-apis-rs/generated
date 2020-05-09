@@ -1,0 +1,404 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": null,
+  "discoveryVersion": "v1",
+  "id": "verifiedaccess:v1",
+  "name": "verifiedaccess",
+  "canonicalName": "verifiedaccess",
+  "fullyEncodeReservedExpansion": true,
+  "version": "v1",
+  "revision": "20190718",
+  "title": "Verified Access API",
+  "description": "API for Verified Access chrome extension to provide credential verification for chrome devices connecting to an enterprise network",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "documentationLink": "https://www.google.com/work/chrome/",
+  "protocol": "rest",
+  "baseUrl": "https://verifiedaccess.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://verifiedaccess.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
+  "version_module": true,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/verifiedaccess": {
+          "description": "Verify your enterprise credentials"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "Challenge": {
+      "id": "Challenge",
+      "description": "Result message for VerifiedAccess.CreateChallenge.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "alternativeChallenge": {
+          "description": "Challenge generated with the old signing key\n(this will only be present during key rotation)",
+          "$ref": "SignedData"
+        },
+        "challenge": {
+          "description": "Generated challenge",
+          "$ref": "SignedData"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Empty": {
+      "id": "Empty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
+    "SignedData": {
+      "id": "SignedData",
+      "description": "The wrapper message of any data and its signature.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "data": {
+          "description": "The data to be signed.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "signature": {
+          "description": "The signature of the data field.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "VerifyChallengeResponseRequest": {
+      "id": "VerifyChallengeResponseRequest",
+      "description": "signed ChallengeResponse",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "challengeResponse": {
+          "description": "The generated response to the challenge",
+          "$ref": "SignedData"
+        },
+        "expectedIdentity": {
+          "description": "Service can optionally provide identity information about the device\nor user associated with the key.\nFor an EMK, this value is the enrolled domain.\nFor an EUK, this value is the user's email address.\nIf present, this value will be checked against contents\nof the response, and verification will fail if there is no match.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "VerifyChallengeResponseResult": {
+      "id": "VerifyChallengeResponseResult",
+      "description": "Result message for VerifiedAccess.VerifyChallengeResponse.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "deviceEnrollmentId": {
+          "description": "Device enrollment id is returned in this field (for the machine response\nonly).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "devicePermanentId": {
+          "description": "Device permanent id is returned in this field (for the machine response\nonly).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "signedPublicKeyAndChallenge": {
+          "description": "Certificate Signing Request (in the SPKAC format, base64 encoded) is\nreturned in this field. This field will be set only if device has included\nCSR in its challenge response.\n(the option to include CSR is now available for both user and machine\nresponses)",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "verificationOutput": {
+          "description": "For EMCert check, device permanent id is returned here.\nFor EUCert check, signed_public_key_and_challenge [base64 encoded]\nis returned if present, otherwise empty string is returned.\nThis field is deprecated, please use device_permanent_id or\nsigned_public_key_and_challenge fields.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "challenge": {
+      "resources": {},
+      "methods": {
+        "create": {
+          "id": "verifiedaccess.challenge.create",
+          "path": "v1/challenge",
+          "httpMethod": "POST",
+          "description": "CreateChallenge API",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "Empty"
+          },
+          "response": {
+            "$ref": "Challenge"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/verifiedaccess"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "verify": {
+          "id": "verifiedaccess.challenge.verify",
+          "path": "v1/challenge:verify",
+          "httpMethod": "POST",
+          "description": "VerifyChallengeResponse API",
+          "parameters": {},
+          "parameterOrder": [],
+          "request": {
+            "$ref": "VerifyChallengeResponseRequest"
+          },
+          "response": {
+            "$ref": "VerifyChallengeResponseResult"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/verifiedaccess"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    }
+  },
+  "methods": {}
+}

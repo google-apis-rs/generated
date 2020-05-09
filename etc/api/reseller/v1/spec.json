@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/pox8safIyKhQhE-OIi12fI9ZcrM\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/4xq0Bw2LuAbeJZTw0U29AruL5y4\"",
   "discoveryVersion": "v1",
   "id": "reseller:v1",
   "name": "reseller",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190228",
+  "revision": "20191008",
   "title": "Enterprise Apps Reseller API",
   "description": "Creates and manages your customers and their subscriptions.",
   "ownerDomain": "google.com",
@@ -1349,7 +1349,7 @@
           "id": "reseller.subscriptions.delete",
           "path": "customers/{customerId}/subscriptions/{subscriptionId}",
           "httpMethod": "DELETE",
-          "description": "Cancel or transfer a subscription to direct.",
+          "description": "Cancel, suspend, or transfer a subscription to direct.",
           "parameters": {
             "customerId": {
               "description": "Either the customer's primary domain name or the customer's unique identifier. If using the domain name, we do not recommend using a customerId as a key for persistent data. If the domain name for a customerId is changed, the Google system automatically updates.",

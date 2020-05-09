@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [achievement_configurations](resources/achievement_configurations/struct.AchievementConfigurationsActions.html)\n      * [*delete*](resources/achievement_configurations/struct.DeleteRequestBuilder.html), [*get*](resources/achievement_configurations/struct.GetRequestBuilder.html), [*insert*](resources/achievement_configurations/struct.InsertRequestBuilder.html), [*list*](resources/achievement_configurations/struct.ListRequestBuilder.html), [*patch*](resources/achievement_configurations/struct.PatchRequestBuilder.html), [*update*](resources/achievement_configurations/struct.UpdateRequestBuilder.html)\n    * [image_configurations](resources/image_configurations/struct.ImageConfigurationsActions.html)\n      * [*upload*](resources/image_configurations/struct.UploadRequestBuilder.html)\n    * [leaderboard_configurations](resources/leaderboard_configurations/struct.LeaderboardConfigurationsActions.html)\n      * [*delete*](resources/leaderboard_configurations/struct.DeleteRequestBuilder.html), [*get*](resources/leaderboard_configurations/struct.GetRequestBuilder.html), [*insert*](resources/leaderboard_configurations/struct.InsertRequestBuilder.html), [*list*](resources/leaderboard_configurations/struct.ListRequestBuilder.html), [*patch*](resources/leaderboard_configurations/struct.PatchRequestBuilder.html), [*update*](resources/leaderboard_configurations/struct.UpdateRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [achievement_configurations](resources/achievement_configurations/struct.AchievementConfigurationsActions.html)\n      * [*delete*](resources/achievement_configurations/struct.DeleteRequestBuilder.html), [*get*](resources/achievement_configurations/struct.GetRequestBuilder.html), [*insert*](resources/achievement_configurations/struct.InsertRequestBuilder.html), [*list*](resources/achievement_configurations/struct.ListRequestBuilder.html), [*update*](resources/achievement_configurations/struct.UpdateRequestBuilder.html)\n    * [image_configurations](resources/image_configurations/struct.ImageConfigurationsActions.html)\n      * [*upload*](resources/image_configurations/struct.UploadRequestBuilder.html)\n    * [leaderboard_configurations](resources/leaderboard_configurations/struct.LeaderboardConfigurationsActions.html)\n      * [*delete*](resources/leaderboard_configurations/struct.DeleteRequestBuilder.html), [*get*](resources/leaderboard_configurations/struct.GetRequestBuilder.html), [*insert*](resources/leaderboard_configurations/struct.InsertRequestBuilder.html), [*list*](resources/leaderboard_configurations/struct.ListRequestBuilder.html), [*update*](resources/leaderboard_configurations/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your Google Play Developer account\n\n`https://www.googleapis.com/auth/androidpublisher`"]
+    pub const ANDROIDPUBLISHER: &str = "https://www.googleapis.com/auth/androidpublisher";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,13 +17,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AchievementConfiguration {
-        #[doc = "The type of the achievement.\nPossible values are:\n\n* \"STANDARD\" - Achievement is either locked or unlocked. \n* \"INCREMENTAL\" - Achievement is incremental."]
+        #[doc = "The type of the achievement."]
         #[serde(
             rename = "achievementType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub achievement_type: ::std::option::Option<String>,
+        pub achievement_type:
+            ::std::option::Option<crate::schemas::AchievementConfigurationAchievementType>,
         #[doc = "The draft data of the achievement."]
         #[serde(
             rename = "draft",
@@ -34,14 +39,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The initial state of the achievement.\nPossible values are:\n\n* \"HIDDEN\" - Achievement is hidden. \n* \"REVEALED\" - Achievement is revealed. \n* \"UNLOCKED\" - Achievement is unlocked."]
+        #[doc = "The initial state of the achievement."]
         #[serde(
             rename = "initialState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub initial_state: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#achievementConfiguration."]
+        pub initial_state:
+            ::std::option::Option<crate::schemas::AchievementConfigurationInitialState>,
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#achievementConfiguration`."]
         #[serde(
             rename = "kind",
             default,
@@ -55,7 +61,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub published: ::std::option::Option<crate::schemas::AchievementConfigurationDetail>,
-        #[doc = "Steps to unlock. Only applicable to incremental achievements."]
+        #[doc = "Steps to unlock.  Only applicable to incremental achievements."]
         #[serde(
             rename = "stepsToUnlock",
             default,
@@ -76,6 +82,170 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for AchievementConfiguration {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AchievementConfigurationAchievementType {
+        #[doc = "Default value. This value is unused."]
+        AchievementTypeUnspecified,
+        #[doc = "Achievement is incremental."]
+        Incremental,
+        #[doc = "Achievement is either locked or unlocked."]
+        Standard,
+    }
+    impl AchievementConfigurationAchievementType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AchievementConfigurationAchievementType::AchievementTypeUnspecified => {
+                    "ACHIEVEMENT_TYPE_UNSPECIFIED"
+                }
+                AchievementConfigurationAchievementType::Incremental => "INCREMENTAL",
+                AchievementConfigurationAchievementType::Standard => "STANDARD",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AchievementConfigurationAchievementType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AchievementConfigurationAchievementType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AchievementConfigurationAchievementType, ()> {
+            Ok(match s {
+                "ACHIEVEMENT_TYPE_UNSPECIFIED" => {
+                    AchievementConfigurationAchievementType::AchievementTypeUnspecified
+                }
+                "INCREMENTAL" => AchievementConfigurationAchievementType::Incremental,
+                "STANDARD" => AchievementConfigurationAchievementType::Standard,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AchievementConfigurationAchievementType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AchievementConfigurationAchievementType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AchievementConfigurationAchievementType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACHIEVEMENT_TYPE_UNSPECIFIED" => {
+                    AchievementConfigurationAchievementType::AchievementTypeUnspecified
+                }
+                "INCREMENTAL" => AchievementConfigurationAchievementType::Incremental,
+                "STANDARD" => AchievementConfigurationAchievementType::Standard,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AchievementConfigurationAchievementType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AchievementConfigurationAchievementType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AchievementConfigurationInitialState {
+        #[doc = "Achievement is hidden."]
+        Hidden,
+        #[doc = "Default value. This value is unused."]
+        InitialStateUnspecified,
+        #[doc = "Achievement is revealed."]
+        Revealed,
+    }
+    impl AchievementConfigurationInitialState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AchievementConfigurationInitialState::Hidden => "HIDDEN",
+                AchievementConfigurationInitialState::InitialStateUnspecified => {
+                    "INITIAL_STATE_UNSPECIFIED"
+                }
+                AchievementConfigurationInitialState::Revealed => "REVEALED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AchievementConfigurationInitialState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AchievementConfigurationInitialState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AchievementConfigurationInitialState, ()> {
+            Ok(match s {
+                "HIDDEN" => AchievementConfigurationInitialState::Hidden,
+                "INITIAL_STATE_UNSPECIFIED" => {
+                    AchievementConfigurationInitialState::InitialStateUnspecified
+                }
+                "REVEALED" => AchievementConfigurationInitialState::Revealed,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AchievementConfigurationInitialState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AchievementConfigurationInitialState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AchievementConfigurationInitialState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "HIDDEN" => AchievementConfigurationInitialState::Hidden,
+                "INITIAL_STATE_UNSPECIFIED" => {
+                    AchievementConfigurationInitialState::InitialStateUnspecified
+                }
+                "REVEALED" => AchievementConfigurationInitialState::Revealed,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AchievementConfigurationInitialState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AchievementConfigurationInitialState {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -107,7 +277,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub icon_url: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#achievementConfigurationDetail."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#achievementConfigurationDetail`."]
         #[serde(
             rename = "kind",
             default,
@@ -166,7 +336,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::AchievementConfiguration>>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementConfigurationListResponse."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#achievementConfigurationListResponse`."]
         #[serde(
             rename = "kind",
             default,
@@ -204,42 +374,42 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GamesNumberAffixConfiguration {
-        #[doc = "When the language requires special treatment of \"small\" numbers (as with 2, 3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in Polish)."]
+        #[doc = "When the language requires special treatment of \"small\" numbers (as with 2,\n3, and 4 in Czech; or numbers ending 2, 3, or 4 but not 12, 13, or 14 in\nPolish)."]
         #[serde(
             rename = "few",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub few: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
-        #[doc = "When the language requires special treatment of \"large\" numbers (as with numbers ending 11-99 in Maltese)."]
+        #[doc = "When the language requires special treatment of \"large\" numbers (as with\nnumbers ending 11-99 in Maltese)."]
         #[serde(
             rename = "many",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub many: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
-        #[doc = "When the language requires special treatment of numbers like one (as with the number 1 in English and most other languages; in Russian, any number ending in 1 but not ending in 11 is in this class)."]
+        #[doc = "When the language requires special treatment of numbers like one (as with\nthe number 1 in English and most other languages; in Russian, any number\nending in 1 but not ending in 11 is in this class)."]
         #[serde(
             rename = "one",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub one: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
-        #[doc = "When the language does not require special treatment of the given quantity (as with all numbers in Chinese, or 42 in English)."]
+        #[doc = "When the language does not require special treatment of the given quantity\n(as with all numbers in Chinese, or 42 in English)."]
         #[serde(
             rename = "other",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub other: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
-        #[doc = "When the language requires special treatment of numbers like two (as with 2 in Welsh, or 102 in Slovenian)."]
+        #[doc = "When the language requires special treatment of numbers like two (as with 2\nin Welsh, or 102 in Slovenian)."]
         #[serde(
             rename = "two",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub two: ::std::option::Option<crate::schemas::LocalizedStringBundle>,
-        #[doc = "When the language requires special treatment of the number 0 (as in Arabic)."]
+        #[doc = "When the language requires special treatment of the number 0 (as in\nArabic)."]
         #[serde(
             rename = "zero",
             default,
@@ -284,14 +454,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub num_decimal_places: ::std::option::Option<i32>,
-        #[doc = "The formatting for the number.\nPossible values are:\n\n* \"NUMERIC\" - Numbers are formatted to have no digits or a fixed number of digits after the decimal point according to locale. An optional custom unit can be added.\n* \"TIME_DURATION\" - Numbers are formatted to hours, minutes and seconds.\n* \"CURRENCY\" - Numbers are formatted to currency according to locale."]
+        #[doc = "The formatting for the number."]
         #[serde(
             rename = "numberFormatType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub number_format_type: ::std::option::Option<String>,
-        #[doc = "An optional suffix for the NUMERIC format type. These strings follow the same  plural rules as all Android string resources."]
+        pub number_format_type:
+            ::std::option::Option<crate::schemas::GamesNumberFormatConfigurationNumberFormatType>,
+        #[doc = "An optional suffix for the NUMERIC format type.  These strings follow the\nsame <a\nhref=\"http://developer.android.com/guide/topics/resources/string-resource.html#Plurals\">\nplural rules</a> as all Android string resources."]
         #[serde(
             rename = "suffix",
             default,
@@ -305,6 +476,95 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GamesNumberFormatConfiguration {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GamesNumberFormatConfigurationNumberFormatType {
+        #[doc = "Numbers are formatted to currency according to locale."]
+        Currency,
+        #[doc = "Default value. This value is unused."]
+        NumberFormatTypeUnspecified,
+        #[doc = "Numbers are formatted to have no digits or fixed number of digits after\nthe decimal point according to locale. An optional custom unit can be\nadded."]
+        Numeric,
+        #[doc = "Numbers are formatted to hours, minutes and seconds."]
+        TimeDuration,
+    }
+    impl GamesNumberFormatConfigurationNumberFormatType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GamesNumberFormatConfigurationNumberFormatType::Currency => "CURRENCY",
+                GamesNumberFormatConfigurationNumberFormatType::NumberFormatTypeUnspecified => {
+                    "NUMBER_FORMAT_TYPE_UNSPECIFIED"
+                }
+                GamesNumberFormatConfigurationNumberFormatType::Numeric => "NUMERIC",
+                GamesNumberFormatConfigurationNumberFormatType::TimeDuration => "TIME_DURATION",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GamesNumberFormatConfigurationNumberFormatType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GamesNumberFormatConfigurationNumberFormatType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GamesNumberFormatConfigurationNumberFormatType, ()> {
+            Ok(match s {
+                "CURRENCY" => GamesNumberFormatConfigurationNumberFormatType::Currency,
+                "NUMBER_FORMAT_TYPE_UNSPECIFIED" => {
+                    GamesNumberFormatConfigurationNumberFormatType::NumberFormatTypeUnspecified
+                }
+                "NUMERIC" => GamesNumberFormatConfigurationNumberFormatType::Numeric,
+                "TIME_DURATION" => GamesNumberFormatConfigurationNumberFormatType::TimeDuration,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GamesNumberFormatConfigurationNumberFormatType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GamesNumberFormatConfigurationNumberFormatType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GamesNumberFormatConfigurationNumberFormatType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CURRENCY" => GamesNumberFormatConfigurationNumberFormatType::Currency,
+                "NUMBER_FORMAT_TYPE_UNSPECIFIED" => {
+                    GamesNumberFormatConfigurationNumberFormatType::NumberFormatTypeUnspecified
+                }
+                "NUMERIC" => GamesNumberFormatConfigurationNumberFormatType::Numeric,
+                "TIME_DURATION" => GamesNumberFormatConfigurationNumberFormatType::TimeDuration,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GamesNumberFormatConfigurationNumberFormatType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GamesNumberFormatConfigurationNumberFormatType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -328,8 +588,8 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub image_type: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#imageConfiguration."]
+        pub image_type: ::std::option::Option<crate::schemas::ImageConfigurationImageType>,
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#imageConfiguration`."]
         #[serde(
             rename = "kind",
             default,
@@ -361,6 +621,82 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ImageConfigurationImageType {
+        #[doc = "The icon image for an achievement resource."]
+        AchievementIcon,
+        #[doc = "Default value. This value is unused."]
+        ImageTypeUnspecified,
+        #[doc = "The icon image for a leaderboard resource."]
+        LeaderboardIcon,
+    }
+    impl ImageConfigurationImageType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ImageConfigurationImageType::AchievementIcon => "ACHIEVEMENT_ICON",
+                ImageConfigurationImageType::ImageTypeUnspecified => "IMAGE_TYPE_UNSPECIFIED",
+                ImageConfigurationImageType::LeaderboardIcon => "LEADERBOARD_ICON",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ImageConfigurationImageType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ImageConfigurationImageType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ImageConfigurationImageType, ()> {
+            Ok(match s {
+                "ACHIEVEMENT_ICON" => ImageConfigurationImageType::AchievementIcon,
+                "IMAGE_TYPE_UNSPECIFIED" => ImageConfigurationImageType::ImageTypeUnspecified,
+                "LEADERBOARD_ICON" => ImageConfigurationImageType::LeaderboardIcon,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ImageConfigurationImageType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ImageConfigurationImageType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ImageConfigurationImageType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACHIEVEMENT_ICON" => ImageConfigurationImageType::AchievementIcon,
+                "IMAGE_TYPE_UNSPECIFIED" => ImageConfigurationImageType::ImageTypeUnspecified,
+                "LEADERBOARD_ICON" => ImageConfigurationImageType::LeaderboardIcon,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ImageConfigurationImageType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ImageConfigurationImageType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -388,7 +724,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#leaderboardConfiguration."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#leaderboardConfiguration`."]
         #[serde(
             rename = "kind",
             default,
@@ -418,13 +754,12 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub score_min: ::std::option::Option<i64>,
-        #[doc = "The type of the leaderboard.\nPossible values are:\n\n* \"LARGER_IS_BETTER\" - Larger scores posted are ranked higher. \n* \"SMALLER_IS_BETTER\" - Smaller scores posted are ranked higher."]
         #[serde(
             rename = "scoreOrder",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub score_order: ::std::option::Option<String>,
+        pub score_order: ::std::option::Option<crate::schemas::LeaderboardConfigurationScoreOrder>,
         #[doc = "The token for this resource."]
         #[serde(
             rename = "token",
@@ -439,6 +774,88 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for LeaderboardConfiguration {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum LeaderboardConfigurationScoreOrder {
+        #[doc = "Larger scores posted are ranked higher."]
+        LargerIsBetter,
+        #[doc = "Default value. This value is unused."]
+        ScoreOrderUnspecified,
+        #[doc = "Smaller scores posted are ranked higher."]
+        SmallerIsBetter,
+    }
+    impl LeaderboardConfigurationScoreOrder {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                LeaderboardConfigurationScoreOrder::LargerIsBetter => "LARGER_IS_BETTER",
+                LeaderboardConfigurationScoreOrder::ScoreOrderUnspecified => {
+                    "SCORE_ORDER_UNSPECIFIED"
+                }
+                LeaderboardConfigurationScoreOrder::SmallerIsBetter => "SMALLER_IS_BETTER",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for LeaderboardConfigurationScoreOrder {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for LeaderboardConfigurationScoreOrder {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<LeaderboardConfigurationScoreOrder, ()> {
+            Ok(match s {
+                "LARGER_IS_BETTER" => LeaderboardConfigurationScoreOrder::LargerIsBetter,
+                "SCORE_ORDER_UNSPECIFIED" => {
+                    LeaderboardConfigurationScoreOrder::ScoreOrderUnspecified
+                }
+                "SMALLER_IS_BETTER" => LeaderboardConfigurationScoreOrder::SmallerIsBetter,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for LeaderboardConfigurationScoreOrder {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for LeaderboardConfigurationScoreOrder {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for LeaderboardConfigurationScoreOrder {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "LARGER_IS_BETTER" => LeaderboardConfigurationScoreOrder::LargerIsBetter,
+                "SCORE_ORDER_UNSPECIFIED" => {
+                    LeaderboardConfigurationScoreOrder::ScoreOrderUnspecified
+                }
+                "SMALLER_IS_BETTER" => LeaderboardConfigurationScoreOrder::SmallerIsBetter,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for LeaderboardConfigurationScoreOrder {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for LeaderboardConfigurationScoreOrder {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -463,7 +880,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub icon_url: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#leaderboardConfigurationDetail."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#leaderboardConfigurationDetail`."]
         #[serde(
             rename = "kind",
             default,
@@ -522,7 +939,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::LeaderboardConfiguration>>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#leaderboardConfigurationListResponse."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring\n`gamesConfiguration#leaderboardConfigurationListResponse`."]
         #[serde(
             rename = "kind",
             default,
@@ -560,7 +977,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocalizedString {
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedString."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#localizedString`."]
         #[serde(
             rename = "kind",
             default,
@@ -605,7 +1022,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LocalizedStringBundle {
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesConfiguration#localizedStringBundle."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed\nstring `gamesConfiguration#localizedStringBundle`."]
         #[serde(
             rename = "kind",
             default,
@@ -636,14 +1053,17 @@ pub mod params {
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
-        #[doc = "Upload/Download media content"]
+        #[doc = "Media download with context-dependent Content-Type"]
         Media,
+        #[doc = "Responses with Content-Type of application/x-protobuf"]
+        Proto,
     }
     impl Alt {
         pub fn as_str(self) -> &'static str {
             match self {
                 Alt::Json => "json",
                 Alt::Media => "media",
+                Alt::Proto => "proto",
             }
         }
     }
@@ -658,6 +1078,7 @@ pub mod params {
             Ok(match s {
                 "json" => Alt::Json,
                 "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => return Err(()),
             })
         }
@@ -684,6 +1105,7 @@ pub mod params {
             Ok(match value {
                 "json" => Alt::Json,
                 "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -703,9 +1125,80 @@ pub mod params {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum Xgafv {
+        #[doc = "v1 error format"]
+        _1,
+        #[doc = "v2 error format"]
+        _2,
+    }
+    impl Xgafv {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                Xgafv::_1 => "1",
+                Xgafv::_2 => "2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for Xgafv {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for Xgafv {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for Xgafv {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -713,8 +1206,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -753,7 +1258,7 @@ pub mod resources {
     pub mod achievement_configurations {
         pub mod params {}
         pub struct AchievementConfigurationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AchievementConfigurationsActions<'a> {
@@ -765,13 +1270,17 @@ pub mod resources {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     achievement_id: achievement_id.into(),
                 }
             }
@@ -780,13 +1289,17 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     achievement_id: achievement_id.into(),
                 }
             }
@@ -800,13 +1313,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     application_id: application_id.into(),
                 }
             }
@@ -815,36 +1332,20 @@ pub mod resources {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     application_id: application_id.into(),
                     max_results: None,
                     page_token: None,
-                }
-            }
-            #[doc = "Update the metadata of the achievement configuration with the given ID. This method supports patch semantics."]
-            pub fn patch(
-                &self,
-                request: crate::schemas::AchievementConfiguration,
-                achievement_id: impl Into<String>,
-            ) -> PatchRequestBuilder {
-                PatchRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    achievement_id: achievement_id.into(),
                 }
             }
             #[doc = "Update the metadata of the achievement configuration with the given ID."]
@@ -857,13 +1358,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     achievement_id: achievement_id.into(),
                 }
             }
@@ -871,18 +1376,32 @@ pub mod resources {
         #[doc = "Created via [AchievementConfigurationsActions::delete()](struct.AchievementConfigurationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -898,14 +1417,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             pub fn execute(self) -> Result<(), crate::Error> {
@@ -914,8 +1443,8 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("achievements/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/achievements/");
                 {
                     let var_as_str = &self.achievement_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -925,15 +1454,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -945,18 +1481,32 @@ pub mod resources {
         #[doc = "Created via [AchievementConfigurationsActions::get()](struct.AchievementConfigurationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -972,14 +1522,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -1039,8 +1599,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("achievements/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/achievements/");
                 {
                     let var_as_str = &self.achievement_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -1050,15 +1610,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -1070,19 +1637,33 @@ pub mod resources {
         #[doc = "Created via [AchievementConfigurationsActions::insert()](struct.AchievementConfigurationsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AchievementConfiguration,
             application_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -1098,14 +1679,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -1166,8 +1757,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("applications/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/applications/");
                 {
                     let var_as_str = &self.application_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -1178,15 +1769,22 @@ pub mod resources {
                 output.push_str("/achievements");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -1198,21 +1796,25 @@ pub mod resources {
         #[doc = "Created via [AchievementConfigurationsActions::list()](struct.AchievementConfigurationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             max_results: Option<i32>,
             page_token: Option<String>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified maxResults."]
+            #[doc = "The maximum number of resource configurations to return in the response,\nused for paging. For any response, the actual number of resources returned\nmay be less than the specified `maxResults`."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -1220,6 +1822,16 @@ pub mod resources {
             #[doc = "The token returned by the previous request."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1237,14 +1849,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -1408,8 +2030,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("applications/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/applications/");
                 {
                     let var_as_str = &self.application_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -1420,17 +2042,24 @@ pub mod resources {
                 output.push_str("/achievements");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -1450,149 +2079,36 @@ pub mod resources {
                 self._execute()
             }
         }
-        #[doc = "Created via [AchievementConfigurationsActions::patch()](struct.AchievementConfigurationsActions.html#method.patch)"]
-        #[derive(Debug, Clone)]
-        pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::AchievementConfiguration,
-            achievement_id: String,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::AchievementConfiguration, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::AchievementConfiguration, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("achievements/");
-                {
-                    let var_as_str = &self.achievement_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
         #[doc = "Created via [AchievementConfigurationsActions::update()](struct.AchievementConfigurationsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AchievementConfiguration,
             achievement_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -1608,14 +2124,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -1676,8 +2202,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("achievements/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/achievements/");
                 {
                     let var_as_str = &self.achievement_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -1687,15 +2213,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -1709,15 +2242,15 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum UploadImageType {
-                #[doc = "The icon image for an achievement resource."]
                 AchievementIcon,
-                #[doc = "The icon image for a leaderboard resource."]
+                ImageTypeUnspecified,
                 LeaderboardIcon,
             }
             impl UploadImageType {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         UploadImageType::AchievementIcon => "ACHIEVEMENT_ICON",
+                        UploadImageType::ImageTypeUnspecified => "IMAGE_TYPE_UNSPECIFIED",
                         UploadImageType::LeaderboardIcon => "LEADERBOARD_ICON",
                     }
                 }
@@ -1732,6 +2265,7 @@ pub mod resources {
                 fn from_str(s: &str) -> ::std::result::Result<UploadImageType, ()> {
                     Ok(match s {
                         "ACHIEVEMENT_ICON" => UploadImageType::AchievementIcon,
+                        "IMAGE_TYPE_UNSPECIFIED" => UploadImageType::ImageTypeUnspecified,
                         "LEADERBOARD_ICON" => UploadImageType::LeaderboardIcon,
                         _ => return Err(()),
                     })
@@ -1758,6 +2292,7 @@ pub mod resources {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
                         "ACHIEVEMENT_ICON" => UploadImageType::AchievementIcon,
+                        "IMAGE_TYPE_UNSPECIFIED" => UploadImageType::ImageTypeUnspecified,
                         "LEADERBOARD_ICON" => UploadImageType::LeaderboardIcon,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
@@ -1780,7 +2315,7 @@ pub mod resources {
             }
         }
         pub struct ImageConfigurationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ImageConfigurationsActions<'a> {
@@ -1796,13 +2331,17 @@ pub mod resources {
                 UploadRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     resource_id: resource_id.into(),
                     image_type,
                 }
@@ -1811,19 +2350,33 @@ pub mod resources {
         #[doc = "Created via [ImageConfigurationsActions::upload()](struct.ImageConfigurationsActions.html#method.upload)"]
         #[derive(Debug, Clone)]
         pub struct UploadRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             resource_id: String,
             image_type: crate::resources::image_configurations::params::UploadImageType,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UploadRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -1839,14 +2392,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             fn _simple_upload_path(&self) -> String {
@@ -1894,61 +2457,8 @@ pub mod resources {
                     ::reqwest::header::CONTENT_TYPE,
                     format!("multipart/related; boundary={}", multipart.boundary()),
                 );
-                let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _resumable_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
-                output.push_str("resumable/upload/games/v1configuration/images/");
-                {
-                    let var_as_str = &self.resource_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/imageType/");
-                {
-                    let var_as_string = self.image_type.to_string();
-                    let var_as_str = &var_as_string;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output
-            }
-            pub fn start_resumable_upload(
-                self,
-                mime_type: ::mime::Mime,
-            ) -> Result<crate::ResumableUpload, crate::Error> {
-                let req = self._request(&self._resumable_upload_path())?;
-                let req = req.query(&[("uploadType", "resumable")]);
-                let req = req.header(
-                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
-                    mime_type.to_string(),
-                );
-                let resp = crate::error_from_response(req.send()?)?;
-                let location_header =
-                    resp.headers()
-                        .get(::reqwest::header::LOCATION)
-                        .ok_or_else(|| {
-                            crate::Error::Other(
-                                format!(
-                                    "No LOCATION header returned when initiating resumable upload"
-                                )
-                                .into(),
-                            )
-                        })?;
-                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
-                    .map_err(|_| {
-                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
-                    })?
-                    .to_owned();
-                Ok(crate::ResumableUpload::new(
-                    self.reqwest.clone(),
-                    upload_url,
-                ))
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -2007,8 +2517,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("images/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/images/");
                 {
                     let var_as_str = &self.resource_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2027,15 +2537,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2048,7 +2565,7 @@ pub mod resources {
     pub mod leaderboard_configurations {
         pub mod params {}
         pub struct LeaderboardConfigurationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> LeaderboardConfigurationsActions<'a> {
@@ -2060,13 +2577,17 @@ pub mod resources {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     leaderboard_id: leaderboard_id.into(),
                 }
             }
@@ -2075,13 +2596,17 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     leaderboard_id: leaderboard_id.into(),
                 }
             }
@@ -2095,13 +2620,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     application_id: application_id.into(),
                 }
             }
@@ -2110,36 +2639,20 @@ pub mod resources {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     application_id: application_id.into(),
                     max_results: None,
                     page_token: None,
-                }
-            }
-            #[doc = "Update the metadata of the leaderboard configuration with the given ID. This method supports patch semantics."]
-            pub fn patch(
-                &self,
-                request: crate::schemas::LeaderboardConfiguration,
-                leaderboard_id: impl Into<String>,
-            ) -> PatchRequestBuilder {
-                PatchRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    leaderboard_id: leaderboard_id.into(),
                 }
             }
             #[doc = "Update the metadata of the leaderboard configuration with the given ID."]
@@ -2152,13 +2665,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     leaderboard_id: leaderboard_id.into(),
                 }
             }
@@ -2166,18 +2683,32 @@ pub mod resources {
         #[doc = "Created via [LeaderboardConfigurationsActions::delete()](struct.LeaderboardConfigurationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -2193,14 +2724,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             pub fn execute(self) -> Result<(), crate::Error> {
@@ -2209,8 +2750,8 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("leaderboards/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/leaderboards/");
                 {
                     let var_as_str = &self.leaderboard_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2220,15 +2761,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2240,18 +2788,32 @@ pub mod resources {
         #[doc = "Created via [LeaderboardConfigurationsActions::get()](struct.LeaderboardConfigurationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -2267,14 +2829,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2334,8 +2906,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("leaderboards/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/leaderboards/");
                 {
                     let var_as_str = &self.leaderboard_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2345,15 +2917,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2365,19 +2944,33 @@ pub mod resources {
         #[doc = "Created via [LeaderboardConfigurationsActions::insert()](struct.LeaderboardConfigurationsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LeaderboardConfiguration,
             application_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -2393,14 +2986,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2461,8 +3064,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("applications/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/applications/");
                 {
                     let var_as_str = &self.application_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2473,15 +3076,22 @@ pub mod resources {
                 output.push_str("/leaderboards");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2493,21 +3103,25 @@ pub mod resources {
         #[doc = "Created via [LeaderboardConfigurationsActions::list()](struct.LeaderboardConfigurationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             max_results: Option<i32>,
             page_token: Option<String>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The maximum number of resource configurations to return in the response, used for paging. For any response, the actual number of resources returned may be less than the specified maxResults."]
+            #[doc = "The maximum number of resource configurations to return in the response,\nused for paging. For any response, the actual number of resources returned\nmay be less than the specified `maxResults`."]
             pub fn max_results(mut self, value: i32) -> Self {
                 self.max_results = Some(value);
                 self
@@ -2515,6 +3129,16 @@ pub mod resources {
             #[doc = "The token returned by the previous request."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2532,14 +3156,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -2703,8 +3337,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("applications/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/applications/");
                 {
                     let var_as_str = &self.application_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2715,17 +3349,24 @@ pub mod resources {
                 output.push_str("/leaderboards");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2745,149 +3386,36 @@ pub mod resources {
                 self._execute()
             }
         }
-        #[doc = "Created via [LeaderboardConfigurationsActions::patch()](struct.LeaderboardConfigurationsActions.html#method.patch)"]
-        #[derive(Debug, Clone)]
-        pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::LeaderboardConfiguration,
-            leaderboard_id: String,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::LeaderboardConfiguration, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::LeaderboardConfiguration, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("leaderboards/");
-                {
-                    let var_as_str = &self.leaderboard_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
         #[doc = "Created via [LeaderboardConfigurationsActions::update()](struct.LeaderboardConfigurationsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LeaderboardConfiguration,
             leaderboard_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -2903,14 +3431,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2971,8 +3509,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1configuration/".to_owned();
-                output.push_str("leaderboards/");
+                let mut output = "https://www.googleapis.com/".to_owned();
+                output.push_str("games/v1configuration/leaderboards/");
                 {
                     let var_as_str = &self.leaderboard_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2982,15 +3520,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3017,9 +3562,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3061,7 +3604,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();
@@ -3274,84 +3819,6 @@ mod parsed_string {
             None => Ok(None),
         }
     }
-}
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let resp = req.send()?.error_for_status()?;
-                match resp.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send()?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
 }
 pub mod iter {
     pub trait IterableMethod {

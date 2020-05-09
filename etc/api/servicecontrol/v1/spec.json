@@ -7,7 +7,7 @@
   "canonicalName": "Service Control",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190912",
+  "revision": "20200420",
   "title": "Service Control API",
   "description": "Provides control plane functionality to managed services, such as logging, monitoring, and status checks.",
   "ownerDomain": "google.com",
@@ -326,6 +326,77 @@
       "additionalProperties": null,
       "items": null
     },
+    "AttributeValue": {
+      "id": "AttributeValue",
+      "description": "The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "boolValue": {
+          "description": "A Boolean value represented by `true` or `false`.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "intValue": {
+          "description": "A 64-bit signed integer.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "stringValue": {
+          "description": "A string up to 256 bytes long.",
+          "$ref": "TruncatableString"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Attributes": {
+      "id": "Attributes",
+      "description": "A set of attributes, each in the format `[KEY]:[VALUE]`.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "attributeMap": {
+          "description": "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n    \"/instance_id\": \"my-instance\"\n    \"/http/user_agent\": \"\"\n    \"/http/request_bytes\": 300\n    \"abc.com/myattribute\": true",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "$ref": "AttributeValue"
+          },
+          "items": null
+        },
+        "droppedAttributesCount": {
+          "description": "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "AuditLog": {
       "id": "AuditLog",
       "description": "Common audit log format for Google Cloud Platform API operations.\n\n\n",
@@ -608,6 +679,16 @@
         },
         "principalEmail": {
           "description": "The email address of the authenticated user (or service account on behalf\nof third party principal) making the request. For privacy reasons, the\nprincipal email address is redacted for all read-only operations that fail\nwith a \"permission denied\" error.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "principalSubject": {
+          "description": "String representation of identity of requesting party.\nPopulated for both first and third party identities.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -956,7 +1037,7 @@
           "items": null
         },
         "serviceRolloutId": {
-          "description": "Unimplemented. The current service rollout id used to process the request.",
+          "description": "The current service rollout id used to process the request.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1811,7 +1892,7 @@
           "items": null
         },
         "labels": {
-          "description": "The labels describing the metric value.\nSee comments on google.api.servicecontrol.v1.Operation.labels for\nthe overriding relationship.",
+          "description": "The labels describing the metric value.\nSee comments on google.api.servicecontrol.v1.Operation.labels for\nthe overriding relationship.\nNote that this map must not contain monitored resource labels.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -2046,16 +2127,6 @@
           "description": "Represents the properties needed for quota check. Applicable only if this\noperation is for a quota check request. If this is not specified, no quota\ncheck will be performed.",
           "$ref": "QuotaProperties"
         },
-        "resourceContainer": {
-          "description": "DO NOT USE. This field is deprecated, use \"resources\" field instead.\nThe resource name of the parent of a resource in the resource hierarchy.\n\nThis can be in one of the following formats:\n    - “projects/<project-id or project-number>”\n    - “folders/<folder-id>”\n    - “organizations/<organization-id>”",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "resources": {
           "description": "The resources that are involved in the operation.\nThe maximum supported number of entries in this field is 100.",
           "type": "array",
@@ -2077,6 +2148,18 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "traceSpans": {
+          "description": "Unimplemented. A list of Cloud Trace spans. The span names shall contain\nthe id of the destination project which can be either the produce or the\nconsumer project.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TraceSpan"
+          }
         },
         "userLabels": {
           "description": "User defined labels for the resource that this operation is associated\nwith. Only a combination of 1000 user labels per consumer project are\nallowed.",
@@ -2353,7 +2436,7 @@
           "items": null
         },
         "operationId": {
-          "description": "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nUUID version 4 is recommended, though not required. In scenarios where an\noperation is computed from existing information and an idempotent id is\ndesirable for deduplication purpose, UUID version 5 is recommended. See\nRFC 4122 for details.",
+          "description": "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nIn order to ensure best performance and latency in the Quota backends,\noperation_ids are optimally associated with time, so that related\noperations can be accessed fast in storage. For this reason, the\nrecommended token for services that intend to operate at a high QPS is\nUnix time in nanos + UUID",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2382,13 +2465,17 @@
             "UNSPECIFIED",
             "NORMAL",
             "BEST_EFFORT",
-            "CHECK_ONLY"
+            "CHECK_ONLY",
+            "QUERY_ONLY",
+            "ADJUST_ONLY"
           ],
           "enumDescriptions": [
             "Guard against implicit default. Must not be used.",
             "For AllocateQuota request, allocates quota for the amount specified in\nthe service configuration or specified using the quota metrics. If the\namount is higher than the available quota, allocation error will be\nreturned and no quota will be allocated.\nIf multiple quotas are part of the request, and one fails, none of the\nquotas are allocated or released.",
             "The operation allocates quota for the amount specified in the service\nconfiguration or specified using the quota metrics. If the amount is\nhigher than the available quota, request does not fail but all available\nquota will be allocated.\nFor rate quota, BEST_EFFORT will continue to deduct from other groups\neven if one does not have enough quota. For allocation, it will find the\nminimum available amount across all groups and deduct that amount from\nall the affected groups.",
-            "For AllocateQuota request, only checks if there is enough quota\navailable and does not change the available quota. No lock is placed on\nthe available quota either."
+            "For AllocateQuota request, only checks if there is enough quota\navailable and does not change the available quota. No lock is placed on\nthe available quota either.",
+            "Unimplemented. When used in AllocateQuotaRequest, this returns the\neffective quota limit(s) in the response, and no quota check will be\nperformed. Not supported for other requests, and even for\nAllocateQuotaRequest, this is currently supported only for whitelisted\nservices.",
+            "The operation allocates quota for the amount specified in the service\nconfiguration or specified using the quota metrics. If the requested\namount is higher than the available quota, request does not fail and\nremaining quota would become negative (going over the limit)\nNot supported for Rate Quota."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -2491,7 +2578,7 @@
       "enumDescriptions": [],
       "properties": {
         "operations": {
-          "description": "Operations to be reported.\n\nTypically the service should report one operation per request.\nPutting multiple operations into a single request is allowed, but should\nbe used only when multiple operations are natually available at the time\nof the report.\n\nIf multiple operations are in a single request, the total request size\nshould be no larger than 1MB. See ReportResponse.report_errors for\npartial failure behavior.",
+          "description": "Operations to be reported.\n\nTypically the service should report one operation per request.\nPutting multiple operations into a single request is allowed, but should\nbe used only when multiple operations are natually available at the time\nof the report.\n\nThere is no limit on the number of operations in the same ReportRequest,\nhowever the ReportRequest size should be no larger than 1MB. See\nReportResponse.report_errors for partial failure behavior.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2559,7 +2646,7 @@
           "items": null
         },
         "serviceRolloutId": {
-          "description": "Unimplemented. The current service rollout id used to process the request.",
+          "description": "The current service rollout id used to process the request.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2654,7 +2741,7 @@
           "items": null
         },
         "query": {
-          "description": "The HTTP URL query in the format of `name1=value`&name2=value2`, as it\nappears in the first line of the HTTP request. No decoding is performed.",
+          "description": "The HTTP URL query in the format of `name1=value1&name2=value2`, as it\nappears in the first line of the HTTP request. No decoding is performed.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2928,6 +3015,28 @@
       "additionalProperties": null,
       "items": null
     },
+    "SpanContext": {
+      "id": "SpanContext",
+      "description": "The context of a span, attached to\nExemplars\nin Distribution values during aggregation.\n\nIt contains the name of a span with format:\n\n    projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "spanName": {
+          "description": "The resource name of the span. The format is:\n\n    projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]\n\n`[TRACE_ID]` is a unique identifier for a trace within a project;\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n`[SPAN_ID]` is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Status": {
       "id": "Status",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
@@ -3012,6 +3121,156 @@
             "additionalProperties": null,
             "items": null
           },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TraceSpan": {
+      "id": "TraceSpan",
+      "description": "A span represents a single operation within a trace. Spans can be\nnested to form a trace tree. Often, a trace contains a root span\nthat describes the end-to-end latency, and one or more subspans for\nits sub-operations. A trace can also contain multiple root spans,\nor none at all. Spans do not need to be contiguous&mdash;there may be\ngaps or overlaps between spans in a trace.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "attributes": {
+          "description": "A set of attributes on the span. You can have up to 32 attributes per\nspan.",
+          "$ref": "Attributes"
+        },
+        "childSpanCount": {
+          "description": "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces.",
+          "$ref": "TruncatableString"
+        },
+        "endTime": {
+          "description": "The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "The resource name of the span in the following format:\n\n    projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n[SPAN_ID] is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parentSpanId": {
+          "description": "The [SPAN_ID] of this span's parent span. If this is a root span,\nthen this field must be empty.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sameProcessAsParentSpan": {
+          "description": "(Optional) Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "spanId": {
+          "description": "The [SPAN_ID] portion of the span's resource name.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "spanKind": {
+          "description": "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `CLIENT` (caller)\nand `SERVER` (callee) to identify an RPC call.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "SPAN_KIND_UNSPECIFIED",
+            "INTERNAL",
+            "SERVER",
+            "CLIENT",
+            "PRODUCER",
+            "CONSUMER"
+          ],
+          "enumDescriptions": [
+            "Unspecified. Do NOT use as default.\nImplementations MAY assume SpanKind.INTERNAL to be default.",
+            "Indicates that the span is used internally. Default value.",
+            "Indicates that the span covers server-side handling of an RPC or other\nremote network request.",
+            "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request.",
+            "Indicates that the span describes producer sending a message to a broker.\nUnlike client and  server, there is no direct critical path latency\nrelationship between producer and consumer spans (e.g. publishing a\nmessage to a pubsub service).",
+            "Indicates that the span describes consumer receiving a message from a\nbroker. Unlike client and  server, there is no direct critical path\nlatency relationship between producer and consumer spans (e.g. receiving\na message from a pubsub service subscription)."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "startTime": {
+          "description": "The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "status": {
+          "description": "An optional final status for this span.",
+          "$ref": "Status"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TruncatableString": {
+      "id": "TruncatableString",
+      "description": "Represents a string that might be shortened to a specified length.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "truncatedByteCount": {
+          "description": "The number of bytes removed from the original string. If this\nvalue is 0, then the string was not shortened.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "value": {
+          "description": "The shortened string. For example, if the original string is 500\nbytes long and the limit of the string is 128 bytes, then\n`value` contains the first 128 bytes of the 500-byte string.\n\nTruncation always happens on a UTF8 character boundary. If there\nare multi-byte characters in the string, then the length of the\nshortened string might be less than the size limit.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
           "items": null
         }
       },
@@ -3107,7 +3366,7 @@
           "id": "servicecontrol.services.report",
           "path": "v1/services/{serviceName}:report",
           "httpMethod": "POST",
-          "description": "Reports operation results to Google Service Control, such as logs and\nmetrics. It should be called after an operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5\nseconds to reduce API traffic. Limiting aggregation to 5 seconds is to\nreduce data loss during client crashes. Clients should carefully choose\nthe aggregation time window to avoid data loss risk more than 0.01%\nfor business and compliance reasons.\n\nNOTE: the ReportRequest has the size limit of 1MB.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
+          "description": "Reports operation results to Google Service Control, such as logs and\nmetrics. It should be called after an operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5\nseconds to reduce API traffic. Limiting aggregation to 5 seconds is to\nreduce data loss during client crashes. Clients should carefully choose\nthe aggregation time window to avoid data loss risk more than 0.01%\nfor business and compliance reasons.\n\nNOTE: the ReportRequest has the size limit (wire-format byte size) of\n1MB.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
           "parameters": {
             "serviceName": {
               "description": "The service name as specified in its service configuration. For example,\n`\"pubsub.googleapis.com\"`.\n\nSee\n[google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)\nfor the definition of a service name.",

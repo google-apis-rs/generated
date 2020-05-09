@@ -7,7 +7,7 @@
   "canonicalName": "Android Provisioning Partner",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190912",
+  "revision": "20200504",
   "title": "Android Device Provisioning Partner API",
   "description": "Automates Android zero-touch enrollment for device resellers, customers, and EMMs.",
   "ownerDomain": "google.com",
@@ -1881,7 +1881,7 @@
       "enumDescriptions": [],
       "properties": {
         "deviceMetadata": {
-          "description": "Required. The metdata to attach to the device.",
+          "description": "Required. The metadata to attach to the device.",
           "$ref": "DeviceMetadata"
         }
       },
@@ -1890,7 +1890,7 @@
     },
     "UpdateMetadataArguments": {
       "id": "UpdateMetadataArguments",
-      "description": "Identifies metdata updates to one device.",
+      "description": "Identifies metadata updates to one device.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2443,7 +2443,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

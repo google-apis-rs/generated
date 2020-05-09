@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("bigqueryreservation1_alpha2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190902")
+            .version("0.1.0-20200410")
             .about("A service to modify your BigQuery flat-rate reservations.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -38,16 +38,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("sub-resources: locations");
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get, list and search_reservation_grants");
-        {
-            let mcmd = SubCommand::with_name("get").about("Gets information about a location.");
-            locations1 = locations1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list")
-                .about("Lists information about the supported locations for this service.");
-            locations1 = locations1.subcommand(mcmd);
-        }
+            .about("methods: search_reservation_grants");
         {
             let mcmd = SubCommand::with_name("search_reservation_grants").about("Look up grants for a specified resource for a particular region.\nIf the request is about a project:\n  1) Grants created on the project will be returned if they exist.\n  2) Otherwise grants created on the closest ancestor will be returned.\n  3) Grants for different JobTypes will all be returned.\nSame logic applies if the request is about a folder.\nIf the request is about an organization, then grants created on the\norganization will be returned (organization doesn\'t have ancestors).\nComparing to ListReservationGrants, there are two behavior\ndifferences:\n  1) permission on the grantee will be verified in this API.\n  2) Hierarchy lookup (project->folder->organization) happens in this API.");
             locations1 = locations1.subcommand(mcmd);

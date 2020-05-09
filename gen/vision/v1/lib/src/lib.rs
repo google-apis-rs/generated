@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [files](resources/files/struct.FilesActions.html)\n      * [*annotate*](resources/files/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/files/struct.AsyncBatchAnnotateRequestBuilder.html)\n    * [images](resources/images/struct.ImagesActions.html)\n      * [*annotate*](resources/images/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/images/struct.AsyncBatchAnnotateRequestBuilder.html)\n    * [locations](resources/locations/struct.LocationsActions.html)\n      * [operations](resources/locations/operations/struct.OperationsActions.html)\n        * [*get*](resources/locations/operations/struct.GetRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [files](resources/projects/files/struct.FilesActions.html)\n        * [*annotate*](resources/projects/files/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/files/struct.AsyncBatchAnnotateRequestBuilder.html)\n      * [images](resources/projects/images/struct.ImagesActions.html)\n        * [*annotate*](resources/projects/images/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/images/struct.AsyncBatchAnnotateRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [files](resources/projects/locations/files/struct.FilesActions.html)\n          * [*annotate*](resources/projects/locations/files/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/locations/files/struct.AsyncBatchAnnotateRequestBuilder.html)\n        * [images](resources/projects/locations/images/struct.ImagesActions.html)\n          * [*annotate*](resources/projects/locations/images/struct.AnnotateRequestBuilder.html), [*asyncBatchAnnotate*](resources/projects/locations/images/struct.AsyncBatchAnnotateRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html)\n        * [product_sets](resources/projects/locations/product_sets/struct.ProductSetsActions.html)\n          * [*addProduct*](resources/projects/locations/product_sets/struct.AddProductRequestBuilder.html), [*create*](resources/projects/locations/product_sets/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/product_sets/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/product_sets/struct.GetRequestBuilder.html), [*import*](resources/projects/locations/product_sets/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/product_sets/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/product_sets/struct.PatchRequestBuilder.html), [*removeProduct*](resources/projects/locations/product_sets/struct.RemoveProductRequestBuilder.html)\n          * [products](resources/projects/locations/product_sets/products/struct.ProductsActions.html)\n            * [*list*](resources/projects/locations/product_sets/products/struct.ListRequestBuilder.html)\n        * [products](resources/projects/locations/products/struct.ProductsActions.html)\n          * [*create*](resources/projects/locations/products/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/products/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/products/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/products/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/products/struct.PatchRequestBuilder.html), [*purge*](resources/projects/locations/products/struct.PurgeRequestBuilder.html)\n          * [reference_images](resources/projects/locations/products/reference_images/struct.ReferenceImagesActions.html)\n            * [*create*](resources/projects/locations/products/reference_images/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/products/reference_images/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/products/reference_images/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/products/reference_images/struct.ListRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*get*](resources/projects/operations/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Apply machine learning models to understand and label images\n\n`https://www.googleapis.com/auth/cloud-vision`"]
+    pub const CLOUD_VISION: &str = "https://www.googleapis.com/auth/cloud-vision";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -14809,14 +14815,6 @@ pub mod schemas {
         )]
         pub image_properties_annotation:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ImageProperties>,
-        #[doc = "If present, image quality calculation has completed successfully."]
-        #[serde(
-            rename = "imageQualityAnnotation",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub image_quality_annotation:
-            ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ImageQuality>,
         #[doc = "If present, label detection has completed successfully."]
         #[serde(
             rename = "labelAnnotations",
@@ -14858,15 +14856,6 @@ pub mod schemas {
         )]
         pub product_search_results:
             ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1ProductSearchResults>,
-        #[doc = "If present, image quality optimization has completed successfully."]
-        #[serde(
-            rename = "qualityOptimizationResult",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub quality_optimization_result: ::std::option::Option<
-            crate::schemas::GoogleCloudVisionV1P4Beta1QualityOptimizationResult,
-        >,
         #[doc = "If present, safe-search annotation has completed successfully."]
         #[serde(
             rename = "safeSearchAnnotation",
@@ -15358,6 +15347,51 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1Celebrity {
+        #[doc = "The Celebrity's description."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The Celebrity's display name."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The resource name of the preloaded Celebrity. Has the format\n`builtin/{mid}`."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1Celebrity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVisionV1P4Beta1Celebrity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P4Beta1ColorInfo {
@@ -15642,6 +15676,15 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pan_angle: ::std::option::Option<f32>,
+        #[doc = "Additional recognition information. Only computed if\nimage_context.face_recognition_params is provided, **and** a match is found\nto a Celebrity in the input CelebritySet. This field is\nsorted in order of decreasing confidence values."]
+        #[serde(
+            rename = "recognitionResult",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub recognition_result: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVisionV1P4Beta1FaceRecognitionResult>,
+        >,
         #[doc = "Roll angle, which indicates the amount of clockwise/anti-clockwise rotation\nof the face relative to the image vertical about the axis perpendicular to\nthe face. Range [-180,180]."]
         #[serde(
             rename = "rollAngle",
@@ -16913,6 +16956,35 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVisionV1P4Beta1FaceRecognitionResult {
+        #[doc = "The Celebrity that this face was matched to."]
+        #[serde(
+            rename = "celebrity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub celebrity: ::std::option::Option<crate::schemas::GoogleCloudVisionV1P4Beta1Celebrity>,
+        #[doc = "Recognition confidence. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1FaceRecognitionResult {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVisionV1P4Beta1FaceRecognitionResult {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -17032,28 +17104,6 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudVisionV1P4Beta1ImageProperties {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1ImageQuality {
-        #[doc = "A score representing the aesthetic/technical quality of the image. The\nscore is in range [0, 1]. Higher value corresponds to more professional\nlooking photos. 0 means the image looks very bad, 1 means the image with\nvery high quality."]
-        #[serde(
-            rename = "qualityScore",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub quality_score: ::std::option::Option<f32>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1ImageQuality {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleCloudVisionV1P4Beta1ImageQuality {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -17865,109 +17915,6 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleCloudVisionV1P4Beta1QualityOptimizationResult { # [ doc = "Optimized image bytes." ] # [ serde ( rename = "image" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub image : :: std :: option :: Option < :: google_api_bytes :: Bytes > , # [ doc = "Mime type of the output image." ] # [ serde ( rename = "mimeType" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub mime_type : :: std :: option :: Option < String > , # [ doc = "Required optimization type." ] # [ serde ( rename = "qualityOptimizationType" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub quality_optimization_type : :: std :: option :: Option < crate :: schemas :: GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType > , }
-    impl ::google_field_selector::FieldSelector
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResult
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleCloudVisionV1P4Beta1QualityOptimizationResult {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType {
-        #[doc = "Reduce image file size. Detailed params specified in CompressionConfig.\nIf customer do not specify CompressionConfig, it will reduce image file\nsize while not reducing image quality. If customer specify\nCompressionConfig, we will reduce file size while keeping\nCompressionParams.target_quality."]
-        Compression,
-        #[doc = "Denoise, sharpening, HDR and upscaling. Detailed params specified in\nEnhancementConfig. If customer do not specify EnhancmentConfig, it will\ndo image enhancement using default values. If upscale_ratio not\nspecified, the output image will have the same resolution as input image."]
-        Enhancement,
-        #[doc = "Query quality score for an image. Detailed params specified in\nQualityScoreConfig. If customer does not specify QualityScoreConfig,\naesthetic score of image will be returned."]
-        QualityScore,
-        #[doc = "Invalid. Customer must select one Type."]
-        TypeUnspecified,
-    }
-    impl GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType {
-        pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression => "COMPRESSION" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement => "ENHANCEMENT" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore => "QUALITY_SCORE" , GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified => "TYPE_UNSPECIFIED" , }
-        }
-    }
-    impl ::std::convert::AsRef<str>
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        type Err = ();
-        fn from_str(
-            s: &str,
-        ) -> ::std::result::Result<
-            GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType,
-            (),
-        > {
-            Ok ( match s { "COMPRESSION" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression , "ENHANCEMENT" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement , "QUALITY_SCORE" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore , "TYPE_UNSPECIFIED" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified , _ => return Err ( ( ) ) , } )
-        }
-    }
-    impl ::std::fmt::Display
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de>
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "COMPRESSION" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Compression , "ENHANCEMENT" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: Enhancement , "QUALITY_SCORE" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: QualityScore , "TYPE_UNSPECIFIED" => GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType :: TypeUnspecified , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
-        }
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType
-        for GoogleCloudVisionV1P4Beta1QualityOptimizationResultQualityOptimizationType
-    {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P4Beta1ReferenceImage {
@@ -18005,7 +17952,16 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
     pub struct GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
@@ -18017,13 +17973,6 @@ pub mod schemas {
         pub adult: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationAdult,
         >,
-        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "adultConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub adult_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this is a medical image."]
         #[serde(
             rename = "medical",
@@ -18033,20 +17982,6 @@ pub mod schemas {
         pub medical: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationMedical,
         >,
-        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "medicalConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub medical_confidence: ::std::option::Option<f32>,
-        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(
-            rename = "nsfwConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub nsfw_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
         #[serde(
             rename = "racy",
@@ -18056,13 +17991,6 @@ pub mod schemas {
         pub racy: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationRacy,
         >,
-        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(
-            rename = "racyConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub racy_confidence: ::std::option::Option<f32>,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
         #[serde(
             rename = "spoof",
@@ -18072,13 +18000,6 @@ pub mod schemas {
         pub spoof: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationSpoof,
         >,
-        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "spoofConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub spoof_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this image contains violent content."]
         #[serde(
             rename = "violence",
@@ -18088,13 +18009,6 @@ pub mod schemas {
         pub violence: ::std::option::Option<
             crate::schemas::GoogleCloudVisionV1P4Beta1SafeSearchAnnotationViolence,
         >,
-        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "violenceConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub violence_confidence: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVisionV1P4Beta1SafeSearchAnnotation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -19347,7 +19261,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub crop_hints_params: ::std::option::Option<crate::schemas::CropHintsParams>,
-        #[doc = "List of languages to use for TEXT_DETECTION. In most cases, an empty value\nyields the best results since it enables automatic language detection. For\nlanguages based on the Latin alphabet, setting `language_hints` is not\nneeded. In rare cases, when the language of the text in the image is known,\nsetting a hint will help get better results (although it will be a\nsignificant hindrance if the hint is wrong). Text detection returns an\nerror if one or more of the specified languages is not one of the\n[supported languages](/vision/docs/languages)."]
+        #[doc = "List of languages to use for TEXT_DETECTION. In most cases, an empty value\nyields the best results since it enables automatic language detection. For\nlanguages based on the Latin alphabet, setting `language_hints` is not\nneeded. In rare cases, when the language of the text in the image is known,\nsetting a hint will help get better results (although it will be a\nsignificant hindrance if the hint is wrong). Text detection returns an\nerror if one or more of the specified languages is not one of the\n[supported languages](https://cloud.google.com/vision/docs/languages)."]
         #[serde(
             rename = "languageHints",
             default,
@@ -20693,7 +20607,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct ProductSearchParams {
-        #[doc = "The bounding polygon around the area of interest in the image.\nOptional. If it is not specified, system discretion will be applied."]
+        #[doc = "The bounding polygon around the area of interest in the image.\nIf it is not specified, system discretion will be applied."]
         #[serde(
             rename = "boundingPoly",
             default,
@@ -21035,7 +20949,16 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
     pub struct SafeSearchAnnotation {
         #[doc = "Represents the adult content likelihood for the image. Adult content may\ncontain elements such as nudity, pornographic images or cartoons, or\nsexual activities."]
@@ -21045,13 +20968,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub adult: ::std::option::Option<crate::schemas::SafeSearchAnnotationAdult>,
-        #[doc = "Confidence of adult_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "adultConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub adult_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this is a medical image."]
         #[serde(
             rename = "medical",
@@ -21059,20 +20975,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub medical: ::std::option::Option<crate::schemas::SafeSearchAnnotationMedical>,
-        #[doc = "Confidence of medical_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "medicalConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub medical_confidence: ::std::option::Option<f32>,
-        #[doc = "Confidence of nsfw_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(
-            rename = "nsfwConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub nsfw_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that the request image contains racy content. Racy content may\ninclude (but is not limited to) skimpy or sheer clothing, strategically\ncovered nudity, lewd or provocative poses, or close-ups of sensitive\nbody areas."]
         #[serde(
             rename = "racy",
@@ -21080,13 +20982,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub racy: ::std::option::Option<crate::schemas::SafeSearchAnnotationRacy>,
-        #[doc = "Confidence of racy_score. Range [0, 1]. 0 means not confident, 1 means very\nconfident."]
-        #[serde(
-            rename = "racyConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub racy_confidence: ::std::option::Option<f32>,
         #[doc = "Spoof likelihood. The likelihood that an modification\nwas made to the image's canonical version to make it appear\nfunny or offensive."]
         #[serde(
             rename = "spoof",
@@ -21094,13 +20989,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spoof: ::std::option::Option<crate::schemas::SafeSearchAnnotationSpoof>,
-        #[doc = "Confidence of spoof_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "spoofConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub spoof_confidence: ::std::option::Option<f32>,
         #[doc = "Likelihood that this image contains violent content."]
         #[serde(
             rename = "violence",
@@ -21108,13 +20996,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub violence: ::std::option::Option<crate::schemas::SafeSearchAnnotationViolence>,
-        #[doc = "Confidence of violence_score. Range [0, 1]. 0 means not confident, 1 means\nvery confident."]
-        #[serde(
-            rename = "violenceConfidence",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub violence_confidence: ::std::option::Option<f32>,
     }
     impl ::google_field_selector::FieldSelector for SafeSearchAnnotation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -22190,7 +22071,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -22198,8 +22079,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -22246,7 +22139,7 @@ pub mod resources {
     pub mod files {
         pub mod params {}
         pub struct FilesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> FilesActions<'a> {
@@ -22301,7 +22194,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::annotate()](struct.FilesActions.html#method.annotate)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchAnnotateFilesRequest,
             access_token: Option<String>,
@@ -22424,7 +22317,10 @@ pub mod resources {
                 output.push_str("v1/files:annotate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -22448,7 +22344,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::async_batch_annotate()](struct.FilesActions.html#method.async_batch_annotate)"]
         #[derive(Debug, Clone)]
         pub struct AsyncBatchAnnotateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AsyncBatchAnnotateFilesRequest,
             access_token: Option<String>,
@@ -22571,7 +22467,10 @@ pub mod resources {
                 output.push_str("v1/files:asyncBatchAnnotate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -22596,7 +22495,7 @@ pub mod resources {
     pub mod images {
         pub mod params {}
         pub struct ImagesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ImagesActions<'a> {
@@ -22651,7 +22550,7 @@ pub mod resources {
         #[doc = "Created via [ImagesActions::annotate()](struct.ImagesActions.html#method.annotate)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchAnnotateImagesRequest,
             access_token: Option<String>,
@@ -22774,7 +22673,10 @@ pub mod resources {
                 output.push_str("v1/images:annotate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -22798,7 +22700,7 @@ pub mod resources {
         #[doc = "Created via [ImagesActions::async_batch_annotate()](struct.ImagesActions.html#method.async_batch_annotate)"]
         #[derive(Debug, Clone)]
         pub struct AsyncBatchAnnotateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AsyncBatchAnnotateImagesRequest,
             access_token: Option<String>,
@@ -22921,7 +22823,10 @@ pub mod resources {
                 output.push_str("v1/images:asyncBatchAnnotate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -22946,7 +22851,7 @@ pub mod resources {
     pub mod locations {
         pub mod params {}
         pub struct LocationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> LocationsActions<'a> {
@@ -22964,7 +22869,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -22994,7 +22899,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -23126,7 +23031,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -23152,7 +23060,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -23247,7 +23155,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CancelOperationRequest,
             name: String,
@@ -23377,7 +23285,10 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -23401,7 +23312,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -23528,7 +23439,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -23552,7 +23466,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -23681,7 +23595,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -23705,7 +23622,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             filter: Option<String>,
@@ -23950,7 +23867,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -23989,7 +23909,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -24028,7 +23948,7 @@ pub mod resources {
         pub mod files {
             pub mod params {}
             pub struct FilesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> FilesActions<'a> {
@@ -24087,7 +24007,7 @@ pub mod resources {
             #[doc = "Created via [FilesActions::annotate()](struct.FilesActions.html#method.annotate)"]
             #[derive(Debug, Clone)]
             pub struct AnnotateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchAnnotateFilesRequest,
                 parent: String,
@@ -24224,7 +24144,10 @@ pub mod resources {
                     output.push_str("/files:annotate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -24248,7 +24171,7 @@ pub mod resources {
             #[doc = "Created via [FilesActions::async_batch_annotate()](struct.FilesActions.html#method.async_batch_annotate)"]
             #[derive(Debug, Clone)]
             pub struct AsyncBatchAnnotateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AsyncBatchAnnotateFilesRequest,
                 parent: String,
@@ -24383,7 +24306,10 @@ pub mod resources {
                     output.push_str("/files:asyncBatchAnnotate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -24408,7 +24334,7 @@ pub mod resources {
         pub mod images {
             pub mod params {}
             pub struct ImagesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ImagesActions<'a> {
@@ -24467,7 +24393,7 @@ pub mod resources {
             #[doc = "Created via [ImagesActions::annotate()](struct.ImagesActions.html#method.annotate)"]
             #[derive(Debug, Clone)]
             pub struct AnnotateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchAnnotateImagesRequest,
                 parent: String,
@@ -24604,7 +24530,10 @@ pub mod resources {
                     output.push_str("/images:annotate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -24628,7 +24557,7 @@ pub mod resources {
             #[doc = "Created via [ImagesActions::async_batch_annotate()](struct.ImagesActions.html#method.async_batch_annotate)"]
             #[derive(Debug, Clone)]
             pub struct AsyncBatchAnnotateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AsyncBatchAnnotateImagesRequest,
                 parent: String,
@@ -24763,7 +24692,10 @@ pub mod resources {
                     output.push_str("/images:asyncBatchAnnotate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -24788,7 +24720,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -24845,7 +24777,7 @@ pub mod resources {
             pub mod files {
                 pub mod params {}
                 pub struct FilesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> FilesActions<'a> {
@@ -24904,7 +24836,7 @@ pub mod resources {
                 #[doc = "Created via [FilesActions::annotate()](struct.FilesActions.html#method.annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AnnotateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::BatchAnnotateFilesRequest,
                     parent: String,
@@ -25044,7 +24976,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -25068,7 +25001,7 @@ pub mod resources {
                 #[doc = "Created via [FilesActions::async_batch_annotate()](struct.FilesActions.html#method.async_batch_annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AsyncBatchAnnotateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AsyncBatchAnnotateFilesRequest,
                     parent: String,
@@ -25206,7 +25139,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -25231,7 +25165,7 @@ pub mod resources {
             pub mod images {
                 pub mod params {}
                 pub struct ImagesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ImagesActions<'a> {
@@ -25290,7 +25224,7 @@ pub mod resources {
                 #[doc = "Created via [ImagesActions::annotate()](struct.ImagesActions.html#method.annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AnnotateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::BatchAnnotateImagesRequest,
                     parent: String,
@@ -25430,7 +25364,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -25454,7 +25389,7 @@ pub mod resources {
                 #[doc = "Created via [ImagesActions::async_batch_annotate()](struct.ImagesActions.html#method.async_batch_annotate)"]
                 #[derive(Debug, Clone)]
                 pub struct AsyncBatchAnnotateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AsyncBatchAnnotateImagesRequest,
                     parent: String,
@@ -25592,7 +25527,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -25617,7 +25553,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -25647,7 +25583,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -25782,7 +25718,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -25807,7 +25744,7 @@ pub mod resources {
             pub mod product_sets {
                 pub mod params {}
                 pub struct ProductSetsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ProductSetsActions<'a> {
@@ -26002,7 +25939,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::add_product()](struct.ProductSetsActions.html#method.add_product)"]
                 #[derive(Debug, Clone)]
                 pub struct AddProductRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AddProductToProductSetRequest,
                     name: String,
@@ -26140,7 +26077,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26164,7 +26102,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::create()](struct.ProductSetsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ProductSet,
                     parent: String,
@@ -26308,7 +26246,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("productSetId", &self.product_set_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -26333,7 +26272,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::delete()](struct.ProductSetsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -26468,7 +26407,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26492,7 +26432,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::get()](struct.ProductSetsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -26627,7 +26567,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26651,7 +26592,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::import()](struct.ProductSetsActions.html#method.import)"]
                 #[derive(Debug, Clone)]
                 pub struct ImportRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ImportProductSetsRequest,
                     parent: String,
@@ -26789,7 +26730,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -26813,7 +26755,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::list()](struct.ProductSetsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -27066,7 +27008,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -27103,7 +27046,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::patch()](struct.ProductSetsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ProductSet,
                     name: String,
@@ -27246,7 +27189,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -27271,7 +27215,7 @@ pub mod resources {
                 #[doc = "Created via [ProductSetsActions::remove_product()](struct.ProductSetsActions.html#method.remove_product)"]
                 #[derive(Debug, Clone)]
                 pub struct RemoveProductRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::RemoveProductFromProductSetRequest,
                     name: String,
@@ -27409,7 +27353,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -27433,7 +27378,7 @@ pub mod resources {
                 pub mod products {
                     pub mod params {}
                     pub struct ProductsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> ProductsActions<'a> {
@@ -27465,7 +27410,7 @@ pub mod resources {
                     #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         page_size: Option<i32>,
@@ -27726,7 +27671,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -27766,7 +27711,7 @@ pub mod resources {
             pub mod products {
                 pub mod params {}
                 pub struct ProductsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ProductsActions<'a> {
@@ -27913,7 +27858,7 @@ pub mod resources {
                 #[doc = "Created via [ProductsActions::create()](struct.ProductsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Product,
                     parent: String,
@@ -28057,7 +28002,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("productId", &self.product_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -28082,7 +28028,7 @@ pub mod resources {
                 #[doc = "Created via [ProductsActions::delete()](struct.ProductsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -28217,7 +28163,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -28241,7 +28188,7 @@ pub mod resources {
                 #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -28376,7 +28323,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -28400,7 +28348,7 @@ pub mod resources {
                 #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -28653,7 +28601,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -28690,7 +28639,7 @@ pub mod resources {
                 #[doc = "Created via [ProductsActions::patch()](struct.ProductsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Product,
                     name: String,
@@ -28833,7 +28782,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -28858,7 +28808,7 @@ pub mod resources {
                 #[doc = "Created via [ProductsActions::purge()](struct.ProductsActions.html#method.purge)"]
                 #[derive(Debug, Clone)]
                 pub struct PurgeRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::PurgeProductsRequest,
                     parent: String,
@@ -28996,7 +28946,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -29020,7 +28971,7 @@ pub mod resources {
                 pub mod reference_images {
                     pub mod params {}
                     pub struct ReferenceImagesActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> ReferenceImagesActions<'a> {
@@ -29115,7 +29066,7 @@ pub mod resources {
                     #[doc = "Created via [ReferenceImagesActions::create()](struct.ReferenceImagesActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::ReferenceImage,
                         parent: String,
@@ -29262,7 +29213,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("referenceImageId", &self.reference_image_id)]);
@@ -29288,7 +29239,7 @@ pub mod resources {
                     #[doc = "Created via [ReferenceImagesActions::delete()](struct.ReferenceImagesActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -29424,7 +29375,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -29449,7 +29400,7 @@ pub mod resources {
                     #[doc = "Created via [ReferenceImagesActions::get()](struct.ReferenceImagesActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -29587,7 +29538,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -29612,7 +29563,7 @@ pub mod resources {
                     #[doc = "Created via [ReferenceImagesActions::list()](struct.ReferenceImagesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         page_size: Option<i32>,
@@ -29870,7 +29821,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -29911,7 +29862,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -29941,7 +29892,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -30073,7 +30024,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -30113,9 +30067,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -30157,7 +30109,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

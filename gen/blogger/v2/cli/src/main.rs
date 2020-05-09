@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("blogger2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20150422")
-            .about("API for access to the data within Blogger.")
+            .version("0.1.0-20200507")
+            .about("The Blogger API provides access to posts, comments and pages of a\n    Blogger blog.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -35,63 +35,57 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut blogs0 = SubCommand::with_name("blogs")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get");
+            .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one blog by id.");
+            let mcmd = SubCommand::with_name("get").about("Gets a blog by id.");
+            blogs0 = blogs0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("list").about("Lists blogs by user id, possibly filtered.");
             blogs0 = blogs0.subcommand(mcmd);
         }
         let mut comments0 = SubCommand::with_name("comments")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one comment by id.");
+            let mcmd = SubCommand::with_name("get")
+                .about("Gets a comment by blog id, post id and comment id.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves the comments for a blog, possibly filtered.");
+            let mcmd = SubCommand::with_name("list").about("Lists comments.");
             comments0 = comments0.subcommand(mcmd);
         }
         let mut pages0 = SubCommand::with_name("pages")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one blog page by id.");
+            let mcmd = SubCommand::with_name("get").about("Gets a page by blog id and page id.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves pages for a blog, possibly filtered.");
+            let mcmd = SubCommand::with_name("list").about("Lists pages.");
             pages0 = pages0.subcommand(mcmd);
         }
         let mut posts0 = SubCommand::with_name("posts")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get").about("Get a post by id.");
+            let mcmd = SubCommand::with_name("get").about("Gets a post by blog id and post id");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves a list of posts, possibly filtered.");
+            let mcmd = SubCommand::with_name("list").about("Lists posts.");
             posts0 = posts0.subcommand(mcmd);
         }
         let mut users0 = SubCommand::with_name("users")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one user by id.");
+            let mcmd = SubCommand::with_name("get").about("Gets a user by user id.");
             users0 = users0.subcommand(mcmd);
         }
-        let mut blogs1 = SubCommand::with_name("blogs")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: list");
-        {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves a list of blogs, possibly filtered.");
-            blogs1 = blogs1.subcommand(mcmd);
-        }
-        users0 = users0.subcommand(blogs1);
         app = app.subcommand(users0);
         app = app.subcommand(posts0);
         app = app.subcommand(pages0);

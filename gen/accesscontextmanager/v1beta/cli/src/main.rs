@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("accesscontextmanager1_beta")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
+            .version("0.1.0-20200419")
             .about("An API for setting attribute based access control to requests to GCP services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -92,16 +92,16 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Create an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered.");
+            let mcmd = SubCommand::with_name("create").about("Create a Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nService Perimeter has\npropagated to long-lasting storage. Service Perimeters containing\nerrors will result in an error response for the first error encountered.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete an Service Perimeter by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Service Perimeter has been\nremoved from long-lasting storage.");
+            let mcmd = SubCommand::with_name("delete").about("Delete a Service Perimeter by resource\nname. The longrunning operation from this RPC will have a successful status\nonce the Service Perimeter has been\nremoved from long-lasting storage.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
             let mcmd =
-                SubCommand::with_name("get").about("Get an Service Perimeter by resource\nname.");
+                SubCommand::with_name("get").about("Get a Service Perimeter by resource\nname.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
@@ -110,7 +110,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Update an Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nchanges to the Service Perimeter have\npropagated to long-lasting storage. Service Perimeter containing\nerrors will result in an error response for the first error encountered.");
+            let mcmd = SubCommand::with_name("patch").about("Update a Service Perimeter. The\nlongrunning operation from this RPC will have a successful status once the\nchanges to the Service Perimeter have\npropagated to long-lasting storage. Service Perimeter containing\nerrors will result in an error response for the first error encountered.");
             service_perimeters1 = service_perimeters1.subcommand(mcmd);
         }
         access_policies0 = access_policies0.subcommand(service_perimeters1);

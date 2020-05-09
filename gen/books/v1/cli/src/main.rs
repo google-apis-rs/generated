@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("books1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20181212")
-            .about("Searches for books and manages your Google Books library.")
+            .version("0.1.0-20200506")
+            .about("The Google Books API allows clients to access the Google Books repository.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -50,7 +50,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: add_book, delete_book and update_book");
         {
-            let mcmd = SubCommand::with_name("add_book").about("");
+            let mcmd = SubCommand::with_name("add_book")
+                .about("Add a user-upload volume and triggers processing.");
             cloudloading0 = cloudloading0.subcommand(mcmd);
         }
         {
@@ -59,7 +60,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             cloudloading0 = cloudloading0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_book").about("");
+            let mcmd = SubCommand::with_name("update_book").about("Updates a user-upload volume.");
             cloudloading0 = cloudloading0.subcommand(mcmd);
         }
         let mut dictionary0 = SubCommand::with_name("dictionary")
@@ -79,11 +80,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             familysharing0 = familysharing0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("share").about("Initiates sharing of the content with the user\'s family. Empty response indicates success.");
+            let mcmd = SubCommand::with_name("share").about("Initiates sharing of the content with the user\'s family. Empty response\nindicates success.");
             familysharing0 = familysharing0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("unshare").about("Initiates revoking content that has already been shared with the user\'s family. Empty response indicates success.");
+            let mcmd = SubCommand::with_name("unshare").about("Initiates revoking content that has already been shared with the user\'s\nfamily. Empty response indicates success.");
             familysharing0 = familysharing0.subcommand(mcmd);
         }
         let mut layers0 = SubCommand::with_name("layers")
@@ -118,12 +119,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("sync_volume_licenses").about(
-                "Request downloaded content access for specified volumes on the My eBooks shelf.",
+                "Request downloaded content access for specified volumes on the My eBooks\nshelf.",
             );
             myconfig0 = myconfig0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_user_settings").about("Sets the settings for the user. If a sub-object is specified, it will overwrite the existing sub-object stored in the server. Unspecified sub-objects will retain the existing value.");
+            let mcmd = SubCommand::with_name("update_user_settings").about("Sets the settings for the user. If a sub-object is specified, it will\noverwrite the existing sub-object stored in the server. Unspecified\nsub-objects will retain the existing value.");
             myconfig0 = myconfig0.subcommand(mcmd);
         }
         let mut mylibrary0 = SubCommand::with_name("mylibrary")
@@ -162,11 +163,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: accept, dismiss and get");
         {
-            let mcmd = SubCommand::with_name("accept").about("");
+            let mcmd = SubCommand::with_name("accept").about("Accepts the promo offer.");
             promooffer0 = promooffer0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("dismiss").about("");
+            let mcmd =
+                SubCommand::with_name("dismiss").about("Marks the promo offer as dismissed.");
             promooffer0 = promooffer0.subcommand(mcmd);
         }
         {
@@ -265,7 +267,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get").about(
-                "Retrieves metadata for a specific bookshelf belonging to the authenticated user.",
+                "Retrieves metadata for a specific bookshelf belonging to the authenticated\nuser.",
             );
             bookshelves1 = bookshelves1.subcommand(mcmd);
         }

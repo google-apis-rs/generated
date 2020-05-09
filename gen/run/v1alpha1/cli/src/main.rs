@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("run1_alpha1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190916")
+            .version("0.1.0-20200505")
             .about("Deploy and manage user provided container images that scale automatically based on HTTP traffic.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut namespaces0 = SubCommand::with_name("namespaces")
                         .setting(AppSettings::ColoredHelp)
-                        .about("sub-resources: authorizeddomains, configurations, domainmappings, eventtypes, revisions, routes, services and triggers");
+                        .about("sub-resources: authorizeddomains, cloudauditlogssources, cloudpubsubsources, cloudschedulersources, cloudstoragesources, configurations, domainmappings, revisions, routes, services and triggers");
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
             .about("sub-resources: locations");
@@ -45,6 +45,96 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list").about("RPC to list authorized domains.");
             authorizeddomains1 = authorizeddomains1.subcommand(mcmd);
+        }
+        let mut cloudauditlogssources1 = SubCommand::with_name("cloudauditlogssources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudauditlogssource.");
+            cloudauditlogssources1 = cloudauditlogssources1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Rpc to delete a cloudauditlogssource.");
+            cloudauditlogssources1 = cloudauditlogssources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudauditlogssource.");
+            cloudauditlogssources1 = cloudauditlogssources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudauditlogssources.");
+            cloudauditlogssources1 = cloudauditlogssources1.subcommand(mcmd);
+        }
+        let mut cloudpubsubsources1 = SubCommand::with_name("cloudpubsubsources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudpubsubsource.");
+            cloudpubsubsources1 = cloudpubsubsources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Rpc to delete a cloudpubsubsource.");
+            cloudpubsubsources1 = cloudpubsubsources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudpubsubsource.");
+            cloudpubsubsources1 = cloudpubsubsources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudpubsubsources.");
+            cloudpubsubsources1 = cloudpubsubsources1.subcommand(mcmd);
+        }
+        let mut cloudschedulersources1 = SubCommand::with_name("cloudschedulersources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and replace_cloud_scheduler_source");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudschedulersource.");
+            cloudschedulersources1 = cloudschedulersources1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Rpc to delete a cloudschedulersource.");
+            cloudschedulersources1 = cloudschedulersources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudschedulersource.");
+            cloudschedulersources1 = cloudschedulersources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudschedulersources.");
+            cloudschedulersources1 = cloudschedulersources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("replace_cloud_scheduler_source").about("Rpc to replace a cloudschedulersource.\n\nOnly the spec and metadata labels and annotations are modifiable. After\nthe Update request, Cloud Run will work to make the \'status\'\nmatch the requested \'spec\'.\n\nMay provide metadata.resourceVersion to enforce update from last read for\noptimistic concurrency control.");
+            cloudschedulersources1 = cloudschedulersources1.subcommand(mcmd);
+        }
+        let mut cloudstoragesources1 = SubCommand::with_name("cloudstoragesources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and replace_cloud_storage_source");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudstoragesource.");
+            cloudstoragesources1 = cloudstoragesources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Rpc to delete a cloudstoragesource.");
+            cloudstoragesources1 = cloudstoragesources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudstoragesource.");
+            cloudstoragesources1 = cloudstoragesources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudstoragesources.");
+            cloudstoragesources1 = cloudstoragesources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("replace_cloud_storage_source").about("Rpc to replace a cloudstoragesource.\n\nOnly the spec and metadata labels and annotations are modifiable. After\nthe Update request, Cloud Run will work to make the \'status\'\nmatch the requested \'spec\'.\n\nMay provide metadata.resourceVersion to enforce update from last read for\noptimistic concurrency control.");
+            cloudstoragesources1 = cloudstoragesources1.subcommand(mcmd);
         }
         let mut configurations1 = SubCommand::with_name("configurations")
             .setting(AppSettings::ColoredHelp)
@@ -77,18 +167,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list").about("Rpc to list domain mappings.");
             domainmappings1 = domainmappings1.subcommand(mcmd);
-        }
-        let mut eventtypes1 = SubCommand::with_name("eventtypes")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
-        {
-            let mcmd =
-                SubCommand::with_name("get").about("Rpc to get information about an EventType.");
-            eventtypes1 = eventtypes1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about("Rpc to list EventTypes.");
-            eventtypes1 = eventtypes1.subcommand(mcmd);
         }
         let mut revisions1 = SubCommand::with_name("revisions")
             .setting(AppSettings::ColoredHelp)
@@ -143,7 +221,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut triggers1 = SubCommand::with_name("triggers")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and replace_trigger");
+            .about("methods: create, delete, get and list");
         {
             let mcmd = SubCommand::with_name("create").about("Creates a new trigger.");
             triggers1 = triggers1.subcommand(mcmd);
@@ -161,10 +239,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Rpc to list triggers.");
             triggers1 = triggers1.subcommand(mcmd);
         }
-        {
-            let mcmd = SubCommand::with_name("replace_trigger").about("Rpc to replace a trigger.\n\nOnly the spec and metadata labels and annotations are modifiable. After\nthe Update request, Cloud Run will work to make the \'status\'\nmatch the requested \'spec\'.\n\nMay provide metadata.resourceVersion to enforce update from last read for\noptimistic concurrency control.");
-            triggers1 = triggers1.subcommand(mcmd);
-        }
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
@@ -179,6 +253,96 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list").about("RPC to list authorized domains.");
             authorizeddomains2 = authorizeddomains2.subcommand(mcmd);
+        }
+        let mut cloudauditlogssources2 = SubCommand::with_name("cloudauditlogssources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudauditlogssource.");
+            cloudauditlogssources2 = cloudauditlogssources2.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Rpc to delete a cloudauditlogssource.");
+            cloudauditlogssources2 = cloudauditlogssources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudauditlogssource.");
+            cloudauditlogssources2 = cloudauditlogssources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudauditlogssources.");
+            cloudauditlogssources2 = cloudauditlogssources2.subcommand(mcmd);
+        }
+        let mut cloudpubsubsources2 = SubCommand::with_name("cloudpubsubsources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudpubsubsource.");
+            cloudpubsubsources2 = cloudpubsubsources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Rpc to delete a cloudpubsubsource.");
+            cloudpubsubsources2 = cloudpubsubsources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudpubsubsource.");
+            cloudpubsubsources2 = cloudpubsubsources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudpubsubsources.");
+            cloudpubsubsources2 = cloudpubsubsources2.subcommand(mcmd);
+        }
+        let mut cloudschedulersources2 = SubCommand::with_name("cloudschedulersources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and replace_cloud_scheduler_source");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudschedulersource.");
+            cloudschedulersources2 = cloudschedulersources2.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Rpc to delete a cloudschedulersource.");
+            cloudschedulersources2 = cloudschedulersources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudschedulersource.");
+            cloudschedulersources2 = cloudschedulersources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudschedulersources.");
+            cloudschedulersources2 = cloudschedulersources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("replace_cloud_scheduler_source").about("Rpc to replace a cloudschedulersource.\n\nOnly the spec and metadata labels and annotations are modifiable. After\nthe Update request, Cloud Run will work to make the \'status\'\nmatch the requested \'spec\'.\n\nMay provide metadata.resourceVersion to enforce update from last read for\noptimistic concurrency control.");
+            cloudschedulersources2 = cloudschedulersources2.subcommand(mcmd);
+        }
+        let mut cloudstoragesources2 = SubCommand::with_name("cloudstoragesources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and replace_cloud_storage_source");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new cloudstoragesource.");
+            cloudstoragesources2 = cloudstoragesources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Rpc to delete a cloudstoragesource.");
+            cloudstoragesources2 = cloudstoragesources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Rpc to get information about a cloudstoragesource.");
+            cloudstoragesources2 = cloudstoragesources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Rpc to list cloudstoragesources.");
+            cloudstoragesources2 = cloudstoragesources2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("replace_cloud_storage_source").about("Rpc to replace a cloudstoragesource.\n\nOnly the spec and metadata labels and annotations are modifiable. After\nthe Update request, Cloud Run will work to make the \'status\'\nmatch the requested \'spec\'.\n\nMay provide metadata.resourceVersion to enforce update from last read for\noptimistic concurrency control.");
+            cloudstoragesources2 = cloudstoragesources2.subcommand(mcmd);
         }
         let mut configurations2 = SubCommand::with_name("configurations")
             .setting(AppSettings::ColoredHelp)
@@ -211,18 +375,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list").about("Rpc to list domain mappings.");
             domainmappings2 = domainmappings2.subcommand(mcmd);
-        }
-        let mut eventtypes2 = SubCommand::with_name("eventtypes")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
-        {
-            let mcmd =
-                SubCommand::with_name("get").about("Rpc to get information about an EventType.");
-            eventtypes2 = eventtypes2.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about("Rpc to list EventTypes.");
-            eventtypes2 = eventtypes2.subcommand(mcmd);
         }
         let mut revisions2 = SubCommand::with_name("revisions")
             .setting(AppSettings::ColoredHelp)
@@ -289,7 +441,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut triggers2 = SubCommand::with_name("triggers")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and replace_trigger");
+            .about("methods: create, delete, get and list");
         {
             let mcmd = SubCommand::with_name("create").about("Creates a new trigger.");
             triggers2 = triggers2.subcommand(mcmd);
@@ -307,26 +459,28 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Rpc to list triggers.");
             triggers2 = triggers2.subcommand(mcmd);
         }
-        {
-            let mcmd = SubCommand::with_name("replace_trigger").about("Rpc to replace a trigger.\n\nOnly the spec and metadata labels and annotations are modifiable. After\nthe Update request, Cloud Run will work to make the \'status\'\nmatch the requested \'spec\'.\n\nMay provide metadata.resourceVersion to enforce update from last read for\noptimistic concurrency control.");
-            triggers2 = triggers2.subcommand(mcmd);
-        }
         locations1 = locations1.subcommand(triggers2);
         locations1 = locations1.subcommand(services2);
         locations1 = locations1.subcommand(routes2);
         locations1 = locations1.subcommand(revisions2);
-        locations1 = locations1.subcommand(eventtypes2);
         locations1 = locations1.subcommand(domainmappings2);
         locations1 = locations1.subcommand(configurations2);
+        locations1 = locations1.subcommand(cloudstoragesources2);
+        locations1 = locations1.subcommand(cloudschedulersources2);
+        locations1 = locations1.subcommand(cloudpubsubsources2);
+        locations1 = locations1.subcommand(cloudauditlogssources2);
         locations1 = locations1.subcommand(authorizeddomains2);
         projects0 = projects0.subcommand(locations1);
         namespaces0 = namespaces0.subcommand(triggers1);
         namespaces0 = namespaces0.subcommand(services1);
         namespaces0 = namespaces0.subcommand(routes1);
         namespaces0 = namespaces0.subcommand(revisions1);
-        namespaces0 = namespaces0.subcommand(eventtypes1);
         namespaces0 = namespaces0.subcommand(domainmappings1);
         namespaces0 = namespaces0.subcommand(configurations1);
+        namespaces0 = namespaces0.subcommand(cloudstoragesources1);
+        namespaces0 = namespaces0.subcommand(cloudschedulersources1);
+        namespaces0 = namespaces0.subcommand(cloudpubsubsources1);
+        namespaces0 = namespaces0.subcommand(cloudauditlogssources1);
         namespaces0 = namespaces0.subcommand(authorizeddomains1);
         app = app.subcommand(projects0);
         app = app.subcommand(namespaces0);

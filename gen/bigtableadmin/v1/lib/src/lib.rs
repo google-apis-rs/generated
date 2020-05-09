@@ -1,4 +1,5 @@
 #![doc = "# Resources and Methods\n"]
+pub mod scopes {}
 pub mod schemas {
     #[derive(
         Debug,
@@ -20,21 +21,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_storage_type: ::std::option::Option<crate::schemas::ClusterDefaultStorageType>,
-        #[doc = "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/<project>/locations/<zone>`."]
+        #[doc = "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/{project}/locations/{zone}`."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/<project>/instances/<instance>/clusters/a-z*`."]
+        #[doc = "Required. (`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/{project}/instances/{instance}/clusters/a-z*`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance."]
+        #[doc = "Required. The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance."]
         #[serde(
             rename = "serveNodes",
             default,
@@ -288,21 +289,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateClusterRequest {
-        #[doc = "The cluster to be created.\nFields marked `OutputOnly` must be left blank."]
+        #[doc = "Required. The cluster to be created.\nFields marked `OutputOnly` must be left blank."]
         #[serde(
             rename = "cluster",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster: ::std::option::Option<crate::schemas::Cluster>,
-        #[doc = "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
+        #[doc = "Required. The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
         #[serde(
             rename = "clusterId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_id: ::std::option::Option<String>,
-        #[doc = "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/<project>/instances/<instance>`."]
+        #[doc = "Required. The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/{project}/instances/{instance}`."]
         #[serde(
             rename = "parent",
             default,
@@ -378,7 +379,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateInstanceRequest {
-        #[doc = "The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most two clusters can be specified."]
+        #[doc = "Required. The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most four clusters can be specified."]
         #[serde(
             rename = "clusters",
             default,
@@ -386,21 +387,21 @@ pub mod schemas {
         )]
         pub clusters:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Cluster>>,
-        #[doc = "The instance to create.\nFields marked `OutputOnly` must be left blank."]
+        #[doc = "Required. The instance to create.\nFields marked `OutputOnly` must be left blank."]
         #[serde(
             rename = "instance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<crate::schemas::Instance>,
-        #[doc = "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`."]
+        #[doc = "Required. The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`."]
         #[serde(
             rename = "instanceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_id: ::std::option::Option<String>,
-        #[doc = "The unique name of the project in which to create the new instance.\nValues are of the form `projects/<project>`."]
+        #[doc = "Required. The unique name of the project in which to create the new instance.\nValues are of the form `projects/{project}`."]
         #[serde(
             rename = "parent",
             default,
@@ -431,28 +432,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Instance {
-        #[doc = "The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."]
+        #[doc = "Required. The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes."]
+        #[doc = "Required. Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/<project>/instances/a-z+[a-z0-9]`."]
+        #[doc = "Required. (`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/{project}/instances/a-z+[a-z0-9]`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The type of the instance. Defaults to `PRODUCTION`."]
+        #[doc = "Required. The type of the instance. Defaults to `PRODUCTION`."]
         #[serde(
             rename = "type",
             default,
@@ -479,7 +480,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceType {
-        #[doc = "The instance is meant for development and testing purposes only; it has\nno performance or uptime guarantees and is not covered by SLA.\nAfter a development instance is created, it can be upgraded by\nupdating the instance to type `PRODUCTION`. An instance created\nas a production instance cannot be changed to a development instance.\nWhen creating a development instance, `serve_nodes` on the cluster must\nnot be set."]
+        #[doc = "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces\na higher minimum node count than DEVELOPMENT."]
         Development,
         #[doc = "An instance meant for production use. `serve_nodes` must be set\non the cluster."]
         Production,
@@ -642,14 +643,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PartialUpdateInstanceRequest {
-        #[doc = "The Instance which will (partially) replace the current value."]
+        #[doc = "Required. The Instance which will (partially) replace the current value."]
         #[serde(
             rename = "instance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<crate::schemas::Instance>,
-        #[doc = "The subset of Instance fields which should be replaced.\nMust be explicitly set."]
+        #[doc = "Required. The subset of Instance fields which should be replaced.\nMust be explicitly set."]
         #[serde(
             rename = "updateMask",
             default,
@@ -1063,7 +1064,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1071,8 +1072,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1097,9 +1110,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1141,7 +1152,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

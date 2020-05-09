@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [messages](resources/projects/messages/struct.MessagesActions.html)\n        * [*send*](resources/projects/messages/struct.SendRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -18,6 +22,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "If set to true, messages will be allowed to be delivered to the app while\nthe device is in direct boot mode. See [Support Direct Boot\nmode](https://developer.android.com/training/articles/direct-boot)."]
+        #[serde(
+            rename = "directBootOk",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub direct_boot_ok: ::std::option::Option<bool>,
         #[doc = "Options for features provided by the FCM SDK for Android."]
         #[serde(
             rename = "fcmOptions",
@@ -544,14 +555,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fcm_options: ::std::option::Option<crate::schemas::ApnsFcmOptions>,
-        #[doc = "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request headers](https://goo.gl/C6Yhia) for\nsupported headers, e.g. \"apns-priority\": \"10\"."]
+        #[doc = "HTTP request headers defined in Apple Push Notification Service. Refer to\n[APNs request\nheaders](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)\nfor supported headers, e.g. \"apns-priority\": \"10\"."]
         #[serde(
             rename = "headers",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub headers: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key Reference](https://goo.gl/32Pl5W).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body."]
+        #[doc = "APNs payload as a JSON object, including both `aps` dictionary and custom\npayload. See [Payload Key\nReference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).\nIf present, it overrides google.firebase.fcm.v1.Notification.title\nand google.firebase.fcm.v1.Notification.body."]
         #[serde(
             rename = "payload",
             default,
@@ -741,7 +752,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<String>,
-        #[doc = "Input only. Arbitrary key/value payload."]
+        #[doc = "Input only. Arbitrary key/value payload. The key should not be a reserved\nword (\"from\", \"message_type\", or any word starting with \"google\" or \"gcm\")."]
         #[serde(
             rename = "data",
             default,
@@ -928,6 +939,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebpushFcmOptions {
+        #[doc = "Label associated with the message's analytics data."]
+        #[serde(
+            rename = "analyticsLabel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub analytics_label: ::std::option::Option<String>,
         #[doc = "The link to open when the user clicks on the notification.\nFor all URL values, HTTPS is required."]
         #[serde(
             rename = "link",
@@ -1097,7 +1115,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1105,8 +1123,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1125,7 +1155,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1143,7 +1173,7 @@ pub mod resources {
         pub mod messages {
             pub mod params {}
             pub struct MessagesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> MessagesActions<'a> {
@@ -1178,7 +1208,7 @@ pub mod resources {
             #[doc = "Created via [MessagesActions::send()](struct.MessagesActions.html#method.send)"]
             #[derive(Debug, Clone)]
             pub struct SendRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SendMessageRequest,
                 parent: String,
@@ -1313,7 +1343,10 @@ pub mod resources {
                     output.push_str("/messages:send");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1353,9 +1386,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1397,7 +1428,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

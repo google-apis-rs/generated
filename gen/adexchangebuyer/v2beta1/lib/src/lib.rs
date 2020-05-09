@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [accounts](resources/accounts/struct.AccountsActions.html)\n      * [clients](resources/accounts/clients/struct.ClientsActions.html)\n        * [*create*](resources/accounts/clients/struct.CreateRequestBuilder.html), [*get*](resources/accounts/clients/struct.GetRequestBuilder.html), [*list*](resources/accounts/clients/struct.ListRequestBuilder.html), [*update*](resources/accounts/clients/struct.UpdateRequestBuilder.html)\n        * [invitations](resources/accounts/clients/invitations/struct.InvitationsActions.html)\n          * [*create*](resources/accounts/clients/invitations/struct.CreateRequestBuilder.html), [*get*](resources/accounts/clients/invitations/struct.GetRequestBuilder.html), [*list*](resources/accounts/clients/invitations/struct.ListRequestBuilder.html)\n        * [users](resources/accounts/clients/users/struct.UsersActions.html)\n          * [*get*](resources/accounts/clients/users/struct.GetRequestBuilder.html), [*list*](resources/accounts/clients/users/struct.ListRequestBuilder.html), [*update*](resources/accounts/clients/users/struct.UpdateRequestBuilder.html)\n      * [creatives](resources/accounts/creatives/struct.CreativesActions.html)\n        * [*create*](resources/accounts/creatives/struct.CreateRequestBuilder.html), [*get*](resources/accounts/creatives/struct.GetRequestBuilder.html), [*list*](resources/accounts/creatives/struct.ListRequestBuilder.html), [*stopWatching*](resources/accounts/creatives/struct.StopWatchingRequestBuilder.html), [*update*](resources/accounts/creatives/struct.UpdateRequestBuilder.html), [*watch*](resources/accounts/creatives/struct.WatchRequestBuilder.html)\n        * [deal_associations](resources/accounts/creatives/deal_associations/struct.DealAssociationsActions.html)\n          * [*add*](resources/accounts/creatives/deal_associations/struct.AddRequestBuilder.html), [*list*](resources/accounts/creatives/deal_associations/struct.ListRequestBuilder.html), [*remove*](resources/accounts/creatives/deal_associations/struct.RemoveRequestBuilder.html)\n      * [finalized_proposals](resources/accounts/finalized_proposals/struct.FinalizedProposalsActions.html)\n        * [*list*](resources/accounts/finalized_proposals/struct.ListRequestBuilder.html)\n      * [products](resources/accounts/products/struct.ProductsActions.html)\n        * [*get*](resources/accounts/products/struct.GetRequestBuilder.html), [*list*](resources/accounts/products/struct.ListRequestBuilder.html)\n      * [proposals](resources/accounts/proposals/struct.ProposalsActions.html)\n        * [*accept*](resources/accounts/proposals/struct.AcceptRequestBuilder.html), [*addNote*](resources/accounts/proposals/struct.AddNoteRequestBuilder.html), [*cancelNegotiation*](resources/accounts/proposals/struct.CancelNegotiationRequestBuilder.html), [*completeSetup*](resources/accounts/proposals/struct.CompleteSetupRequestBuilder.html), [*create*](resources/accounts/proposals/struct.CreateRequestBuilder.html), [*get*](resources/accounts/proposals/struct.GetRequestBuilder.html), [*list*](resources/accounts/proposals/struct.ListRequestBuilder.html), [*pause*](resources/accounts/proposals/struct.PauseRequestBuilder.html), [*resume*](resources/accounts/proposals/struct.ResumeRequestBuilder.html), [*update*](resources/accounts/proposals/struct.UpdateRequestBuilder.html)\n      * [publisher_profiles](resources/accounts/publisher_profiles/struct.PublisherProfilesActions.html)\n        * [*get*](resources/accounts/publisher_profiles/struct.GetRequestBuilder.html), [*list*](resources/accounts/publisher_profiles/struct.ListRequestBuilder.html)\n    * [bidders](resources/bidders/struct.BiddersActions.html)\n      * [accounts](resources/bidders/accounts/struct.AccountsActions.html)\n        * [filter_sets](resources/bidders/accounts/filter_sets/struct.FilterSetsActions.html)\n          * [*create*](resources/bidders/accounts/filter_sets/struct.CreateRequestBuilder.html), [*delete*](resources/bidders/accounts/filter_sets/struct.DeleteRequestBuilder.html), [*get*](resources/bidders/accounts/filter_sets/struct.GetRequestBuilder.html), [*list*](resources/bidders/accounts/filter_sets/struct.ListRequestBuilder.html)\n          * [bid_metrics](resources/bidders/accounts/filter_sets/bid_metrics/struct.BidMetricsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/bid_metrics/struct.ListRequestBuilder.html)\n          * [bid_response_errors](resources/bidders/accounts/filter_sets/bid_response_errors/struct.BidResponseErrorsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/bid_response_errors/struct.ListRequestBuilder.html)\n          * [bid_responses_without_bids](resources/bidders/accounts/filter_sets/bid_responses_without_bids/struct.BidResponsesWithoutBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/bid_responses_without_bids/struct.ListRequestBuilder.html)\n          * [filtered_bid_requests](resources/bidders/accounts/filter_sets/filtered_bid_requests/struct.FilteredBidRequestsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/filtered_bid_requests/struct.ListRequestBuilder.html)\n          * [filtered_bids](resources/bidders/accounts/filter_sets/filtered_bids/struct.FilteredBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/filtered_bids/struct.ListRequestBuilder.html)\n            * [creatives](resources/bidders/accounts/filter_sets/filtered_bids/creatives/struct.CreativesActions.html)\n              * [*list*](resources/bidders/accounts/filter_sets/filtered_bids/creatives/struct.ListRequestBuilder.html)\n            * [details](resources/bidders/accounts/filter_sets/filtered_bids/details/struct.DetailsActions.html)\n              * [*list*](resources/bidders/accounts/filter_sets/filtered_bids/details/struct.ListRequestBuilder.html)\n          * [impression_metrics](resources/bidders/accounts/filter_sets/impression_metrics/struct.ImpressionMetricsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/impression_metrics/struct.ListRequestBuilder.html)\n          * [losing_bids](resources/bidders/accounts/filter_sets/losing_bids/struct.LosingBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/losing_bids/struct.ListRequestBuilder.html)\n          * [non_billable_winning_bids](resources/bidders/accounts/filter_sets/non_billable_winning_bids/struct.NonBillableWinningBidsActions.html)\n            * [*list*](resources/bidders/accounts/filter_sets/non_billable_winning_bids/struct.ListRequestBuilder.html)\n      * [filter_sets](resources/bidders/filter_sets/struct.FilterSetsActions.html)\n        * [*create*](resources/bidders/filter_sets/struct.CreateRequestBuilder.html), [*delete*](resources/bidders/filter_sets/struct.DeleteRequestBuilder.html), [*get*](resources/bidders/filter_sets/struct.GetRequestBuilder.html), [*list*](resources/bidders/filter_sets/struct.ListRequestBuilder.html)\n        * [bid_metrics](resources/bidders/filter_sets/bid_metrics/struct.BidMetricsActions.html)\n          * [*list*](resources/bidders/filter_sets/bid_metrics/struct.ListRequestBuilder.html)\n        * [bid_response_errors](resources/bidders/filter_sets/bid_response_errors/struct.BidResponseErrorsActions.html)\n          * [*list*](resources/bidders/filter_sets/bid_response_errors/struct.ListRequestBuilder.html)\n        * [bid_responses_without_bids](resources/bidders/filter_sets/bid_responses_without_bids/struct.BidResponsesWithoutBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/bid_responses_without_bids/struct.ListRequestBuilder.html)\n        * [filtered_bid_requests](resources/bidders/filter_sets/filtered_bid_requests/struct.FilteredBidRequestsActions.html)\n          * [*list*](resources/bidders/filter_sets/filtered_bid_requests/struct.ListRequestBuilder.html)\n        * [filtered_bids](resources/bidders/filter_sets/filtered_bids/struct.FilteredBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/filtered_bids/struct.ListRequestBuilder.html)\n          * [creatives](resources/bidders/filter_sets/filtered_bids/creatives/struct.CreativesActions.html)\n            * [*list*](resources/bidders/filter_sets/filtered_bids/creatives/struct.ListRequestBuilder.html)\n          * [details](resources/bidders/filter_sets/filtered_bids/details/struct.DetailsActions.html)\n            * [*list*](resources/bidders/filter_sets/filtered_bids/details/struct.ListRequestBuilder.html)\n        * [impression_metrics](resources/bidders/filter_sets/impression_metrics/struct.ImpressionMetricsActions.html)\n          * [*list*](resources/bidders/filter_sets/impression_metrics/struct.ListRequestBuilder.html)\n        * [losing_bids](resources/bidders/filter_sets/losing_bids/struct.LosingBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/losing_bids/struct.ListRequestBuilder.html)\n        * [non_billable_winning_bids](resources/bidders/filter_sets/non_billable_winning_bids/struct.NonBillableWinningBidsActions.html)\n          * [*list*](resources/bidders/filter_sets/non_billable_winning_bids/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Manage your Ad Exchange buyer account configuration\n\n`https://www.googleapis.com/auth/adexchange.buyer`"]
+    pub const ADEXCHANGE_BUYER: &str = "https://www.googleapis.com/auth/adexchange.buyer";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -538,7 +542,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub billed_impressions: ::std::option::Option<crate::schemas::MetricValue>,
-        #[doc = "The number of bids that won an impression."]
+        #[doc = "The number of bids that won the auction."]
         #[serde(
             rename = "impressionsWon",
             default,
@@ -552,6 +556,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub measurable_impressions: ::std::option::Option<crate::schemas::MetricValue>,
+        #[doc = "The number of bids that won the auction and also won the mediation\nwaterfall (if any)."]
+        #[serde(
+            rename = "reachedQueries",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reached_queries: ::std::option::Option<crate::schemas::MetricValue>,
         #[doc = "The values of all dimensions associated with metric values in this row."]
         #[serde(
             rename = "rowDimensions",
@@ -626,9 +637,9 @@ pub mod schemas {
     pub enum BidResponseWithoutBidsStatusRowStatus {
         #[doc = "The response had no bids."]
         ResponsesWithoutBids,
-        #[doc = "The response had no bids for the specified account, though it may have\nincluded bids on behalf of other accounts."]
+        #[doc = "The response had no bids for the specified account, though it may have\nincluded bids on behalf of other accounts.\nApplies if:\n\n1. Request is on behalf of a bidder and an account filter is present.\n1. Request is on behalf of a child seat."]
         ResponsesWithoutBidsForAccount,
-        #[doc = "The response had no bids for the specified deal, though it may have\nincluded bids on other deals on behalf of the account to which the deal\nbelongs."]
+        #[doc = "The response had no bids for the specified deal, though it may have\nincluded bids on other deals on behalf of the account to which the deal\nbelongs. If request is on behalf of a bidder and an account filter is not\npresent, this also includes responses that have bids on behalf of\naccounts other than the account to which the deal belongs."]
         ResponsesWithoutBidsForDeal,
         #[doc = "A placeholder for an undefined status.\nThis value will never be returned in responses."]
         StatusUnspecified,
@@ -4653,6 +4664,8 @@ pub mod schemas {
         ExpandableIncorrectDirection,
         #[doc = "The ad uses an expandable vendor that is not supported."]
         ExpandableInvalidVendor,
+        #[doc = "Promotes speculative and/or experimental medical treatments."]
+        ExperimentalMedicalTreatment,
         #[doc = "The creative attempts to set cookies from a fourth party that is not\ncertified."]
         FourthPartyBrowserCookies,
         #[doc = "The ad tries to gain an unfair traffic advantage."]
@@ -4836,6 +4849,7 @@ pub mod schemas {
                 DisapprovalReason::ExpandableFunctionality => "EXPANDABLE_FUNCTIONALITY",
                 DisapprovalReason::ExpandableIncorrectDirection => "EXPANDABLE_INCORRECT_DIRECTION",
                 DisapprovalReason::ExpandableInvalidVendor => "EXPANDABLE_INVALID_VENDOR",
+                DisapprovalReason::ExperimentalMedicalTreatment => "EXPERIMENTAL_MEDICAL_TREATMENT",
                 DisapprovalReason::FourthPartyBrowserCookies => "FOURTH_PARTY_BROWSER_COOKIES",
                 DisapprovalReason::GainingAnUnfairAdvantage => "GAINING_AN_UNFAIR_ADVANTAGE",
                 DisapprovalReason::GamingTheGoogleNetwork => "GAMING_THE_GOOGLE_NETWORK",
@@ -4975,6 +4989,7 @@ pub mod schemas {
                 "EXPANDABLE_FUNCTIONALITY" => DisapprovalReason::ExpandableFunctionality,
                 "EXPANDABLE_INCORRECT_DIRECTION" => DisapprovalReason::ExpandableIncorrectDirection,
                 "EXPANDABLE_INVALID_VENDOR" => DisapprovalReason::ExpandableInvalidVendor,
+                "EXPERIMENTAL_MEDICAL_TREATMENT" => DisapprovalReason::ExperimentalMedicalTreatment,
                 "FOURTH_PARTY_BROWSER_COOKIES" => DisapprovalReason::FourthPartyBrowserCookies,
                 "GAINING_AN_UNFAIR_ADVANTAGE" => DisapprovalReason::GainingAnUnfairAdvantage,
                 "GAMING_THE_GOOGLE_NETWORK" => DisapprovalReason::GamingTheGoogleNetwork,
@@ -5126,6 +5141,7 @@ pub mod schemas {
                 "EXPANDABLE_FUNCTIONALITY" => DisapprovalReason::ExpandableFunctionality,
                 "EXPANDABLE_INCORRECT_DIRECTION" => DisapprovalReason::ExpandableIncorrectDirection,
                 "EXPANDABLE_INVALID_VENDOR" => DisapprovalReason::ExpandableInvalidVendor,
+                "EXPERIMENTAL_MEDICAL_TREATMENT" => DisapprovalReason::ExperimentalMedicalTreatment,
                 "FOURTH_PARTY_BROWSER_COOKIES" => DisapprovalReason::FourthPartyBrowserCookies,
                 "GAINING_AN_UNFAIR_ADVANTAGE" => DisapprovalReason::GainingAnUnfairAdvantage,
                 "GAMING_THE_GOOGLE_NETWORK" => DisapprovalReason::GamingTheGoogleNetwork,
@@ -5307,7 +5323,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub environment: ::std::option::Option<crate::schemas::FilterSetEnvironment>,
-        #[doc = "The list of formats on which to filter; may be empty. The filters\nrepresented by multiple formats are ORed together (i.e., if non-empty,\nresults must match any one of the formats)."]
+        #[doc = "Creative format bidded on or allowed to bid on, can be empty."]
+        #[serde(
+            rename = "format",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub format: ::std::option::Option<crate::schemas::FilterSetFormat>,
+        #[doc = "Creative formats bidded on or allowed to bid on, can be empty. Although\nthis field is a list, it can only be populated with a single item. A\nHTTP 400 bad request error will be returned in the response if you specify\nmultiple items."]
         #[serde(
             rename = "formats",
             default,
@@ -5522,6 +5545,92 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for FilterSetEnvironment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FilterSetFormat {
+        #[doc = "A placeholder for an undefined format; indicates that no format filter\nwill be applied."]
+        FormatUnspecified,
+        #[doc = "The ad impression is a native ad, and display (i.e., image) format."]
+        NativeDisplay,
+        #[doc = "The ad impression is a native ad, and video format."]
+        NativeVideo,
+        #[doc = "The ad impression is not a native ad, and display (i.e., image) format."]
+        NonNativeDisplay,
+        #[doc = "The ad impression is not a native ad, and video format."]
+        NonNativeVideo,
+    }
+    impl FilterSetFormat {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FilterSetFormat::FormatUnspecified => "FORMAT_UNSPECIFIED",
+                FilterSetFormat::NativeDisplay => "NATIVE_DISPLAY",
+                FilterSetFormat::NativeVideo => "NATIVE_VIDEO",
+                FilterSetFormat::NonNativeDisplay => "NON_NATIVE_DISPLAY",
+                FilterSetFormat::NonNativeVideo => "NON_NATIVE_VIDEO",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FilterSetFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FilterSetFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FilterSetFormat, ()> {
+            Ok(match s {
+                "FORMAT_UNSPECIFIED" => FilterSetFormat::FormatUnspecified,
+                "NATIVE_DISPLAY" => FilterSetFormat::NativeDisplay,
+                "NATIVE_VIDEO" => FilterSetFormat::NativeVideo,
+                "NON_NATIVE_DISPLAY" => FilterSetFormat::NonNativeDisplay,
+                "NON_NATIVE_VIDEO" => FilterSetFormat::NonNativeVideo,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for FilterSetFormat {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FilterSetFormat {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FilterSetFormat {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "FORMAT_UNSPECIFIED" => FilterSetFormat::FormatUnspecified,
+                "NATIVE_DISPLAY" => FilterSetFormat::NativeDisplay,
+                "NATIVE_VIDEO" => FilterSetFormat::NativeVideo,
+                "NON_NATIVE_DISPLAY" => FilterSetFormat::NonNativeDisplay,
+                "NON_NATIVE_VIDEO" => FilterSetFormat::NonNativeVideo,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for FilterSetFormat {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FilterSetFormat {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -7502,8 +7611,12 @@ pub mod schemas {
     pub enum NonBillableWinningBidStatusRowStatus {
         #[doc = "The buyer was not billed because the ad was not rendered by the\npublisher."]
         AdNotRendered,
+        #[doc = "A video impression was served but a fatal error was reported from the\nclient during playback."]
+        FatalVastError,
         #[doc = "The buyer was not billed because the impression won by the bid was\ndetermined to be invalid."]
         InvalidImpression,
+        #[doc = "The buyer was not billed because the ad was outplaced in the mediation\nwaterfall."]
+        LostInMediation,
         #[doc = "A placeholder for an undefined status.\nThis value will never be returned in responses."]
         StatusUnspecified,
     }
@@ -7511,7 +7624,9 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 NonBillableWinningBidStatusRowStatus::AdNotRendered => "AD_NOT_RENDERED",
+                NonBillableWinningBidStatusRowStatus::FatalVastError => "FATAL_VAST_ERROR",
                 NonBillableWinningBidStatusRowStatus::InvalidImpression => "INVALID_IMPRESSION",
+                NonBillableWinningBidStatusRowStatus::LostInMediation => "LOST_IN_MEDIATION",
                 NonBillableWinningBidStatusRowStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
             }
         }
@@ -7526,7 +7641,9 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<NonBillableWinningBidStatusRowStatus, ()> {
             Ok(match s {
                 "AD_NOT_RENDERED" => NonBillableWinningBidStatusRowStatus::AdNotRendered,
+                "FATAL_VAST_ERROR" => NonBillableWinningBidStatusRowStatus::FatalVastError,
                 "INVALID_IMPRESSION" => NonBillableWinningBidStatusRowStatus::InvalidImpression,
+                "LOST_IN_MEDIATION" => NonBillableWinningBidStatusRowStatus::LostInMediation,
                 "STATUS_UNSPECIFIED" => NonBillableWinningBidStatusRowStatus::StatusUnspecified,
                 _ => return Err(()),
             })
@@ -7553,7 +7670,9 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "AD_NOT_RENDERED" => NonBillableWinningBidStatusRowStatus::AdNotRendered,
+                "FATAL_VAST_ERROR" => NonBillableWinningBidStatusRowStatus::FatalVastError,
                 "INVALID_IMPRESSION" => NonBillableWinningBidStatusRowStatus::InvalidImpression,
+                "LOST_IN_MEDIATION" => NonBillableWinningBidStatusRowStatus::LostInMediation,
                 "STATUS_UNSPECIFIED" => NonBillableWinningBidStatusRowStatus::StatusUnspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -8866,6 +8985,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub google_plus_url: ::std::option::Option<String>,
+        #[doc = "Indicates if this profile is the parent profile of the seller. A parent\nprofile represents all the inventory from the seller, as opposed to child\nprofile that is created to brand a portion of inventory. One seller should\nhave only one parent publisher profile, and can have multiple child\nprofiles. Publisher profiles for the same seller will have same value of\nfield google.ads.adexchange.buyer.v2beta1.PublisherProfile.seller.\nSee https://support.google.com/admanager/answer/6035806?hl=en for details."]
+        #[serde(
+            rename = "isParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub is_parent: ::std::option::Option<bool>,
         #[doc = "A Google public URL to the logo for this publisher profile. The logo is\nstored as a PNG, JPG, or GIF image."]
         #[serde(
             rename = "logoUrl",
@@ -10264,7 +10390,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -10272,8 +10398,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -10299,7 +10437,7 @@ pub mod resources {
     pub mod accounts {
         pub mod params {}
         pub struct AccountsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AccountsActions<'a> {
@@ -10358,7 +10496,7 @@ pub mod resources {
         pub mod clients {
             pub mod params {}
             pub struct ClientsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ClientsActions<'a> {
@@ -10478,7 +10616,7 @@ pub mod resources {
             #[doc = "Created via [ClientsActions::create()](struct.ClientsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Client,
                 account_id: i64,
@@ -10614,7 +10752,10 @@ pub mod resources {
                     output.push_str("/clients");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10638,7 +10779,7 @@ pub mod resources {
             #[doc = "Created via [ClientsActions::get()](struct.ClientsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: i64,
                 client_account_id: i64,
@@ -10781,7 +10922,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10805,7 +10949,7 @@ pub mod resources {
             #[doc = "Created via [ClientsActions::list()](struct.ClientsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: i64,
                 page_size: Option<i32>,
@@ -11057,7 +11201,10 @@ pub mod resources {
                     output.push_str("/clients");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -11095,7 +11242,7 @@ pub mod resources {
             #[doc = "Created via [ClientsActions::update()](struct.ClientsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Client,
                 account_id: i64,
@@ -11240,7 +11387,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -11264,7 +11414,7 @@ pub mod resources {
             pub mod invitations {
                 pub mod params {}
                 pub struct InvitationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> InvitationsActions<'a> {
@@ -11353,7 +11503,7 @@ pub mod resources {
                 #[doc = "Created via [InvitationsActions::create()](struct.InvitationsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ClientUserInvitation,
                     account_id: i64,
@@ -11504,7 +11654,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11528,7 +11679,7 @@ pub mod resources {
                 #[doc = "Created via [InvitationsActions::get()](struct.InvitationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: i64,
                     client_account_id: i64,
@@ -11686,7 +11837,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11710,7 +11862,7 @@ pub mod resources {
                 #[doc = "Created via [InvitationsActions::list()](struct.InvitationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: i64,
                     client_account_id: String,
@@ -11977,7 +12129,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -12015,7 +12168,7 @@ pub mod resources {
             pub mod users {
                 pub mod params {}
                 pub struct UsersActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> UsersActions<'a> {
@@ -12106,7 +12259,7 @@ pub mod resources {
                 #[doc = "Created via [UsersActions::get()](struct.UsersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: i64,
                     client_account_id: i64,
@@ -12262,7 +12415,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12286,7 +12440,7 @@ pub mod resources {
                 #[doc = "Created via [UsersActions::list()](struct.UsersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: i64,
                     client_account_id: String,
@@ -12549,7 +12703,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -12586,7 +12741,7 @@ pub mod resources {
                 #[doc = "Created via [UsersActions::update()](struct.UsersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ClientUser,
                     account_id: i64,
@@ -12744,7 +12899,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12846,7 +13002,7 @@ pub mod resources {
                 }
             }
             pub struct CreativesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> CreativesActions<'a> {
@@ -13013,7 +13169,7 @@ pub mod resources {
             #[doc = "Created via [CreativesActions::create()](struct.CreativesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Creative,
                 account_id: String,
@@ -13158,7 +13314,10 @@ pub mod resources {
                     output.push_str("/creatives");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("duplicateIdMode", &self.duplicate_id_mode)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -13183,7 +13342,7 @@ pub mod resources {
             #[doc = "Created via [CreativesActions::get()](struct.CreativesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 creative_id: String,
@@ -13324,7 +13483,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -13348,7 +13510,7 @@ pub mod resources {
             #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 page_size: Option<i32>,
@@ -13599,7 +13761,10 @@ pub mod resources {
                     output.push_str("/creatives");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -13637,7 +13802,7 @@ pub mod resources {
             #[doc = "Created via [CreativesActions::stop_watching()](struct.CreativesActions.html#method.stop_watching)"]
             #[derive(Debug, Clone)]
             pub struct StopWatchingRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::StopWatchingCreativeRequest,
                 account_id: String,
@@ -13781,7 +13946,10 @@ pub mod resources {
                     output.push_str(":stopWatching");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -13805,7 +13973,7 @@ pub mod resources {
             #[doc = "Created via [CreativesActions::update()](struct.CreativesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Creative,
                 account_id: String,
@@ -13948,7 +14116,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -13972,7 +14143,7 @@ pub mod resources {
             #[doc = "Created via [CreativesActions::watch()](struct.CreativesActions.html#method.watch)"]
             #[derive(Debug, Clone)]
             pub struct WatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WatchCreativeRequest,
                 account_id: String,
@@ -14116,7 +14287,10 @@ pub mod resources {
                     output.push_str(":watch");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14140,7 +14314,7 @@ pub mod resources {
             pub mod deal_associations {
                 pub mod params {}
                 pub struct DealAssociationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> DealAssociationsActions<'a> {
@@ -14230,7 +14404,7 @@ pub mod resources {
                 #[doc = "Created via [DealAssociationsActions::add()](struct.DealAssociationsActions.html#method.add)"]
                 #[derive(Debug, Clone)]
                 pub struct AddRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AddDealAssociationRequest,
                     account_id: String,
@@ -14377,7 +14551,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14401,7 +14576,7 @@ pub mod resources {
                 #[doc = "Created via [DealAssociationsActions::list()](struct.DealAssociationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     account_id: String,
                     creative_id: String,
@@ -14669,7 +14844,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -14707,7 +14883,7 @@ pub mod resources {
                 #[doc = "Created via [DealAssociationsActions::remove()](struct.DealAssociationsActions.html#method.remove)"]
                 #[derive(Debug, Clone)]
                 pub struct RemoveRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::RemoveDealAssociationRequest,
                     account_id: String,
@@ -14854,7 +15030,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -14960,7 +15137,7 @@ pub mod resources {
                 }
             }
             pub struct FinalizedProposalsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> FinalizedProposalsActions<'a> {
@@ -14994,7 +15171,7 @@ pub mod resources {
             #[doc = "Created via [FinalizedProposalsActions::list()](struct.FinalizedProposalsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 filter: Option<String>,
@@ -15256,7 +15433,10 @@ pub mod resources {
                     output.push_str("/finalizedProposals");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("filterSyntax", &self.filter_syntax)]);
@@ -15296,7 +15476,7 @@ pub mod resources {
         pub mod products {
             pub mod params {}
             pub struct ProductsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ProductsActions<'a> {
@@ -15353,7 +15533,7 @@ pub mod resources {
             #[doc = "Created via [ProductsActions::get()](struct.ProductsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 product_id: String,
@@ -15494,7 +15674,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -15518,7 +15701,7 @@ pub mod resources {
             #[doc = "Created via [ProductsActions::list()](struct.ProductsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 filter: Option<String>,
@@ -15769,7 +15952,10 @@ pub mod resources {
                     output.push_str("/products");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -15888,7 +16074,7 @@ pub mod resources {
                 }
             }
             pub struct ProposalsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ProposalsActions<'a> {
@@ -16152,7 +16338,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::accept()](struct.ProposalsActions.html#method.accept)"]
             #[derive(Debug, Clone)]
             pub struct AcceptRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AcceptProposalRequest,
                 account_id: String,
@@ -16296,7 +16482,10 @@ pub mod resources {
                     output.push_str(":accept");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16320,7 +16509,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::add_note()](struct.ProposalsActions.html#method.add_note)"]
             #[derive(Debug, Clone)]
             pub struct AddNoteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AddNoteRequest,
                 account_id: String,
@@ -16462,7 +16651,10 @@ pub mod resources {
                     output.push_str(":addNote");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16486,7 +16678,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::cancel_negotiation()](struct.ProposalsActions.html#method.cancel_negotiation)"]
             #[derive(Debug, Clone)]
             pub struct CancelNegotiationRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CancelNegotiationRequest,
                 account_id: String,
@@ -16630,7 +16822,10 @@ pub mod resources {
                     output.push_str(":cancelNegotiation");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16654,7 +16849,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::complete_setup()](struct.ProposalsActions.html#method.complete_setup)"]
             #[derive(Debug, Clone)]
             pub struct CompleteSetupRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CompleteSetupRequest,
                 account_id: String,
@@ -16798,7 +16993,10 @@ pub mod resources {
                     output.push_str(":completeSetup");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16822,7 +17020,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::create()](struct.ProposalsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Proposal,
                 account_id: String,
@@ -16957,7 +17155,10 @@ pub mod resources {
                     output.push_str("/proposals");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16981,7 +17182,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::get()](struct.ProposalsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 proposal_id: String,
@@ -17122,7 +17323,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17146,7 +17350,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::list()](struct.ProposalsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 filter: Option<String>,
@@ -17407,7 +17611,10 @@ pub mod resources {
                     output.push_str("/proposals");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("filterSyntax", &self.filter_syntax)]);
@@ -17446,7 +17653,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::pause()](struct.ProposalsActions.html#method.pause)"]
             #[derive(Debug, Clone)]
             pub struct PauseRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::PauseProposalRequest,
                 account_id: String,
@@ -17590,7 +17797,10 @@ pub mod resources {
                     output.push_str(":pause");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17614,7 +17824,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::resume()](struct.ProposalsActions.html#method.resume)"]
             #[derive(Debug, Clone)]
             pub struct ResumeRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ResumeProposalRequest,
                 account_id: String,
@@ -17758,7 +17968,10 @@ pub mod resources {
                     output.push_str(":resume");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17782,7 +17995,7 @@ pub mod resources {
             #[doc = "Created via [ProposalsActions::update()](struct.ProposalsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Proposal,
                 account_id: String,
@@ -17925,7 +18138,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17950,7 +18166,7 @@ pub mod resources {
         pub mod publisher_profiles {
             pub mod params {}
             pub struct PublisherProfilesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> PublisherProfilesActions<'a> {
@@ -18006,7 +18222,7 @@ pub mod resources {
             #[doc = "Created via [PublisherProfilesActions::get()](struct.PublisherProfilesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 publisher_profile_id: String,
@@ -18147,7 +18363,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -18171,7 +18390,7 @@ pub mod resources {
             #[doc = "Created via [PublisherProfilesActions::list()](struct.PublisherProfilesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 account_id: String,
                 page_size: Option<i32>,
@@ -18421,7 +18640,10 @@ pub mod resources {
                     output.push_str("/publisherProfiles");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -18460,7 +18682,7 @@ pub mod resources {
     pub mod bidders {
         pub mod params {}
         pub struct BiddersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> BiddersActions<'a> {
@@ -18485,7 +18707,7 @@ pub mod resources {
         pub mod accounts {
             pub mod params {}
             pub struct AccountsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> AccountsActions<'a> {
@@ -18506,7 +18728,7 @@ pub mod resources {
             pub mod filter_sets {
                 pub mod params {}
                 pub struct FilterSetsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> FilterSetsActions<'a> {
@@ -18625,7 +18847,7 @@ pub mod resources {
                 #[doc = "Created via [FilterSetsActions::create()](struct.FilterSetsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::FilterSet,
                     owner_name: String,
@@ -18769,7 +18991,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("isTransient", &self.is_transient)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -18794,7 +19017,7 @@ pub mod resources {
                 #[doc = "Created via [FilterSetsActions::delete()](struct.FilterSetsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -18929,7 +19152,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -18953,7 +19177,7 @@ pub mod resources {
                 #[doc = "Created via [FilterSetsActions::get()](struct.FilterSetsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -19088,7 +19312,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -19112,7 +19337,7 @@ pub mod resources {
                 #[doc = "Created via [FilterSetsActions::list()](struct.FilterSetsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     owner_name: String,
                     page_size: Option<i32>,
@@ -19365,7 +19590,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -19402,7 +19628,7 @@ pub mod resources {
                 pub mod bid_metrics {
                     pub mod params {}
                     pub struct BidMetricsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> BidMetricsActions<'a> {
@@ -19437,7 +19663,7 @@ pub mod resources {
                     #[doc = "Created via [BidMetricsActions::list()](struct.BidMetricsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -19695,7 +19921,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -19734,7 +19960,7 @@ pub mod resources {
                 pub mod bid_response_errors {
                     pub mod params {}
                     pub struct BidResponseErrorsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> BidResponseErrorsActions<'a> {
@@ -19769,7 +19995,7 @@ pub mod resources {
                     #[doc = "Created via [BidResponseErrorsActions::list()](struct.BidResponseErrorsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -20033,7 +20259,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -20072,7 +20298,7 @@ pub mod resources {
                 pub mod bid_responses_without_bids {
                     pub mod params {}
                     pub struct BidResponsesWithoutBidsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> BidResponsesWithoutBidsActions<'a> {
@@ -20107,7 +20333,7 @@ pub mod resources {
                     #[doc = "Created via [BidResponsesWithoutBidsActions::list()](struct.BidResponsesWithoutBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -20378,7 +20604,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -20417,7 +20643,7 @@ pub mod resources {
                 pub mod filtered_bid_requests {
                     pub mod params {}
                     pub struct FilteredBidRequestsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> FilteredBidRequestsActions<'a> {
@@ -20452,7 +20678,7 @@ pub mod resources {
                     #[doc = "Created via [FilteredBidRequestsActions::list()](struct.FilteredBidRequestsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -20716,7 +20942,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -20755,7 +20981,7 @@ pub mod resources {
                 pub mod filtered_bids {
                     pub mod params {}
                     pub struct FilteredBidsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> FilteredBidsActions<'a> {
@@ -20796,7 +21022,7 @@ pub mod resources {
                     #[doc = "Created via [FilteredBidsActions::list()](struct.FilteredBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -21056,7 +21282,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -21094,7 +21320,7 @@ pub mod resources {
                     pub mod creatives {
                         pub mod params {}
                         pub struct CreativesActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> CreativesActions<'a> {
@@ -21131,7 +21357,7 @@ pub mod resources {
                         #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             filter_set_name: String,
                             creative_status_id: i32,
@@ -21415,7 +21641,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -21454,7 +21680,7 @@ pub mod resources {
                     pub mod details {
                         pub mod params {}
                         pub struct DetailsActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> DetailsActions<'a> {
@@ -21491,7 +21717,7 @@ pub mod resources {
                         #[doc = "Created via [DetailsActions::list()](struct.DetailsActions.html#method.list)"]
                         #[derive(Debug, Clone)]
                         pub struct ListRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             filter_set_name: String,
                             creative_status_id: i32,
@@ -21771,7 +21997,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -21811,7 +22037,7 @@ pub mod resources {
                 pub mod impression_metrics {
                     pub mod params {}
                     pub struct ImpressionMetricsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> ImpressionMetricsActions<'a> {
@@ -21846,7 +22072,7 @@ pub mod resources {
                     #[doc = "Created via [ImpressionMetricsActions::list()](struct.ImpressionMetricsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -22110,7 +22336,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -22149,7 +22375,7 @@ pub mod resources {
                 pub mod losing_bids {
                     pub mod params {}
                     pub struct LosingBidsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> LosingBidsActions<'a> {
@@ -22184,7 +22410,7 @@ pub mod resources {
                     #[doc = "Created via [LosingBidsActions::list()](struct.LosingBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -22444,7 +22670,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -22483,7 +22709,7 @@ pub mod resources {
                 pub mod non_billable_winning_bids {
                     pub mod params {}
                     pub struct NonBillableWinningBidsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> NonBillableWinningBidsActions<'a> {
@@ -22518,7 +22744,7 @@ pub mod resources {
                     #[doc = "Created via [NonBillableWinningBidsActions::list()](struct.NonBillableWinningBidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         page_size: Option<i32>,
@@ -22789,7 +23015,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -22830,7 +23056,7 @@ pub mod resources {
         pub mod filter_sets {
             pub mod params {}
             pub struct FilterSetsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> FilterSetsActions<'a> {
@@ -22970,7 +23196,7 @@ pub mod resources {
             #[doc = "Created via [FilterSetsActions::create()](struct.FilterSetsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::FilterSet,
                 owner_name: String,
@@ -23111,7 +23337,10 @@ pub mod resources {
                     output.push_str("/filterSets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("isTransient", &self.is_transient)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -23136,7 +23365,7 @@ pub mod resources {
             #[doc = "Created via [FilterSetsActions::delete()](struct.FilterSetsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -23268,7 +23497,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -23292,7 +23524,7 @@ pub mod resources {
             #[doc = "Created via [FilterSetsActions::get()](struct.FilterSetsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -23424,7 +23656,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -23448,7 +23683,7 @@ pub mod resources {
             #[doc = "Created via [FilterSetsActions::list()](struct.FilterSetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 owner_name: String,
                 page_size: Option<i32>,
@@ -23693,7 +23928,10 @@ pub mod resources {
                     output.push_str("/filterSets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -23730,7 +23968,7 @@ pub mod resources {
             pub mod bid_metrics {
                 pub mod params {}
                 pub struct BidMetricsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> BidMetricsActions<'a> {
@@ -23762,7 +24000,7 @@ pub mod resources {
                 #[doc = "Created via [BidMetricsActions::list()](struct.BidMetricsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -24016,7 +24254,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -24054,7 +24293,7 @@ pub mod resources {
             pub mod bid_response_errors {
                 pub mod params {}
                 pub struct BidResponseErrorsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> BidResponseErrorsActions<'a> {
@@ -24086,7 +24325,7 @@ pub mod resources {
                 #[doc = "Created via [BidResponseErrorsActions::list()](struct.BidResponseErrorsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -24340,7 +24579,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -24378,7 +24618,7 @@ pub mod resources {
             pub mod bid_responses_without_bids {
                 pub mod params {}
                 pub struct BidResponsesWithoutBidsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> BidResponsesWithoutBidsActions<'a> {
@@ -24410,7 +24650,7 @@ pub mod resources {
                 #[doc = "Created via [BidResponsesWithoutBidsActions::list()](struct.BidResponsesWithoutBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -24675,7 +24915,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -24713,7 +24954,7 @@ pub mod resources {
             pub mod filtered_bid_requests {
                 pub mod params {}
                 pub struct FilteredBidRequestsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> FilteredBidRequestsActions<'a> {
@@ -24745,7 +24986,7 @@ pub mod resources {
                 #[doc = "Created via [FilteredBidRequestsActions::list()](struct.FilteredBidRequestsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -24999,7 +25240,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -25037,7 +25279,7 @@ pub mod resources {
             pub mod filtered_bids {
                 pub mod params {}
                 pub struct FilteredBidsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> FilteredBidsActions<'a> {
@@ -25075,7 +25317,7 @@ pub mod resources {
                 #[doc = "Created via [FilteredBidsActions::list()](struct.FilteredBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -25329,7 +25571,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -25366,7 +25609,7 @@ pub mod resources {
                 pub mod creatives {
                     pub mod params {}
                     pub struct CreativesActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> CreativesActions<'a> {
@@ -25403,7 +25646,7 @@ pub mod resources {
                     #[doc = "Created via [CreativesActions::list()](struct.CreativesActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         creative_status_id: i32,
@@ -25681,7 +25924,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -25720,7 +25963,7 @@ pub mod resources {
                 pub mod details {
                     pub mod params {}
                     pub struct DetailsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> DetailsActions<'a> {
@@ -25757,7 +26000,7 @@ pub mod resources {
                     #[doc = "Created via [DetailsActions::list()](struct.DetailsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         filter_set_name: String,
                         creative_status_id: i32,
@@ -26035,7 +26278,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -26075,7 +26318,7 @@ pub mod resources {
             pub mod impression_metrics {
                 pub mod params {}
                 pub struct ImpressionMetricsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ImpressionMetricsActions<'a> {
@@ -26107,7 +26350,7 @@ pub mod resources {
                 #[doc = "Created via [ImpressionMetricsActions::list()](struct.ImpressionMetricsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -26363,7 +26606,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -26401,7 +26645,7 @@ pub mod resources {
             pub mod losing_bids {
                 pub mod params {}
                 pub struct LosingBidsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> LosingBidsActions<'a> {
@@ -26433,7 +26677,7 @@ pub mod resources {
                 #[doc = "Created via [LosingBidsActions::list()](struct.LosingBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -26687,7 +26931,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -26725,7 +26970,7 @@ pub mod resources {
             pub mod non_billable_winning_bids {
                 pub mod params {}
                 pub struct NonBillableWinningBidsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> NonBillableWinningBidsActions<'a> {
@@ -26757,7 +27002,7 @@ pub mod resources {
                 #[doc = "Created via [NonBillableWinningBidsActions::list()](struct.NonBillableWinningBidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     filter_set_name: String,
                     page_size: Option<i32>,
@@ -27022,7 +27267,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -27076,9 +27322,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -27120,7 +27364,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

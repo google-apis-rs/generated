@@ -1,4 +1,12 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*test*](resources/projects/struct.TestRequestBuilder.html)\n      * [releases](resources/projects/releases/struct.ReleasesActions.html)\n        * [*create*](resources/projects/releases/struct.CreateRequestBuilder.html), [*delete*](resources/projects/releases/struct.DeleteRequestBuilder.html), [*get*](resources/projects/releases/struct.GetRequestBuilder.html), [*getExecutable*](resources/projects/releases/struct.GetExecutableRequestBuilder.html), [*list*](resources/projects/releases/struct.ListRequestBuilder.html), [*patch*](resources/projects/releases/struct.PatchRequestBuilder.html)\n      * [rulesets](resources/projects/rulesets/struct.RulesetsActions.html)\n        * [*create*](resources/projects/rulesets/struct.CreateRequestBuilder.html), [*delete*](resources/projects/rulesets/struct.DeleteRequestBuilder.html), [*get*](resources/projects/rulesets/struct.GetRequestBuilder.html), [*list*](resources/projects/rulesets/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and administer all your Firebase data and settings\n\n`https://www.googleapis.com/auth/firebase`"]
+    pub const FIREBASE: &str = "https://www.googleapis.com/auth/firebase";
+    #[doc = "View all your Firebase data and settings\n\n`https://www.googleapis.com/auth/firebase.readonly`"]
+    pub const FIREBASE_READONLY: &str = "https://www.googleapis.com/auth/firebase.readonly";
+}
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Arg {
@@ -47,6 +55,40 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Empty {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ExpressionReport {
+        #[doc = "Subexpressions"]
+        #[serde(
+            rename = "children",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub children: ::std::option::Option<Vec<crate::schemas::ExpressionReport>>,
+        #[doc = "Position of expression in original rules source."]
+        #[serde(
+            rename = "sourcePosition",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub source_position: ::std::option::Option<crate::schemas::SourcePosition>,
+        #[doc = "Values that this expression evaluated to when encountered."]
+        #[serde(
+            rename = "values",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub values: ::std::option::Option<Vec<crate::schemas::ValueCount>>,
+    }
+    impl ::google_field_selector::FieldSelector for ExpressionReport {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ExpressionReport {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -573,6 +615,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Metadata {
+        #[doc = "Services that this ruleset has declarations for (e.g.,\n\"cloud.firestore\"). There may be 0+ of these."]
+        #[serde(
+            rename = "services",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub services: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for Metadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Metadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Release {
         #[doc = "Time the release was created.\nOutput only."]
         #[serde(
@@ -660,6 +733,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
+        #[doc = "The metadata for this ruleset.\nOutput only."]
+        #[serde(
+            rename = "metadata",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub metadata: ::std::option::Option<crate::schemas::Metadata>,
         #[doc = "Name of the `Ruleset`. The ruleset_id is auto generated by the service.\nFormat: `projects/{project_id}/rulesets/{ruleset_id}`\nOutput only."]
         #[serde(
             rename = "name",
@@ -736,6 +816,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column: ::std::option::Option<i32>,
+        #[doc = "Start position relative to the beginning of the file."]
+        #[serde(
+            rename = "currentOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub current_offset: ::std::option::Option<i32>,
+        #[doc = "End position relative to the beginning of the file."]
+        #[serde(
+            rename = "endOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_offset: ::std::option::Option<i32>,
         #[doc = "Name of the `File`."]
         #[serde(
             rename = "fileName",
@@ -770,6 +864,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expectation: ::std::option::Option<crate::schemas::TestCaseExpectation>,
+        #[doc = "Specifies what should be included in the response."]
+        #[serde(
+            rename = "expressionReportLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub expression_report_level:
+            ::std::option::Option<crate::schemas::TestCaseExpressionReportLevel>,
         #[doc = "Optional function mocks for service-defined functions. If not set, any\nservice defined function is expected to return an error, which may or may\nnot influence the test outcome."]
         #[serde(
             rename = "functionMocks",
@@ -886,6 +988,87 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TestCaseExpressionReportLevel {
+        #[doc = "Include detailed reporting on expressions evaluated."]
+        Full,
+        #[doc = "No level has been specified. Defaults to \"NONE\" behavior."]
+        LevelUnspecified,
+        #[doc = "Do not include any additional information."]
+        None,
+        #[doc = "Only include the expressions that were visited during evaluation."]
+        Visited,
+    }
+    impl TestCaseExpressionReportLevel {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TestCaseExpressionReportLevel::Full => "FULL",
+                TestCaseExpressionReportLevel::LevelUnspecified => "LEVEL_UNSPECIFIED",
+                TestCaseExpressionReportLevel::None => "NONE",
+                TestCaseExpressionReportLevel::Visited => "VISITED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TestCaseExpressionReportLevel {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TestCaseExpressionReportLevel {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TestCaseExpressionReportLevel, ()> {
+            Ok(match s {
+                "FULL" => TestCaseExpressionReportLevel::Full,
+                "LEVEL_UNSPECIFIED" => TestCaseExpressionReportLevel::LevelUnspecified,
+                "NONE" => TestCaseExpressionReportLevel::None,
+                "VISITED" => TestCaseExpressionReportLevel::Visited,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TestCaseExpressionReportLevel {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TestCaseExpressionReportLevel {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TestCaseExpressionReportLevel {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "FULL" => TestCaseExpressionReportLevel::Full,
+                "LEVEL_UNSPECIFIED" => TestCaseExpressionReportLevel::LevelUnspecified,
+                "NONE" => TestCaseExpressionReportLevel::None,
+                "VISITED" => TestCaseExpressionReportLevel::Visited,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TestCaseExpressionReportLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TestCaseExpressionReportLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum TestCasePathEncoding {
         #[doc = "No encoding has been specified. Defaults to \"URL_ENCODED\" behavior."]
         EncodingUnspecified,
@@ -977,6 +1160,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub error_position: ::std::option::Option<crate::schemas::SourcePosition>,
+        #[doc = "The mapping from expression in the ruleset AST to the values they were\nevaluated to. Partially-nested to mirror AST structure. Note that this\nfield is actually tracking expressions and not permission statements in\ncontrast to the \"visited_expressions\" field above. Literal expressions\nare omitted."]
+        #[serde(
+            rename = "expressionReports",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub expression_reports: ::std::option::Option<Vec<crate::schemas::ExpressionReport>>,
         #[doc = "The set of function calls made to service-defined methods.\n\nFunction calls are included in the order in which they are encountered\nduring evaluation, are provided for both mocked and unmocked functions,\nand included on the response regardless of the test `state`."]
         #[serde(
             rename = "functionCalls",
@@ -1198,6 +1388,33 @@ pub mod schemas {
         }
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct ValueCount {
+        #[doc = "The amount of times that expression returned."]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub count: ::std::option::Option<i32>,
+        #[doc = "The return value of the expression"]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<::serde_json::Value>,
+    }
+    impl ::google_field_selector::FieldSelector for ValueCount {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ValueCount {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct VisitedExpression {
         #[doc = "Position in the `Source` or `Ruleset` where an expression was visited."]
         #[serde(
@@ -1375,7 +1592,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1383,8 +1600,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1403,7 +1632,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1452,7 +1681,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::test()](struct.ProjectsActions.html#method.test)"]
         #[derive(Debug, Clone)]
         pub struct TestRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TestRulesetRequest,
             name: String,
@@ -1584,7 +1813,10 @@ pub mod resources {
                 output.push_str(":test");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1703,7 +1935,7 @@ pub mod resources {
                 }
             }
             pub struct ReleasesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ReleasesActions<'a> {
@@ -1845,7 +2077,7 @@ pub mod resources {
             #[doc = "Created via [ReleasesActions::create()](struct.ReleasesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Release,
                 name: String,
@@ -1980,7 +2212,10 @@ pub mod resources {
                     output.push_str("/releases");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2004,7 +2239,7 @@ pub mod resources {
             #[doc = "Created via [ReleasesActions::delete()](struct.ReleasesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2136,7 +2371,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2160,7 +2398,7 @@ pub mod resources {
             #[doc = "Created via [ReleasesActions::get()](struct.ReleasesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2292,7 +2530,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2316,7 +2557,7 @@ pub mod resources {
             #[doc = "Created via [ReleasesActions::get_executable()](struct.ReleasesActions.html#method.get_executable)"]
             #[derive(Debug, Clone)]
             pub struct GetExecutableRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 executable_version: Option<
@@ -2462,7 +2703,10 @@ pub mod resources {
                     output.push_str(":getExecutable");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("executableVersion", &self.executable_version)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -2487,7 +2731,7 @@ pub mod resources {
             #[doc = "Created via [ReleasesActions::list()](struct.ReleasesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -2738,7 +2982,10 @@ pub mod resources {
                     output.push_str("/releases");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2776,7 +3023,7 @@ pub mod resources {
             #[doc = "Created via [ReleasesActions::patch()](struct.ReleasesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateReleaseRequest,
                 name: String,
@@ -2910,7 +3157,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2935,7 +3185,7 @@ pub mod resources {
         pub mod rulesets {
             pub mod params {}
             pub struct RulesetsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> RulesetsActions<'a> {
@@ -3030,7 +3280,7 @@ pub mod resources {
             #[doc = "Created via [RulesetsActions::create()](struct.RulesetsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Ruleset,
                 name: String,
@@ -3165,7 +3415,10 @@ pub mod resources {
                     output.push_str("/rulesets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3189,7 +3442,7 @@ pub mod resources {
             #[doc = "Created via [RulesetsActions::delete()](struct.RulesetsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3321,7 +3574,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3345,7 +3601,7 @@ pub mod resources {
             #[doc = "Created via [RulesetsActions::get()](struct.RulesetsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3477,7 +3733,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3501,7 +3760,7 @@ pub mod resources {
             #[doc = "Created via [RulesetsActions::list()](struct.RulesetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -3752,7 +4011,10 @@ pub mod resources {
                     output.push_str("/rulesets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3806,9 +4068,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3850,7 +4110,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

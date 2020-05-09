@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dataproc1_beta2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190905")
+            .version("0.1.0-20200409")
             .about("Manages Hadoop-based clusters and jobs on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -67,7 +67,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             autoscaling_policies2 = autoscaling_policies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             autoscaling_policies2 = autoscaling_policies2.subcommand(mcmd);
         }
         {
@@ -99,11 +99,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("instantiate").about("Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty.");
+            let mcmd = SubCommand::with_name("instantiate").about("Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.");
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("instantiate_inline").about("Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty.");
+            let mcmd = SubCommand::with_name("instantiate_inline").about("Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.");
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
@@ -112,7 +112,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
@@ -148,7 +148,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             autoscaling_policies2 = autoscaling_policies2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             autoscaling_policies2 = autoscaling_policies2.subcommand(mcmd);
         }
         {
@@ -161,17 +161,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut clusters2 = SubCommand::with_name("clusters")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create, delete, diagnose, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
+                        .about("methods: create, delete, diagnose, get, get_iam_policy, list, patch, set_iam_policy, start, stop and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata.");
+            let mcmd = SubCommand::with_name("create").about("Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata).");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata).");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("diagnose").about("Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata. After the operation completes, Operation.response contains DiagnoseClusterResults.");
+            let mcmd = SubCommand::with_name("diagnose").about("Gets cluster diagnostic information. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata). After the operation completes, Operation.response contains Empty.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -185,15 +185,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists all regions/{region}/clusters in a project.");
+                .about("Lists all regions/{region}/clusters in a project alphabetically.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata).");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
+            clusters2 = clusters2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("start").about("Starts a cluster in a project.");
+            clusters2 = clusters2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("stop").about("Stops a cluster in a project.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -202,9 +210,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut jobs2 = SubCommand::with_name("jobs")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: cancel, delete, get, get_iam_policy, list, patch, set_iam_policy, submit and test_iam_permissions");
+                        .about("methods: cancel, delete, get, get_iam_policy, list, patch, set_iam_policy, submit, submit_as_operation and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("cancel").about("Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get.");
+            let mcmd = SubCommand::with_name("cancel").about("Starts a job cancellation request. To access the job resource after cancellation, call regions/{region}/jobs.list (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/list) or regions/{region}/jobs.get (https://cloud.google.com/dataproc/docs/reference/rest/v1beta2/projects.regions.jobs/get).");
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
@@ -230,11 +238,16 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("submit").about("Submits a job to a cluster.");
+            jobs2 = jobs2.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("submit_as_operation").about("Submits job to a cluster.");
             jobs2 = jobs2.subcommand(mcmd);
         }
         {
@@ -265,7 +278,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             operations2 = operations2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             operations2 = operations2.subcommand(mcmd);
         }
         {
@@ -293,11 +306,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("instantiate").about("Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty.");
+            let mcmd = SubCommand::with_name("instantiate").about("Instantiates a template and begins execution.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.");
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("instantiate_inline").about("Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata. Also see Using WorkflowMetadata.On successful completion, Operation.response will be Empty.");
+            let mcmd = SubCommand::with_name("instantiate_inline").about("Instantiates a template and begins execution.This method is equivalent to executing the sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned Operation can be used to track execution of workflow by polling operations.get. The Operation will complete when entire workflow is finished.The running workflow can be aborted via operations.cancel. This will cause any inflight jobs to be cancelled and workflow-owned clusters to be deleted.The Operation.metadata will be WorkflowMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#workflowmetadata). Also see Using WorkflowMetadata (https://cloud.google.com/dataproc/docs/concepts/workflows/debugging#using_workflowmetadata).On successful completion, Operation.response will be Empty.");
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
@@ -306,7 +319,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             workflow_templates2 = workflow_templates2.subcommand(mcmd);
         }
         {

@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/yXw94x0FfH9hsuVdo84XOMLmCno\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/IBbZJC0-42113frcDb-NKLWyDMs\"",
   "discoveryVersion": "v1",
   "id": "youtube:v3",
   "name": "youtube",
   "canonicalName": "YouTube",
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20190827",
+  "revision": "20200423",
   "title": "YouTube Data API",
   "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
   "ownerDomain": "google.com",
@@ -136,6 +136,9 @@
       "scopes": {
         "https://www.googleapis.com/auth/youtube": {
           "description": "Manage your YouTube account"
+        },
+        "https://www.googleapis.com/auth/youtube.channel-memberships.creator": {
+          "description": "See a list of your current active channel members, their current level, and when they became a member"
         },
         "https://www.googleapis.com/auth/youtube.force-ssl": {
           "description": "See, edit, and permanently delete your YouTube videos, ratings, comments and captions"
@@ -2563,6 +2566,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "madeForKids": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "privacyStatus": {
           "description": "Privacy status of the channel.",
           "type": "string",
@@ -2577,6 +2590,16 @@
             "",
             ""
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfDeclaredMadeForKids": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -6141,6 +6164,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "enableAutoStop": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "enableClosedCaptions": {
           "description": "This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive with using the closed_captions_type property, and is equivalent to setting closed_captions_type to CLOSED_CAPTIONS_HTTP_POST.",
           "type": "boolean",
@@ -6210,7 +6243,7 @@
           "items": null
         },
         "mesh": {
-          "description": null,
+          "description": "The mesh for projecting the video if projection is mesh. The mesh value must be a UTF-8 string containing the base-64 encoding of 3D mesh data that follows the  Spherical Video V2 RFC specification for an mshp box, excluding the box size and type but including the following four reserved zero bytes for the version and flags.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -6609,6 +6642,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "madeForKids": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "privacyStatus": {
           "description": "The broadcast's privacy status. Note that the broadcast represents exactly one YouTube video, so the privacy settings are identical to those supported for videos. In addition, you can set this field by modifying the broadcast resource or by setting the privacyStatus field of the corresponding video resource.",
           "type": "string",
@@ -6641,6 +6684,16 @@
             "",
             ""
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfDeclaredMadeForKids": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -8313,16 +8366,6 @@
           "additionalProperties": null,
           "items": null
         },
-        "id": {
-          "description": "The ID that YouTube assigns to uniquely identify the member.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "kind": {
           "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#member\".",
           "type": "string",
@@ -8462,7 +8505,7 @@
       "enumDescriptions": [],
       "properties": {
         "accessibleLevels": {
-          "description": "All levels that the user has access to. This includes the purchased level and all other levels that are included because of a higher purchase.",
+          "description": "Ids of all levels that the user has access to. This includes the currently active level and all other levels that are included because of a higher purchase.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -8479,6 +8522,54 @@
             "items": null
           }
         },
+        "highestAccessibleLevel": {
+          "description": "Id of the highest level that the user has access to at the moment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "highestAccessibleLevelDisplayName": {
+          "description": "Display name of the highest level that the user has access to at the moment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "membershipsDuration": {
+          "description": "Data about memberships duration without taking into consideration pricing levels.",
+          "$ref": "MembershipsDuration"
+        },
+        "membershipsDurationAtLevels": {
+          "description": "Data about memberships duration on particular pricing levels.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "MembershipsDurationAtLevel"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "MembershipsDuration": {
+      "id": "MembershipsDuration",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
         "memberSince": {
           "description": "The date and time when the user became a continuous member across all levels.",
           "type": "string",
@@ -8489,17 +8580,7 @@
           "additionalProperties": null,
           "items": null
         },
-        "memberSinceCurrentLevel": {
-          "description": "The date and time when the user started to continuously have access to the currently highest level.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "memberTotalDuration": {
+        "memberTotalDurationMonths": {
           "description": "The cumulative time the user has been a member across all levels in complete months (the time is rounded down to the nearest integer).",
           "type": "integer",
           "format": "int32",
@@ -8508,21 +8589,43 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
-        },
-        "memberTotalDurationCurrentLevel": {
-          "description": "The cumulative time the user has had access to the currently highest level in complete months (the time is rounded down to the nearest integer).",
-          "type": "integer",
-          "format": "int32",
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "MembershipsDurationAtLevel": {
+      "id": "MembershipsDurationAtLevel",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "level": {
+          "description": "Pricing level id.",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
-        "purchasedLevel": {
-          "description": "The highest level the user has access to at the moment.",
+        "memberSince": {
+          "description": "The date and time when the user became a continuous member for the given level.",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "memberTotalDurationMonths": {
+          "description": "The cumulative time the user has been a member for the given level in complete months (the time is rounded down to the nearest integer).",
+          "type": "integer",
+          "format": "int32",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -12652,6 +12755,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "madeForKids": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "privacyStatus": {
           "description": "The video's privacy status.",
           "type": "string",
@@ -12718,6 +12831,16 @@
             "",
             ""
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "selfDeclaredMadeForKids": {
+          "description": null,
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -14434,7 +14557,7 @@
             },
             "moderationStatus": {
               "description": "Set this parameter to limit the returned comment threads to a particular moderation state.\n\nNote: This parameter is not supported for use in conjunction with the id parameter.",
-              "default": "MODERATION_STATUS_PUBLISHED",
+              "default": "published",
               "location": "query",
               "required": false,
               "type": "string",
@@ -14456,7 +14579,7 @@
             },
             "order": {
               "description": "The order parameter specifies the order in which the API response should list comment threads. Valid values are: \n- time - Comment threads are ordered by time. This is the default behavior.\n- relevance - Comment threads are ordered by relevance.Note: This parameter is not supported for use in conjunction with the id parameter.",
-              "default": "true",
+              "default": "time",
               "location": "query",
               "required": false,
               "type": "string",
@@ -14518,7 +14641,7 @@
             },
             "textFormat": {
               "description": "Set this parameter's value to html or plainText to instruct the API to return the comments left by users in html formatted or in plain text.",
-              "default": "FORMAT_HTML",
+              "default": "html",
               "location": "query",
               "required": false,
               "type": "string",
@@ -14763,7 +14886,7 @@
             },
             "textFormat": {
               "description": "This parameter indicates whether the API should return comments formatted as HTML or as plain text.",
-              "default": "FORMAT_HTML",
+              "default": "html",
               "location": "query",
               "required": false,
               "type": "string",
@@ -15536,7 +15659,7 @@
             },
             "broadcastType": {
               "description": "The broadcastType parameter filters the API response to only include broadcasts with the specified type. This is only compatible with the mine filter for now.",
-              "default": "BROADCAST_TYPE_FILTER_EVENT",
+              "default": "event",
               "location": "query",
               "required": false,
               "type": "string",
@@ -16619,6 +16742,20 @@
           "httpMethod": "GET",
           "description": "Lists members for a channel.",
           "parameters": {
+            "filterByMemberChannelId": {
+              "description": "The filterByMemberChannelId parameter represents a comma separated list of channel IDs. Only data about members that are part of this list will be included in the response. It can be used to efficiently check whether specific users are entitled to perks offered via third parties.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "hasAccessToLevel": {
               "description": "The hasAccessToLevel parameter specifies, when set, the ID of a pricing level that members from the results set should have access to. When not set, all members will be considered, regardless of their active pricing level.",
               "default": null,
@@ -16641,7 +16778,7 @@
               "type": "integer",
               "format": "uint32",
               "minimum": "0",
-              "maximum": "50",
+              "maximum": "1000",
               "pattern": null,
               "enum": [],
               "enumDescriptions": [],
@@ -16649,7 +16786,7 @@
             },
             "mode": {
               "description": "The mode parameter specifies which channel members to return.",
-              "default": "LIST_MEMBERS_MODE_ALL_CURRENT",
+              "default": "all_current",
               "location": "query",
               "required": false,
               "type": "string",
@@ -16682,7 +16819,7 @@
               "repeated": false
             },
             "part": {
-              "description": "The part parameter specifies the member resource parts that the API response will include. Supported values are id and snippet.",
+              "description": "The part parameter specifies the member resource parts that the API response will include. Set the parameter value to snippet.",
               "default": null,
               "location": "query",
               "required": true,
@@ -16705,6 +16842,7 @@
           },
           "scopes": [
             "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.channel-memberships.creator",
             "https://www.googleapis.com/auth/youtube.force-ssl",
             "https://www.googleapis.com/auth/youtube.readonly",
             "https://www.googleapis.com/auth/youtubepartner"
@@ -16750,6 +16888,7 @@
           },
           "scopes": [
             "https://www.googleapis.com/auth/youtube",
+            "https://www.googleapis.com/auth/youtube.channel-memberships.creator",
             "https://www.googleapis.com/auth/youtube.force-ssl",
             "https://www.googleapis.com/auth/youtube.readonly",
             "https://www.googleapis.com/auth/youtubepartner"
@@ -17549,7 +17688,7 @@
             },
             "order": {
               "description": "The order parameter specifies the method that will be used to order resources in the API response.",
-              "default": "SEARCH_SORT_RELEVANCE",
+              "default": "relevance",
               "location": "query",
               "required": false,
               "type": "string",
@@ -17689,7 +17828,7 @@
             },
             "safeSearch": {
               "description": "The safeSearch parameter indicates whether the search results should include restricted content as well as standard content.",
-              "default": null,
+              "default": "moderate",
               "location": "query",
               "required": false,
               "type": "string",
@@ -17958,7 +18097,7 @@
           "parameters": {
             "filter": {
               "description": "The filter parameter specifies which channel sponsors to return.",
-              "default": "POLL_NEWEST",
+              "default": "newest",
               "location": "query",
               "required": false,
               "type": "string",
@@ -18254,7 +18393,7 @@
             },
             "order": {
               "description": "The order parameter specifies the method that will be used to sort resources in the API response.",
-              "default": "SUBSCRIPTION_ORDER_RELEVANCE",
+              "default": "relevance",
               "location": "query",
               "required": false,
               "type": "string",

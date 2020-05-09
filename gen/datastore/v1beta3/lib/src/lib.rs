@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*allocateIds*](resources/projects/struct.AllocateIdsRequestBuilder.html), [*beginTransaction*](resources/projects/struct.BeginTransactionRequestBuilder.html), [*commit*](resources/projects/struct.CommitRequestBuilder.html), [*lookup*](resources/projects/struct.LookupRequestBuilder.html), [*reserveIds*](resources/projects/struct.ReserveIdsRequestBuilder.html), [*rollback*](resources/projects/struct.RollbackRequestBuilder.html), [*runQuery*](resources/projects/struct.RunQueryRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and manage your Google Cloud Datastore data\n\n`https://www.googleapis.com/auth/datastore`"]
+    pub const DATASTORE: &str = "https://www.googleapis.com/auth/datastore";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +19,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AllocateIdsRequest {
-        #[doc = "A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only."]
+        #[doc = "Required. A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only."]
         #[serde(
             rename = "keys",
             default,
@@ -1721,7 +1727,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LookupRequest {
-        #[doc = "Keys of entities to look up."]
+        #[doc = "Required. Keys of entities to look up."]
         #[serde(
             rename = "keys",
             default,
@@ -2789,7 +2795,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub database_id: ::std::option::Option<String>,
-        #[doc = "A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated."]
+        #[doc = "Required. A list of keys with complete key paths whose numeric IDs should not be\nauto-allocated."]
         #[serde(
             rename = "keys",
             default,
@@ -2844,7 +2850,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RollbackRequest {
-        #[doc = "The transaction identifier, returned by a call to\nDatastore.BeginTransaction."]
+        #[doc = "Required. The transaction identifier, returned by a call to\nDatastore.BeginTransaction."]
         #[serde(
             rename = "transaction",
             default,
@@ -3320,7 +3326,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3328,8 +3334,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3348,7 +3366,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -3527,7 +3545,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::allocate_ids()](struct.ProjectsActions.html#method.allocate_ids)"]
         #[derive(Debug, Clone)]
         pub struct AllocateIdsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AllocateIdsRequest,
             project_id: String,
@@ -3659,7 +3677,10 @@ pub mod resources {
                 output.push_str(":allocateIds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3683,7 +3704,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::begin_transaction()](struct.ProjectsActions.html#method.begin_transaction)"]
         #[derive(Debug, Clone)]
         pub struct BeginTransactionRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BeginTransactionRequest,
             project_id: String,
@@ -3815,7 +3836,10 @@ pub mod resources {
                 output.push_str(":beginTransaction");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3839,7 +3863,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::commit()](struct.ProjectsActions.html#method.commit)"]
         #[derive(Debug, Clone)]
         pub struct CommitRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CommitRequest,
             project_id: String,
@@ -3971,7 +3995,10 @@ pub mod resources {
                 output.push_str(":commit");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3995,7 +4022,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::lookup()](struct.ProjectsActions.html#method.lookup)"]
         #[derive(Debug, Clone)]
         pub struct LookupRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LookupRequest,
             project_id: String,
@@ -4127,7 +4154,10 @@ pub mod resources {
                 output.push_str(":lookup");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4151,7 +4181,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::reserve_ids()](struct.ProjectsActions.html#method.reserve_ids)"]
         #[derive(Debug, Clone)]
         pub struct ReserveIdsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReserveIdsRequest,
             project_id: String,
@@ -4283,7 +4313,10 @@ pub mod resources {
                 output.push_str(":reserveIds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4307,7 +4340,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::rollback()](struct.ProjectsActions.html#method.rollback)"]
         #[derive(Debug, Clone)]
         pub struct RollbackRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RollbackRequest,
             project_id: String,
@@ -4439,7 +4472,10 @@ pub mod resources {
                 output.push_str(":rollback");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4463,7 +4499,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::run_query()](struct.ProjectsActions.html#method.run_query)"]
         #[derive(Debug, Clone)]
         pub struct RunQueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RunQueryRequest,
             project_id: String,
@@ -4595,7 +4631,10 @@ pub mod resources {
                 output.push_str(":runQuery");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4634,9 +4673,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4678,7 +4715,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("gamesManagement1_management")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190905")
+            .version("0.1.0-20200416")
             .about("The Management API for Google Play Game Services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -67,23 +67,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: reset, reset_all, reset_all_for_all_players, reset_for_all_players and reset_multiple_for_all_players");
         {
-            let mcmd = SubCommand::with_name("reset").about("Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. All quests for this player that use the event will also be reset.");
+            let mcmd = SubCommand::with_name("reset").about("Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.");
             events0 = events0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reset_all").about("Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. All quests for this player will also be reset.");
+            let mcmd = SubCommand::with_name("reset_all").about("Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.");
             events0 = events0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reset_all_for_all_players").about("Resets all draft events for all players. This method is only available to user accounts for your developer console. All quests that use any of these events will also be reset.");
+            let mcmd = SubCommand::with_name("reset_all_for_all_players").about("Resets all draft events for all players. This method is only available to user accounts for your developer console.");
             events0 = events0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reset_for_all_players").about("Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset. All quests that use the event will also be reset.");
+            let mcmd = SubCommand::with_name("reset_for_all_players").about("Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset.");
             events0 = events0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("reset_multiple_for_all_players").about("Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset. All quests that use any of the events will also be reset.");
+            let mcmd = SubCommand::with_name("reset_multiple_for_all_players").about("Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset.");
             events0 = events0.subcommand(mcmd);
         }
         let mut players0 = SubCommand::with_name("players")
@@ -96,29 +96,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("unhide").about("Unhide the given player\'s leaderboard scores from the given application. This method is only available to user accounts for your developer console.");
             players0 = players0.subcommand(mcmd);
-        }
-        let mut quests0 = SubCommand::with_name("quests")
-                        .setting(AppSettings::ColoredHelp)
-                        .about("methods: reset, reset_all, reset_all_for_all_players, reset_for_all_players and reset_multiple_for_all_players");
-        {
-            let mcmd = SubCommand::with_name("reset").about("Resets all player progress on the quest with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.");
-            quests0 = quests0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("reset_all").about("Resets all player progress on all quests for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application.");
-            quests0 = quests0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("reset_all_for_all_players").about("Resets all draft quests for all players. This method is only available to user accounts for your developer console.");
-            quests0 = quests0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("reset_for_all_players").about("Resets all player progress on the quest with the given ID for all players. This method is only available to user accounts for your developer console. Only draft quests can be reset.");
-            quests0 = quests0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("reset_multiple_for_all_players").about("Resets quests with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft quests may be reset.");
-            quests0 = quests0.subcommand(mcmd);
         }
         let mut rooms0 = SubCommand::with_name("rooms")
             .setting(AppSettings::ColoredHelp)
@@ -168,7 +145,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(turn_based_matches0);
         app = app.subcommand(scores0);
         app = app.subcommand(rooms0);
-        app = app.subcommand(quests0);
         app = app.subcommand(players0);
         app = app.subcommand(events0);
         app = app.subcommand(applications0);

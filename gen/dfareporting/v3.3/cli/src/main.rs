@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dfareporting3d3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190911")
+            .version("0.1.0-20200326")
             .about("Manages your DoubleClick Campaign Manager ad campaigns and reports.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -1127,8 +1127,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Retrieves a report file. This method supports media download.");
+            let mcmd = SubCommand::with_name("get").about("Retrieves a report file by its report ID and file ID. This method supports media download.");
             files1 = files1.subcommand(mcmd);
         }
         {

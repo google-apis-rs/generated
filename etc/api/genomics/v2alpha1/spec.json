@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": true,
   "version": "v2alpha1",
-  "revision": "20190919",
+  "revision": "20200507",
   "title": "Genomics API",
   "description": "Uploads, processes, queries, and searches Genomics data in the cloud.",
   "ownerDomain": "google.com",
@@ -310,7 +310,7 @@
             "Unspecified flag.",
             "Normally, a non-zero exit status causes the pipeline to fail. This flag\nallows execution of other actions to continue instead.",
             "This flag allows an action to continue running in the background while\nexecuting subsequent actions. This is useful to provide services to\nother actions (or to provide debugging support tools like SSH servers).",
-            "By default, after an action fails, no further actions are run. This flag\nindicates that this action must be run even if the pipeline has already\nfailed. This is useful for actions that copy output files off of the VM\nor for debugging.",
+            "By default, after an action fails, no further actions are run. This flag\nindicates that this action must be run even if the pipeline has already\nfailed. This is useful for actions that copy output files off of the VM\nor for debugging. Note that no actions will be run if image\nprefetching fails.",
             "Enable access to the FUSE device for this action. Filesystems can then\nbe mounted into disks shared with other actions. The other actions do\nnot need the `ENABLE_FUSE` flag to access the mounted filesystem.\n\nThis has the effect of causing the container to be executed with\n`CAP_SYS_ADMIN` and exposes `/dev/fuse` to the container, so use it only\nfor containers you trust.",
             "Exposes all ports specified by `EXPOSE` statements in the container. To\ndiscover the host side port numbers, consult the `ACTION_STARTED` event\nin the operation metadata.",
             "All container images are typically downloaded before any actions are\nexecuted. This helps prevent typos in URIs or issues like lack of disk\nspace from wasting large amounts of compute resources.\n\nIf set, this flag prevents the worker from downloading the image until\njust before the action is executed.",
@@ -472,6 +472,18 @@
             "items": null
           },
           "items": null
+        },
+        "events": {
+          "description": "A list of timestamped events.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TimestampedEvent"
+          }
         },
         "result": {
           "description": "The operation has finished with the given result.",
@@ -1753,6 +1765,47 @@
       "additionalProperties": null,
       "items": null
     },
+    "TimestampedEvent": {
+      "id": "TimestampedEvent",
+      "description": "An event that occured in the operation assigned to the\nworker and the time of occurance.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "data": {
+          "description": "The event data.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "timestamp": {
+          "description": "The time when the event happened.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "UnexpectedExitStatusEvent": {
       "id": "UnexpectedExitStatusEvent",
       "description": "An event generated when the execution of a container results in a\nnon-zero exit status that was not otherwise ignored. Execution will\ncontinue, but only actions that are flagged as `ALWAYS_RUN` will be\nexecuted. Other actions will be skipped.",
@@ -2233,6 +2286,51 @@
               "request": null,
               "response": {
                 "$ref": "ListOperationsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/genomics"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "workers": {
+          "resources": {},
+          "methods": {
+            "checkIn": {
+              "id": "genomics.projects.workers.checkIn",
+              "path": "v2alpha1/{+id}:checkIn",
+              "httpMethod": "POST",
+              "description": "The worker uses this method to retrieve the assigned operation and\nprovide periodic status updates.",
+              "parameters": {
+                "id": {
+                  "description": "The worker id, assigned when it was created.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/workers/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "id"
+              ],
+              "request": {
+                "$ref": "CheckInRequest"
+              },
+              "response": {
+                "$ref": "CheckInResponse"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",

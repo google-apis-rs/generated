@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("reseller1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190228")
+            .version("0.1.0-20191008")
             .about("Creates and manages your customers and their subscriptions.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -96,7 +96,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("delete")
-                .about("Cancel or transfer a subscription to direct.");
+                .about("Cancel, suspend, or transfer a subscription to direct.");
             subscriptions0 = subscriptions0.subcommand(mcmd);
         }
         {

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("tasks1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190702")
+            .version("0.1.0-20200330")
             .about("Manages your tasks and task lists.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -47,9 +47,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tasklists0 = tasklists0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about(
-                "Creates a new task list and adds it to the authenticated user\'s task lists.",
-            );
+            let mcmd = SubCommand::with_name("insert").about("Creates a new task list and adds it to the authenticated user\'s task lists. Fails with HTTP code 403 or 429 after reaching the storage limit of 2,000 lists.");
             tasklists0 = tasklists0.subcommand(mcmd);
         }
         {
@@ -83,8 +81,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tasks0 = tasks0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert")
-                .about("Creates a new task on the specified task list.");
+            let mcmd = SubCommand::with_name("insert").about("Creates a new task on the specified task list. Fails with HTTP code 403 or 429 after reaching the storage limit of 100,000 tasks per account.");
             tasks0 = tasks0.subcommand(mcmd);
         }
         {

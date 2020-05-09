@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Search",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190905",
+  "revision": "20200421",
   "title": "Cloud Search API",
   "description": "Cloud Search provides cloud-based search capabilities over G Suite data.  The Cloud Search API allows indexing of non-G Suite data into Cloud Search.",
   "ownerDomain": "google.com",
@@ -204,28 +204,28 @@
           "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.debug": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.debug"
+          "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.indexing": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.indexing"
+          "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.query": {
           "description": "Search your organization's data in the Cloud Search index"
         },
         "https://www.googleapis.com/auth/cloud_search.settings": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.settings"
+          "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.settings.indexing": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.settings.indexing"
+          "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.settings.query": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.settings.query"
+          "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.stats": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.stats"
+          "description": "Index and serve your organization's data with Cloud Search"
         },
         "https://www.googleapis.com/auth/cloud_search.stats.indexing": {
-          "description": "New Service: https://www.googleapis.com/auth/cloud_search.stats.indexing"
+          "description": "Index and serve your organization's data with Cloud Search"
         }
       }
     }
@@ -240,7 +240,7 @@
       "enumDescriptions": [],
       "properties": {
         "operatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\nboolean property. For example, if operatorName is *closed* and the\nproperty's name is *isClosed*, then queries like\n*closed:&lt;value&gt;* will show results only where the value of the\nproperty named *isClosed* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any\nString properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\nboolean property. For example, if operatorName is *closed* and the\nproperty's name is *isClosed*, then queries like\n*closed:&lt;value&gt;* show results only where the value of the\nproperty named *isClosed* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator returns\nall items where *&lt;value&gt;* matches the value of any\nString properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -356,6 +356,106 @@
           "items": {
             "$ref": "ItemCountByStatus"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CustomerQueryStats": {
+      "id": "CustomerQueryStats",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "date": {
+          "description": "Date for which query stats were calculated. Stats calculated on the next\nday close to midnight are returned.",
+          "$ref": "Date"
+        },
+        "queryCountByStatus": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "QueryCountByStatus"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CustomerSessionStats": {
+      "id": "CustomerSessionStats",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "date": {
+          "description": "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned.",
+          "$ref": "Date"
+        },
+        "searchSessionsCount": {
+          "description": "The count of search sessions on the day",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "CustomerUserStats": {
+      "id": "CustomerUserStats",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "date": {
+          "description": "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned.",
+          "$ref": "Date"
+        },
+        "oneDayActiveUsersCount": {
+          "description": "The count of unique active users in the past one day",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sevenDaysActiveUsersCount": {
+          "description": "The count of unique active users in the past seven days",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "thirtyDaysActiveUsersCount": {
+          "description": "The count of unique active users in the past thirty days",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -578,7 +678,7 @@
       "enumDescriptions": [],
       "properties": {
         "greaterThanOperatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ndate property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:&lt;value&gt;* will\nshow results only where the value of the property named *closeDate* is\nlater than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ndate property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:&lt;value&gt;*\nshow results only where the value of the property named *closeDate* is\nlater than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -588,7 +688,7 @@
           "items": null
         },
         "lessThanOperatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ndate property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:&lt;value&gt;* will\nshow results only where the value of the property named *closeDate* is\nearlier than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ndate property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:&lt;value&gt;*\nshow results only where the value of the property named *closeDate* is\nearlier than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -598,7 +698,7 @@
           "items": null
         },
         "operatorName": {
-          "description": "Indicates the actual string required in the query in order to isolate the\ndate property. For example, suppose an issue tracking schema object\nhas a property named *closeDate* that specifies an operator with an\noperatorName of *closedon*. For searches on that data, queries like\n*closedon:&lt;value&gt;* will show results only where the value of the\n*closeDate* property matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the indexed datasource.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the actual string required in the query in order to isolate the\ndate property. For example, suppose an issue tracking schema object\nhas a property named *closeDate* that specifies an operator with an\noperatorName of *closedon*. For searches on that data, queries like\n*closedon:&lt;value&gt;* show results only where the value of the\n*closeDate* property matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator returns\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the indexed datasource.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -711,14 +811,14 @@
     },
     "DisplayedProperty": {
       "id": "DisplayedProperty",
-      "description": "A reference to a top-level property within the object that should be\ndisplayed in search results. The values of the chosen properties will be\ndisplayed in the search results along with the\ndislpay label\nfor that property if one is specified. If a display label is not specified,\nonly the values will be shown.",
+      "description": "A reference to a top-level property within the object that should be\ndisplayed in search results. The values of the chosen properties is\ndisplayed in the search results along with the\ndisplay label\nfor that property if one is specified. If a display label is not specified,\nonly the values is shown.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "propertyName": {
-          "description": "The name of the top-level property as defined in a property definition\nfor the object. If the name is not a defined property in the schema, an\nerror will be given when attempting to update the schema.",
+          "description": "The name of the top-level property as defined in a property definition\nfor the object. If the name is not a defined property in the schema, an\nerror is given when attempting to update the schema.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -973,14 +1073,14 @@
     },
     "EnumOperatorOptions": {
       "id": "EnumOperatorOptions",
-      "description": "Used to provide a search operator for enum properties. This is\noptional. Search operators let users restrict the query to specific fields\nrelevant to the type of item being searched. For example, if you provide no\noperator for a *priority* enum property with possible values *p0* and *p1*,\na query that contains the term *p0* will return items that have *p0* as the\nvalue of the *priority* property, as well as any items that contain the\nstring *p0* in other fields. If you provide an operator name for the enum,\nsuch as *priority*, then search users can use that operator to refine\nresults to only items that have *p0* as this property's value, with the\nquery *priority:p0*.",
+      "description": "Used to provide a search operator for enum properties. This is\noptional. Search operators let users restrict the query to specific fields\nrelevant to the type of item being searched. For example, if you provide no\noperator for a *priority* enum property with possible values *p0* and *p1*,\na query that contains the term *p0* returns items that have *p0* as the\nvalue of the *priority* property, as well as any items that contain the\nstring *p0* in other fields. If you provide an operator name for the enum,\nsuch as *priority*, then search users can use that operator to refine\nresults to only items that have *p0* as this property's value, with the\nquery *priority:p0*.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "operatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\nenum property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:&lt;value&gt;* will show results only where the value of the\nproperty named *priorityVal* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\nenum property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:&lt;value&gt;* show results only where the value of the\nproperty named *priorityVal* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator returns\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1015,7 +1115,7 @@
             "DESCENDING"
           ],
           "enumDescriptions": [
-            "There is no ranking order for the property. Results will not be adjusted\nby this property's value.",
+            "There is no ranking order for the property. Results aren't adjusted\nby this property's value.",
             "This property is ranked in ascending order. Lower values indicate lower\nranking.",
             "This property is ranked in descending order. Lower values indicate\nhigher ranking."
           ],
@@ -1390,7 +1490,7 @@
           "items": null
         },
         "freshnessProperty": {
-          "description": "This property indicates the freshness level of the object in the index.\nIf set, this property must be a top-level property within the\nproperty definitions\nand it must be a\ntimestamp type\nor\ndate type.\nOtherwise, the Indexing API uses\nupdateTime\nas the freshness indicator.\nThe maximum length is 256 characters.\n\nWhen a property is used to calculate fresheness, the value defaults\nto 2 years from the current time.",
+          "description": "This property indicates the freshness level of the object in the index.\nIf set, this property must be a top-level property within the\nproperty definitions\nand it must be a\ntimestamp type\nor\ndate type.\nOtherwise, the Indexing API uses\nupdateTime\nas the freshness indicator.\nThe maximum length is 256 characters.\n\nWhen a property is used to calculate freshness, the value defaults\nto 2 years from the current time.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1469,6 +1569,78 @@
       "additionalProperties": null,
       "items": null
     },
+    "GetCustomerQueryStatsResponse": {
+      "id": "GetCustomerQueryStatsResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "stats": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "CustomerQueryStats"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GetCustomerSessionStatsResponse": {
+      "id": "GetCustomerSessionStatsResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "stats": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "CustomerSessionStats"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GetCustomerUserStatsResponse": {
+      "id": "GetCustomerUserStatsResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "stats": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "CustomerUserStats"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "GetDataSourceIndexStatsResponse": {
       "id": "GetDataSourceIndexStatsResponse",
       "description": null,
@@ -1493,203 +1665,73 @@
       "additionalProperties": null,
       "items": null
     },
-    "GmailActionRestrict": {
-      "id": "GmailActionRestrict",
-      "description": "Gmail Action restricts (i.e. read/replied/snoozed).",
+    "GetSearchApplicationQueryStatsResponse": {
+      "id": "GetSearchApplicationQueryStatsResponse",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "type": {
+        "stats": {
           "description": null,
-          "type": "string",
+          "type": "array",
           "format": null,
-          "enum": [
-            "UNSPECIFIED",
-            "UNREAD",
-            "READ",
-            "REPLIED_TO",
-            "MUTED"
-          ],
-          "enumDescriptions": [
-            "",
-            "is:unread",
-            "is:read",
-            "label:^io_re",
-            "label:mute"
-          ],
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
-          "items": null
+          "items": {
+            "$ref": "SearchApplicationQueryStats"
+          }
         }
       },
       "additionalProperties": null,
       "items": null
     },
-    "GmailAttachmentRestrict": {
-      "id": "GmailAttachmentRestrict",
-      "description": "Gmail Attachment restricts (i.e. has:attachment, has:drive, filename:pdf).",
+    "GetSearchApplicationSessionStatsResponse": {
+      "id": "GetSearchApplicationSessionStatsResponse",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "type": {
+        "stats": {
           "description": null,
-          "type": "string",
+          "type": "array",
           "format": null,
-          "enum": [
-            "UNSPECIFIED",
-            "HAS_ATTACHMENT",
-            "HAS_PHOTO",
-            "HAS_DRIVE",
-            "HAS_DOCUMENT",
-            "HAS_SPREADSHEET",
-            "HAS_PRESENTATION",
-            "HAS_YOUTUBE",
-            "HAS_PDF"
-          ],
-          "enumDescriptions": [
-            "",
-            "has:attachment",
-            "has photos (changes to filename:(jpg OR jpeg OR png)  when typed)",
-            "has:drive",
-            "has:document",
-            "has:spreadsheet",
-            "has:presentation",
-            "has:youtube",
-            "filename:pdf"
-          ],
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
-          "items": null
+          "items": {
+            "$ref": "SearchApplicationSessionStats"
+          }
         }
       },
       "additionalProperties": null,
       "items": null
     },
-    "GmailFolderRestrict": {
-      "id": "GmailFolderRestrict",
-      "description": "Gmail Folder restricts (i.e. in Drafts/Sent/Chats/User Generated Labels).",
+    "GetSearchApplicationUserStatsResponse": {
+      "id": "GetSearchApplicationUserStatsResponse",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "type": {
+        "stats": {
           "description": null,
-          "type": "string",
+          "type": "array",
           "format": null,
-          "enum": [
-            "UNSPECIFIED",
-            "IN_SENT",
-            "IN_DRAFT",
-            "CHATS",
-            "IN_TRASH",
-            "USER_GENERATED_LABEL"
-          ],
-          "enumDescriptions": [
-            "",
-            "in:sent",
-            "in:draft",
-            "label:chats",
-            "in:trash",
-            "label:<user generated>"
-          ],
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GmailIntelligentRestrict": {
-      "id": "GmailIntelligentRestrict",
-      "description": "Gmail Intelligent restricts (i.e. smartlabels, important).",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "type": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [
-            "UNSPECIFIED",
-            "SOCIAL",
-            "UPDATES",
-            "FORUMS",
-            "PROMOTIONS",
-            "IMPORTANT",
-            "FLIGHT_RESERVATION",
-            "LODGING_RESERVATION",
-            "CAR_RESERVATION",
-            "BUS_RESERVATION"
-          ],
-          "enumDescriptions": [
-            "",
-            "category:social",
-            "category:updates",
-            "category:forums",
-            "category:promotions",
-            "is:important",
-            "label:^cob_sm_flightreservation",
-            "label:^cob_sm_lodgingreservation",
-            "label:^cob_sm_rentalcarreservation",
-            "label:^cob_sm_busreservation"
-          ],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GmailTimeRestrict": {
-      "id": "GmailTimeRestrict",
-      "description": "Gmail Time restricts (i.e. received today, this week).",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "type": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [
-            "UNSPECIFIED",
-            "FROM_THIS_WEEK",
-            "OLDER_THAN_ONE_YEAR",
-            "FROM_TODAY",
-            "FROM_YESTERDAY",
-            "FROM_THIS_MONTH",
-            "FROM_CERTAIN_MONTH",
-            "OLDER_THAN_TODAY",
-            "OLDER_THAN_YESTERDAY",
-            "OLDER_THAN_A_WEEK",
-            "OLDER_THAN_A_MONTH"
-          ],
-          "enumDescriptions": [
-            "",
-            "newer_than:7d",
-            "older_than:1y",
-            "newer_than:1d",
-            "newer_than:2d older_than:1d",
-            "newer_than:30d",
-            "This will read as something like \"From November\" and will have operator\nbefore:X after:Y",
-            "older_than:1d",
-            "older_than:2d",
-            "older_than:7d",
-            "older_than:30d"
-          ],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
+          "items": {
+            "$ref": "SearchApplicationUserStats"
+          }
         }
       },
       "additionalProperties": null,
@@ -1704,7 +1746,7 @@
       "enumDescriptions": [],
       "properties": {
         "operatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\nhtml property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:&lt;value&gt;* will show results only where the value of the\nproperty named *subjectLine* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any\nhtml properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\nhtml property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:&lt;value&gt;* show results only where the value of the\nproperty named *subjectLine* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator return\nall items where *&lt;value&gt;* matches the value of any\nhtml properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1850,7 +1892,7 @@
       "enumDescriptions": [],
       "properties": {
         "greaterThanOperatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ninteger property using the greater-than operator. For example, if\ngreaterThanOperatorName is *priorityabove* and the property's name is\n*priorityVal*, then queries like *priorityabove:&lt;value&gt;* will\nshow results only where the value of the property named *priorityVal* is\ngreater than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ninteger property using the greater-than operator. For example, if\ngreaterThanOperatorName is *priorityabove* and the property's name is\n*priorityVal*, then queries like *priorityabove:&lt;value&gt;*\nshow results only where the value of the property named *priorityVal* is\ngreater than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1860,7 +1902,7 @@
           "items": null
         },
         "lessThanOperatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ninteger property using the less-than operator. For example, if\nlessThanOperatorName is *prioritybelow* and the property's name is\n*priorityVal*, then queries like *prioritybelow:&lt;value&gt;* will\nshow results only where the value of the property named *priorityVal* is\nless than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ninteger property using the less-than operator. For example, if\nlessThanOperatorName is *prioritybelow* and the property's name is\n*priorityVal*, then queries like *prioritybelow:&lt;value&gt;*\nshow results only where the value of the property named *priorityVal* is\nless than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1870,7 +1912,7 @@
           "items": null
         },
         "operatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ninteger property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:&lt;value&gt;* will show results only where the value of the\nproperty named *priorityVal* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ninteger property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:&lt;value&gt;* show results only where the value of the\nproperty named *priorityVal* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator returns\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1925,7 +1967,7 @@
             "DESCENDING"
           ],
           "enumDescriptions": [
-            "There is no ranking order for the property. Results will not be adjusted\nby this property's value.",
+            "There is no ranking order for the property. Results are not adjusted\nby this property's value.",
             "This property is ranked in ascending order. Lower values indicate lower\nranking.",
             "This property is ranked in descending order. Lower values indicate\nhigher ranking."
           ],
@@ -2105,7 +2147,7 @@
     },
     "ItemAcl": {
       "id": "ItemAcl",
-      "description": "Access control list information for the item. For more information see\nhttps://developers.google.com/cloud-search/docs/guides/index-your-data#acls",
+      "description": "Access control list information for the item. For more information see\n[Map ACLs](/cloud-search/docs/guides/acls).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2384,7 +2426,7 @@
           "$ref": "SearchQualityMetadata"
         },
         "sourceRepositoryUrl": {
-          "description": "Link to the source repository serving the data.  &#83;earch results apply\nthis link to the title.\nThe maximum length is 2048 characters.",
+          "description": "Link to the source repository serving the data.  &#83;earch results apply\nthis link to the title.\nWhitespace or special characters may cause Cloud &#83;earch result links to\ntrigger a redirect notice; to avoid this, encode the URL.\nThe maximum length is 2048 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2850,7 +2892,7 @@
       "enumDescriptions": [],
       "properties": {
         "properties": {
-          "description": "The list of displayed properties for the metaline. The maxiumum number of\nproperties is 5.",
+          "description": "The list of displayed properties for the metaline. The maximum number of\nproperties is 5.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2998,7 +3040,7 @@
       "enumDescriptions": [],
       "properties": {
         "metalines": {
-          "description": "Defines the properties that will be displayed in the metalines of the\nsearch results. The property values will be displayed in the order given\nhere. If a property holds multiple values, all of the values will be\ndiplayed before the next properties. For this reason, it is a good practice\nto specify singular properties before repeated properties in this list. All\nof the properties must set\nis_returnable\nto true. The maximum number of metalines is 3.",
+          "description": "Defines the properties that are displayed in the metalines of the\nsearch results. The property values are displayed in the order given\nhere. If a property holds multiple values, all of the values are\ndisplayed before the next properties. For this reason, it is a good\npractice to specify singular properties before repeated properties in this\nlist. All of the properties must set\nis_returnable\nto true. The maximum number of metalines is 3.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3010,7 +3052,7 @@
           }
         },
         "objectDisplayLabel": {
-          "description": "The user friendly label to display in the search result to inidicate the\ntype of the item. This is OPTIONAL; if not given, an object label will not\nbe displayed on the context line of the search results. The maximum length\nis 32 characters.",
+          "description": "The user friendly label to display in the search result to indicate the\ntype of the item. This is OPTIONAL; if not provided, an object label isn't\ndisplayed on the context line of the search results. The maximum length\nis 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3294,7 +3336,7 @@
           "$ref": "DebugOptions"
         },
         "limit": {
-          "description": "Maximum number of items to return.\n<br />The maximum and the default value is 1000",
+          "description": "Maximum number of items to return.\n<br />The maximum value is 100 and the default value is 20.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3510,7 +3552,7 @@
           "items": null
         },
         "isRepeatable": {
-          "description": "Indicates that multiple values are allowed for the property. For example, a\ndocument only has one description but can have multiple comments. Cannot be\ntrue for properties whose type is a boolean.\nIf set to false, properties that contain more than one value will cause the\nindexing request for that item to be rejected.",
+          "description": "Indicates that multiple values are allowed for the property. For example, a\ndocument only has one description but can have multiple comments. Cannot be\ntrue for properties whose type is a boolean.\nIf set to false, properties that contain more than one value cause the\nindexing request for that item to be rejected.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -3550,7 +3592,7 @@
           "items": null
         },
         "isWildcardSearchable": {
-          "description": "Indicates that users can perform wildcard search for this\nproperty. Only supported for Text properties. IsReturnable must be true to\nset this option. In a given datasource maximum of 5 properties can be\nmarked as is_wildcard_searchable.\n\nNote: This is an alpha feature and is enabled for whitelisted users only.",
+          "description": "Indicates that users can perform wildcard search for this\nproperty. Only supported for Text properties. IsReturnable must be true to\nset this option. In a given datasource maximum of 5 properties can be\nmarked as is_wildcard_searchable.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -3594,7 +3636,7 @@
       "enumDescriptions": [],
       "properties": {
         "displayLabel": {
-          "description": "The user friendly label for the property that will be used if the property\nis specified to be displayed in ObjectDisplayOptions. If given, the display\nlabel will be shown in front of the property values when the property is\npart of the object display options. For example, if the property value is\n'1', the value by itself may not be useful context for the user. If the\ndisplay name given was 'priority', then the user will see 'priority : 1' in\nthe search results which provides clear conext to search users. This is\nOPTIONAL; if not given, only the property values will be displayed.\nThe maximum length is 32 characters.",
+          "description": "The user friendly label for the property that is used if the property\nis specified to be displayed in ObjectDisplayOptions. If provided, the\ndisplay label is shown in front of the property values when the property is\npart of the object display options. For example, if the property value is\n'1', the value by itself may not be useful context for the user. If the\ndisplay name given was 'priority', then the user sees 'priority : 1' in\nthe search results which provides clear context to search users. This is\nOPTIONAL; if not given, only the property values are displayed.\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3725,6 +3767,38 @@
       "additionalProperties": null,
       "items": null
     },
+    "QueryCountByStatus": {
+      "id": "QueryCountByStatus",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "count": {
+          "description": null,
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "statusCode": {
+          "description": "This represents the http status code.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "QueryInterpretation": {
       "id": "QueryInterpretation",
       "description": null,
@@ -3743,8 +3817,8 @@
             "REPLACE"
           ],
           "enumDescriptions": [
-            "No natural language interpretation or the natural language interpretation\nis not used to fetch the search results.",
-            "The natural language results is mixed with results from original query.",
+            "Neither the natural language interpretation, nor a broader version of the\nquery is used to fetch the search results.",
+            "The results from original query are blended with other results. The\nreason for blending these other results with the results from original\nquery is populated in the 'Reason' field below.",
             "The results from original query are replaced. The reason for replacing\nthe results from original query is populated in the 'Reason' field below."
           ],
           "properties": {},
@@ -3752,11 +3826,29 @@
           "items": null
         },
         "interpretedQuery": {
-          "description": "The interpretation of the query used in search. For example, queries with\nnatural language intent like \"email from john\" will be interpreted as\n\"from:john source:mail\". This field will not be filled when the reason is\nNO_RESULTS_FOUND_FOR_USER_QUERY.",
+          "description": "The interpretation of the query used in search. For example, queries with\nnatural language intent like \"email from john\" will be interpreted as\n\"from:john source:mail\". This field will not be filled when the reason is\nNOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY.",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "reason": {
+          "description": "The reason for interpretation of the query. This field will not be\nUNSPECIFIED if the interpretation type is not NONE.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNSPECIFIED",
+            "QUERY_HAS_NATURAL_LANGUAGE_INTENT",
+            "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY"
+          ],
+          "enumDescriptions": [
+            "",
+            "Natural language interpretation of the query is used to fetch the search\nresults.",
+            "Query and document terms similarity is used to selectively broaden the\nquery to retrieve additional search results since enough results were not\nfound for the user query.\nInterpreted query will be empty for this case."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -3775,6 +3867,16 @@
       "properties": {
         "disableNlInterpretation": {
           "description": "Flag to disable natural language (NL) interpretation of queries. Default is\nfalse, Set to true to disable natural language interpretation. NL\ninterpretation only applies to predefined datasources.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enableVerbatimMode": {
+          "description": "Enable this flag to turn off all internal optimizations like natural\nlanguage (NL) interpretation of queries, supplemental result retrieval,\nand usage of synonyms including custom ones.\nNl interpretation will be disabled if either one of the two flags is true.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -3907,6 +4009,16 @@
         },
         "lessThanOperatorName": {
           "description": "Indicates the operator name that can be used to  isolate the property using\nthe less-than operator.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "objectType": {
+          "description": "Name of the object corresponding to the operator. This field is only filled\nfor schema-specific operators, and is unset for common operators.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4095,7 +4207,7 @@
           "$ref": "DebugOptions"
         },
         "languageCode": {
-          "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\nSuggest API does not use this parameter. It autocompletes only based on\ncharacters in the query.",
+          "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nSet this field using the language set in browser or for the page. In the\nevent that the user's language preference is known, set this field to the\nknown user language.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\n\nThe suggest API does not use this parameter. Instead, suggest autocompletes\nonly based on characters in the query.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4105,7 +4217,7 @@
           "items": null
         },
         "searchApplicationId": {
-          "description": "Id of the application created using SearchApplicationsService.",
+          "description": "The ID generated when you create a search application using the\n[admin console](https://support.google.com/a/answer/9043922).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4189,26 +4301,6 @@
         "driveTimeSpanRestrict": {
           "description": null,
           "$ref": "DriveTimeSpanRestrict"
-        },
-        "gmailActionRestrict": {
-          "description": null,
-          "$ref": "GmailActionRestrict"
-        },
-        "gmailAttachmentRestrict": {
-          "description": null,
-          "$ref": "GmailAttachmentRestrict"
-        },
-        "gmailFolderRestrict": {
-          "description": "Gmail Types.",
-          "$ref": "GmailFolderRestrict"
-        },
-        "gmailIntelligentRestrict": {
-          "description": null,
-          "$ref": "GmailIntelligentRestrict"
-        },
-        "gmailTimeRestrict": {
-          "description": null,
-          "$ref": "GmailTimeRestrict"
         },
         "searchOperator": {
           "description": "The search restrict (e.g. \"after:2017-09-11 before:2017-09-12\").",
@@ -4529,7 +4621,7 @@
           "items": null
         },
         "operationIds": {
-          "description": "IDs of the Long Running Operations (LROs) currently running for this\nschema. Output only field.",
+          "description": "Output only. IDs of the Long Running Operations (LROs) currently running for this\nschema. Output only field.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4561,6 +4653,106 @@
           "items": {
             "$ref": "SourceConfig"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SearchApplicationQueryStats": {
+      "id": "SearchApplicationQueryStats",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "date": {
+          "description": "Date for which query stats were calculated. Stats calculated on the next\nday close to midnight are returned.",
+          "$ref": "Date"
+        },
+        "queryCountByStatus": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "QueryCountByStatus"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SearchApplicationSessionStats": {
+      "id": "SearchApplicationSessionStats",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "date": {
+          "description": "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned.",
+          "$ref": "Date"
+        },
+        "searchSessionsCount": {
+          "description": "The count of search sessions on the day",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SearchApplicationUserStats": {
+      "id": "SearchApplicationUserStats",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "date": {
+          "description": "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned.",
+          "$ref": "Date"
+        },
+        "oneDayActiveUsersCount": {
+          "description": "The count of unique active users in the past one day",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sevenDaysActiveUsersCount": {
+          "description": "The count of unique active users in the past seven days",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "thirtyDaysActiveUsersCount": {
+          "description": "The count of unique active users in the past thirty days",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -5310,7 +5502,7 @@
       "enumDescriptions": [],
       "properties": {
         "dataSourceRestrictions": {
-          "description": "The sources to use for suggestions. If not specified, all data sources\nfrom the current search application are used.\nSuggestions are based on Gmail titles. Suggestions from third party sources\nare not available.",
+          "description": "The sources to use for suggestions. If not specified, the data sources\nare taken from the current search application.\n\nNOTE: Suggestions are supported only for third party data sources and\npeople (i.e. PredefinedSource.PERSON).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5406,7 +5598,7 @@
       "enumDescriptions": [],
       "properties": {
         "exactMatchWithOperator": {
-          "description": "If true, the text value will be tokenized as one atomic value in\noperator searches and facet matches. For example, if the operator name is\n\"genre\" and the value is \"science-fiction\" the query restrictions\n\"genre:science\" and \"genre:fiction\" will not match the item;\n\"genre:science-fiction\" will. Value matching is case-sensitive\nand does not remove special characters.\nIf false, the text will be tokenized. For example, if the value is\n\"science-fiction\" the queries \"genre:science\" and \"genre:fiction\" will\nmatch the item.",
+          "description": "If true, the text value is tokenized as one atomic value in\noperator searches and facet matches. For example, if the operator name is\n\"genre\" and the value is \"science-fiction\" the query restrictions\n\"genre:science\" and \"genre:fiction\" doesn't match the item;\n\"genre:science-fiction\" does. Value matching is case-sensitive\nand does not remove special characters.\nIf false, the text is tokenized. For example, if the value is\n\"science-fiction\" the queries \"genre:science\" and \"genre:fiction\"\nmatches the item.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -5416,7 +5608,7 @@
           "items": null
         },
         "operatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ntext property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:&lt;value&gt;* will show results only where the value of the\nproperty named *subjectLine* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any\ntext properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ntext property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:&lt;value&gt;* show results only where the value of the\nproperty named *subjectLine* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator returns\nall items where *&lt;value&gt;* matches the value of any\ntext properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5488,7 +5680,7 @@
       "enumDescriptions": [],
       "properties": {
         "greaterThanOperatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:&lt;value&gt;* will\nshow results only where the value of the property named *closeDate* is\nlater than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:&lt;value&gt;*\nshow results only where the value of the property named *closeDate* is\nlater than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5498,7 +5690,7 @@
           "items": null
         },
         "lessThanOperatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:&lt;value&gt;* will\nshow results only where the value of the property named *closeDate* is\nearlier than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:&lt;value&gt;*\nshow results only where the value of the property named *closeDate* is\nearlier than *&lt;value&gt;*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5508,7 +5700,7 @@
           "items": null
         },
         "operatorName": {
-          "description": "Indicates the operator name required in the query in order to isolate the\ntimestamp property. For example, if operatorName is *closedon* and the\nproperty's name is *closeDate*, then queries like\n*closedon:&lt;value&gt;* will show results only where the value of the\nproperty named *closeDate* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator will return\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the item. The operator\nname can only contain lowercase letters (a-z). The maximum length is 32\ncharacters.",
+          "description": "Indicates the operator name required in the query in order to isolate the\ntimestamp property. For example, if operatorName is *closedon* and the\nproperty's name is *closeDate*, then queries like\n*closedon:&lt;value&gt;* show results only where the value of the\nproperty named *closeDate* matches *&lt;value&gt;*. By contrast, a\nsearch that uses the same *&lt;value&gt;* without an operator returns\nall items where *&lt;value&gt;* matches the value of any String\nproperties or text within the content field for the item. The operator\nname can only contain lowercase letters (a-z). The maximum length is 32\ncharacters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5680,7 +5872,7 @@
           "$ref": "Schema"
         },
         "validateOnly": {
-          "description": "If true, the request will be validated without side effects.",
+          "description": "If true, the schema will be checked for validity,\nbut will not be registered with the data source, even if valid.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -5822,7 +6014,7 @@
                       "id": "cloudsearch.debug.datasources.items.unmappedids.list",
                       "path": "v1/debug/{+parent}/unmappedids",
                       "httpMethod": "GET",
-                      "description": "List all unmapped identities for a specific item.",
+                      "description": "List all unmapped identities for a specific item.\n\n**Note:** This API requires an admin account to execute.",
                       "parameters": {
                         "debugOptions.enableDebugging": {
                           "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -5906,7 +6098,7 @@
                   "id": "cloudsearch.debug.datasources.items.checkAccess",
                   "path": "v1/debug/{+name}:checkAccess",
                   "httpMethod": "POST",
-                  "description": "Checks whether an item is accessible by specified principal.",
+                  "description": "Checks whether an item is accessible by specified principal.\n\n**Note:** This API requires an admin account to execute.",
                   "parameters": {
                     "debugOptions.enableDebugging": {
                       "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -5960,7 +6152,7 @@
                   "id": "cloudsearch.debug.datasources.items.searchByViewUrl",
                   "path": "v1/debug/{+name}/items:searchByViewUrl",
                   "httpMethod": "POST",
-                  "description": "Fetches the item whose viewUrl exactly matches that of the URL provided\nin the request.",
+                  "description": "Fetches the item whose viewUrl exactly matches that of the URL provided\nin the request.\n\n**Note:** This API requires an admin account to execute.",
                   "parameters": {
                     "name": {
                       "description": "Source name, format:\ndatasources/{source_id}",
@@ -6010,7 +6202,7 @@
                   "id": "cloudsearch.debug.identitysources.items.listForunmappedidentity",
                   "path": "v1/debug/{+parent}/items:forunmappedidentity",
                   "httpMethod": "GET",
-                  "description": "Lists names of items associated with an unmapped identity.",
+                  "description": "Lists names of items associated with an unmapped identity.\n\n**Note:** This API requires an admin account to execute.",
                   "parameters": {
                     "debugOptions.enableDebugging": {
                       "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -6123,7 +6315,7 @@
                   "id": "cloudsearch.debug.identitysources.unmappedids.list",
                   "path": "v1/debug/{+parent}/unmappedids",
                   "httpMethod": "GET",
-                  "description": "Lists unmapped user identities for an identity source.",
+                  "description": "Lists unmapped user identities for an identity source.\n\n**Note:** This API requires an admin account to execute.",
                   "parameters": {
                     "debugOptions.enableDebugging": {
                       "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -6239,7 +6431,7 @@
                   "id": "cloudsearch.indexing.datasources.items.delete",
                   "path": "v1/indexing/{+name}",
                   "httpMethod": "DELETE",
-                  "description": "Deletes Item resource for the\nspecified resource name.",
+                  "description": "Deletes Item resource for the\nspecified resource name. This API requires an admin or service account\nto execute. The service account used is the one whitelisted in the\ncorresponding data source.",
                   "parameters": {
                     "connectorName": {
                       "description": "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}",
@@ -6337,7 +6529,7 @@
                   "id": "cloudsearch.indexing.datasources.items.deleteQueueItems",
                   "path": "v1/indexing/{+name}/items:deleteQueueItems",
                   "httpMethod": "POST",
-                  "description": "Deletes all items in a queue. This method is useful for deleting stale\nitems.",
+                  "description": "Deletes all items in a queue. This method is useful for deleting stale\nitems.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "name": {
                       "description": "Name of the Data Source to delete items in a queue.\nFormat: datasources/{source_id}",
@@ -6377,7 +6569,7 @@
                   "id": "cloudsearch.indexing.datasources.items.get",
                   "path": "v1/indexing/{+name}",
                   "httpMethod": "GET",
-                  "description": "Gets Item resource by item name.",
+                  "description": "Gets Item resource by item name.\n\nThis API requires an admin or service account to execute.  The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "connectorName": {
                       "description": "Name of connector making this call.\n<br />Format: datasources/{source_id}/connectors/{ID}",
@@ -6443,7 +6635,7 @@
                   "id": "cloudsearch.indexing.datasources.items.index",
                   "path": "v1/indexing/{+name}:index",
                   "httpMethod": "POST",
-                  "description": "Updates Item ACL, metadata, and\ncontent. It will insert the Item if it\ndoes not exist.\nThis method does not support partial updates.  Fields with no provided\nvalues are cleared out in the Cloud Search index.",
+                  "description": "Updates Item ACL, metadata, and\ncontent. It will insert the Item if it\ndoes not exist.\nThis method does not support partial updates.  Fields with no provided\nvalues are cleared out in the Cloud Search index.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "name": {
                       "description": "Name of the Item. Format:\ndatasources/{source_id}/items/{item_id}\n<br />This is a required field.\nThe maximum length is 1536 characters.",
@@ -6483,10 +6675,10 @@
                   "id": "cloudsearch.indexing.datasources.items.list",
                   "path": "v1/indexing/{+name}/items",
                   "httpMethod": "GET",
-                  "description": "Lists all or a subset of Item resources.",
+                  "description": "Lists all or a subset of Item resources.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "brief": {
-                      "description": "When set to true, the indexing system only populates the following fields:\nname,\nversion,\nmetadata.hash,\nstructured_data.hash,\ncontent.hash.\n<br />If this value is false, then all the fields are populated in Item.",
+                      "description": "When set to true, the indexing system only populates the following fields:\nname,\nversion,\nqueue.\nmetadata.hash,\nmetadata.title,\nmetadata.sourceRepositoryURL,\nmetadata.objectType,\nmetadata.createTime,\nmetadata.updateTime,\nmetadata.contentLanguage,\nmetadata.mimeType,\nstructured_data.hash,\ncontent.hash,\nitemType,\nitemStatus.code,\nitemStatus.processingError.code,\nitemStatus.repositoryError.type,\n<br />If this value is false, then all the fields are populated in Item.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -6591,7 +6783,7 @@
                   "id": "cloudsearch.indexing.datasources.items.poll",
                   "path": "v1/indexing/{+name}/items:poll",
                   "httpMethod": "POST",
-                  "description": "Polls for unreserved items from the indexing queue and marks a\nset as reserved, starting with items that have\nthe oldest timestamp from the highest priority\nItemStatus.\nThe priority order is as follows: <br />\nERROR\n<br />\nMODIFIED\n<br />\nNEW_ITEM\n<br />\nACCEPTED\n<br />\nReserving items ensures that polling from other threads\ncannot create overlapping sets.\n\nAfter handling the reserved items, the client should put items back\ninto the unreserved state, either by calling\nindex,\nor by calling\npush with\nthe type REQUEUE.\n\nItems automatically become available (unreserved) after 4 hours even if no\nupdate or push method is called.",
+                  "description": "Polls for unreserved items from the indexing queue and marks a\nset as reserved, starting with items that have\nthe oldest timestamp from the highest priority\nItemStatus.\nThe priority order is as follows: <br />\nERROR\n<br />\nMODIFIED\n<br />\nNEW_ITEM\n<br />\nACCEPTED\n<br />\nReserving items ensures that polling from other threads\ncannot create overlapping sets.\n\nAfter handling the reserved items, the client should put items back\ninto the unreserved state, either by calling\nindex,\nor by calling\npush with\nthe type REQUEUE.\n\nItems automatically become available (unreserved) after 4 hours even if no\nupdate or push method is called.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "name": {
                       "description": "Name of the Data Source to poll items.\nFormat: datasources/{source_id}",
@@ -6631,7 +6823,7 @@
                   "id": "cloudsearch.indexing.datasources.items.push",
                   "path": "v1/indexing/{+name}:push",
                   "httpMethod": "POST",
-                  "description": "Pushes an item onto a queue for later polling and updating.",
+                  "description": "Pushes an item onto a queue for later polling and updating.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "name": {
                       "description": "Name of the item to\npush into the indexing queue.<br />\nFormat: datasources/{source_id}/items/{ID}\n<br />This is a required field.\nThe maximum length is 1536 characters.",
@@ -6671,7 +6863,7 @@
                   "id": "cloudsearch.indexing.datasources.items.unreserve",
                   "path": "v1/indexing/{+name}/items:unreserve",
                   "httpMethod": "POST",
-                  "description": "Unreserves all items from a queue, making them all eligible to be\npolled.  This method is useful for resetting the indexing queue\nafter a connector has been restarted.",
+                  "description": "Unreserves all items from a queue, making them all eligible to be\npolled.  This method is useful for resetting the indexing queue\nafter a connector has been restarted.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "name": {
                       "description": "Name of the Data Source to unreserve all items.\nFormat: datasources/{source_id}",
@@ -6711,10 +6903,10 @@
                   "id": "cloudsearch.indexing.datasources.items.upload",
                   "path": "v1/indexing/{+name}:upload",
                   "httpMethod": "POST",
-                  "description": "Creates an upload session for uploading item content. For items smaller\nthan 100 KB, it's easier to embed the content\ninline within\nan index request.",
+                  "description": "Creates an upload session for uploading item content. For items smaller\nthan 100 KB, it's easier to embed the content\ninline within\nan index request.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source.",
                   "parameters": {
                     "name": {
-                      "description": "Name of the Item to start a resumable upload.\nFormat: datasources/{source_id}/items/{item_id}.",
+                      "description": "Name of the Item to start a resumable upload.\nFormat: datasources/{source_id}/items/{item_id}.\nThe maximum length is 1536 bytes.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -6755,7 +6947,7 @@
               "id": "cloudsearch.indexing.datasources.deleteSchema",
               "path": "v1/indexing/{+name}/schema",
               "httpMethod": "DELETE",
-              "description": "Deletes the schema of a data source.",
+              "description": "Deletes the schema of a data source.\n\n**Note:** This API requires an admin or service account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -6808,7 +7000,7 @@
               "id": "cloudsearch.indexing.datasources.getSchema",
               "path": "v1/indexing/{+name}/schema",
               "httpMethod": "GET",
-              "description": "Gets the schema of a data source.",
+              "description": "Gets the schema of a data source.\n\n**Note:** This API requires an admin or service account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -6861,7 +7053,7 @@
               "id": "cloudsearch.indexing.datasources.updateSchema",
               "path": "v1/indexing/{+name}/schema",
               "httpMethod": "PUT",
-              "description": "Updates the schema of a data source.",
+              "description": "Updates the schema of a data source. This method does not perform\nincremental updates to the schema. Instead, this method updates the schema\nby overwriting the entire schema.\n\n**Note:** This API requires an admin or service account to execute.",
               "parameters": {
                 "name": {
                   "description": "Name of the data source to update Schema.  Format:\ndatasources/{source_id}",
@@ -6910,7 +7102,7 @@
           "id": "cloudsearch.media.upload",
           "path": "v1/media/{+resourceName}",
           "httpMethod": "POST",
-          "description": "Uploads media for indexing.\n\nThe upload endpoint supports direct and resumable upload protocols and\nis intended for large items that can not be\n[inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).\nTo index large content:\n\n1. Call\n   indexing.datasources.items.upload\n   with the resource name to begin an upload session and retrieve the\n   UploadItemRef.\n1. Call media.upload to upload the content using the same resource name from step 1.\n1. Call indexing.datasources.items.index\n   to index the item. Populate the\n   [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)\n   with the UploadItemRef from step 1.\n\n\nFor additional information, see\n[Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).",
+          "description": "Uploads media for indexing.\n\nThe upload endpoint supports direct and resumable upload protocols and\nis intended for large items that can not be\n[inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).\nTo index large content:\n\n1. Call\n   indexing.datasources.items.upload\n   with the resource name to begin an upload session and retrieve the\n   UploadItemRef.\n1. Call media.upload to upload the content using the same resource name from step 1.\n1. Call indexing.datasources.items.index\n   to index the item. Populate the\n   [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)\n   with the UploadItemRef from step 1.\n\n\nFor additional information, see\n[Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).\n\n  **Note:** This API requires a service account to execute.",
           "parameters": {
             "resourceName": {
               "description": "Name of the media that is being downloaded.  See\nReadRequest.resource_name.",
@@ -6921,7 +7113,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -6978,7 +7170,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -7016,7 +7208,7 @@
               "id": "cloudsearch.query.sources.list",
               "path": "v1/query/sources",
               "httpMethod": "GET",
-              "description": "Returns list of sources that user can use for Search and Suggest APIs.",
+              "description": "Returns list of sources that user can use for Search and Suggest APIs.\n\n**Note:** This API requires a standard end user account to execute.\nA service account can't perform Query API requests directly; to use a\nservice account to perform queries, set up [G Suite domain-wide delegation\nof\nauthority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
               "parameters": {
                 "pageToken": {
                   "description": "Number of sources to return in the response.",
@@ -7047,7 +7239,7 @@
                   "repeated": false
                 },
                 "requestOptions.languageCode": {
-                  "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\nSuggest API does not use this parameter. It autocompletes only based on\ncharacters in the query.",
+                  "description": "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nSet this field using the language set in browser or for the page. In the\nevent that the user's language preference is known, set this field to the\nknown user language.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\n\nThe suggest API does not use this parameter. Instead, suggest autocompletes\nonly based on characters in the query.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7061,7 +7253,7 @@
                   "repeated": false
                 },
                 "requestOptions.searchApplicationId": {
-                  "description": "Id of the application created using SearchApplicationsService.",
+                  "description": "The ID generated when you create a search application using the\n[admin console](https://support.google.com/a/answer/9043922).",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7112,7 +7304,7 @@
           "id": "cloudsearch.query.search",
           "path": "v1/query/search",
           "httpMethod": "POST",
-          "description": "The Cloud Search Query API provides the search method, which returns\nthe most relevant results from a user query.  The results can come from\nG Suite Apps, such as Gmail or Google Drive, or they can come from data\nthat you have indexed from a third party.",
+          "description": "The Cloud Search Query API provides the search method, which returns\nthe most relevant results from a user query.  The results can come from\nG Suite Apps, such as Gmail or Google Drive, or they can come from data\nthat you have indexed from a third party.\n\n**Note:** This API requires a standard end user account to execute.\nA service account can't perform Query API requests directly; to use a\nservice account to perform queries, set up [G Suite domain-wide delegation\nof\nauthority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -7135,7 +7327,7 @@
           "id": "cloudsearch.query.suggest",
           "path": "v1/query/suggest",
           "httpMethod": "POST",
-          "description": "Provides suggestions for autocompleting the query.",
+          "description": "Provides suggestions for autocompleting the query.\n\n**Note:** This API requires a standard end user account to execute.\nA service account can't perform Query API requests directly; to use a\nservice account to perform queries, set up [G Suite domain-wide delegation\nof\nauthority](https://developers.google.com/cloud-search/docs/guides/delegation/).",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -7165,7 +7357,7 @@
               "id": "cloudsearch.settings.datasources.create",
               "path": "v1/settings/datasources",
               "httpMethod": "POST",
-              "description": "Creates a datasource.",
+              "description": "Creates a datasource.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {},
               "parameterOrder": [],
               "request": {
@@ -7189,7 +7381,7 @@
               "id": "cloudsearch.settings.datasources.delete",
               "path": "v1/settings/{+name}",
               "httpMethod": "DELETE",
-              "description": "Deletes a datasource.",
+              "description": "Deletes a datasource.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -7242,7 +7434,7 @@
               "id": "cloudsearch.settings.datasources.get",
               "path": "v1/settings/{+name}",
               "httpMethod": "GET",
-              "description": "Gets a datasource.",
+              "description": "Gets a datasource.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -7295,7 +7487,7 @@
               "id": "cloudsearch.settings.datasources.list",
               "path": "v1/settings/datasources",
               "httpMethod": "GET",
-              "description": "Lists datasources.",
+              "description": "Lists datasources.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -7360,7 +7552,7 @@
               "id": "cloudsearch.settings.datasources.update",
               "path": "v1/settings/{+name}",
               "httpMethod": "PUT",
-              "description": "Updates a datasource.",
+              "description": "Updates a datasource.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "name": {
                   "description": "Name of the datasource resource.\nFormat: datasources/{source_id}.\n<br />The name is ignored when creating a datasource.",
@@ -7406,7 +7598,7 @@
               "id": "cloudsearch.settings.searchapplications.create",
               "path": "v1/settings/searchapplications",
               "httpMethod": "POST",
-              "description": "Creates a search application.",
+              "description": "Creates a search application.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {},
               "parameterOrder": [],
               "request": {
@@ -7430,7 +7622,7 @@
               "id": "cloudsearch.settings.searchapplications.delete",
               "path": "v1/settings/{+name}",
               "httpMethod": "DELETE",
-              "description": "Deletes a search application.",
+              "description": "Deletes a search application.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -7483,7 +7675,7 @@
               "id": "cloudsearch.settings.searchapplications.get",
               "path": "v1/settings/{+name}",
               "httpMethod": "GET",
-              "description": "Gets the specified search application.",
+              "description": "Gets the specified search application.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -7536,7 +7728,7 @@
               "id": "cloudsearch.settings.searchapplications.list",
               "path": "v1/settings/searchapplications",
               "httpMethod": "GET",
-              "description": "Lists all search applications.",
+              "description": "Lists all search applications.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "debugOptions.enableDebugging": {
                   "description": "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field.",
@@ -7601,7 +7793,7 @@
               "id": "cloudsearch.settings.searchapplications.reset",
               "path": "v1/settings/{+name}:reset",
               "httpMethod": "POST",
-              "description": "Resets a search application to default settings. This will return an empty\nresponse.",
+              "description": "Resets a search application to default settings. This will return an empty\nresponse.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "name": {
                   "description": "The name of the search application to be reset.\n<br />Format: applications/{application_id}.",
@@ -7642,7 +7834,7 @@
               "id": "cloudsearch.settings.searchapplications.update",
               "path": "v1/settings/{+name}",
               "httpMethod": "PUT",
-              "description": "Updates a search application.",
+              "description": "Updates a search application.\n\n**Note:** This API requires an admin account to execute.",
               "parameters": {
                 "name": {
                   "description": "Name of the Search Application.\n<br />Format: searchapplications/{application_id}.",
@@ -7695,7 +7887,7 @@
                   "id": "cloudsearch.stats.index.datasources.get",
                   "path": "v1/stats/index/{+name}",
                   "httpMethod": "GET",
-                  "description": "Gets indexed item statistics for a single data source.",
+                  "description": "Gets indexed item statistics for a single data source.\n\n**Note:** This API requires a standard end user account to execute.",
                   "parameters": {
                     "fromDate.day": {
                       "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
@@ -7818,6 +8010,405 @@
             }
           },
           "methods": {}
+        },
+        "query": {
+          "resources": {
+            "searchapplications": {
+              "resources": {},
+              "methods": {
+                "get": {
+                  "id": "cloudsearch.stats.query.searchapplications.get",
+                  "path": "v1/stats/query/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Get the query statistics for search application.\n\n**Note:** This API requires a standard end user account to execute.",
+                  "parameters": {
+                    "fromDate.day": {
+                      "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "fromDate.month": {
+                      "description": "Month of date. Must be from 1 to 12.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "fromDate.year": {
+                      "description": "Year of date. Must be from 1 to 9999.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "name": {
+                      "description": "The resource id of the search application query stats, in the following\nformat: searchapplications/{application_id}",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^searchapplications/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.day": {
+                      "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.month": {
+                      "description": "Month of date. Must be from 1 to 12.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.year": {
+                      "description": "Year of date. Must be from 1 to 9999.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GetSearchApplicationQueryStatsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud_search",
+                    "https://www.googleapis.com/auth/cloud_search.stats",
+                    "https://www.googleapis.com/auth/cloud_search.stats.indexing"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
+        },
+        "session": {
+          "resources": {
+            "searchapplications": {
+              "resources": {},
+              "methods": {
+                "get": {
+                  "id": "cloudsearch.stats.session.searchapplications.get",
+                  "path": "v1/stats/session/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Get the # of search sessions, % of successful sessions with a click query\nstatistics for search application.\n\n**Note:** This API requires a standard end user account to execute.",
+                  "parameters": {
+                    "fromDate.day": {
+                      "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "fromDate.month": {
+                      "description": "Month of date. Must be from 1 to 12.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "fromDate.year": {
+                      "description": "Year of date. Must be from 1 to 9999.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "name": {
+                      "description": "The resource id of the search application session stats, in the following\nformat: searchapplications/{application_id}",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^searchapplications/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.day": {
+                      "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.month": {
+                      "description": "Month of date. Must be from 1 to 12.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.year": {
+                      "description": "Year of date. Must be from 1 to 9999.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GetSearchApplicationSessionStatsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud_search",
+                    "https://www.googleapis.com/auth/cloud_search.stats",
+                    "https://www.googleapis.com/auth/cloud_search.stats.indexing"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
+        },
+        "user": {
+          "resources": {
+            "searchapplications": {
+              "resources": {},
+              "methods": {
+                "get": {
+                  "id": "cloudsearch.stats.user.searchapplications.get",
+                  "path": "v1/stats/user/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Get the users statistics for search application.\n\n**Note:** This API requires a standard end user account to execute.",
+                  "parameters": {
+                    "fromDate.day": {
+                      "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "fromDate.month": {
+                      "description": "Month of date. Must be from 1 to 12.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "fromDate.year": {
+                      "description": "Year of date. Must be from 1 to 9999.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "name": {
+                      "description": "The resource id of the search application session stats, in the following\nformat: searchapplications/{application_id}",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^searchapplications/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.day": {
+                      "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.month": {
+                      "description": "Month of date. Must be from 1 to 12.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "toDate.year": {
+                      "description": "Year of date. Must be from 1 to 9999.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GetSearchApplicationUserStatsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud_search",
+                    "https://www.googleapis.com/auth/cloud_search.stats",
+                    "https://www.googleapis.com/auth/cloud_search.stats.indexing"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
         }
       },
       "methods": {
@@ -7825,7 +8416,7 @@
           "id": "cloudsearch.stats.getIndex",
           "path": "v1/stats/index",
           "httpMethod": "GET",
-          "description": "Gets indexed item statistics aggreggated across all data sources. This\nAPI only returns statistics for previous dates; it doesn't return\nstatistics for the current day.",
+          "description": "Gets indexed item statistics aggreggated across all data sources. This\nAPI only returns statistics for previous dates; it doesn't return\nstatistics for the current day.\n\n**Note:** This API requires a standard end user account to execute.",
           "parameters": {
             "fromDate.day": {
               "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
@@ -7916,6 +8507,327 @@
           "request": null,
           "response": {
             "$ref": "GetCustomerIndexStatsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud_search",
+            "https://www.googleapis.com/auth/cloud_search.stats",
+            "https://www.googleapis.com/auth/cloud_search.stats.indexing"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "getQuery": {
+          "id": "cloudsearch.stats.getQuery",
+          "path": "v1/stats/query",
+          "httpMethod": "GET",
+          "description": "Get the query statistics for customer.\n\n**Note:** This API requires a standard end user account to execute.",
+          "parameters": {
+            "fromDate.day": {
+              "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fromDate.month": {
+              "description": "Month of date. Must be from 1 to 12.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fromDate.year": {
+              "description": "Year of date. Must be from 1 to 9999.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.day": {
+              "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.month": {
+              "description": "Month of date. Must be from 1 to 12.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.year": {
+              "description": "Year of date. Must be from 1 to 9999.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "GetCustomerQueryStatsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud_search",
+            "https://www.googleapis.com/auth/cloud_search.stats",
+            "https://www.googleapis.com/auth/cloud_search.stats.indexing"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "getSession": {
+          "id": "cloudsearch.stats.getSession",
+          "path": "v1/stats/session",
+          "httpMethod": "GET",
+          "description": "Get the # of search sessions, % of successful sessions with a click query\nstatistics for customer.\n\n**Note:** This API requires a standard end user account to execute.",
+          "parameters": {
+            "fromDate.day": {
+              "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fromDate.month": {
+              "description": "Month of date. Must be from 1 to 12.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fromDate.year": {
+              "description": "Year of date. Must be from 1 to 9999.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.day": {
+              "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.month": {
+              "description": "Month of date. Must be from 1 to 12.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.year": {
+              "description": "Year of date. Must be from 1 to 9999.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "GetCustomerSessionStatsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud_search",
+            "https://www.googleapis.com/auth/cloud_search.stats",
+            "https://www.googleapis.com/auth/cloud_search.stats.indexing"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "getUser": {
+          "id": "cloudsearch.stats.getUser",
+          "path": "v1/stats/user",
+          "httpMethod": "GET",
+          "description": "Get the users statistics for customer.\n\n**Note:** This API requires a standard end user account to execute.",
+          "parameters": {
+            "fromDate.day": {
+              "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fromDate.month": {
+              "description": "Month of date. Must be from 1 to 12.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "fromDate.year": {
+              "description": "Year of date. Must be from 1 to 9999.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.day": {
+              "description": "Day of month. Must be from 1 to 31 and valid for the year and month.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.month": {
+              "description": "Month of date. Must be from 1 to 12.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "toDate.year": {
+              "description": "Year of date. Must be from 1 to 9999.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "GetCustomerUserStatsResponse"
           },
           "scopes": [
             "https://www.googleapis.com/auth/cloud_search",

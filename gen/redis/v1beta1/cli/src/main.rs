@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("redis1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190909")
+            .version("0.1.0-20200402")
             .about("Creates and manages Redis instances on the Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -50,7 +50,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut instances2 = SubCommand::with_name("instances")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, export, failover, get, import, list and patch");
+            .about(
+                "methods: create, delete, export, failover, get, import, list, patch and upgrade",
+            );
         {
             let mcmd = SubCommand::with_name("create").about("Creates a Redis instance based on the specified tier and memory size.\n\nBy default, the instance is accessible from the project\'s\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nThe creation is executed asynchronously and callers may check the returned\noperation to track its progress. Once the operation is completed the Redis\ninstance will be fully functional. Completed longrunning.Operation will\ncontain the new instance object in the response field.\n\nThe returned operation is automatically deleted after a few hours, so there\nis no need to call DeleteOperation.");
             instances2 = instances2.subcommand(mcmd);
@@ -79,11 +81,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances2 = instances2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists all Redis instances owned by a project in either the specified\nlocation (region) or all locations.\n\nThe location should have the following format:\n* `projects/{project_id}/locations/{location_id}`\n\nIf `location_id` is specified as `-` (wildcard), then all regions\navailable to the project are queried, and the results are aggregated.");
+            let mcmd = SubCommand::with_name("list").about("Lists all Redis instances owned by a project in either the specified\nlocation (region) or all locations.\n\nThe location should have the following format:\n\n* `projects/{project_id}/locations/{location_id}`\n\nIf `location_id` is specified as `-` (wildcard), then all regions\navailable to the project are queried, and the results are aggregated.");
             instances2 = instances2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("patch").about("Updates the metadata and configuration of a specific Redis instance.\n\nCompleted longrunning.Operation will contain the new instance object\nin the response field. The returned operation is automatically deleted\nafter a few hours, so there is no need to call DeleteOperation.");
+            instances2 = instances2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("upgrade").about(
+                "Upgrades Redis instance to the newer Redis version specified in the\nrequest.",
+            );
             instances2 = instances2.subcommand(mcmd);
         }
         let mut operations2 = SubCommand::with_name("operations")

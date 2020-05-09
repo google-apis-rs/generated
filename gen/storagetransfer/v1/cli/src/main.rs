@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("storagetransfer1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
+            .version("0.1.0-20200504")
             .about("Transfers data from external data sources to a Google Cloud Storage bucket or between Google Cloud Storage buckets.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -57,19 +57,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             transfer_jobs0 = transfer_jobs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a transfer job. Updating a job\'s transfer spec does not affect\ntransfer operations that are running already. Updating the scheduling\nof a job is not allowed.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a transfer job. Updating a job\'s transfer spec does not affect\ntransfer operations that are running already. Updating a job\'s schedule\nis not allowed.\n\n**Note:** The job\'s status field can be modified\nusing this RPC (for example, to set a job\'s status to\nDELETED,\nDISABLED, or\nENABLED).");
             transfer_jobs0 = transfer_jobs0.subcommand(mcmd);
         }
         let mut transfer_operations0 = SubCommand::with_name("transfer_operations")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: cancel, delete, get, list, pause and resume");
+            .about("methods: cancel, get, list, pause and resume");
         {
             let mcmd = SubCommand::with_name("cancel").about("Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation.");
-            transfer_operations0 = transfer_operations0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("delete")
-                .about("This method is not supported and the server returns `UNIMPLEMENTED`.");
             transfer_operations0 = transfer_operations0.subcommand(mcmd);
         }
         {

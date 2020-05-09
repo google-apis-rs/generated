@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [service_accounts](resources/projects/service_accounts/struct.ServiceAccountsActions.html)\n        * [*generateAccessToken*](resources/projects/service_accounts/struct.GenerateAccessTokenRequestBuilder.html), [*generateIdToken*](resources/projects/service_accounts/struct.GenerateIdTokenRequestBuilder.html), [*signBlob*](resources/projects/service_accounts/struct.SignBlobRequestBuilder.html), [*signJwt*](resources/projects/service_accounts/struct.SignJwtRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -27,7 +31,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub lifetime: ::std::option::Option<String>,
-        #[doc = "Code to identify the scopes to be included in the OAuth 2.0 access token.\nSee https://developers.google.com/identity/protocols/googlescopes for more\ninformation.\nAt least one value required."]
+        #[doc = "Required. Code to identify the scopes to be included in the OAuth 2.0 access token.\nSee https://developers.google.com/identity/protocols/googlescopes for more\ninformation.\nAt least one value required."]
         #[serde(
             rename = "scope",
             default,
@@ -96,7 +100,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GenerateIdTokenRequest {
-        #[doc = "The audience for the token, such as the API or account that this token\ngrants access to."]
+        #[doc = "Required. The audience for the token, such as the API or account that this token\ngrants access to."]
         #[serde(
             rename = "audience",
             default,
@@ -179,7 +183,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub delegates: ::std::option::Option<Vec<String>>,
-        #[doc = "The bytes to sign."]
+        #[doc = "Required. The bytes to sign."]
         #[serde(
             rename = "payload",
             default,
@@ -217,7 +221,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key_id: ::std::option::Option<String>,
-        #[doc = "The signed blob."]
+        #[doc = "The signature for the blob. Does not include the original blob."]
         #[serde(
             rename = "signedBlob",
             default,
@@ -255,7 +259,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub delegates: ::std::option::Option<Vec<String>>,
-        #[doc = "The JWT payload to sign: a JSON object that contains a JWT Claims Set."]
+        #[doc = "Required. The JWT payload to sign. Must be a serialized JSON object that contains a\nJWT Claim Set. For example: `{\"sub\": \"user@example.com\", \"iat\": 313435}`\n\nIf the claim set contains an `exp` claim, it must be an integer timestamp\nthat is not in the past and at most 12 hours in the future."]
         #[serde(
             rename = "payload",
             default,
@@ -293,7 +297,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key_id: ::std::option::Option<String>,
-        #[doc = "The signed JWT."]
+        #[doc = "The signed JWT. Contains the automatically generated header; the\nclient-supplied payload; and the signature, which is generated using the\nkey referenced by the `kid` field in the header."]
         #[serde(
             rename = "signedJwt",
             default,
@@ -462,7 +466,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -470,8 +474,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -490,7 +506,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -510,7 +526,7 @@ pub mod resources {
         pub mod service_accounts {
             pub mod params {}
             pub struct ServiceAccountsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ServiceAccountsActions<'a> {
@@ -617,7 +633,7 @@ pub mod resources {
             #[doc = "Created via [ServiceAccountsActions::generate_access_token()](struct.ServiceAccountsActions.html#method.generate_access_token)"]
             #[derive(Debug, Clone)]
             pub struct GenerateAccessTokenRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GenerateAccessTokenRequest,
                 name: String,
@@ -754,7 +770,10 @@ pub mod resources {
                     output.push_str(":generateAccessToken");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -778,7 +797,7 @@ pub mod resources {
             #[doc = "Created via [ServiceAccountsActions::generate_id_token()](struct.ServiceAccountsActions.html#method.generate_id_token)"]
             #[derive(Debug, Clone)]
             pub struct GenerateIdTokenRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GenerateIdTokenRequest,
                 name: String,
@@ -913,7 +932,10 @@ pub mod resources {
                     output.push_str(":generateIdToken");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -937,7 +959,7 @@ pub mod resources {
             #[doc = "Created via [ServiceAccountsActions::sign_blob()](struct.ServiceAccountsActions.html#method.sign_blob)"]
             #[derive(Debug, Clone)]
             pub struct SignBlobRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SignBlobRequest,
                 name: String,
@@ -1072,7 +1094,10 @@ pub mod resources {
                     output.push_str(":signBlob");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1096,7 +1121,7 @@ pub mod resources {
             #[doc = "Created via [ServiceAccountsActions::sign_jwt()](struct.ServiceAccountsActions.html#method.sign_jwt)"]
             #[derive(Debug, Clone)]
             pub struct SignJwtRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SignJwtRequest,
                 name: String,
@@ -1231,7 +1256,10 @@ pub mod resources {
                     output.push_str(":signJwt");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1271,9 +1299,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1315,7 +1341,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

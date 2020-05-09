@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190919",
+  "revision": "20200506",
   "title": "Firebase Management API",
   "description": "The Firebase Management API enables programmatic setup and management of Firebase projects, including a project's Firebase resources and Firebase apps.",
   "ownerDomain": "google.com",
@@ -355,7 +355,7 @@
           "$ref": "AnalyticsProperty"
         },
         "streamMappings": {
-          "description": "A map of `AppId` to `StreamId` for each Firebase App in the specified\n`FirebaseProject`. Each `AppId` and `StreamId` appears only once.",
+          "description": "For Android Apps and iOS Apps: A map of `app` to `streamId` for each\nFirebase App in the specified `FirebaseProject`. Each `app` and\n`streamId` appears only once.<br>\n<br>\nFor Web Apps: A map of `app` to `streamId` and `measurementId` for each\nFirebase App in the specified `FirebaseProject`. Each `app`, `streamId`,\nand `measurementId` appears only once.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1039,12 +1039,58 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "features": {
+          "description": "Products and services that are available in the GCP resource location.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [
+            "Used internally for distinguishing unset values and is not intended for\nexternal use.",
+            "This location supports Cloud Firestore database instances.\n<br>\nApp Engine is available in this location, so it can be a project's\n[default GCP resource\nlocation](//firebase.google.com/docs/projects/locations#default-cloud-location).",
+            "This location supports default Cloud Storage buckets.\n<br>\nApp Engine is available in this location, so it can be a project's\n[default GCP resource\nlocation](//firebase.google.com/docs/projects/locations#default-cloud-location).",
+            "Cloud Functions for Firebase is available in this location."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "LOCATION_FEATURE_UNSPECIFIED",
+              "FIRESTORE",
+              "DEFAULT_STORAGE",
+              "FUNCTIONS"
+            ],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "locationId": {
-          "description": "The ID of the default GCP resource location. It must be one of the\navailable\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations).",
+          "description": "The ID of the GCP resource location. It will be one of the available [GCP\nresource\nlocations](https://firebase.google.com/docs/projects/locations#types).",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "type": {
+          "description": "Indicates whether the GCP resource location is a [regional or\nmulti-regional\nlocation](https://firebase.google.com/docs/projects/locations#types)\nfor data replication.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "LOCATION_TYPE_UNSPECIFIED",
+            "REGIONAL",
+            "MULTI_REGIONAL"
+          ],
+          "enumDescriptions": [
+            "Used internally for distinguishing unset values and is not intended for\nexternal use.",
+            "The location is a regional location.\n<br>Data in a regional location is replicated in multiple zones within a\nregion.",
+            "The location is a multi-regional location.\n<br>Data in a multi-region location is replicated in multiple regions.\nWithin each region, data is replicated in multiple zones."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -1414,7 +1460,17 @@
       "enumDescriptions": [],
       "properties": {
         "app": {
-          "description": "The fully qualified resource name of the Firebase App associated with the\nGoogle Analytics data stream, in the format:\n<br><code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>\nor\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>",
+          "description": "The fully qualified resource name of the Firebase App associated with the\nGoogle Analytics data stream, in the format:\n<br><code>projects/<var>projectId</var>/androidApps/<var>appId</var></code>\nor\n<code>projects/<var>projectId</var>/iosApps/<var>appId</var></code>\nor\n<code>projects/<var>projectId</var>/webApps/<var>appId</var></code>",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "measurementId": {
+          "description": "Applicable for Firebase Web Apps only.<br>\n<br>The unique Google-assigned identifier of the Google Analytics web\nstream associated with the Firebase Web App. Firebase SDKs use this ID to\ninteract with Google Analytics APIs.\n<br>\n<br>Learn more about this ID and Google Analytics web streams in the\n[Analytics\ndocumentation](https://support.google.com/analytics/topic/9303475).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1597,6 +1653,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "measurementId": {
+          "description": "The unique Google-assigned identifier of the Google Analytics web stream\nassociated with the Firebase Web App. Firebase SDKs use this ID to interact\nwith Google Analytics APIs.\n<br>\n<br>This field is only present if the App is linked to a web stream in a\nGoogle Analytics App + Web property. Learn more about this ID and Google\nAnalytics web streams in the [Analytics\ndocumentation](https://support.google.com/analytics/topic/9303475).\n<br>\n<br>To generate a `measurementId` and link the Web App with a Google\nAnalytics web stream, call\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "messagingSenderId": {
           "description": "The sender ID for use with Firebase Cloud Messaging.",
           "type": "string",
@@ -1708,7 +1774,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -1871,7 +1937,7 @@
               "description": "Requests that a new AndroidApp be created.\n<br>\n<br>The result of this call is an `Operation` which can be used to track\nthe provisioning process. The `Operation` is automatically deleted after\ncompletion, so there is no need to call `DeleteOperation`.",
               "parameters": {
                 "parent": {
-                  "description": "The parent Project for which to list Apps, in the format:\n<br><code>projects/<var>projectId</var></code>",
+                  "description": "The parent Project in which to create an App, in the format:\n<br><code>projects/<var>projectId</var></code>",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -1973,7 +2039,10 @@
                 "$ref": "AndroidAppConfig"
               },
               "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                "https://www.googleapis.com/auth/firebase",
+                "https://www.googleapis.com/auth/firebase.readonly"
               ],
               "supportsMediaDownload": false,
               "useMediaDownloadService": false,
@@ -2112,7 +2181,7 @@
               "id": "firebase.projects.availableLocations.list",
               "path": "v1beta1/{+parent}/availableLocations",
               "httpMethod": "GET",
-              "description": "Returns a list of valid Google Cloud Platform (GCP) resource locations for\nthe specified Project (including a FirebaseProject).\n<br>\n<br>The default GCP resource location of a project defines the geographical\nlocation where project resources, such as Cloud Firestore, will be\nprovisioned by default.\n<br>\n<br>The returned list are the available\n[GCP resource\nlocations](https://firebase.google.com/docs/projects/locations). <br>\n<br>This call checks for any location restrictions for the specified\nProject and, thus, might return a subset of all possible GCP resource\nlocations. To list all GCP resource locations (regardless of any\nrestrictions), call the endpoint without specifying a `projectId` (that is,\n`/v1beta1/{parent=projects/-}/listAvailableLocations`).\n<br>\n<br>To call `ListAvailableLocations` with a specified project, a member\nmust be at minimum a Viewer of the project. Calls without a specified\nproject do not require any specific project permissions.",
+              "description": "Returns a list of valid Google Cloud Platform (GCP) resource locations for\nthe specified Project (including a FirebaseProject).\n<br>\n<br>One of these locations can be selected as the Project's [_default_ GCP\nresource location](https://firebase.google.com/docs/projects/locations),\nwhich is the geographical location where project resources, such as Cloud\nFirestore, will be provisioned by default. However, if the default GCP\nresource location has already been set for the Project, then this setting\ncannot be changed.\n<br>\n<br>This call checks for any possible\n[location\nrestrictions](https://cloud.google.com/resource-manager/docs/organization-policy/defining-locations)\nfor the specified Project and, thus, might return a subset of all possible\nGCP resource locations. To list all GCP resource locations (regardless of\nany restrictions), call the endpoint without specifying a `projectId` (that\nis, `/v1beta1/{parent=projects/-}/listAvailableLocations`).\n<br>\n<br>To call `ListAvailableLocations` with a specified project, a member\nmust be at minimum a Viewer of the project. Calls without a specified\nproject do not require any specific project permissions.",
               "parameters": {
                 "pageSize": {
                   "description": "The maximum number of locations to return in the response.\n<br>\n<br>The server may return fewer than this value at its discretion.\nIf no value is specified (or too large a value is specified), then the\nserver will impose its own limit.\n<br>\n<br>This value cannot be negative.",
@@ -2212,7 +2281,8 @@
                 "$ref": "Operation"
               },
               "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
               ],
               "supportsMediaDownload": false,
               "useMediaDownloadService": false,
@@ -2232,7 +2302,7 @@
               "description": "Requests that a new IosApp be created.\n<br>\n<br>The result of this call is an `Operation` which can be used to track\nthe provisioning process. The `Operation` is automatically deleted after\ncompletion, so there is no need to call `DeleteOperation`.",
               "parameters": {
                 "parent": {
-                  "description": "The parent Project for which to list Apps, in the format:\n<br><code>projects/<var>projectId</var></code>",
+                  "description": "The parent Project in which to create an App, in the format:\n<br><code>projects/<var>projectId</var></code>",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2334,7 +2404,10 @@
                 "$ref": "IosAppConfig"
               },
               "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                "https://www.googleapis.com/auth/firebase",
+                "https://www.googleapis.com/auth/firebase.readonly"
               ],
               "supportsMediaDownload": false,
               "useMediaDownloadService": false,
@@ -2476,7 +2549,7 @@
               "description": "Requests that a new WebApp be created.\n<br>\n<br>The result of this call is an `Operation` which can be used to track\nthe provisioning process. The `Operation` is automatically deleted after\ncompletion, so there is no need to call `DeleteOperation`.",
               "parameters": {
                 "parent": {
-                  "description": "The parent Project for which to list Apps, in the format:\n<br><code>projects/<var>projectId</var></code>",
+                  "description": "The parent Project in which to create an App, in the format:\n<br><code>projects/<var>projectId</var></code>",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2578,7 +2651,10 @@
                 "$ref": "WebAppConfig"
               },
               "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only",
+                "https://www.googleapis.com/auth/firebase",
+                "https://www.googleapis.com/auth/firebase.readonly"
               ],
               "supportsMediaDownload": false,
               "useMediaDownloadService": false,
@@ -2716,7 +2792,7 @@
           "id": "firebase.projects.addFirebase",
           "path": "v1beta1/{+project}:addFirebase",
           "httpMethod": "POST",
-          "description": "Adds Firebase resources to the specified existing\n[Google Cloud Platform (GCP) `Project`]\n(https://cloud.google.com/resource-manager/reference/rest/v1/projects).\n<br>\n<br>Since a FirebaseProject is actually also a GCP `Project`, a\n`FirebaseProject` uses underlying GCP identifiers (most importantly,\nthe `projectId`) as its own for easy interop with GCP APIs.\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\na FirebaseProject; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status. The `Operation` is automatically deleted after\ncompletion, so there is no need to call\nDeleteOperation.\n<br>\n<br>This method does not modify any billing account information on the\nunderlying GCP `Project`.\n<br>\n<br>To call `AddFirebase`, a member must be an Editor or Owner for the\nexisting GCP `Project`. Service accounts cannot call `AddFirebase`.",
+          "description": "Adds Firebase resources to the specified existing\n[Google Cloud Platform (GCP) `Project`]\n(https://cloud.google.com/resource-manager/reference/rest/v1/projects).\n<br>\n<br>Since a FirebaseProject is actually also a GCP `Project`, a\n`FirebaseProject` uses underlying GCP identifiers (most importantly,\nthe `projectId`) as its own for easy interop with GCP APIs.\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\na FirebaseProject; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status. The `Operation` is automatically deleted after\ncompletion, so there is no need to call\nDeleteOperation.\n<br>\n<br>This method does not modify any billing account information on the\nunderlying GCP `Project`.\n<br>\n<br>To call `AddFirebase`, a project member or service account must have\nthe following permissions (the IAM roles of Editor and Owner contain these\npermissions):\n`firebase.projects.update`, `resourcemanager.projects.get`,\n`serviceusage.services.enable`, and `serviceusage.services.get`.",
           "parameters": {
             "project": {
               "description": "The resource name of the GCP `Project` to which Firebase resources will be\nadded, in the format:\n<br><code>projects/<var>projectId</var></code>\nAfter calling `AddFirebase`, the\n[`projectId`](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project.FIELDS.project_id)\nof the GCP `Project` is also the `projectId` of the FirebaseProject.",
@@ -2756,7 +2832,7 @@
           "id": "firebase.projects.addGoogleAnalytics",
           "path": "v1beta1/{+parent}:addGoogleAnalytics",
           "httpMethod": "POST",
-          "description": "Links a FirebaseProject with an existing\n[Google Analytics account](http://www.google.com/analytics/).\n<br>\n<br>Using this call, you can either:\n<ul>\n<li>Provision a new Google Analytics property and associate the new\nproperty with your `FirebaseProject`.</li>\n<li>Associate an existing Google Analytics property with your\n`FirebaseProject`.</li>\n</ul>\n<br>\nNote that when you call `AddGoogleAnalytics`:\n<ul>\n<li>Any Firebase Apps already in your `FirebaseProject` are\nautomatically provisioned as new <em>data streams</em> in the Google\nAnalytics property.</li>\n<li>Any <em>data streams</em> already in the Google Analytics property are\nautomatically associated with their corresponding Firebase Apps (only\napplies when an app's `packageName` or `bundleId` match those for an\nexisting data stream).</li>\n</ul>\nLearn more about the hierarchy and structure of Google Analytics\naccounts in the\n[Analytics\ndocumentation](https://support.google.com/analytics/answer/9303323).\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\nan AnalyticsDetails; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status.\n<br>\n<br>To call `AddGoogleAnalytics`, a member must be an Owner for\nthe existing `FirebaseProject` and have the\n[`Edit` permission](https://support.google.com/analytics/answer/2884495)\nfor the Google Analytics account.\n<br>\n<br>If a `FirebaseProject` already has Google Analytics enabled, and you\ncall `AddGoogleAnalytics` using an `analyticsPropertyId` that's different\nfrom the currently associated property, then the call will fail. Analytics\nmay have already been enabled in the Firebase console or by specifying\n`timeZone` and `regionCode` in the call to\n[`AddFirebase`](../../v1beta1/projects/addFirebase).",
+          "description": "Links a FirebaseProject with an existing\n[Google Analytics account](http://www.google.com/analytics/).\n<br>\n<br>Using this call, you can either:\n<ul>\n<li>Specify an `analyticsAccountId` to provision a new Google Analytics\nproperty within the specified account and associate the new property with\nyour `FirebaseProject`.</li>\n<li>Specify an existing `analyticsPropertyId` to associate the property\nwith your `FirebaseProject`.</li>\n</ul>\n<br>\nNote that when you call `AddGoogleAnalytics`:\n<ol>\n<li>The first check determines if any existing data streams in the\nGoogle Analytics property correspond to any existing Firebase Apps in your\n`FirebaseProject` (based on the `packageName` or `bundleId` associated with\nthe data stream). Then, as applicable, the data streams and apps are\nlinked. Note that this auto-linking only applies to Android Apps and iOS\nApps.</li>\n<li>If no corresponding data streams are found for your Firebase Apps,\nnew data streams are provisioned in the Google Analytics property\nfor each of your Firebase Apps. Note that a new data stream is always\nprovisioned for a Web App even if it was previously associated with a\ndata stream in your Analytics property.</li>\n</ol>\nLearn more about the hierarchy and structure of Google Analytics\naccounts in the\n[Analytics\ndocumentation](https://support.google.com/analytics/answer/9303323).\n<br>\n<br>The result of this call is an [`Operation`](../../v1beta1/operations).\nPoll the `Operation` to track the provisioning process by calling\nGetOperation until\n[`done`](../../v1beta1/operations#Operation.FIELDS.done) is `true`. When\n`done` is `true`, the `Operation` has either succeeded or failed. If the\n`Operation` succeeded, its\n[`response`](../../v1beta1/operations#Operation.FIELDS.response) is set to\nan AnalyticsDetails; if the `Operation` failed, its\n[`error`](../../v1beta1/operations#Operation.FIELDS.error) is set to a\ngoogle.rpc.Status.\n<br>\n<br>To call `AddGoogleAnalytics`, a member must be an Owner for\nthe existing `FirebaseProject` and have the\n[`Edit` permission](https://support.google.com/analytics/answer/2884495)\nfor the Google Analytics account.\n<br>\n<br>If a `FirebaseProject` already has Google Analytics enabled, and you\ncall `AddGoogleAnalytics` using an `analyticsPropertyId` that's different\nfrom the currently associated property, then the call will fail. Analytics\nmay have already been enabled in the Firebase console or by specifying\n`timeZone` and `regionCode` in the call to\n[`AddFirebase`](../../v1beta1/projects/addFirebase).",
           "parameters": {
             "parent": {
               "description": "The parent `FirebaseProject` to link to an existing Google Analytics\naccount, in the format:\n<br><code>projects/<var>projectId</var></code>",
@@ -3022,7 +3098,7 @@
           "id": "firebase.projects.removeAnalytics",
           "path": "v1beta1/{+parent}:removeAnalytics",
           "httpMethod": "POST",
-          "description": "Unlinks the specified `FirebaseProject` from its Google Analytics account.\n<br>\n<br>This call removes the association of the specified `FirebaseProject`\nwith its current Google Analytics property. However, this call does not\ndelete the Google Analytics resources, such as the Google Analytics\nproperty or any data streams.\n<br>\n<br>These resources may be re-associated later to the `FirebaseProject` by\ncalling\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and\nspecifying the same `analyticsPropertyId`.\n<br>\n<br>To call `RemoveAnalytics`, a member must be an Owner for\nthe `FirebaseProject`.",
+          "description": "Unlinks the specified `FirebaseProject` from its Google Analytics account.\n<br>\n<br>This call removes the association of the specified `FirebaseProject`\nwith its current Google Analytics property. However, this call does not\ndelete the Google Analytics resources, such as the Google Analytics\nproperty or any data streams.\n<br>\n<br>These resources may be re-associated later to the `FirebaseProject` by\ncalling\n[`AddGoogleAnalytics`](../../v1beta1/projects/addGoogleAnalytics) and\nspecifying the same `analyticsPropertyId`. For Android Apps and iOS Apps,\nthis call re-links data streams with their corresponding apps. However,\nfor Web Apps, this call provisions a <em>new</em> data stream for each Web\nApp.\n<br>\n<br>To call `RemoveAnalytics`, a member must be an Owner for\nthe `FirebaseProject`.",
           "parameters": {
             "parent": {
               "description": "The parent `FirebaseProject` to unlink from its Google Analytics account,\nin the format:\n<br><code>projects/<var>projectId</var></code>",
@@ -3049,7 +3125,8 @@
             "$ref": "Empty"
           },
           "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/firebase"
           ],
           "supportsMediaDownload": false,
           "useMediaDownloadService": false,

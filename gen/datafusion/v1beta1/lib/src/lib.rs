@@ -1,5 +1,122 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [instances](resources/projects/locations/instances/struct.InstancesActions.html)\n          * [*create*](resources/projects/locations/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/instances/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/instances/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/instances/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/instances/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/instances/struct.PatchRequestBuilder.html), [*restart*](resources/projects/locations/instances/struct.RestartRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/instances/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/instances/struct.TestIamPermissionsRequestBuilder.html), [*upgrade*](resources/projects/locations/instances/struct.UpgradeRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Accelerator {
+        #[doc = "The type of an accelator for a CDF instance."]
+        #[serde(
+            rename = "acceleratorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub accelerator_type: ::std::option::Option<crate::schemas::AcceleratorAcceleratorType>,
+    }
+    impl ::google_field_selector::FieldSelector for Accelerator {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Accelerator {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AcceleratorAcceleratorType {
+        #[doc = "Default value, if unspecified."]
+        AcceleratorTypeUnspecified,
+        #[doc = "Change Data Capture accelerator for CDF."]
+        Cdc,
+        #[doc = "Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud\nHealthcare specific CDF plugins developed by Healthcare team."]
+        Healthcare,
+    }
+    impl AcceleratorAcceleratorType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AcceleratorAcceleratorType::AcceleratorTypeUnspecified => {
+                    "ACCELERATOR_TYPE_UNSPECIFIED"
+                }
+                AcceleratorAcceleratorType::Cdc => "CDC",
+                AcceleratorAcceleratorType::Healthcare => "HEALTHCARE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AcceleratorAcceleratorType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AcceleratorAcceleratorType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<AcceleratorAcceleratorType, ()> {
+            Ok(match s {
+                "ACCELERATOR_TYPE_UNSPECIFIED" => {
+                    AcceleratorAcceleratorType::AcceleratorTypeUnspecified
+                }
+                "CDC" => AcceleratorAcceleratorType::Cdc,
+                "HEALTHCARE" => AcceleratorAcceleratorType::Healthcare,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AcceleratorAcceleratorType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AcceleratorAcceleratorType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AcceleratorAcceleratorType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACCELERATOR_TYPE_UNSPECIFIED" => {
+                    AcceleratorAcceleratorType::AcceleratorTypeUnspecified
+                }
+                "CDC" => AcceleratorAcceleratorType::Cdc,
+                "HEALTHCARE" => AcceleratorAcceleratorType::Healthcare,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AcceleratorAcceleratorType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AcceleratorAcceleratorType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -20,12 +137,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_log_configs: ::std::option::Option<Vec<crate::schemas::AuditLogConfig>>,
-        #[serde(
-            rename = "exemptedMembers",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exempted_members: ::std::option::Option<Vec<String>>,
         #[doc = "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."]
         #[serde(
             rename = "service",
@@ -175,132 +286,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct AuthorizationLoggingOptions {
-        #[doc = "The type of the permission that was checked."]
-        #[serde(
-            rename = "permissionType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub permission_type:
-            ::std::option::Option<crate::schemas::AuthorizationLoggingOptionsPermissionType>,
-    }
-    impl ::google_field_selector::FieldSelector for AuthorizationLoggingOptions {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for AuthorizationLoggingOptions {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum AuthorizationLoggingOptionsPermissionType {
-        #[doc = "A read of admin (meta) data."]
-        AdminRead,
-        #[doc = "A write of admin (meta) data."]
-        AdminWrite,
-        #[doc = "A read of standard data."]
-        DataRead,
-        #[doc = "A write of standard data."]
-        DataWrite,
-        #[doc = "Default. Should not be used."]
-        PermissionTypeUnspecified,
-    }
-    impl AuthorizationLoggingOptionsPermissionType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                AuthorizationLoggingOptionsPermissionType::AdminRead => "ADMIN_READ",
-                AuthorizationLoggingOptionsPermissionType::AdminWrite => "ADMIN_WRITE",
-                AuthorizationLoggingOptionsPermissionType::DataRead => "DATA_READ",
-                AuthorizationLoggingOptionsPermissionType::DataWrite => "DATA_WRITE",
-                AuthorizationLoggingOptionsPermissionType::PermissionTypeUnspecified => {
-                    "PERMISSION_TYPE_UNSPECIFIED"
-                }
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for AuthorizationLoggingOptionsPermissionType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for AuthorizationLoggingOptionsPermissionType {
-        type Err = ();
-        fn from_str(
-            s: &str,
-        ) -> ::std::result::Result<AuthorizationLoggingOptionsPermissionType, ()> {
-            Ok(match s {
-                "ADMIN_READ" => AuthorizationLoggingOptionsPermissionType::AdminRead,
-                "ADMIN_WRITE" => AuthorizationLoggingOptionsPermissionType::AdminWrite,
-                "DATA_READ" => AuthorizationLoggingOptionsPermissionType::DataRead,
-                "DATA_WRITE" => AuthorizationLoggingOptionsPermissionType::DataWrite,
-                "PERMISSION_TYPE_UNSPECIFIED" => {
-                    AuthorizationLoggingOptionsPermissionType::PermissionTypeUnspecified
-                }
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for AuthorizationLoggingOptionsPermissionType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for AuthorizationLoggingOptionsPermissionType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for AuthorizationLoggingOptionsPermissionType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ADMIN_READ" => AuthorizationLoggingOptionsPermissionType::AdminRead,
-                "ADMIN_WRITE" => AuthorizationLoggingOptionsPermissionType::AdminWrite,
-                "DATA_READ" => AuthorizationLoggingOptionsPermissionType::DataRead,
-                "DATA_WRITE" => AuthorizationLoggingOptionsPermissionType::DataWrite,
-                "PERMISSION_TYPE_UNSPECIFIED" => {
-                    AuthorizationLoggingOptionsPermissionType::PermissionTypeUnspecified
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for AuthorizationLoggingOptionsPermissionType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for AuthorizationLoggingOptionsPermissionType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Binding {
         #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
         #[serde(
@@ -309,7 +294,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@gmail.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(
             rename = "members",
             default,
@@ -366,593 +351,6 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CloudAuditOptions {
-        #[doc = "Information used by the Cloud Audit Logging pipeline."]
-        #[serde(
-            rename = "authorizationLoggingOptions",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub authorization_logging_options:
-            ::std::option::Option<crate::schemas::AuthorizationLoggingOptions>,
-        #[doc = "The log_name to populate in the Cloud Audit Record."]
-        #[serde(
-            rename = "logName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub log_name: ::std::option::Option<crate::schemas::CloudAuditOptionsLogName>,
-    }
-    impl ::google_field_selector::FieldSelector for CloudAuditOptions {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for CloudAuditOptions {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum CloudAuditOptionsLogName {
-        #[doc = "Corresponds to \"cloudaudit.googleapis.com/activity\""]
-        AdminActivity,
-        #[doc = "Corresponds to \"cloudaudit.googleapis.com/data_access\""]
-        DataAccess,
-        #[doc = "Default. Should not be used."]
-        UnspecifiedLogName,
-    }
-    impl CloudAuditOptionsLogName {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                CloudAuditOptionsLogName::AdminActivity => "ADMIN_ACTIVITY",
-                CloudAuditOptionsLogName::DataAccess => "DATA_ACCESS",
-                CloudAuditOptionsLogName::UnspecifiedLogName => "UNSPECIFIED_LOG_NAME",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for CloudAuditOptionsLogName {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for CloudAuditOptionsLogName {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<CloudAuditOptionsLogName, ()> {
-            Ok(match s {
-                "ADMIN_ACTIVITY" => CloudAuditOptionsLogName::AdminActivity,
-                "DATA_ACCESS" => CloudAuditOptionsLogName::DataAccess,
-                "UNSPECIFIED_LOG_NAME" => CloudAuditOptionsLogName::UnspecifiedLogName,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for CloudAuditOptionsLogName {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for CloudAuditOptionsLogName {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for CloudAuditOptionsLogName {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ADMIN_ACTIVITY" => CloudAuditOptionsLogName::AdminActivity,
-                "DATA_ACCESS" => CloudAuditOptionsLogName::DataAccess,
-                "UNSPECIFIED_LOG_NAME" => CloudAuditOptionsLogName::UnspecifiedLogName,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for CloudAuditOptionsLogName {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for CloudAuditOptionsLogName {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Condition {
-        #[doc = "Trusted attributes supplied by the IAM system."]
-        #[serde(
-            rename = "iam",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub iam: ::std::option::Option<crate::schemas::ConditionIam>,
-        #[doc = "An operator to apply the subject with."]
-        #[serde(
-            rename = "op",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub op: ::std::option::Option<crate::schemas::ConditionOp>,
-        #[doc = "Trusted attributes discharged by the service."]
-        #[serde(
-            rename = "svc",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub svc: ::std::option::Option<String>,
-        #[doc = "Trusted attributes supplied by any service that owns resources and uses\nthe IAM system for access control."]
-        #[serde(
-            rename = "sys",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sys: ::std::option::Option<crate::schemas::ConditionSys>,
-        #[doc = "The objects of the condition."]
-        #[serde(
-            rename = "values",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub values: ::std::option::Option<Vec<String>>,
-    }
-    impl ::google_field_selector::FieldSelector for Condition {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Condition {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ConditionIam {
-        #[doc = "An approver (distinct from the requester) that has authorized this\nrequest.\nWhen used with IN, the condition indicates that one of the approvers\nassociated with the request matches the specified principal, or is a\nmember of the specified group. Approvers can only grant additional\naccess, and are thus only used in a strictly positive context\n(e.g. ALLOW/IN or DENY/NOT_IN)."]
-        Approver,
-        #[doc = "The principal (even if an authority selector is present), which\nmust only be used for attribution, not authorization."]
-        Attribution,
-        #[doc = "Either principal or (if present) authority selector."]
-        Authority,
-        #[doc = "What type of credentials have been supplied with this request.\nString values should match enum names from\nsecurity_loas_l2.CredentialsType - currently, only CREDS_TYPE_EMERGENCY\nis supported.\nIt is not permitted to grant access based on the *absence* of a\ncredentials type, so the conditions can only be used in a \"positive\"\ncontext (e.g., ALLOW/IN or DENY/NOT_IN)."]
-        CredentialsType,
-        #[doc = "What types of justifications have been supplied with this request.\nString values should match enum names from tech.iam.JustificationType,\ne.g. \"MANUAL_STRING\". It is not permitted to grant access based on\nthe *absence* of a justification, so justification conditions can only\nbe used in a \"positive\" context (e.g., ALLOW/IN or DENY/NOT_IN).\n\nMultiple justifications, e.g., a Buganizer ID and a manually-entered\nreason, are normal and supported."]
-        JustificationType,
-        #[doc = "Default non-attribute."]
-        NoAttr,
-        #[doc = "Any of the security realms in the IAMContext (go/security-realms).\nWhen used with IN, the condition indicates \"any of the request's realms\nmatch one of the given values; with NOT_IN, \"none of the realms match\nany of the given values\". Note that a value can be:\n\n* 'self' (i.e., allow connections from clients that are in the same\n  security realm)\n* a realm (e.g., 'campus-abc')\n* a realm group (e.g., 'realms-for-borg-cell-xx', see: go/realm-groups)\n  A match is determined by a realm group\n  membership check performed by a RealmAclRep object (go/realm-acl-howto).\n  It is not permitted to grant access based on the *absence* of a realm, so\n  realm conditions can only be used in a \"positive\" context (e.g., ALLOW/IN\n  or DENY/NOT_IN)."]
-        SecurityRealm,
-    }
-    impl ConditionIam {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ConditionIam::Approver => "APPROVER",
-                ConditionIam::Attribution => "ATTRIBUTION",
-                ConditionIam::Authority => "AUTHORITY",
-                ConditionIam::CredentialsType => "CREDENTIALS_TYPE",
-                ConditionIam::JustificationType => "JUSTIFICATION_TYPE",
-                ConditionIam::NoAttr => "NO_ATTR",
-                ConditionIam::SecurityRealm => "SECURITY_REALM",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ConditionIam {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ConditionIam {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ConditionIam, ()> {
-            Ok(match s {
-                "APPROVER" => ConditionIam::Approver,
-                "ATTRIBUTION" => ConditionIam::Attribution,
-                "AUTHORITY" => ConditionIam::Authority,
-                "CREDENTIALS_TYPE" => ConditionIam::CredentialsType,
-                "JUSTIFICATION_TYPE" => ConditionIam::JustificationType,
-                "NO_ATTR" => ConditionIam::NoAttr,
-                "SECURITY_REALM" => ConditionIam::SecurityRealm,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ConditionIam {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ConditionIam {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ConditionIam {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "APPROVER" => ConditionIam::Approver,
-                "ATTRIBUTION" => ConditionIam::Attribution,
-                "AUTHORITY" => ConditionIam::Authority,
-                "CREDENTIALS_TYPE" => ConditionIam::CredentialsType,
-                "JUSTIFICATION_TYPE" => ConditionIam::JustificationType,
-                "NO_ATTR" => ConditionIam::NoAttr,
-                "SECURITY_REALM" => ConditionIam::SecurityRealm,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ConditionIam {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ConditionIam {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ConditionOp {
-        #[doc = "Subject is discharged"]
-        Discharged,
-        #[doc = "DEPRECATED. Use IN instead."]
-        Equals,
-        #[doc = "The condition is true if the subject (or any element of it if it is\na set) matches any of the supplied values."]
-        In,
-        #[doc = "Default no-op."]
-        NoOp,
-        #[doc = "DEPRECATED. Use NOT_IN instead."]
-        NotEquals,
-        #[doc = "The condition is true if the subject (or every element of it if it is\na set) matches none of the supplied values."]
-        NotIn,
-    }
-    impl ConditionOp {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ConditionOp::Discharged => "DISCHARGED",
-                ConditionOp::Equals => "EQUALS",
-                ConditionOp::In => "IN",
-                ConditionOp::NoOp => "NO_OP",
-                ConditionOp::NotEquals => "NOT_EQUALS",
-                ConditionOp::NotIn => "NOT_IN",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ConditionOp {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ConditionOp {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ConditionOp, ()> {
-            Ok(match s {
-                "DISCHARGED" => ConditionOp::Discharged,
-                "EQUALS" => ConditionOp::Equals,
-                "IN" => ConditionOp::In,
-                "NO_OP" => ConditionOp::NoOp,
-                "NOT_EQUALS" => ConditionOp::NotEquals,
-                "NOT_IN" => ConditionOp::NotIn,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ConditionOp {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ConditionOp {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ConditionOp {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "DISCHARGED" => ConditionOp::Discharged,
-                "EQUALS" => ConditionOp::Equals,
-                "IN" => ConditionOp::In,
-                "NO_OP" => ConditionOp::NoOp,
-                "NOT_EQUALS" => ConditionOp::NotEquals,
-                "NOT_IN" => ConditionOp::NotIn,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ConditionOp {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ConditionOp {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum ConditionSys {
-        #[doc = "IP address of the caller"]
-        Ip,
-        #[doc = "Resource name"]
-        Name,
-        #[doc = "Default non-attribute type"]
-        NoAttr,
-        #[doc = "Region of the resource"]
-        Region,
-        #[doc = "Service name"]
-        Service,
-    }
-    impl ConditionSys {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                ConditionSys::Ip => "IP",
-                ConditionSys::Name => "NAME",
-                ConditionSys::NoAttr => "NO_ATTR",
-                ConditionSys::Region => "REGION",
-                ConditionSys::Service => "SERVICE",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for ConditionSys {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for ConditionSys {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<ConditionSys, ()> {
-            Ok(match s {
-                "IP" => ConditionSys::Ip,
-                "NAME" => ConditionSys::Name,
-                "NO_ATTR" => ConditionSys::NoAttr,
-                "REGION" => ConditionSys::Region,
-                "SERVICE" => ConditionSys::Service,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for ConditionSys {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for ConditionSys {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for ConditionSys {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "IP" => ConditionSys::Ip,
-                "NAME" => ConditionSys::Name,
-                "NO_ATTR" => ConditionSys::NoAttr,
-                "REGION" => ConditionSys::Region,
-                "SERVICE" => ConditionSys::Service,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for ConditionSys {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ConditionSys {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct CounterOptions {
-        #[doc = "The field value to attribute."]
-        #[serde(
-            rename = "field",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub field: ::std::option::Option<String>,
-        #[doc = "The metric to update."]
-        #[serde(
-            rename = "metric",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub metric: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for CounterOptions {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for CounterOptions {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct DataAccessOptions {
-        #[doc = "Whether Gin logging should happen in a fail-closed manner at the caller.\nThis is relevant only in the LocalIAM implementation, for now."]
-        #[serde(
-            rename = "logMode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub log_mode: ::std::option::Option<crate::schemas::DataAccessOptionsLogMode>,
-    }
-    impl ::google_field_selector::FieldSelector for DataAccessOptions {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for DataAccessOptions {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum DataAccessOptionsLogMode {
-        #[doc = "The application's operation in the context of which this authorization\ncheck is being made may only be performed if it is successfully logged\nto Gin. For instance, the authorization library may satisfy this\nobligation by emitting a partial log entry at authorization check time\nand only returning ALLOW to the application if it succeeds.\n\nIf a matching Rule has this directive, but the client has not indicated\nthat it will honor such requirements, then the IAM check will result in\nauthorization failure by setting CheckPolicyResponse.success=false."]
-        LogFailClosed,
-        #[doc = "Client is not required to write a partial Gin log immediately after\nthe authorization check. If client chooses to write one and it fails,\nclient may either fail open (allow the operation to continue) or\nfail closed (handle as a DENY outcome)."]
-        LogModeUnspecified,
-    }
-    impl DataAccessOptionsLogMode {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                DataAccessOptionsLogMode::LogFailClosed => "LOG_FAIL_CLOSED",
-                DataAccessOptionsLogMode::LogModeUnspecified => "LOG_MODE_UNSPECIFIED",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for DataAccessOptionsLogMode {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for DataAccessOptionsLogMode {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<DataAccessOptionsLogMode, ()> {
-            Ok(match s {
-                "LOG_FAIL_CLOSED" => DataAccessOptionsLogMode::LogFailClosed,
-                "LOG_MODE_UNSPECIFIED" => DataAccessOptionsLogMode::LogModeUnspecified,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for DataAccessOptionsLogMode {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for DataAccessOptionsLogMode {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for DataAccessOptionsLogMode {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "LOG_FAIL_CLOSED" => DataAccessOptionsLogMode::LogFailClosed,
-                "LOG_MODE_UNSPECIFIED" => DataAccessOptionsLogMode::LogModeUnspecified,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for DataAccessOptionsLogMode {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for DataAccessOptionsLogMode {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
         Copy,
         Default,
         :: serde :: Deserialize,
@@ -982,28 +380,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(
             rename = "title",
             default,
@@ -1034,6 +432,27 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Instance {
+        #[doc = "List of accelerators enabled for this CDF instance."]
+        #[serde(
+            rename = "accelerators",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub accelerators: ::std::option::Option<Vec<crate::schemas::Accelerator>>,
+        #[doc = "Output only. Endpoint on which the REST APIs is accessible."]
+        #[serde(
+            rename = "apiEndpoint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub api_endpoint: ::std::option::Option<String>,
+        #[doc = "Available versions that the instance can be upgraded to using\nUpdateInstanceRequest."]
+        #[serde(
+            rename = "availableVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub available_version: ::std::option::Option<Vec<crate::schemas::Version>>,
         #[doc = "Output only. The time the instance was created."]
         #[serde(
             rename = "createTime",
@@ -1041,7 +460,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "An optional description of this instance."]
+        #[doc = "Optional. An optional description of this instance."]
         #[serde(
             rename = "description",
             default,
@@ -1069,7 +488,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_stackdriver_monitoring: ::std::option::Option<bool>,
-        #[doc = "The resource labels for instance to use to annotate any related underlying\nresources such as GCE VMs. The character '=' is not allowed to be used\nwithin the labels."]
+        #[doc = "Output only. Cloud Storage bucket generated by Data Fusion in the customer project."]
+        #[serde(
+            rename = "gcsBucket",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gcs_bucket: ::std::option::Option<String>,
+        #[doc = "The resource labels for instance to use to annotate any related underlying\nresources such as Compute Engine VMs. The character '=' is not allowed to\nbe used within the labels."]
         #[serde(
             rename = "labels",
             default,
@@ -1118,7 +544,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_account: ::std::option::Option<String>,
-        #[doc = "Output only. Endpoint on which the Data Fusion UI and REST APIs are\naccessible."]
+        #[doc = "Output only. Endpoint on which the Data Fusion UI is accessible."]
         #[serde(
             rename = "serviceEndpoint",
             default,
@@ -1146,7 +572,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub update_time: ::std::option::Option<String>,
-        #[doc = "Output only. Current version of the Data Fusion."]
+        #[doc = "Current version of Data Fusion."]
         #[serde(
             rename = "version",
             default,
@@ -1175,7 +601,9 @@ pub mod schemas {
     pub enum InstanceType {
         #[doc = "Basic Data Fusion instance. In Basic type, the user will be able to\ncreate data pipelines using point and click UI. However, there are\ncertain limitations, such as fewer number of concurrent pipelines, no\nsupport for streaming pipelines, etc."]
         Basic,
-        #[doc = "Enterprise Data Fusion instance. In Enterprise type, the user will have\nmore features available, such as support for streaming pipelines, higher\nnumber of concurrent pipelines, etc."]
+        #[doc = "Developer Data Fusion instance. In Developer type, the user will have all\nfeatures available but with restrictive capabilities. This is to help\nenterprises design and develop their data ingestion and integration\npipelines at low cost."]
+        Developer,
+        #[doc = "Enterprise Data Fusion instance. In Enterprise type, the user will have\nall features available, such as support for streaming pipelines, higher\nnumber of concurrent pipelines, etc."]
         Enterprise,
         #[doc = "No type specified. The instance creation will fail."]
         TypeUnspecified,
@@ -1184,6 +612,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 InstanceType::Basic => "BASIC",
+                InstanceType::Developer => "DEVELOPER",
                 InstanceType::Enterprise => "ENTERPRISE",
                 InstanceType::TypeUnspecified => "TYPE_UNSPECIFIED",
             }
@@ -1199,6 +628,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<InstanceType, ()> {
             Ok(match s {
                 "BASIC" => InstanceType::Basic,
+                "DEVELOPER" => InstanceType::Developer,
                 "ENTERPRISE" => InstanceType::Enterprise,
                 "TYPE_UNSPECIFIED" => InstanceType::TypeUnspecified,
                 _ => return Err(()),
@@ -1226,6 +656,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "BASIC" => InstanceType::Basic,
+                "DEVELOPER" => InstanceType::Developer,
                 "ENTERPRISE" => InstanceType::Enterprise,
                 "TYPE_UNSPECIFIED" => InstanceType::TypeUnspecified,
                 _ => {
@@ -1249,6 +680,10 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceState {
+        #[doc = "Instance is being auto-updated"]
+        AutoUpdating,
+        #[doc = "Instance is being auto-upgraded"]
+        AutoUpgrading,
         #[doc = "Instance is being created"]
         Creating,
         #[doc = "Instance is being deleted"]
@@ -1261,7 +696,7 @@ pub mod schemas {
         Running,
         #[doc = "Instance does not have a state yet"]
         StateUnspecified,
-        #[doc = "Instance is being updated"]
+        #[doc = "Instance is being updated on customer request"]
         Updating,
         #[doc = "Instance is being upgraded"]
         Upgrading,
@@ -1269,6 +704,8 @@ pub mod schemas {
     impl InstanceState {
         pub fn as_str(self) -> &'static str {
             match self {
+                InstanceState::AutoUpdating => "AUTO_UPDATING",
+                InstanceState::AutoUpgrading => "AUTO_UPGRADING",
                 InstanceState::Creating => "CREATING",
                 InstanceState::Deleting => "DELETING",
                 InstanceState::Failed => "FAILED",
@@ -1289,6 +726,8 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<InstanceState, ()> {
             Ok(match s {
+                "AUTO_UPDATING" => InstanceState::AutoUpdating,
+                "AUTO_UPGRADING" => InstanceState::AutoUpgrading,
                 "CREATING" => InstanceState::Creating,
                 "DELETING" => InstanceState::Deleting,
                 "FAILED" => InstanceState::Failed,
@@ -1321,6 +760,8 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AUTO_UPDATING" => InstanceState::AutoUpdating,
+                "AUTO_UPGRADING" => InstanceState::AutoUpgrading,
                 "CREATING" => InstanceState::Creating,
                 "DELETING" => InstanceState::Deleting,
                 "FAILED" => InstanceState::Failed,
@@ -1508,51 +949,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct LogConfig {
-        #[doc = "Cloud audit options."]
-        #[serde(
-            rename = "cloudAudit",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub cloud_audit: ::std::option::Option<crate::schemas::CloudAuditOptions>,
-        #[doc = "Counter options."]
-        #[serde(
-            rename = "counter",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub counter: ::std::option::Option<crate::schemas::CounterOptions>,
-        #[doc = "Data access options."]
-        #[serde(
-            rename = "dataAccess",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub data_access: ::std::option::Option<crate::schemas::DataAccessOptions>,
-    }
-    impl ::google_field_selector::FieldSelector for LogConfig {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for LogConfig {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct NetworkConfig {
         #[doc = "The IP range in CIDR notation to use for the managed Data Fusion instance\nnodes. This range must not overlap with any other ranges used in the Data\nFusion instance network."]
         #[serde(
@@ -1561,7 +957,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ip_allocation: ::std::option::Option<String>,
-        #[doc = "Name of the network in the customer project with which the Tenant Project\nwill be peered for executing pipelines."]
+        #[doc = "Name of the network in the customer project with which the Tenant Project\nwill be peered for executing pipelines. In case of shared VPC where the\nnetwork resides in another host project the network should specified in\nthe form of projects/{host-project-id}/global/networks/{network}"]
         #[serde(
             rename = "network",
             default,
@@ -1722,34 +1118,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[serde(
-            rename = "iamOwned",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub iam_owned: ::std::option::Option<bool>,
-        #[doc = "If more than one rule is specified, the rules are applied in the following\nmanner:\n\n* All matching LOG rules are always applied.\n* If any DENY/DENY_WITH_LOG rule matches, permission is denied.\n  Logging will be applied if one or more matching rule requires logging.\n* Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is\n  granted.\n  Logging will be applied if one or more matching rule requires logging.\n* Otherwise, if no rule applies, permission is denied."]
-        #[serde(
-            rename = "rules",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub rules: ::std::option::Option<Vec<crate::schemas::Rule>>,
-        #[doc = "Deprecated."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
         #[serde(
             rename = "version",
             default,
@@ -1787,170 +1170,6 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for RestartInstanceRequest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Rule {
-        #[doc = "Required"]
-        #[serde(
-            rename = "action",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub action: ::std::option::Option<crate::schemas::RuleAction>,
-        #[doc = "Additional restrictions that must be met. All conditions must pass for the\nrule to match."]
-        #[serde(
-            rename = "conditions",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub conditions: ::std::option::Option<Vec<crate::schemas::Condition>>,
-        #[doc = "Human-readable description of the rule."]
-        #[serde(
-            rename = "description",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The config returned to callers of tech.iam.IAM.CheckPolicy for any entries\nthat match the LOG action."]
-        #[serde(
-            rename = "logConfig",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub log_config: ::std::option::Option<Vec<crate::schemas::LogConfig>>,
-        #[doc = "If one or more 'not_in' clauses are specified, the rule matches\nif the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.\nThe format for in and not_in entries can be found at in the Local IAM\ndocumentation (see go/local-iam#features)."]
-        #[serde(
-            rename = "notIn",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub not_in: ::std::option::Option<Vec<String>>,
-        #[doc = "A permission is a string of form '<service>.<resource type>.<verb>'\n(e.g., 'storage.buckets.list'). A value of '*' matches all permissions,\nand a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs."]
-        #[serde(
-            rename = "permissions",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub permissions: ::std::option::Option<Vec<String>>,
-        #[doc = "If one or more 'in' clauses are specified, the rule matches if\nthe PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries."]
-        #[serde(
-            rename = "in",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub r#in: ::std::option::Option<Vec<String>>,
-    }
-    impl ::google_field_selector::FieldSelector for Rule {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Rule {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum RuleAction {
-        #[doc = "Matching 'Entries' grant access."]
-        Allow,
-        #[doc = "Matching 'Entries' grant access and the caller promises to log\nthe request per the returned log_configs."]
-        AllowWithLog,
-        #[doc = "Matching 'Entries' deny access."]
-        Deny,
-        #[doc = "Matching 'Entries' deny access and the caller promises to log\nthe request per the returned log_configs."]
-        DenyWithLog,
-        #[doc = "Matching 'Entries' tell IAM.Check callers to generate logs."]
-        Log,
-        #[doc = "Default no action."]
-        NoAction,
-    }
-    impl RuleAction {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                RuleAction::Allow => "ALLOW",
-                RuleAction::AllowWithLog => "ALLOW_WITH_LOG",
-                RuleAction::Deny => "DENY",
-                RuleAction::DenyWithLog => "DENY_WITH_LOG",
-                RuleAction::Log => "LOG",
-                RuleAction::NoAction => "NO_ACTION",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for RuleAction {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for RuleAction {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<RuleAction, ()> {
-            Ok(match s {
-                "ALLOW" => RuleAction::Allow,
-                "ALLOW_WITH_LOG" => RuleAction::AllowWithLog,
-                "DENY" => RuleAction::Deny,
-                "DENY_WITH_LOG" => RuleAction::DenyWithLog,
-                "LOG" => RuleAction::Log,
-                "NO_ACTION" => RuleAction::NoAction,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for RuleAction {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for RuleAction {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for RuleAction {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ALLOW" => RuleAction::Allow,
-                "ALLOW_WITH_LOG" => RuleAction::AllowWithLog,
-                "DENY" => RuleAction::Deny,
-                "DENY_WITH_LOG" => RuleAction::DenyWithLog,
-                "LOG" => RuleAction::Log,
-                "NO_ACTION" => RuleAction::NoAction,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for RuleAction {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for RuleAction {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2114,6 +1333,37 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Version {
+        #[doc = "The version number of the Data Fusion instance, such as '6.0.1.0'."]
+        #[serde(
+            rename = "versionNumber",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version_number: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Version {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Version {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub mod params {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -2265,7 +1515,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2273,8 +1523,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2293,7 +1555,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -2311,7 +1573,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -2355,6 +1617,7 @@ pub mod resources {
                         xgafv: None,
                         name: name.into(),
                         filter: None,
+                        include_unrevealed_locations: None,
                         page_size: None,
                         page_token: None,
                     }
@@ -2383,7 +1646,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2515,7 +1778,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2539,10 +1805,11 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
+                include_unrevealed_locations: Option<bool>,
                 page_size: Option<i32>,
                 page_token: Option<String>,
                 access_token: Option<String>,
@@ -2561,6 +1828,11 @@ pub mod resources {
                 #[doc = "The standard list filter."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
+                    self
+                }
+                #[doc = "If true, the returned list will include locations which are not yet\nrevealed."]
+                pub fn include_unrevealed_locations(mut self, value: bool) -> Self {
+                    self.include_unrevealed_locations = Some(value);
                     self
                 }
                 #[doc = "The standard list page size."]
@@ -2790,9 +2062,16 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
+                    let req = req.query(&[(
+                        "includeUnrevealedLocations",
+                        &self.include_unrevealed_locations,
+                    )]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -2828,7 +2107,7 @@ pub mod resources {
             pub mod instances {
                 pub mod params {}
                 pub struct InstancesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> InstancesActions<'a> {
@@ -2918,6 +2197,7 @@ pub mod resources {
                             upload_type: None,
                             xgafv: None,
                             resource: resource.into(),
+                            options_requested_policy_version: None,
                         }
                     }
                     #[doc = "Lists Data Fusion instances in the specified project and location."]
@@ -2992,7 +2272,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -3068,7 +2348,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Instance,
                     parent: String,
@@ -3212,7 +2492,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("instanceId", &self.instance_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -3237,7 +2518,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3372,7 +2653,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3396,7 +2678,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3531,7 +2813,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3555,9 +2838,10 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::get_iam_policy()](struct.InstancesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
+                    options_requested_policy_version: Option<i32>,
                     access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
@@ -3571,6 +2855,11 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetIamPolicyRequestBuilder<'a> {
+                    #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+                    pub fn options_requested_policy_version(mut self, value: i32) -> Self {
+                        self.options_requested_policy_version = Some(value);
+                        self
+                    }
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
                         self.access_token = Some(value.into());
@@ -3691,8 +2980,13 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[(
+                            "options.requestedPolicyVersion",
+                            &self.options_requested_policy_version,
+                        )]);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
@@ -3715,7 +3009,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     filter: Option<String>,
@@ -4037,7 +3331,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("orderBy", &self.order_by)]);
@@ -4076,7 +3371,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::patch()](struct.InstancesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Instance,
                     name: String,
@@ -4219,7 +3514,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -4244,7 +3540,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::restart()](struct.InstancesActions.html#method.restart)"]
                 #[derive(Debug, Clone)]
                 pub struct RestartRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::RestartInstanceRequest,
                     name: String,
@@ -4382,7 +3678,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4406,7 +3703,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::set_iam_policy()](struct.InstancesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -4544,7 +3841,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4568,7 +3866,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::test_iam_permissions()](struct.InstancesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -4708,7 +4006,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4732,7 +4031,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::upgrade()](struct.InstancesActions.html#method.upgrade)"]
                 #[derive(Debug, Clone)]
                 pub struct UpgradeRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::UpgradeInstanceRequest,
                     name: String,
@@ -4870,7 +4169,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4895,7 +4195,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -4990,7 +4290,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CancelOperationRequest,
                     name: String,
@@ -5128,7 +4428,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5152,7 +4453,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5287,7 +4588,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5311,7 +4613,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5446,7 +4748,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5470,7 +4773,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -5729,7 +5032,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -5784,9 +5088,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -5828,7 +5130,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

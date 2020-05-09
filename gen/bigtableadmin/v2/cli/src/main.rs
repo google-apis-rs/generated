@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("bigtableadmin2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190906")
+            .version("0.1.0-20200424")
             .about("Administer your Cloud Bigtable tables and instances.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -199,7 +199,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for an instance resource. Returns an empty\npolicy if an table exists but does not have a policy set.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
@@ -212,7 +212,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tables2 = tables2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a table resource. Replaces any existing\npolicy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a Table resource.\nReplaces any existing policy.");
             tables2 = tables2.subcommand(mcmd);
         }
         {
@@ -220,6 +220,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Returns permissions that the caller has on the specified table resource.");
             tables2 = tables2.subcommand(mcmd);
         }
+        let mut backups3 = SubCommand::with_name("backups")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get_iam_policy, set_iam_policy and test_iam_permissions");
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a Table resource.\nReplaces any existing policy.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions")
+                .about("Returns permissions that the caller has on the specified table resource.");
+            backups3 = backups3.subcommand(mcmd);
+        }
+        clusters2 = clusters2.subcommand(backups3);
         instances1 = instances1.subcommand(tables2);
         instances1 = instances1.subcommand(clusters2);
         instances1 = instances1.subcommand(app_profiles2);

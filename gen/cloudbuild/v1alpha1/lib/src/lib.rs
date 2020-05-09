@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [worker_pools](resources/projects/worker_pools/struct.WorkerPoolsActions.html)\n        * [*create*](resources/projects/worker_pools/struct.CreateRequestBuilder.html), [*delete*](resources/projects/worker_pools/struct.DeleteRequestBuilder.html), [*get*](resources/projects/worker_pools/struct.GetRequestBuilder.html), [*list*](resources/projects/worker_pools/struct.ListRequestBuilder.html), [*patch*](resources/projects/worker_pools/struct.PatchRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -204,6 +208,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project_id: ::std::option::Option<String>,
+        #[doc = "TTL in queue for this build. If provided and the build is enqueued longer\nthan this value, the build will expire and the build status will be\n`EXPIRED`.\n\nThe TTL starts ticking from create_time."]
+        #[serde(
+            rename = "queueTtl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub queue_ttl: ::std::option::Option<String>,
         #[doc = "Output only. Results of the build."]
         #[serde(
             rename = "results",
@@ -304,6 +315,8 @@ pub mod schemas {
     pub enum BuildStatus {
         #[doc = "Build or step was canceled by a user."]
         Cancelled,
+        #[doc = "Build was enqueued for longer than the value of `queue_ttl`."]
+        Expired,
         #[doc = "Build or step failed to complete successfully."]
         Failure,
         #[doc = "Build or step failed due to an internal cause."]
@@ -323,6 +336,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 BuildStatus::Cancelled => "CANCELLED",
+                BuildStatus::Expired => "EXPIRED",
                 BuildStatus::Failure => "FAILURE",
                 BuildStatus::InternalError => "INTERNAL_ERROR",
                 BuildStatus::Queued => "QUEUED",
@@ -343,6 +357,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<BuildStatus, ()> {
             Ok(match s {
                 "CANCELLED" => BuildStatus::Cancelled,
+                "EXPIRED" => BuildStatus::Expired,
                 "FAILURE" => BuildStatus::Failure,
                 "INTERNAL_ERROR" => BuildStatus::InternalError,
                 "QUEUED" => BuildStatus::Queued,
@@ -375,6 +390,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CANCELLED" => BuildStatus::Cancelled,
+                "EXPIRED" => BuildStatus::Expired,
                 "FAILURE" => BuildStatus::Failure,
                 "INTERNAL_ERROR" => BuildStatus::InternalError,
                 "QUEUED" => BuildStatus::Queued,
@@ -520,7 +536,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub volumes: ::std::option::Option<Vec<crate::schemas::Volume>>,
-        #[doc = "Option to specify a `WorkerPool` for the build. User specifies the pool\nwith the format \"[WORKERPOOL_PROJECT_ID]/[WORKERPOOL_NAME]\".\nThis is an experimental field."]
+        #[doc = "Option to specify a `WorkerPool` for the build.\nFormat: projects/{project}/workerPools/{workerPool}\n\nThis field is experimental."]
         #[serde(
             rename = "workerPool",
             default,
@@ -1100,6 +1116,8 @@ pub mod schemas {
     pub enum BuildStepStatus {
         #[doc = "Build or step was canceled by a user."]
         Cancelled,
+        #[doc = "Build was enqueued for longer than the value of `queue_ttl`."]
+        Expired,
         #[doc = "Build or step failed to complete successfully."]
         Failure,
         #[doc = "Build or step failed due to an internal cause."]
@@ -1119,6 +1137,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 BuildStepStatus::Cancelled => "CANCELLED",
+                BuildStepStatus::Expired => "EXPIRED",
                 BuildStepStatus::Failure => "FAILURE",
                 BuildStepStatus::InternalError => "INTERNAL_ERROR",
                 BuildStepStatus::Queued => "QUEUED",
@@ -1139,6 +1158,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<BuildStepStatus, ()> {
             Ok(match s {
                 "CANCELLED" => BuildStepStatus::Cancelled,
+                "EXPIRED" => BuildStepStatus::Expired,
                 "FAILURE" => BuildStepStatus::Failure,
                 "INTERNAL_ERROR" => BuildStepStatus::InternalError,
                 "QUEUED" => BuildStepStatus::Queued,
@@ -1171,6 +1191,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "CANCELLED" => BuildStepStatus::Cancelled,
+                "EXPIRED" => BuildStepStatus::Expired,
                 "FAILURE" => BuildStepStatus::Failure,
                 "INTERNAL_ERROR" => BuildStepStatus::InternalError,
                 "QUEUED" => BuildStepStatus::Queued,
@@ -1521,6 +1542,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dir: ::std::option::Option<String>,
+        #[doc = "Only trigger a build if the revision regex does NOT match the revision\nregex."]
+        #[serde(
+            rename = "invertRegex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub invert_regex: ::std::option::Option<bool>,
         #[doc = "ID of the project that owns the Cloud Source Repository. If omitted, the\nproject ID requesting the build is assumed."]
         #[serde(
             rename = "projectId",
@@ -1528,13 +1556,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project_id: ::std::option::Option<String>,
-        #[doc = "Name of the Cloud Source Repository. If omitted, the name \"default\" is\nassumed."]
+        #[doc = "Required. Name of the Cloud Source Repository."]
         #[serde(
             rename = "repoName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub repo_name: ::std::option::Option<String>,
+        #[doc = "Substitutions to use in a triggered build.\nShould only be used with RunBuildTrigger"]
+        #[serde(
+            rename = "substitutions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub substitutions: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
         #[doc = "Regex matching tags to build.\n\nThe syntax of the regular expressions accepted is the syntax accepted by\nRE2 and described at https://github.com/google/re2/wiki/Syntax"]
         #[serde(
             rename = "tagName",
@@ -2100,7 +2135,7 @@ pub mod schemas {
         Creating,
         #[doc = "`WorkerPool` is deleted."]
         Deleted,
-        #[doc = "`WorkerPool` is being deleting: cancelling builds and draining workers."]
+        #[doc = "`WorkerPool` is being deleted: cancelling builds and draining workers."]
         Deleting,
         #[doc = "`WorkerPool` is running."]
         Running,
@@ -2331,7 +2366,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2339,8 +2374,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2359,7 +2406,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -2379,14 +2426,14 @@ pub mod resources {
         pub mod worker_pools {
             pub mod params {}
             pub struct WorkerPoolsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> WorkerPoolsActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a `WorkerPool` to run the builds, and returns the new worker pool.\n\nThis API is experimental."]
+                #[doc = "Creates a `WorkerPool` to run the builds, and returns the new worker pool."]
                 pub fn create(
                     &self,
                     request: crate::schemas::WorkerPool,
@@ -2410,7 +2457,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Deletes a `WorkerPool` by its project ID and WorkerPool name.\n\nThis API is experimental."]
+                #[doc = "Deletes a `WorkerPool` by its project ID and WorkerPool name."]
                 pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -2429,7 +2476,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Returns information about a `WorkerPool`.\n\nThis API is experimental."]
+                #[doc = "Returns information about a `WorkerPool`."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -2448,7 +2495,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "List project's `WorkerPool`s.\n\nThis API is experimental."]
+                #[doc = "List project's `WorkerPool`s."]
                 pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -2467,7 +2514,7 @@ pub mod resources {
                         parent: parent.into(),
                     }
                 }
-                #[doc = "Update a `WorkerPool`.\n\nThis API is experimental."]
+                #[doc = "Update a `WorkerPool`."]
                 pub fn patch(
                     &self,
                     request: crate::schemas::WorkerPool,
@@ -2495,7 +2542,7 @@ pub mod resources {
             #[doc = "Created via [WorkerPoolsActions::create()](struct.WorkerPoolsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WorkerPool,
                 parent: String,
@@ -2630,7 +2677,10 @@ pub mod resources {
                     output.push_str("/workerPools");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2654,7 +2704,7 @@ pub mod resources {
             #[doc = "Created via [WorkerPoolsActions::delete()](struct.WorkerPoolsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2786,7 +2836,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2810,7 +2863,7 @@ pub mod resources {
             #[doc = "Created via [WorkerPoolsActions::get()](struct.WorkerPoolsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2942,7 +2995,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2966,7 +3022,7 @@ pub mod resources {
             #[doc = "Created via [WorkerPoolsActions::list()](struct.WorkerPoolsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 access_token: Option<String>,
@@ -3099,7 +3155,10 @@ pub mod resources {
                     output.push_str("/workerPools");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3123,7 +3182,7 @@ pub mod resources {
             #[doc = "Created via [WorkerPoolsActions::patch()](struct.WorkerPoolsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WorkerPool,
                 name: String,
@@ -3257,7 +3316,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3297,9 +3359,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3341,7 +3401,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

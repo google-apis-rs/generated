@@ -7,7 +7,7 @@
   "canonicalName": "Drive Activity",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190917",
+  "revision": "20200505",
   "title": "Drive Activity API",
   "description": "Provides a historical view of activity in Google Drive.",
   "ownerDomain": "google.com",
@@ -407,6 +407,10 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "assignedUser": {
+          "description": "The user to whom the comment was assigned.",
+          "$ref": "User"
+        },
         "subtype": {
           "description": "The sub-type of this event.",
           "type": "string",
@@ -1361,11 +1365,11 @@
           "items": null
         },
         "consolidationStrategy": {
-          "description": "Details on how to consolidate related actions that make up the activity. If\nnot set, then related actions will not be consolidated.",
+          "description": "Details on how to consolidate related actions that make up the activity. If\nnot set, then related actions are not consolidated.",
           "$ref": "ConsolidationStrategy"
         },
         "filter": {
-          "description": "The filtering for items returned from this query request. The format of the\nfilter string is a sequence of expressions, joined by an optional \"AND\",\nwhere each expression is of the form \"field operator value\".\n\nSupported fields:\n\n  - <tt>time</tt>: Uses numerical operators on date values either in\n    terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.\n    Examples:\n      - <tt>time > 1452409200000 AND time <= 1492812924310</tt>\n      - <tt>time >= \"2016-01-10T01:02:03-05:00\"</tt>\n\n  - <tt>detail.action_detail_case</tt>: Uses the \"has\" operator (:) and\n    either a singular value or a list of allowed action types enclosed in\n    parentheses.\n    Examples:\n      - <tt>detail.action_detail_case: RENAME</tt>\n      - <tt>detail.action_detail_case:(CREATE UPLOAD)</tt>\n      - <tt>-detail.action_detail_case:MOVE</tt>",
+          "description": "The filtering for items returned from this query request. The format of the\nfilter string is a sequence of expressions, joined by an optional \"AND\",\nwhere each expression is of the form \"field operator value\".\n\nSupported fields:\n\n  - <tt>time</tt>: Uses numerical operators on date values either in\n    terms of milliseconds since Jan 1, 1970 or in RFC 3339 format.\n    Examples:\n      - <tt>time > 1452409200000 AND time <= 1492812924310</tt>\n      - <tt>time >= \"2016-01-10T01:02:03-05:00\"</tt>\n\n  - <tt>detail.action_detail_case</tt>: Uses the \"has\" operator (:) and\n    either a singular value or a list of allowed action types enclosed in\n    parentheses.\n    Examples:\n      - <tt>detail.action_detail_case: RENAME</tt>\n      - <tt>detail.action_detail_case:(CREATE EDIT)</tt>\n      - <tt>-detail.action_detail_case:MOVE</tt>",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1385,7 +1389,7 @@
           "items": null
         },
         "pageSize": {
-          "description": "The requested number of activity to return. If not set, a default value\nwill be used.",
+          "description": "The miminum number of activities desired in the response; the server will\nattempt to return at least this quanitity. The server may also return fewer\nactivities if it has a partial response ready before the request times out.\nIf not set, a default value is used.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1395,7 +1399,7 @@
           "items": null
         },
         "pageToken": {
-          "description": "The next_page_token value returned from a previous QueryDriveActivity\nrequest, if any.",
+          "description": "The token identifying which page of results to return. Set this to the\nnext_page_token value returned from a previous query to obtain the\nfollowing page of results. If not set, the first page of results will be\nreturned.",
           "type": "string",
           "format": null,
           "enum": [],

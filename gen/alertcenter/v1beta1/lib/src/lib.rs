@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [alerts](resources/alerts/struct.AlertsActions.html)\n      * [*batchDelete*](resources/alerts/struct.BatchDeleteRequestBuilder.html), [*batchUndelete*](resources/alerts/struct.BatchUndeleteRequestBuilder.html), [*delete*](resources/alerts/struct.DeleteRequestBuilder.html), [*get*](resources/alerts/struct.GetRequestBuilder.html), [*getMetadata*](resources/alerts/struct.GetMetadataRequestBuilder.html), [*list*](resources/alerts/struct.ListRequestBuilder.html), [*undelete*](resources/alerts/struct.UndeleteRequestBuilder.html)\n      * [feedback](resources/alerts/feedback/struct.FeedbackActions.html)\n        * [*create*](resources/alerts/feedback/struct.CreateRequestBuilder.html), [*list*](resources/alerts/feedback/struct.ListRequestBuilder.html)\n    * [v_1beta_1](resources/v_1beta_1/struct.V1Beta1Actions.html)\n      * [*getSettings*](resources/v_1beta_1/struct.GetSettingsRequestBuilder.html), [*updateSettings*](resources/v_1beta_1/struct.UpdateSettingsRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "See and delete your domain's G Suite alerts, and send alert feedback\n\n`https://www.googleapis.com/auth/apps.alerts`"]
+    pub const APPS_ALERTS: &str = "https://www.googleapis.com/auth/apps.alerts";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -93,21 +97,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub query: ::std::option::Option<String>,
-        #[doc = "List of alert ids superseded by this alert. It is used to indicate that\nthis alert is essentially extension of superseded alerts and we found the\nrelationship after creating these alerts."]
+        #[doc = "List of alert IDs superseded by this alert. It is used to indicate that\nthis alert is essentially extension of superseded alerts and we found the\nrelationship after creating these alerts."]
         #[serde(
             rename = "supersededAlerts",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub superseded_alerts: ::std::option::Option<Vec<String>>,
-        #[doc = "Alert id superseding this alert. It is used to indicate that superseding\nalert is essentially extension of this alert and we found the relationship\nafter creating both alerts."]
+        #[doc = "Alert ID superseding this alert. It is used to indicate that superseding\nalert is essentially extension of this alert and we found the relationship\nafter creating both alerts."]
         #[serde(
             rename = "supersedingAlert",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub superseding_alert: ::std::option::Option<String>,
-        #[doc = "Alert threshold is for example \u{201c}COUNT > 5\u{201d}."]
+        #[doc = "Alert threshold is for example “COUNT > 5”."]
         #[serde(
             rename = "threshold",
             default,
@@ -603,7 +607,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchDeleteAlertsRequest {
-        #[doc = "Required. list of alert ids."]
+        #[doc = "Required. list of alert IDs."]
         #[serde(
             rename = "alertId",
             default,
@@ -638,7 +642,7 @@ pub mod schemas {
         )]
         pub failed_alert_status:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Status>>,
-        #[doc = "The successful list of alert ids."]
+        #[doc = "The successful list of alert IDs."]
         #[serde(
             rename = "successAlertIds",
             default,
@@ -669,7 +673,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchUndeleteAlertsRequest {
-        #[doc = "Required. list of alert ids."]
+        #[doc = "Required. list of alert IDs."]
         #[serde(
             rename = "alertId",
             default,
@@ -704,7 +708,7 @@ pub mod schemas {
         )]
         pub failed_alert_status:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Status>>,
-        #[doc = "The successful list of alert ids."]
+        #[doc = "The successful list of alert IDs."]
         #[serde(
             rename = "successAlertIds",
             default,
@@ -1029,6 +1033,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DlpRuleViolation {
+        #[doc = "Details about the violated DLP rule.\n\nAdmins can use the predefined detectors provided by Google Cloud DLP\nhttps://cloud.google.com/dlp/ when setting up a DLP rule. Matched Cloud DLP\ndetectors in this violation if any will be captured in the\nMatchInfo.predefined_detector."]
+        #[serde(
+            rename = "ruleViolationInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rule_violation_info: ::std::option::Option<crate::schemas::RuleViolationInfo>,
+    }
+    impl ::google_field_selector::FieldSelector for DlpRuleViolation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DlpRuleViolation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DomainId {
         #[doc = "The primary domain for the customer."]
         #[serde(
@@ -1320,7 +1355,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ip_address: ::std::option::Option<String>,
-        #[doc = "Optional. The successful login time that is associated with the warning\nevent. This will not be present for blocked login attempts."]
+        #[doc = "Optional. The successful login time that is associated with the warning\nevent. This isn't present for blocked login attempts."]
         #[serde(
             rename = "loginTime",
             default,
@@ -1379,6 +1414,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub messages: ::std::option::Option<Vec<crate::schemas::GmailMessageInfo>>,
+        #[doc = "System actions on the messages."]
+        #[serde(
+            rename = "systemActionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub system_action_type: ::std::option::Option<crate::schemas::MailPhishingSystemActionType>,
     }
     impl ::google_field_selector::FieldSelector for MailPhishing {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1386,6 +1428,88 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for MailPhishing {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum MailPhishingSystemActionType {
+        #[doc = "No operation."]
+        NoOperation,
+        #[doc = "Messages were removed from the inbox."]
+        RemovedFromInbox,
+        #[doc = "System action is unspecified."]
+        SystemActionTypeUnspecified,
+    }
+    impl MailPhishingSystemActionType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                MailPhishingSystemActionType::NoOperation => "NO_OPERATION",
+                MailPhishingSystemActionType::RemovedFromInbox => "REMOVED_FROM_INBOX",
+                MailPhishingSystemActionType::SystemActionTypeUnspecified => {
+                    "SYSTEM_ACTION_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for MailPhishingSystemActionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for MailPhishingSystemActionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<MailPhishingSystemActionType, ()> {
+            Ok(match s {
+                "NO_OPERATION" => MailPhishingSystemActionType::NoOperation,
+                "REMOVED_FROM_INBOX" => MailPhishingSystemActionType::RemovedFromInbox,
+                "SYSTEM_ACTION_TYPE_UNSPECIFIED" => {
+                    MailPhishingSystemActionType::SystemActionTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for MailPhishingSystemActionType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for MailPhishingSystemActionType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for MailPhishingSystemActionType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NO_OPERATION" => MailPhishingSystemActionType::NoOperation,
+                "REMOVED_FROM_INBOX" => MailPhishingSystemActionType::RemovedFromInbox,
+                "SYSTEM_ACTION_TYPE_UNSPECIFIED" => {
+                    MailPhishingSystemActionType::SystemActionTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for MailPhishingSystemActionType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for MailPhishingSystemActionType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1410,6 +1534,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
+        #[doc = "The actor who triggered a gmail phishing alert."]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity: ::std::option::Option<crate::schemas::User>,
         #[doc = "The sender email address."]
         #[serde(
             rename = "fromHeader",
@@ -1424,6 +1555,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for MaliciousEntity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct MatchInfo {
+        #[doc = "For matched detector predefined by Google."]
+        #[serde(
+            rename = "predefinedDetector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub predefined_detector: ::std::option::Option<crate::schemas::PredefinedDetectorInfo>,
+        #[doc = "For matched detector defined by administrators."]
+        #[serde(
+            rename = "userDefinedDetector",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub user_defined_detector: ::std::option::Option<crate::schemas::UserDefinedDetectorInfo>,
+    }
+    impl ::google_field_selector::FieldSelector for MatchInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for MatchInfo {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1523,6 +1692,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PredefinedDetectorInfo {
+        #[doc = "Name that uniquely identifies the detector."]
+        #[serde(
+            rename = "detectorName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub detector_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for PredefinedDetectorInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PredefinedDetectorInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct RequestInfo {
         #[doc = "List of app developers who triggered notifications for above\napplication."]
         #[serde(
@@ -1553,6 +1753,507 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for RequestInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ResourceInfo {
+        #[doc = "Drive file ID."]
+        #[serde(
+            rename = "documentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub document_id: ::std::option::Option<String>,
+        #[doc = "Title of the resource, for example email subject, or document title."]
+        #[serde(
+            rename = "resourceTitle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ResourceInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ResourceInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RuleInfo {
+        #[doc = "User provided name of the rule."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Resource name that uniquely identifies the rule."]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for RuleInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RuleInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct RuleViolationInfo {
+        #[doc = "Source of the data."]
+        #[serde(
+            rename = "dataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_source: ::std::option::Option<crate::schemas::RuleViolationInfoDataSource>,
+        #[doc = "List of matches that were found in the resource content."]
+        #[serde(
+            rename = "matchInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub match_info: ::std::option::Option<Vec<crate::schemas::MatchInfo>>,
+        #[doc = "Resource recipients.\n\nFor Drive, they are grantees that the Drive file was shared with at the\ntime of rule triggering. Valid values include user emails, group emails,\ndomains, or 'anyone' if the file was publicly accessible. If the file was\nprivate the recipients list will be empty.\n\nFor Gmail, they are emails of the users or groups that the Gmail message\nwas sent to."]
+        #[serde(
+            rename = "recipients",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub recipients: ::std::option::Option<Vec<String>>,
+        #[doc = "Details of the resource which violated the rule."]
+        #[serde(
+            rename = "resourceInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_info: ::std::option::Option<crate::schemas::ResourceInfo>,
+        #[doc = "Details of the violated rule."]
+        #[serde(
+            rename = "ruleInfo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rule_info: ::std::option::Option<crate::schemas::RuleInfo>,
+        #[doc = "Actions suppressed due to other actions with higher priority."]
+        #[serde(
+            rename = "suppressedActionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub suppressed_action_types:
+            ::std::option::Option<Vec<crate::schemas::RuleViolationInfoSuppressedActionTypesItems>>,
+        #[doc = "Trigger of the rule."]
+        #[serde(
+            rename = "trigger",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub trigger: ::std::option::Option<crate::schemas::RuleViolationInfoTrigger>,
+        #[doc = "Actions applied as a consequence of the rule being triggered."]
+        #[serde(
+            rename = "triggeredActionTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub triggered_action_types:
+            ::std::option::Option<Vec<crate::schemas::RuleViolationInfoTriggeredActionTypesItems>>,
+        #[doc = "Email of the user who caused the violation. Value could be empty if not\napplicable, for example, a violation found by drive continuous scan."]
+        #[serde(
+            rename = "triggeringUserEmail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub triggering_user_email: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for RuleViolationInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RuleViolationInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum RuleViolationInfoDataSource {
+        #[doc = "Data source is unspecified."]
+        DataSourceUnspecified,
+        #[doc = "Drive data source."]
+        Drive,
+    }
+    impl RuleViolationInfoDataSource {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                RuleViolationInfoDataSource::DataSourceUnspecified => "DATA_SOURCE_UNSPECIFIED",
+                RuleViolationInfoDataSource::Drive => "DRIVE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RuleViolationInfoDataSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RuleViolationInfoDataSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RuleViolationInfoDataSource, ()> {
+            Ok(match s {
+                "DATA_SOURCE_UNSPECIFIED" => RuleViolationInfoDataSource::DataSourceUnspecified,
+                "DRIVE" => RuleViolationInfoDataSource::Drive,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for RuleViolationInfoDataSource {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for RuleViolationInfoDataSource {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for RuleViolationInfoDataSource {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DATA_SOURCE_UNSPECIFIED" => RuleViolationInfoDataSource::DataSourceUnspecified,
+                "DRIVE" => RuleViolationInfoDataSource::Drive,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for RuleViolationInfoDataSource {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RuleViolationInfoDataSource {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum RuleViolationInfoSuppressedActionTypesItems {
+        ActionTypeUnspecified,
+        Alert,
+        DriveBlockExternalSharing,
+        DriveWarnOnExternalSharing,
+    }
+    impl RuleViolationInfoSuppressedActionTypesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                RuleViolationInfoSuppressedActionTypesItems::ActionTypeUnspecified => {
+                    "ACTION_TYPE_UNSPECIFIED"
+                }
+                RuleViolationInfoSuppressedActionTypesItems::Alert => "ALERT",
+                RuleViolationInfoSuppressedActionTypesItems::DriveBlockExternalSharing => {
+                    "DRIVE_BLOCK_EXTERNAL_SHARING"
+                }
+                RuleViolationInfoSuppressedActionTypesItems::DriveWarnOnExternalSharing => {
+                    "DRIVE_WARN_ON_EXTERNAL_SHARING"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RuleViolationInfoSuppressedActionTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RuleViolationInfoSuppressedActionTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<RuleViolationInfoSuppressedActionTypesItems, ()> {
+            Ok(match s {
+                "ACTION_TYPE_UNSPECIFIED" => {
+                    RuleViolationInfoSuppressedActionTypesItems::ActionTypeUnspecified
+                }
+                "ALERT" => RuleViolationInfoSuppressedActionTypesItems::Alert,
+                "DRIVE_BLOCK_EXTERNAL_SHARING" => {
+                    RuleViolationInfoSuppressedActionTypesItems::DriveBlockExternalSharing
+                }
+                "DRIVE_WARN_ON_EXTERNAL_SHARING" => {
+                    RuleViolationInfoSuppressedActionTypesItems::DriveWarnOnExternalSharing
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for RuleViolationInfoSuppressedActionTypesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for RuleViolationInfoSuppressedActionTypesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for RuleViolationInfoSuppressedActionTypesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTION_TYPE_UNSPECIFIED" => {
+                    RuleViolationInfoSuppressedActionTypesItems::ActionTypeUnspecified
+                }
+                "ALERT" => RuleViolationInfoSuppressedActionTypesItems::Alert,
+                "DRIVE_BLOCK_EXTERNAL_SHARING" => {
+                    RuleViolationInfoSuppressedActionTypesItems::DriveBlockExternalSharing
+                }
+                "DRIVE_WARN_ON_EXTERNAL_SHARING" => {
+                    RuleViolationInfoSuppressedActionTypesItems::DriveWarnOnExternalSharing
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for RuleViolationInfoSuppressedActionTypesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RuleViolationInfoSuppressedActionTypesItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum RuleViolationInfoTrigger {
+        #[doc = "A Drive file is shared."]
+        DriveShare,
+        #[doc = "Trigger is unspecified."]
+        TriggerUnspecified,
+    }
+    impl RuleViolationInfoTrigger {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                RuleViolationInfoTrigger::DriveShare => "DRIVE_SHARE",
+                RuleViolationInfoTrigger::TriggerUnspecified => "TRIGGER_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RuleViolationInfoTrigger {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RuleViolationInfoTrigger {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<RuleViolationInfoTrigger, ()> {
+            Ok(match s {
+                "DRIVE_SHARE" => RuleViolationInfoTrigger::DriveShare,
+                "TRIGGER_UNSPECIFIED" => RuleViolationInfoTrigger::TriggerUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for RuleViolationInfoTrigger {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for RuleViolationInfoTrigger {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for RuleViolationInfoTrigger {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DRIVE_SHARE" => RuleViolationInfoTrigger::DriveShare,
+                "TRIGGER_UNSPECIFIED" => RuleViolationInfoTrigger::TriggerUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for RuleViolationInfoTrigger {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RuleViolationInfoTrigger {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum RuleViolationInfoTriggeredActionTypesItems {
+        ActionTypeUnspecified,
+        Alert,
+        DriveBlockExternalSharing,
+        DriveWarnOnExternalSharing,
+    }
+    impl RuleViolationInfoTriggeredActionTypesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                RuleViolationInfoTriggeredActionTypesItems::ActionTypeUnspecified => {
+                    "ACTION_TYPE_UNSPECIFIED"
+                }
+                RuleViolationInfoTriggeredActionTypesItems::Alert => "ALERT",
+                RuleViolationInfoTriggeredActionTypesItems::DriveBlockExternalSharing => {
+                    "DRIVE_BLOCK_EXTERNAL_SHARING"
+                }
+                RuleViolationInfoTriggeredActionTypesItems::DriveWarnOnExternalSharing => {
+                    "DRIVE_WARN_ON_EXTERNAL_SHARING"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for RuleViolationInfoTriggeredActionTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for RuleViolationInfoTriggeredActionTypesItems {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<RuleViolationInfoTriggeredActionTypesItems, ()> {
+            Ok(match s {
+                "ACTION_TYPE_UNSPECIFIED" => {
+                    RuleViolationInfoTriggeredActionTypesItems::ActionTypeUnspecified
+                }
+                "ALERT" => RuleViolationInfoTriggeredActionTypesItems::Alert,
+                "DRIVE_BLOCK_EXTERNAL_SHARING" => {
+                    RuleViolationInfoTriggeredActionTypesItems::DriveBlockExternalSharing
+                }
+                "DRIVE_WARN_ON_EXTERNAL_SHARING" => {
+                    RuleViolationInfoTriggeredActionTypesItems::DriveWarnOnExternalSharing
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for RuleViolationInfoTriggeredActionTypesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for RuleViolationInfoTriggeredActionTypesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for RuleViolationInfoTriggeredActionTypesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTION_TYPE_UNSPECIFIED" => {
+                    RuleViolationInfoTriggeredActionTypesItems::ActionTypeUnspecified
+                }
+                "ALERT" => RuleViolationInfoTriggeredActionTypesItems::Alert,
+                "DRIVE_BLOCK_EXTERNAL_SHARING" => {
+                    RuleViolationInfoTriggeredActionTypesItems::DriveBlockExternalSharing
+                }
+                "DRIVE_WARN_ON_EXTERNAL_SHARING" => {
+                    RuleViolationInfoTriggeredActionTypesItems::DriveWarnOnExternalSharing
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for RuleViolationInfoTriggeredActionTypesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RuleViolationInfoTriggeredActionTypesItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1810,6 +2511,82 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct User {
+        #[doc = "Display name of the user."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Email address of the user."]
+        #[serde(
+            rename = "emailAddress",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub email_address: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for User {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for User {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct UserDefinedDetectorInfo {
+        #[doc = "Display name of the detector."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "Resource name that uniquely identifies the detector."]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for UserDefinedDetectorInfo {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UserDefinedDetectorInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub mod params {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
@@ -1961,7 +2738,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1969,8 +2746,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1996,7 +2785,7 @@ pub mod resources {
     pub mod alerts {
         pub mod params {}
         pub struct AlertsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AlertsActions<'a> {
@@ -2165,7 +2954,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::batch_delete()](struct.AlertsActions.html#method.batch_delete)"]
         #[derive(Debug, Clone)]
         pub struct BatchDeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchDeleteAlertsRequest,
             access_token: Option<String>,
@@ -2288,7 +3077,10 @@ pub mod resources {
                 output.push_str("v1beta1/alerts:batchDelete");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2312,7 +3104,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::batch_undelete()](struct.AlertsActions.html#method.batch_undelete)"]
         #[derive(Debug, Clone)]
         pub struct BatchUndeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchUndeleteAlertsRequest,
             access_token: Option<String>,
@@ -2435,7 +3227,10 @@ pub mod resources {
                 output.push_str("v1beta1/alerts:batchUndelete");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2459,7 +3254,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::delete()](struct.AlertsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alert_id: String,
             customer_id: Option<String>,
@@ -2592,7 +3387,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2617,7 +3415,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::get()](struct.AlertsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alert_id: String,
             customer_id: Option<String>,
@@ -2750,7 +3548,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2775,7 +3576,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::get_metadata()](struct.AlertsActions.html#method.get_metadata)"]
         #[derive(Debug, Clone)]
         pub struct GetMetadataRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alert_id: String,
             customer_id: Option<String>,
@@ -2911,7 +3712,10 @@ pub mod resources {
                 output.push_str("/metadata");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2936,7 +3740,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::list()](struct.AlertsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             customer_id: Option<String>,
             filter: Option<String>,
@@ -3185,7 +3989,10 @@ pub mod resources {
                 output.push_str("v1beta1/alerts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("filter", &self.filter)]);
@@ -3225,7 +4032,7 @@ pub mod resources {
         #[doc = "Created via [AlertsActions::undelete()](struct.AlertsActions.html#method.undelete)"]
         #[derive(Debug, Clone)]
         pub struct UndeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UndeleteAlertRequest,
             alert_id: String,
@@ -3355,7 +4162,10 @@ pub mod resources {
                 output.push_str(":undelete");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3379,7 +4189,7 @@ pub mod resources {
         pub mod feedback {
             pub mod params {}
             pub struct FeedbackActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> FeedbackActions<'a> {
@@ -3436,7 +4246,7 @@ pub mod resources {
             #[doc = "Created via [FeedbackActions::create()](struct.FeedbackActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AlertFeedback,
                 alert_id: String,
@@ -3577,7 +4387,10 @@ pub mod resources {
                     output.push_str("/feedback");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("customerId", &self.customer_id)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -3602,7 +4415,7 @@ pub mod resources {
             #[doc = "Created via [FeedbackActions::list()](struct.FeedbackActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 alert_id: String,
                 customer_id: Option<String>,
@@ -3749,7 +4562,10 @@ pub mod resources {
                     output.push_str("/feedback");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("customerId", &self.customer_id)]);
                     let req = req.query(&[("filter", &self.filter)]);
@@ -3777,7 +4593,7 @@ pub mod resources {
     pub mod v_1beta_1 {
         pub mod params {}
         pub struct V1Beta1Actions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> V1Beta1Actions<'a> {
@@ -3830,7 +4646,7 @@ pub mod resources {
         #[doc = "Created via [V1Beta1Actions::get_settings()](struct.V1Beta1Actions.html#method.get_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetSettingsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             customer_id: Option<String>,
             access_token: Option<String>,
@@ -3955,7 +4771,10 @@ pub mod resources {
                 output.push_str("v1beta1/settings");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -3980,7 +4799,7 @@ pub mod resources {
         #[doc = "Created via [V1Beta1Actions::update_settings()](struct.V1Beta1Actions.html#method.update_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateSettingsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Settings,
             customer_id: Option<String>,
@@ -4107,7 +4926,10 @@ pub mod resources {
                 output.push_str("v1beta1/settings");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -4147,9 +4969,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4191,7 +5011,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

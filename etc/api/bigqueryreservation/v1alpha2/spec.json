@@ -7,7 +7,7 @@
   "canonicalName": "BigQuery Reservation",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha2",
-  "revision": "20190902",
+  "revision": "20200410",
   "title": "BigQuery Reservation API",
   "description": "A service to modify your BigQuery flat-rate reservations.",
   "ownerDomain": "google.com",
@@ -243,40 +243,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "ListLocationsResponse": {
-      "id": "ListLocationsResponse",
-      "description": "The response message for Locations.ListLocations.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "locations": {
-          "description": "A list of locations that matches the specified filter in the request.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "Location"
-          }
-        },
-        "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "ListReservationGrantsResponse": {
       "id": "ListReservationGrantsResponse",
       "description": "The response for ReservationService.ListReservationGrants.",
@@ -374,108 +340,6 @@
           "items": {
             "$ref": "SlotPool"
           }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "Location": {
-      "id": "Location",
-      "description": "A resource that represents Google Cloud Platform location.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "displayName": {
-          "description": "The friendly name for this location, typically a nearby city name.\nFor example, \"Tokyo\".",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "labels": {
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": {
-            "description": null,
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          },
-          "items": null
-        },
-        "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "metadata": {
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-          "type": "object",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          },
-          "items": null
-        },
-        "name": {
-          "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "LocationMetadata": {
-      "id": "LocationMetadata",
-      "description": "BigQuery-specific metadata about a location. This will be set on\ngoogle.cloud.location.Location.metadata in Cloud Location API\nresponses.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "legacyLocationId": {
-          "description": "The legacy BigQuery location ID, e.g. “EU” for the “europe” location.\nThis is for any API consumers that need the legacy “US” and “EU” locations.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
         }
       },
       "additionalProperties": null,
@@ -652,6 +516,24 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "state": {
+          "description": "Output only. State of the ReservationGrant.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "PENDING",
+            "ACTIVE"
+          ],
+          "enumDescriptions": [
+            "Invalid state value.",
+            "Queries from grantee will be executed as on-demand, if related\nReservationGrant is pending.",
+            "ReservationGrant is ready."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -693,7 +575,7 @@
     },
     "SlotPool": {
       "id": "SlotPool",
-      "description": "Slot pool is a way to purchase slots with some minimum committed period of\nusage. Slot pool is immutable and cannot be deleted until the end of the\ncommitment period. After the end of the commitment period, slots are still\navailable but can be freely removed any time.\n\nA slot pool resource exists as a child resource of a top-level reservation.\nSum of all the ACTIVE pools slot_count is always equal to the reservation\nslot_capacity.",
+      "description": "Slot pool is a way to purchase slots with some minimum committed period of\nusage. Slot pool is immutable and cannot be deleted until the end of the\ncommitment period. After the end of the commitment period, slots are still\navailable but can be freely removed any time. Annual commitments will\nautomatically be downgraded to monthly after the commitment ends.\n\nA slot pool resource exists as a child resource of a top-level reservation.\nSum of all the ACTIVE pools slot_count is always equal to the reservation\nslot_capacity.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -708,6 +590,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "failureStatus": {
+          "description": "Output only. For FAILED slot pool, provides the reason of failure.",
+          "$ref": "Status"
         },
         "name": {
           "description": "Output only. The resource name of the slot pool, e.g.,\n   projects/myproject/locations/us-central1/reservations/myreservation/slotPools/123",
@@ -725,13 +611,15 @@
           "format": null,
           "enum": [
             "COMMITMENT_PLAN_UNSPECIFIED",
+            "FLEX",
             "MONTHLY",
             "ANNUAL"
           ],
           "enumDescriptions": [
             "Invalid plan value. Requests with this value will be rejected with\nerror code `google.rpc.Code.INVALID_ARGUMENT`.",
+            "Slot pool can be removed at any point, even after becoming ACTIVE.",
             "Slot pool cannot be removed for 30 days after becoming ACTIVE.",
-            "Slot pool cannot be removed for 365 days after becoming ACTIVE."
+            "Slot pool cannot be removed for 365 days after becoming ACTIVE.\nNote: annual commitments are automatically downgraded to monthly after\n365 days."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -754,12 +642,14 @@
           "enum": [
             "STATE_UNSPECIFIED",
             "PENDING",
-            "ACTIVE"
+            "ACTIVE",
+            "FAILED"
           ],
           "enumDescriptions": [
             "Invalid state value.",
             "Slot pool is pending provisioning. Pending slot pool does not\ncontribute to the parent's slot_capacity.",
-            "Once slots are provisioned, slot pool becomes active. slot_count is\nadded to the parent's slot_capacity."
+            "Once slots are provisioned, slot pool becomes active. slot_count is\nadded to the parent's slot_capacity.",
+            "Slot pool is failed to be activated by the backend."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1284,7 +1174,7 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/.+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/.*$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -1352,7 +1242,7 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/.+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/.*$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -1390,7 +1280,7 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/.+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/.*$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -1508,7 +1398,7 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+/.+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/reservations/[^/]+/.*$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -1551,124 +1441,6 @@
             }
           },
           "methods": {
-            "get": {
-              "id": "bigqueryreservation.projects.locations.get",
-              "path": "v1alpha2/{+name}",
-              "httpMethod": "GET",
-              "description": "Gets information about a location.",
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "Location"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
-            "list": {
-              "id": "bigqueryreservation.projects.locations.list",
-              "path": "v1alpha2/{+name}/locations",
-              "httpMethod": "GET",
-              "description": "Lists information about the supported locations for this service.",
-              "parameters": {
-                "filter": {
-                  "description": "The standard list filter.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "name": {
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^projects/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "pageSize": {
-                  "description": "The standard list page size.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "integer",
-                  "format": "int32",
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "pageToken": {
-                  "description": "The standard list page token.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
             "searchReservationGrants": {
               "id": "bigqueryreservation.projects.locations.searchReservationGrants",
               "path": "v1alpha2/{+parent}:SearchReservationGrants",

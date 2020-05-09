@@ -1,37 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/-Mtk4jzrnfn1WM7fqzAFlj2E6ZM\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "blogger:v2",
   "name": "blogger",
-  "canonicalName": null,
-  "fullyEncodeReservedExpansion": null,
+  "canonicalName": "Blogger",
+  "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20150422",
-  "title": "Blogger API",
-  "description": "API for access to the data within Blogger.",
+  "revision": "20200507",
+  "title": "Blogger API v3",
+  "description": "The Blogger API provides access to posts, comments and pages of a\n    Blogger blog.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.google.com/images/icons/product/blogger-16.png",
-    "x32": "https://www.google.com/images/icons/product/blogger-32.png"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "documentationLink": "https://developers.google.com/blogger/docs/2.0/json/getting_started",
+  "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/blogger/v2/",
-  "basePath": "/blogger/v2/",
-  "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "blogger/v2/",
-  "batchPath": "batch/blogger/v2",
+  "baseUrl": "https://blogger.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://blogger.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
   "version_module": null,
   "packagePath": null,
-  "labels": [
-    "limited_availability"
-  ],
+  "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -41,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -105,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -118,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -151,6 +215,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "customMetaData": {
+          "description": "The JSON custom meta-data for the Blog.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "description": {
           "description": "The description of this blog. This is displayed underneath the title.",
           "type": "string",
@@ -164,7 +238,7 @@
         "id": {
           "description": "The identifier for this resource.",
           "type": "string",
-          "format": "int64",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -172,7 +246,7 @@
           "items": null
         },
         "kind": {
-          "description": "The kind of this entry. Always blogger#blog",
+          "description": "The kind of this entry. Always blogger#blog.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -270,6 +344,18 @@
           "enum": [],
           "enumDescriptions": [],
           "properties": {
+            "items": {
+              "description": "The List of Posts for this Blog.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "$ref": "Post"
+              }
+            },
             "selfLink": {
               "description": "The URL of the container for posts in this blog.",
               "type": "string",
@@ -297,7 +383,7 @@
         "published": {
           "description": "RFC 3339 date-time when this blog was published.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -314,10 +400,26 @@
           "additionalProperties": null,
           "items": null
         },
+        "status": {
+          "description": "The status of the blog.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "LIVE",
+            "DELETED"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "updated": {
           "description": "RFC 3339 date-time when this blog was last updated.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -346,6 +448,18 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "blogUserInfos": {
+          "description": "Admin level list of blog per-user information.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "BlogUserInfo"
+          }
+        },
         "items": {
           "description": "The list of Blogs this user has Authorship or Admin rights over.",
           "type": "array",
@@ -359,7 +473,119 @@
           }
         },
         "kind": {
-          "description": "The kind of this entity. Always blogger#blogList",
+          "description": "The kind of this entity. Always blogger#blogList.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BlogPerUserInfo": {
+      "id": "BlogPerUserInfo",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "blogId": {
+          "description": "ID of the Blog resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "hasAdminAccess": {
+          "description": "True if the user has Admin level access to the blog.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "The kind of this entity. Always blogger#blogPerUserInfo.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "photosAlbumKey": {
+          "description": "The Photo Album Key for the user when adding photos to the blog.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "role": {
+          "description": "Access permissions that the user has for the blog (ADMIN, AUTHOR, or\nREADER).",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "VIEW_TYPE_UNSPECIFIED",
+            "READER",
+            "AUTHOR",
+            "ADMIN"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "userId": {
+          "description": "ID of the User.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BlogUserInfo": {
+      "id": "BlogUserInfo",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "blog": {
+          "description": "The Blog resource.",
+          "$ref": "Blog"
+        },
+        "blog_user_info": {
+          "description": "Information about a User for the Blog.",
+          "$ref": "BlogPerUserInfo"
+        },
+        "kind": {
+          "description": "The kind of this entity. Always blogger#blogUserInfo.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -398,7 +624,7 @@
               "items": null
             },
             "id": {
-              "description": "The identifier of the Comment creator.",
+              "description": "The identifier of the creator.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -408,14 +634,14 @@
               "items": null
             },
             "image": {
-              "description": "The comment creator's avatar.",
+              "description": "The creator's avatar.",
               "type": "object",
               "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {
                 "url": {
-                  "description": "The comment creator's avatar URL.",
+                  "description": "The creator's avatar URL.",
                   "type": "string",
                   "format": null,
                   "enum": [],
@@ -429,7 +655,7 @@
               "items": null
             },
             "url": {
-              "description": "The URL of the Comment creator's Profile page.",
+              "description": "The URL of the creator's Profile page.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -452,7 +678,7 @@
             "id": {
               "description": "The identifier of the blog containing this comment.",
               "type": "string",
-              "format": "int64",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -476,7 +702,7 @@
         "id": {
           "description": "The identifier for this resource.",
           "type": "string",
-          "format": "int64",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -493,7 +719,7 @@
             "id": {
               "description": "The identified of the parent of this comment.",
               "type": "string",
-              "format": "int64",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -505,7 +731,7 @@
           "items": null
         },
         "kind": {
-          "description": "The kind of this entry. Always blogger#comment",
+          "description": "The kind of this entry. Always blogger#comment.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -524,7 +750,7 @@
             "id": {
               "description": "The identifier of the post containing this comment.",
               "type": "string",
-              "format": "int64",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -538,7 +764,7 @@
         "published": {
           "description": "RFC 3339 date-time when this comment was published.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -555,10 +781,30 @@
           "additionalProperties": null,
           "items": null
         },
+        "status": {
+          "description": "The status of the comment (only populated for admin users).",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "LIVE",
+            "EMPTIED",
+            "PENDING",
+            "SPAM"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "updated": {
           "description": "RFC 3339 date-time when this comment was last updated.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -577,6 +823,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "etag": {
+          "description": "Etag of the response.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "items": {
           "description": "The List of Comments for a Post.",
           "type": "array",
@@ -590,7 +846,7 @@
           }
         },
         "kind": {
-          "description": "The kind of this entry. Always blogger#commentList",
+          "description": "The kind of this entry. Always blogger#commentList.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -649,7 +905,7 @@
               "items": null
             },
             "id": {
-              "description": "The identifier of the Page creator.",
+              "description": "The identifier of the creator.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -659,14 +915,14 @@
               "items": null
             },
             "image": {
-              "description": "The page author's avatar.",
+              "description": "The creator's avatar.",
               "type": "object",
               "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {
                 "url": {
-                  "description": "The page author's avatar URL.",
+                  "description": "The creator's avatar URL.",
                   "type": "string",
                   "format": null,
                   "enum": [],
@@ -680,7 +936,7 @@
               "items": null
             },
             "url": {
-              "description": "The URL of the Page creator's Profile page.",
+              "description": "The URL of the creator's Profile page.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -703,7 +959,7 @@
             "id": {
               "description": "The identifier of the blog containing this page.",
               "type": "string",
-              "format": "int64",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -724,10 +980,20 @@
           "additionalProperties": null,
           "items": null
         },
+        "etag": {
+          "description": "Etag of the resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "id": {
           "description": "The identifier for this resource.",
           "type": "string",
-          "format": "int64",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -735,7 +1001,7 @@
           "items": null
         },
         "kind": {
-          "description": "The kind of this entity. Always blogger#page",
+          "description": "The kind of this entity. Always blogger#page.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -747,7 +1013,7 @@
         "published": {
           "description": "RFC 3339 date-time when this Page was published.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -764,8 +1030,24 @@
           "additionalProperties": null,
           "items": null
         },
+        "status": {
+          "description": "The status of the page for admin resources (either LIVE or DRAFT).",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "LIVE",
+            "DRAFT"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "title": {
-          "description": "The title of this entity. This is the name displayed in the Admin user interface.",
+          "description": "The title of this entity. This is the name displayed in the Admin user\ninterface.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -777,7 +1059,7 @@
         "updated": {
           "description": "RFC 3339 date-time when this Page was last updated.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -806,6 +1088,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "etag": {
+          "description": "Etag of the response.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "items": {
           "description": "The list of Pages for a Blog.",
           "type": "array",
@@ -819,7 +1111,17 @@
           }
         },
         "kind": {
-          "description": "The kind of this entity. Always blogger#pageList",
+          "description": "The kind of this entity. Always blogger#pageList.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextPageToken": {
+          "description": "Pagination token to fetch the next page, if one exists.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -858,7 +1160,7 @@
               "items": null
             },
             "id": {
-              "description": "The identifier of the Post creator.",
+              "description": "The identifier of the creator.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -868,14 +1170,14 @@
               "items": null
             },
             "image": {
-              "description": "The Post author's avatar.",
+              "description": "The creator's avatar.",
               "type": "object",
               "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {
                 "url": {
-                  "description": "The Post author's avatar URL.",
+                  "description": "The creator's avatar URL.",
                   "type": "string",
                   "format": null,
                   "enum": [],
@@ -889,7 +1191,7 @@
               "items": null
             },
             "url": {
-              "description": "The URL of the Post creator's Profile page.",
+              "description": "The URL of the creator's Profile page.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -912,7 +1214,7 @@
             "id": {
               "description": "The identifier of the Blog that contains this Post.",
               "type": "string",
-              "format": "int64",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -933,18 +1235,67 @@
           "additionalProperties": null,
           "items": null
         },
-        "id": {
-          "description": "The identifier of this Post.",
+        "customMetaData": {
+          "description": "The JSON meta-data for the Post.",
           "type": "string",
-          "format": "int64",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
         },
+        "etag": {
+          "description": "Etag of the resource.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "id": {
+          "description": "The identifier of this Post.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "images": {
+          "description": "Display image for the Post.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "url": {
+                "description": null,
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "kind": {
-          "description": "The kind of this entity. Always blogger#post",
+          "description": "The kind of this entity. Always blogger#post.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -971,12 +1322,81 @@
             "items": null
           }
         },
+        "location": {
+          "description": "The location for geotagged posts.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "lat": {
+              "description": "Location's latitude.",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "lng": {
+              "description": "Location's longitude.",
+              "type": "number",
+              "format": "double",
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "name": {
+              "description": "Location name.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "span": {
+              "description": "Location's viewport span. Can be used when rendering a map preview.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
+        },
         "published": {
           "description": "RFC 3339 date-time when this Post was published.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "readerComments": {
+          "description": "Comment control and display setting for readers of this post.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "ALLOW",
+            "DONT_ALLOW_SHOW_EXISTING",
+            "DONT_ALLOW_HIDE_EXISTING"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -988,6 +1408,18 @@
           "enum": [],
           "enumDescriptions": [],
           "properties": {
+            "items": {
+              "description": "The List of Comments for this Post.",
+              "type": "array",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": {
+                "$ref": "Comment"
+              }
+            },
             "selfLink": {
               "description": "The URL of the comments on this post.",
               "type": "string",
@@ -1022,8 +1454,36 @@
           "additionalProperties": null,
           "items": null
         },
+        "status": {
+          "description": "Status of the post. Only set for admin-level requests.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "LIVE",
+            "DRAFT",
+            "SCHEDULED"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "title": {
           "description": "The title of the Post.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "titleLink": {
+          "description": "The title link URL, similar to atom's related link.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1035,7 +1495,7 @@
         "updated": {
           "description": "RFC 3339 date-time when this Post was last updated.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -1064,6 +1524,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "etag": {
+          "description": "Etag of the response.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "items": {
           "description": "The list of Posts for this Blog.",
           "type": "array",
@@ -1077,7 +1547,7 @@
           }
         },
         "kind": {
-          "description": "The kind of this entity. Always blogger#postList",
+          "description": "The kind of this entity. Always blogger#postList.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1152,7 +1622,7 @@
         "created": {
           "description": "The timestamp of when this profile was created, in seconds since epoch.",
           "type": "string",
-          "format": "date-time",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -1180,7 +1650,7 @@
           "items": null
         },
         "kind": {
-          "description": "The kind of this entity. Always blogger#user",
+          "description": "The kind of this entity. Always blogger#user.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1197,7 +1667,7 @@
           "enumDescriptions": [],
           "properties": {
             "country": {
-              "description": "The user's country setting.",
+              "description": "The country this blog's locale is set to.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1207,7 +1677,7 @@
               "items": null
             },
             "language": {
-              "description": "The user's language setting.",
+              "description": "The language this blog is authored in.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1217,7 +1687,7 @@
               "items": null
             },
             "variant": {
-              "description": "The user's language variant setting.",
+              "description": "The language variant this blog is authored in.",
               "type": "string",
               "format": null,
               "enum": [],
@@ -1261,12 +1731,12 @@
       "methods": {
         "get": {
           "id": "blogger.blogs.get",
-          "path": "blogs/{blogId}",
+          "path": "v2/blogs/{blogId}",
           "httpMethod": "GET",
-          "description": "Gets one blog by id.",
+          "description": "Gets a blog by id.",
           "parameters": {
             "blogId": {
-              "description": "The ID of the blog to get.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1295,6 +1765,43 @@
           "supportsSubscription": false,
           "supportsMediaUpload": false,
           "mediaUpload": null
+        },
+        "list": {
+          "id": "blogger.blogs.list",
+          "path": "v2/users/{userId}/blogs",
+          "httpMethod": "GET",
+          "description": "Lists blogs by user id, possibly filtered.",
+          "parameters": {
+            "userId": {
+              "description": null,
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "userId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "BlogList"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/blogger"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
         }
       }
     },
@@ -1303,12 +1810,12 @@
       "methods": {
         "get": {
           "id": "blogger.comments.get",
-          "path": "blogs/{blogId}/posts/{postId}/comments/{commentId}",
+          "path": "v2/blogs/{blogId}/posts/{postId}/comments/{commentId}",
           "httpMethod": "GET",
-          "description": "Gets one comment by id.",
+          "description": "Gets a comment by blog id, post id and comment id.",
           "parameters": {
             "blogId": {
-              "description": "ID of the blog to containing the comment.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1322,7 +1829,7 @@
               "repeated": false
             },
             "commentId": {
-              "description": "The ID of the comment to get.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1336,7 +1843,7 @@
               "repeated": false
             },
             "postId": {
-              "description": "ID of the post to fetch posts from.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1370,12 +1877,12 @@
         },
         "list": {
           "id": "blogger.comments.list",
-          "path": "blogs/{blogId}/posts/{postId}/comments",
+          "path": "v2/blogs/{blogId}/posts/{postId}/comments",
           "httpMethod": "GET",
-          "description": "Retrieves the comments for a blog, possibly filtered.",
+          "description": "Lists comments.",
           "parameters": {
             "blogId": {
-              "description": "ID of the blog to fetch comments from.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1389,7 +1896,7 @@
               "repeated": false
             },
             "fetchBodies": {
-              "description": "Whether the body content of the comments is included.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1403,7 +1910,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "Maximum number of comments to include in the result.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1417,7 +1924,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Continuation token if request is paged.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1431,7 +1938,7 @@
               "repeated": false
             },
             "postId": {
-              "description": "ID of the post to fetch posts from.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1445,12 +1952,12 @@
               "repeated": false
             },
             "startDate": {
-              "description": "Earliest date of comment to fetch, a date-time with RFC 3339 formatting.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
               "type": "string",
-              "format": "date-time",
+              "format": null,
               "minimum": null,
               "maximum": null,
               "pattern": null,
@@ -1483,12 +1990,12 @@
       "methods": {
         "get": {
           "id": "blogger.pages.get",
-          "path": "blogs/{blogId}/pages/{pageId}",
+          "path": "v2/blogs/{blogId}/pages/{pageId}",
           "httpMethod": "GET",
-          "description": "Gets one blog page by id.",
+          "description": "Gets a page by blog id and page id.",
           "parameters": {
             "blogId": {
-              "description": "ID of the blog containing the page.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1502,7 +2009,7 @@
               "repeated": false
             },
             "pageId": {
-              "description": "The ID of the page to get.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1535,12 +2042,12 @@
         },
         "list": {
           "id": "blogger.pages.list",
-          "path": "blogs/{blogId}/pages",
+          "path": "v2/blogs/{blogId}/pages",
           "httpMethod": "GET",
-          "description": "Retrieves pages for a blog, possibly filtered.",
+          "description": "Lists pages.",
           "parameters": {
             "blogId": {
-              "description": "ID of the blog to fetch pages from.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1554,7 +2061,7 @@
               "repeated": false
             },
             "fetchBodies": {
-              "description": "Whether to retrieve the Page bodies.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1591,12 +2098,12 @@
       "methods": {
         "get": {
           "id": "blogger.posts.get",
-          "path": "blogs/{blogId}/posts/{postId}",
+          "path": "v2/blogs/{blogId}/posts/{postId}",
           "httpMethod": "GET",
-          "description": "Get a post by id.",
+          "description": "Gets a post by blog id and post id",
           "parameters": {
             "blogId": {
-              "description": "ID of the blog to fetch the post from.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1610,7 +2117,7 @@
               "repeated": false
             },
             "postId": {
-              "description": "The ID of the post",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1643,12 +2150,12 @@
         },
         "list": {
           "id": "blogger.posts.list",
-          "path": "blogs/{blogId}/posts",
+          "path": "v2/blogs/{blogId}/posts",
           "httpMethod": "GET",
-          "description": "Retrieves a list of posts, possibly filtered.",
+          "description": "Lists posts.",
           "parameters": {
             "blogId": {
-              "description": "ID of the blog to fetch posts from.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,
@@ -1662,7 +2169,7 @@
               "repeated": false
             },
             "fetchBodies": {
-              "description": "Whether the body content of posts is included.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1676,7 +2183,7 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "Maximum number of posts to fetch.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1690,7 +2197,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "Continuation token if the request is paged.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
@@ -1704,12 +2211,12 @@
               "repeated": false
             },
             "startDate": {
-              "description": "Earliest post date to fetch, a date-time with RFC 3339 formatting.",
+              "description": null,
               "default": null,
               "location": "query",
               "required": false,
               "type": "string",
-              "format": "date-time",
+              "format": null,
               "minimum": null,
               "maximum": null,
               "pattern": null,
@@ -1737,59 +2244,16 @@
       }
     },
     "users": {
-      "resources": {
-        "blogs": {
-          "resources": {},
-          "methods": {
-            "list": {
-              "id": "blogger.users.blogs.list",
-              "path": "users/{userId}/blogs",
-              "httpMethod": "GET",
-              "description": "Retrieves a list of blogs, possibly filtered.",
-              "parameters": {
-                "userId": {
-                  "description": "ID of the user whose blogs are to be fetched. Either the word 'self' (sans quote marks) or the user's profile identifier.",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "userId"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "BlogList"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/blogger"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            }
-          }
-        }
-      },
+      "resources": {},
       "methods": {
         "get": {
           "id": "blogger.users.get",
-          "path": "users/{userId}",
+          "path": "v2/users/{userId}",
           "httpMethod": "GET",
-          "description": "Gets one user by id.",
+          "description": "Gets a user by user id.",
           "parameters": {
             "userId": {
-              "description": "The ID of the user to get.",
+              "description": null,
               "default": null,
               "location": "path",
               "required": true,

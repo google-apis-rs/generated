@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("container1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190830")
+            .version("0.1.0-20200425")
             .about("Builds and manages container-based applications, powered by the open source Kubernetes technology.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -72,7 +72,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project\'s\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project\'s global metadata indicating\nwhich CIDR range the cluster is using.");
+            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project\'s\n[default\nnetwork](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project\'s global metadata indicating\nwhich CIDR range the cluster is using.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -105,8 +105,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_locations")
-                .about("Sets the locations for a specific cluster.");
+            let mcmd = SubCommand::with_name("set_locations").about("Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)\ninstead.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -183,7 +182,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project\'s\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project\'s global metadata indicating\nwhich CIDR range the cluster is using.");
+            let mcmd = SubCommand::with_name("create").about("Creates a cluster, consisting of the specified number and type of Google\nCompute Engine instances.\n\nBy default, the cluster is created in the project\'s\n[default\nnetwork](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).\n\nOne firewall is added for the cluster. After cluster creation,\nthe Kubelet creates routes for each node to allow the containers\non that node to communicate with all other instances in the\ncluster.\n\nFinally, an entry is added to the project\'s global metadata indicating\nwhich CIDR range the cluster is using.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
@@ -207,8 +206,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             clusters2 = clusters2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("locations")
-                .about("Sets the locations for a specific cluster.");
+            let mcmd = SubCommand::with_name("locations").about("Sets the locations for a specific cluster.\nDeprecated. Use\n[projects.locations.clusters.update](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/update)\ninstead.");
             clusters2 = clusters2.subcommand(mcmd);
         }
         {

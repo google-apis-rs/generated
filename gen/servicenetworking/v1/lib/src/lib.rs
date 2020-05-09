@@ -1,5 +1,104 @@
-#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [services](resources/services/struct.ServicesActions.html)\n      * [*addSubnetwork*](resources/services/struct.AddSubnetworkRequestBuilder.html), [*searchRange*](resources/services/struct.SearchRangeRequestBuilder.html)\n      * [connections](resources/services/connections/struct.ConnectionsActions.html)\n        * [*create*](resources/services/connections/struct.CreateRequestBuilder.html), [*list*](resources/services/connections/struct.ListRequestBuilder.html), [*patch*](resources/services/connections/struct.PatchRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [services](resources/services/struct.ServicesActions.html)\n      * [*addSubnetwork*](resources/services/struct.AddSubnetworkRequestBuilder.html), [*disableVpcServiceControls*](resources/services/struct.DisableVpcServiceControlsRequestBuilder.html), [*enableVpcServiceControls*](resources/services/struct.EnableVpcServiceControlsRequestBuilder.html), [*searchRange*](resources/services/struct.SearchRangeRequestBuilder.html), [*validate*](resources/services/struct.ValidateRequestBuilder.html)\n      * [connections](resources/services/connections/struct.ConnectionsActions.html)\n        * [*create*](resources/services/connections/struct.CreateRequestBuilder.html), [*list*](resources/services/connections/struct.ListRequestBuilder.html), [*patch*](resources/services/connections/struct.PatchRequestBuilder.html)\n      * [roles](resources/services/roles/struct.RolesActions.html)\n        * [*add*](resources/services/roles/struct.AddRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Manage your Google API service configuration\n\n`https://www.googleapis.com/auth/service.management`"]
+    pub const SERVICE_MANAGEMENT: &str = "https://www.googleapis.com/auth/service.management";
+}
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Copy,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AddRolesMetadata {}
+    impl ::google_field_selector::FieldSelector for AddRolesMetadata {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddRolesMetadata {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AddRolesRequest {
+        #[doc = "Required. The network that the consumer is using to connect with services. Must be in\nthe form of projects/{project}/global/networks/{network}\n{project} is a project number, as in '12345'\n{network} is a network name."]
+        #[serde(
+            rename = "consumerNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub consumer_network: ::std::option::Option<String>,
+        #[doc = "Required. List of policy bindings to add to shared VPC host project."]
+        #[serde(
+            rename = "policyBinding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub policy_binding: ::std::option::Option<Vec<crate::schemas::PolicyBinding>>,
+    }
+    impl ::google_field_selector::FieldSelector for AddRolesRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddRolesRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AddRolesResponse {
+        #[doc = "Required. List of policy bindings that were added to the shared VPC host project."]
+        #[serde(
+            rename = "policyBinding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub policy_binding: ::std::option::Option<Vec<crate::schemas::PolicyBinding>>,
+    }
+    impl ::google_field_selector::FieldSelector for AddRolesResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddRolesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -27,7 +126,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub consumer_network: ::std::option::Option<String>,
-        #[doc = "An optional description of the subnet."]
+        #[doc = "Optional. Description of the subnet."]
         #[serde(
             rename = "description",
             default,
@@ -41,6 +140,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ip_prefix_length: ::std::option::Option<i32>,
+        #[doc = "Optional. The private IPv6 google access type for the VMs in this subnet.\nFor information about the access types that can be set using this field,\nsee [subnetwork](/compute/docs/reference/rest/v1/subnetworks)\nin the Compute API documentation."]
+        #[serde(
+            rename = "privateIpv6GoogleAccess",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub private_ipv_6_google_access: ::std::option::Option<String>,
         #[doc = "Required. The name of a [region](/compute/docs/regions-zones)\nfor the subnet, such `europe-west1`."]
         #[serde(
             rename = "region",
@@ -226,7 +332,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AuthProvider {
-        #[doc = "The list of JWT\n[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).\nthat are allowed to access. A JWT containing any of these audiences will\nbe accepted. When this setting is absent, only JWTs with audience\n\"https://Service_name/API_name\"\nwill be accepted. For example, if no audiences are in the setting,\nLibraryService API will only accept JWTs with the following audience\n\"https://library-example.googleapis.com/google.example.library.v1.LibraryService\".\n\nExample:\n\n````text\naudiences: bookstore_android.apps.googleusercontent.com,\n           bookstore_web.apps.googleusercontent.com````"]
+        #[doc = "The list of JWT\n[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).\nthat are allowed to access. A JWT containing any of these audiences will\nbe accepted. When this setting is absent, JWTs with audiences:\n\n* \"https://[service.name]/[google.protobuf.Api.name]\"\n* \"https://[service.name]/\"\n  will be accepted.\n  For example, if no audiences are in the setting, LibraryService API will\n  accept JWTs with the following audiences:\n* \n\nhttps://library-example.googleapis.com/google.example.library.v1.LibraryService\n\n* https://library-example.googleapis.com/\n\nExample:\n\n````text\naudiences: bookstore_android.apps.googleusercontent.com,\n           bookstore_web.apps.googleusercontent.com````"]
         #[serde(
             rename = "audiences",
             default,
@@ -261,6 +367,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub jwks_uri: ::std::option::Option<String>,
+        #[doc = "Defines the locations to extract the JWT.\n\nJWT locations can be either from HTTP headers or URL query parameters.\nThe rule is that the first match wins. The checking order is: checking\nall headers first, then URL query parameters.\n\nIf not specified,  default to use following 3 locations:\n\n1. Authorization: Bearer\n1. x-goog-iap-jwt-assertion\n1. access_token query parameter\n\nDefault locations can be specified as followings:\njwt_locations:\n\n* header: Authorization\n  value_prefix: \"Bearer \"\n* header: x-goog-iap-jwt-assertion\n* query: access_token"]
+        #[serde(
+            rename = "jwtLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub jwt_locations: ::std::option::Option<Vec<crate::schemas::JwtLocation>>,
     }
     impl ::google_field_selector::FieldSelector for AuthProvider {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -426,21 +539,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BackendRule {
-        #[doc = "The address of the API backend."]
+        #[doc = "The address of the API backend.\n\nThe scheme is used to determine the backend protocol and security.\nThe following schemes are accepted:\n\nSCHEME        PROTOCOL    SECURITY\nhttp://       HTTP        None\nhttps://      HTTP        TLS\ngrpc://       gRPC        None\ngrpcs://      gRPC        TLS\n\nIt is recommended to explicitly include a scheme. Leaving out the scheme\nmay cause constrasting behaviors across platforms.\n\nIf the port is unspecified, the default is:\n\n* 80 for schemes without TLS\n* 443 for schemes with TLS\n\nFor HTTP backends, use protocol\nto specify the protocol version."]
         #[serde(
             rename = "address",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub address: ::std::option::Option<String>,
-        #[doc = "The number of seconds to wait for a response from a request.  The default\ndeadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds."]
+        #[doc = "The number of seconds to wait for a response from a request. The default\nvaries based on the request protocol and deployment environment."]
         #[serde(
             rename = "deadline",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deadline: ::std::option::Option<f64>,
-        #[doc = "The JWT audience is used when generating a JWT id token for the backend."]
+        #[doc = "When disable_auth is true, a JWT ID token won't be generated and the\noriginal \"Authorization\" HTTP header will be preserved. If the header is\nused to carry the original token and is expected by the backend, this\nfield must be set to true to preserve the header."]
+        #[serde(
+            rename = "disableAuth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_auth: ::std::option::Option<bool>,
+        #[doc = "The JWT audience is used when generating a JWT ID token for the backend.\nThis ID token will be added in the HTTP \"authorization\" header, and sent\nto the backend."]
         #[serde(
             rename = "jwtAudience",
             default,
@@ -467,6 +587,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path_translation: ::std::option::Option<crate::schemas::BackendRulePathTranslation>,
+        #[doc = "The protocol used for sending a request to the backend.\nThe supported values are \"http/1.1\" and \"h2\".\n\nThe default value is inferred from the scheme in the\naddress field:\n\nSCHEME        PROTOCOL\nhttp://       http/1.1\nhttps://      http/1.1\ngrpc://       h2\ngrpcs://      h2\n\nFor secure HTTP backends (https://) that support HTTP/2, set this field\nto \"h2\" for improved performance.\n\nConfiguring this field to non-default values is only supported for secure\nHTTP backends. This field will be ignored for all other backends.\n\nSee\nhttps://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids\nfor more details on the supported values."]
+        #[serde(
+            rename = "protocol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protocol: ::std::option::Option<String>,
+        #[doc = "Unimplemented. Do not use.\n\nThe new name the selected proto elements should be renamed to.\n\nThe package, the service and the method can all be renamed.\nThe backend server should implement the renamed proto. However, clients\nshould call the original method, and ESF routes the traffic to the renamed\nmethod.\n\nHTTP clients should call the URL mapped to the original method.\ngRPC and Stubby clients should call the original method with package name.\n\nFor legacy reasons, ESF allows Stubby clients to call with the\nshort name (without the package name). However, for API Versioning(or\nmultiple methods mapped to the same short name), all Stubby clients must\ncall the method's full name with the package name, otherwise the first one\n(selector) wins.\n\nIf this `rename_to` is specified with a trailing `*`, the `selector` must\nbe specified with a trailing `*` as well. The all element short names\nmatched by the `*` in the selector will be kept in the `rename_to`.\n\nFor example,\nrename_rules:\n- selector: |-\ngoogle.example.library.v1.*\nrename_to: google.example.library.*\n\nThe selector matches `google.example.library.v1.Library.CreateShelf` and\n`google.example.library.v1.Library.CreateBook`, they will be renamed to\n`google.example.library.Library.CreateShelf` and\n`google.example.library.Library.CreateBook`. It essentially renames the\nproto package name section of the matched proto service and methods."]
+        #[serde(
+            rename = "renameTo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rename_to: ::std::option::Option<String>,
         #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
         #[serde(
             rename = "selector",
@@ -723,6 +857,38 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ConsumerProject {
+        #[doc = "Required. Project number of the consumer that is launching the service instance. It\ncan own the network that is peered with Google or, be a service project in\nan XPN where the host project has the network."]
+        #[serde(
+            rename = "projectNum",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub project_num: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for ConsumerProject {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ConsumerProject {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Context {
         #[doc = "A list of RPC context rules that apply to individual API methods.\n\n**NOTE:** All service configuration rules follow \"last one wins\" order."]
         #[serde(
@@ -958,6 +1124,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DisableVpcServiceControlsRequest {
+        #[doc = "Required. The network that the consumer is using to connect with services.\nMust be in the form of projects/{project}/global/networks/{network}\n{project} is a project number, as in '12345'\n{network} is network name."]
+        #[serde(
+            rename = "consumerNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub consumer_network: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DisableVpcServiceControlsRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DisableVpcServiceControlsRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Documentation {
         #[doc = "The URL to the root of documentation."]
         #[serde(
@@ -1077,6 +1274,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Empty {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct EnableVpcServiceControlsRequest {
+        #[doc = "Required. The network that the consumer is using to connect with services.\nMust be in the form of projects/{project}/global/networks/{network}\n{project} is a project number, as in '12345'\n{network} is network name."]
+        #[serde(
+            rename = "consumerNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub consumer_network: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for EnableVpcServiceControlsRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for EnableVpcServiceControlsRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1723,6 +1951,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_bindings: ::std::option::Option<Vec<crate::schemas::HttpRule>>,
+        #[doc = "When this flag is set to true, HTTP requests will be allowed to invoke a\nhalf-duplex streaming method."]
+        #[serde(
+            rename = "allowHalfDuplex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub allow_half_duplex: ::std::option::Option<bool>,
         #[doc = "The name of the request field whose value is mapped to the HTTP request\nbody, or `*` for mapping all request fields not captured by the path\npattern to the HTTP body, or omitted for not having any HTTP request body.\n\nNOTE: the referred field must be present at the top-level of the request\nmessage type."]
         #[serde(
             rename = "body",
@@ -1793,6 +2028,51 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for HttpRule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct JwtLocation {
+        #[doc = "Specifies HTTP header name to extract JWT token."]
+        #[serde(
+            rename = "header",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header: ::std::option::Option<String>,
+        #[doc = "Specifies URL query parameter name to extract JWT token."]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub query: ::std::option::Option<String>,
+        #[doc = "The value prefix. The value format is \"value_prefix{token}\"\nOnly applies to \"in\" header type. Must be empty for \"in\" query type.\nIf not empty, the header value has to match (case sensitive) this prefix.\nIf not matched, JWT will not be extracted. If matched, JWT will be\nextracted after the prefix is removed.\n\nFor example, for \"Authorization: Bearer {JWT}\",\nvalue_prefix=\"Bearer \" with a space at the end."]
+        #[serde(
+            rename = "valuePrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value_prefix: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for JwtLocation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for JwtLocation {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2292,6 +2572,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
+        #[doc = "Read-only. If present, then a time\nseries, which is identified partially by\na metric type and a MonitoredResourceDescriptor, that is associated\nwith this metric type can only be associated with one of the monitored\nresource types listed here."]
+        #[serde(
+            rename = "monitoredResourceTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub monitored_resource_types: ::std::option::Option<Vec<String>>,
         #[doc = "The resource name of the metric descriptor."]
         #[serde(
             rename = "name",
@@ -2306,7 +2593,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The unit in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The\nsupported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10**3)\n* `M`     mega    (10**6)\n* `G`     giga    (10**9)\n* `T`     tera    (10**12)\n* `P`     peta    (10**15)\n* `E`     exa     (10**18)\n* `Z`     zetta   (10**21)\n* `Y`     yotta   (10**24)\n* `m`     milli   (10**-3)\n* `u`     micro   (10**-6)\n* `n`     nano    (10**-9)\n* `p`     pico    (10**-12)\n* `f`     femto   (10**-15)\n* `a`     atto    (10**-18)\n* `z`     zepto   (10**-21)\n* `y`     yocto   (10**-24)\n* `Ki`    kibi    (2**10)\n* `Mi`    mebi    (2**20)\n* `Gi`    gibi    (2**30)\n* `Ti`    tebi    (2**40)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division (as an infix operator, e.g. `1/s`).\n* `.`    multiplication (as an infix operator, e.g. `GBy.d`)\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT` and is\n  equivalent to `1` if it is used alone. For examples,\n  `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing '{' or '}'.\n* `1` represents dimensionless value 1, such as in `1/s`.\n* `%` represents dimensionless value 1/100, and annotates values giving\n  a percentage."]
+        #[doc = "The units in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`\ndefines the representation of the stored metric values.\n\nDifferent systems may scale the values to be more easily displayed (so a\nvalue of `0.02KBy` *might* be displayed as `20By`, and a value of\n`3523KBy` *might* be displayed as `3.5MBy`). However, if the `unit` is\n`KBy`, then the value of the metric is always in thousands of bytes, no\nmatter how it may be displayed..\n\nIf you want a custom metric to record the exact number of CPU-seconds used\nby a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is\n`s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005\nCPU-seconds, then the value is written as `12005`.\n\nAlternatively, if you want a custom metric to record data in a more\ngranular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is\n`ks{CPU}`, and then write the value `12.005` (which is `12005/1000`),\nor use `Kis{CPU}` and write `11.723` (which is `12005/1024`).\n\nThe supported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10^3)\n\n* `M`     mega    (10^6)\n\n* `G`     giga    (10^9)\n\n* `T`     tera    (10^12)\n\n* `P`     peta    (10^15)\n\n* `E`     exa     (10^18)\n\n* `Z`     zetta   (10^21)\n\n* `Y`     yotta   (10^24)\n\n* `m`     milli   (10^-3)\n\n* `u`     micro   (10^-6)\n\n* `n`     nano    (10^-9)\n\n* `p`     pico    (10^-12)\n\n* `f`     femto   (10^-15)\n\n* `a`     atto    (10^-18)\n\n* `z`     zepto   (10^-21)\n\n* `y`     yocto   (10^-24)\n\n* `Ki`    kibi    (2^10)\n\n* `Mi`    mebi    (2^20)\n\n* `Gi`    gibi    (2^30)\n\n* `Ti`    tebi    (2^40)\n\n* `Pi`    pebi    (2^50)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division or ratio (as an infix operator). For examples,\n  `kBy/{email}` or `MiBy/10ms` (although you should almost never\n  have `/s` in a metric `unit`; rates should always be computed at\n  query time from the underlying cumulative or delta value).\n* `.`    multiplication or composition (as an infix operator). For\n  examples, `GBy.d` or `k{watt}.h`.\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT`. If the annotation\n  is used alone, then the unit is equivalent to `1`. For examples,\n  `{request}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing `{` or `}`.\n* `1` represents a unitary [dimensionless\n  unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such\n  as in `1/s`. It is typically used when none of the basic units are\n  appropriate. For example, \"new users per day\" can be represented as\n  `1/d` or `{new-users}/d` (and a metric value `5` would mean \"5 new\n  users). Alternatively, \"thousands of page views per day\" would be\n  represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric\n  value of `5.3` would mean \"5300 page views per day\").\n* `%` represents dimensionless value of 1/100, and annotates values giving\n  a percentage (so the metric values are typically in the range of 0..100,\n  and a metric value `3` means \"3 percent\").\n* `10^2.%` indicates a metric contains a ratio, typically in the range\n  0..1, that will be multiplied by 100 and displayed as a percentage\n  (so a metric value `0.03` means \"3 percent\")."]
         #[serde(
             rename = "unit",
             default,
@@ -2333,11 +2620,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricDescriptorLaunchStage {
-        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don\u{2019}t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
+        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don’t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
         Alpha,
         #[doc = "Beta is the point at which we are ready to open a release for any\ncustomer to use. There are no SLA or technical support obligations in a\nBeta release. Products will be complete from a feature perspective, but\nmay have some open outstanding issues. Beta releases are suitable for\nlimited production use cases."]
         Beta,
-        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the \u{201c}Deprecation Policy\u{201d} section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
+        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the “Deprecation Policy” section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
         Deprecated,
         #[doc = "Early Access features are limited to a closed group of testers. To use\nthese features, you must sign up in advance and sign a Trusted Tester\nagreement (which includes confidentiality provisions). These features may\nbe unstable, changed in backward-incompatible ways, and are not\nguaranteed to be released."]
         EarlyAccess,
@@ -2345,6 +2632,10 @@ pub mod schemas {
         Ga,
         #[doc = "Do not use this default value."]
         LaunchStageUnspecified,
+        #[doc = "Prelaunch features are hidden from users and are only visible internally."]
+        Prelaunch,
+        #[doc = "The feature is not yet implemented. Users can not use it."]
+        Unimplemented,
     }
     impl MetricDescriptorLaunchStage {
         pub fn as_str(self) -> &'static str {
@@ -2355,6 +2646,8 @@ pub mod schemas {
                 MetricDescriptorLaunchStage::EarlyAccess => "EARLY_ACCESS",
                 MetricDescriptorLaunchStage::Ga => "GA",
                 MetricDescriptorLaunchStage::LaunchStageUnspecified => "LAUNCH_STAGE_UNSPECIFIED",
+                MetricDescriptorLaunchStage::Prelaunch => "PRELAUNCH",
+                MetricDescriptorLaunchStage::Unimplemented => "UNIMPLEMENTED",
             }
         }
     }
@@ -2373,6 +2666,8 @@ pub mod schemas {
                 "EARLY_ACCESS" => MetricDescriptorLaunchStage::EarlyAccess,
                 "GA" => MetricDescriptorLaunchStage::Ga,
                 "LAUNCH_STAGE_UNSPECIFIED" => MetricDescriptorLaunchStage::LaunchStageUnspecified,
+                "PRELAUNCH" => MetricDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorLaunchStage::Unimplemented,
                 _ => return Err(()),
             })
         }
@@ -2403,6 +2698,8 @@ pub mod schemas {
                 "EARLY_ACCESS" => MetricDescriptorLaunchStage::EarlyAccess,
                 "GA" => MetricDescriptorLaunchStage::Ga,
                 "LAUNCH_STAGE_UNSPECIFIED" => MetricDescriptorLaunchStage::LaunchStageUnspecified,
+                "PRELAUNCH" => MetricDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorLaunchStage::Unimplemented,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2619,7 +2916,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ingest_delay: ::std::option::Option<String>,
-        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead.\nThe launch stage of the metric definition."]
+        #[doc = "Deprecated. Must use the MetricDescriptor.launch_stage instead."]
         #[serde(
             rename = "launchStage",
             default,
@@ -2647,11 +2944,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricDescriptorMetadataLaunchStage {
-        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don\u{2019}t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
+        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don’t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
         Alpha,
         #[doc = "Beta is the point at which we are ready to open a release for any\ncustomer to use. There are no SLA or technical support obligations in a\nBeta release. Products will be complete from a feature perspective, but\nmay have some open outstanding issues. Beta releases are suitable for\nlimited production use cases."]
         Beta,
-        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the \u{201c}Deprecation Policy\u{201d} section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
+        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the “Deprecation Policy” section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
         Deprecated,
         #[doc = "Early Access features are limited to a closed group of testers. To use\nthese features, you must sign up in advance and sign a Trusted Tester\nagreement (which includes confidentiality provisions). These features may\nbe unstable, changed in backward-incompatible ways, and are not\nguaranteed to be released."]
         EarlyAccess,
@@ -2659,6 +2956,10 @@ pub mod schemas {
         Ga,
         #[doc = "Do not use this default value."]
         LaunchStageUnspecified,
+        #[doc = "Prelaunch features are hidden from users and are only visible internally."]
+        Prelaunch,
+        #[doc = "The feature is not yet implemented. Users can not use it."]
+        Unimplemented,
     }
     impl MetricDescriptorMetadataLaunchStage {
         pub fn as_str(self) -> &'static str {
@@ -2671,6 +2972,8 @@ pub mod schemas {
                 MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified => {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
+                MetricDescriptorMetadataLaunchStage::Prelaunch => "PRELAUNCH",
+                MetricDescriptorMetadataLaunchStage::Unimplemented => "UNIMPLEMENTED",
             }
         }
     }
@@ -2691,6 +2994,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MetricDescriptorMetadataLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorMetadataLaunchStage::Unimplemented,
                 _ => return Err(()),
             })
         }
@@ -2723,6 +3028,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MetricDescriptorMetadataLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorMetadataLaunchStage::Unimplemented,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2887,11 +3194,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MonitoredResourceDescriptorLaunchStage {
-        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don\u{2019}t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
+        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don’t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
         Alpha,
         #[doc = "Beta is the point at which we are ready to open a release for any\ncustomer to use. There are no SLA or technical support obligations in a\nBeta release. Products will be complete from a feature perspective, but\nmay have some open outstanding issues. Beta releases are suitable for\nlimited production use cases."]
         Beta,
-        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the \u{201c}Deprecation Policy\u{201d} section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
+        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the “Deprecation Policy” section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
         Deprecated,
         #[doc = "Early Access features are limited to a closed group of testers. To use\nthese features, you must sign up in advance and sign a Trusted Tester\nagreement (which includes confidentiality provisions). These features may\nbe unstable, changed in backward-incompatible ways, and are not\nguaranteed to be released."]
         EarlyAccess,
@@ -2899,6 +3206,10 @@ pub mod schemas {
         Ga,
         #[doc = "Do not use this default value."]
         LaunchStageUnspecified,
+        #[doc = "Prelaunch features are hidden from users and are only visible internally."]
+        Prelaunch,
+        #[doc = "The feature is not yet implemented. Users can not use it."]
+        Unimplemented,
     }
     impl MonitoredResourceDescriptorLaunchStage {
         pub fn as_str(self) -> &'static str {
@@ -2911,6 +3222,8 @@ pub mod schemas {
                 MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified => {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
+                MonitoredResourceDescriptorLaunchStage::Prelaunch => "PRELAUNCH",
+                MonitoredResourceDescriptorLaunchStage::Unimplemented => "UNIMPLEMENTED",
             }
         }
     }
@@ -2931,6 +3244,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MonitoredResourceDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MonitoredResourceDescriptorLaunchStage::Unimplemented,
                 _ => return Err(()),
             })
         }
@@ -2963,6 +3278,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MonitoredResourceDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MonitoredResourceDescriptorLaunchStage::Unimplemented,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3225,6 +3542,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct PolicyBinding {
+        #[doc = "Required. Member to bind the role with. See\n/iam/docs/reference/rest/v1/Policy#Binding for how to format each member.\nEg.\n\n* user:myuser@mydomain.com\n* serviceAccount:my-service-account@app.gserviceaccount.com"]
+        #[serde(
+            rename = "member",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub member: ::std::option::Option<String>,
+        #[doc = "Required. Role to apply. Only whitelisted roles can be used at the specified\ngranularity. The role must be one of the following:\n\n* 'roles/container.hostServiceAgentUser' applied on the shared VPC host\n  project"]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub role: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for PolicyBinding {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PolicyBinding {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Quota {
         #[doc = "List of `QuotaLimit` definitions for the service."]
         #[serde(
@@ -3398,15 +3753,105 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct SearchRangeRequest {
-        #[doc = "Required. The prefix length of the IP range.\nUse usual CIDR range notation.\nFor example, '30' to find unused x.x.x.x/30 CIDR range.\nActual range will be determined using allocated range for the consumer\npeered network and returned in the result."]
+    pub struct RangeReservation {
+        #[doc = "Required. The size of the desired subnet. Use usual CIDR range notation. For example,\n'30' to find unused x.x.x.x/30 CIDR range. The goal is to determine if one\nof the allocated ranges has enough free space for a subnet of the requested\nsize."]
         #[serde(
             rename = "ipPrefixLength",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ip_prefix_length: ::std::option::Option<i32>,
-        #[doc = "Network name in the consumer project.   This network must have been\nalready peered with a shared VPC network using CreateConnection\nmethod.\nMust be in a form 'projects/{project}/global/networks/{network}'.\n{project} is a project number, as in '12345'\n{network} is network name."]
+        #[doc = "Optional. DO NOT USE - Under development.\nThe size of the desired secondary ranges for the subnet. Use usual CIDR\nrange notation. For example, '30' to find unused x.x.x.x/30 CIDR range. The\ngoal is to determine that the allocated ranges have enough free space for\nall the requested secondary ranges."]
+        #[serde(
+            rename = "secondaryRangeIpPrefixLengths",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub secondary_range_ip_prefix_lengths: ::std::option::Option<Vec<i32>>,
+    }
+    impl ::google_field_selector::FieldSelector for RangeReservation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for RangeReservation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Route {
+        #[doc = "Destination CIDR range that this route applies to."]
+        #[serde(
+            rename = "destRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dest_range: ::std::option::Option<String>,
+        #[doc = "Route name. See https://cloud.google.com/vpc/docs/routes"]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Fully-qualified URL of the VPC network in the producer host tenant project\nthat this route applies to. For example:\n`projects/123456/global/networks/host-network`"]
+        #[serde(
+            rename = "network",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub network: ::std::option::Option<String>,
+        #[doc = "Fully-qualified URL of the gateway that should handle matching packets that\nthis route applies to. For example:\n`projects/123456/global/gateways/default-internet-gateway`"]
+        #[serde(
+            rename = "nextHopGateway",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_hop_gateway: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Route {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Route {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchRangeRequest {
+        #[doc = "Required. The prefix length of the IP range. Use usual CIDR range notation. For\nexample, '30' to find unused x.x.x.x/30 CIDR range. Actual range will be\ndetermined using allocated range for the consumer peered network and\nreturned in the result."]
+        #[serde(
+            rename = "ipPrefixLength",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ip_prefix_length: ::std::option::Option<i32>,
+        #[doc = "Network name in the consumer project. This network must have been\nalready peered with a shared VPC network using CreateConnection\nmethod. Must be in a form 'projects/{project}/global/networks/{network}'.\n{project} is a project number, as in '12345' {network} is network name."]
         #[serde(
             rename = "network",
             default,
@@ -3454,7 +3899,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub billing: ::std::option::Option<crate::schemas::Billing>,
-        #[doc = "The semantic version of the service configuration. The config version\naffects the interpretation of the service configuration. For example,\ncertain features are enabled by default for certain config versions.\nThe latest config version is `3`."]
+        #[doc = "The semantic version of the service configuration. The config version\naffects the interpretation of the service configuration. For example,\ncertain features are enabled by default for certain config versions.\n\nThe latest config version is `3`."]
         #[serde(
             rename = "configVersion",
             default,
@@ -3510,7 +3955,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http: ::std::option::Option<crate::schemas::Http>,
-        #[doc = "A unique ID for a specific instance of this message, typically assigned\nby the client for tracking purpose. If empty, the server may choose to\ngenerate one instead. Must be no longer than 60 characters."]
+        #[doc = "A unique ID for a specific instance of this message, typically assigned\nby the client for tracking purpose. Must be no longer than 63 characters\nand only lower case letters, digits, '.', '_' and '-' are allowed. If\nempty, the server may choose to generate one instead."]
         #[serde(
             rename = "id",
             default,
@@ -3623,6 +4068,51 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Service {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ServiceIdentity {
+        #[doc = "Optional. A user-specified opaque description of the service account.\nMust be less than or equal to 256 UTF-8 bytes."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. A user-specified name for the service account.\nMust be less than or equal to 100 UTF-8 bytes."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "A service account project that hosts the service accounts.\n\nAn example name would be:\n`projects/123456789`"]
+        #[serde(
+            rename = "serviceAccountParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_account_parent: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ServiceIdentity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ServiceIdentity {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4040,6 +4530,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rules: ::std::option::Option<Vec<crate::schemas::UsageRule>>,
+        #[doc = "The configuration of a per-product per-project service identity."]
+        #[serde(
+            rename = "serviceIdentity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_identity: ::std::option::Option<crate::schemas::ServiceIdentity>,
     }
     impl ::google_field_selector::FieldSelector for Usage {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -4092,6 +4589,310 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for UsageRule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ValidateConsumerConfigRequest {
+        #[doc = "Required. The network that the consumer is using to connect with services. Must be in\nthe form of projects/{project}/global/networks/{network} {project} is a\nproject number, as in '12345' {network} is network name."]
+        #[serde(
+            rename = "consumerNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub consumer_network: ::std::option::Option<String>,
+        #[doc = "NETWORK_NOT_IN_CONSUMERS_PROJECT, NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT,\nand HOST_PROJECT_NOT_FOUND are done when consumer_project is provided."]
+        #[serde(
+            rename = "consumerProject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub consumer_project: ::std::option::Option<crate::schemas::ConsumerProject>,
+        #[doc = "RANGES_EXHAUSTED, RANGES_EXHAUSTED, and RANGES_DELETED_LATER are done\nwhen range_reservation is provided."]
+        #[serde(
+            rename = "rangeReservation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub range_reservation: ::std::option::Option<crate::schemas::RangeReservation>,
+        #[doc = "The validations will be performed in the order listed in the\nValidationError enum. The first failure will return. If a validation is not\nrequested, then the next one will be performed.\nSERVICE_NETWORKING_NOT_ENABLED and NETWORK_NOT_PEERED checks are performed\nfor all requests where validation is requested. NETWORK_NOT_FOUND and\nNETWORK_DISCONNECTED checks are done for requests that have\nvalidate_network set to true."]
+        #[serde(
+            rename = "validateNetwork",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub validate_network: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for ValidateConsumerConfigRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ValidateConsumerConfigRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ValidateConsumerConfigResponse {
+        #[serde(
+            rename = "isValid",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub is_valid: ::std::option::Option<bool>,
+        #[serde(
+            rename = "validationError",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub validation_error:
+            ::std::option::Option<crate::schemas::ValidateConsumerConfigResponseValidationError>,
+    }
+    impl ::google_field_selector::FieldSelector for ValidateConsumerConfigResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ValidateConsumerConfigResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ValidateConsumerConfigResponseValidationError {
+        #[doc = "The consumer project does not have the compute api enabled."]
+        ComputeApiNotEnabled,
+        #[doc = "The consumer project is not a service project for\nthe specified host project."]
+        ConsumerProjectNotServiceProject,
+        #[doc = "The host project associated with the consumer project\nwas not found."]
+        HostProjectNotFound,
+        #[doc = "The network provided by the consumer does not exist."]
+        NetworkNotFound,
+        #[doc = "The consumer project is a service project, and network is a shared VPC,\nbut the network is not in the host project of this consumer project."]
+        NetworkNotInConsumersHostProject,
+        #[doc = "The network is a regular VPC but the network is not in the consumer's\nproject."]
+        NetworkNotInConsumersProject,
+        #[doc = "The network has not been peered with the producer org."]
+        NetworkNotPeered,
+        #[doc = "The peering was created and later deleted."]
+        NetworkPeeringDeleted,
+        #[doc = "The IP ranges were reserved but deleted later."]
+        RangesDeletedLater,
+        #[doc = "The reserved IP ranges do not have enough space to create\na subnet of desired size."]
+        RangesExhausted,
+        #[doc = "The IP ranges were not reserved."]
+        RangesNotReserved,
+        ServiceNetworkingNotEnabled,
+        ValidationErrorUnspecified,
+        #[doc = "In case none of the validations are requested."]
+        ValidationNotRequested,
+    }
+    impl ValidateConsumerConfigResponseValidationError {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ValidateConsumerConfigResponseValidationError::ComputeApiNotEnabled => {
+                    "COMPUTE_API_NOT_ENABLED"
+                }
+                ValidateConsumerConfigResponseValidationError::ConsumerProjectNotServiceProject => {
+                    "CONSUMER_PROJECT_NOT_SERVICE_PROJECT"
+                }
+                ValidateConsumerConfigResponseValidationError::HostProjectNotFound => {
+                    "HOST_PROJECT_NOT_FOUND"
+                }
+                ValidateConsumerConfigResponseValidationError::NetworkNotFound => {
+                    "NETWORK_NOT_FOUND"
+                }
+                ValidateConsumerConfigResponseValidationError::NetworkNotInConsumersHostProject => {
+                    "NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT"
+                }
+                ValidateConsumerConfigResponseValidationError::NetworkNotInConsumersProject => {
+                    "NETWORK_NOT_IN_CONSUMERS_PROJECT"
+                }
+                ValidateConsumerConfigResponseValidationError::NetworkNotPeered => {
+                    "NETWORK_NOT_PEERED"
+                }
+                ValidateConsumerConfigResponseValidationError::NetworkPeeringDeleted => {
+                    "NETWORK_PEERING_DELETED"
+                }
+                ValidateConsumerConfigResponseValidationError::RangesDeletedLater => {
+                    "RANGES_DELETED_LATER"
+                }
+                ValidateConsumerConfigResponseValidationError::RangesExhausted => {
+                    "RANGES_EXHAUSTED"
+                }
+                ValidateConsumerConfigResponseValidationError::RangesNotReserved => {
+                    "RANGES_NOT_RESERVED"
+                }
+                ValidateConsumerConfigResponseValidationError::ServiceNetworkingNotEnabled => {
+                    "SERVICE_NETWORKING_NOT_ENABLED"
+                }
+                ValidateConsumerConfigResponseValidationError::ValidationErrorUnspecified => {
+                    "VALIDATION_ERROR_UNSPECIFIED"
+                }
+                ValidateConsumerConfigResponseValidationError::ValidationNotRequested => {
+                    "VALIDATION_NOT_REQUESTED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ValidateConsumerConfigResponseValidationError {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ValidateConsumerConfigResponseValidationError {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<ValidateConsumerConfigResponseValidationError, ()> {
+            Ok(match s {
+                "COMPUTE_API_NOT_ENABLED" => {
+                    ValidateConsumerConfigResponseValidationError::ComputeApiNotEnabled
+                }
+                "CONSUMER_PROJECT_NOT_SERVICE_PROJECT" => {
+                    ValidateConsumerConfigResponseValidationError::ConsumerProjectNotServiceProject
+                }
+                "HOST_PROJECT_NOT_FOUND" => {
+                    ValidateConsumerConfigResponseValidationError::HostProjectNotFound
+                }
+                "NETWORK_NOT_FOUND" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotFound
+                }
+                "NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotInConsumersHostProject
+                }
+                "NETWORK_NOT_IN_CONSUMERS_PROJECT" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotInConsumersProject
+                }
+                "NETWORK_NOT_PEERED" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotPeered
+                }
+                "NETWORK_PEERING_DELETED" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkPeeringDeleted
+                }
+                "RANGES_DELETED_LATER" => {
+                    ValidateConsumerConfigResponseValidationError::RangesDeletedLater
+                }
+                "RANGES_EXHAUSTED" => {
+                    ValidateConsumerConfigResponseValidationError::RangesExhausted
+                }
+                "RANGES_NOT_RESERVED" => {
+                    ValidateConsumerConfigResponseValidationError::RangesNotReserved
+                }
+                "SERVICE_NETWORKING_NOT_ENABLED" => {
+                    ValidateConsumerConfigResponseValidationError::ServiceNetworkingNotEnabled
+                }
+                "VALIDATION_ERROR_UNSPECIFIED" => {
+                    ValidateConsumerConfigResponseValidationError::ValidationErrorUnspecified
+                }
+                "VALIDATION_NOT_REQUESTED" => {
+                    ValidateConsumerConfigResponseValidationError::ValidationNotRequested
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ValidateConsumerConfigResponseValidationError {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ValidateConsumerConfigResponseValidationError {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ValidateConsumerConfigResponseValidationError {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "COMPUTE_API_NOT_ENABLED" => {
+                    ValidateConsumerConfigResponseValidationError::ComputeApiNotEnabled
+                }
+                "CONSUMER_PROJECT_NOT_SERVICE_PROJECT" => {
+                    ValidateConsumerConfigResponseValidationError::ConsumerProjectNotServiceProject
+                }
+                "HOST_PROJECT_NOT_FOUND" => {
+                    ValidateConsumerConfigResponseValidationError::HostProjectNotFound
+                }
+                "NETWORK_NOT_FOUND" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotFound
+                }
+                "NETWORK_NOT_IN_CONSUMERS_HOST_PROJECT" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotInConsumersHostProject
+                }
+                "NETWORK_NOT_IN_CONSUMERS_PROJECT" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotInConsumersProject
+                }
+                "NETWORK_NOT_PEERED" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkNotPeered
+                }
+                "NETWORK_PEERING_DELETED" => {
+                    ValidateConsumerConfigResponseValidationError::NetworkPeeringDeleted
+                }
+                "RANGES_DELETED_LATER" => {
+                    ValidateConsumerConfigResponseValidationError::RangesDeletedLater
+                }
+                "RANGES_EXHAUSTED" => {
+                    ValidateConsumerConfigResponseValidationError::RangesExhausted
+                }
+                "RANGES_NOT_RESERVED" => {
+                    ValidateConsumerConfigResponseValidationError::RangesNotReserved
+                }
+                "SERVICE_NETWORKING_NOT_ENABLED" => {
+                    ValidateConsumerConfigResponseValidationError::ServiceNetworkingNotEnabled
+                }
+                "VALIDATION_ERROR_UNSPECIFIED" => {
+                    ValidateConsumerConfigResponseValidationError::ValidationErrorUnspecified
+                }
+                "VALIDATION_NOT_REQUESTED" => {
+                    ValidateConsumerConfigResponseValidationError::ValidationNotRequested
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ValidateConsumerConfigResponseValidationError {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ValidateConsumerConfigResponseValidationError {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4247,7 +5048,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -4255,8 +5056,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -4282,7 +5095,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -4377,7 +5190,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CancelOperationRequest,
             name: String,
@@ -4507,7 +5320,10 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4531,7 +5347,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -4658,7 +5474,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4682,7 +5501,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -4811,7 +5630,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4835,7 +5657,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             filter: Option<String>,
@@ -5080,7 +5902,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -5119,14 +5944,14 @@ pub mod resources {
     pub mod services {
         pub mod params {}
         pub struct ServicesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ServicesActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "For service producers, provisions a new subnet in a\npeered service's shared VPC network in the requested region and with the\nrequested size that's expressed as a CIDR range (number of leading bits of\nipV4 network mask). The method checks against the assigned allocated ranges\nto find a non-conflicting IP address range. The method will reuse a subnet\nif subsequent calls contain the same subnet name, region, and prefix\nlength. This method will make producer's tenant project to be a shared VPC\nservice project as needed. The response from the `get` operation will be of\ntype `Subnetwork` if the operation successfully completes."]
+            #[doc = "For service producers, provisions a new subnet in a peered service's shared\nVPC network in the requested region and with the requested size that's\nexpressed as a CIDR range (number of leading bits of ipV4 network mask).\nThe method checks against the assigned allocated ranges to find a\nnon-conflicting IP address range. The method will reuse a subnet if\nsubsequent calls contain the same subnet name, region, and prefix length.\nThis method will make producer's tenant project to be a shared VPC service\nproject as needed."]
             pub fn add_subnetwork(
                 &self,
                 request: crate::schemas::AddSubnetworkRequest,
@@ -5150,13 +5975,85 @@ pub mod resources {
                     parent: parent.into(),
                 }
             }
-            #[doc = "Service producers can use this method to find a currently unused range\nwithin consumer allocated ranges.   This returned range is not reserved,\nand not guaranteed to remain unused.\nIt will validate previously provided allocated ranges, find\nnon-conflicting sub-range of requested size (expressed in\nnumber of leading bits of ipv4 network mask, as in CIDR range\nnotation).\nOperation<response: Range>"]
+            #[doc = "Disables VPC service controls for a connection."]
+            pub fn disable_vpc_service_controls(
+                &self,
+                request: crate::schemas::DisableVpcServiceControlsRequest,
+                parent: impl Into<String>,
+            ) -> DisableVpcServiceControlsRequestBuilder {
+                DisableVpcServiceControlsRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    parent: parent.into(),
+                }
+            }
+            #[doc = "Enables VPC service controls for a connection."]
+            pub fn enable_vpc_service_controls(
+                &self,
+                request: crate::schemas::EnableVpcServiceControlsRequest,
+                parent: impl Into<String>,
+            ) -> EnableVpcServiceControlsRequestBuilder {
+                EnableVpcServiceControlsRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    parent: parent.into(),
+                }
+            }
+            #[doc = "Service producers can use this method to find a currently unused range\nwithin consumer allocated ranges. This returned range is not reserved,\nand not guaranteed to remain unused. It will validate previously provided\nallocated ranges, find non-conflicting sub-range of requested size\n(expressed in number of leading bits of ipv4 network mask, as in CIDR range\nnotation)."]
             pub fn search_range(
                 &self,
                 request: crate::schemas::SearchRangeRequest,
                 parent: impl Into<String>,
             ) -> SearchRangeRequestBuilder {
                 SearchRangeRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    request,
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    parent: parent.into(),
+                }
+            }
+            #[doc = "Service producers use this method to validate if the consumer provided\nnetwork, project and requested range are valid. This allows them to use\na fail-fast mechanism for consumer requests, and not have to wait for\nAddSubnetwork operation completion to determine if user request is invalid."]
+            pub fn validate(
+                &self,
+                request: crate::schemas::ValidateConsumerConfigRequest,
+                parent: impl Into<String>,
+            ) -> ValidateRequestBuilder {
+                ValidateRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
@@ -5183,11 +6080,18 @@ pub mod resources {
                     auth: self.auth_ref(),
                 }
             }
+            #[doc = "Actions that can be performed on the roles resource"]
+            pub fn roles(&self) -> crate::resources::services::roles::RolesActions {
+                crate::resources::services::roles::RolesActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
         }
         #[doc = "Created via [ServicesActions::add_subnetwork()](struct.ServicesActions.html#method.add_subnetwork)"]
         #[derive(Debug, Clone)]
         pub struct AddSubnetworkRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AddSubnetworkRequest,
             parent: String,
@@ -5319,8 +6223,329 @@ pub mod resources {
                 output.push_str(":addSubnetwork");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ServicesActions::disable_vpc_service_controls()](struct.ServicesActions.html#method.disable_vpc_service_controls)"]
+        #[derive(Debug, Clone)]
+        pub struct DisableVpcServiceControlsRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::DisableVpcServiceControlsRequest,
+            parent: String,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> DisableVpcServiceControlsRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::Operation, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::Operation, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://servicenetworking.googleapis.com/".to_owned();
+                output.push_str("v1/");
+                {
+                    let var_as_str = &self.parent;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":disableVpcServiceControls");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ServicesActions::enable_vpc_service_controls()](struct.ServicesActions.html#method.enable_vpc_service_controls)"]
+        #[derive(Debug, Clone)]
+        pub struct EnableVpcServiceControlsRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::EnableVpcServiceControlsRequest,
+            parent: String,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> EnableVpcServiceControlsRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::Operation, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::Operation, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://servicenetworking.googleapis.com/".to_owned();
+                output.push_str("v1/");
+                {
+                    let var_as_str = &self.parent;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":enableVpcServiceControls");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("callback", &self.callback)]);
@@ -5343,7 +6568,7 @@ pub mod resources {
         #[doc = "Created via [ServicesActions::search_range()](struct.ServicesActions.html#method.search_range)"]
         #[derive(Debug, Clone)]
         pub struct SearchRangeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::SearchRangeRequest,
             parent: String,
@@ -5475,7 +6700,169 @@ pub mod resources {
                 output.push_str(":searchRange");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [ServicesActions::validate()](struct.ServicesActions.html#method.validate)"]
+        #[derive(Debug, Clone)]
+        pub struct ValidateRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            request: crate::schemas::ValidateConsumerConfigRequest,
+            parent: String,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> ValidateRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::ValidateConsumerConfigResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::ValidateConsumerConfigResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                let req = req.json(&self.request);
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://servicenetworking.googleapis.com/".to_owned();
+                output.push_str("v1/");
+                {
+                    let var_as_str = &self.parent;
+                    output.extend(::percent_encoding::utf8_percent_encode(
+                        &var_as_str,
+                        crate::RESERVED,
+                    ));
+                }
+                output.push_str(":validate");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5499,14 +6886,14 @@ pub mod resources {
         pub mod connections {
             pub mod params {}
             pub struct ConnectionsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ConnectionsActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a private connection that establishes a VPC Network Peering\nconnection to a VPC network in the service producer's organization.\nThe administrator of the service consumer's VPC network invokes this\nmethod. The administrator must assign one or more allocated IP ranges for\nprovisioning subnetworks in the service producer's VPC network. This\nconnection is used for all supported services in the service producer's\norganization, so it only needs to be invoked once. The response from the\n`get` operation will be of type `Connection` if the operation successfully\ncompletes."]
+                #[doc = "Creates a private connection that establishes a VPC Network Peering\nconnection to a VPC network in the service producer's organization.\nThe administrator of the service consumer's VPC network invokes this\nmethod. The administrator must assign one or more allocated IP ranges for\nprovisioning subnetworks in the service producer's VPC network. This\nconnection is used for all supported services in the service producer's\norganization, so it only needs to be invoked once."]
                 pub fn create(
                     &self,
                     request: crate::schemas::Connection,
@@ -5550,7 +6937,7 @@ pub mod resources {
                         network: None,
                     }
                 }
-                #[doc = "Updates the allocated ranges that are assigned to a connection.\nThe response from the `get` operation will be of type `Connection` if the\noperation successfully completes."]
+                #[doc = "Updates the allocated ranges that are assigned to a connection."]
                 pub fn patch(
                     &self,
                     request: crate::schemas::Connection,
@@ -5580,7 +6967,7 @@ pub mod resources {
             #[doc = "Created via [ConnectionsActions::create()](struct.ConnectionsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Connection,
                 parent: String,
@@ -5715,7 +7102,10 @@ pub mod resources {
                     output.push_str("/connections");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5739,7 +7129,7 @@ pub mod resources {
             #[doc = "Created via [ConnectionsActions::list()](struct.ConnectionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 network: Option<String>,
@@ -5878,7 +7268,10 @@ pub mod resources {
                     output.push_str("/connections");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("network", &self.network)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -5903,7 +7296,7 @@ pub mod resources {
             #[doc = "Created via [ConnectionsActions::patch()](struct.ConnectionsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Connection,
                 name: String,
@@ -6049,10 +7442,211 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("force", &self.force)]);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+        }
+        pub mod roles {
+            pub mod params {}
+            pub struct RolesActions<'a> {
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            }
+            impl<'a> RolesActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
+                #[doc = "Service producers can use this method to add roles in the shared VPC host\nproject. Each role is bound to the provided member. Each role must be\nselected from within a whitelisted set of roles. Each role is applied at\nonly the granularity specified in the whitelist."]
+                pub fn add(
+                    &self,
+                    request: crate::schemas::AddRolesRequest,
+                    parent: impl Into<String>,
+                ) -> AddRequestBuilder {
+                    AddRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                    }
+                }
+            }
+            #[doc = "Created via [RolesActions::add()](struct.RolesActions.html#method.add)"]
+            #[derive(Debug, Clone)]
+            pub struct AddRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::AddRolesRequest,
+                parent: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> AddRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::Operation, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://servicenetworking.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/roles:add");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -6091,9 +7685,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -6135,7 +7727,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

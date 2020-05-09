@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("acceleratedmobilepageurl1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190812")
+            .version("0.1.0-20200507")
             .about("Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")

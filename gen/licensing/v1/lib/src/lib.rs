@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [license_assignments](resources/license_assignments/struct.LicenseAssignmentsActions.html)\n      * [*delete*](resources/license_assignments/struct.DeleteRequestBuilder.html), [*get*](resources/license_assignments/struct.GetRequestBuilder.html), [*insert*](resources/license_assignments/struct.InsertRequestBuilder.html), [*listForProduct*](resources/license_assignments/struct.ListForProductRequestBuilder.html), [*listForProductAndSku*](resources/license_assignments/struct.ListForProductAndSkuRequestBuilder.html), [*patch*](resources/license_assignments/struct.PatchRequestBuilder.html), [*update*](resources/license_assignments/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage G Suite licenses for your domain\n\n`https://www.googleapis.com/auth/apps.licensing`"]
+    pub const APPS_LICENSING: &str = "https://www.googleapis.com/auth/apps.licensing";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -27,7 +31,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "Id of the product."]
+        #[doc = "A product's unique identifier. For more information about products in this version of the API, see Product and SKU IDs."]
         #[serde(
             rename = "productId",
             default,
@@ -48,7 +52,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "Id of the sku of the product."]
+        #[doc = "A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs."]
         #[serde(
             rename = "skuId",
             default,
@@ -62,7 +66,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sku_name: ::std::option::Option<String>,
-        #[doc = "Email id of the user."]
+        #[doc = "The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a userId is subject to change, do not use a userId value as a key for persistent data. This key could break if the current user's email address changes. If the userId is suspended, the license status changes."]
         #[serde(
             rename = "userId",
             default,
@@ -145,7 +149,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results."]
+        #[doc = "The token that you must submit in a subsequent request to retrieve additional license results matching your query parameters. The maxResults query string is related to the nextPageToken since maxResults determines how many entries are returned on each next page."]
         #[serde(
             rename = "nextPageToken",
             default,
@@ -233,7 +237,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -241,8 +245,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -263,14 +279,14 @@ pub mod resources {
     pub mod license_assignments {
         pub mod params {}
         pub struct LicenseAssignmentsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> LicenseAssignmentsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Revoke License."]
+            #[doc = "Revoke a license."]
             pub fn delete(
                 &self,
                 product_id: impl Into<String>,
@@ -292,7 +308,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Get license assignment of a particular product and sku for a user"]
+            #[doc = "Get a specific user's license by product SKU."]
             pub fn get(
                 &self,
                 product_id: impl Into<String>,
@@ -314,7 +330,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Assign License."]
+            #[doc = "Assign a license."]
             pub fn insert(
                 &self,
                 request: crate::schemas::LicenseAssignmentInsert,
@@ -336,7 +352,7 @@ pub mod resources {
                     sku_id: sku_id.into(),
                 }
             }
-            #[doc = "List license assignments for given product of the customer."]
+            #[doc = "List all users assigned licenses for a specific product SKU."]
             pub fn list_for_product(
                 &self,
                 product_id: impl Into<String>,
@@ -358,7 +374,7 @@ pub mod resources {
                     page_token: None,
                 }
             }
-            #[doc = "List license assignments for given product and sku of the customer."]
+            #[doc = "List all users assigned licenses for a specific product SKU."]
             pub fn list_for_product_and_sku(
                 &self,
                 product_id: impl Into<String>,
@@ -382,7 +398,7 @@ pub mod resources {
                     page_token: None,
                 }
             }
-            #[doc = "Assign License. This method supports patch semantics."]
+            #[doc = "Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics."]
             pub fn patch(
                 &self,
                 request: crate::schemas::LicenseAssignment,
@@ -406,7 +422,7 @@ pub mod resources {
                     user_id: user_id.into(),
                 }
             }
-            #[doc = "Assign License."]
+            #[doc = "Reassign a user's product SKU with a different SKU in the same product."]
             pub fn update(
                 &self,
                 request: crate::schemas::LicenseAssignment,
@@ -434,7 +450,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::delete()](struct.LicenseAssignmentsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             product_id: String,
             sku_id: String,
@@ -505,7 +521,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -525,7 +544,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::get()](struct.LicenseAssignmentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             product_id: String,
             sku_id: String,
@@ -647,7 +666,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -667,7 +689,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::insert()](struct.LicenseAssignmentsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LicenseAssignmentInsert,
             product_id: String,
@@ -783,7 +805,10 @@ pub mod resources {
                 output.push_str("/user");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -803,7 +828,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::list_for_product()](struct.LicenseAssignmentsActions.html#method.list_for_product)"]
         #[derive(Debug, Clone)]
         pub struct ListForProductRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             product_id: String,
             customer_id: String,
@@ -818,12 +843,12 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListForProductRequestBuilder<'a> {
-            #[doc = "Maximum number of campaigns to return at one time. Must be positive. Optional. Default value is 100."]
+            #[doc = "The maxResults query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Token to fetch the next page.Optional. By default server will return first page"]
+            #[doc = "Token to fetch the next page of data. The maxResults query string is related to the pageToken since maxResults determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -1019,7 +1044,10 @@ pub mod resources {
                 output.push_str("/users");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -1053,7 +1081,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::list_for_product_and_sku()](struct.LicenseAssignmentsActions.html#method.list_for_product_and_sku)"]
         #[derive(Debug, Clone)]
         pub struct ListForProductAndSkuRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             product_id: String,
             sku_id: String,
@@ -1069,12 +1097,12 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListForProductAndSkuRequestBuilder<'a> {
-            #[doc = "Maximum number of campaigns to return at one time. Must be positive. Optional. Default value is 100."]
+            #[doc = "The maxResults query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number."]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Token to fetch the next page.Optional. By default server will return first page"]
+            #[doc = "Token to fetch the next page of data. The maxResults query string is related to the pageToken since maxResults determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page."]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -1278,7 +1306,10 @@ pub mod resources {
                 output.push_str("/users");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -1312,7 +1343,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::patch()](struct.LicenseAssignmentsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LicenseAssignment,
             product_id: String,
@@ -1436,7 +1467,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1456,7 +1490,7 @@ pub mod resources {
         #[doc = "Created via [LicenseAssignmentsActions::update()](struct.LicenseAssignmentsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::LicenseAssignment,
             product_id: String,
@@ -1580,7 +1614,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1615,9 +1652,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1659,7 +1694,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -5,9 +5,9 @@
   "id": "classroom:v1",
   "name": "classroom",
   "canonicalName": null,
-  "fullyEncodeReservedExpansion": null,
+  "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190917",
+  "revision": "20200505",
   "title": "Google Classroom API",
   "description": "Manages classes, rosters, and invitations in Google Classroom.",
   "ownerDomain": "google.com",
@@ -341,7 +341,7 @@
           "items": null
         },
         "individualStudentsOptions": {
-          "description": "Identifiers of students with access to the announcement.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be able to see the announcement.",
+          "description": "Identifiers of students with access to the announcement.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field can see the announcement.",
           "$ref": "IndividualStudentsOptions"
         },
         "materials": {
@@ -435,7 +435,7 @@
       "enumDescriptions": [],
       "properties": {
         "attachments": {
-          "description": "Attachments added by the student.\nDrive files that correspond to materials with a share mode of\nSTUDENT_COPY may not exist yet if the student has not accessed the\nassignment in Classroom.\n\nSome attachment metadata is only populated if the requesting user has\npermission to access it. Identifier and alternate_link fields are always\navailable, but others (e.g. title) may not be.",
+          "description": "Attachments added by the student.\nDrive files that correspond to materials with a share mode of\nSTUDENT_COPY may not exist yet if the student has not accessed the\nassignment in Classroom.\n\nSome attachment metadata is only populated if the requesting user has\npermission to access it. Identifier and alternate_link fields are always\navailable, but others (for example, title) may not be.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -849,7 +849,7 @@
           "$ref": "Assignment"
         },
         "associatedWithDeveloper": {
-          "description": "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only.",
+          "description": "Whether this course work item is associated with the Developer Console\nproject making the request.\n\nSee CreateCourseWork for more\ndetails.\n\nRead-only.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -917,7 +917,7 @@
           "items": null
         },
         "individualStudentsOptions": {
-          "description": "Identifiers of students with access to the coursework.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field will be assigned the coursework.",
+          "description": "Identifiers of students with access to the coursework.\nThis field is set only if `assigneeMode` is `INDIVIDUAL_STUDENTS`.\nIf the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students\nspecified in this field are assigned the coursework.",
           "$ref": "IndividualStudentsOptions"
         },
         "materials": {
@@ -2050,7 +2050,7 @@
           "$ref": "Form"
         },
         "link": {
-          "description": "Link material. On creation, will be upgraded to a more appropriate type\nif possible, and this will be reflected in the response.",
+          "description": "Link material. On creation, this is upgraded to a more appropriate type\nif possible, and this is reflected in the response.",
           "$ref": "Link"
         },
         "youtubeVideo": {
@@ -2070,7 +2070,7 @@
       "enumDescriptions": [],
       "properties": {
         "assigneeMode": {
-          "description": "Mode of the announcement describing whether it will be accessible by all\nstudents or specified individual students.",
+          "description": "Mode of the announcement describing whether it is accessible by all\nstudents or specified individual students.",
           "type": "string",
           "format": null,
           "enum": [
@@ -2162,7 +2162,7 @@
       "enumDescriptions": [],
       "properties": {
         "addStudentIds": {
-          "description": "Ids of students to be added as having access to this\ncoursework/announcement.",
+          "description": "IDs of students to be added as having access to this\ncoursework/announcement.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2180,7 +2180,7 @@
           }
         },
         "removeStudentIds": {
-          "description": "Ids of students to be removed from having access to this\ncoursework/announcement.",
+          "description": "IDs of students to be removed from having access to this\ncoursework/announcement.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2424,7 +2424,7 @@
       "enumDescriptions": [],
       "properties": {
         "actorUserId": {
-          "description": "The teacher or student who made the change",
+          "description": "The teacher or student who made the change.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2530,7 +2530,7 @@
           "items": null
         },
         "assignedGrade": {
-          "description": "Optional grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis may be modified only by course teachers.",
+          "description": "Optional grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (that is, non-integer) values are\nallowed, but are rounded to two decimal places.\n\nThis may be modified only by course teachers.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -2540,11 +2540,11 @@
           "items": null
         },
         "assignmentSubmission": {
-          "description": "Submission content when course_work_type is ASSIGNMENT.\n\nStudents can modify this content using\ngoogle.classroom.Work.ModifyAttachments.",
+          "description": "Submission content when course_work_type is ASSIGNMENT.\n\nStudents can modify this content using\nModifyAttachments.",
           "$ref": "AssignmentSubmission"
         },
         "associatedWithDeveloper": {
-          "description": "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee google.classroom.Work.CreateCourseWork for more\ndetails.\n\nRead-only.",
+          "description": "Whether this student submission is associated with the Developer Console\nproject making the request.\n\nSee CreateCourseWork for more\ndetails.\n\nRead-only.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -2604,7 +2604,7 @@
           "items": null
         },
         "draftGrade": {
-          "description": "Optional pending grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (i.e. non-integer) values are\nallowed, but will be rounded to two decimal places.\n\nThis is only visible to and modifiable by course teachers.",
+          "description": "Optional pending grade. If unset, no grade was set.\nThis value must be non-negative. Decimal (that is, non-integer) values are\nallowed, but are rounded to two decimal places.\n\nThis is only visible to and modifiable by course teachers.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -2828,7 +2828,7 @@
           "items": null
         },
         "name": {
-          "description": "The name of the topic, generated by the user.\nLeading and trailing whitespaces, if any, will be trimmed. Also, multiple\nconsecutive whitespaces will be collapsed into one inside the name. The\nresult must be a non-empty string. Topic names are case sensitive, and must\nbe no longer than 100 characters.",
+          "description": "The name of the topic, generated by the user.\nLeading and trailing whitespaces, if any, are trimmed. Also, multiple\nconsecutive whitespaces are collapsed into one inside the name. The\nresult must be a non-empty string. Topic names are case sensitive, and must\nbe no longer than 100 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2927,7 +2927,7 @@
           "items": null
         },
         "verifiedTeacher": {
-          "description": "Represents whether a G Suite for Education user's domain administrator has\nexplicitly verified them as being a teacher. If the user is not a member of\na G Suite for Education domain, than this field will always be false.\n\nRead-only",
+          "description": "Represents whether a G Suite for Education user's domain administrator has\nexplicitly verified them as being a teacher. If the user is not a member of\na G Suite for Education domain, than this field is always false.\n\nRead-only",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -3493,7 +3493,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Mask that identifies which fields on the announcement to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the Announcement object. If\na field that does not support empty values is included in the update mask\nand not set in the Announcement object, an `INVALID_ARGUMENT` error will be\nreturned.\n\nThe following fields may be specified by teachers:\n\n* `text`\n* `state`\n* `scheduled_time`",
+                  "description": "Mask that identifies which fields on the announcement to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the Announcement object. If\na field that does not support empty values is included in the update mask\nand not set in the Announcement object, an `INVALID_ARGUMENT` error is\nreturned.\n\nThe following fields may be specified by teachers:\n\n* `text`\n* `state`\n* `scheduled_time`",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -4444,7 +4444,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Mask that identifies which fields on the course work to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the CourseWork object. If a\nfield that does not support empty values is included in the update mask and\nnot set in the CourseWork object, an `INVALID_ARGUMENT` error will be\nreturned.\n\nThe following fields may be specified by teachers:\n\n* `title`\n* `description`\n* `state`\n* `due_date`\n* `due_time`\n* `max_points`\n* `scheduled_time`\n* `submission_modification_mode`\n* `topic_id`",
+                  "description": "Mask that identifies which fields on the course work to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the CourseWork object. If a\nfield that does not support empty values is included in the update mask and\nnot set in the CourseWork object, an `INVALID_ARGUMENT` error is\nreturned.\n\nThe following fields may be specified by teachers:\n\n* `title`\n* `description`\n* `state`\n* `due_date`\n* `due_time`\n* `max_points`\n* `scheduled_time`\n* `submission_modification_mode`\n* `topic_id`",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5183,7 +5183,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Mask that identifies which fields on the topic to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the Topic object. If a\nfield that does not support empty values is included in the update mask and\nnot set in the Topic object, an `INVALID_ARGUMENT` error will be\nreturned.\n\nThe following fields may be specified:\n\n* `name`",
+                  "description": "Mask that identifies which fields on the topic to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. If a field supports empty values, it can be cleared\nby specifying it in the update mask and not in the Topic object. If a\nfield that does not support empty values is included in the update mask and\nnot set in the Topic object, an `INVALID_ARGUMENT` error is\nreturned.\n\nThe following fields may be specified:\n\n* `name`",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5895,7 +5895,7 @@
               "description": "Returns a list of guardian invitations that the requesting user is\npermitted to view, filtered by the parameters provided.\n\nThis method returns the following error codes:\n\n* `PERMISSION_DENIED` if a `student_id` is specified, and the requesting\n  user is not permitted to view guardian invitations for that student, if\n  `\"-\"` is specified as the `student_id` and the user is not a domain\n  administrator, if guardians are not enabled for the domain in question,\n  or for other access errors.\n* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot\n  be recognized (it is not an email address, nor a `student_id` from the\n  API, nor the literal string `me`). May also be returned if an invalid\n  `page_token` or `state` is provided.\n* `NOT_FOUND` if a `student_id` is specified, and its format can be\n  recognized, but Classroom has no record of that student.",
               "parameters": {
                 "invitedEmailAddress": {
-                  "description": "If specified, only results with the specified `invited_email_address`\nwill be returned.",
+                  "description": "If specified, only results with the specified `invited_email_address`\nare returned.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5923,7 +5923,7 @@
                   "repeated": false
                 },
                 "pageToken": {
-                  "description": "nextPageToken\nvalue returned from a previous\nlist call,\nindicating that the subsequent page of results should be returned.\n\nThe list request\nmust be otherwise identical to the one that resulted in this token.",
+                  "description": "nextPageToken\nvalue returned from a previous\nlist\ncall, indicating that the subsequent page of results should be returned.\n\nThe list\nrequest must be otherwise identical to the one that resulted in this token.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -5937,7 +5937,7 @@
                   "repeated": false
                 },
                 "states": {
-                  "description": "If specified, only results with the specified `state` values will be\nreturned. Otherwise, results with a `state` of `PENDING` will be returned.",
+                  "description": "If specified, only results with the specified `state` values are\nreturned. Otherwise, results with a `state` of `PENDING` are returned.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -6021,7 +6021,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "Mask that identifies which fields on the course to update.\nThis field is required to do an update. The update will fail if invalid\nfields are specified. The following fields are valid:\n\n* `state`\n\nWhen set in a query parameter, this field should be specified as\n\n`updateMask=<field1>,<field2>,...`",
+                  "description": "Mask that identifies which fields on the course to update.\nThis field is required to do an update. The update fails if invalid\nfields are specified. The following fields are valid:\n\n* `state`\n\nWhen set in a query parameter, this field should be specified as\n\n`updateMask=<field1>,<field2>,...`",
                   "default": null,
                   "location": "query",
                   "required": false,

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("admin1_directory")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190806")
+            .version("0.1.0-20200204")
             .about("Manages enterprise resources such as users and groups, administrative notifications, security features, and more.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -286,20 +286,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list")
                 .about("Retrieves a paginated list of all privileges for a customer.");
             privileges0 = privileges0.subcommand(mcmd);
-        }
-        let mut resolved_app_access_settings0 =
-            SubCommand::with_name("resolved_app_access_settings")
-                .setting(AppSettings::ColoredHelp)
-                .about("methods: get_settings and list_trusted_apps");
-        {
-            let mcmd = SubCommand::with_name("get_settings")
-                .about("Retrieves resolved app access settings of the logged in user.");
-            resolved_app_access_settings0 = resolved_app_access_settings0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list_trusted_apps")
-                .about("Retrieves the list of apps trusted by the admin of the logged in user.");
-            resolved_app_access_settings0 = resolved_app_access_settings0.subcommand(mcmd);
         }
         let mut resources0 = SubCommand::with_name("resources")
             .setting(AppSettings::ColoredHelp)
@@ -618,7 +604,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(roles0);
         app = app.subcommand(role_assignments0);
         app = app.subcommand(resources0);
-        app = app.subcommand(resolved_app_access_settings0);
         app = app.subcommand(privileges0);
         app = app.subcommand(orgunits0);
         app = app.subcommand(notifications0);

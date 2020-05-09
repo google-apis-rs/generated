@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("genomics2_alpha1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190919")
+            .version("0.1.0-20200507")
             .about("Uploads, processes, queries, and searches Genomics data in the cloud.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -42,7 +42,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: operations");
+            .about("sub-resources: operations and workers");
         let mut workers0 = SubCommand::with_name("workers")
             .setting(AppSettings::ColoredHelp)
             .about("methods: check_in");
@@ -65,6 +65,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request.\nAuthorization requires the following [Google IAM](https://cloud.google.com/iam) permission&#58;\n\n* `genomics.operations.list`");
             operations1 = operations1.subcommand(mcmd);
         }
+        let mut workers1 = SubCommand::with_name("workers")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: check_in");
+        {
+            let mcmd = SubCommand::with_name("check_in").about("The worker uses this method to retrieve the assigned operation and\nprovide periodic status updates.");
+            workers1 = workers1.subcommand(mcmd);
+        }
+        projects0 = projects0.subcommand(workers1);
         projects0 = projects0.subcommand(operations1);
         app = app.subcommand(workers0);
         app = app.subcommand(projects0);

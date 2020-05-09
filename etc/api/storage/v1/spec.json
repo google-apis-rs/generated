@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/siVp-wXOlRuFwENWg2J2I4L8CMg\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/ZrOuv2jlHS6Z6zwtpAqNzM6FbAU\"",
   "discoveryVersion": "v1",
   "id": "storage:v1",
   "name": "storage",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190910",
+  "revision": "20200410",
   "title": "Cloud Storage JSON API",
   "description": "Stores and retrieves potentially large, immutable data objects.",
   "ownerDomain": "google.com",
@@ -18,9 +18,9 @@
   },
   "documentationLink": "https://developers.google.com/storage/docs/json_api/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/storage/v1/",
+  "baseUrl": "https://storage.googleapis.com/storage/v1/",
   "basePath": "/storage/v1/",
-  "rootUrl": "https://www.googleapis.com/",
+  "rootUrl": "https://storage.googleapis.com/",
   "servicePath": "storage/v1/",
   "batchPath": "batch/storage/v1",
   "version_module": null,
@@ -340,7 +340,7 @@
           "enumDescriptions": [],
           "properties": {
             "bucketPolicyOnly": {
-              "description": "The bucket's Bucket Policy Only configuration.",
+              "description": "The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.",
               "type": "object",
               "format": null,
               "enum": [],
@@ -523,6 +523,26 @@
                         "additionalProperties": null,
                         "items": null
                       },
+                      "customTimeBefore": {
+                        "description": "A timestamp in RFC 3339 format. This condition is satisfied when the custom time on an object is before this timestamp.",
+                        "type": "string",
+                        "format": "date-time",
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
+                      "daysSinceCustomTime": {
+                        "description": "Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.",
+                        "type": "integer",
+                        "format": "int32",
+                        "enum": [],
+                        "enumDescriptions": [],
+                        "properties": {},
+                        "additionalProperties": null,
+                        "items": null
+                      },
                       "isLive": {
                         "description": "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.",
                         "type": "boolean",
@@ -544,7 +564,7 @@
                         "items": null
                       },
                       "matchesStorageClass": {
-                        "description": "Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.",
+                        "description": "Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.",
                         "type": "array",
                         "format": null,
                         "enum": [],
@@ -748,7 +768,7 @@
           "items": null
         },
         "storageClass": {
-          "description": "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.",
+          "description": "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -826,6 +846,34 @@
               "items": null
             }
           },
+          "additionalProperties": null,
+          "items": null
+        },
+        "zoneAffinity": {
+          "description": "The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "zoneSeparation": {
+          "description": "If set, objects placed in this bucket are required to be separated by disaster domain.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
           "additionalProperties": null,
           "items": null
         }
@@ -1752,6 +1800,16 @@
           "description": "CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "customTime": {
+          "description": "A timestamp in RFC 3339 format specified by the user for an object.",
+          "type": "string",
+          "format": "date-time",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -5788,6 +5846,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "destinationKmsKeyName": {
+              "description": "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "destinationObject": {
               "description": "Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object metadata's name value, if any.",
               "default": null,
@@ -6742,6 +6814,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "endOffset": {
+              "description": "Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive).",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "includeTrailingDelimiter": {
               "description": "If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes.",
               "default": null,
@@ -6820,6 +6906,20 @@
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "startOffset": {
+              "description": "Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive).",
               "default": null,
               "location": "query",
               "required": false,
@@ -7858,6 +7958,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "endOffset": {
+              "description": "Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive).",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "includeTrailingDelimiter": {
               "description": "If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes.",
               "default": null,
@@ -7936,6 +8050,20 @@
             },
             "provisionalUserProject": {
               "description": "The project to be billed for this request if the target bucket is requester-pays bucket.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "startOffset": {
+              "description": "Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive).",
               "default": null,
               "location": "query",
               "required": false,
@@ -8199,6 +8327,7 @@
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform",
                 "https://www.googleapis.com/auth/cloud-platform.read-only",
+                "https://www.googleapis.com/auth/devstorage.full_control",
                 "https://www.googleapis.com/auth/devstorage.read_only"
               ],
               "supportsMediaDownload": false,

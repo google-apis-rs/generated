@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [services](resources/services/struct.ServicesActions.html)\n      * [*allocateQuota*](resources/services/struct.AllocateQuotaRequestBuilder.html), [*check*](resources/services/struct.CheckRequestBuilder.html), [*report*](resources/services/struct.ReportRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Manage your Google Service Control data\n\n`https://www.googleapis.com/auth/servicecontrol`"]
+    pub const SERVICECONTROL: &str = "https://www.googleapis.com/auth/servicecontrol";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -102,6 +108,92 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for AllocateQuotaResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AttributeValue {
+        #[doc = "A Boolean value represented by `true` or `false`."]
+        #[serde(
+            rename = "boolValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bool_value: ::std::option::Option<bool>,
+        #[doc = "A 64-bit signed integer."]
+        #[serde(
+            rename = "intValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub int_value: ::std::option::Option<i64>,
+        #[doc = "A string up to 256 bytes long."]
+        #[serde(
+            rename = "stringValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub string_value: ::std::option::Option<crate::schemas::TruncatableString>,
+    }
+    impl ::google_field_selector::FieldSelector for AttributeValue {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AttributeValue {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Attributes {
+        #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n````text\n\"/instance_id\": \"my-instance\"\n\"/http/user_agent\": \"\"\n\"/http/request_bytes\": 300\n\"abc.com/myattribute\": true````"]
+        #[serde(
+            rename = "attributeMap",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attribute_map: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::AttributeValue>,
+        >,
+        #[doc = "The number of attributes that were discarded. Attributes can be discarded\nbecause their keys are too long or because there are too many attributes.\nIf this value is 0 then all attributes are valid."]
+        #[serde(
+            rename = "droppedAttributesCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub dropped_attributes_count: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for Attributes {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Attributes {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -288,6 +380,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub principal_email: ::std::option::Option<String>,
+        #[doc = "String representation of identity of requesting party.\nPopulated for both first and third party identities."]
+        #[serde(
+            rename = "principalSubject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub principal_subject: ::std::option::Option<String>,
         #[doc = "Identity delegation history of an authenticated service account that makes\nthe request. It contains information on the real authorities that try to\naccess GCP resources by delegating on a service account. When multiple\nauthorities present, they are guaranteed to be sorted based on the original\nordering of the identity delegation events."]
         #[serde(
             rename = "serviceAccountDelegationInfo",
@@ -397,7 +496,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub status: ::std::option::Option<crate::schemas::Status>,
-        #[doc = "Subject to whom this error applies. See the specific code enum for more\ndetails on this field. For example:\n- \u{201c}project:<project-id or project-number>\u{201d}\n- \u{201c}folder:<folder-id>\u{201d}\n- \u{201c}organization:<organization-id>\u{201d}"]
+        #[doc = "Subject to whom this error applies. See the specific code enum for more\ndetails on this field. For example:\n- “project:<project-id or project-number>”\n- “folder:<folder-id>”\n- “organization:<organization-id>”"]
         #[serde(
             rename = "subject",
             default,
@@ -790,7 +889,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_config_id: ::std::option::Option<String>,
-        #[doc = "Unimplemented. The current service rollout id used to process the request."]
+        #[doc = "The current service rollout id used to process the request."]
         #[serde(
             rename = "serviceRolloutId",
             default,
@@ -1655,7 +1754,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub int_64_value: ::std::option::Option<i64>,
-        #[doc = "The labels describing the metric value.\nSee comments on google.api.servicecontrol.v1.Operation.labels for\nthe overriding relationship."]
+        #[doc = "The labels describing the metric value.\nSee comments on google.api.servicecontrol.v1.Operation.labels for\nthe overriding relationship.\nNote that this map must not contain monitored resource labels."]
         #[serde(
             rename = "labels",
             default,
@@ -1832,13 +1931,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub quota_properties: ::std::option::Option<crate::schemas::QuotaProperties>,
-        #[doc = "DO NOT USE. This field is deprecated, use \"resources\" field instead.\nThe resource name of the parent of a resource in the resource hierarchy.\n\nThis can be in one of the following formats:\n- \u{201c}projects/<project-id or project-number>\u{201d}\n- \u{201c}folders/<folder-id>\u{201d}\n- \u{201c}organizations/<organization-id>\u{201d}"]
-        #[serde(
-            rename = "resourceContainer",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub resource_container: ::std::option::Option<String>,
         #[doc = "The resources that are involved in the operation.\nThe maximum supported number of entries in this field is 100."]
         #[serde(
             rename = "resources",
@@ -1853,6 +1945,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
+        #[doc = "Unimplemented. A list of Cloud Trace spans. The span names shall contain\nthe id of the destination project which can be either the produce or the\nconsumer project."]
+        #[serde(
+            rename = "traceSpans",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub trace_spans: ::std::option::Option<Vec<crate::schemas::TraceSpan>>,
         #[doc = "User defined labels for the resource that this operation is associated\nwith. Only a combination of 1000 user labels per consumer project are\nallowed."]
         #[serde(
             rename = "userLabels",
@@ -2240,7 +2339,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub method_name: ::std::option::Option<String>,
-        #[doc = "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nUUID version 4 is recommended, though not required. In scenarios where an\noperation is computed from existing information and an idempotent id is\ndesirable for deduplication purpose, UUID version 5 is recommended. See\nRFC 4122 for details."]
+        #[doc = "Identity of the operation. This is expected to be unique within the scope\nof the service that generated the operation, and guarantees idempotency in\ncase of retries.\n\nIn order to ensure best performance and latency in the Quota backends,\noperation_ids are optimally associated with time, so that related\noperations can be accessed fast in storage. For this reason, the\nrecommended token for services that intend to operate at a high QPS is\nUnix time in nanos + UUID"]
         #[serde(
             rename = "operationId",
             default,
@@ -2274,21 +2373,27 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QuotaOperationQuotaMode {
+        #[doc = "The operation allocates quota for the amount specified in the service\nconfiguration or specified using the quota metrics. If the requested\namount is higher than the available quota, request does not fail and\nremaining quota would become negative (going over the limit)\nNot supported for Rate Quota."]
+        AdjustOnly,
         #[doc = "The operation allocates quota for the amount specified in the service\nconfiguration or specified using the quota metrics. If the amount is\nhigher than the available quota, request does not fail but all available\nquota will be allocated.\nFor rate quota, BEST_EFFORT will continue to deduct from other groups\neven if one does not have enough quota. For allocation, it will find the\nminimum available amount across all groups and deduct that amount from\nall the affected groups."]
         BestEffort,
         #[doc = "For AllocateQuota request, only checks if there is enough quota\navailable and does not change the available quota. No lock is placed on\nthe available quota either."]
         CheckOnly,
         #[doc = "For AllocateQuota request, allocates quota for the amount specified in\nthe service configuration or specified using the quota metrics. If the\namount is higher than the available quota, allocation error will be\nreturned and no quota will be allocated.\nIf multiple quotas are part of the request, and one fails, none of the\nquotas are allocated or released."]
         Normal,
+        #[doc = "Unimplemented. When used in AllocateQuotaRequest, this returns the\neffective quota limit(s) in the response, and no quota check will be\nperformed. Not supported for other requests, and even for\nAllocateQuotaRequest, this is currently supported only for whitelisted\nservices."]
+        QueryOnly,
         #[doc = "Guard against implicit default. Must not be used."]
         Unspecified,
     }
     impl QuotaOperationQuotaMode {
         pub fn as_str(self) -> &'static str {
             match self {
+                QuotaOperationQuotaMode::AdjustOnly => "ADJUST_ONLY",
                 QuotaOperationQuotaMode::BestEffort => "BEST_EFFORT",
                 QuotaOperationQuotaMode::CheckOnly => "CHECK_ONLY",
                 QuotaOperationQuotaMode::Normal => "NORMAL",
+                QuotaOperationQuotaMode::QueryOnly => "QUERY_ONLY",
                 QuotaOperationQuotaMode::Unspecified => "UNSPECIFIED",
             }
         }
@@ -2302,9 +2407,11 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<QuotaOperationQuotaMode, ()> {
             Ok(match s {
+                "ADJUST_ONLY" => QuotaOperationQuotaMode::AdjustOnly,
                 "BEST_EFFORT" => QuotaOperationQuotaMode::BestEffort,
                 "CHECK_ONLY" => QuotaOperationQuotaMode::CheckOnly,
                 "NORMAL" => QuotaOperationQuotaMode::Normal,
+                "QUERY_ONLY" => QuotaOperationQuotaMode::QueryOnly,
                 "UNSPECIFIED" => QuotaOperationQuotaMode::Unspecified,
                 _ => return Err(()),
             })
@@ -2330,9 +2437,11 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "ADJUST_ONLY" => QuotaOperationQuotaMode::AdjustOnly,
                 "BEST_EFFORT" => QuotaOperationQuotaMode::BestEffort,
                 "CHECK_ONLY" => QuotaOperationQuotaMode::CheckOnly,
                 "NORMAL" => QuotaOperationQuotaMode::Normal,
+                "QUERY_ONLY" => QuotaOperationQuotaMode::QueryOnly,
                 "UNSPECIFIED" => QuotaOperationQuotaMode::Unspecified,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
@@ -2521,7 +2630,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportRequest {
-        #[doc = "Operations to be reported.\n\nTypically the service should report one operation per request.\nPutting multiple operations into a single request is allowed, but should\nbe used only when multiple operations are natually available at the time\nof the report.\n\nIf multiple operations are in a single request, the total request size\nshould be no larger than 1MB. See ReportResponse.report_errors for\npartial failure behavior."]
+        #[doc = "Operations to be reported.\n\nTypically the service should report one operation per request.\nPutting multiple operations into a single request is allowed, but should\nbe used only when multiple operations are natually available at the time\nof the report.\n\nThere is no limit on the number of operations in the same ReportRequest,\nhowever the ReportRequest size should be no larger than 1MB. See\nReportResponse.report_errors for partial failure behavior."]
         #[serde(
             rename = "operations",
             default,
@@ -2569,7 +2678,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub service_config_id: ::std::option::Option<String>,
-        #[doc = "Unimplemented. The current service rollout id used to process the request."]
+        #[doc = "The current service rollout id used to process the request."]
         #[serde(
             rename = "serviceRolloutId",
             default,
@@ -2638,7 +2747,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub protocol: ::std::option::Option<String>,
-        #[doc = "The HTTP URL query in the format of `name1=value`&name2=value2`, as it\nappears in the first line of the HTTP request. No decoding is performed."]
+        #[doc = "The HTTP URL query in the format of `name1=value1&name2=value2`, as it\nappears in the first line of the HTTP request. No decoding is performed."]
         #[serde(
             rename = "query",
             default,
@@ -2798,7 +2907,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResourceInfo {
-        #[doc = "The identifier of the parent of this resource instance.\nMust be in one of the following formats:\n- \u{201c}projects/<project-id or project-number>\u{201d}\n- \u{201c}folders/<folder-id>\u{201d}\n- \u{201c}organizations/<organization-id>\u{201d}"]
+        #[doc = "The identifier of the parent of this resource instance.\nMust be in one of the following formats:\n- “projects/<project-id or project-number>”\n- “folders/<folder-id>”\n- “organizations/<organization-id>”"]
         #[serde(
             rename = "resourceContainer",
             default,
@@ -2895,6 +3004,37 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SpanContext {
+        #[doc = "The resource name of the span. The format is:\n\n````text\nprojects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]\n````\n\n`[TRACE_ID]` is a unique identifier for a trace within a project;\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n`[SPAN_ID]` is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array."]
+        #[serde(
+            rename = "spanName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub span_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for SpanContext {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SpanContext {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Status {
         #[doc = "The status code, which should be an enum value of google.rpc.Code."]
@@ -2947,6 +3087,225 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ThirdPartyPrincipal {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct TraceSpan {
+        #[doc = "A set of attributes on the span. You can have up to 32 attributes per\nspan."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<crate::schemas::Attributes>,
+        #[doc = "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans."]
+        #[serde(
+            rename = "childSpanCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub child_span_count: ::std::option::Option<i32>,
+        #[doc = "A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<crate::schemas::TruncatableString>,
+        #[doc = "The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running."]
+        #[serde(
+            rename = "endTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_time: ::std::option::Option<String>,
+        #[doc = "The resource name of the span in the following format:\n\n````text\nprojects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project;\n````\n\nit is a 32-character hexadecimal encoding of a 16-byte array.\n\n[SPAN_ID] is a unique identifier for a span within a trace; it\nis a 16-character hexadecimal encoding of an 8-byte array."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The [SPAN_ID] of this span's parent span. If this is a root span,\nthen this field must be empty."]
+        #[serde(
+            rename = "parentSpanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent_span_id: ::std::option::Option<String>,
+        #[doc = "(Optional) Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation."]
+        #[serde(
+            rename = "sameProcessAsParentSpan",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub same_process_as_parent_span: ::std::option::Option<bool>,
+        #[doc = "The [SPAN_ID] portion of the span's resource name."]
+        #[serde(
+            rename = "spanId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub span_id: ::std::option::Option<String>,
+        #[doc = "Distinguishes between spans generated in a particular context. For example,\ntwo spans with the same name may be distinguished using `CLIENT` (caller)\nand `SERVER` (callee) to identify an RPC call."]
+        #[serde(
+            rename = "spanKind",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub span_kind: ::std::option::Option<crate::schemas::TraceSpanSpanKind>,
+        #[doc = "The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
+        #[doc = "An optional final status for this span."]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status: ::std::option::Option<crate::schemas::Status>,
+    }
+    impl ::google_field_selector::FieldSelector for TraceSpan {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TraceSpan {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TraceSpanSpanKind {
+        #[doc = "Indicates that the span covers the client-side wrapper around an RPC or\nother remote request."]
+        Client,
+        #[doc = "Indicates that the span describes consumer receiving a message from a\nbroker. Unlike client and  server, there is no direct critical path\nlatency relationship between producer and consumer spans (e.g. receiving\na message from a pubsub service subscription)."]
+        Consumer,
+        #[doc = "Indicates that the span is used internally. Default value."]
+        Internal,
+        #[doc = "Indicates that the span describes producer sending a message to a broker.\nUnlike client and  server, there is no direct critical path latency\nrelationship between producer and consumer spans (e.g. publishing a\nmessage to a pubsub service)."]
+        Producer,
+        #[doc = "Indicates that the span covers server-side handling of an RPC or other\nremote network request."]
+        Server,
+        #[doc = "Unspecified. Do NOT use as default.\nImplementations MAY assume SpanKind.INTERNAL to be default."]
+        SpanKindUnspecified,
+    }
+    impl TraceSpanSpanKind {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TraceSpanSpanKind::Client => "CLIENT",
+                TraceSpanSpanKind::Consumer => "CONSUMER",
+                TraceSpanSpanKind::Internal => "INTERNAL",
+                TraceSpanSpanKind::Producer => "PRODUCER",
+                TraceSpanSpanKind::Server => "SERVER",
+                TraceSpanSpanKind::SpanKindUnspecified => "SPAN_KIND_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TraceSpanSpanKind {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TraceSpanSpanKind {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TraceSpanSpanKind, ()> {
+            Ok(match s {
+                "CLIENT" => TraceSpanSpanKind::Client,
+                "CONSUMER" => TraceSpanSpanKind::Consumer,
+                "INTERNAL" => TraceSpanSpanKind::Internal,
+                "PRODUCER" => TraceSpanSpanKind::Producer,
+                "SERVER" => TraceSpanSpanKind::Server,
+                "SPAN_KIND_UNSPECIFIED" => TraceSpanSpanKind::SpanKindUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TraceSpanSpanKind {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TraceSpanSpanKind {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TraceSpanSpanKind {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CLIENT" => TraceSpanSpanKind::Client,
+                "CONSUMER" => TraceSpanSpanKind::Consumer,
+                "INTERNAL" => TraceSpanSpanKind::Internal,
+                "PRODUCER" => TraceSpanSpanKind::Producer,
+                "SERVER" => TraceSpanSpanKind::Server,
+                "SPAN_KIND_UNSPECIFIED" => TraceSpanSpanKind::SpanKindUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TraceSpanSpanKind {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TraceSpanSpanKind {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct TruncatableString {
+        #[doc = "The number of bytes removed from the original string. If this\nvalue is 0, then the string was not shortened."]
+        #[serde(
+            rename = "truncatedByteCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub truncated_byte_count: ::std::option::Option<i32>,
+        #[doc = "The shortened string. For example, if the original string is 500\nbytes long and the limit of the string is 128 bytes, then\n`value` contains the first 128 bytes of the 500-byte string.\n\nTruncation always happens on a UTF8 character boundary. If there\nare multi-byte characters in the string, then the length of the\nshortened string might be less than the size limit."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for TruncatableString {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TruncatableString {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3102,7 +3461,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3110,8 +3469,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3130,7 +3501,7 @@ pub mod resources {
     pub mod services {
         pub mod params {}
         pub struct ServicesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ServicesActions<'a> {
@@ -3185,7 +3556,7 @@ pub mod resources {
                     service_name: service_name.into(),
                 }
             }
-            #[doc = "Reports operation results to Google Service Control, such as logs and\nmetrics. It should be called after an operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5\nseconds to reduce API traffic. Limiting aggregation to 5 seconds is to\nreduce data loss during client crashes. Clients should carefully choose\nthe aggregation time window to avoid data loss risk more than 0.01%\nfor business and compliance reasons.\n\nNOTE: the ReportRequest has the size limit of 1MB.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam)."]
+            #[doc = "Reports operation results to Google Service Control, such as logs and\nmetrics. It should be called after an operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5\nseconds to reduce API traffic. Limiting aggregation to 5 seconds is to\nreduce data loss during client crashes. Clients should carefully choose\nthe aggregation time window to avoid data loss risk more than 0.01%\nfor business and compliance reasons.\n\nNOTE: the ReportRequest has the size limit (wire-format byte size) of\n1MB.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam)."]
             pub fn report(
                 &self,
                 request: crate::schemas::ReportRequest,
@@ -3213,7 +3584,7 @@ pub mod resources {
         #[doc = "Created via [ServicesActions::allocate_quota()](struct.ServicesActions.html#method.allocate_quota)"]
         #[derive(Debug, Clone)]
         pub struct AllocateQuotaRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AllocateQuotaRequest,
             service_name: String,
@@ -3345,7 +3716,10 @@ pub mod resources {
                 output.push_str(":allocateQuota");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3369,7 +3743,7 @@ pub mod resources {
         #[doc = "Created via [ServicesActions::check()](struct.ServicesActions.html#method.check)"]
         #[derive(Debug, Clone)]
         pub struct CheckRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CheckRequest,
             service_name: String,
@@ -3501,7 +3875,10 @@ pub mod resources {
                 output.push_str(":check");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3525,7 +3902,7 @@ pub mod resources {
         #[doc = "Created via [ServicesActions::report()](struct.ServicesActions.html#method.report)"]
         #[derive(Debug, Clone)]
         pub struct ReportRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReportRequest,
             service_name: String,
@@ -3657,7 +4034,10 @@ pub mod resources {
                 output.push_str(":report");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3696,9 +4076,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3740,7 +4118,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

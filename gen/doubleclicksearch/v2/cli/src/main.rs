@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("doubleclicksearch2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190917")
+            .version("0.1.0-20200428")
             .about("Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,7 +35,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut conversion0 = SubCommand::with_name("conversion")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get, insert, patch, update and update_availability");
+            .about("methods: get, insert, update and update_availability");
         {
             let mcmd = SubCommand::with_name("get")
                 .about("Retrieves a list of conversions from a DoubleClick Search engine account.");
@@ -44,10 +44,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("insert")
                 .about("Inserts a batch of new conversions into DoubleClick Search.");
-            conversion0 = conversion0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("patch").about("Updates a batch of conversions in DoubleClick Search. This method supports patch semantics.");
             conversion0 = conversion0.subcommand(mcmd);
         }
         {

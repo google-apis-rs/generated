@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("remotebuildexecution2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190917")
+            .version("0.1.0-20200505")
             .about("Supplies a Remote Execution API service for tools such as bazel.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -63,11 +63,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             blobs0 = blobs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("find_missing").about("Determine if blobs are present in the CAS.\n\nClients can use this API before uploading blobs to determine which ones are\nalready present in the CAS and do not need to be uploaded again.\n\nThere are no method-specific errors.");
+            let mcmd = SubCommand::with_name("find_missing").about("Determine if blobs are present in the CAS.\n\nClients can use this API before uploading blobs to determine which ones are\nalready present in the CAS and do not need to be uploaded again.\n\nServers SHOULD increase the TTLs of the referenced blobs if necessary and\napplicable.\n\nThere are no method-specific errors.");
             blobs0 = blobs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_tree").about("Fetch the entire directory tree rooted at a node.\n\nThis request must be targeted at a\nDirectory stored in the\nContentAddressableStorage\n(CAS). The server will enumerate the `Directory` tree recursively and\nreturn every node descended from the root.\n\nThe GetTreeRequest.page_token parameter can be used to skip ahead in\nthe stream (e.g. when retrying a partially completed and aborted request),\nby setting it to a value taken from GetTreeResponse.next_page_token of the\nlast successfully processed GetTreeResponse).\n\nThe exact traversal order is unspecified and, unless retrieving subsequent\npages from an earlier request, is not guaranteed to be stable across\nmultiple invocations of `GetTree`.\n\nIf part of the tree is missing from the CAS, the server will return the\nportion present and omit the rest.\n\n* `NOT_FOUND`: The requested tree root is not present in the CAS.");
+            let mcmd = SubCommand::with_name("get_tree").about("Fetch the entire directory tree rooted at a node.\n\nThis request must be targeted at a\nDirectory stored in the\nContentAddressableStorage\n(CAS). The server will enumerate the `Directory` tree recursively and\nreturn every node descended from the root.\n\nThe GetTreeRequest.page_token parameter can be used to skip ahead in\nthe stream (e.g. when retrying a partially completed and aborted request),\nby setting it to a value taken from GetTreeResponse.next_page_token of the\nlast successfully processed GetTreeResponse).\n\nThe exact traversal order is unspecified and, unless retrieving subsequent\npages from an earlier request, is not guaranteed to be stable across\nmultiple invocations of `GetTree`.\n\nIf part of the tree is missing from the CAS, the server will return the\nportion present and omit the rest.\n\nErrors:\n\n* `NOT_FOUND`: The requested tree root is not present in the CAS.");
             blobs0 = blobs0.subcommand(mcmd);
         }
         let mut operations0 = SubCommand::with_name("operations")

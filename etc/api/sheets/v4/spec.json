@@ -7,7 +7,7 @@
   "canonicalName": "Sheets",
   "fullyEncodeReservedExpansion": true,
   "version": "v4",
-  "revision": "20190918",
+  "revision": "20200428",
   "title": "Google Sheets API",
   "description": "Reads and writes Google Sheets.",
   "ownerDomain": "google.com",
@@ -477,6 +477,38 @@
       "additionalProperties": null,
       "items": null
     },
+    "AddSlicerRequest": {
+      "id": "AddSlicerRequest",
+      "description": "Adds a slicer to a sheet in the spreadsheet.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "slicer": {
+          "description": "The slicer that should be added to the spreadsheet, including\nthe position where it should be placed. The slicerId field is optional; if one is not set, an id\nwill be randomly generated. (It is an error to specify the ID\nof a slicer that already exists.)",
+          "$ref": "Slicer"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AddSlicerResponse": {
+      "id": "AddSlicerResponse",
+      "description": "The result of adding a slicer to a spreadsheet.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "slicer": {
+          "description": "The newly added slicer.",
+          "$ref": "Slicer"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "AppendCellsRequest": {
       "id": "AppendCellsRequest",
       "description": "Adds new cells after the last row with data in a sheet,\ninserting new rows into the sheet if necessary.",
@@ -699,17 +731,97 @@
           "description": "The first color that is alternating. (Required)",
           "$ref": "Color"
         },
+        "firstBandColorStyle": {
+          "description": "The first color that is alternating. (Required)\nIf first_band_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "footerColor": {
-          "description": "The color of the last row or column. If this field is not set, the last\nrow or column will be filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn.",
+          "description": "The color of the last row or column. If this field is not set, the last\nrow or column is filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn.",
           "$ref": "Color"
         },
+        "footerColorStyle": {
+          "description": "The color of the last row or column. If this field is not set, the last\nrow or column is filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn.\nIf footer_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "headerColor": {
-          "description": "The color of the first row or column. If this field is set, the first\nrow or column will be filled with this color and the colors will\nalternate between first_band_color and second_band_color starting\nfrom the second row or column. Otherwise, the first row or column will be\nfilled with first_band_color and the colors will proceed to alternate\nas they normally would.",
+          "description": "The color of the first row or column. If this field is set, the first row\nor column is filled with this color and the colors alternate between\nfirst_band_color and second_band_color starting from the second\nrow or column. Otherwise, the first row or column is filled with\nfirst_band_color and the colors proceed to alternate as they normally\nwould.",
           "$ref": "Color"
+        },
+        "headerColorStyle": {
+          "description": "The color of the first row or column. If this field is set, the first row\nor column is filled with this color and the colors alternate between\nfirst_band_color and second_band_color starting from the second\nrow or column. Otherwise, the first row or column is filled with\nfirst_band_color and the colors proceed to alternate as they normally\nwould. If header_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "secondBandColor": {
           "description": "The second color that is alternating. (Required)",
           "$ref": "Color"
+        },
+        "secondBandColorStyle": {
+          "description": "The second color that is alternating. (Required)\nIf second_band_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BaselineValueFormat": {
+      "id": "BaselineValueFormat",
+      "description": "Formatting options for baseline value.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "comparisonType": {
+          "description": "The comparison type of key value with baseline value.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "COMPARISON_TYPE_UNDEFINED",
+            "ABSOLUTE_DIFFERENCE",
+            "PERCENTAGE_DIFFERENCE"
+          ],
+          "enumDescriptions": [
+            "Default value, do not use.",
+            "Use absolute difference between key and baseline value.",
+            "Use percentage difference between key and baseline value."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "description": {
+          "description": "Description which is appended after the baseline value.\nThis field is optional.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "negativeColor": {
+          "description": "Color to be used, in case baseline value represents a negative change for\nkey value. This field is optional.",
+          "$ref": "Color"
+        },
+        "negativeColorStyle": {
+          "description": "Color to be used, in case baseline value represents a negative change for\nkey value. This field is optional.\nIf negative_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
+        "position": {
+          "description": "Specifies the horizontal text positioning of baseline value.\nThis field is optional. If not specified, default positioning is used.",
+          "$ref": "TextPosition"
+        },
+        "positiveColor": {
+          "description": "Color to be used, in case baseline value represents a positive change for\nkey value. This field is optional.",
+          "$ref": "Color"
+        },
+        "positiveColorStyle": {
+          "description": "Color to be used, in case baseline value represents a positive change for\nkey value. This field is optional.\nIf positive_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
+        "textFormat": {
+          "description": "Text formatting options for baseline value.",
+          "$ref": "TextFormat"
         }
       },
       "additionalProperties": null,
@@ -804,8 +916,12 @@
       "enumDescriptions": [],
       "properties": {
         "color": {
-          "description": "The color for elements (i.e. bars, lines, points) associated with this\nseries.  If empty, a default color is used.",
+          "description": "The color for elements (such as bars, lines, and points) associated with\nthis series.  If empty, a default color is used.",
           "$ref": "Color"
+        },
+        "colorStyle": {
+          "description": "The color for elements (such as bars, lines, and points) associated with\nthis series.  If empty, a default color is used.\nIf color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "lineStyle": {
           "description": "The line style of this series. Valid only if the\nchartType is AREA,\nLINE, or SCATTER.\nCOMBO charts are also supported if the\nseries chart type is\nAREA or LINE.",
@@ -1119,7 +1235,7 @@
       "enumDescriptions": [],
       "properties": {
         "clearedRanges": {
-          "description": "The ranges that were cleared, in A1 notation.\n(If the requests were for an unbounded range or a ranger larger\n than the bounds of the sheet, this will be the actual ranges\n that were cleared, bounded to the sheet's limits.)",
+          "description": "The ranges that were cleared, in A1 notation. If the requests are for an\nunbounded range or a ranger larger than the bounds of the sheet, this is\nthe actual ranges that were cleared, bounded to the sheet's limits.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1189,7 +1305,7 @@
       "enumDescriptions": [],
       "properties": {
         "clearedRanges": {
-          "description": "The ranges that were cleared, in A1 notation.\n(If the requests were for an unbounded range or a ranger larger\n than the bounds of the sheet, this will be the actual ranges\n that were cleared, bounded to the sheet's limits.)",
+          "description": "The ranges that were cleared, in A1 notation. If the requests are for an\nunbounded range or a ranger larger than the bounds of the sheet, this is\nthe actual ranges that were cleared, bounded to the sheet's limits.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1229,7 +1345,7 @@
       "enumDescriptions": [],
       "properties": {
         "dataFilters": {
-          "description": "The data filters used to match the ranges of values to retrieve.  Ranges\nthat match any of the specified data filters will be included in the\nresponse.",
+          "description": "The data filters used to match the ranges of values to retrieve. Ranges\nthat match any of the specified data filters are included in the response.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1257,7 +1373,7 @@
           "items": null
         },
         "majorDimension": {
-          "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen a request that selects that range and sets `majorDimension=ROWS` will\nreturn `[[1,2],[3,4]]`,\nwhereas a request that sets `majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`.",
+          "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen a request that selects that range and sets `majorDimension=ROWS`\nreturns `[[1,2],[3,4]]`, whereas a request that sets\n`majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1395,7 +1511,7 @@
           }
         },
         "responseIncludeGridData": {
-          "description": "True if grid data should be returned. Meaningful only if\nif include_spreadsheet_in_response is 'true'.\nThis parameter is ignored if a field mask was set in the request.",
+          "description": "True if grid data should be returned. Meaningful only if\ninclude_spreadsheet_in_response is 'true'.\nThis parameter is ignored if a field mask was set in the request.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1405,7 +1521,7 @@
           "items": null
         },
         "responseRanges": {
-          "description": "Limits the ranges included in the response spreadsheet.\nMeaningful only if include_spreadsheet_response is 'true'.",
+          "description": "Limits the ranges included in the response spreadsheet.\nMeaningful only if include_spreadsheet_in_response is 'true'.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1473,7 +1589,7 @@
       "enumDescriptions": [],
       "properties": {
         "data": {
-          "description": "The new values to apply to the spreadsheet.  If more than one range is\nmatched by the specified DataFilter the specified values will be\napplied to all of those ranges.",
+          "description": "The new values to apply to the spreadsheet.  If more than one range is\nmatched by the specified DataFilter the specified values are applied to\nall of those ranges.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1485,7 +1601,7 @@
           }
         },
         "includeValuesInResponse": {
-          "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses will contain\nthe updated values. If the range to write was larger than than the range\nactually written, the response will include all values in the requested\nrange (excluding trailing empty rows and columns).",
+          "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses contains the updated\nvalues. If the range to write was larger than the range actually written,\nthe response includes all values in the requested range (excluding trailing\nempty rows and columns).",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1645,7 +1761,7 @@
           }
         },
         "includeValuesInResponse": {
-          "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses will contain\nthe updated values. If the range to write was larger than than the range\nactually written, the response will include all values in the requested\nrange (excluding trailing empty rows and columns).",
+          "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses contains the updated\nvalues. If the range to write was larger than the range actually written,\nthe response includes all values in the requested range (excluding trailing\nempty rows and columns).",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1912,6 +2028,10 @@
           "description": "The color of the border.",
           "$ref": "Color"
         },
+        "colorStyle": {
+          "description": "The color of the border.\nIf color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "style": {
           "description": "The style of the border.",
           "type": "string",
@@ -1993,6 +2113,10 @@
         "bubbleBorderColor": {
           "description": "The bubble border color.",
           "$ref": "Color"
+        },
+        "bubbleBorderColorStyle": {
+          "description": "The bubble border color.\nIf bubble_border_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "bubbleLabels": {
           "description": "The data containing the bubble labels.  These do not need to be unique.",
@@ -2266,6 +2390,10 @@
           "description": "The background color of the cell.",
           "$ref": "Color"
         },
+        "backgroundColorStyle": {
+          "description": "The background color of the cell.\nIf background_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "borders": {
           "description": "The borders of the cell.",
           "$ref": "Borders"
@@ -2440,6 +2568,38 @@
       "additionalProperties": null,
       "items": null
     },
+    "ChartCustomNumberFormatOptions": {
+      "id": "ChartCustomNumberFormatOptions",
+      "description": "Custom number formatting options for chart attributes.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "prefix": {
+          "description": "Custom prefix to be prepended to the chart attribute.\nThis field is optional.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "suffix": {
+          "description": "Custom suffix to be appended to the chart attribute.\nThis field is optional.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ChartData": {
       "id": "ChartData",
       "description": "The data included in a domain or series.",
@@ -2501,6 +2661,10 @@
         "backgroundColor": {
           "description": "The background color of the entire chart.\nNot applicable to Org charts.",
           "$ref": "Color"
+        },
+        "backgroundColorStyle": {
+          "description": "The background color of the entire chart.\nNot applicable to Org charts.\nIf background_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "basicChart": {
           "description": "A basic chart specification, can be one of many kinds of charts.\nSee BasicChartType for the list of all\ncharts this supports.",
@@ -2567,6 +2731,10 @@
         "pieChart": {
           "description": "A pie chart specification.",
           "$ref": "PieChartSpec"
+        },
+        "scorecardChart": {
+          "description": "A scorecard chart specification.",
+          "$ref": "ScorecardChartSpec"
         },
         "subtitle": {
           "description": "The subtitle of the chart.",
@@ -2725,6 +2893,54 @@
           "format": "float",
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ColorStyle": {
+      "id": "ColorStyle",
+      "description": "A color value.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "rgbColor": {
+          "description": "RGB color.",
+          "$ref": "Color"
+        },
+        "themeColor": {
+          "description": "Theme color.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "THEME_COLOR_TYPE_UNSPECIFIED",
+            "TEXT",
+            "BACKGROUND",
+            "ACCENT1",
+            "ACCENT2",
+            "ACCENT3",
+            "ACCENT4",
+            "ACCENT5",
+            "ACCENT6",
+            "LINK"
+          ],
+          "enumDescriptions": [
+            "Unspecified theme color",
+            "Represents the primary text color",
+            "Represents the primary background color",
+            "Represents the first accent color",
+            "Represents the second accent color",
+            "Represents the third accent color",
+            "Represents the fourth accent color",
+            "Represents the fifth accent color",
+            "Represents the sixth accent color",
+            "Represents the color to use for hyperlinks"
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -3036,7 +3252,7 @@
           "items": null
         },
         "values": {
-          "description": "The data to be written.  If the provided values exceed any of the ranges\nmatched by the data filter then the request will fail.  If the provided\nvalues are less than the matched ranges only the specified values will be\nwritten, existing values in the matched ranges will remain unaffected.",
+          "description": "The data to be written.  If the provided values exceed any of the ranges\nmatched by the data filter then the request fails.  If the provided values\nare less than the matched ranges only the specified values are written,\nexisting values in the matched ranges remain unaffected.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4252,7 +4468,7 @@
       "enumDescriptions": [],
       "properties": {
         "condition": {
-          "description": "A condition that must be true for values to be shown.\n(This does not override hiddenValues -- if a value is listed there,\n it will still be hidden.)",
+          "description": "A condition that must be true for values to be shown.\n(This does not override hidden_values -- if a value is listed there,\n it will still be hidden.)",
           "$ref": "BooleanCondition"
         },
         "hiddenValues": {
@@ -4272,6 +4488,22 @@
             "additionalProperties": null,
             "items": null
           }
+        },
+        "visibleBackgroundColor": {
+          "description": "The background fill color to filter by; only cells with this fill color are\nshown. Mutually exclusive with visible_foreground_color.",
+          "$ref": "Color"
+        },
+        "visibleBackgroundColorStyle": {
+          "description": "The background fill color to filter by; only cells with this fill color are\nshown. This field is mutually exclusive with visible_foreground_color,\nand must be set to an RGB-type color. If visible_background_color is\nalso set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
+        "visibleForegroundColor": {
+          "description": "The foreground color to filter by; only cells with this foreground color\nare shown. Mutually exclusive with visible_background_color.",
+          "$ref": "Color"
+        },
+        "visibleForegroundColorStyle": {
+          "description": "The foreground color to filter by; only cells with this foreground color\nare shown. This field is mutually exclusive with\nvisible_background_color, and must be set to an RGB-type color. If\nvisible_foreground_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         }
       },
       "additionalProperties": null,
@@ -4952,6 +5184,10 @@
           "description": "The color of the column representing this series in each bucket.\nThis field is optional.",
           "$ref": "Color"
         },
+        "barColorStyle": {
+          "description": "The color of the column representing this series in each bucket.\nThis field is optional.\nIf bar_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "data": {
           "description": "The data for this histogram series.",
           "$ref": "ChartData"
@@ -5032,6 +5268,10 @@
           "description": "The color this interpolation point should use.",
           "$ref": "Color"
         },
+        "colorStyle": {
+          "description": "The color this interpolation point should use.\nIf color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "type": {
           "description": "How the value should be interpreted.",
           "type": "string",
@@ -5097,6 +5337,26 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "KeyValueFormat": {
+      "id": "KeyValueFormat",
+      "description": "Formatting options for key value.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "position": {
+          "description": "Specifies the horizontal text positioning of key value.\nThis field is optional. If not specified, default positioning is used.",
+          "$ref": "TextPosition"
+        },
+        "textFormat": {
+          "description": "Text formatting options for key value.",
+          "$ref": "TextFormat"
         }
       },
       "additionalProperties": null,
@@ -5426,6 +5686,10 @@
           "description": "The color of the org chart nodes.",
           "$ref": "Color"
         },
+        "nodeColorStyle": {
+          "description": "The color of the org chart nodes.\nIf node_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "nodeSize": {
           "description": "The size of the org chart nodes.",
           "type": "string",
@@ -5453,6 +5717,10 @@
         "selectedNodeColor": {
           "description": "The color of the selected org chart nodes.",
           "$ref": "Color"
+        },
+        "selectedNodeColorStyle": {
+          "description": "The color of the selected org chart nodes.\nIf selected_node_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "tooltips": {
           "description": "The data containing the tooltip for the corresponding node.  A blank value\nresults in no tooltip being displayed for the node.\nThis field is optional.",
@@ -5799,7 +6067,7 @@
           "items": null
         },
         "sourceColumnOffset": {
-          "description": "The column offset of the source range that this grouping is based on.\n\nFor example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`\nmeans this group refers to column `C`, whereas the offset `1` would refer\nto column `D`.",
+          "description": "The column offset of the source range that this grouping is based on.\n\nFor example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`\nmeans this group refers to column `C`, whereas the offset `1` would\nrefer to column `D`.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -6265,6 +6533,10 @@
           "description": "Adds a sheet.",
           "$ref": "AddSheetRequest"
         },
+        "addSlicer": {
+          "description": "Adds a slicer.",
+          "$ref": "AddSlicerRequest"
+        },
         "appendCells": {
           "description": "Appends cells after the last row with data in a sheet.",
           "$ref": "AppendCellsRequest"
@@ -6461,6 +6733,10 @@
           "description": "Updates a sheet's properties.",
           "$ref": "UpdateSheetPropertiesRequest"
         },
+        "updateSlicerSpec": {
+          "description": "Updates a slicer's specifications.",
+          "$ref": "UpdateSlicerSpecRequest"
+        },
         "updateSpreadsheetProperties": {
           "description": "Updates the spreadsheet's properties.",
           "$ref": "UpdateSpreadsheetPropertiesRequest"
@@ -6504,6 +6780,10 @@
         "addSheet": {
           "description": "A reply from adding a sheet.",
           "$ref": "AddSheetResponse"
+        },
+        "addSlicer": {
+          "description": "A reply from adding a slicer.",
+          "$ref": "AddSlicerResponse"
         },
         "createDeveloperMetadata": {
           "description": "A reply from creating a developer metadata entry.",
@@ -6581,6 +6861,92 @@
       "additionalProperties": null,
       "items": null
     },
+    "ScorecardChartSpec": {
+      "id": "ScorecardChartSpec",
+      "description": "A scorecard chart. Scorecard charts are used to highlight key performance\nindicators, known as KPIs, on the spreadsheet. A scorecard chart can\nrepresent things like total sales, average cost, or a top selling item. You\ncan specify a single data value, or aggregate over a range of data.\nPercentage or absolute difference from a baseline value can be highlighted,\nlike changes over time.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "aggregateType": {
+          "description": "The aggregation type for key and baseline chart data in scorecard chart.\nThis field is optional.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "CHART_AGGREGATE_TYPE_UNSPECIFIED",
+            "AVERAGE",
+            "COUNT",
+            "MAX",
+            "MEDIAN",
+            "MIN",
+            "SUM"
+          ],
+          "enumDescriptions": [
+            "Default value, do not use.",
+            "Average aggregate function.",
+            "Count aggregate function.",
+            "Maximum aggregate function.",
+            "Median aggregate function.",
+            "Minimum aggregate function.",
+            "Sum aggregate function."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "baselineValueData": {
+          "description": "The data for scorecard baseline value.\nThis field is optional.",
+          "$ref": "ChartData"
+        },
+        "baselineValueFormat": {
+          "description": "Formatting options for baseline value.\nThis field is needed only if baseline_value_data is specified.",
+          "$ref": "BaselineValueFormat"
+        },
+        "customFormatOptions": {
+          "description": "Custom formatting options for numeric key/baseline values in scorecard\nchart. This field is used only when number_format_source is set to\nCUSTOM. This field is optional.",
+          "$ref": "ChartCustomNumberFormatOptions"
+        },
+        "keyValueData": {
+          "description": "The data for scorecard key value.",
+          "$ref": "ChartData"
+        },
+        "keyValueFormat": {
+          "description": "Formatting options for key value.",
+          "$ref": "KeyValueFormat"
+        },
+        "numberFormatSource": {
+          "description": "The number format source used in the scorecard chart.\nThis field is optional.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED",
+            "FROM_DATA",
+            "CUSTOM"
+          ],
+          "enumDescriptions": [
+            "Default value, do not use.",
+            "Inherit number formatting from data.",
+            "Apply custom formatting as specified by ChartCustomNumberFormatOptions."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "scaleFactor": {
+          "description": "Value to scale scorecard key and baseline value. For example, a factor of\n10 can be used to divide all values in the chart by 10.\nThis field is optional.",
+          "type": "number",
+          "format": "double",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "SearchDeveloperMetadataRequest": {
       "id": "SearchDeveloperMetadataRequest",
       "description": "A request to retrieve all developer metadata matching the set of specified\ncriteria.",
@@ -6590,7 +6956,7 @@
       "enumDescriptions": [],
       "properties": {
         "dataFilters": {
-          "description": "The data filters describing the criteria used to determine which\nDeveloperMetadata entries to return.  DeveloperMetadata matching any of the\nspecified filters will be included in the response.",
+          "description": "The data filters describing the criteria used to determine which\nDeveloperMetadata entries to return.  DeveloperMetadata matching any of the\nspecified filters are included in the response.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -6726,7 +7092,7 @@
           }
         },
         "data": {
-          "description": "Data in the grid, if this is a grid sheet.\nThe number of GridData objects returned is dependent on the number of\nranges requested on this sheet. For example, if this is representing\n`Sheet1`, and the spreadsheet was requested with ranges\n`Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a\nstartRow/startColumn of `0`,\nwhile the second one will have `startRow 14` (zero-based row 15),\nand `startColumn 3` (zero-based column D).",
+          "description": "Data in the grid, if this is a grid sheet.\n\nThe number of GridData objects returned is dependent on the number of\nranges requested on this sheet. For example, if this is representing\n`Sheet1`, and the spreadsheet was requested with ranges\n`Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a\nstartRow/startColumn of `0`,\nwhile the second one will have `startRow 14` (zero-based row 15),\nand `startColumn 3` (zero-based column D).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -6799,6 +7165,18 @@
           "additionalProperties": null,
           "items": {
             "$ref": "DimensionGroup"
+          }
+        },
+        "slicers": {
+          "description": "The slicers on this sheet.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Slicer"
           }
         }
       },
@@ -6879,8 +7257,124 @@
           "description": "The color of the tab in the UI.",
           "$ref": "Color"
         },
+        "tabColorStyle": {
+          "description": "The color of the tab in the UI.\nIf tab_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "title": {
           "description": "The name of the sheet.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Slicer": {
+      "id": "Slicer",
+      "description": "A slicer in a sheet.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "position": {
+          "description": "The position of the slicer. Note that slicer can be positioned only on\nexisting sheet. Also, width and height of slicer can be automatically\nadjusted to keep it within permitted limits.",
+          "$ref": "EmbeddedObjectPosition"
+        },
+        "slicerId": {
+          "description": "The ID of the slicer.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "spec": {
+          "description": "The specification of the slicer.",
+          "$ref": "SlicerSpec"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SlicerSpec": {
+      "id": "SlicerSpec",
+      "description": "The specifications of a slicer.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "applyToPivotTables": {
+          "description": "True if the filter should apply to pivot tables.\nIf not set, default to `True`.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "backgroundColor": {
+          "description": "The background color of the slicer.",
+          "$ref": "Color"
+        },
+        "backgroundColorStyle": {
+          "description": "The background color of the slicer.\nIf background_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
+        "columnIndex": {
+          "description": "The column index in the data table on which the filter is applied to.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "dataRange": {
+          "description": "The data range of the slicer.",
+          "$ref": "GridRange"
+        },
+        "filterCriteria": {
+          "description": "The filtering criteria of the slicer.",
+          "$ref": "FilterCriteria"
+        },
+        "horizontalAlignment": {
+          "description": "The horizontal alignment of title in the slicer.\nIf unspecified, defaults to `LEFT`",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "HORIZONTAL_ALIGN_UNSPECIFIED",
+            "LEFT",
+            "CENTER",
+            "RIGHT"
+          ],
+          "enumDescriptions": [
+            "The horizontal alignment is not specified. Do not use this.",
+            "The text is explicitly aligned to the left of the cell.",
+            "The text is explicitly aligned to the center of the cell.",
+            "The text is explicitly aligned to the right of the cell."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "textFormat": {
+          "description": "The text format of title in the slicer.",
+          "$ref": "TextFormat"
+        },
+        "title": {
+          "description": "The title of the slicer.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6929,6 +7423,14 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "backgroundColor": {
+          "description": "The background fill color to sort by; cells with this fill color are sorted\nto the top. Mutually exclusive with foreground_color.",
+          "$ref": "Color"
+        },
+        "backgroundColorStyle": {
+          "description": "The background fill color to sort by; cells with this fill color are sorted\nto the top. Mutually exclusive with foreground_color, and must be an\nRGB-type color. If background_color is also set, this field takes\nprecedence.",
+          "$ref": "ColorStyle"
+        },
         "dimensionIndex": {
           "description": "The dimension the sort should be applied to.",
           "type": "integer",
@@ -6938,6 +7440,14 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "foregroundColor": {
+          "description": "The foreground color to sort by; cells with this foreground color are\nsorted to the top. Mutually exclusive with background_color.",
+          "$ref": "Color"
+        },
+        "foregroundColorStyle": {
+          "description": "The foreground color to sort by; cells with this foreground color are\nsorted to the top. Mutually exclusive with background_color, and must\nbe an RGB-type color. If foreground_color is also set, this field takes\nprecedence.",
+          "$ref": "ColorStyle"
         },
         "sortOrder": {
           "description": "The order data should be sorted.",
@@ -7110,7 +7620,7 @@
           "$ref": "CellFormat"
         },
         "iterativeCalculationSettings": {
-          "description": "Determines whether and how circular references are resolved with iterative\ncalculation.  Absence of this field means that circular references will\nresult in calculation errors.",
+          "description": "Determines whether and how circular references are resolved with iterative\ncalculation.  Absence of this field means that circular references result\nin calculation errors.",
           "$ref": "IterativeCalculationSettings"
         },
         "locale": {
@@ -7122,6 +7632,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "spreadsheetTheme": {
+          "description": "Theme applied to the spreadsheet.",
+          "$ref": "SpreadsheetTheme"
         },
         "timeZone": {
           "description": "The time zone of the spreadsheet, in CLDR format such as\n`America/New_York`. If the time zone isn't recognized, this may\nbe a custom time zone such as `GMT-07:00`.",
@@ -7142,6 +7656,40 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SpreadsheetTheme": {
+      "id": "SpreadsheetTheme",
+      "description": "Represents spreadsheet theme",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "primaryFontFamily": {
+          "description": "/ Name of the primary font family.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "themeColors": {
+          "description": "The spreadsheet theme color pairs. To update you must provide all theme\ncolor pairs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ThemeColorPair"
+          }
         }
       },
       "additionalProperties": null,
@@ -7188,6 +7736,10 @@
         "foregroundColor": {
           "description": "The foreground color of the text.",
           "$ref": "Color"
+        },
+        "foregroundColorStyle": {
+          "description": "The foreground color of the text.\nIf foreground_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "italic": {
           "description": "True if the text is italicized.",
@@ -7365,6 +7917,54 @@
       "additionalProperties": null,
       "items": null
     },
+    "ThemeColorPair": {
+      "id": "ThemeColorPair",
+      "description": "A pair mapping a spreadsheet theme color type to the concrete color it\nrepresents.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "color": {
+          "description": "The concrete color corresponding to the theme color type.",
+          "$ref": "ColorStyle"
+        },
+        "colorType": {
+          "description": "The type of the spreadsheet theme color.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "THEME_COLOR_TYPE_UNSPECIFIED",
+            "TEXT",
+            "BACKGROUND",
+            "ACCENT1",
+            "ACCENT2",
+            "ACCENT3",
+            "ACCENT4",
+            "ACCENT5",
+            "ACCENT6",
+            "LINK"
+          ],
+          "enumDescriptions": [
+            "Unspecified theme color",
+            "Represents the primary text color",
+            "Represents the primary background color",
+            "Represents the first accent color",
+            "Represents the second accent color",
+            "Represents the third accent color",
+            "Represents the fourth accent color",
+            "Represents the fifth accent color",
+            "Represents the sixth accent color",
+            "Represents the color to use for hyperlinks"
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "TreemapChartColorScale": {
       "id": "TreemapChartColorScale",
       "description": "A color scale for a treemap chart.",
@@ -7377,17 +7977,33 @@
           "description": "The background color for cells with a color value greater than or equal\nto maxValue. Defaults to #109618 if not\nspecified.",
           "$ref": "Color"
         },
+        "maxValueColorStyle": {
+          "description": "The background color for cells with a color value greater than or equal\nto maxValue. Defaults to #109618 if not\nspecified.\nIf max_value_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "midValueColor": {
           "description": "The background color for cells with a color value at the midpoint between\nminValue and\nmaxValue. Defaults to #efe6dc if not\nspecified.",
           "$ref": "Color"
+        },
+        "midValueColorStyle": {
+          "description": "The background color for cells with a color value at the midpoint between\nminValue and\nmaxValue. Defaults to #efe6dc if not\nspecified.\nIf mid_value_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "minValueColor": {
           "description": "The background color for cells with a color value less than or equal to\nminValue. Defaults to #dc3912 if not\nspecified.",
           "$ref": "Color"
         },
+        "minValueColorStyle": {
+          "description": "The background color for cells with a color value less than or equal to\nminValue. Defaults to #dc3912 if not\nspecified.\nIf min_value_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
+        },
         "noDataColor": {
           "description": "The background color for cells that have no color data associated with\nthem. Defaults to #000000 if not specified.",
           "$ref": "Color"
+        },
+        "noDataColorStyle": {
+          "description": "The background color for cells that have no color data associated with\nthem. Defaults to #000000 if not specified.\nIf no_data_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         }
       },
       "additionalProperties": null,
@@ -7412,6 +8028,10 @@
         "headerColor": {
           "description": "The background color for header cells.",
           "$ref": "Color"
+        },
+        "headerColorStyle": {
+          "description": "The background color for header cells.\nIf header_color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "hideTooltips": {
           "description": "True to hide tooltips.",
@@ -8031,6 +8651,42 @@
       "additionalProperties": null,
       "items": null
     },
+    "UpdateSlicerSpecRequest": {
+      "id": "UpdateSlicerSpecRequest",
+      "description": "Updates a slicer's specifications.\n(This does not move or resize a slicer. To move or resize a slicer use\nUpdateEmbeddedObjectPositionRequest.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "fields": {
+          "description": "The fields that should be updated.  At least one field must be specified.\nThe root `SlicerSpec` is implied and should not be specified. A single \"*\"`\ncan be used as short-hand for listing every field.",
+          "type": "string",
+          "format": "google-fieldmask",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "slicerId": {
+          "description": "The id of the slicer to update.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "spec": {
+          "description": "The specification to apply to the slicer.",
+          "$ref": "SlicerSpec"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "UpdateSpreadsheetPropertiesRequest": {
       "id": "UpdateSpreadsheetPropertiesRequest",
       "description": "Updates properties of a spreadsheet.",
@@ -8260,6 +8916,10 @@
         "color": {
           "description": "The color of the column.",
           "$ref": "Color"
+        },
+        "colorStyle": {
+          "description": "The color of the column.\nIf color is also set, this field takes precedence.",
+          "$ref": "ColorStyle"
         },
         "label": {
           "description": "The label of the column's legend.",
@@ -8669,7 +9329,7 @@
                   "repeated": false
                 },
                 "range": {
-                  "description": "The A1 notation of a range to search for a logical table of data.\nValues will be appended after the last row of the table.",
+                  "description": "The A1 notation of a range to search for a logical table of data.\nValues are appended after the last row of the table.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8877,7 +9537,7 @@
                   "repeated": false
                 },
                 "majorDimension": {
-                  "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` will return\n`[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`.",
+                  "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` returns\n`[[1,3],[2,4]]`.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -9164,7 +9824,7 @@
                   "repeated": false
                 },
                 "majorDimension": {
-                  "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` will return\n`[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`.",
+                  "description": "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then\nrequesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` returns\n`[[1,3],[2,4]]`.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -9256,7 +9916,7 @@
               "description": "Sets values in a range of a spreadsheet.\nThe caller must specify the spreadsheet ID, range, and\na valueInputOption.",
               "parameters": {
                 "includeValuesInResponse": {
-                  "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values.\nIf the range to write was larger than than the range actually written,\nthe response will include all values in the requested range (excluding\ntrailing empty rows and columns).",
+                  "description": "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values.\nIf the range to write was larger than the range actually written, the\nresponse includes all values in the requested range (excluding trailing\nempty rows and columns).",
                   "default": null,
                   "location": "query",
                   "required": false,

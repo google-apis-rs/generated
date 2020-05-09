@@ -1,4 +1,10 @@
-#![doc = "# Resources and Methods\n    * [achievement_definitions](resources/achievement_definitions/struct.AchievementDefinitionsActions.html)\n      * [*list*](resources/achievement_definitions/struct.ListRequestBuilder.html)\n    * [achievements](resources/achievements/struct.AchievementsActions.html)\n      * [*increment*](resources/achievements/struct.IncrementRequestBuilder.html), [*list*](resources/achievements/struct.ListRequestBuilder.html), [*reveal*](resources/achievements/struct.RevealRequestBuilder.html), [*setStepsAtLeast*](resources/achievements/struct.SetStepsAtLeastRequestBuilder.html), [*unlock*](resources/achievements/struct.UnlockRequestBuilder.html), [*updateMultiple*](resources/achievements/struct.UpdateMultipleRequestBuilder.html)\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*get*](resources/applications/struct.GetRequestBuilder.html), [*played*](resources/applications/struct.PlayedRequestBuilder.html), [*verify*](resources/applications/struct.VerifyRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*listByPlayer*](resources/events/struct.ListByPlayerRequestBuilder.html), [*listDefinitions*](resources/events/struct.ListDefinitionsRequestBuilder.html), [*record*](resources/events/struct.RecordRequestBuilder.html)\n    * [leaderboards](resources/leaderboards/struct.LeaderboardsActions.html)\n      * [*get*](resources/leaderboards/struct.GetRequestBuilder.html), [*list*](resources/leaderboards/struct.ListRequestBuilder.html)\n    * [metagame](resources/metagame/struct.MetagameActions.html)\n      * [*getMetagameConfig*](resources/metagame/struct.GetMetagameConfigRequestBuilder.html), [*listCategoriesByPlayer*](resources/metagame/struct.ListCategoriesByPlayerRequestBuilder.html)\n    * [players](resources/players/struct.PlayersActions.html)\n      * [*get*](resources/players/struct.GetRequestBuilder.html), [*list*](resources/players/struct.ListRequestBuilder.html)\n    * [pushtokens](resources/pushtokens/struct.PushtokensActions.html)\n      * [*remove*](resources/pushtokens/struct.RemoveRequestBuilder.html), [*update*](resources/pushtokens/struct.UpdateRequestBuilder.html)\n    * [quest_milestones](resources/quest_milestones/struct.QuestMilestonesActions.html)\n      * [*claim*](resources/quest_milestones/struct.ClaimRequestBuilder.html)\n    * [quests](resources/quests/struct.QuestsActions.html)\n      * [*accept*](resources/quests/struct.AcceptRequestBuilder.html), [*list*](resources/quests/struct.ListRequestBuilder.html)\n    * [revisions](resources/revisions/struct.RevisionsActions.html)\n      * [*check*](resources/revisions/struct.CheckRequestBuilder.html)\n    * [rooms](resources/rooms/struct.RoomsActions.html)\n      * [*create*](resources/rooms/struct.CreateRequestBuilder.html), [*decline*](resources/rooms/struct.DeclineRequestBuilder.html), [*dismiss*](resources/rooms/struct.DismissRequestBuilder.html), [*get*](resources/rooms/struct.GetRequestBuilder.html), [*join*](resources/rooms/struct.JoinRequestBuilder.html), [*leave*](resources/rooms/struct.LeaveRequestBuilder.html), [*list*](resources/rooms/struct.ListRequestBuilder.html), [*reportStatus*](resources/rooms/struct.ReportStatusRequestBuilder.html)\n    * [scores](resources/scores/struct.ScoresActions.html)\n      * [*get*](resources/scores/struct.GetRequestBuilder.html), [*list*](resources/scores/struct.ListRequestBuilder.html), [*listWindow*](resources/scores/struct.ListWindowRequestBuilder.html), [*submit*](resources/scores/struct.SubmitRequestBuilder.html), [*submitMultiple*](resources/scores/struct.SubmitMultipleRequestBuilder.html)\n    * [snapshots](resources/snapshots/struct.SnapshotsActions.html)\n      * [*get*](resources/snapshots/struct.GetRequestBuilder.html), [*list*](resources/snapshots/struct.ListRequestBuilder.html)\n    * [turn_based_matches](resources/turn_based_matches/struct.TurnBasedMatchesActions.html)\n      * [*cancel*](resources/turn_based_matches/struct.CancelRequestBuilder.html), [*create*](resources/turn_based_matches/struct.CreateRequestBuilder.html), [*decline*](resources/turn_based_matches/struct.DeclineRequestBuilder.html), [*dismiss*](resources/turn_based_matches/struct.DismissRequestBuilder.html), [*finish*](resources/turn_based_matches/struct.FinishRequestBuilder.html), [*get*](resources/turn_based_matches/struct.GetRequestBuilder.html), [*join*](resources/turn_based_matches/struct.JoinRequestBuilder.html), [*leave*](resources/turn_based_matches/struct.LeaveRequestBuilder.html), [*leaveTurn*](resources/turn_based_matches/struct.LeaveTurnRequestBuilder.html), [*list*](resources/turn_based_matches/struct.ListRequestBuilder.html), [*rematch*](resources/turn_based_matches/struct.RematchRequestBuilder.html), [*sync*](resources/turn_based_matches/struct.SyncRequestBuilder.html), [*takeTurn*](resources/turn_based_matches/struct.TakeTurnRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [achievement_definitions](resources/achievement_definitions/struct.AchievementDefinitionsActions.html)\n      * [*list*](resources/achievement_definitions/struct.ListRequestBuilder.html)\n    * [achievements](resources/achievements/struct.AchievementsActions.html)\n      * [*increment*](resources/achievements/struct.IncrementRequestBuilder.html), [*list*](resources/achievements/struct.ListRequestBuilder.html), [*reveal*](resources/achievements/struct.RevealRequestBuilder.html), [*setStepsAtLeast*](resources/achievements/struct.SetStepsAtLeastRequestBuilder.html), [*unlock*](resources/achievements/struct.UnlockRequestBuilder.html), [*updateMultiple*](resources/achievements/struct.UpdateMultipleRequestBuilder.html)\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*get*](resources/applications/struct.GetRequestBuilder.html), [*played*](resources/applications/struct.PlayedRequestBuilder.html), [*verify*](resources/applications/struct.VerifyRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*listByPlayer*](resources/events/struct.ListByPlayerRequestBuilder.html), [*listDefinitions*](resources/events/struct.ListDefinitionsRequestBuilder.html), [*record*](resources/events/struct.RecordRequestBuilder.html)\n    * [leaderboards](resources/leaderboards/struct.LeaderboardsActions.html)\n      * [*get*](resources/leaderboards/struct.GetRequestBuilder.html), [*list*](resources/leaderboards/struct.ListRequestBuilder.html)\n    * [metagame](resources/metagame/struct.MetagameActions.html)\n      * [*getMetagameConfig*](resources/metagame/struct.GetMetagameConfigRequestBuilder.html), [*listCategoriesByPlayer*](resources/metagame/struct.ListCategoriesByPlayerRequestBuilder.html)\n    * [players](resources/players/struct.PlayersActions.html)\n      * [*get*](resources/players/struct.GetRequestBuilder.html), [*list*](resources/players/struct.ListRequestBuilder.html)\n    * [pushtokens](resources/pushtokens/struct.PushtokensActions.html)\n      * [*remove*](resources/pushtokens/struct.RemoveRequestBuilder.html), [*update*](resources/pushtokens/struct.UpdateRequestBuilder.html)\n    * [revisions](resources/revisions/struct.RevisionsActions.html)\n      * [*check*](resources/revisions/struct.CheckRequestBuilder.html)\n    * [rooms](resources/rooms/struct.RoomsActions.html)\n      * [*create*](resources/rooms/struct.CreateRequestBuilder.html), [*decline*](resources/rooms/struct.DeclineRequestBuilder.html), [*dismiss*](resources/rooms/struct.DismissRequestBuilder.html), [*get*](resources/rooms/struct.GetRequestBuilder.html), [*join*](resources/rooms/struct.JoinRequestBuilder.html), [*leave*](resources/rooms/struct.LeaveRequestBuilder.html), [*list*](resources/rooms/struct.ListRequestBuilder.html), [*reportStatus*](resources/rooms/struct.ReportStatusRequestBuilder.html)\n    * [scores](resources/scores/struct.ScoresActions.html)\n      * [*get*](resources/scores/struct.GetRequestBuilder.html), [*list*](resources/scores/struct.ListRequestBuilder.html), [*listWindow*](resources/scores/struct.ListWindowRequestBuilder.html), [*submit*](resources/scores/struct.SubmitRequestBuilder.html), [*submitMultiple*](resources/scores/struct.SubmitMultipleRequestBuilder.html)\n    * [snapshots](resources/snapshots/struct.SnapshotsActions.html)\n      * [*get*](resources/snapshots/struct.GetRequestBuilder.html), [*list*](resources/snapshots/struct.ListRequestBuilder.html)\n    * [turn_based_matches](resources/turn_based_matches/struct.TurnBasedMatchesActions.html)\n      * [*cancel*](resources/turn_based_matches/struct.CancelRequestBuilder.html), [*create*](resources/turn_based_matches/struct.CreateRequestBuilder.html), [*decline*](resources/turn_based_matches/struct.DeclineRequestBuilder.html), [*dismiss*](resources/turn_based_matches/struct.DismissRequestBuilder.html), [*finish*](resources/turn_based_matches/struct.FinishRequestBuilder.html), [*get*](resources/turn_based_matches/struct.GetRequestBuilder.html), [*join*](resources/turn_based_matches/struct.JoinRequestBuilder.html), [*leave*](resources/turn_based_matches/struct.LeaveRequestBuilder.html), [*leaveTurn*](resources/turn_based_matches/struct.LeaveTurnRequestBuilder.html), [*list*](resources/turn_based_matches/struct.ListRequestBuilder.html), [*rematch*](resources/turn_based_matches/struct.RematchRequestBuilder.html), [*sync*](resources/turn_based_matches/struct.SyncRequestBuilder.html), [*takeTurn*](resources/turn_based_matches/struct.TakeTurnRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage its own configuration data in your Google Drive\n\n`https://www.googleapis.com/auth/drive.appdata`"]
+    pub const DRIVE_APPDATA: &str = "https://www.googleapis.com/auth/drive.appdata";
+    #[doc = "Create, edit, and delete your Google Play Games activity\n\n`https://www.googleapis.com/auth/games`"]
+    pub const GAMES: &str = "https://www.googleapis.com/auth/games";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -378,7 +384,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AchievementUpdateMultipleResponse {
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateListResponse."]
+        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#achievementUpdateMultipleResponse."]
         #[serde(
             rename = "kind",
             default,
@@ -2565,6 +2571,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub experience_info: ::std::option::Option<crate::schemas::PlayerExperienceInfo>,
+        #[doc = "The friend status of the given player, relative to the requester. This is unset if the player is not sharing their friends list with the game."]
+        #[serde(
+            rename = "friendStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub friend_status: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#player."]
         #[serde(
             rename = "kind",
@@ -3404,6 +3417,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ProfileSettings {
+        #[doc = "Whether the player's friends list is visible to the game."]
+        #[serde(
+            rename = "friendsListVisibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub friends_list_visibility: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#profileSettings."]
         #[serde(
             rename = "kind",
@@ -3552,356 +3572,6 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for PushTokenIdIos {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Quest {
-        #[doc = "The timestamp at which the user accepted the quest in milliseconds since the epoch in UTC. Only present if the player has accepted the quest."]
-        #[serde(
-            rename = "acceptedTimestampMillis",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub accepted_timestamp_millis: ::std::option::Option<i64>,
-        #[doc = "The ID of the application this quest is part of."]
-        #[serde(
-            rename = "applicationId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub application_id: ::std::option::Option<String>,
-        #[doc = "The banner image URL for the quest."]
-        #[serde(
-            rename = "bannerUrl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub banner_url: ::std::option::Option<String>,
-        #[doc = "The description of the quest."]
-        #[serde(
-            rename = "description",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub description: ::std::option::Option<String>,
-        #[doc = "The timestamp at which the quest ceases to be active in milliseconds since the epoch in UTC."]
-        #[serde(
-            rename = "endTimestampMillis",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub end_timestamp_millis: ::std::option::Option<i64>,
-        #[doc = "The icon image URL for the quest."]
-        #[serde(
-            rename = "iconUrl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub icon_url: ::std::option::Option<String>,
-        #[doc = "The ID of the quest."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Indicates whether the banner image being returned is a default image, or is game-provided."]
-        #[serde(
-            rename = "isDefaultBannerUrl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_default_banner_url: ::std::option::Option<bool>,
-        #[doc = "Indicates whether the icon image being returned is a default image, or is game-provided."]
-        #[serde(
-            rename = "isDefaultIconUrl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_default_icon_url: ::std::option::Option<bool>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#quest."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The timestamp at which the quest was last updated by the user in milliseconds since the epoch in UTC. Only present if the player has accepted the quest."]
-        #[serde(
-            rename = "lastUpdatedTimestampMillis",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub last_updated_timestamp_millis: ::std::option::Option<i64>,
-        #[doc = "The quest milestones."]
-        #[serde(
-            rename = "milestones",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub milestones: ::std::option::Option<Vec<crate::schemas::QuestMilestone>>,
-        #[doc = "The name of the quest."]
-        #[serde(
-            rename = "name",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The timestamp at which the user should be notified that the quest will end soon in milliseconds since the epoch in UTC."]
-        #[serde(
-            rename = "notifyTimestampMillis",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub notify_timestamp_millis: ::std::option::Option<i64>,
-        #[doc = "The timestamp at which the quest becomes active in milliseconds since the epoch in UTC."]
-        #[serde(
-            rename = "startTimestampMillis",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub start_timestamp_millis: ::std::option::Option<i64>,
-        #[doc = "The state of the quest.\nPossible values are:\n\n* \"UPCOMING\": The quest is upcoming. The user can see the quest, but cannot accept it until it is open. \n* \"OPEN\": The quest is currently open and may be accepted at this time. \n* \"ACCEPTED\": The user is currently participating in this quest. \n* \"COMPLETED\": The user has completed the quest. \n* \"FAILED\": The quest was attempted but was not completed before the deadline expired. \n* \"EXPIRED\": The quest has expired and was not accepted. \n* \"DELETED\": The quest should be deleted from the local database."]
-        #[serde(
-            rename = "state",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for Quest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Quest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QuestContribution {
-        #[doc = "The formatted value of the contribution as a string. Format depends on the configuration for the associated event definition in the Play Games Developer Console."]
-        #[serde(
-            rename = "formattedValue",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub formatted_value: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questContribution."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The value of the contribution."]
-        #[serde(
-            rename = "value",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub value: ::std::option::Option<i64>,
-    }
-    impl ::google_field_selector::FieldSelector for QuestContribution {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for QuestContribution {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QuestCriterion {
-        #[doc = "The total number of times the associated event must be incremented for the player to complete this quest."]
-        #[serde(
-            rename = "completionContribution",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub completion_contribution: ::std::option::Option<crate::schemas::QuestContribution>,
-        #[doc = "The number of increments the player has made toward the completion count event increments required to complete the quest. This value will not exceed the completion contribution.\nThere will be no currentContribution until the player has accepted the quest."]
-        #[serde(
-            rename = "currentContribution",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub current_contribution: ::std::option::Option<crate::schemas::QuestContribution>,
-        #[doc = "The ID of the event the criterion corresponds to."]
-        #[serde(
-            rename = "eventId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub event_id: ::std::option::Option<String>,
-        #[doc = "The value of the event associated with this quest at the time that the quest was accepted. This value may change if event increments that took place before the start of quest are uploaded after the quest starts.\nThere will be no initialPlayerProgress until the player has accepted the quest."]
-        #[serde(
-            rename = "initialPlayerProgress",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub initial_player_progress: ::std::option::Option<crate::schemas::QuestContribution>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questCriterion."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for QuestCriterion {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for QuestCriterion {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QuestListResponse {
-        #[doc = "The quests."]
-        #[serde(
-            rename = "items",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub items: ::std::option::Option<Vec<crate::schemas::Quest>>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questListResponse."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "Token corresponding to the next page of results."]
-        #[serde(
-            rename = "nextPageToken",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub next_page_token: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for QuestListResponse {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for QuestListResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct QuestMilestone {
-        #[doc = "The completion reward data of the milestone, represented as a Base64-encoded string. This is a developer-specified binary blob with size between 0 and 2 KB before encoding."]
-        #[serde(
-            rename = "completionRewardData",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub completion_reward_data: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The criteria of the milestone."]
-        #[serde(
-            rename = "criteria",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub criteria: ::std::option::Option<Vec<crate::schemas::QuestCriterion>>,
-        #[doc = "The milestone ID."]
-        #[serde(
-            rename = "id",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub id: ::std::option::Option<String>,
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string games#questMilestone."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The current state of the milestone.\nPossible values are:\n\n* \"COMPLETED_NOT_CLAIMED\" - The milestone is complete, but has not yet been claimed. \n* \"CLAIMED\" - The milestone is complete and has been claimed. \n* \"NOT_COMPLETED\" - The milestone has not yet been completed. \n* \"NOT_STARTED\" - The milestone is for a quest that has not yet been accepted."]
-        #[serde(
-            rename = "state",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub state: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for QuestMilestone {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for QuestMilestone {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5880,7 +5550,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -5888,8 +5558,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -5954,20 +5636,6 @@ impl Client {
             auth: self.auth_ref(),
         }
     }
-    #[doc = "Actions that can be performed on the quest_milestones resource"]
-    pub fn quest_milestones(&self) -> crate::resources::quest_milestones::QuestMilestonesActions {
-        crate::resources::quest_milestones::QuestMilestonesActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
-    #[doc = "Actions that can be performed on the quests resource"]
-    pub fn quests(&self) -> crate::resources::quests::QuestsActions {
-        crate::resources::quests::QuestsActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
     #[doc = "Actions that can be performed on the revisions resource"]
     pub fn revisions(&self) -> crate::resources::revisions::RevisionsActions {
         crate::resources::revisions::RevisionsActions {
@@ -6010,7 +5678,7 @@ pub mod resources {
     pub mod achievement_definitions {
         pub mod params {}
         pub struct AchievementDefinitionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AchievementDefinitionsActions<'a> {
@@ -6038,7 +5706,7 @@ pub mod resources {
         #[doc = "Created via [AchievementDefinitionsActions::list()](struct.AchievementDefinitionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language: Option<String>,
             max_results: Option<i32>,
@@ -6257,7 +5925,10 @@ pub mod resources {
                 output.push_str("achievements");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -6374,7 +6045,7 @@ pub mod resources {
             }
         }
         pub struct AchievementsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AchievementsActions<'a> {
@@ -6469,7 +6140,6 @@ pub mod resources {
                     quota_user: None,
                     user_ip: None,
                     achievement_id: achievement_id.into(),
-                    builtin_game_id: None,
                 }
             }
             #[doc = "Updates multiple achievements for the currently authenticated player."]
@@ -6488,14 +6158,13 @@ pub mod resources {
                     pretty_print: None,
                     quota_user: None,
                     user_ip: None,
-                    builtin_game_id: None,
                 }
             }
         }
         #[doc = "Created via [AchievementsActions::increment()](struct.AchievementsActions.html#method.increment)"]
         #[derive(Debug, Clone)]
         pub struct IncrementRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             steps_to_increment: i32,
@@ -6608,7 +6277,10 @@ pub mod resources {
                 output.push_str("/increment");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("stepsToIncrement", &self.steps_to_increment)]);
                 let req = req.query(&[("requestId", &self.request_id)]);
@@ -6630,7 +6302,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::list()](struct.AchievementsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             player_id: String,
             language: Option<String>,
@@ -6863,7 +6535,10 @@ pub mod resources {
                 output.push_str("/achievements");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -6898,7 +6573,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reveal()](struct.AchievementsActions.html#method.reveal)"]
         #[derive(Debug, Clone)]
         pub struct RevealRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             alt: Option<crate::params::Alt>,
@@ -7004,7 +6679,10 @@ pub mod resources {
                 output.push_str("/reveal");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7024,7 +6702,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::set_steps_at_least()](struct.AchievementsActions.html#method.set_steps_at_least)"]
         #[derive(Debug, Clone)]
         pub struct SetStepsAtLeastRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             steps: i32,
@@ -7133,7 +6811,10 @@ pub mod resources {
                 output.push_str("/setStepsAtLeast");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("steps", &self.steps)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7154,10 +6835,9 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::unlock()](struct.AchievementsActions.html#method.unlock)"]
         #[derive(Debug, Clone)]
         pub struct UnlockRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
-            builtin_game_id: Option<String>,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
             key: Option<String>,
@@ -7167,11 +6847,6 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> UnlockRequestBuilder<'a> {
-            #[doc = "Override used only by built-in games in Play Games application."]
-            pub fn builtin_game_id(mut self, value: impl Into<String>) -> Self {
-                self.builtin_game_id = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -7266,9 +6941,11 @@ pub mod resources {
                 output.push_str("/unlock");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("builtinGameId", &self.builtin_game_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
@@ -7287,10 +6964,9 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::update_multiple()](struct.AchievementsActions.html#method.update_multiple)"]
         #[derive(Debug, Clone)]
         pub struct UpdateMultipleRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AchievementUpdateMultipleRequest,
-            builtin_game_id: Option<String>,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
             key: Option<String>,
@@ -7300,11 +6976,6 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> UpdateMultipleRequestBuilder<'a> {
-            #[doc = "Override used only by built-in games in Play Games application."]
-            pub fn builtin_game_id(mut self, value: impl Into<String>) -> Self {
-                self.builtin_game_id = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -7394,9 +7065,11 @@ pub mod resources {
                 output.push_str("achievements/updateMultiple");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("builtinGameId", &self.builtin_game_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
@@ -7493,7 +7166,7 @@ pub mod resources {
             }
         }
         pub struct ApplicationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ApplicationsActions<'a> {
@@ -7529,7 +7202,6 @@ pub mod resources {
                     pretty_print: None,
                     quota_user: None,
                     user_ip: None,
-                    builtin_game_id: None,
                 }
             }
             #[doc = "Verifies the auth token provided with this request is for the application with the specified ID, and returns the ID of the player it was granted for."]
@@ -7551,7 +7223,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::get()](struct.ApplicationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             language: Option<String>,
@@ -7671,7 +7343,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("platformType", &self.platform_type)]);
@@ -7693,9 +7368,8 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::played()](struct.ApplicationsActions.html#method.played)"]
         #[derive(Debug, Clone)]
         pub struct PlayedRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            builtin_game_id: Option<String>,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
             key: Option<String>,
@@ -7705,11 +7379,6 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> PlayedRequestBuilder<'a> {
-            #[doc = "Override used only by built-in games in Play Games application."]
-            pub fn builtin_game_id(mut self, value: impl Into<String>) -> Self {
-                self.builtin_game_id = Some(value.into());
-                self
-            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -7745,9 +7414,11 @@ pub mod resources {
                 output.push_str("applications/played");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("builtinGameId", &self.builtin_game_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
@@ -7766,7 +7437,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::verify()](struct.ApplicationsActions.html#method.verify)"]
         #[derive(Debug, Clone)]
         pub struct VerifyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             alt: Option<crate::params::Alt>,
@@ -7872,7 +7543,10 @@ pub mod resources {
                 output.push_str("/verify");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7893,7 +7567,7 @@ pub mod resources {
     pub mod events {
         pub mod params {}
         pub struct EventsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> EventsActions<'a> {
@@ -7957,7 +7631,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::list_by_player()](struct.EventsActions.html#method.list_by_player)"]
         #[derive(Debug, Clone)]
         pub struct ListByPlayerRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language: Option<String>,
             max_results: Option<i32>,
@@ -8170,7 +7844,10 @@ pub mod resources {
                 output.push_str("events");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -8204,7 +7881,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::list_definitions()](struct.EventsActions.html#method.list_definitions)"]
         #[derive(Debug, Clone)]
         pub struct ListDefinitionsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language: Option<String>,
             max_results: Option<i32>,
@@ -8419,7 +8096,10 @@ pub mod resources {
                 output.push_str("eventDefinitions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -8453,7 +8133,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::record()](struct.EventsActions.html#method.record)"]
         #[derive(Debug, Clone)]
         pub struct RecordRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::EventRecordRequest,
             language: Option<String>,
@@ -8558,7 +8238,10 @@ pub mod resources {
                 output.push_str("events");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -8580,7 +8263,7 @@ pub mod resources {
     pub mod leaderboards {
         pub mod params {}
         pub struct LeaderboardsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> LeaderboardsActions<'a> {
@@ -8624,7 +8307,7 @@ pub mod resources {
         #[doc = "Created via [LeaderboardsActions::get()](struct.LeaderboardsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             language: Option<String>,
@@ -8735,7 +8418,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -8756,7 +8442,7 @@ pub mod resources {
         #[doc = "Created via [LeaderboardsActions::list()](struct.LeaderboardsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language: Option<String>,
             max_results: Option<i32>,
@@ -8969,7 +8655,10 @@ pub mod resources {
                 output.push_str("leaderboards");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -9073,7 +8762,7 @@ pub mod resources {
             }
         }
         pub struct MetagameActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> MetagameActions<'a> {
@@ -9121,7 +8810,7 @@ pub mod resources {
         #[doc = "Created via [MetagameActions::get_metagame_config()](struct.MetagameActions.html#method.get_metagame_config)"]
         #[derive(Debug, Clone)]
         pub struct GetMetagameConfigRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -9218,7 +8907,10 @@ pub mod resources {
                 output.push_str("metagameConfig");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -9238,7 +8930,7 @@ pub mod resources {
         #[doc = "Created via [MetagameActions::list_categories_by_player()](struct.MetagameActions.html#method.list_categories_by_player)"]
         #[derive(Debug, Clone)]
         pub struct ListCategoriesByPlayerRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             player_id: String,
             collection: crate::resources::metagame::params::ListCategoriesByPlayerCollection,
@@ -9469,7 +9161,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -9505,18 +9200,18 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListCollection {
-                #[doc = "Retrieve a list of players that are also playing this game in reverse chronological order."]
+                #[doc = "(DEPRECATED) Retrieve a list of players that are also playing this game in reverse chronological order."]
                 Connected,
-                #[doc = "Retrieve a list of players you have played a multiplayer game (realtime or turn-based) with recently."]
-                PlayedWith,
-                #[doc = "Retrieve a list of players in the user's social graph that are visible to this game."]
+                #[doc = "Retrieve a list of players who are friends of the user in alphabetical order."]
+                FriendsAll,
+                #[doc = "(DEPRECATED: please use FRIENDS_ALL) Retrieve a list of players in the user's social graph that are visible to this game."]
                 Visible,
             }
             impl ListCollection {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         ListCollection::Connected => "connected",
-                        ListCollection::PlayedWith => "played_with",
+                        ListCollection::FriendsAll => "friends_all",
                         ListCollection::Visible => "visible",
                     }
                 }
@@ -9531,7 +9226,7 @@ pub mod resources {
                 fn from_str(s: &str) -> ::std::result::Result<ListCollection, ()> {
                     Ok(match s {
                         "connected" => ListCollection::Connected,
-                        "played_with" => ListCollection::PlayedWith,
+                        "friends_all" => ListCollection::FriendsAll,
                         "visible" => ListCollection::Visible,
                         _ => return Err(()),
                     })
@@ -9558,7 +9253,7 @@ pub mod resources {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
                         "connected" => ListCollection::Connected,
-                        "played_with" => ListCollection::PlayedWith,
+                        "friends_all" => ListCollection::FriendsAll,
                         "visible" => ListCollection::Visible,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
@@ -9581,7 +9276,7 @@ pub mod resources {
             }
         }
         pub struct PlayersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PlayersActions<'a> {
@@ -9629,7 +9324,7 @@ pub mod resources {
         #[doc = "Created via [PlayersActions::get()](struct.PlayersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             player_id: String,
             language: Option<String>,
@@ -9738,7 +9433,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -9759,7 +9457,7 @@ pub mod resources {
         #[doc = "Created via [PlayersActions::list()](struct.PlayersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             collection: crate::resources::players::params::ListCollection,
             language: Option<String>,
@@ -9981,7 +9679,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -10016,7 +9717,7 @@ pub mod resources {
     pub mod pushtokens {
         pub mod params {}
         pub struct PushtokensActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PushtokensActions<'a> {
@@ -10057,7 +9758,7 @@ pub mod resources {
         #[doc = "Created via [PushtokensActions::remove()](struct.PushtokensActions.html#method.remove)"]
         #[derive(Debug, Clone)]
         pub struct RemoveRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::PushTokenId,
             alt: Option<crate::params::Alt>,
@@ -10105,7 +9806,10 @@ pub mod resources {
                 output.push_str("pushtokens/remove");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -10125,7 +9829,7 @@ pub mod resources {
         #[doc = "Created via [PushtokensActions::update()](struct.PushtokensActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::PushToken,
             alt: Option<crate::params::Alt>,
@@ -10173,128 +9877,11 @@ pub mod resources {
                 output.push_str("pushtokens");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-    }
-    pub mod quest_milestones {
-        pub mod params {}
-        pub struct QuestMilestonesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> QuestMilestonesActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Report that a reward for the milestone corresponding to milestoneId for the quest corresponding to questId has been claimed by the currently authorized user."]
-            pub fn claim(
+            fn _request(
                 &self,
-                quest_id: impl Into<String>,
-                milestone_id: impl Into<String>,
-                request_id: i64,
-            ) -> ClaimRequestBuilder {
-                ClaimRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    quest_id: quest_id.into(),
-                    milestone_id: milestone_id.into(),
-                    request_id,
-                }
-            }
-        }
-        #[doc = "Created via [QuestMilestonesActions::claim()](struct.QuestMilestonesActions.html#method.claim)"]
-        #[derive(Debug, Clone)]
-        pub struct ClaimRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            quest_id: String,
-            milestone_id: String,
-            request_id: i64,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ClaimRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1/".to_owned();
-                output.push_str("quests/");
-                {
-                    let var_as_str = &self.quest_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/milestones/");
-                {
-                    let var_as_str = &self.milestone_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/claim");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
-                let req = req.query(&[("requestId", &self.request_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
@@ -10308,446 +9895,13 @@ pub mod resources {
                         .map_err(|err| crate::Error::OAuth2(err))?,
                 );
                 Ok(req)
-            }
-        }
-    }
-    pub mod quests {
-        pub mod params {}
-        pub struct QuestsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> QuestsActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Indicates that the currently authorized user will participate in the quest."]
-            pub fn accept(&self, quest_id: impl Into<String>) -> AcceptRequestBuilder {
-                AcceptRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    quest_id: quest_id.into(),
-                    language: None,
-                }
-            }
-            #[doc = "Get a list of quests for your application and the currently authenticated player."]
-            pub fn list(&self, player_id: impl Into<String>) -> ListRequestBuilder {
-                ListRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    player_id: player_id.into(),
-                    language: None,
-                    max_results: None,
-                    page_token: None,
-                }
-            }
-        }
-        #[doc = "Created via [QuestsActions::accept()](struct.QuestsActions.html#method.accept)"]
-        #[derive(Debug, Clone)]
-        pub struct AcceptRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            quest_id: String,
-            language: Option<String>,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> AcceptRequestBuilder<'a> {
-            #[doc = "The preferred language to use for strings returned by this method."]
-            pub fn language(mut self, value: impl Into<String>) -> Self {
-                self.language = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::Quest, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Quest, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1/".to_owned();
-                output.push_str("quests/");
-                {
-                    let var_as_str = &self.quest_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/accept");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("language", &self.language)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [QuestsActions::list()](struct.QuestsActions.html#method.list)"]
-        #[derive(Debug, Clone)]
-        pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            player_id: String,
-            language: Option<String>,
-            max_results: Option<i32>,
-            page_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The preferred language to use for strings returned by this method."]
-            pub fn language(mut self, value: impl Into<String>) -> Self {
-                self.language = Some(value.into());
-                self
-            }
-            #[doc = "The maximum number of quest resources to return in the response, used for paging. For any response, the actual number of quest resources returned may be less than the specified maxResults. Acceptable values are 1 to 50, inclusive. (Default: 50)."]
-            pub fn max_results(mut self, value: i32) -> Self {
-                self.max_results = Some(value);
-                self
-            }
-            #[doc = "The token returned by the previous request."]
-            pub fn page_token(mut self, value: impl Into<String>) -> Self {
-                self.page_token = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_items<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_items_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_items_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Quest> {
-                self.iter_items_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_items_with_all_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Quest> {
-                self.iter_items_with_fields(Some("*"))
-            }
-            pub fn iter_items_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "items").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "items")
-            }
-            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_with_fields(fields)
-            }
-            pub fn iter_with_default_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::QuestListResponse> {
-                self.iter_with_fields(None::<&str>)
-            }
-            pub fn iter_with_all_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::QuestListResponse> {
-                self.iter_with_fields(Some("*"))
-            }
-            pub fn iter_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                if !fields.is_empty() {
-                    match fields.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => fields.push_str(","),
-                    }
-                    fields.push_str("nextPageToken");
-                    self.fields = Some(fields);
-                }
-                crate::iter::PageIter::new(self)
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::QuestListResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::QuestListResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1/".to_owned();
-                output.push_str("players/");
-                {
-                    let var_as_str = &self.player_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/quests");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("language", &self.language)]);
-                let req = req.query(&[("maxResults", &self.max_results)]);
-                let req = req.query(&[("pageToken", &self.page_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                self._execute()
             }
         }
     }
     pub mod revisions {
         pub mod params {}
         pub struct RevisionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RevisionsActions<'a> {
@@ -10773,7 +9927,7 @@ pub mod resources {
         #[doc = "Created via [RevisionsActions::check()](struct.RevisionsActions.html#method.check)"]
         #[derive(Debug, Clone)]
         pub struct CheckRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             client_revision: String,
             alt: Option<crate::params::Alt>,
@@ -10871,7 +10025,10 @@ pub mod resources {
                 output.push_str("revisions/check");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("clientRevision", &self.client_revision)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -10893,7 +10050,7 @@ pub mod resources {
     pub mod rooms {
         pub mod params {}
         pub struct RoomsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RoomsActions<'a> {
@@ -11050,7 +10207,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::create()](struct.RoomsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RoomCreateRequest,
             language: Option<String>,
@@ -11151,7 +10308,10 @@ pub mod resources {
                 output.push_str("rooms/create");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11172,7 +10332,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::decline()](struct.RoomsActions.html#method.decline)"]
         #[derive(Debug, Clone)]
         pub struct DeclineRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             room_id: String,
             language: Option<String>,
@@ -11280,7 +10440,10 @@ pub mod resources {
                 output.push_str("/decline");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11301,7 +10464,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::dismiss()](struct.RoomsActions.html#method.dismiss)"]
         #[derive(Debug, Clone)]
         pub struct DismissRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             room_id: String,
             alt: Option<crate::params::Alt>,
@@ -11356,7 +10519,10 @@ pub mod resources {
                 output.push_str("/dismiss");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -11376,7 +10542,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::get()](struct.RoomsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             room_id: String,
             language: Option<String>,
@@ -11483,7 +10649,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11504,7 +10673,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::join()](struct.RoomsActions.html#method.join)"]
         #[derive(Debug, Clone)]
         pub struct JoinRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RoomJoinRequest,
             room_id: String,
@@ -11614,7 +10783,10 @@ pub mod resources {
                 output.push_str("/join");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11635,7 +10807,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::leave()](struct.RoomsActions.html#method.leave)"]
         #[derive(Debug, Clone)]
         pub struct LeaveRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RoomLeaveRequest,
             room_id: String,
@@ -11745,7 +10917,10 @@ pub mod resources {
                 output.push_str("/leave");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11766,7 +10941,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::list()](struct.RoomsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language: Option<String>,
             max_results: Option<i32>,
@@ -11977,7 +11152,10 @@ pub mod resources {
                 output.push_str("rooms");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -12011,7 +11189,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::report_status()](struct.RoomsActions.html#method.report_status)"]
         #[derive(Debug, Clone)]
         pub struct ReportStatusRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RoomP2PStatuses,
             room_id: String,
@@ -12125,7 +11303,10 @@ pub mod resources {
                 output.push_str("/reportstatus");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12309,15 +11490,12 @@ pub mod resources {
                 Public,
                 #[doc = "List only social scores."]
                 Social,
-                #[doc = "List only social scores, not respecting the fACL."]
-                Social1P,
             }
             impl ListCollection {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         ListCollection::Public => "PUBLIC",
                         ListCollection::Social => "SOCIAL",
-                        ListCollection::Social1P => "SOCIAL_1P",
                     }
                 }
             }
@@ -12332,7 +11510,6 @@ pub mod resources {
                     Ok(match s {
                         "PUBLIC" => ListCollection::Public,
                         "SOCIAL" => ListCollection::Social,
-                        "SOCIAL_1P" => ListCollection::Social1P,
                         _ => return Err(()),
                     })
                 }
@@ -12359,7 +11536,6 @@ pub mod resources {
                     Ok(match value {
                         "PUBLIC" => ListCollection::Public,
                         "SOCIAL" => ListCollection::Social,
-                        "SOCIAL_1P" => ListCollection::Social1P,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -12461,15 +11637,12 @@ pub mod resources {
                 Public,
                 #[doc = "List only social scores."]
                 Social,
-                #[doc = "List only social scores, not respecting the fACL."]
-                Social1P,
             }
             impl ListWindowCollection {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         ListWindowCollection::Public => "PUBLIC",
                         ListWindowCollection::Social => "SOCIAL",
-                        ListWindowCollection::Social1P => "SOCIAL_1P",
                     }
                 }
             }
@@ -12484,7 +11657,6 @@ pub mod resources {
                     Ok(match s {
                         "PUBLIC" => ListWindowCollection::Public,
                         "SOCIAL" => ListWindowCollection::Social,
-                        "SOCIAL_1P" => ListWindowCollection::Social1P,
                         _ => return Err(()),
                     })
                 }
@@ -12511,7 +11683,6 @@ pub mod resources {
                     Ok(match value {
                         "PUBLIC" => ListWindowCollection::Public,
                         "SOCIAL" => ListWindowCollection::Social,
-                        "SOCIAL_1P" => ListWindowCollection::Social1P,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -12609,7 +11780,7 @@ pub mod resources {
             }
         }
         pub struct ScoresActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ScoresActions<'a> {
@@ -12739,7 +11910,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::get()](struct.ScoresActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             player_id: String,
             leaderboard_id: String,
@@ -12994,7 +12165,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeRankType", &self.include_rank_type)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -13029,7 +12203,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::list()](struct.ScoresActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             collection: crate::resources::scores::params::ListCollection,
@@ -13261,7 +12435,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("timeSpan", &self.time_span)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -13296,7 +12473,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::list_window()](struct.ScoresActions.html#method.list_window)"]
         #[derive(Debug, Clone)]
         pub struct ListWindowRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             collection: crate::resources::scores::params::ListWindowCollection,
@@ -13540,7 +12717,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("timeSpan", &self.time_span)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -13577,7 +12757,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::submit()](struct.ScoresActions.html#method.submit)"]
         #[derive(Debug, Clone)]
         pub struct SubmitRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             score: i64,
@@ -13696,7 +12876,10 @@ pub mod resources {
                 output.push_str("/scores");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("score", &self.score)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -13719,7 +12902,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::submit_multiple()](struct.ScoresActions.html#method.submit_multiple)"]
         #[derive(Debug, Clone)]
         pub struct SubmitMultipleRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::PlayerScoreSubmissionList,
             language: Option<String>,
@@ -13824,7 +13007,10 @@ pub mod resources {
                 output.push_str("leaderboards/scores");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -13846,7 +13032,7 @@ pub mod resources {
     pub mod snapshots {
         pub mod params {}
         pub struct SnapshotsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SnapshotsActions<'a> {
@@ -13891,7 +13077,7 @@ pub mod resources {
         #[doc = "Created via [SnapshotsActions::get()](struct.SnapshotsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             snapshot_id: String,
             language: Option<String>,
@@ -14000,7 +13186,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -14021,7 +13210,7 @@ pub mod resources {
         #[doc = "Created via [SnapshotsActions::list()](struct.SnapshotsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             player_id: String,
             language: Option<String>,
@@ -14243,7 +13432,10 @@ pub mod resources {
                 output.push_str("/snapshots");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -14278,7 +13470,7 @@ pub mod resources {
     pub mod turn_based_matches {
         pub mod params {}
         pub struct TurnBasedMatchesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TurnBasedMatchesActions<'a> {
@@ -14522,7 +13714,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::cancel()](struct.TurnBasedMatchesActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             alt: Option<crate::params::Alt>,
@@ -14577,7 +13769,10 @@ pub mod resources {
                 output.push_str("/cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -14597,7 +13792,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::create()](struct.TurnBasedMatchesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TurnBasedMatchCreateRequest,
             language: Option<String>,
@@ -14702,7 +13897,10 @@ pub mod resources {
                 output.push_str("turnbasedmatches/create");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -14723,7 +13921,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::decline()](struct.TurnBasedMatchesActions.html#method.decline)"]
         #[derive(Debug, Clone)]
         pub struct DeclineRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             language: Option<String>,
@@ -14835,7 +14033,10 @@ pub mod resources {
                 output.push_str("/decline");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -14856,7 +14057,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::dismiss()](struct.TurnBasedMatchesActions.html#method.dismiss)"]
         #[derive(Debug, Clone)]
         pub struct DismissRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             alt: Option<crate::params::Alt>,
@@ -14911,7 +14112,10 @@ pub mod resources {
                 output.push_str("/dismiss");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -14931,7 +14135,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::finish()](struct.TurnBasedMatchesActions.html#method.finish)"]
         #[derive(Debug, Clone)]
         pub struct FinishRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TurnBasedMatchResults,
             match_id: String,
@@ -15045,7 +14249,10 @@ pub mod resources {
                 output.push_str("/finish");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -15066,7 +14273,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::get()](struct.TurnBasedMatchesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             include_match_data: Option<bool>,
@@ -15183,7 +14390,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeMatchData", &self.include_match_data)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -15205,7 +14415,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::join()](struct.TurnBasedMatchesActions.html#method.join)"]
         #[derive(Debug, Clone)]
         pub struct JoinRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             language: Option<String>,
@@ -15317,7 +14527,10 @@ pub mod resources {
                 output.push_str("/join");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -15338,7 +14551,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::leave()](struct.TurnBasedMatchesActions.html#method.leave)"]
         #[derive(Debug, Clone)]
         pub struct LeaveRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             language: Option<String>,
@@ -15450,7 +14663,10 @@ pub mod resources {
                 output.push_str("/leave");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -15471,7 +14687,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::leave_turn()](struct.TurnBasedMatchesActions.html#method.leave_turn)"]
         #[derive(Debug, Clone)]
         pub struct LeaveTurnRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             match_version: i32,
@@ -15590,7 +14806,10 @@ pub mod resources {
                 output.push_str("/leaveTurn");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("matchVersion", &self.match_version)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -15613,7 +14832,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::list()](struct.TurnBasedMatchesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             include_match_data: Option<bool>,
             language: Option<String>,
@@ -15838,7 +15057,10 @@ pub mod resources {
                 output.push_str("turnbasedmatches");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeMatchData", &self.include_match_data)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -15874,7 +15096,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::rematch()](struct.TurnBasedMatchesActions.html#method.rematch)"]
         #[derive(Debug, Clone)]
         pub struct RematchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             match_id: String,
             language: Option<String>,
@@ -15992,7 +15214,10 @@ pub mod resources {
                 output.push_str("/rematch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("requestId", &self.request_id)]);
@@ -16014,7 +15239,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::sync()](struct.TurnBasedMatchesActions.html#method.sync)"]
         #[derive(Debug, Clone)]
         pub struct SyncRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             include_match_data: Option<bool>,
             language: Option<String>,
@@ -16239,7 +15464,10 @@ pub mod resources {
                 output.push_str("turnbasedmatches/sync");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeMatchData", &self.include_match_data)]);
                 let req = req.query(&[("language", &self.language)]);
@@ -16275,7 +15503,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::take_turn()](struct.TurnBasedMatchesActions.html#method.take_turn)"]
         #[derive(Debug, Clone)]
         pub struct TakeTurnRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TurnBasedMatchTurn,
             match_id: String,
@@ -16389,7 +15617,10 @@ pub mod resources {
                 output.push_str("/turn");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("language", &self.language)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -16425,9 +15656,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -16469,7 +15698,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

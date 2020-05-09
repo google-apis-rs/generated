@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("servicemanagement1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190914")
+            .version("0.1.0-20200506")
             .about("Google Service Management allows service producers to publish their services on Google Cloud Platform so that they can be discovered and used by service consumers.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -49,7 +49,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create, delete, disable, enable, generate_config_report, get, get_config, get_iam_policy, list, set_iam_policy, test_iam_permissions and undelete");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new managed service.\nPlease note one producer project can own no more than 20 services.\n\nOperation<response: ManagedService>");
+            let mcmd = SubCommand::with_name("create").about("Creates a new managed service.\n\nA managed service is immutable, and is subject to mandatory 30-day\ndata retention. You cannot move a service or recreate it within 30 days\nafter deletion.\n\nOne producer project can own no more than 500 services. For security and\nreliability purposes, a production service should be hosted in a\ndedicated producer project.\n\nOperation<response: ManagedService>");
             services0 = services0.subcommand(mcmd);
         }
         {
@@ -88,11 +88,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             services0 = services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             services0 = services0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             services0 = services0.subcommand(mcmd);
         }
         {
@@ -127,11 +127,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             consumers1 = consumers1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             consumers1 = consumers1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             consumers1 = consumers1.subcommand(mcmd);
         }
         let mut rollouts1 = SubCommand::with_name("rollouts")

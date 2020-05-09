@@ -1,5 +1,142 @@
 #![doc = "# Resources and Methods\n    * [enterprises](resources/enterprises/struct.EnterprisesActions.html)\n      * [*create*](resources/enterprises/struct.CreateRequestBuilder.html), [*get*](resources/enterprises/struct.GetRequestBuilder.html), [*patch*](resources/enterprises/struct.PatchRequestBuilder.html)\n      * [applications](resources/enterprises/applications/struct.ApplicationsActions.html)\n        * [*get*](resources/enterprises/applications/struct.GetRequestBuilder.html)\n      * [devices](resources/enterprises/devices/struct.DevicesActions.html)\n        * [*delete*](resources/enterprises/devices/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/devices/struct.GetRequestBuilder.html), [*issueCommand*](resources/enterprises/devices/struct.IssueCommandRequestBuilder.html), [*list*](resources/enterprises/devices/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/devices/struct.PatchRequestBuilder.html)\n        * [operations](resources/enterprises/devices/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/enterprises/devices/operations/struct.CancelRequestBuilder.html), [*delete*](resources/enterprises/devices/operations/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/devices/operations/struct.GetRequestBuilder.html), [*list*](resources/enterprises/devices/operations/struct.ListRequestBuilder.html)\n      * [enrollment_tokens](resources/enterprises/enrollment_tokens/struct.EnrollmentTokensActions.html)\n        * [*create*](resources/enterprises/enrollment_tokens/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/enrollment_tokens/struct.DeleteRequestBuilder.html)\n      * [policies](resources/enterprises/policies/struct.PoliciesActions.html)\n        * [*delete*](resources/enterprises/policies/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/policies/struct.GetRequestBuilder.html), [*list*](resources/enterprises/policies/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/policies/struct.PatchRequestBuilder.html)\n      * [web_apps](resources/enterprises/web_apps/struct.WebAppsActions.html)\n        * [*create*](resources/enterprises/web_apps/struct.CreateRequestBuilder.html), [*delete*](resources/enterprises/web_apps/struct.DeleteRequestBuilder.html), [*get*](resources/enterprises/web_apps/struct.GetRequestBuilder.html), [*list*](resources/enterprises/web_apps/struct.ListRequestBuilder.html), [*patch*](resources/enterprises/web_apps/struct.PatchRequestBuilder.html)\n      * [web_tokens](resources/enterprises/web_tokens/struct.WebTokensActions.html)\n        * [*create*](resources/enterprises/web_tokens/struct.CreateRequestBuilder.html)\n    * [signup_urls](resources/signup_urls/struct.SignupUrlsActions.html)\n      * [*create*](resources/signup_urls/struct.CreateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Manage Android devices and apps for your customers\n\n`https://www.googleapis.com/auth/androidmanagement`"]
+    pub const ANDROIDMANAGEMENT: &str = "https://www.googleapis.com/auth/androidmanagement";
+}
 pub mod schemas {
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AdvancedSecurityOverrides {
+        #[doc = "The policy for untrusted apps (apps from unknown sources) enforced on the device. Replaces install_unknown_sources_allowed (deprecated)."]
+        #[serde(
+            rename = "untrustedAppsPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub untrusted_apps_policy:
+            ::std::option::Option<crate::schemas::AdvancedSecurityOverridesUntrustedAppsPolicy>,
+    }
+    impl ::google_field_selector::FieldSelector for AdvancedSecurityOverrides {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AdvancedSecurityOverrides {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum AdvancedSecurityOverridesUntrustedAppsPolicy {
+        #[doc = "Allow untrusted app installs on entire device."]
+        AllowInstallDeviceWide,
+        #[doc = "For devices with work profiles, allow untrusted app installs in the device's personal profile only."]
+        AllowInstallInPersonalProfileOnly,
+        #[doc = "Default. Disallow untrusted app installs on entire device."]
+        DisallowInstall,
+        #[doc = "Unspecified. Defaults to DISALLOW_INSTALL."]
+        UntrustedAppsPolicyUnspecified,
+    }
+    impl AdvancedSecurityOverridesUntrustedAppsPolicy {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                AdvancedSecurityOverridesUntrustedAppsPolicy::AllowInstallDeviceWide => {
+                    "ALLOW_INSTALL_DEVICE_WIDE"
+                }
+                AdvancedSecurityOverridesUntrustedAppsPolicy::AllowInstallInPersonalProfileOnly => {
+                    "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY"
+                }
+                AdvancedSecurityOverridesUntrustedAppsPolicy::DisallowInstall => "DISALLOW_INSTALL",
+                AdvancedSecurityOverridesUntrustedAppsPolicy::UntrustedAppsPolicyUnspecified => {
+                    "UNTRUSTED_APPS_POLICY_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<AdvancedSecurityOverridesUntrustedAppsPolicy, ()> {
+            Ok(match s {
+                "ALLOW_INSTALL_DEVICE_WIDE" => {
+                    AdvancedSecurityOverridesUntrustedAppsPolicy::AllowInstallDeviceWide
+                }
+                "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY" => {
+                    AdvancedSecurityOverridesUntrustedAppsPolicy::AllowInstallInPersonalProfileOnly
+                }
+                "DISALLOW_INSTALL" => AdvancedSecurityOverridesUntrustedAppsPolicy::DisallowInstall,
+                "UNTRUSTED_APPS_POLICY_UNSPECIFIED" => {
+                    AdvancedSecurityOverridesUntrustedAppsPolicy::UntrustedAppsPolicyUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ALLOW_INSTALL_DEVICE_WIDE" => {
+                    AdvancedSecurityOverridesUntrustedAppsPolicy::AllowInstallDeviceWide
+                }
+                "ALLOW_INSTALL_IN_PERSONAL_PROFILE_ONLY" => {
+                    AdvancedSecurityOverridesUntrustedAppsPolicy::AllowInstallInPersonalProfileOnly
+                }
+                "DISALLOW_INSTALL" => AdvancedSecurityOverridesUntrustedAppsPolicy::DisallowInstall,
+                "UNTRUSTED_APPS_POLICY_UNSPECIFIED" => {
+                    AdvancedSecurityOverridesUntrustedAppsPolicy::UntrustedAppsPolicyUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AdvancedSecurityOverridesUntrustedAppsPolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -89,7 +226,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub track_alias: ::std::option::Option<String>,
-        #[doc = "The unmodifiable unique track identifier, taken from the releaseTrackId in the URL of the Play Console page that displays the app\u{2019}s track information."]
+        #[doc = "The unmodifiable unique track identifier, taken from the releaseTrackId in the URL of the Play Console page that displays the app’s track information."]
         #[serde(
             rename = "trackId",
             default,
@@ -352,7 +489,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ApplicationPolicy {
-        #[doc = "List of the app\u{2019}s track IDs that a device belonging to the enterprise can access. If the list contains multiple track IDs, devices receive the latest version among all accessible tracks. If the list contains no track IDs, devices only have access to the app\u{2019}s production track. More details about each track are available in AppTrackInfo."]
+        #[doc = "List of the app’s track IDs that a device belonging to the enterprise can access. If the list contains multiple track IDs, devices receive the latest version among all accessible tracks. If the list contains no track IDs, devices only have access to the app’s production track. More details about each track are available in AppTrackInfo."]
         #[serde(
             rename = "accessibleTrackIds",
             default,
@@ -939,6 +1076,8 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum ApplicationReportState {
+        #[doc = "App state is unspecified"]
+        ApplicationStateUnspecified,
         #[doc = "App is installed on the device"]
         Installed,
         #[doc = "App was removed from the device"]
@@ -947,6 +1086,9 @@ pub mod schemas {
     impl ApplicationReportState {
         pub fn as_str(self) -> &'static str {
             match self {
+                ApplicationReportState::ApplicationStateUnspecified => {
+                    "APPLICATION_STATE_UNSPECIFIED"
+                }
                 ApplicationReportState::Installed => "INSTALLED",
                 ApplicationReportState::Removed => "REMOVED",
             }
@@ -961,6 +1103,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<ApplicationReportState, ()> {
             Ok(match s {
+                "APPLICATION_STATE_UNSPECIFIED" => {
+                    ApplicationReportState::ApplicationStateUnspecified
+                }
                 "INSTALLED" => ApplicationReportState::Installed,
                 "REMOVED" => ApplicationReportState::Removed,
                 _ => return Err(()),
@@ -987,6 +1132,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "APPLICATION_STATE_UNSPECIFIED" => {
+                    ApplicationReportState::ApplicationStateUnspecified
+                }
                 "INSTALLED" => ApplicationReportState::Installed,
                 "REMOVED" => ApplicationReportState::Removed,
                 _ => {
@@ -1503,6 +1651,51 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Date {
+        #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant."]
+        #[serde(
+            rename = "day",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub day: ::std::option::Option<i32>,
+        #[doc = "Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day."]
+        #[serde(
+            rename = "month",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub month: ::std::option::Option<i32>,
+        #[doc = "Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year."]
+        #[serde(
+            rename = "year",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub year: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for Date {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Date {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Device {
         #[doc = "The API level of the Android platform version running on the device."]
@@ -1667,7 +1860,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub policy_compliant: ::std::option::Option<bool>,
-        #[doc = "The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn\u{2019}t contain any slashes. The rest of the policy name is inferred."]
+        #[doc = "The name of the policy applied to the device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device's user is applied. This field can be modified by a patch request. You can specify only the policyId when calling enterprises.devices.patch, as long as the policyId doesn’t contain any slashes. The rest of the policy name is inferred."]
         #[serde(
             rename = "policyName",
             default,
@@ -2397,7 +2590,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub one_time_only: ::std::option::Option<bool>,
-        #[doc = "The name of the policy initially applied to the enrolled device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device\u{2019}s user is applied. If user_name is also not specified, enterprises/{enterpriseId}/policies/default is applied by default. When updating this field, you can specify only the policyId as long as the policyId doesn\u{2019}t contain any slashes. The rest of the policy name will be inferred."]
+        #[doc = "The name of the policy initially applied to the enrolled device, in the form enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy_name for the device’s user is applied. If user_name is also not specified, enterprises/{enterpriseId}/policies/default is applied by default. When updating this field, you can specify only the policyId as long as the policyId doesn’t contain any slashes. The rest of the policy name will be inferred."]
         #[serde(
             rename = "policyName",
             default,
@@ -2499,7 +2692,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pubsub_topic: ::std::option::Option<String>,
-        #[doc = "Sign-in details of the enterprise. Maximum of 1 SigninDetail is supported."]
+        #[doc = "Sign-in details of the enterprise."]
         #[serde(
             rename = "signinDetails",
             default,
@@ -2645,6 +2838,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ExternalData {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FreezePeriod {
+        #[doc = "The end date (inclusive) of the freeze period. Must be no later than 90 days from the start date. If the end date is earlier than the start date, the freeze period is considered wrapping year-end. Note: year must not be set. For example, {\"month\": 1,\"date\": 30}."]
+        #[serde(
+            rename = "endDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "The start date (inclusive) of the freeze period. Note: year must not be set. For example, {\"month\": 1,\"date\": 30}."]
+        #[serde(
+            rename = "startDate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_date: ::std::option::Option<crate::schemas::Date>,
+    }
+    impl ::google_field_selector::FieldSelector for FreezePeriod {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FreezePeriod {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2846,7 +3077,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. \u{201c}notify me if the battery_warning data < 10\u{201d})."]
+        #[doc = "Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can choose to query against in the EMM console (e.g. “notify me if the battery_warning data < 10”)."]
         #[serde(
             rename = "data",
             default,
@@ -2964,6 +3195,525 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for KeyedAppStateSeverity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct KioskCustomization {
+        #[doc = "Specifies whether the Settings app is allowed in kiosk mode."]
+        #[serde(
+            rename = "deviceSettings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub device_settings:
+            ::std::option::Option<crate::schemas::KioskCustomizationDeviceSettings>,
+        #[doc = "Sets the behavior of a device in kiosk mode when a user presses and holds (long-presses) the Power button."]
+        #[serde(
+            rename = "powerButtonActions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub power_button_actions:
+            ::std::option::Option<crate::schemas::KioskCustomizationPowerButtonActions>,
+        #[doc = "Specifies whether system info and notifications are disabled in kiosk mode."]
+        #[serde(
+            rename = "statusBar",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status_bar: ::std::option::Option<crate::schemas::KioskCustomizationStatusBar>,
+        #[doc = "Specifies whether system error dialogs for crashed or unresponsive apps are blocked in kiosk mode. When blocked, the system will force-stop the app as if the user chooses the \"close app\" option on the UI."]
+        #[serde(
+            rename = "systemErrorWarnings",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub system_error_warnings:
+            ::std::option::Option<crate::schemas::KioskCustomizationSystemErrorWarnings>,
+        #[doc = "Specifies which navigation features are enabled (e.g. Home, Overview buttons) in kiosk mode."]
+        #[serde(
+            rename = "systemNavigation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub system_navigation:
+            ::std::option::Option<crate::schemas::KioskCustomizationSystemNavigation>,
+    }
+    impl ::google_field_selector::FieldSelector for KioskCustomization {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KioskCustomization {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum KioskCustomizationDeviceSettings {
+        #[doc = "Unspecified, defaults to SETTINGS_ACCESS_ALLOWED."]
+        DeviceSettingsUnspecified,
+        #[doc = "Access to the Settings app is allowed in kiosk mode."]
+        SettingsAccessAllowed,
+        #[doc = "Access to the Settings app is not allowed in kiosk mode."]
+        SettingsAccessBlocked,
+    }
+    impl KioskCustomizationDeviceSettings {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                KioskCustomizationDeviceSettings::DeviceSettingsUnspecified => {
+                    "DEVICE_SETTINGS_UNSPECIFIED"
+                }
+                KioskCustomizationDeviceSettings::SettingsAccessAllowed => {
+                    "SETTINGS_ACCESS_ALLOWED"
+                }
+                KioskCustomizationDeviceSettings::SettingsAccessBlocked => {
+                    "SETTINGS_ACCESS_BLOCKED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KioskCustomizationDeviceSettings {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KioskCustomizationDeviceSettings {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KioskCustomizationDeviceSettings, ()> {
+            Ok(match s {
+                "DEVICE_SETTINGS_UNSPECIFIED" => {
+                    KioskCustomizationDeviceSettings::DeviceSettingsUnspecified
+                }
+                "SETTINGS_ACCESS_ALLOWED" => {
+                    KioskCustomizationDeviceSettings::SettingsAccessAllowed
+                }
+                "SETTINGS_ACCESS_BLOCKED" => {
+                    KioskCustomizationDeviceSettings::SettingsAccessBlocked
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for KioskCustomizationDeviceSettings {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for KioskCustomizationDeviceSettings {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for KioskCustomizationDeviceSettings {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEVICE_SETTINGS_UNSPECIFIED" => {
+                    KioskCustomizationDeviceSettings::DeviceSettingsUnspecified
+                }
+                "SETTINGS_ACCESS_ALLOWED" => {
+                    KioskCustomizationDeviceSettings::SettingsAccessAllowed
+                }
+                "SETTINGS_ACCESS_BLOCKED" => {
+                    KioskCustomizationDeviceSettings::SettingsAccessBlocked
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for KioskCustomizationDeviceSettings {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KioskCustomizationDeviceSettings {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum KioskCustomizationPowerButtonActions {
+        #[doc = "Unspecified, defaults to POWER_BUTTON_AVAILABLE."]
+        PowerButtonActionsUnspecified,
+        #[doc = "The power menu (e.g. Power off, Restart) is shown when a user long-presses the Power button of a device in kiosk mode."]
+        PowerButtonAvailable,
+        #[doc = "The power menu (e.g. Power off, Restart) is not shown when a user long-presses the Power button of a device in kiosk mode. Note: this may prevent users from turning off the device."]
+        PowerButtonBlocked,
+    }
+    impl KioskCustomizationPowerButtonActions {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                KioskCustomizationPowerButtonActions::PowerButtonActionsUnspecified => {
+                    "POWER_BUTTON_ACTIONS_UNSPECIFIED"
+                }
+                KioskCustomizationPowerButtonActions::PowerButtonAvailable => {
+                    "POWER_BUTTON_AVAILABLE"
+                }
+                KioskCustomizationPowerButtonActions::PowerButtonBlocked => "POWER_BUTTON_BLOCKED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KioskCustomizationPowerButtonActions {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KioskCustomizationPowerButtonActions {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KioskCustomizationPowerButtonActions, ()> {
+            Ok(match s {
+                "POWER_BUTTON_ACTIONS_UNSPECIFIED" => {
+                    KioskCustomizationPowerButtonActions::PowerButtonActionsUnspecified
+                }
+                "POWER_BUTTON_AVAILABLE" => {
+                    KioskCustomizationPowerButtonActions::PowerButtonAvailable
+                }
+                "POWER_BUTTON_BLOCKED" => KioskCustomizationPowerButtonActions::PowerButtonBlocked,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for KioskCustomizationPowerButtonActions {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for KioskCustomizationPowerButtonActions {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for KioskCustomizationPowerButtonActions {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "POWER_BUTTON_ACTIONS_UNSPECIFIED" => {
+                    KioskCustomizationPowerButtonActions::PowerButtonActionsUnspecified
+                }
+                "POWER_BUTTON_AVAILABLE" => {
+                    KioskCustomizationPowerButtonActions::PowerButtonAvailable
+                }
+                "POWER_BUTTON_BLOCKED" => KioskCustomizationPowerButtonActions::PowerButtonBlocked,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for KioskCustomizationPowerButtonActions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KioskCustomizationPowerButtonActions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum KioskCustomizationStatusBar {
+        #[doc = "System info and notifications are disabled in kiosk mode."]
+        NotificationsAndSystemInfoDisabled,
+        #[doc = "System info and notifications are shown on the status bar in kiosk mode.Note: For this policy to take effect, the device's home button must be enabled using kioskCustomization.systemNavigation."]
+        NotificationsAndSystemInfoEnabled,
+        #[doc = "Unspecified, defaults to INFO_AND_NOTIFICATIONS_DISABLED."]
+        StatusBarUnspecified,
+        #[doc = "Only system info is shown on the status bar."]
+        SystemInfoOnly,
+    }
+    impl KioskCustomizationStatusBar {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                KioskCustomizationStatusBar::NotificationsAndSystemInfoDisabled => {
+                    "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED"
+                }
+                KioskCustomizationStatusBar::NotificationsAndSystemInfoEnabled => {
+                    "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED"
+                }
+                KioskCustomizationStatusBar::StatusBarUnspecified => "STATUS_BAR_UNSPECIFIED",
+                KioskCustomizationStatusBar::SystemInfoOnly => "SYSTEM_INFO_ONLY",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KioskCustomizationStatusBar {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KioskCustomizationStatusBar {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KioskCustomizationStatusBar, ()> {
+            Ok(match s {
+                "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED" => {
+                    KioskCustomizationStatusBar::NotificationsAndSystemInfoDisabled
+                }
+                "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED" => {
+                    KioskCustomizationStatusBar::NotificationsAndSystemInfoEnabled
+                }
+                "STATUS_BAR_UNSPECIFIED" => KioskCustomizationStatusBar::StatusBarUnspecified,
+                "SYSTEM_INFO_ONLY" => KioskCustomizationStatusBar::SystemInfoOnly,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for KioskCustomizationStatusBar {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for KioskCustomizationStatusBar {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for KioskCustomizationStatusBar {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NOTIFICATIONS_AND_SYSTEM_INFO_DISABLED" => {
+                    KioskCustomizationStatusBar::NotificationsAndSystemInfoDisabled
+                }
+                "NOTIFICATIONS_AND_SYSTEM_INFO_ENABLED" => {
+                    KioskCustomizationStatusBar::NotificationsAndSystemInfoEnabled
+                }
+                "STATUS_BAR_UNSPECIFIED" => KioskCustomizationStatusBar::StatusBarUnspecified,
+                "SYSTEM_INFO_ONLY" => KioskCustomizationStatusBar::SystemInfoOnly,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for KioskCustomizationStatusBar {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KioskCustomizationStatusBar {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum KioskCustomizationSystemErrorWarnings {
+        #[doc = "All system error dialogs such as crash and app not responding (ANR) are displayed."]
+        ErrorAndWarningsEnabled,
+        #[doc = "All system error dialogs, such as crash and app not responding (ANR) are blocked. When blocked, the system force-stops the app as if the user closes the app from the UI."]
+        ErrorAndWarningsMuted,
+        #[doc = "Unspecified, defaults to ERROR_AND_WARNINGS_MUTED."]
+        SystemErrorWarningsUnspecified,
+    }
+    impl KioskCustomizationSystemErrorWarnings {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                KioskCustomizationSystemErrorWarnings::ErrorAndWarningsEnabled => {
+                    "ERROR_AND_WARNINGS_ENABLED"
+                }
+                KioskCustomizationSystemErrorWarnings::ErrorAndWarningsMuted => {
+                    "ERROR_AND_WARNINGS_MUTED"
+                }
+                KioskCustomizationSystemErrorWarnings::SystemErrorWarningsUnspecified => {
+                    "SYSTEM_ERROR_WARNINGS_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KioskCustomizationSystemErrorWarnings {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KioskCustomizationSystemErrorWarnings {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KioskCustomizationSystemErrorWarnings, ()> {
+            Ok(match s {
+                "ERROR_AND_WARNINGS_ENABLED" => {
+                    KioskCustomizationSystemErrorWarnings::ErrorAndWarningsEnabled
+                }
+                "ERROR_AND_WARNINGS_MUTED" => {
+                    KioskCustomizationSystemErrorWarnings::ErrorAndWarningsMuted
+                }
+                "SYSTEM_ERROR_WARNINGS_UNSPECIFIED" => {
+                    KioskCustomizationSystemErrorWarnings::SystemErrorWarningsUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for KioskCustomizationSystemErrorWarnings {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for KioskCustomizationSystemErrorWarnings {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for KioskCustomizationSystemErrorWarnings {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ERROR_AND_WARNINGS_ENABLED" => {
+                    KioskCustomizationSystemErrorWarnings::ErrorAndWarningsEnabled
+                }
+                "ERROR_AND_WARNINGS_MUTED" => {
+                    KioskCustomizationSystemErrorWarnings::ErrorAndWarningsMuted
+                }
+                "SYSTEM_ERROR_WARNINGS_UNSPECIFIED" => {
+                    KioskCustomizationSystemErrorWarnings::SystemErrorWarningsUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for KioskCustomizationSystemErrorWarnings {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KioskCustomizationSystemErrorWarnings {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum KioskCustomizationSystemNavigation {
+        #[doc = "Only the home button is enabled."]
+        HomeButtonOnly,
+        #[doc = "The home and Overview buttons are not accessible."]
+        NavigationDisabled,
+        #[doc = "Home and overview buttons are enabled."]
+        NavigationEnabled,
+        #[doc = "Unspecified, defaults to NAVIGATION_DISABLED."]
+        SystemNavigationUnspecified,
+    }
+    impl KioskCustomizationSystemNavigation {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                KioskCustomizationSystemNavigation::HomeButtonOnly => "HOME_BUTTON_ONLY",
+                KioskCustomizationSystemNavigation::NavigationDisabled => "NAVIGATION_DISABLED",
+                KioskCustomizationSystemNavigation::NavigationEnabled => "NAVIGATION_ENABLED",
+                KioskCustomizationSystemNavigation::SystemNavigationUnspecified => {
+                    "SYSTEM_NAVIGATION_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for KioskCustomizationSystemNavigation {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for KioskCustomizationSystemNavigation {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<KioskCustomizationSystemNavigation, ()> {
+            Ok(match s {
+                "HOME_BUTTON_ONLY" => KioskCustomizationSystemNavigation::HomeButtonOnly,
+                "NAVIGATION_DISABLED" => KioskCustomizationSystemNavigation::NavigationDisabled,
+                "NAVIGATION_ENABLED" => KioskCustomizationSystemNavigation::NavigationEnabled,
+                "SYSTEM_NAVIGATION_UNSPECIFIED" => {
+                    KioskCustomizationSystemNavigation::SystemNavigationUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for KioskCustomizationSystemNavigation {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for KioskCustomizationSystemNavigation {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for KioskCustomizationSystemNavigation {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "HOME_BUTTON_ONLY" => KioskCustomizationSystemNavigation::HomeButtonOnly,
+                "NAVIGATION_DISABLED" => KioskCustomizationSystemNavigation::NavigationDisabled,
+                "NAVIGATION_ENABLED" => KioskCustomizationSystemNavigation::NavigationEnabled,
+                "SYSTEM_NAVIGATION_UNSPECIFIED" => {
+                    KioskCustomizationSystemNavigation::SystemNavigationUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for KioskCustomizationSystemNavigation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KioskCustomizationSystemNavigation {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3223,6 +3973,8 @@ pub mod schemas {
     pub enum ManagedPropertyType {
         #[doc = "A property of boolean type."]
         Bool,
+        #[doc = "A bundle of properties"]
+        Bundle,
         #[doc = "An array of property bundles."]
         BundleArray,
         #[doc = "A choice of one item from a set."]
@@ -3242,6 +3994,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 ManagedPropertyType::Bool => "BOOL",
+                ManagedPropertyType::Bundle => "BUNDLE",
                 ManagedPropertyType::BundleArray => "BUNDLE_ARRAY",
                 ManagedPropertyType::Choice => "CHOICE",
                 ManagedPropertyType::Hidden => "HIDDEN",
@@ -3264,6 +4017,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<ManagedPropertyType, ()> {
             Ok(match s {
                 "BOOL" => ManagedPropertyType::Bool,
+                "BUNDLE" => ManagedPropertyType::Bundle,
                 "BUNDLE_ARRAY" => ManagedPropertyType::BundleArray,
                 "CHOICE" => ManagedPropertyType::Choice,
                 "HIDDEN" => ManagedPropertyType::Hidden,
@@ -3298,6 +4052,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "BOOL" => ManagedPropertyType::Bool,
+                "BUNDLE" => ManagedPropertyType::Bundle,
                 "BUNDLE_ARRAY" => ManagedPropertyType::BundleArray,
                 "CHOICE" => ManagedPropertyType::Choice,
                 "HIDDEN" => ManagedPropertyType::Hidden,
@@ -4215,6 +4970,14 @@ pub mod schemas {
         )]
         pub password_scope:
             ::std::option::Option<crate::schemas::PasswordRequirementsPasswordScope>,
+        #[doc = "The length of time after a device or work profile is unlocked using a strong form of authentication (password, PIN, pattern) that it can be unlocked using any other authentication method (e.g. fingerprint, trust agents, face). After the specified time period elapses, only strong forms of authentication can be used to unlock the device or work profile."]
+        #[serde(
+            rename = "requirePasswordUnlock",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub require_password_unlock:
+            ::std::option::Option<crate::schemas::PasswordRequirementsRequirePasswordUnlock>,
     }
     impl ::google_field_selector::FieldSelector for PasswordRequirements {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -4405,6 +5168,96 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for PasswordRequirementsPasswordScope {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PasswordRequirementsRequirePasswordUnlock {
+        #[doc = "The timeout period is set to 24 hours."]
+        RequireEveryDay,
+        #[doc = "Unspecified. Defaults to USE_DEFAULT_DEVICE_TIMEOUT."]
+        RequirePasswordUnlockUnspecified,
+        #[doc = "The timeout period is set to the device’s default."]
+        UseDefaultDeviceTimeout,
+    }
+    impl PasswordRequirementsRequirePasswordUnlock {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PasswordRequirementsRequirePasswordUnlock::RequireEveryDay => "REQUIRE_EVERY_DAY",
+                PasswordRequirementsRequirePasswordUnlock::RequirePasswordUnlockUnspecified => {
+                    "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED"
+                }
+                PasswordRequirementsRequirePasswordUnlock::UseDefaultDeviceTimeout => {
+                    "USE_DEFAULT_DEVICE_TIMEOUT"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PasswordRequirementsRequirePasswordUnlock {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PasswordRequirementsRequirePasswordUnlock {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<PasswordRequirementsRequirePasswordUnlock, ()> {
+            Ok(match s {
+                "REQUIRE_EVERY_DAY" => PasswordRequirementsRequirePasswordUnlock::RequireEveryDay,
+                "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED" => {
+                    PasswordRequirementsRequirePasswordUnlock::RequirePasswordUnlockUnspecified
+                }
+                "USE_DEFAULT_DEVICE_TIMEOUT" => {
+                    PasswordRequirementsRequirePasswordUnlock::UseDefaultDeviceTimeout
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PasswordRequirementsRequirePasswordUnlock {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PasswordRequirementsRequirePasswordUnlock {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PasswordRequirementsRequirePasswordUnlock {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "REQUIRE_EVERY_DAY" => PasswordRequirementsRequirePasswordUnlock::RequireEveryDay,
+                "REQUIRE_PASSWORD_UNLOCK_UNSPECIFIED" => {
+                    PasswordRequirementsRequirePasswordUnlock::RequirePasswordUnlockUnspecified
+                }
+                "USE_DEFAULT_DEVICE_TIMEOUT" => {
+                    PasswordRequirementsRequirePasswordUnlock::UseDefaultDeviceTimeout
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PasswordRequirementsRequirePasswordUnlock {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PasswordRequirementsRequirePasswordUnlock {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4602,6 +5455,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub adjust_volume_disabled: ::std::option::Option<bool>,
+        #[doc = "Security policies set to the most secure values by default. To maintain the security posture of a device, we don't recommend overriding any of the default values."]
+        #[serde(
+            rename = "advancedSecurityOverrides",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub advanced_security_overrides:
+            ::std::option::Option<crate::schemas::AdvancedSecurityOverrides>,
         #[doc = "Configuration for an always-on VPN connection. Use with vpn_config_disabled to prevent modification of this setting."]
         #[serde(
             rename = "alwaysOnVpnPackage",
@@ -4803,13 +5664,20 @@ pub mod schemas {
         )]
         pub keyguard_disabled_features:
             ::std::option::Option<Vec<crate::schemas::PolicyKeyguardDisabledFeaturesItems>>,
-        #[doc = "Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that locks down the device to the apps installed via the applications setting. Apps appear on a single page in alphabetical order. The status bar is disabled when this is set."]
+        #[doc = "Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that locks down the device to the apps installed via the applications setting. Apps appear on a single page in alphabetical order. Use kioskCustomization to further configure the kiosk device behavior."]
         #[serde(
             rename = "kioskCustomLauncherEnabled",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kiosk_custom_launcher_enabled: ::std::option::Option<bool>,
+        #[doc = "Settings controlling the behavior of a device in kiosk mode. To enable kiosk mode, set kioskCustomLauncherEnabled to true or specify an app in the policy with installType KIOSK."]
+        #[serde(
+            rename = "kioskCustomization",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub kiosk_customization: ::std::option::Option<crate::schemas::KioskCustomization>,
         #[doc = "The degree of location detection enabled. The user may change the value unless the user is otherwise blocked from accessing device settings."]
         #[serde(
             rename = "locationMode",
@@ -4910,7 +5778,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub password_policies: ::std::option::Option<Vec<crate::schemas::PasswordRequirements>>,
-        #[doc = "Password requirements. DEPRECATED - Use password_policies"]
+        #[doc = "Password requirements. The field password_requirements.require_password_unlock must not be set. DEPRECATED - Use password_policies."]
         #[serde(
             rename = "passwordRequirements",
             default,
@@ -4924,7 +5792,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub permission_grants: ::std::option::Option<Vec<crate::schemas::PermissionGrant>>,
-        #[doc = "Specifies permitted accessibility services. If the field is not set, any accessibility service can be used. If the field is set, only the accessibility services in this list and the system's built-in accessibility services can be used. In particular, if the field is set to empty, only the system's built-in accessibility services can be used."]
+        #[doc = "Specifies permitted accessibility services. If the field is not set, any accessibility service can be used. If the field is set, only the accessibility services in this list and the system's built-in accessibility service can be used. In particular, if the field is set to empty, only the system's built-in accessibility servicess can be used."]
         #[serde(
             rename = "permittedAccessibilityServices",
             default,
@@ -5025,7 +5893,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub share_location_disabled: ::std::option::Option<bool>,
-        #[doc = "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin."]
+        #[doc = "A message displayed to the user in the settings screen wherever functionality has been disabled by the admin. If the message is longer than 200 characters it may be truncated."]
         #[serde(
             rename = "shortSupportMessage",
             default,
@@ -6618,14 +7486,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub device_settings_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether displays reporting is enabled."]
+        #[doc = "Whether displays reporting is enabled. Report data is not available for personally owned devices with work profiles."]
         #[serde(
             rename = "displayInfoEnabled",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_info_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether hardware status reporting is enabled."]
+        #[doc = "Whether hardware status reporting is enabled. Report data is not available for personally owned devices with work profiles."]
         #[serde(
             rename = "hardwareStatusEnabled",
             default,
@@ -6646,7 +7514,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub network_info_enabled: ::std::option::Option<bool>,
-        #[doc = "Whether power management event reporting is enabled."]
+        #[doc = "Whether power management event reporting is enabled. Report data is not available for personally owned devices with work profiles."]
         #[serde(
             rename = "powerManagementEventsEnabled",
             default,
@@ -6698,6 +7566,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_minutes: ::std::option::Option<i32>,
+        #[doc = "An annually repeating time period in which over-the-air (OTA) system updates are postponed to freeze the OS version running on a device. To prevent freezing the device indefinitely, each freeze period must be separated by at least 60 days."]
+        #[serde(
+            rename = "freezePeriods",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub freeze_periods: ::std::option::Option<Vec<crate::schemas::FreezePeriod>>,
         #[doc = "The type of system update to configure."]
         #[serde(
             rename = "type",
@@ -7103,6 +7978,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WebToken {
+        #[doc = "The features to enable. Use this if you want to control exactly which feature(s) will be activated; leave empty to allow all features.Restrictions / things to note: <ul> <li> If no features are listed here, all features are enabled — this is the  default behavior where you give access to all features to your admins. <li> This must not contain any FEATURE_UNSPECIFIED values. <li> Repeated values are ignored </ul>"]
+        #[serde(
+            rename = "enabledFeatures",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enabled_features:
+            ::std::option::Option<Vec<crate::schemas::WebTokenEnabledFeaturesItems>>,
         #[doc = "The name of the web token, which is generated by the server during creation in the form enterprises/{enterpriseId}/webTokens/{webTokenId}."]
         #[serde(
             rename = "name",
@@ -7138,6 +8021,91 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for WebToken {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum WebTokenEnabledFeaturesItems {
+        FeatureUnspecified,
+        ManagedConfigurations,
+        PlaySearch,
+        PrivateApps,
+        StoreBuilder,
+        WebApps,
+    }
+    impl WebTokenEnabledFeaturesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                WebTokenEnabledFeaturesItems::FeatureUnspecified => "FEATURE_UNSPECIFIED",
+                WebTokenEnabledFeaturesItems::ManagedConfigurations => "MANAGED_CONFIGURATIONS",
+                WebTokenEnabledFeaturesItems::PlaySearch => "PLAY_SEARCH",
+                WebTokenEnabledFeaturesItems::PrivateApps => "PRIVATE_APPS",
+                WebTokenEnabledFeaturesItems::StoreBuilder => "STORE_BUILDER",
+                WebTokenEnabledFeaturesItems::WebApps => "WEB_APPS",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for WebTokenEnabledFeaturesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for WebTokenEnabledFeaturesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<WebTokenEnabledFeaturesItems, ()> {
+            Ok(match s {
+                "FEATURE_UNSPECIFIED" => WebTokenEnabledFeaturesItems::FeatureUnspecified,
+                "MANAGED_CONFIGURATIONS" => WebTokenEnabledFeaturesItems::ManagedConfigurations,
+                "PLAY_SEARCH" => WebTokenEnabledFeaturesItems::PlaySearch,
+                "PRIVATE_APPS" => WebTokenEnabledFeaturesItems::PrivateApps,
+                "STORE_BUILDER" => WebTokenEnabledFeaturesItems::StoreBuilder,
+                "WEB_APPS" => WebTokenEnabledFeaturesItems::WebApps,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for WebTokenEnabledFeaturesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for WebTokenEnabledFeaturesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for WebTokenEnabledFeaturesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "FEATURE_UNSPECIFIED" => WebTokenEnabledFeaturesItems::FeatureUnspecified,
+                "MANAGED_CONFIGURATIONS" => WebTokenEnabledFeaturesItems::ManagedConfigurations,
+                "PLAY_SEARCH" => WebTokenEnabledFeaturesItems::PlaySearch,
+                "PRIVATE_APPS" => WebTokenEnabledFeaturesItems::PrivateApps,
+                "STORE_BUILDER" => WebTokenEnabledFeaturesItems::StoreBuilder,
+                "WEB_APPS" => WebTokenEnabledFeaturesItems::WebApps,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for WebTokenEnabledFeaturesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for WebTokenEnabledFeaturesItems {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -7230,7 +8198,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct WipeAction {
-        #[doc = "Whether the factory-reset protection data is preserved on the device. This setting doesn\u{2019}t apply to work profiles."]
+        #[doc = "Whether the factory-reset protection data is preserved on the device. This setting doesn’t apply to work profiles."]
         #[serde(
             rename = "preserveFrp",
             default,
@@ -7406,7 +8374,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -7414,8 +8382,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -7441,7 +8421,7 @@ pub mod resources {
     pub mod enterprises {
         pub mod params {}
         pub struct EnterprisesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> EnterprisesActions<'a> {
@@ -7567,7 +8547,7 @@ pub mod resources {
         #[doc = "Created via [EnterprisesActions::create()](struct.EnterprisesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Enterprise,
             enterprise_token: Option<String>,
@@ -7708,7 +8688,10 @@ pub mod resources {
                 output.push_str("v1/enterprises");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("enterpriseToken", &self.enterprise_token)]);
                 let req = req.query(&[("projectId", &self.project_id)]);
@@ -7735,7 +8718,7 @@ pub mod resources {
         #[doc = "Created via [EnterprisesActions::get()](struct.EnterprisesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -7864,7 +8847,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7888,7 +8874,7 @@ pub mod resources {
         #[doc = "Created via [EnterprisesActions::patch()](struct.EnterprisesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Enterprise,
             name: String,
@@ -8025,7 +9011,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("updateMask", &self.update_mask)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8050,7 +9039,7 @@ pub mod resources {
         pub mod applications {
             pub mod params {}
             pub struct ApplicationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ApplicationsActions<'a> {
@@ -8081,7 +9070,7 @@ pub mod resources {
             #[doc = "Created via [ApplicationsActions::get()](struct.ApplicationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 language_code: Option<String>,
@@ -8219,7 +9208,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("languageCode", &self.language_code)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -8337,7 +9329,7 @@ pub mod resources {
                 }
             }
             pub struct DevicesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DevicesActions<'a> {
@@ -8362,6 +9354,7 @@ pub mod resources {
                         xgafv: None,
                         name: name.into(),
                         wipe_data_flags: None,
+                        wipe_reason_message: None,
                     }
                 }
                 #[doc = "Gets a device."]
@@ -8467,12 +9460,13 @@ pub mod resources {
             #[doc = "Created via [DevicesActions::delete()](struct.DevicesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 wipe_data_flags: Option<
                     Vec<crate::resources::enterprises::devices::params::DeleteWipeDataFlagsItems>,
                 >,
+                wipe_reason_message: Option<String>,
                 access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
@@ -8492,6 +9486,11 @@ pub mod resources {
                     value : impl Into < Vec < crate :: resources :: enterprises :: devices :: params :: DeleteWipeDataFlagsItems > >,
                 ) -> Self {
                     self.wipe_data_flags = Some(value.into());
+                    self
+                }
+                #[doc = "Optional. A short message displayed to the user before wiping the work profile on personal devices. This has no effect on company owned devices. The maximum message length is 200 characters."]
+                pub fn wipe_reason_message(mut self, value: impl Into<String>) -> Self {
+                    self.wipe_reason_message = Some(value.into());
                     self
                 }
                 #[doc = "OAuth access token."]
@@ -8610,9 +9609,13 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("wipeDataFlags", &self.wipe_data_flags)]);
+                    let req = req.query(&[("wipeReasonMessage", &self.wipe_reason_message)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
@@ -8635,7 +9638,7 @@ pub mod resources {
             #[doc = "Created via [DevicesActions::get()](struct.DevicesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -8767,7 +9770,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8791,7 +9797,7 @@ pub mod resources {
             #[doc = "Created via [DevicesActions::issue_command()](struct.DevicesActions.html#method.issue_command)"]
             #[derive(Debug, Clone)]
             pub struct IssueCommandRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Command,
                 name: String,
@@ -8926,7 +9932,10 @@ pub mod resources {
                     output.push_str(":issueCommand");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8950,7 +9959,7 @@ pub mod resources {
             #[doc = "Created via [DevicesActions::list()](struct.DevicesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -9195,7 +10204,10 @@ pub mod resources {
                     output.push_str("/devices");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -9232,7 +10244,7 @@ pub mod resources {
             #[doc = "Created via [DevicesActions::patch()](struct.DevicesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Device,
                 name: String,
@@ -9372,7 +10384,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -9397,7 +10412,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -9487,7 +10502,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -9623,7 +10638,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9647,7 +10663,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -9782,7 +10798,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9806,7 +10823,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -9941,7 +10958,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9965,7 +10983,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -10223,7 +11241,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -10263,7 +11282,7 @@ pub mod resources {
         pub mod enrollment_tokens {
             pub mod params {}
             pub struct EnrollmentTokensActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> EnrollmentTokensActions<'a> {
@@ -10317,7 +11336,7 @@ pub mod resources {
             #[doc = "Created via [EnrollmentTokensActions::create()](struct.EnrollmentTokensActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::EnrollmentToken,
                 parent: String,
@@ -10452,7 +11471,10 @@ pub mod resources {
                     output.push_str("/enrollmentTokens");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10476,7 +11498,7 @@ pub mod resources {
             #[doc = "Created via [EnrollmentTokensActions::delete()](struct.EnrollmentTokensActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -10608,7 +11630,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10633,7 +11658,7 @@ pub mod resources {
         pub mod policies {
             pub mod params {}
             pub struct PoliciesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> PoliciesActions<'a> {
@@ -10728,7 +11753,7 @@ pub mod resources {
             #[doc = "Created via [PoliciesActions::delete()](struct.PoliciesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -10860,7 +11885,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10884,7 +11912,7 @@ pub mod resources {
             #[doc = "Created via [PoliciesActions::get()](struct.PoliciesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -11016,7 +12044,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -11040,7 +12071,7 @@ pub mod resources {
             #[doc = "Created via [PoliciesActions::list()](struct.PoliciesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -11285,7 +12316,10 @@ pub mod resources {
                     output.push_str("/policies");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -11322,7 +12356,7 @@ pub mod resources {
             #[doc = "Created via [PoliciesActions::patch()](struct.PoliciesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Policy,
                 name: String,
@@ -11462,7 +12496,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -11488,7 +12525,7 @@ pub mod resources {
         pub mod web_apps {
             pub mod params {}
             pub struct WebAppsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> WebAppsActions<'a> {
@@ -11607,7 +12644,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::create()](struct.WebAppsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WebApp,
                 parent: String,
@@ -11742,7 +12779,10 @@ pub mod resources {
                     output.push_str("/webApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -11766,7 +12806,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::delete()](struct.WebAppsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -11898,7 +12938,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -11922,7 +12965,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::get()](struct.WebAppsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -12054,7 +13097,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -12078,7 +13124,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::list()](struct.WebAppsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -12323,7 +13369,10 @@ pub mod resources {
                     output.push_str("/webApps");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -12360,7 +13409,7 @@ pub mod resources {
             #[doc = "Created via [WebAppsActions::patch()](struct.WebAppsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WebApp,
                 name: String,
@@ -12500,7 +13549,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -12526,7 +13578,7 @@ pub mod resources {
         pub mod web_tokens {
             pub mod params {}
             pub struct WebTokensActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> WebTokensActions<'a> {
@@ -12561,7 +13613,7 @@ pub mod resources {
             #[doc = "Created via [WebTokensActions::create()](struct.WebTokensActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::WebToken,
                 parent: String,
@@ -12696,7 +13748,10 @@ pub mod resources {
                     output.push_str("/webTokens");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -12722,7 +13777,7 @@ pub mod resources {
     pub mod signup_urls {
         pub mod params {}
         pub struct SignupUrlsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SignupUrlsActions<'a> {
@@ -12753,7 +13808,7 @@ pub mod resources {
         #[doc = "Created via [SignupUrlsActions::create()](struct.SignupUrlsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             callback_url: Option<String>,
             project_id: Option<String>,
@@ -12886,7 +13941,10 @@ pub mod resources {
                 output.push_str("v1/signupUrls");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("callbackUrl", &self.callback_url)]);
                 let req = req.query(&[("projectId", &self.project_id)]);
@@ -12927,9 +13985,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -12971,7 +14027,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

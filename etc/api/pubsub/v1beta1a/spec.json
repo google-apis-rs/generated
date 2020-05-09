@@ -7,7 +7,7 @@
   "canonicalName": "Pubsub",
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta1a",
-  "revision": "20190909",
+  "revision": "20200427",
   "title": "Cloud Pub/Sub API",
   "description": "Provides reliable, many-to-many, asynchronous messaging between applications.\n",
   "ownerDomain": "google.com",
@@ -927,7 +927,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -965,7 +965,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -1187,7 +1187,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -1225,7 +1225,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

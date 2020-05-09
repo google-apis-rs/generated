@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("blogger3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20150422")
-            .about("API for access to the data within Blogger.")
+            .version("0.1.0-20200507")
+            .about("The Blogger API provides access to posts, comments and pages of a\n    Blogger blog.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -38,166 +38,168 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: get");
         {
             let mcmd = SubCommand::with_name("get")
-                .about("Gets one blog and user info pair by blogId and userId.");
+                .about("Gets one blog and user info pair by blog id and user id.");
             blog_user_infos0 = blog_user_infos0.subcommand(mcmd);
         }
         let mut blogs0 = SubCommand::with_name("blogs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get, get_by_url and list_by_user");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one blog by ID.");
+            let mcmd = SubCommand::with_name("get").about("Gets a blog by id.");
             blogs0 = blogs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_by_url").about("Retrieve a Blog by URL.");
+            let mcmd = SubCommand::with_name("get_by_url").about("Gets a blog by url.");
             blogs0 = blogs0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_by_user")
-                .about("Retrieves a list of blogs, possibly filtered.");
+            let mcmd = SubCommand::with_name("list_by_user").about("Lists blogs by user.");
             blogs0 = blogs0.subcommand(mcmd);
         }
         let mut comments0 = SubCommand::with_name("comments")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: approve, delete, get, list, list_by_blog, mark_as_spam and remove_content");
         {
-            let mcmd = SubCommand::with_name("approve").about("Marks a comment as not spam.");
+            let mcmd = SubCommand::with_name("approve")
+                .about("Marks a comment as not spam by blog id, post id and comment id.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete a comment by ID.");
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a comment by blog id, post id and comment id.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one comment by ID.");
+            let mcmd = SubCommand::with_name("get").about("Gets a comment by id.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves the comments for a post, possibly filtered.");
+            let mcmd = SubCommand::with_name("list").about("Lists comments.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_by_blog")
-                .about("Retrieves the comments for a blog, across all posts, possibly filtered.");
+            let mcmd = SubCommand::with_name("list_by_blog").about("Lists comments by blog.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("mark_as_spam").about("Marks a comment as spam.");
+            let mcmd = SubCommand::with_name("mark_as_spam")
+                .about("Marks a comment as spam by blog id, post id and comment id.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("remove_content").about("Removes the content of a comment.");
+            let mcmd = SubCommand::with_name("remove_content")
+                .about("Removes the content of a comment by blog id, post id and comment id.");
             comments0 = comments0.subcommand(mcmd);
         }
         let mut page_views0 = SubCommand::with_name("page_views")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Retrieve pageview stats for a Blog.");
+            let mcmd = SubCommand::with_name("get").about("Gets page views by blog id.");
             page_views0 = page_views0.subcommand(mcmd);
         }
         let mut pages0 = SubCommand::with_name("pages")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, insert, list, patch, publish, revert and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete a page by ID.");
+            let mcmd =
+                SubCommand::with_name("delete").about("Deletes a page by blog id and page id.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one blog page by ID.");
+            let mcmd = SubCommand::with_name("get").about("Gets a page by blog id and page id.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Add a page.");
+            let mcmd = SubCommand::with_name("insert").about("Inserts a page.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves the pages for a blog, optionally including non-LIVE statuses.");
+            let mcmd = SubCommand::with_name("list").about("Lists pages.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Update a page. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a page.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("publish").about("Publishes a draft page.");
+            let mcmd = SubCommand::with_name("publish").about("Publishes a page.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("revert")
-                .about("Revert a published or scheduled page to draft state.");
+                .about("Reverts a published or scheduled page to draft state.");
             pages0 = pages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update a page.");
+            let mcmd =
+                SubCommand::with_name("update").about("Updates a page by blog id and page id.");
             pages0 = pages0.subcommand(mcmd);
         }
         let mut post_user_infos0 = SubCommand::with_name("post_user_infos")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one post and user info pair, by post ID and user ID. The post user info contains per-user information about the post, such as access rights, specific to the user.");
+            let mcmd = SubCommand::with_name("get")
+                .about("Gets one post and user info pair, by post_id and user_id.");
             post_user_infos0 = post_user_infos0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Retrieves a list of post and post user info pairs, possibly filtered. The post user info contains per-user information about the post, such as access rights, specific to the user.");
+            let mcmd = SubCommand::with_name("list").about("Lists post and user info pairs.");
             post_user_infos0 = post_user_infos0.subcommand(mcmd);
         }
         let mut posts0 = SubCommand::with_name("posts")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: delete, get, get_by_path, insert, list, patch, publish, revert, search and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete a post by ID.");
+            let mcmd =
+                SubCommand::with_name("delete").about("Deletes a post by blog id and post id.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Get a post by ID.");
+            let mcmd = SubCommand::with_name("get").about("Gets a post by blog id and post id");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_by_path").about("Retrieve a Post by Path.");
+            let mcmd = SubCommand::with_name("get_by_path").about("Gets a post by path.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Add a post.");
+            let mcmd = SubCommand::with_name("insert").about("Inserts a post.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves a list of posts, possibly filtered.");
+            let mcmd = SubCommand::with_name("list").about("Lists posts.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Update a post. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a post.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("publish").about("Publishes a draft post, optionally at the specific time of the given publishDate parameter.");
+            let mcmd = SubCommand::with_name("publish").about("Publishes a post.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("revert")
-                .about("Revert a published or scheduled post to draft state.");
+                .about("Reverts a published or scheduled post to draft state.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search").about("Search for a post.");
+            let mcmd = SubCommand::with_name("search")
+                .about("Searches for posts matching given query terms in the specified blog.");
             posts0 = posts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update a post.");
+            let mcmd =
+                SubCommand::with_name("update").about("Updates a post by blog id and post id.");
             posts0 = posts0.subcommand(mcmd);
         }
         let mut users0 = SubCommand::with_name("users")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets one user by ID.");
+            let mcmd = SubCommand::with_name("get").about("Gets one user by user_id.");
             users0 = users0.subcommand(mcmd);
         }
         app = app.subcommand(users0);

@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [google_service_accounts](resources/google_service_accounts/struct.GoogleServiceAccountsActions.html)\n      * [*get*](resources/google_service_accounts/struct.GetRequestBuilder.html)\n    * [transfer_jobs](resources/transfer_jobs/struct.TransferJobsActions.html)\n      * [*create*](resources/transfer_jobs/struct.CreateRequestBuilder.html), [*get*](resources/transfer_jobs/struct.GetRequestBuilder.html), [*list*](resources/transfer_jobs/struct.ListRequestBuilder.html), [*patch*](resources/transfer_jobs/struct.PatchRequestBuilder.html)\n    * [transfer_operations](resources/transfer_operations/struct.TransferOperationsActions.html)\n      * [*cancel*](resources/transfer_operations/struct.CancelRequestBuilder.html), [*delete*](resources/transfer_operations/struct.DeleteRequestBuilder.html), [*get*](resources/transfer_operations/struct.GetRequestBuilder.html), [*list*](resources/transfer_operations/struct.ListRequestBuilder.html), [*pause*](resources/transfer_operations/struct.PauseRequestBuilder.html), [*resume*](resources/transfer_operations/struct.ResumeRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [google_service_accounts](resources/google_service_accounts/struct.GoogleServiceAccountsActions.html)\n      * [*get*](resources/google_service_accounts/struct.GetRequestBuilder.html)\n    * [transfer_jobs](resources/transfer_jobs/struct.TransferJobsActions.html)\n      * [*create*](resources/transfer_jobs/struct.CreateRequestBuilder.html), [*get*](resources/transfer_jobs/struct.GetRequestBuilder.html), [*list*](resources/transfer_jobs/struct.ListRequestBuilder.html), [*patch*](resources/transfer_jobs/struct.PatchRequestBuilder.html)\n    * [transfer_operations](resources/transfer_operations/struct.TransferOperationsActions.html)\n      * [*cancel*](resources/transfer_operations/struct.CancelRequestBuilder.html), [*get*](resources/transfer_operations/struct.GetRequestBuilder.html), [*list*](resources/transfer_operations/struct.ListRequestBuilder.html), [*pause*](resources/transfer_operations/struct.PauseRequestBuilder.html), [*resume*](resources/transfer_operations/struct.ResumeRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -58,7 +62,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub aws_access_key: ::std::option::Option<crate::schemas::AwsAccessKey>,
-        #[doc = "Required. S3 Bucket name (see\n[Creating a\nbucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html))."]
+        #[doc = "Required. S3 Bucket name (see\n[Creating a\nbucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html))."]
         #[serde(
             rename = "bucketName",
             default,
@@ -72,6 +76,82 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for AwsS3Data {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AzureBlobStorageData {
+        #[doc = "Required. Credentials used to authenticate API requests to Azure."]
+        #[serde(
+            rename = "azureCredentials",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub azure_credentials: ::std::option::Option<crate::schemas::AzureCredentials>,
+        #[doc = "Required. The container to transfer from the Azure Storage account."]
+        #[serde(
+            rename = "container",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub container: ::std::option::Option<String>,
+        #[doc = "Required. The name of the Azure Storage account."]
+        #[serde(
+            rename = "storageAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub storage_account: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for AzureBlobStorageData {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AzureBlobStorageData {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct AzureCredentials {
+        #[doc = "Required. Azure shared access signature. (see\n[Grant limited access to Azure Storage resources using shared access\nsignatures\n(SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview))."]
+        #[serde(
+            rename = "sasToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sas_token: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for AzureCredentials {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AzureCredentials {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -545,29 +625,266 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct NotificationConfig {
+        #[doc = "Event types for which a notification is desired. If empty, send\nnotifications for all event types."]
+        #[serde(
+            rename = "eventTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub event_types:
+            ::std::option::Option<Vec<crate::schemas::NotificationConfigEventTypesItems>>,
+        #[doc = "Required. The desired format of the notification message payloads."]
+        #[serde(
+            rename = "payloadFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub payload_format: ::std::option::Option<crate::schemas::NotificationConfigPayloadFormat>,
+        #[doc = "Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish\nnotifications. Must be of the format: `projects/{project}/topics/{topic}`.\nNot matching this format will result in an\nINVALID_ARGUMENT error."]
+        #[serde(
+            rename = "pubsubTopic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pubsub_topic: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for NotificationConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for NotificationConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum NotificationConfigEventTypesItems {
+        EventTypeUnspecified,
+        TransferOperationAborted,
+        TransferOperationFailed,
+        TransferOperationSuccess,
+    }
+    impl NotificationConfigEventTypesItems {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                NotificationConfigEventTypesItems::EventTypeUnspecified => "EVENT_TYPE_UNSPECIFIED",
+                NotificationConfigEventTypesItems::TransferOperationAborted => {
+                    "TRANSFER_OPERATION_ABORTED"
+                }
+                NotificationConfigEventTypesItems::TransferOperationFailed => {
+                    "TRANSFER_OPERATION_FAILED"
+                }
+                NotificationConfigEventTypesItems::TransferOperationSuccess => {
+                    "TRANSFER_OPERATION_SUCCESS"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NotificationConfigEventTypesItems {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NotificationConfigEventTypesItems {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NotificationConfigEventTypesItems, ()> {
+            Ok(match s {
+                "EVENT_TYPE_UNSPECIFIED" => NotificationConfigEventTypesItems::EventTypeUnspecified,
+                "TRANSFER_OPERATION_ABORTED" => {
+                    NotificationConfigEventTypesItems::TransferOperationAborted
+                }
+                "TRANSFER_OPERATION_FAILED" => {
+                    NotificationConfigEventTypesItems::TransferOperationFailed
+                }
+                "TRANSFER_OPERATION_SUCCESS" => {
+                    NotificationConfigEventTypesItems::TransferOperationSuccess
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for NotificationConfigEventTypesItems {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for NotificationConfigEventTypesItems {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for NotificationConfigEventTypesItems {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EVENT_TYPE_UNSPECIFIED" => NotificationConfigEventTypesItems::EventTypeUnspecified,
+                "TRANSFER_OPERATION_ABORTED" => {
+                    NotificationConfigEventTypesItems::TransferOperationAborted
+                }
+                "TRANSFER_OPERATION_FAILED" => {
+                    NotificationConfigEventTypesItems::TransferOperationFailed
+                }
+                "TRANSFER_OPERATION_SUCCESS" => {
+                    NotificationConfigEventTypesItems::TransferOperationSuccess
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for NotificationConfigEventTypesItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for NotificationConfigEventTypesItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum NotificationConfigPayloadFormat {
+        #[doc = "`TransferOperation` is [formatted as a JSON\nresponse](https://developers.google.com/protocol-buffers/docs/proto3#json),\nin application/json."]
+        Json,
+        #[doc = "No payload is included with the notification."]
+        None,
+        #[doc = "Illegal value, to avoid allowing a default."]
+        PayloadFormatUnspecified,
+    }
+    impl NotificationConfigPayloadFormat {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                NotificationConfigPayloadFormat::Json => "JSON",
+                NotificationConfigPayloadFormat::None => "NONE",
+                NotificationConfigPayloadFormat::PayloadFormatUnspecified => {
+                    "PAYLOAD_FORMAT_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for NotificationConfigPayloadFormat {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for NotificationConfigPayloadFormat {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<NotificationConfigPayloadFormat, ()> {
+            Ok(match s {
+                "JSON" => NotificationConfigPayloadFormat::Json,
+                "NONE" => NotificationConfigPayloadFormat::None,
+                "PAYLOAD_FORMAT_UNSPECIFIED" => {
+                    NotificationConfigPayloadFormat::PayloadFormatUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for NotificationConfigPayloadFormat {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for NotificationConfigPayloadFormat {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for NotificationConfigPayloadFormat {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "JSON" => NotificationConfigPayloadFormat::Json,
+                "NONE" => NotificationConfigPayloadFormat::None,
+                "PAYLOAD_FORMAT_UNSPECIFIED" => {
+                    NotificationConfigPayloadFormat::PayloadFormatUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for NotificationConfigPayloadFormat {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for NotificationConfigPayloadFormat {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ObjectConditions {
-        #[doc = "`excludePrefixes` must follow the requirements described for\n`includePrefixes`.\n\nThe max size of `excludePrefixes` is 1000."]
+        #[doc = "`exclude_prefixes` must follow the requirements described for\ninclude_prefixes.\n\nThe max size of `exclude_prefixes` is 1000."]
         #[serde(
             rename = "excludePrefixes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub exclude_prefixes: ::std::option::Option<Vec<String>>,
-        #[doc = "If `includePrefixes` is specified, objects that satisfy the object\nconditions must have names that start with one of the `includePrefixes`\nand that do not start with any of the `excludePrefixes`. If\n`includePrefixes` is not specified, all objects except those that have\nnames starting with one of the `excludePrefixes` must satisfy the object\nconditions.\n\nRequirements:\n\n* Each include-prefix and exclude-prefix can contain any sequence of\n  Unicode characters, of max length 1024 bytes when UTF8-encoded, and\n  must not contain Carriage Return or Line Feed characters.  Wildcard\n  matching and regular expression matching are not supported.\n\n* Each include-prefix and exclude-prefix must omit the leading slash.\n  For example, to include the `requests.gz` object in a transfer from\n  `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include\n  prefix as `logs/y=2015/requests.gz`.\n\n* None of the include-prefix or the exclude-prefix values can be empty,\n  if specified.\n\n* Each include-prefix must include a distinct portion of the object\n  namespace, i.e., no include-prefix may be a prefix of another\n  include-prefix.\n\n* Each exclude-prefix must exclude a distinct portion of the object\n  namespace, i.e., no exclude-prefix may be a prefix of another\n  exclude-prefix.\n\n* If `includePrefixes` is specified, then each exclude-prefix must start\n  with the value of a path explicitly included by `includePrefixes`.\n\nThe max size of `includePrefixes` is 1000."]
+        #[doc = "If `include_prefixes` is specified, objects that satisfy the object\nconditions must have names that start with one of the `include_prefixes`\nand that do not start with any of the exclude_prefixes. If\n`include_prefixes` is not specified, all objects except those that have\nnames starting with one of the `exclude_prefixes` must satisfy the object\nconditions.\n\nRequirements:\n\n* Each include-prefix and exclude-prefix can contain any sequence of\n  Unicode characters, to a max length of 1024 bytes when UTF8-encoded,\n  and must not contain Carriage Return or Line Feed characters.  Wildcard\n  matching and regular expression matching are not supported.\n\n* Each include-prefix and exclude-prefix must omit the leading slash.\n  For example, to include the `requests.gz` object in a transfer from\n  `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include\n  prefix as `logs/y=2015/requests.gz`.\n\n* None of the include-prefix or the exclude-prefix values can be empty,\n  if specified.\n\n* Each include-prefix must include a distinct portion of the object\n  namespace. No include-prefix may be a prefix of another\n  include-prefix.\n\n* Each exclude-prefix must exclude a distinct portion of the object\n  namespace. No exclude-prefix may be a prefix of another\n  exclude-prefix.\n\n* If `include_prefixes` is specified, then each exclude-prefix must start\n  with the value of a path explicitly included by `include_prefixes`.\n\nThe max size of `include_prefixes` is 1000."]
         #[serde(
             rename = "includePrefixes",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub include_prefixes: ::std::option::Option<Vec<String>>,
-        #[doc = "If specified, only objects with a `lastModificationTime` on or after\n`NOW` - `maxTimeElapsedSinceLastModification` and objects that don't have\na `lastModificationTime` are transferred.\n\nNote that, for each `TransferOperation` started by this `TransferJob`,\n`NOW` refers to the `start_time` of the 'TransferOperation`. Also, `lastModificationTime`refers to the time of the last change to the object's content or metadata - specifically, this would be the`updated`property of Cloud Storage objects and the`LastModified` field of S3\nobjects."]
+        #[doc = "If specified, only objects with a \"last modification time\" before this\ntimestamp and objects that don't have a \"last modification time\" will be\ntransferred."]
+        #[serde(
+            rename = "lastModifiedBefore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub last_modified_before: ::std::option::Option<String>,
+        #[doc = "If specified, only objects with a \"last modification time\" on or after\nthis timestamp and objects that don't have a \"last modification time\" are\ntransferred.\n\nThe `last_modified_since` and `last_modified_before` fields can be used\ntogether for chunked data processing. For example, consider a script that\nprocesses each day's worth of data at a time. For that you'd set each\nof the fields as follows:\n\n* `last_modified_since` to the start of the day\n\n* `last_modified_before` to the end of the day"]
+        #[serde(
+            rename = "lastModifiedSince",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub last_modified_since: ::std::option::Option<String>,
+        #[doc = "If specified, only objects with a \"last modification time\" on or after\n`NOW` - `max_time_elapsed_since_last_modification` and objects that don't\nhave a \"last modification time\" are transferred.\n\nFor each TransferOperation started by this TransferJob,\n`NOW` refers to the start_time of the\n`TransferOperation`."]
         #[serde(
             rename = "maxTimeElapsedSinceLastModification",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_time_elapsed_since_last_modification: ::std::option::Option<String>,
-        #[doc = "If specified, only objects with a `lastModificationTime` before\n`NOW` - `minTimeElapsedSinceLastModification` and objects that don't have a\n`lastModificationTime` are transferred.\n\nNote that, for each `TransferOperation` started by this `TransferJob`,\n`NOW` refers to the `start_time` of the 'TransferOperation`. Also, `lastModificationTime`refers to the time of the last change to the object's content or metadata - specifically, this would be the`updated`property of Cloud Storage objects and the`LastModified` field of S3\nobjects."]
+        #[doc = "If specified, only objects with a \"last modification time\" before\n`NOW` - `min_time_elapsed_since_last_modification` and objects that don't\nhave a \"last modification time\" are transferred.\n\nFor each TransferOperation started by this TransferJob, `NOW`\nrefers to the start_time of the\n`TransferOperation`."]
         #[serde(
             rename = "minTimeElapsedSinceLastModification",
             default,
@@ -696,21 +1013,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Schedule {
-        #[doc = "The last day a transfer runs. Date boundaries are determined relative to\nUTC time. A job will run once per 24 hours within the following guidelines:\n\n* If `scheduleEndDate` and `scheduleStartDate` are the same and in the\n  future relative to UTC, the transfer is executed only one time.\n* If `scheduleEndDate` is later than `scheduleStartDate` and\n  `scheduleEndDate` is in the future relative to UTC, the job will\n  run each day at `startTimeOfDay` through `scheduleEndDate`."]
+        #[doc = "The last day a transfer runs. Date boundaries are determined relative to\nUTC time. A job will run once per 24 hours within the following guidelines:\n\n* If `schedule_end_date` and schedule_start_date are the same and in\n  the future relative to UTC, the transfer is executed only one time.\n* If `schedule_end_date` is later than `schedule_start_date`  and\n  `schedule_end_date` is in the future relative to UTC, the job will\n  run each day at start_time_of_day through `schedule_end_date`."]
         #[serde(
             rename = "scheduleEndDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub schedule_end_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "Required. The start date of a transfer. Date boundaries are determined\nrelative to UTC time. If `scheduleStartDate` and `startTimeOfDay` are in\nthe past relative to the job's creation time, the transfer starts the day\nafter you schedule the transfer request.\n\nNote: When starting jobs at or near midnight UTC it is possible that\na job will start later than expected. For example, if you send an outbound\nrequest on June 1 one millisecond prior to midnight UTC and the Storage\nTransfer Service server receives the request on June 2, then it will create\na TransferJob with `scheduleStartDate` set to June 2 and a `startTimeOfDay`\nset to midnight UTC. The first scheduled TransferOperation will take place\non June 3 at midnight UTC."]
+        #[doc = "Required. The start date of a transfer. Date boundaries are determined\nrelative to UTC time. If `schedule_start_date` and start_time_of_day\nare in the past relative to the job's creation time, the transfer starts\nthe day after you schedule the transfer request.\n\n**Note:** When starting jobs at or near midnight UTC it is possible that\na job will start later than expected. For example, if you send an outbound\nrequest on June 1 one millisecond prior to midnight UTC and the Storage\nTransfer Service server receives the request on June 2, then it will create\na TransferJob with `schedule_start_date` set to June 2 and a\n`start_time_of_day` set to midnight UTC. The first scheduled\nTransferOperation will take place on June 3 at midnight UTC."]
         #[serde(
             rename = "scheduleStartDate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub schedule_start_date: ::std::option::Option<crate::schemas::Date>,
-        #[doc = "The time in UTC that a transfer job is scheduled to run. Transfers may\nstart later than this time.\n\nIf `startTimeOfDay` is not specified:\n\n* One-time transfers run immediately.\n* Recurring transfers run immediately, and each day at midnight UTC,\n  through `scheduleEndDate`.\n\nIf `startTimeOfDay` is specified:\n\n* One-time transfers run at the specified time.\n* Recurring transfers run at the specified time each day, through\n  `scheduleEndDate`."]
+        #[doc = "The time in UTC that a transfer job is scheduled to run. Transfers may\nstart later than this time.\n\nIf `start_time_of_day` is not specified:\n\n* One-time transfers run immediately.\n* Recurring transfers run immediately, and each day at midnight UTC,\n  through schedule_end_date.\n\nIf `start_time_of_day` is specified:\n\n* One-time transfers run at the specified time.\n* Recurring transfers run at the specified time each day, through\n  `schedule_end_date`."]
         #[serde(
             rename = "startTimeOfDay",
             default,
@@ -1008,13 +1325,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub last_modification_time: ::std::option::Option<String>,
-        #[doc = "A globally unique name assigned by Storage Transfer Service when the\njob is created. This field should be left empty in requests to create a new\ntransfer job; otherwise, the requests result in an `INVALID_ARGUMENT`\nerror."]
+        #[doc = "A unique name (within the transfer project) assigned when the job is\ncreated.  If this field is empty in a CreateTransferJobRequest, Storage\nTransfer Service will assign a unique name. Otherwise, the specified name\nis used as the unique name for this job.\n\nIf the specified name is in use by a job, the creation request fails with\nan ALREADY_EXISTS error.\n\nThis name must start with `\"transferJobs/\"` prefix and end with a letter or\na number, and should be no more than 128 characters.\nExample: `\"transferJobs/[A-Za-z0-9-._~]*[A-Za-z0-9]$\"`\n\nInvalid job names will fail with an\nINVALID_ARGUMENT error."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "Notification configuration."]
+        #[serde(
+            rename = "notificationConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
         #[doc = "The ID of the Google Cloud Platform Project that owns the job."]
         #[serde(
             rename = "projectId",
@@ -1029,7 +1353,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub schedule: ::std::option::Option<crate::schemas::Schedule>,
-        #[doc = "Status of the job. This value MUST be specified for\n`CreateTransferJobRequests`.\n\nNOTE: The effect of the new job status takes place during a subsequent job\nrun. For example, if you change the job status from `ENABLED` to\n`DISABLED`, and an operation spawned by the transfer is running, the status\nchange would not affect the current operation."]
+        #[doc = "Status of the job. This value MUST be specified for\n`CreateTransferJobRequests`.\n\n**Note:** The effect of the new job status takes place during a subsequent\njob run. For example, if you change the job status from\nENABLED to DISABLED, and an operation\nspawned by the transfer is running, the status change would not affect the\ncurrent operation."]
         #[serde(
             rename = "status",
             default,
@@ -1176,6 +1500,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "Notification configuration."]
+        #[serde(
+            rename = "notificationConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
         #[doc = "The ID of the Google Cloud Platform Project that owns the operation."]
         #[serde(
             rename = "projectId",
@@ -1232,6 +1563,8 @@ pub mod schemas {
         InProgress,
         #[doc = "Paused."]
         Paused,
+        #[doc = "Temporarily delayed by the system. No user action is required."]
+        Queued,
         #[doc = "Zero is an illegal value."]
         StatusUnspecified,
         #[doc = "Completed successfully."]
@@ -1244,6 +1577,7 @@ pub mod schemas {
                 TransferOperationStatus::Failed => "FAILED",
                 TransferOperationStatus::InProgress => "IN_PROGRESS",
                 TransferOperationStatus::Paused => "PAUSED",
+                TransferOperationStatus::Queued => "QUEUED",
                 TransferOperationStatus::StatusUnspecified => "STATUS_UNSPECIFIED",
                 TransferOperationStatus::Success => "SUCCESS",
             }
@@ -1262,6 +1596,7 @@ pub mod schemas {
                 "FAILED" => TransferOperationStatus::Failed,
                 "IN_PROGRESS" => TransferOperationStatus::InProgress,
                 "PAUSED" => TransferOperationStatus::Paused,
+                "QUEUED" => TransferOperationStatus::Queued,
                 "STATUS_UNSPECIFIED" => TransferOperationStatus::StatusUnspecified,
                 "SUCCESS" => TransferOperationStatus::Success,
                 _ => return Err(()),
@@ -1292,6 +1627,7 @@ pub mod schemas {
                 "FAILED" => TransferOperationStatus::Failed,
                 "IN_PROGRESS" => TransferOperationStatus::InProgress,
                 "PAUSED" => TransferOperationStatus::Paused,
+                "QUEUED" => TransferOperationStatus::Queued,
                 "STATUS_UNSPECIFIED" => TransferOperationStatus::StatusUnspecified,
                 "SUCCESS" => TransferOperationStatus::Success,
                 _ => {
@@ -1326,14 +1662,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TransferOptions {
-        #[doc = "Whether objects should be deleted from the source after they are\ntransferred to the sink.  Note that this option and\n`deleteObjectsUniqueInSink` are mutually exclusive."]
+        #[doc = "Whether objects should be deleted from the source after they are\ntransferred to the sink.\n\n**Note:** This option and delete_objects_unique_in_sink are mutually\nexclusive."]
         #[serde(
             rename = "deleteObjectsFromSourceAfterTransfer",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub delete_objects_from_source_after_transfer: ::std::option::Option<bool>,
-        #[doc = "Whether objects that exist only in the sink should be deleted.  Note that\nthis option and `deleteObjectsFromSourceAfterTransfer` are mutually\nexclusive."]
+        #[doc = "Whether objects that exist only in the sink should be deleted.\n\n**Note:** This option and delete_objects_from_source_after_transfer are\nmutually exclusive."]
         #[serde(
             rename = "deleteObjectsUniqueInSink",
             default,
@@ -1378,6 +1714,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub aws_s3_data_source: ::std::option::Option<crate::schemas::AwsS3Data>,
+        #[doc = "An Azure Blob Storage data source."]
+        #[serde(
+            rename = "azureBlobStorageDataSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub azure_blob_storage_data_source:
+            ::std::option::Option<crate::schemas::AzureBlobStorageData>,
         #[doc = "A Cloud Storage data sink."]
         #[serde(
             rename = "gcsDataSink",
@@ -1399,14 +1743,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http_data_source: ::std::option::Option<crate::schemas::HttpData>,
-        #[doc = "Only objects that satisfy these object conditions are included in the set\nof data source and data sink objects.  Object conditions based on\nobjects' `lastModificationTime` do not exclude objects in a data sink."]
+        #[doc = "Only objects that satisfy these object conditions are included in the set\nof data source and data sink objects.  Object conditions based on\nobjects' \"last modification time\" do not exclude objects in a data sink."]
         #[serde(
             rename = "objectConditions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub object_conditions: ::std::option::Option<crate::schemas::ObjectConditions>,
-        #[doc = "If the option `deleteObjectsUniqueInSink` is `true`, object conditions\nbased on objects' `lastModificationTime` are ignored and do not exclude\nobjects in a data source or a data sink."]
+        #[doc = "If the option\ndelete_objects_unique_in_sink\nis `true`, object conditions based on objects' \"last modification time\" are\nignored and do not exclude objects in a data source or a data sink."]
         #[serde(
             rename = "transferOptions",
             default,
@@ -1444,14 +1788,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub project_id: ::std::option::Option<String>,
-        #[doc = "Required. The job to update. `transferJob` is expected to specify only\nthree fields: `description`, `transferSpec`, and `status`.  An\nUpdateTransferJobRequest that specifies other fields will be rejected with\nan error `INVALID_ARGUMENT`."]
+        #[doc = "Required. The job to update. `transferJob` is expected to specify only\nfour fields: description,\ntransfer_spec,\nnotification_config, and\nstatus.  An `UpdateTransferJobRequest` that specifies\nother fields will be rejected with the error\nINVALID_ARGUMENT."]
         #[serde(
             rename = "transferJob",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transfer_job: ::std::option::Option<crate::schemas::TransferJob>,
-        #[doc = "The field mask of the fields in `transferJob` that are to be updated in\nthis request.  Fields in `transferJob` that can be updated are:\n`description`, `transferSpec`, and `status`.  To update the `transferSpec`\nof the job, a complete transfer specification has to be provided. An\nincomplete specification which misses any required fields will be rejected\nwith the error `INVALID_ARGUMENT`."]
+        #[doc = "The field mask of the fields in `transferJob` that are to be updated in\nthis request.  Fields in `transferJob` that can be updated are:\ndescription,\ntransfer_spec,\nnotification_config, and\nstatus.  To update the `transfer_spec` of the job, a\ncomplete transfer specification must be provided. An incomplete\nspecification missing any required fields will be rejected with the error\nINVALID_ARGUMENT."]
         #[serde(
             rename = "updateTransferJobFieldMask",
             default,
@@ -1620,7 +1964,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1628,8 +1972,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1666,7 +2022,7 @@ pub mod resources {
     pub mod google_service_accounts {
         pub mod params {}
         pub struct GoogleServiceAccountsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> GoogleServiceAccountsActions<'a> {
@@ -1696,7 +2052,7 @@ pub mod resources {
         #[doc = "Created via [GoogleServiceAccountsActions::get()](struct.GoogleServiceAccountsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project_id: String,
             access_token: Option<String>,
@@ -1825,7 +2181,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1850,7 +2209,7 @@ pub mod resources {
     pub mod transfer_jobs {
         pub mod params {}
         pub struct TransferJobsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TransferJobsActions<'a> {
@@ -1917,7 +2276,7 @@ pub mod resources {
                     page_token: None,
                 }
             }
-            #[doc = "Updates a transfer job. Updating a job's transfer spec does not affect\ntransfer operations that are running already. Updating the scheduling\nof a job is not allowed."]
+            #[doc = "Updates a transfer job. Updating a job's transfer spec does not affect\ntransfer operations that are running already. Updating a job's schedule\nis not allowed.\n\n**Note:** The job's status field can be modified\nusing this RPC (for example, to set a job's status to\nDELETED,\nDISABLED, or\nENABLED)."]
             pub fn patch(
                 &self,
                 request: crate::schemas::UpdateTransferJobRequest,
@@ -1945,7 +2304,7 @@ pub mod resources {
         #[doc = "Created via [TransferJobsActions::create()](struct.TransferJobsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TransferJob,
             access_token: Option<String>,
@@ -2068,7 +2427,10 @@ pub mod resources {
                 output.push_str("v1/transferJobs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2092,7 +2454,7 @@ pub mod resources {
         #[doc = "Created via [TransferJobsActions::get()](struct.TransferJobsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             job_name: String,
             project_id: Option<String>,
@@ -2227,7 +2589,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("projectId", &self.project_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2252,7 +2617,7 @@ pub mod resources {
         #[doc = "Created via [TransferJobsActions::list()](struct.TransferJobsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             filter: Option<String>,
             page_size: Option<i32>,
@@ -2270,7 +2635,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Required. A list of query parameters specified as JSON text in the form of:\n{\"project_id\":\"my_project_id\",\n\"job_names\":[\"jobid1\",\"jobid2\",...],\n\"job_statuses\":[\"status1\",\"status2\",...]}.\nSince `job_names` and `job_statuses` support multiple values, their values\nmust be specified with array notation. `project_id` is required.\n`job_names` and `job_statuses` are optional.  The valid values for\n`job_statuses` are case-insensitive: `ENABLED`, `DISABLED`, and `DELETED`."]
+            #[doc = "Required. A list of query parameters specified as JSON text in the form of:\n{\"project<span>_</span>id\":\"my_project_id\",\n\"job_names\":[\"jobid1\",\"jobid2\",...],\n\"job_statuses\":[\"status1\",\"status2\",...]}.\nSince `job_names` and `job_statuses` support multiple values, their values\nmust be specified with array notation. `project`<span>`_`</span>`id` is\nrequired.  `job_names` and `job_statuses` are optional.  The valid values\nfor `job_statuses` are case-insensitive:\nENABLED,\nDISABLED, and\nDELETED."]
             pub fn filter(mut self, value: impl Into<String>) -> Self {
                 self.filter = Some(value.into());
                 self
@@ -2489,7 +2854,10 @@ pub mod resources {
                 output.push_str("v1/transferJobs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2527,7 +2895,7 @@ pub mod resources {
         #[doc = "Created via [TransferJobsActions::patch()](struct.TransferJobsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UpdateTransferJobRequest,
             job_name: String,
@@ -2658,7 +3026,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2683,7 +3054,7 @@ pub mod resources {
     pub mod transfer_operations {
         pub mod params {}
         pub struct TransferOperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TransferOperationsActions<'a> {
@@ -2693,25 +3064,6 @@ pub mod resources {
             #[doc = "Cancels a transfer. Use the get method to check whether the cancellation succeeded or whether the operation completed despite cancellation."]
             pub fn cancel(&self, name: impl Into<String>) -> CancelRequestBuilder {
                 CancelRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    access_token: None,
-                    alt: None,
-                    callback: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    upload_protocol: None,
-                    upload_type: None,
-                    xgafv: None,
-                    name: name.into(),
-                }
-            }
-            #[doc = "This method is not supported and the server returns `UNIMPLEMENTED`."]
-            pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
-                DeleteRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     access_token: None,
@@ -2821,7 +3173,7 @@ pub mod resources {
         #[doc = "Created via [TransferOperationsActions::cancel()](struct.TransferOperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -2949,159 +3301,11 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("access_token", &self.access_token)]);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("callback", &self.callback)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
-                let req = req.query(&[("uploadType", &self.upload_type)]);
-                let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [TransferOperationsActions::delete()](struct.TransferOperationsActions.html#method.delete)"]
-        #[derive(Debug, Clone)]
-        pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            name: String,
-            access_token: Option<String>,
-            alt: Option<crate::params::Alt>,
-            callback: Option<String>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            upload_protocol: Option<String>,
-            upload_type: Option<String>,
-            xgafv: Option<crate::params::Xgafv>,
-        }
-        impl<'a> DeleteRequestBuilder<'a> {
-            #[doc = "OAuth access token."]
-            pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                self.access_token = Some(value.into());
-                self
-            }
-            #[doc = "JSONP"]
-            pub fn callback(mut self, value: impl Into<String>) -> Self {
-                self.callback = Some(value.into());
-                self
-            }
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
-            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
-                self.upload_protocol = Some(value.into());
-                self
-            }
-            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
-            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
-                self.upload_type = Some(value.into());
-                self
-            }
-            #[doc = "V1 error format."]
-            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
-                self.xgafv = Some(value);
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::Empty, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Empty, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://storagetransfer.googleapis.com/".to_owned();
-                output.push_str("v1/");
-                {
-                    let var_as_str = &self.name;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::RESERVED,
-                    ));
-                }
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("callback", &self.callback)]);
@@ -3124,7 +3328,7 @@ pub mod resources {
         #[doc = "Created via [TransferOperationsActions::get()](struct.TransferOperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3253,7 +3457,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3277,7 +3484,7 @@ pub mod resources {
         #[doc = "Created via [TransferOperationsActions::list()](struct.TransferOperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             filter: Option<String>,
@@ -3296,7 +3503,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Required. A list of query parameters specified as JSON text in the form of: {\"project_id\":\"my_project_id\",\n\"job_names\":[\"jobid1\",\"jobid2\",...],\n\"operation_names\":[\"opid1\",\"opid2\",...],\n\"transfer_statuses\":[\"status1\",\"status2\",...]}.\nSince `job_names`, `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array notation. `project_id` is required. `job_names`, `operation_names`, and `transfer_statuses` are optional. The valid values for `transfer_statuses` are case-insensitive: `IN_PROGRESS`, `PAUSED`, `SUCCESS`, `FAILED`, and `ABORTED`."]
+            #[doc = "Required. A list of query parameters specified as JSON text in the form of: {\"project<span>_</span>id\":\"my_project_id\",\n\"job_names\":[\"jobid1\",\"jobid2\",...],\n\"operation_names\":[\"opid1\",\"opid2\",...],\n\"transfer_statuses\":[\"status1\",\"status2\",...]}.\nSince `job_names`, `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array notation. `project`<span>`_`</span>`id` is required. `job_names`, `operation_names`, and `transfer_statuses` are optional. The valid values for `transfer_statuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED."]
             pub fn filter(mut self, value: impl Into<String>) -> Self {
                 self.filter = Some(value.into());
                 self
@@ -3522,7 +3729,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3560,7 +3770,7 @@ pub mod resources {
         #[doc = "Created via [TransferOperationsActions::pause()](struct.TransferOperationsActions.html#method.pause)"]
         #[derive(Debug, Clone)]
         pub struct PauseRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::PauseTransferOperationRequest,
             name: String,
@@ -3690,7 +3900,10 @@ pub mod resources {
                 output.push_str(":pause");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3714,7 +3927,7 @@ pub mod resources {
         #[doc = "Created via [TransferOperationsActions::resume()](struct.TransferOperationsActions.html#method.resume)"]
         #[derive(Debug, Clone)]
         pub struct ResumeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ResumeTransferOperationRequest,
             name: String,
@@ -3844,7 +4057,10 @@ pub mod resources {
                 output.push_str(":resume");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3883,9 +4099,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3927,7 +4141,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

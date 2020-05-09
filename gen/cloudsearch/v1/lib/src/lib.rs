@@ -1,4 +1,27 @@
-#![doc = "# Resources and Methods\n    * [debug](resources/debug/struct.DebugActions.html)\n      * [datasources](resources/debug/datasources/struct.DatasourcesActions.html)\n        * [items](resources/debug/datasources/items/struct.ItemsActions.html)\n          * [*checkAccess*](resources/debug/datasources/items/struct.CheckAccessRequestBuilder.html), [*searchByViewUrl*](resources/debug/datasources/items/struct.SearchByViewUrlRequestBuilder.html)\n          * [unmappedids](resources/debug/datasources/items/unmappedids/struct.UnmappedidsActions.html)\n            * [*list*](resources/debug/datasources/items/unmappedids/struct.ListRequestBuilder.html)\n      * [identitysources](resources/debug/identitysources/struct.IdentitysourcesActions.html)\n        * [items](resources/debug/identitysources/items/struct.ItemsActions.html)\n          * [*listForunmappedidentity*](resources/debug/identitysources/items/struct.ListForunmappedidentityRequestBuilder.html)\n        * [unmappedids](resources/debug/identitysources/unmappedids/struct.UnmappedidsActions.html)\n          * [*list*](resources/debug/identitysources/unmappedids/struct.ListRequestBuilder.html)\n    * [indexing](resources/indexing/struct.IndexingActions.html)\n      * [datasources](resources/indexing/datasources/struct.DatasourcesActions.html)\n        * [*deleteSchema*](resources/indexing/datasources/struct.DeleteSchemaRequestBuilder.html), [*getSchema*](resources/indexing/datasources/struct.GetSchemaRequestBuilder.html), [*updateSchema*](resources/indexing/datasources/struct.UpdateSchemaRequestBuilder.html)\n        * [items](resources/indexing/datasources/items/struct.ItemsActions.html)\n          * [*delete*](resources/indexing/datasources/items/struct.DeleteRequestBuilder.html), [*deleteQueueItems*](resources/indexing/datasources/items/struct.DeleteQueueItemsRequestBuilder.html), [*get*](resources/indexing/datasources/items/struct.GetRequestBuilder.html), [*index*](resources/indexing/datasources/items/struct.IndexRequestBuilder.html), [*list*](resources/indexing/datasources/items/struct.ListRequestBuilder.html), [*poll*](resources/indexing/datasources/items/struct.PollRequestBuilder.html), [*push*](resources/indexing/datasources/items/struct.PushRequestBuilder.html), [*unreserve*](resources/indexing/datasources/items/struct.UnreserveRequestBuilder.html), [*upload*](resources/indexing/datasources/items/struct.UploadRequestBuilder.html)\n    * [media](resources/media/struct.MediaActions.html)\n      * [*upload*](resources/media/struct.UploadRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html)\n    * [query](resources/query/struct.QueryActions.html)\n      * [*search*](resources/query/struct.SearchRequestBuilder.html), [*suggest*](resources/query/struct.SuggestRequestBuilder.html)\n      * [sources](resources/query/sources/struct.SourcesActions.html)\n        * [*list*](resources/query/sources/struct.ListRequestBuilder.html)\n    * [settings](resources/settings/struct.SettingsActions.html)\n      * [datasources](resources/settings/datasources/struct.DatasourcesActions.html)\n        * [*create*](resources/settings/datasources/struct.CreateRequestBuilder.html), [*delete*](resources/settings/datasources/struct.DeleteRequestBuilder.html), [*get*](resources/settings/datasources/struct.GetRequestBuilder.html), [*list*](resources/settings/datasources/struct.ListRequestBuilder.html), [*update*](resources/settings/datasources/struct.UpdateRequestBuilder.html)\n      * [searchapplications](resources/settings/searchapplications/struct.SearchapplicationsActions.html)\n        * [*create*](resources/settings/searchapplications/struct.CreateRequestBuilder.html), [*delete*](resources/settings/searchapplications/struct.DeleteRequestBuilder.html), [*get*](resources/settings/searchapplications/struct.GetRequestBuilder.html), [*list*](resources/settings/searchapplications/struct.ListRequestBuilder.html), [*reset*](resources/settings/searchapplications/struct.ResetRequestBuilder.html), [*update*](resources/settings/searchapplications/struct.UpdateRequestBuilder.html)\n    * [stats](resources/stats/struct.StatsActions.html)\n      * [*getIndex*](resources/stats/struct.GetIndexRequestBuilder.html)\n      * [index](resources/stats/index/struct.IndexActions.html)\n        * [datasources](resources/stats/index/datasources/struct.DatasourcesActions.html)\n          * [*get*](resources/stats/index/datasources/struct.GetRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [debug](resources/debug/struct.DebugActions.html)\n      * [datasources](resources/debug/datasources/struct.DatasourcesActions.html)\n        * [items](resources/debug/datasources/items/struct.ItemsActions.html)\n          * [*checkAccess*](resources/debug/datasources/items/struct.CheckAccessRequestBuilder.html), [*searchByViewUrl*](resources/debug/datasources/items/struct.SearchByViewUrlRequestBuilder.html)\n          * [unmappedids](resources/debug/datasources/items/unmappedids/struct.UnmappedidsActions.html)\n            * [*list*](resources/debug/datasources/items/unmappedids/struct.ListRequestBuilder.html)\n      * [identitysources](resources/debug/identitysources/struct.IdentitysourcesActions.html)\n        * [items](resources/debug/identitysources/items/struct.ItemsActions.html)\n          * [*listForunmappedidentity*](resources/debug/identitysources/items/struct.ListForunmappedidentityRequestBuilder.html)\n        * [unmappedids](resources/debug/identitysources/unmappedids/struct.UnmappedidsActions.html)\n          * [*list*](resources/debug/identitysources/unmappedids/struct.ListRequestBuilder.html)\n    * [indexing](resources/indexing/struct.IndexingActions.html)\n      * [datasources](resources/indexing/datasources/struct.DatasourcesActions.html)\n        * [*deleteSchema*](resources/indexing/datasources/struct.DeleteSchemaRequestBuilder.html), [*getSchema*](resources/indexing/datasources/struct.GetSchemaRequestBuilder.html), [*updateSchema*](resources/indexing/datasources/struct.UpdateSchemaRequestBuilder.html)\n        * [items](resources/indexing/datasources/items/struct.ItemsActions.html)\n          * [*delete*](resources/indexing/datasources/items/struct.DeleteRequestBuilder.html), [*deleteQueueItems*](resources/indexing/datasources/items/struct.DeleteQueueItemsRequestBuilder.html), [*get*](resources/indexing/datasources/items/struct.GetRequestBuilder.html), [*index*](resources/indexing/datasources/items/struct.IndexRequestBuilder.html), [*list*](resources/indexing/datasources/items/struct.ListRequestBuilder.html), [*poll*](resources/indexing/datasources/items/struct.PollRequestBuilder.html), [*push*](resources/indexing/datasources/items/struct.PushRequestBuilder.html), [*unreserve*](resources/indexing/datasources/items/struct.UnreserveRequestBuilder.html), [*upload*](resources/indexing/datasources/items/struct.UploadRequestBuilder.html)\n    * [media](resources/media/struct.MediaActions.html)\n      * [*upload*](resources/media/struct.UploadRequestBuilder.html)\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*get*](resources/operations/struct.GetRequestBuilder.html)\n    * [query](resources/query/struct.QueryActions.html)\n      * [*search*](resources/query/struct.SearchRequestBuilder.html), [*suggest*](resources/query/struct.SuggestRequestBuilder.html)\n      * [sources](resources/query/sources/struct.SourcesActions.html)\n        * [*list*](resources/query/sources/struct.ListRequestBuilder.html)\n    * [settings](resources/settings/struct.SettingsActions.html)\n      * [datasources](resources/settings/datasources/struct.DatasourcesActions.html)\n        * [*create*](resources/settings/datasources/struct.CreateRequestBuilder.html), [*delete*](resources/settings/datasources/struct.DeleteRequestBuilder.html), [*get*](resources/settings/datasources/struct.GetRequestBuilder.html), [*list*](resources/settings/datasources/struct.ListRequestBuilder.html), [*update*](resources/settings/datasources/struct.UpdateRequestBuilder.html)\n      * [searchapplications](resources/settings/searchapplications/struct.SearchapplicationsActions.html)\n        * [*create*](resources/settings/searchapplications/struct.CreateRequestBuilder.html), [*delete*](resources/settings/searchapplications/struct.DeleteRequestBuilder.html), [*get*](resources/settings/searchapplications/struct.GetRequestBuilder.html), [*list*](resources/settings/searchapplications/struct.ListRequestBuilder.html), [*reset*](resources/settings/searchapplications/struct.ResetRequestBuilder.html), [*update*](resources/settings/searchapplications/struct.UpdateRequestBuilder.html)\n    * [stats](resources/stats/struct.StatsActions.html)\n      * [*getIndex*](resources/stats/struct.GetIndexRequestBuilder.html), [*getQuery*](resources/stats/struct.GetQueryRequestBuilder.html), [*getSession*](resources/stats/struct.GetSessionRequestBuilder.html), [*getUser*](resources/stats/struct.GetUserRequestBuilder.html)\n      * [index](resources/stats/index/struct.IndexActions.html)\n        * [datasources](resources/stats/index/datasources/struct.DatasourcesActions.html)\n          * [*get*](resources/stats/index/datasources/struct.GetRequestBuilder.html)\n      * [query](resources/stats/query/struct.QueryActions.html)\n        * [searchapplications](resources/stats/query/searchapplications/struct.SearchapplicationsActions.html)\n          * [*get*](resources/stats/query/searchapplications/struct.GetRequestBuilder.html)\n      * [session](resources/stats/session/struct.SessionActions.html)\n        * [searchapplications](resources/stats/session/searchapplications/struct.SearchapplicationsActions.html)\n          * [*get*](resources/stats/session/searchapplications/struct.GetRequestBuilder.html)\n      * [user](resources/stats/user/struct.UserActions.html)\n        * [searchapplications](resources/stats/user/searchapplications/struct.SearchapplicationsActions.html)\n          * [*get*](resources/stats/user/searchapplications/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search`"]
+    pub const CLOUD_SEARCH: &str = "https://www.googleapis.com/auth/cloud_search";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.debug`"]
+    pub const CLOUD_SEARCH_DEBUG: &str = "https://www.googleapis.com/auth/cloud_search.debug";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.indexing`"]
+    pub const CLOUD_SEARCH_INDEXING: &str = "https://www.googleapis.com/auth/cloud_search.indexing";
+    #[doc = "Search your organization's data in the Cloud Search index\n\n`https://www.googleapis.com/auth/cloud_search.query`"]
+    pub const CLOUD_SEARCH_QUERY: &str = "https://www.googleapis.com/auth/cloud_search.query";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.settings`"]
+    pub const CLOUD_SEARCH_SETTINGS: &str = "https://www.googleapis.com/auth/cloud_search.settings";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.settings.indexing`"]
+    pub const CLOUD_SEARCH_SETTINGS_INDEXING: &str =
+        "https://www.googleapis.com/auth/cloud_search.settings.indexing";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.settings.query`"]
+    pub const CLOUD_SEARCH_SETTINGS_QUERY: &str =
+        "https://www.googleapis.com/auth/cloud_search.settings.query";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.stats`"]
+    pub const CLOUD_SEARCH_STATS: &str = "https://www.googleapis.com/auth/cloud_search.stats";
+    #[doc = "Index and serve your organization's data with Cloud Search\n\n`https://www.googleapis.com/auth/cloud_search.stats.indexing`"]
+    pub const CLOUD_SEARCH_STATS_INDEXING: &str =
+        "https://www.googleapis.com/auth/cloud_search.stats.indexing";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +36,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BooleanOperatorOptions {
-        #[doc = "Indicates the operator name required in the query in order to isolate the\nboolean property. For example, if operatorName is *closed* and the\nproperty's name is *isClosed*, then queries like\n*closed:<value>* will show results only where the value of the\nproperty named *isClosed* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any\nString properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\nboolean property. For example, if operatorName is *closed* and the\nproperty's name is *isClosed*, then queries like\n*closed:<value>* show results only where the value of the\nproperty named *isClosed* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator returns\nall items where *<value>* matches the value of any\nString properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -247,6 +270,137 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct CustomerQueryStats {
+        #[doc = "Date for which query stats were calculated. Stats calculated on the next\nday close to midnight are returned."]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date: ::std::option::Option<crate::schemas::Date>,
+        #[serde(
+            rename = "queryCountByStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub query_count_by_status: ::std::option::Option<Vec<crate::schemas::QueryCountByStatus>>,
+    }
+    impl ::google_field_selector::FieldSelector for CustomerQueryStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CustomerQueryStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomerSessionStats {
+        #[doc = "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned."]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "The count of search sessions on the day"]
+        #[serde(
+            rename = "searchSessionsCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub search_sessions_count: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for CustomerSessionStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CustomerSessionStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CustomerUserStats {
+        #[doc = "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned."]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "The count of unique active users in the past one day"]
+        #[serde(
+            rename = "oneDayActiveUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub one_day_active_users_count: ::std::option::Option<i64>,
+        #[doc = "The count of unique active users in the past seven days"]
+        #[serde(
+            rename = "sevenDaysActiveUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub seven_days_active_users_count: ::std::option::Option<i64>,
+        #[doc = "The count of unique active users in the past thirty days"]
+        #[serde(
+            rename = "thirtyDaysActiveUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub thirty_days_active_users_count: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for CustomerUserStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CustomerUserStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DataSource {
         #[doc = "If true, Indexing API rejects any modification calls to this datasource\nsuch as create, update, and delete.\nDisabling this does not imply halting process of previously\naccepted data."]
         #[serde(
@@ -440,21 +594,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DateOperatorOptions {
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ndate property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:<value>* will\nshow results only where the value of the property named *closeDate* is\nlater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ndate property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:<value>*\nshow results only where the value of the property named *closeDate* is\nlater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "greaterThanOperatorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub greater_than_operator_name: ::std::option::Option<String>,
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ndate property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:<value>* will\nshow results only where the value of the property named *closeDate* is\nearlier than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ndate property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:<value>*\nshow results only where the value of the property named *closeDate* is\nearlier than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "lessThanOperatorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub less_than_operator_name: ::std::option::Option<String>,
-        #[doc = "Indicates the actual string required in the query in order to isolate the\ndate property. For example, suppose an issue tracking schema object\nhas a property named *closeDate* that specifies an operator with an\noperatorName of *closedon*. For searches on that data, queries like\n*closedon:<value>* will show results only where the value of the\n*closeDate* property matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the indexed datasource.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the actual string required in the query in order to isolate the\ndate property. For example, suppose an issue tracking schema object\nhas a property named *closeDate* that specifies an operator with an\noperatorName of *closedon*. For searches on that data, queries like\n*closedon:<value>* show results only where the value of the\n*closeDate* property matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator returns\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the indexed datasource.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -622,7 +776,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DisplayedProperty {
-        #[doc = "The name of the top-level property as defined in a property definition\nfor the object. If the name is not a defined property in the schema, an\nerror will be given when attempting to update the schema."]
+        #[doc = "The name of the top-level property as defined in a property definition\nfor the object. If the name is not a defined property in the schema, an\nerror is given when attempting to update the schema."]
         #[serde(
             rename = "propertyName",
             default,
@@ -1241,7 +1395,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EnumOperatorOptions {
-        #[doc = "Indicates the operator name required in the query in order to isolate the\nenum property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:<value>* will show results only where the value of the\nproperty named *priorityVal* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\nenum property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:<value>* show results only where the value of the\nproperty named *priorityVal* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator returns\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -1311,7 +1465,7 @@ pub mod schemas {
         Ascending,
         #[doc = "This property is ranked in descending order. Lower values indicate\nhigher ranking."]
         Descending,
-        #[doc = "There is no ranking order for the property. Results will not be adjusted\nby this property's value."]
+        #[doc = "There is no ranking order for the property. Results aren't adjusted\nby this property's value."]
         NoOrder,
     }
     impl EnumPropertyOptionsOrderedRanking {
@@ -1760,7 +1914,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub freshness_duration: ::std::option::Option<String>,
-        #[doc = "This property indicates the freshness level of the object in the index.\nIf set, this property must be a top-level property within the\nproperty definitions\nand it must be a\ntimestamp type\nor\ndate type.\nOtherwise, the Indexing API uses\nupdateTime\nas the freshness indicator.\nThe maximum length is 256 characters.\n\nWhen a property is used to calculate fresheness, the value defaults\nto 2 years from the current time."]
+        #[doc = "This property indicates the freshness level of the object in the index.\nIf set, this property must be a top-level property within the\nproperty definitions\nand it must be a\ntimestamp type\nor\ndate type.\nOtherwise, the Indexing API uses\nupdateTime\nas the freshness indicator.\nThe maximum length is 256 characters.\n\nWhen a property is used to calculate freshness, the value defaults\nto 2 years from the current time."]
         #[serde(
             rename = "freshnessProperty",
             default,
@@ -1821,6 +1975,96 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GetCustomerQueryStatsResponse {
+        #[serde(
+            rename = "stats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stats: ::std::option::Option<Vec<crate::schemas::CustomerQueryStats>>,
+    }
+    impl ::google_field_selector::FieldSelector for GetCustomerQueryStatsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GetCustomerQueryStatsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GetCustomerSessionStatsResponse {
+        #[serde(
+            rename = "stats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stats: ::std::option::Option<Vec<crate::schemas::CustomerSessionStats>>,
+    }
+    impl ::google_field_selector::FieldSelector for GetCustomerSessionStatsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GetCustomerSessionStatsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GetCustomerUserStatsResponse {
+        #[serde(
+            rename = "stats",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stats: ::std::option::Option<Vec<crate::schemas::CustomerUserStats>>,
+    }
+    impl ::google_field_selector::FieldSelector for GetCustomerUserStatsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GetCustomerUserStatsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GetDataSourceIndexStatsResponse {
         #[doc = "Summary of indexed item counts, one for each day in the requested range."]
         #[serde(
@@ -1852,105 +2096,20 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GmailActionRestrict {
+    pub struct GetSearchApplicationQueryStatsResponse {
         #[serde(
-            rename = "type",
+            rename = "stats",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub r#type: ::std::option::Option<crate::schemas::GmailActionRestrictType>,
+        pub stats: ::std::option::Option<Vec<crate::schemas::SearchApplicationQueryStats>>,
     }
-    impl ::google_field_selector::FieldSelector for GmailActionRestrict {
+    impl ::google_field_selector::FieldSelector for GetSearchApplicationQueryStatsResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for GmailActionRestrict {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GmailActionRestrictType {
-        #[doc = "label:mute"]
-        Muted,
-        #[doc = "is:read"]
-        Read,
-        #[doc = "label:^io_re"]
-        RepliedTo,
-        #[doc = "is:unread"]
-        Unread,
-        Unspecified,
-    }
-    impl GmailActionRestrictType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GmailActionRestrictType::Muted => "MUTED",
-                GmailActionRestrictType::Read => "READ",
-                GmailActionRestrictType::RepliedTo => "REPLIED_TO",
-                GmailActionRestrictType::Unread => "UNREAD",
-                GmailActionRestrictType::Unspecified => "UNSPECIFIED",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for GmailActionRestrictType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GmailActionRestrictType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<GmailActionRestrictType, ()> {
-            Ok(match s {
-                "MUTED" => GmailActionRestrictType::Muted,
-                "READ" => GmailActionRestrictType::Read,
-                "REPLIED_TO" => GmailActionRestrictType::RepliedTo,
-                "UNREAD" => GmailActionRestrictType::Unread,
-                "UNSPECIFIED" => GmailActionRestrictType::Unspecified,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GmailActionRestrictType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GmailActionRestrictType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GmailActionRestrictType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "MUTED" => GmailActionRestrictType::Muted,
-                "READ" => GmailActionRestrictType::Read,
-                "REPLIED_TO" => GmailActionRestrictType::RepliedTo,
-                "UNREAD" => GmailActionRestrictType::Unread,
-                "UNSPECIFIED" => GmailActionRestrictType::Unspecified,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for GmailActionRestrictType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailActionRestrictType {
+    impl ::google_field_selector::ToFieldType for GetSearchApplicationQueryStatsResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1967,125 +2126,20 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GmailAttachmentRestrict {
+    pub struct GetSearchApplicationSessionStatsResponse {
         #[serde(
-            rename = "type",
+            rename = "stats",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub r#type: ::std::option::Option<crate::schemas::GmailAttachmentRestrictType>,
+        pub stats: ::std::option::Option<Vec<crate::schemas::SearchApplicationSessionStats>>,
     }
-    impl ::google_field_selector::FieldSelector for GmailAttachmentRestrict {
+    impl ::google_field_selector::FieldSelector for GetSearchApplicationSessionStatsResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for GmailAttachmentRestrict {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GmailAttachmentRestrictType {
-        #[doc = "has:attachment"]
-        HasAttachment,
-        #[doc = "has:document"]
-        HasDocument,
-        #[doc = "has:drive"]
-        HasDrive,
-        #[doc = "filename:pdf"]
-        HasPdf,
-        #[doc = "has photos (changes to filename:(jpg OR jpeg OR png)  when typed)"]
-        HasPhoto,
-        #[doc = "has:presentation"]
-        HasPresentation,
-        #[doc = "has:spreadsheet"]
-        HasSpreadsheet,
-        #[doc = "has:youtube"]
-        HasYoutube,
-        Unspecified,
-    }
-    impl GmailAttachmentRestrictType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GmailAttachmentRestrictType::HasAttachment => "HAS_ATTACHMENT",
-                GmailAttachmentRestrictType::HasDocument => "HAS_DOCUMENT",
-                GmailAttachmentRestrictType::HasDrive => "HAS_DRIVE",
-                GmailAttachmentRestrictType::HasPdf => "HAS_PDF",
-                GmailAttachmentRestrictType::HasPhoto => "HAS_PHOTO",
-                GmailAttachmentRestrictType::HasPresentation => "HAS_PRESENTATION",
-                GmailAttachmentRestrictType::HasSpreadsheet => "HAS_SPREADSHEET",
-                GmailAttachmentRestrictType::HasYoutube => "HAS_YOUTUBE",
-                GmailAttachmentRestrictType::Unspecified => "UNSPECIFIED",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for GmailAttachmentRestrictType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GmailAttachmentRestrictType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<GmailAttachmentRestrictType, ()> {
-            Ok(match s {
-                "HAS_ATTACHMENT" => GmailAttachmentRestrictType::HasAttachment,
-                "HAS_DOCUMENT" => GmailAttachmentRestrictType::HasDocument,
-                "HAS_DRIVE" => GmailAttachmentRestrictType::HasDrive,
-                "HAS_PDF" => GmailAttachmentRestrictType::HasPdf,
-                "HAS_PHOTO" => GmailAttachmentRestrictType::HasPhoto,
-                "HAS_PRESENTATION" => GmailAttachmentRestrictType::HasPresentation,
-                "HAS_SPREADSHEET" => GmailAttachmentRestrictType::HasSpreadsheet,
-                "HAS_YOUTUBE" => GmailAttachmentRestrictType::HasYoutube,
-                "UNSPECIFIED" => GmailAttachmentRestrictType::Unspecified,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GmailAttachmentRestrictType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GmailAttachmentRestrictType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GmailAttachmentRestrictType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "HAS_ATTACHMENT" => GmailAttachmentRestrictType::HasAttachment,
-                "HAS_DOCUMENT" => GmailAttachmentRestrictType::HasDocument,
-                "HAS_DRIVE" => GmailAttachmentRestrictType::HasDrive,
-                "HAS_PDF" => GmailAttachmentRestrictType::HasPdf,
-                "HAS_PHOTO" => GmailAttachmentRestrictType::HasPhoto,
-                "HAS_PRESENTATION" => GmailAttachmentRestrictType::HasPresentation,
-                "HAS_SPREADSHEET" => GmailAttachmentRestrictType::HasSpreadsheet,
-                "HAS_YOUTUBE" => GmailAttachmentRestrictType::HasYoutube,
-                "UNSPECIFIED" => GmailAttachmentRestrictType::Unspecified,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for GmailAttachmentRestrictType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailAttachmentRestrictType {
+    impl ::google_field_selector::ToFieldType for GetSearchApplicationSessionStatsResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2102,395 +2156,20 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GmailFolderRestrict {
+    pub struct GetSearchApplicationUserStatsResponse {
         #[serde(
-            rename = "type",
+            rename = "stats",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub r#type: ::std::option::Option<crate::schemas::GmailFolderRestrictType>,
+        pub stats: ::std::option::Option<Vec<crate::schemas::SearchApplicationUserStats>>,
     }
-    impl ::google_field_selector::FieldSelector for GmailFolderRestrict {
+    impl ::google_field_selector::FieldSelector for GetSearchApplicationUserStatsResponse {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
-    impl ::google_field_selector::ToFieldType for GmailFolderRestrict {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GmailFolderRestrictType {
-        #[doc = "label:chats"]
-        Chats,
-        #[doc = "in:draft"]
-        InDraft,
-        #[doc = "in:sent"]
-        InSent,
-        #[doc = "in:trash"]
-        InTrash,
-        Unspecified,
-        #[doc = "label:<user generated>"]
-        UserGeneratedLabel,
-    }
-    impl GmailFolderRestrictType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GmailFolderRestrictType::Chats => "CHATS",
-                GmailFolderRestrictType::InDraft => "IN_DRAFT",
-                GmailFolderRestrictType::InSent => "IN_SENT",
-                GmailFolderRestrictType::InTrash => "IN_TRASH",
-                GmailFolderRestrictType::Unspecified => "UNSPECIFIED",
-                GmailFolderRestrictType::UserGeneratedLabel => "USER_GENERATED_LABEL",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for GmailFolderRestrictType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GmailFolderRestrictType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<GmailFolderRestrictType, ()> {
-            Ok(match s {
-                "CHATS" => GmailFolderRestrictType::Chats,
-                "IN_DRAFT" => GmailFolderRestrictType::InDraft,
-                "IN_SENT" => GmailFolderRestrictType::InSent,
-                "IN_TRASH" => GmailFolderRestrictType::InTrash,
-                "UNSPECIFIED" => GmailFolderRestrictType::Unspecified,
-                "USER_GENERATED_LABEL" => GmailFolderRestrictType::UserGeneratedLabel,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GmailFolderRestrictType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GmailFolderRestrictType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GmailFolderRestrictType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CHATS" => GmailFolderRestrictType::Chats,
-                "IN_DRAFT" => GmailFolderRestrictType::InDraft,
-                "IN_SENT" => GmailFolderRestrictType::InSent,
-                "IN_TRASH" => GmailFolderRestrictType::InTrash,
-                "UNSPECIFIED" => GmailFolderRestrictType::Unspecified,
-                "USER_GENERATED_LABEL" => GmailFolderRestrictType::UserGeneratedLabel,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for GmailFolderRestrictType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailFolderRestrictType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GmailIntelligentRestrict {
-        #[serde(
-            rename = "type",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub r#type: ::std::option::Option<crate::schemas::GmailIntelligentRestrictType>,
-    }
-    impl ::google_field_selector::FieldSelector for GmailIntelligentRestrict {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailIntelligentRestrict {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GmailIntelligentRestrictType {
-        #[doc = "label:^cob_sm_busreservation"]
-        BusReservation,
-        #[doc = "label:^cob_sm_rentalcarreservation"]
-        CarReservation,
-        #[doc = "label:^cob_sm_flightreservation"]
-        FlightReservation,
-        #[doc = "category:forums"]
-        Forums,
-        #[doc = "is:important"]
-        Important,
-        #[doc = "label:^cob_sm_lodgingreservation"]
-        LodgingReservation,
-        #[doc = "category:promotions"]
-        Promotions,
-        #[doc = "category:social"]
-        Social,
-        Unspecified,
-        #[doc = "category:updates"]
-        Updates,
-    }
-    impl GmailIntelligentRestrictType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GmailIntelligentRestrictType::BusReservation => "BUS_RESERVATION",
-                GmailIntelligentRestrictType::CarReservation => "CAR_RESERVATION",
-                GmailIntelligentRestrictType::FlightReservation => "FLIGHT_RESERVATION",
-                GmailIntelligentRestrictType::Forums => "FORUMS",
-                GmailIntelligentRestrictType::Important => "IMPORTANT",
-                GmailIntelligentRestrictType::LodgingReservation => "LODGING_RESERVATION",
-                GmailIntelligentRestrictType::Promotions => "PROMOTIONS",
-                GmailIntelligentRestrictType::Social => "SOCIAL",
-                GmailIntelligentRestrictType::Unspecified => "UNSPECIFIED",
-                GmailIntelligentRestrictType::Updates => "UPDATES",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for GmailIntelligentRestrictType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GmailIntelligentRestrictType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<GmailIntelligentRestrictType, ()> {
-            Ok(match s {
-                "BUS_RESERVATION" => GmailIntelligentRestrictType::BusReservation,
-                "CAR_RESERVATION" => GmailIntelligentRestrictType::CarReservation,
-                "FLIGHT_RESERVATION" => GmailIntelligentRestrictType::FlightReservation,
-                "FORUMS" => GmailIntelligentRestrictType::Forums,
-                "IMPORTANT" => GmailIntelligentRestrictType::Important,
-                "LODGING_RESERVATION" => GmailIntelligentRestrictType::LodgingReservation,
-                "PROMOTIONS" => GmailIntelligentRestrictType::Promotions,
-                "SOCIAL" => GmailIntelligentRestrictType::Social,
-                "UNSPECIFIED" => GmailIntelligentRestrictType::Unspecified,
-                "UPDATES" => GmailIntelligentRestrictType::Updates,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GmailIntelligentRestrictType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GmailIntelligentRestrictType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GmailIntelligentRestrictType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "BUS_RESERVATION" => GmailIntelligentRestrictType::BusReservation,
-                "CAR_RESERVATION" => GmailIntelligentRestrictType::CarReservation,
-                "FLIGHT_RESERVATION" => GmailIntelligentRestrictType::FlightReservation,
-                "FORUMS" => GmailIntelligentRestrictType::Forums,
-                "IMPORTANT" => GmailIntelligentRestrictType::Important,
-                "LODGING_RESERVATION" => GmailIntelligentRestrictType::LodgingReservation,
-                "PROMOTIONS" => GmailIntelligentRestrictType::Promotions,
-                "SOCIAL" => GmailIntelligentRestrictType::Social,
-                "UNSPECIFIED" => GmailIntelligentRestrictType::Unspecified,
-                "UPDATES" => GmailIntelligentRestrictType::Updates,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for GmailIntelligentRestrictType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailIntelligentRestrictType {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GmailTimeRestrict {
-        #[serde(
-            rename = "type",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub r#type: ::std::option::Option<crate::schemas::GmailTimeRestrictType>,
-    }
-    impl ::google_field_selector::FieldSelector for GmailTimeRestrict {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailTimeRestrict {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GmailTimeRestrictType {
-        #[doc = "This will read as something like \"From November\" and will have operator\nbefore:X after:Y"]
-        FromCertainMonth,
-        #[doc = "newer_than:30d"]
-        FromThisMonth,
-        #[doc = "newer_than:7d"]
-        FromThisWeek,
-        #[doc = "newer_than:1d"]
-        FromToday,
-        #[doc = "newer_than:2d older_than:1d"]
-        FromYesterday,
-        #[doc = "older_than:30d"]
-        OlderThanAMonth,
-        #[doc = "older_than:7d"]
-        OlderThanAWeek,
-        #[doc = "older_than:1y"]
-        OlderThanOneYear,
-        #[doc = "older_than:1d"]
-        OlderThanToday,
-        #[doc = "older_than:2d"]
-        OlderThanYesterday,
-        Unspecified,
-    }
-    impl GmailTimeRestrictType {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GmailTimeRestrictType::FromCertainMonth => "FROM_CERTAIN_MONTH",
-                GmailTimeRestrictType::FromThisMonth => "FROM_THIS_MONTH",
-                GmailTimeRestrictType::FromThisWeek => "FROM_THIS_WEEK",
-                GmailTimeRestrictType::FromToday => "FROM_TODAY",
-                GmailTimeRestrictType::FromYesterday => "FROM_YESTERDAY",
-                GmailTimeRestrictType::OlderThanAMonth => "OLDER_THAN_A_MONTH",
-                GmailTimeRestrictType::OlderThanAWeek => "OLDER_THAN_A_WEEK",
-                GmailTimeRestrictType::OlderThanOneYear => "OLDER_THAN_ONE_YEAR",
-                GmailTimeRestrictType::OlderThanToday => "OLDER_THAN_TODAY",
-                GmailTimeRestrictType::OlderThanYesterday => "OLDER_THAN_YESTERDAY",
-                GmailTimeRestrictType::Unspecified => "UNSPECIFIED",
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str> for GmailTimeRestrictType {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GmailTimeRestrictType {
-        type Err = ();
-        fn from_str(s: &str) -> ::std::result::Result<GmailTimeRestrictType, ()> {
-            Ok(match s {
-                "FROM_CERTAIN_MONTH" => GmailTimeRestrictType::FromCertainMonth,
-                "FROM_THIS_MONTH" => GmailTimeRestrictType::FromThisMonth,
-                "FROM_THIS_WEEK" => GmailTimeRestrictType::FromThisWeek,
-                "FROM_TODAY" => GmailTimeRestrictType::FromToday,
-                "FROM_YESTERDAY" => GmailTimeRestrictType::FromYesterday,
-                "OLDER_THAN_A_MONTH" => GmailTimeRestrictType::OlderThanAMonth,
-                "OLDER_THAN_A_WEEK" => GmailTimeRestrictType::OlderThanAWeek,
-                "OLDER_THAN_ONE_YEAR" => GmailTimeRestrictType::OlderThanOneYear,
-                "OLDER_THAN_TODAY" => GmailTimeRestrictType::OlderThanToday,
-                "OLDER_THAN_YESTERDAY" => GmailTimeRestrictType::OlderThanYesterday,
-                "UNSPECIFIED" => GmailTimeRestrictType::Unspecified,
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GmailTimeRestrictType {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GmailTimeRestrictType {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de> for GmailTimeRestrictType {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "FROM_CERTAIN_MONTH" => GmailTimeRestrictType::FromCertainMonth,
-                "FROM_THIS_MONTH" => GmailTimeRestrictType::FromThisMonth,
-                "FROM_THIS_WEEK" => GmailTimeRestrictType::FromThisWeek,
-                "FROM_TODAY" => GmailTimeRestrictType::FromToday,
-                "FROM_YESTERDAY" => GmailTimeRestrictType::FromYesterday,
-                "OLDER_THAN_A_MONTH" => GmailTimeRestrictType::OlderThanAMonth,
-                "OLDER_THAN_A_WEEK" => GmailTimeRestrictType::OlderThanAWeek,
-                "OLDER_THAN_ONE_YEAR" => GmailTimeRestrictType::OlderThanOneYear,
-                "OLDER_THAN_TODAY" => GmailTimeRestrictType::OlderThanToday,
-                "OLDER_THAN_YESTERDAY" => GmailTimeRestrictType::OlderThanYesterday,
-                "UNSPECIFIED" => GmailTimeRestrictType::Unspecified,
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector for GmailTimeRestrictType {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GmailTimeRestrictType {
+    impl ::google_field_selector::ToFieldType for GetSearchApplicationUserStatsResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2553,7 +2232,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct HtmlOperatorOptions {
-        #[doc = "Indicates the operator name required in the query in order to isolate the\nhtml property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:<value>* will show results only where the value of the\nproperty named *subjectLine* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any\nhtml properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\nhtml property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:<value>* show results only where the value of the\nproperty named *subjectLine* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator return\nall items where *<value>* matches the value of any\nhtml properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -2809,21 +2488,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IntegerOperatorOptions {
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property using the greater-than operator. For example, if\ngreaterThanOperatorName is *priorityabove* and the property's name is\n*priorityVal*, then queries like *priorityabove:<value>* will\nshow results only where the value of the property named *priorityVal* is\ngreater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property using the greater-than operator. For example, if\ngreaterThanOperatorName is *priorityabove* and the property's name is\n*priorityVal*, then queries like *priorityabove:<value>*\nshow results only where the value of the property named *priorityVal* is\ngreater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "greaterThanOperatorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub greater_than_operator_name: ::std::option::Option<String>,
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property using the less-than operator. For example, if\nlessThanOperatorName is *prioritybelow* and the property's name is\n*priorityVal*, then queries like *prioritybelow:<value>* will\nshow results only where the value of the property named *priorityVal* is\nless than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property using the less-than operator. For example, if\nlessThanOperatorName is *prioritybelow* and the property's name is\n*priorityVal*, then queries like *prioritybelow:<value>*\nshow results only where the value of the property named *priorityVal* is\nless than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "lessThanOperatorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub less_than_operator_name: ::std::option::Option<String>,
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:<value>* will show results only where the value of the\nproperty named *priorityVal* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ninteger property. For example, if operatorName is *priority* and the\nproperty's name is *priorityVal*, then queries like\n*priority:<value>* show results only where the value of the\nproperty named *priorityVal* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator returns\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -2902,7 +2581,7 @@ pub mod schemas {
         Ascending,
         #[doc = "This property is ranked in descending order. Lower values indicate\nhigher ranking."]
         Descending,
-        #[doc = "There is no ranking order for the property. Results will not be adjusted\nby this property's value."]
+        #[doc = "There is no ranking order for the property. Results are not adjusted\nby this property's value."]
         NoOrder,
     }
     impl IntegerPropertyOptionsOrderedRanking {
@@ -3751,7 +3430,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub search_quality_metadata: ::std::option::Option<crate::schemas::SearchQualityMetadata>,
-        #[doc = "Link to the source repository serving the data.  Search results apply\nthis link to the title.\nThe maximum length is 2048 characters."]
+        #[doc = "Link to the source repository serving the data.  Search results apply\nthis link to the title.\nWhitespace or special characters may cause Cloud Search result links to\ntrigger a redirect notice; to avoid this, encode the URL.\nThe maximum length is 2048 characters."]
         #[serde(
             rename = "sourceRepositoryUrl",
             default,
@@ -4299,7 +3978,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Metaline {
-        #[doc = "The list of displayed properties for the metaline. The maxiumum number of\nproperties is 5."]
+        #[doc = "The list of displayed properties for the metaline. The maximum number of\nproperties is 5."]
         #[serde(
             rename = "properties",
             default,
@@ -4482,14 +4161,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ObjectDisplayOptions {
-        #[doc = "Defines the properties that will be displayed in the metalines of the\nsearch results. The property values will be displayed in the order given\nhere. If a property holds multiple values, all of the values will be\ndiplayed before the next properties. For this reason, it is a good practice\nto specify singular properties before repeated properties in this list. All\nof the properties must set\nis_returnable\nto true. The maximum number of metalines is 3."]
+        #[doc = "Defines the properties that are displayed in the metalines of the\nsearch results. The property values are displayed in the order given\nhere. If a property holds multiple values, all of the values are\ndisplayed before the next properties. For this reason, it is a good\npractice to specify singular properties before repeated properties in this\nlist. All of the properties must set\nis_returnable\nto true. The maximum number of metalines is 3."]
         #[serde(
             rename = "metalines",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metalines: ::std::option::Option<Vec<crate::schemas::Metaline>>,
-        #[doc = "The user friendly label to display in the search result to inidicate the\ntype of the item. This is OPTIONAL; if not given, an object label will not\nbe displayed on the context line of the search results. The maximum length\nis 32 characters."]
+        #[doc = "The user friendly label to display in the search result to indicate the\ntype of the item. This is OPTIONAL; if not provided, an object label isn't\ndisplayed on the context line of the search results. The maximum length\nis 32 characters."]
         #[serde(
             rename = "objectDisplayLabel",
             default,
@@ -4795,7 +4474,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
-        #[doc = "Maximum number of items to return.\n<br />The maximum and the default value is 1000"]
+        #[doc = "Maximum number of items to return.\n<br />The maximum value is 100 and the default value is 20."]
         #[serde(
             rename = "limit",
             default,
@@ -5176,7 +4855,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_facetable: ::std::option::Option<bool>,
-        #[doc = "Indicates that multiple values are allowed for the property. For example, a\ndocument only has one description but can have multiple comments. Cannot be\ntrue for properties whose type is a boolean.\nIf set to false, properties that contain more than one value will cause the\nindexing request for that item to be rejected."]
+        #[doc = "Indicates that multiple values are allowed for the property. For example, a\ndocument only has one description but can have multiple comments. Cannot be\ntrue for properties whose type is a boolean.\nIf set to false, properties that contain more than one value cause the\nindexing request for that item to be rejected."]
         #[serde(
             rename = "isRepeatable",
             default,
@@ -5204,7 +4883,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_suggestable: ::std::option::Option<bool>,
-        #[doc = "Indicates that users can perform wildcard search for this\nproperty. Only supported for Text properties. IsReturnable must be true to\nset this option. In a given datasource maximum of 5 properties can be\nmarked as is_wildcard_searchable.\n\nNote: This is an alpha feature and is enabled for whitelisted users only."]
+        #[doc = "Indicates that users can perform wildcard search for this\nproperty. Only supported for Text properties. IsReturnable must be true to\nset this option. In a given datasource maximum of 5 properties can be\nmarked as is_wildcard_searchable."]
         #[serde(
             rename = "isWildcardSearchable",
             default,
@@ -5261,7 +4940,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PropertyDisplayOptions {
-        #[doc = "The user friendly label for the property that will be used if the property\nis specified to be displayed in ObjectDisplayOptions. If given, the display\nlabel will be shown in front of the property values when the property is\npart of the object display options. For example, if the property value is\n'1', the value by itself may not be useful context for the user. If the\ndisplay name given was 'priority', then the user will see 'priority : 1' in\nthe search results which provides clear conext to search users. This is\nOPTIONAL; if not given, only the property values will be displayed.\nThe maximum length is 32 characters."]
+        #[doc = "The user friendly label for the property that is used if the property\nis specified to be displayed in ObjectDisplayOptions. If provided, the\ndisplay label is shown in front of the property values when the property is\npart of the object display options. For example, if the property value is\n'1', the value by itself may not be useful context for the user. If the\ndisplay name given was 'priority', then the user sees 'priority : 1' in\nthe search results which provides clear context to search users. This is\nOPTIONAL; if not given, only the property values are displayed.\nThe maximum length is 32 characters."]
         #[serde(
             rename = "displayLabel",
             default,
@@ -5495,6 +5174,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct QueryCountByStatus {
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub count: ::std::option::Option<i64>,
+        #[doc = "This represents the http status code."]
+        #[serde(
+            rename = "statusCode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status_code: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for QueryCountByStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for QueryCountByStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct QueryInterpretation {
         #[serde(
             rename = "interpretationType",
@@ -5503,13 +5220,20 @@ pub mod schemas {
         )]
         pub interpretation_type:
             ::std::option::Option<crate::schemas::QueryInterpretationInterpretationType>,
-        #[doc = "The interpretation of the query used in search. For example, queries with\nnatural language intent like \"email from john\" will be interpreted as\n\"from:john source:mail\". This field will not be filled when the reason is\nNO_RESULTS_FOUND_FOR_USER_QUERY."]
+        #[doc = "The interpretation of the query used in search. For example, queries with\nnatural language intent like \"email from john\" will be interpreted as\n\"from:john source:mail\". This field will not be filled when the reason is\nNOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY."]
         #[serde(
             rename = "interpretedQuery",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub interpreted_query: ::std::option::Option<String>,
+        #[doc = "The reason for interpretation of the query. This field will not be\nUNSPECIFIED if the interpretation type is not NONE."]
+        #[serde(
+            rename = "reason",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reason: ::std::option::Option<crate::schemas::QueryInterpretationReason>,
     }
     impl ::google_field_selector::FieldSelector for QueryInterpretation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -5523,9 +5247,9 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum QueryInterpretationInterpretationType {
-        #[doc = "The natural language results is mixed with results from original query."]
+        #[doc = "The results from original query are blended with other results. The\nreason for blending these other results with the results from original\nquery is populated in the 'Reason' field below."]
         Blend,
-        #[doc = "No natural language interpretation or the natural language interpretation\nis not used to fetch the search results."]
+        #[doc = "Neither the natural language interpretation, nor a broader version of the\nquery is used to fetch the search results."]
         None,
         #[doc = "The results from original query are replaced. The reason for replacing\nthe results from original query is populated in the 'Reason' field below."]
         Replace,
@@ -5597,6 +5321,93 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum QueryInterpretationReason {
+        #[doc = "Query and document terms similarity is used to selectively broaden the\nquery to retrieve additional search results since enough results were not\nfound for the user query.\nInterpreted query will be empty for this case."]
+        NotEnoughResultsFoundForUserQuery,
+        #[doc = "Natural language interpretation of the query is used to fetch the search\nresults."]
+        QueryHasNaturalLanguageIntent,
+        Unspecified,
+    }
+    impl QueryInterpretationReason {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                QueryInterpretationReason::NotEnoughResultsFoundForUserQuery => {
+                    "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY"
+                }
+                QueryInterpretationReason::QueryHasNaturalLanguageIntent => {
+                    "QUERY_HAS_NATURAL_LANGUAGE_INTENT"
+                }
+                QueryInterpretationReason::Unspecified => "UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for QueryInterpretationReason {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for QueryInterpretationReason {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<QueryInterpretationReason, ()> {
+            Ok(match s {
+                "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY" => {
+                    QueryInterpretationReason::NotEnoughResultsFoundForUserQuery
+                }
+                "QUERY_HAS_NATURAL_LANGUAGE_INTENT" => {
+                    QueryInterpretationReason::QueryHasNaturalLanguageIntent
+                }
+                "UNSPECIFIED" => QueryInterpretationReason::Unspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for QueryInterpretationReason {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for QueryInterpretationReason {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for QueryInterpretationReason {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "NOT_ENOUGH_RESULTS_FOUND_FOR_USER_QUERY" => {
+                    QueryInterpretationReason::NotEnoughResultsFoundForUserQuery
+                }
+                "QUERY_HAS_NATURAL_LANGUAGE_INTENT" => {
+                    QueryInterpretationReason::QueryHasNaturalLanguageIntent
+                }
+                "UNSPECIFIED" => QueryInterpretationReason::Unspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for QueryInterpretationReason {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for QueryInterpretationReason {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -5617,6 +5428,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disable_nl_interpretation: ::std::option::Option<bool>,
+        #[doc = "Enable this flag to turn off all internal optimizations like natural\nlanguage (NL) interpretation of queries, supplemental result retrieval,\nand usage of synonyms including custom ones.\nNl interpretation will be disabled if either one of the two flags is true."]
+        #[serde(
+            rename = "enableVerbatimMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_verbatim_mode: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for QueryInterpretationOptions {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -5735,6 +5553,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub less_than_operator_name: ::std::option::Option<String>,
+        #[doc = "Name of the object corresponding to the operator. This field is only filled\nfor schema-specific operators, and is unset for common operators."]
+        #[serde(
+            rename = "objectType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub object_type: ::std::option::Option<String>,
         #[doc = "The name of the operator."]
         #[serde(
             rename = "operatorName",
@@ -6110,14 +5935,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub debug_options: ::std::option::Option<crate::schemas::DebugOptions>,
-        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\nSuggest API does not use this parameter. It autocompletes only based on\ncharacters in the query."]
+        #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nSet this field using the language set in browser or for the page. In the\nevent that the user's language preference is known, set this field to the\nknown user language.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\n\nThe suggest API does not use this parameter. Instead, suggest autocompletes\nonly based on characters in the query."]
         #[serde(
             rename = "languageCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "Id of the application created using SearchApplicationsService."]
+        #[doc = "The ID generated when you create a search application using the\n[admin console](https://support.google.com/a/answer/9043922)."]
         #[serde(
             rename = "searchApplicationId",
             default,
@@ -6243,39 +6068,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub drive_time_span_restrict: ::std::option::Option<crate::schemas::DriveTimeSpanRestrict>,
-        #[serde(
-            rename = "gmailActionRestrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub gmail_action_restrict: ::std::option::Option<crate::schemas::GmailActionRestrict>,
-        #[serde(
-            rename = "gmailAttachmentRestrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub gmail_attachment_restrict:
-            ::std::option::Option<crate::schemas::GmailAttachmentRestrict>,
-        #[doc = "Gmail Types."]
-        #[serde(
-            rename = "gmailFolderRestrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub gmail_folder_restrict: ::std::option::Option<crate::schemas::GmailFolderRestrict>,
-        #[serde(
-            rename = "gmailIntelligentRestrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub gmail_intelligent_restrict:
-            ::std::option::Option<crate::schemas::GmailIntelligentRestrict>,
-        #[serde(
-            rename = "gmailTimeRestrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub gmail_time_restrict: ::std::option::Option<crate::schemas::GmailTimeRestrict>,
         #[doc = "The search restrict (e.g. \"after:2017-09-11 before:2017-09-12\")."]
         #[serde(
             rename = "searchOperator",
@@ -6675,7 +6467,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "IDs of the Long Running Operations (LROs) currently running for this\nschema. Output only field."]
+        #[doc = "Output only. IDs of the Long Running Operations (LROs) currently running for this\nschema. Output only field."]
         #[serde(
             rename = "operationIds",
             default,
@@ -6703,6 +6495,137 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for SearchApplication {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchApplicationQueryStats {
+        #[doc = "Date for which query stats were calculated. Stats calculated on the next\nday close to midnight are returned."]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date: ::std::option::Option<crate::schemas::Date>,
+        #[serde(
+            rename = "queryCountByStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub query_count_by_status: ::std::option::Option<Vec<crate::schemas::QueryCountByStatus>>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchApplicationQueryStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchApplicationQueryStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchApplicationSessionStats {
+        #[doc = "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned."]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "The count of search sessions on the day"]
+        #[serde(
+            rename = "searchSessionsCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub search_sessions_count: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchApplicationSessionStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchApplicationSessionStats {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchApplicationUserStats {
+        #[doc = "Date for which session stats were calculated. Stats calculated on the next\nday close to midnight are returned."]
+        #[serde(
+            rename = "date",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date: ::std::option::Option<crate::schemas::Date>,
+        #[doc = "The count of unique active users in the past one day"]
+        #[serde(
+            rename = "oneDayActiveUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub one_day_active_users_count: ::std::option::Option<i64>,
+        #[doc = "The count of unique active users in the past seven days"]
+        #[serde(
+            rename = "sevenDaysActiveUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub seven_days_active_users_count: ::std::option::Option<i64>,
+        #[doc = "The count of unique active users in the past thirty days"]
+        #[serde(
+            rename = "thirtyDaysActiveUsersCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub thirty_days_active_users_count: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchApplicationUserStats {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchApplicationUserStats {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -7710,7 +7633,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SuggestRequest {
-        #[doc = "The sources to use for suggestions. If not specified, all data sources\nfrom the current search application are used.\nSuggestions are based on Gmail titles. Suggestions from third party sources\nare not available."]
+        #[doc = "The sources to use for suggestions. If not specified, the data sources\nare taken from the current search application.\n\nNOTE: Suggestions are supported only for third party data sources and\npeople (i.e. PredefinedSource.PERSON)."]
         #[serde(
             rename = "dataSourceRestrictions",
             default,
@@ -7839,14 +7762,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TextOperatorOptions {
-        #[doc = "If true, the text value will be tokenized as one atomic value in\noperator searches and facet matches. For example, if the operator name is\n\"genre\" and the value is \"science-fiction\" the query restrictions\n\"genre:science\" and \"genre:fiction\" will not match the item;\n\"genre:science-fiction\" will. Value matching is case-sensitive\nand does not remove special characters.\nIf false, the text will be tokenized. For example, if the value is\n\"science-fiction\" the queries \"genre:science\" and \"genre:fiction\" will\nmatch the item."]
+        #[doc = "If true, the text value is tokenized as one atomic value in\noperator searches and facet matches. For example, if the operator name is\n\"genre\" and the value is \"science-fiction\" the query restrictions\n\"genre:science\" and \"genre:fiction\" doesn't match the item;\n\"genre:science-fiction\" does. Value matching is case-sensitive\nand does not remove special characters.\nIf false, the text is tokenized. For example, if the value is\n\"science-fiction\" the queries \"genre:science\" and \"genre:fiction\"\nmatches the item."]
         #[serde(
             rename = "exactMatchWithOperator",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub exact_match_with_operator: ::std::option::Option<bool>,
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ntext property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:<value>* will show results only where the value of the\nproperty named *subjectLine* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any\ntext properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ntext property. For example, if operatorName is *subject* and the\nproperty's name is *subjectLine*, then queries like\n*subject:<value>* show results only where the value of the\nproperty named *subjectLine* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator returns\nall items where *<value>* matches the value of any\ntext properties or text within the content field for the item.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -7946,21 +7869,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TimestampOperatorOptions {
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:<value>* will\nshow results only where the value of the property named *closeDate* is\nlater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the greater-than operator. For example, if\ngreaterThanOperatorName is *closedafter* and the property's name is\n*closeDate*, then queries like *closedafter:<value>*\nshow results only where the value of the property named *closeDate* is\nlater than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "greaterThanOperatorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub greater_than_operator_name: ::std::option::Option<String>,
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:<value>* will\nshow results only where the value of the property named *closeDate* is\nearlier than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property using the less-than operator. For example, if\nlessThanOperatorName is *closedbefore* and the property's name is\n*closeDate*, then queries like *closedbefore:<value>*\nshow results only where the value of the property named *closeDate* is\nearlier than *<value>*.\nThe operator name can only contain lowercase letters (a-z).\nThe maximum length is 32 characters."]
         #[serde(
             rename = "lessThanOperatorName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub less_than_operator_name: ::std::option::Option<String>,
-        #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property. For example, if operatorName is *closedon* and the\nproperty's name is *closeDate*, then queries like\n*closedon:<value>* will show results only where the value of the\nproperty named *closeDate* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator will return\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item. The operator\nname can only contain lowercase letters (a-z). The maximum length is 32\ncharacters."]
+        #[doc = "Indicates the operator name required in the query in order to isolate the\ntimestamp property. For example, if operatorName is *closedon* and the\nproperty's name is *closeDate*, then queries like\n*closedon:<value>* show results only where the value of the\nproperty named *closeDate* matches *<value>*. By contrast, a\nsearch that uses the same *<value>* without an operator returns\nall items where *<value>* matches the value of any String\nproperties or text within the content field for the item. The operator\nname can only contain lowercase letters (a-z). The maximum length is 32\ncharacters."]
         #[serde(
             rename = "operatorName",
             default,
@@ -8296,7 +8219,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub schema: ::std::option::Option<crate::schemas::Schema>,
-        #[doc = "If true, the request will be validated without side effects."]
+        #[doc = "If true, the schema will be checked for validity,\nbut will not be registered with the data source, even if valid."]
         #[serde(
             rename = "validateOnly",
             default,
@@ -8577,7 +8500,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -8585,8 +8508,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -8647,7 +8582,7 @@ pub mod resources {
     pub mod debug {
         pub mod params {}
         pub struct DebugActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DebugActions<'a> {
@@ -8674,7 +8609,7 @@ pub mod resources {
         pub mod datasources {
             pub mod params {}
             pub struct DatasourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DatasourcesActions<'a> {
@@ -8692,14 +8627,14 @@ pub mod resources {
             pub mod items {
                 pub mod params {}
                 pub struct ItemsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ItemsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Checks whether an item is accessible by specified principal."]
+                    #[doc = "Checks whether an item is accessible by specified principal.\n\n**Note:** This API requires an admin account to execute."]
                     pub fn check_access(
                         &self,
                         request: crate::schemas::Principal,
@@ -8724,7 +8659,7 @@ pub mod resources {
                             debug_options_enable_debugging: None,
                         }
                     }
-                    #[doc = "Fetches the item whose viewUrl exactly matches that of the URL provided\nin the request."]
+                    #[doc = "Fetches the item whose viewUrl exactly matches that of the URL provided\nin the request.\n\n**Note:** This API requires an admin account to execute."]
                     pub fn search_by_view_url(
                         &self,
                         request: crate::schemas::SearchItemsByViewUrlRequest,
@@ -8759,7 +8694,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::check_access()](struct.ItemsActions.html#method.check_access)"]
                 #[derive(Debug, Clone)]
                 pub struct CheckAccessRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Principal,
                     name: String,
@@ -8905,7 +8840,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[(
                             "debugOptions.enableDebugging",
@@ -8933,7 +8869,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::search_by_view_url()](struct.ItemsActions.html#method.search_by_view_url)"]
                 #[derive(Debug, Clone)]
                 pub struct SearchByViewUrlRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SearchItemsByViewUrlRequest,
                     name: String,
@@ -9073,7 +9009,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9097,14 +9034,14 @@ pub mod resources {
                 pub mod unmappedids {
                     pub mod params {}
                     pub struct UnmappedidsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> UnmappedidsActions<'a> {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
                         }
-                        #[doc = "List all unmapped identities for a specific item."]
+                        #[doc = "List all unmapped identities for a specific item.\n\n**Note:** This API requires an admin account to execute."]
                         pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                             ListRequestBuilder {
                                 reqwest: &self.reqwest,
@@ -9130,7 +9067,7 @@ pub mod resources {
                     #[doc = "Created via [UnmappedidsActions::list()](struct.UnmappedidsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         debug_options_enable_debugging: Option<bool>,
@@ -9400,7 +9337,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[(
@@ -9445,7 +9382,7 @@ pub mod resources {
         pub mod identitysources {
             pub mod params {}
             pub struct IdentitysourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> IdentitysourcesActions<'a> {
@@ -9475,14 +9412,14 @@ pub mod resources {
             pub mod items {
                 pub mod params {}
                 pub struct ItemsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ItemsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Lists names of items associated with an unmapped identity."]
+                    #[doc = "Lists names of items associated with an unmapped identity.\n\n**Note:** This API requires an admin account to execute."]
                     pub fn list_forunmappedidentity(
                         &self,
                         parent: impl Into<String>,
@@ -9513,7 +9450,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::list_forunmappedidentity()](struct.ItemsActions.html#method.list_forunmappedidentity)"]
                 #[derive(Debug, Clone)]
                 pub struct ListForunmappedidentityRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     debug_options_enable_debugging: Option<bool>,
@@ -9790,7 +9727,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "debugOptions.enableDebugging",
@@ -9944,14 +9882,14 @@ pub mod resources {
                     }
                 }
                 pub struct UnmappedidsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> UnmappedidsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Lists unmapped user identities for an identity source."]
+                    #[doc = "Lists unmapped user identities for an identity source.\n\n**Note:** This API requires an admin account to execute."]
                     pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -9977,7 +9915,7 @@ pub mod resources {
                 }
                 #[doc = "Created via [UnmappedidsActions::list()](struct.UnmappedidsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
-                pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , debug_options_enable_debugging : Option < bool > , page_size : Option < i32 > , page_token : Option < String > , resolution_status_code : Option < crate :: resources :: debug :: identitysources :: unmappedids :: params :: ListResolutionStatusCode > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , debug_options_enable_debugging : Option < bool > , page_size : Option < i32 > , page_token : Option < String > , resolution_status_code : Option < crate :: resources :: debug :: identitysources :: unmappedids :: params :: ListResolutionStatusCode > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> ListRequestBuilder<'a> {
                     #[doc = "If you are asked by Google to help with debugging, set this field.\nOtherwise, ignore this field."]
                     pub fn debug_options_enable_debugging(mut self, value: bool) -> Self {
@@ -10228,7 +10166,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "debugOptions.enableDebugging",
@@ -10274,7 +10213,7 @@ pub mod resources {
     pub mod indexing {
         pub mod params {}
         pub struct IndexingActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> IndexingActions<'a> {
@@ -10294,14 +10233,14 @@ pub mod resources {
         pub mod datasources {
             pub mod params {}
             pub struct DatasourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DatasourcesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Deletes the schema of a data source."]
+                #[doc = "Deletes the schema of a data source.\n\n**Note:** This API requires an admin or service account to execute."]
                 pub fn delete_schema(&self, name: impl Into<String>) -> DeleteSchemaRequestBuilder {
                     DeleteSchemaRequestBuilder {
                         reqwest: &self.reqwest,
@@ -10321,7 +10260,7 @@ pub mod resources {
                         debug_options_enable_debugging: None,
                     }
                 }
-                #[doc = "Gets the schema of a data source."]
+                #[doc = "Gets the schema of a data source.\n\n**Note:** This API requires an admin or service account to execute."]
                 pub fn get_schema(&self, name: impl Into<String>) -> GetSchemaRequestBuilder {
                     GetSchemaRequestBuilder {
                         reqwest: &self.reqwest,
@@ -10341,7 +10280,7 @@ pub mod resources {
                         debug_options_enable_debugging: None,
                     }
                 }
-                #[doc = "Updates the schema of a data source."]
+                #[doc = "Updates the schema of a data source. This method does not perform\nincremental updates to the schema. Instead, this method updates the schema\nby overwriting the entire schema.\n\n**Note:** This API requires an admin or service account to execute."]
                 pub fn update_schema(
                     &self,
                     request: crate::schemas::UpdateSchemaRequest,
@@ -10378,7 +10317,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::delete_schema()](struct.DatasourcesActions.html#method.delete_schema)"]
             #[derive(Debug, Clone)]
             pub struct DeleteSchemaRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 debug_options_enable_debugging: Option<bool>,
@@ -10517,7 +10456,10 @@ pub mod resources {
                     output.push_str("/schema");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -10545,7 +10487,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::get_schema()](struct.DatasourcesActions.html#method.get_schema)"]
             #[derive(Debug, Clone)]
             pub struct GetSchemaRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 debug_options_enable_debugging: Option<bool>,
@@ -10684,7 +10626,10 @@ pub mod resources {
                     output.push_str("/schema");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -10712,7 +10657,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::update_schema()](struct.DatasourcesActions.html#method.update_schema)"]
             #[derive(Debug, Clone)]
             pub struct UpdateSchemaRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateSchemaRequest,
                 name: String,
@@ -10847,7 +10792,10 @@ pub mod resources {
                     output.push_str("/schema");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10948,14 +10896,14 @@ pub mod resources {
                     }
                 }
                 pub struct ItemsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ItemsActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Deletes Item resource for the\nspecified resource name."]
+                    #[doc = "Deletes Item resource for the\nspecified resource name. This API requires an admin or service account\nto execute. The service account used is the one whitelisted in the\ncorresponding data source."]
                     pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                         DeleteRequestBuilder {
                             reqwest: &self.reqwest,
@@ -10978,7 +10926,7 @@ pub mod resources {
                             version: None,
                         }
                     }
-                    #[doc = "Deletes all items in a queue. This method is useful for deleting stale\nitems."]
+                    #[doc = "Deletes all items in a queue. This method is useful for deleting stale\nitems.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn delete_queue_items(
                         &self,
                         request: crate::schemas::DeleteQueueItemsRequest,
@@ -11002,7 +10950,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Gets Item resource by item name."]
+                    #[doc = "Gets Item resource by item name.\n\nThis API requires an admin or service account to execute.  The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
@@ -11023,7 +10971,7 @@ pub mod resources {
                             debug_options_enable_debugging: None,
                         }
                     }
-                    #[doc = "Updates Item ACL, metadata, and\ncontent. It will insert the Item if it\ndoes not exist.\nThis method does not support partial updates.  Fields with no provided\nvalues are cleared out in the Cloud Search index."]
+                    #[doc = "Updates Item ACL, metadata, and\ncontent. It will insert the Item if it\ndoes not exist.\nThis method does not support partial updates.  Fields with no provided\nvalues are cleared out in the Cloud Search index.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn index(
                         &self,
                         request: crate::schemas::IndexItemRequest,
@@ -11047,7 +10995,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Lists all or a subset of Item resources."]
+                    #[doc = "Lists all or a subset of Item resources.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn list(&self, name: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -11071,7 +11019,7 @@ pub mod resources {
                             page_token: None,
                         }
                     }
-                    #[doc = "Polls for unreserved items from the indexing queue and marks a\nset as reserved, starting with items that have\nthe oldest timestamp from the highest priority\nItemStatus.\nThe priority order is as follows: <br />\nERROR\n<br />\nMODIFIED\n<br />\nNEW_ITEM\n<br />\nACCEPTED\n<br />\nReserving items ensures that polling from other threads\ncannot create overlapping sets.\n\nAfter handling the reserved items, the client should put items back\ninto the unreserved state, either by calling\nindex,\nor by calling\npush with\nthe type REQUEUE.\n\nItems automatically become available (unreserved) after 4 hours even if no\nupdate or push method is called."]
+                    #[doc = "Polls for unreserved items from the indexing queue and marks a\nset as reserved, starting with items that have\nthe oldest timestamp from the highest priority\nItemStatus.\nThe priority order is as follows: <br />\nERROR\n<br />\nMODIFIED\n<br />\nNEW_ITEM\n<br />\nACCEPTED\n<br />\nReserving items ensures that polling from other threads\ncannot create overlapping sets.\n\nAfter handling the reserved items, the client should put items back\ninto the unreserved state, either by calling\nindex,\nor by calling\npush with\nthe type REQUEUE.\n\nItems automatically become available (unreserved) after 4 hours even if no\nupdate or push method is called.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn poll(
                         &self,
                         request: crate::schemas::PollItemsRequest,
@@ -11095,7 +11043,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Pushes an item onto a queue for later polling and updating."]
+                    #[doc = "Pushes an item onto a queue for later polling and updating.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn push(
                         &self,
                         request: crate::schemas::PushItemRequest,
@@ -11119,7 +11067,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Unreserves all items from a queue, making them all eligible to be\npolled.  This method is useful for resetting the indexing queue\nafter a connector has been restarted."]
+                    #[doc = "Unreserves all items from a queue, making them all eligible to be\npolled.  This method is useful for resetting the indexing queue\nafter a connector has been restarted.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn unreserve(
                         &self,
                         request: crate::schemas::UnreserveItemsRequest,
@@ -11143,7 +11091,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Creates an upload session for uploading item content. For items smaller\nthan 100 KB, it's easier to embed the content\ninline within\nan index request."]
+                    #[doc = "Creates an upload session for uploading item content. For items smaller\nthan 100 KB, it's easier to embed the content\ninline within\nan index request.\n\nThis API requires an admin or service account to execute. The service\naccount used is the one whitelisted in the corresponding data source."]
                     pub fn upload(
                         &self,
                         request: crate::schemas::StartUploadItemRequest,
@@ -11171,7 +11119,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::delete()](struct.ItemsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     connector_name: Option<String>,
@@ -11335,7 +11283,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("connectorName", &self.connector_name)]);
                         let req = req.query(&[(
@@ -11366,7 +11315,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::delete_queue_items()](struct.ItemsActions.html#method.delete_queue_items)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteQueueItemsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DeleteQueueItemsRequest,
                     name: String,
@@ -11504,7 +11453,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11528,7 +11478,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::get()](struct.ItemsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     connector_name: Option<String>,
@@ -11675,7 +11625,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("connectorName", &self.connector_name)]);
                         let req = req.query(&[(
@@ -11704,7 +11655,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::index()](struct.ItemsActions.html#method.index)"]
                 #[derive(Debug, Clone)]
                 pub struct IndexRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::IndexItemRequest,
                     name: String,
@@ -11842,7 +11793,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -11866,7 +11818,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::list()](struct.ItemsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     brief: Option<bool>,
@@ -11887,7 +11839,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "When set to true, the indexing system only populates the following fields:\nname,\nversion,\nmetadata.hash,\nstructured_data.hash,\ncontent.hash.\n<br />If this value is false, then all the fields are populated in Item."]
+                    #[doc = "When set to true, the indexing system only populates the following fields:\nname,\nversion,\nqueue.\nmetadata.hash,\nmetadata.title,\nmetadata.sourceRepositoryURL,\nmetadata.objectType,\nmetadata.createTime,\nmetadata.updateTime,\nmetadata.contentLanguage,\nmetadata.mimeType,\nstructured_data.hash,\ncontent.hash,\nitemType,\nitemStatus.code,\nitemStatus.processingError.code,\nitemStatus.repositoryError.type,\n<br />If this value is false, then all the fields are populated in Item."]
                     pub fn brief(mut self, value: bool) -> Self {
                         self.brief = Some(value);
                         self
@@ -12135,7 +12087,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("brief", &self.brief)]);
                         let req = req.query(&[("connectorName", &self.connector_name)]);
@@ -12178,7 +12131,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::poll()](struct.ItemsActions.html#method.poll)"]
                 #[derive(Debug, Clone)]
                 pub struct PollRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::PollItemsRequest,
                     name: String,
@@ -12318,7 +12271,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12342,7 +12296,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::push()](struct.ItemsActions.html#method.push)"]
                 #[derive(Debug, Clone)]
                 pub struct PushRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::PushItemRequest,
                     name: String,
@@ -12480,7 +12434,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12504,7 +12459,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::unreserve()](struct.ItemsActions.html#method.unreserve)"]
                 #[derive(Debug, Clone)]
                 pub struct UnreserveRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::UnreserveItemsRequest,
                     name: String,
@@ -12642,7 +12597,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12666,7 +12622,7 @@ pub mod resources {
                 #[doc = "Created via [ItemsActions::upload()](struct.ItemsActions.html#method.upload)"]
                 #[derive(Debug, Clone)]
                 pub struct UploadRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::StartUploadItemRequest,
                     name: String,
@@ -12804,7 +12760,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -12831,14 +12788,14 @@ pub mod resources {
     pub mod media {
         pub mod params {}
         pub struct MediaActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> MediaActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Uploads media for indexing.\n\nThe upload endpoint supports direct and resumable upload protocols and\nis intended for large items that can not be\n[inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).\nTo index large content:\n\n1. Call\n   indexing.datasources.items.upload\n   with the resource name to begin an upload session and retrieve the\n   UploadItemRef.\n1. Call media.upload to upload the content using the same resource name from step 1.\n1. Call indexing.datasources.items.index\n   to index the item. Populate the\n   [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)\n   with the UploadItemRef from step 1.\n\nFor additional information, see\n[Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest)."]
+            #[doc = "Uploads media for indexing.\n\nThe upload endpoint supports direct and resumable upload protocols and\nis intended for large items that can not be\n[inlined during index requests](https://developers.google.com/cloud-search/docs/reference/rest/v1/indexing.datasources.items#itemcontent).\nTo index large content:\n\n1. Call\n   indexing.datasources.items.upload\n   with the resource name to begin an upload session and retrieve the\n   UploadItemRef.\n1. Call media.upload to upload the content using the same resource name from step 1.\n1. Call indexing.datasources.items.index\n   to index the item. Populate the\n   [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)\n   with the UploadItemRef from step 1.\n\nFor additional information, see\n[Create a content connector using the REST API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).\n\n**Note:** This API requires a service account to execute."]
             pub fn upload(
                 &self,
                 request: crate::schemas::Media,
@@ -12866,7 +12823,7 @@ pub mod resources {
         #[doc = "Created via [MediaActions::upload()](struct.MediaActions.html#method.upload)"]
         #[derive(Debug, Clone)]
         pub struct UploadRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Media,
             resource_name: String,
@@ -12969,7 +12926,7 @@ pub mod resources {
                     ::reqwest::header::CONTENT_TYPE,
                     format!("multipart/related; boundary={}", multipart.boundary()),
                 );
-                let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -13039,7 +12996,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -13064,7 +13024,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -13094,7 +13054,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -13223,7 +13183,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -13248,14 +13211,14 @@ pub mod resources {
     pub mod query {
         pub mod params {}
         pub struct QueryActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> QueryActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "The Cloud Search Query API provides the search method, which returns\nthe most relevant results from a user query.  The results can come from\nG Suite Apps, such as Gmail or Google Drive, or they can come from data\nthat you have indexed from a third party."]
+            #[doc = "The Cloud Search Query API provides the search method, which returns\nthe most relevant results from a user query.  The results can come from\nG Suite Apps, such as Gmail or Google Drive, or they can come from data\nthat you have indexed from a third party.\n\n**Note:** This API requires a standard end user account to execute.\nA service account can't perform Query API requests directly; to use a\nservice account to perform queries, set up [G Suite domain-wide delegation\nof\nauthority](https://developers.google.com/cloud-search/docs/guides/delegation/)."]
             pub fn search(&self, request: crate::schemas::SearchRequest) -> SearchRequestBuilder {
                 SearchRequestBuilder {
                     reqwest: &self.reqwest,
@@ -13274,7 +13237,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Provides suggestions for autocompleting the query."]
+            #[doc = "Provides suggestions for autocompleting the query.\n\n**Note:** This API requires a standard end user account to execute.\nA service account can't perform Query API requests directly; to use a\nservice account to perform queries, set up [G Suite domain-wide delegation\nof\nauthority](https://developers.google.com/cloud-search/docs/guides/delegation/)."]
             pub fn suggest(
                 &self,
                 request: crate::schemas::SuggestRequest,
@@ -13307,7 +13270,7 @@ pub mod resources {
         #[doc = "Created via [QueryActions::search()](struct.QueryActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::SearchRequest,
             access_token: Option<String>,
@@ -13430,7 +13393,10 @@ pub mod resources {
                 output.push_str("v1/query/search");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -13454,7 +13420,7 @@ pub mod resources {
         #[doc = "Created via [QueryActions::suggest()](struct.QueryActions.html#method.suggest)"]
         #[derive(Debug, Clone)]
         pub struct SuggestRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::SuggestRequest,
             access_token: Option<String>,
@@ -13577,7 +13543,10 @@ pub mod resources {
                 output.push_str("v1/query/suggest");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -13601,14 +13570,14 @@ pub mod resources {
         pub mod sources {
             pub mod params {}
             pub struct SourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SourcesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Returns list of sources that user can use for Search and Suggest APIs."]
+                #[doc = "Returns list of sources that user can use for Search and Suggest APIs.\n\n**Note:** This API requires a standard end user account to execute.\nA service account can't perform Query API requests directly; to use a\nservice account to perform queries, set up [G Suite domain-wide delegation\nof\nauthority](https://developers.google.com/cloud-search/docs/guides/delegation/)."]
                 pub fn list(&self) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -13635,7 +13604,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::list()](struct.SourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 page_token: Option<String>,
                 request_options_debug_options_enable_debugging: Option<bool>,
@@ -13668,12 +13637,12 @@ pub mod resources {
                     self.request_options_debug_options_enable_debugging = Some(value);
                     self
                 }
-                #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\nSuggest API does not use this parameter. It autocompletes only based on\ncharacters in the query."]
+                #[doc = "The BCP-47 language code, such as \"en-US\" or \"sr-Latn\".\nFor more information, see\nhttp://www.unicode.org/reports/tr35/#Unicode_locale_identifier.\nFor translations.\n\nSet this field using the language set in browser or for the page. In the\nevent that the user's language preference is known, set this field to the\nknown user language.\n\nWhen specified, the documents in search results are biased towards the\nspecified language.\n\nThe suggest API does not use this parameter. Instead, suggest autocompletes\nonly based on characters in the query."]
                 pub fn request_options_language_code(mut self, value: impl Into<String>) -> Self {
                     self.request_options_language_code = Some(value.into());
                     self
                 }
-                #[doc = "Id of the application created using SearchApplicationsService."]
+                #[doc = "The ID generated when you create a search application using the\n[admin console](https://support.google.com/a/answer/9043922)."]
                 pub fn request_options_search_application_id(
                     mut self,
                     value: impl Into<String>,
@@ -13897,7 +13866,10 @@ pub mod resources {
                     output.push_str("v1/query/sources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageToken", &self.page_token)]);
                     let req = req.query(&[(
@@ -13949,7 +13921,7 @@ pub mod resources {
     pub mod settings {
         pub mod params {}
         pub struct SettingsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SettingsActions<'a> {
@@ -13979,14 +13951,14 @@ pub mod resources {
         pub mod datasources {
             pub mod params {}
             pub struct DatasourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DatasourcesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a datasource."]
+                #[doc = "Creates a datasource.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn create(&self, request: crate::schemas::DataSource) -> CreateRequestBuilder {
                     CreateRequestBuilder {
                         reqwest: &self.reqwest,
@@ -14005,7 +13977,7 @@ pub mod resources {
                         xgafv: None,
                     }
                 }
-                #[doc = "Deletes a datasource."]
+                #[doc = "Deletes a datasource.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -14025,7 +13997,7 @@ pub mod resources {
                         debug_options_enable_debugging: None,
                     }
                 }
-                #[doc = "Gets a datasource."]
+                #[doc = "Gets a datasource.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -14045,7 +14017,7 @@ pub mod resources {
                         debug_options_enable_debugging: None,
                     }
                 }
-                #[doc = "Lists datasources."]
+                #[doc = "Lists datasources.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn list(&self) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -14066,7 +14038,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Updates a datasource."]
+                #[doc = "Updates a datasource.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn update(
                     &self,
                     request: crate::schemas::UpdateDataSourceRequest,
@@ -14094,7 +14066,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::create()](struct.DatasourcesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::DataSource,
                 access_token: Option<String>,
@@ -14220,7 +14192,10 @@ pub mod resources {
                     output.push_str("v1/settings/datasources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14244,7 +14219,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::delete()](struct.DatasourcesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 debug_options_enable_debugging: Option<bool>,
@@ -14382,7 +14357,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -14410,7 +14388,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::get()](struct.DatasourcesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 debug_options_enable_debugging: Option<bool>,
@@ -14548,7 +14526,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -14576,7 +14557,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::list()](struct.DatasourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 debug_options_enable_debugging: Option<bool>,
                 page_size: Option<i32>,
@@ -14818,7 +14799,10 @@ pub mod resources {
                     output.push_str("v1/settings/datasources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -14859,7 +14843,7 @@ pub mod resources {
             #[doc = "Created via [DatasourcesActions::update()](struct.DatasourcesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UpdateDataSourceRequest,
                 name: String,
@@ -14993,7 +14977,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -15018,14 +15005,14 @@ pub mod resources {
         pub mod searchapplications {
             pub mod params {}
             pub struct SearchapplicationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SearchapplicationsActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a search application."]
+                #[doc = "Creates a search application.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn create(
                     &self,
                     request: crate::schemas::SearchApplication,
@@ -15047,7 +15034,7 @@ pub mod resources {
                         xgafv: None,
                     }
                 }
-                #[doc = "Deletes a search application."]
+                #[doc = "Deletes a search application.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
@@ -15067,7 +15054,7 @@ pub mod resources {
                         debug_options_enable_debugging: None,
                     }
                 }
-                #[doc = "Gets the specified search application."]
+                #[doc = "Gets the specified search application.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
@@ -15087,7 +15074,7 @@ pub mod resources {
                         debug_options_enable_debugging: None,
                     }
                 }
-                #[doc = "Lists all search applications."]
+                #[doc = "Lists all search applications.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn list(&self) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
@@ -15108,7 +15095,7 @@ pub mod resources {
                         page_token: None,
                     }
                 }
-                #[doc = "Resets a search application to default settings. This will return an empty\nresponse."]
+                #[doc = "Resets a search application to default settings. This will return an empty\nresponse.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn reset(
                     &self,
                     request: crate::schemas::ResetSearchApplicationRequest,
@@ -15132,7 +15119,7 @@ pub mod resources {
                         name: name.into(),
                     }
                 }
-                #[doc = "Updates a search application."]
+                #[doc = "Updates a search application.\n\n**Note:** This API requires an admin account to execute."]
                 pub fn update(
                     &self,
                     request: crate::schemas::SearchApplication,
@@ -15160,7 +15147,7 @@ pub mod resources {
             #[doc = "Created via [SearchapplicationsActions::create()](struct.SearchapplicationsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SearchApplication,
                 access_token: Option<String>,
@@ -15286,7 +15273,10 @@ pub mod resources {
                     output.push_str("v1/settings/searchapplications");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -15310,7 +15300,7 @@ pub mod resources {
             #[doc = "Created via [SearchapplicationsActions::delete()](struct.SearchapplicationsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 debug_options_enable_debugging: Option<bool>,
@@ -15448,7 +15438,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -15476,7 +15469,7 @@ pub mod resources {
             #[doc = "Created via [SearchapplicationsActions::get()](struct.SearchapplicationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 debug_options_enable_debugging: Option<bool>,
@@ -15614,7 +15607,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -15642,7 +15638,7 @@ pub mod resources {
             #[doc = "Created via [SearchapplicationsActions::list()](struct.SearchapplicationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 debug_options_enable_debugging: Option<bool>,
                 page_size: Option<i32>,
@@ -15889,7 +15885,10 @@ pub mod resources {
                     output.push_str("v1/settings/searchapplications");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "debugOptions.enableDebugging",
@@ -15930,7 +15929,7 @@ pub mod resources {
             #[doc = "Created via [SearchapplicationsActions::reset()](struct.SearchapplicationsActions.html#method.reset)"]
             #[derive(Debug, Clone)]
             pub struct ResetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ResetSearchApplicationRequest,
                 name: String,
@@ -16065,7 +16064,10 @@ pub mod resources {
                     output.push_str(":reset");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16089,7 +16091,7 @@ pub mod resources {
             #[doc = "Created via [SearchapplicationsActions::update()](struct.SearchapplicationsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SearchApplication,
                 name: String,
@@ -16223,7 +16225,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16249,16 +16254,88 @@ pub mod resources {
     pub mod stats {
         pub mod params {}
         pub struct StatsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> StatsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets indexed item statistics aggreggated across all data sources. This\nAPI only returns statistics for previous dates; it doesn't return\nstatistics for the current day."]
+            #[doc = "Gets indexed item statistics aggreggated across all data sources. This\nAPI only returns statistics for previous dates; it doesn't return\nstatistics for the current day.\n\n**Note:** This API requires a standard end user account to execute."]
             pub fn get_index(&self) -> GetIndexRequestBuilder {
                 GetIndexRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    from_date_day: None,
+                    from_date_month: None,
+                    from_date_year: None,
+                    to_date_day: None,
+                    to_date_month: None,
+                    to_date_year: None,
+                }
+            }
+            #[doc = "Get the query statistics for customer.\n\n**Note:** This API requires a standard end user account to execute."]
+            pub fn get_query(&self) -> GetQueryRequestBuilder {
+                GetQueryRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    from_date_day: None,
+                    from_date_month: None,
+                    from_date_year: None,
+                    to_date_day: None,
+                    to_date_month: None,
+                    to_date_year: None,
+                }
+            }
+            #[doc = "Get the # of search sessions, % of successful sessions with a click query\nstatistics for customer.\n\n**Note:** This API requires a standard end user account to execute."]
+            pub fn get_session(&self) -> GetSessionRequestBuilder {
+                GetSessionRequestBuilder {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                    access_token: None,
+                    alt: None,
+                    callback: None,
+                    fields: None,
+                    key: None,
+                    oauth_token: None,
+                    pretty_print: None,
+                    quota_user: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
+                    from_date_day: None,
+                    from_date_month: None,
+                    from_date_year: None,
+                    to_date_day: None,
+                    to_date_month: None,
+                    to_date_year: None,
+                }
+            }
+            #[doc = "Get the users statistics for customer.\n\n**Note:** This API requires a standard end user account to execute."]
+            pub fn get_user(&self) -> GetUserRequestBuilder {
+                GetUserRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     access_token: None,
@@ -16287,11 +16364,32 @@ pub mod resources {
                     auth: self.auth_ref(),
                 }
             }
+            #[doc = "Actions that can be performed on the query resource"]
+            pub fn query(&self) -> crate::resources::stats::query::QueryActions {
+                crate::resources::stats::query::QueryActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
+            #[doc = "Actions that can be performed on the session resource"]
+            pub fn session(&self) -> crate::resources::stats::session::SessionActions {
+                crate::resources::stats::session::SessionActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
+            #[doc = "Actions that can be performed on the user resource"]
+            pub fn user(&self) -> crate::resources::stats::user::UserActions {
+                crate::resources::stats::user::UserActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
         }
         #[doc = "Created via [StatsActions::get_index()](struct.StatsActions.html#method.get_index)"]
         #[derive(Debug, Clone)]
         pub struct GetIndexRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             from_date_day: Option<i32>,
             from_date_month: Option<i32>,
@@ -16448,7 +16546,580 @@ pub mod resources {
                 output.push_str("v1/stats/index");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("fromDate.day", &self.from_date_day)]);
+                let req = req.query(&[("fromDate.month", &self.from_date_month)]);
+                let req = req.query(&[("fromDate.year", &self.from_date_year)]);
+                let req = req.query(&[("toDate.day", &self.to_date_day)]);
+                let req = req.query(&[("toDate.month", &self.to_date_month)]);
+                let req = req.query(&[("toDate.year", &self.to_date_year)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [StatsActions::get_query()](struct.StatsActions.html#method.get_query)"]
+        #[derive(Debug, Clone)]
+        pub struct GetQueryRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            from_date_day: Option<i32>,
+            from_date_month: Option<i32>,
+            from_date_year: Option<i32>,
+            to_date_day: Option<i32>,
+            to_date_month: Option<i32>,
+            to_date_year: Option<i32>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> GetQueryRequestBuilder<'a> {
+            #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+            pub fn from_date_day(mut self, value: i32) -> Self {
+                self.from_date_day = Some(value);
+                self
+            }
+            #[doc = "Month of date. Must be from 1 to 12."]
+            pub fn from_date_month(mut self, value: i32) -> Self {
+                self.from_date_month = Some(value);
+                self
+            }
+            #[doc = "Year of date. Must be from 1 to 9999."]
+            pub fn from_date_year(mut self, value: i32) -> Self {
+                self.from_date_year = Some(value);
+                self
+            }
+            #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+            pub fn to_date_day(mut self, value: i32) -> Self {
+                self.to_date_day = Some(value);
+                self
+            }
+            #[doc = "Month of date. Must be from 1 to 12."]
+            pub fn to_date_month(mut self, value: i32) -> Self {
+                self.to_date_month = Some(value);
+                self
+            }
+            #[doc = "Year of date. Must be from 1 to 9999."]
+            pub fn to_date_year(mut self, value: i32) -> Self {
+                self.to_date_year = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::GetCustomerQueryStatsResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::GetCustomerQueryStatsResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://cloudsearch.googleapis.com/".to_owned();
+                output.push_str("v1/stats/query");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("fromDate.day", &self.from_date_day)]);
+                let req = req.query(&[("fromDate.month", &self.from_date_month)]);
+                let req = req.query(&[("fromDate.year", &self.from_date_year)]);
+                let req = req.query(&[("toDate.day", &self.to_date_day)]);
+                let req = req.query(&[("toDate.month", &self.to_date_month)]);
+                let req = req.query(&[("toDate.year", &self.to_date_year)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [StatsActions::get_session()](struct.StatsActions.html#method.get_session)"]
+        #[derive(Debug, Clone)]
+        pub struct GetSessionRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            from_date_day: Option<i32>,
+            from_date_month: Option<i32>,
+            from_date_year: Option<i32>,
+            to_date_day: Option<i32>,
+            to_date_month: Option<i32>,
+            to_date_year: Option<i32>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> GetSessionRequestBuilder<'a> {
+            #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+            pub fn from_date_day(mut self, value: i32) -> Self {
+                self.from_date_day = Some(value);
+                self
+            }
+            #[doc = "Month of date. Must be from 1 to 12."]
+            pub fn from_date_month(mut self, value: i32) -> Self {
+                self.from_date_month = Some(value);
+                self
+            }
+            #[doc = "Year of date. Must be from 1 to 9999."]
+            pub fn from_date_year(mut self, value: i32) -> Self {
+                self.from_date_year = Some(value);
+                self
+            }
+            #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+            pub fn to_date_day(mut self, value: i32) -> Self {
+                self.to_date_day = Some(value);
+                self
+            }
+            #[doc = "Month of date. Must be from 1 to 12."]
+            pub fn to_date_month(mut self, value: i32) -> Self {
+                self.to_date_month = Some(value);
+                self
+            }
+            #[doc = "Year of date. Must be from 1 to 9999."]
+            pub fn to_date_year(mut self, value: i32) -> Self {
+                self.to_date_year = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::GetCustomerSessionStatsResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::GetCustomerSessionStatsResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://cloudsearch.googleapis.com/".to_owned();
+                output.push_str("v1/stats/session");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("fromDate.day", &self.from_date_day)]);
+                let req = req.query(&[("fromDate.month", &self.from_date_month)]);
+                let req = req.query(&[("fromDate.year", &self.from_date_year)]);
+                let req = req.query(&[("toDate.day", &self.to_date_day)]);
+                let req = req.query(&[("toDate.month", &self.to_date_month)]);
+                let req = req.query(&[("toDate.year", &self.to_date_year)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
+                let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
+                let req = req.query(&[("fields", &self.fields)]);
+                let req = req.query(&[("key", &self.key)]);
+                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                let req = req.bearer_auth(
+                    self.auth
+                        .access_token()
+                        .map_err(|err| crate::Error::OAuth2(err))?,
+                );
+                Ok(req)
+            }
+        }
+        #[doc = "Created via [StatsActions::get_user()](struct.StatsActions.html#method.get_user)"]
+        #[derive(Debug, Clone)]
+        pub struct GetUserRequestBuilder<'a> {
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            from_date_day: Option<i32>,
+            from_date_month: Option<i32>,
+            from_date_year: Option<i32>,
+            to_date_day: Option<i32>,
+            to_date_month: Option<i32>,
+            to_date_year: Option<i32>,
+            access_token: Option<String>,
+            alt: Option<crate::params::Alt>,
+            callback: Option<String>,
+            fields: Option<String>,
+            key: Option<String>,
+            oauth_token: Option<String>,
+            pretty_print: Option<bool>,
+            quota_user: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
+        }
+        impl<'a> GetUserRequestBuilder<'a> {
+            #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+            pub fn from_date_day(mut self, value: i32) -> Self {
+                self.from_date_day = Some(value);
+                self
+            }
+            #[doc = "Month of date. Must be from 1 to 12."]
+            pub fn from_date_month(mut self, value: i32) -> Self {
+                self.from_date_month = Some(value);
+                self
+            }
+            #[doc = "Year of date. Must be from 1 to 9999."]
+            pub fn from_date_year(mut self, value: i32) -> Self {
+                self.from_date_year = Some(value);
+                self
+            }
+            #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+            pub fn to_date_day(mut self, value: i32) -> Self {
+                self.to_date_day = Some(value);
+                self
+            }
+            #[doc = "Month of date. Must be from 1 to 12."]
+            pub fn to_date_month(mut self, value: i32) -> Self {
+                self.to_date_month = Some(value);
+                self
+            }
+            #[doc = "Year of date. Must be from 1 to 9999."]
+            pub fn to_date_year(mut self, value: i32) -> Self {
+                self.to_date_year = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
+            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+            pub fn key(mut self, value: impl Into<String>) -> Self {
+                self.key = Some(value.into());
+                self
+            }
+            #[doc = "OAuth 2.0 token for the current user."]
+            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                self.oauth_token = Some(value.into());
+                self
+            }
+            #[doc = "Returns response with indentations and line breaks."]
+            pub fn pretty_print(mut self, value: bool) -> Self {
+                self.pretty_print = Some(value);
+                self
+            }
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                self.quota_user = Some(value.into());
+                self
+            }
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
+                self
+            }
+            #[doc = r" Execute the given operation. The fields requested are"]
+            #[doc = r" determined by the FieldSelector attribute of the return type."]
+            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+            #[doc = r" are not generic over the return type and deserialize the"]
+            #[doc = r" response into an auto-generated struct will all possible"]
+            #[doc = r" fields."]
+            pub fn execute<T>(self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+            {
+                let fields = ::google_field_selector::to_string::<T>();
+                let fields: Option<String> = if fields.is_empty() {
+                    None
+                } else {
+                    Some(fields)
+                };
+                self.execute_with_fields(fields)
+            }
+            #[doc = r" Execute the given operation. This will not provide any"]
+            #[doc = r" `fields` selector indicating that the server will determine"]
+            #[doc = r" the fields returned. This typically includes the most common"]
+            #[doc = r" fields, but it will not include every possible attribute of"]
+            #[doc = r" the response resource."]
+            pub fn execute_with_default_fields(
+                self,
+            ) -> Result<crate::schemas::GetCustomerUserStatsResponse, crate::Error> {
+                self.execute_with_fields(None::<&str>)
+            }
+            #[doc = r" Execute the given operation. This will provide a `fields`"]
+            #[doc = r" selector of `*`. This will include every attribute of the"]
+            #[doc = r" response resource and should be limited to use during"]
+            #[doc = r" development or debugging."]
+            pub fn execute_with_all_fields(
+                self,
+            ) -> Result<crate::schemas::GetCustomerUserStatsResponse, crate::Error> {
+                self.execute_with_fields(Some("*"))
+            }
+            #[doc = r" Execute the given operation. This will use the `fields`"]
+            #[doc = r" selector provided and will deserialize the response into"]
+            #[doc = r" whatever return value is provided."]
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+                F: Into<String>,
+            {
+                self.fields = fields.map(Into::into);
+                self._execute()
+            }
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            where
+                T: ::serde::de::DeserializeOwned,
+            {
+                let req = self._request(&self._path())?;
+                Ok(crate::error_from_response(req.send()?)?.json()?)
+            }
+            fn _path(&self) -> String {
+                let mut output = "https://cloudsearch.googleapis.com/".to_owned();
+                output.push_str("v1/stats/user");
+                output
+            }
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("fromDate.day", &self.from_date_day)]);
                 let req = req.query(&[("fromDate.month", &self.from_date_month)]);
@@ -16478,7 +17149,7 @@ pub mod resources {
         pub mod index {
             pub mod params {}
             pub struct IndexActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> IndexActions<'a> {
@@ -16499,14 +17170,14 @@ pub mod resources {
             pub mod datasources {
                 pub mod params {}
                 pub struct DatasourcesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> DatasourcesActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Gets indexed item statistics for a single data source."]
+                    #[doc = "Gets indexed item statistics for a single data source.\n\n**Note:** This API requires a standard end user account to execute."]
                     pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
@@ -16535,7 +17206,7 @@ pub mod resources {
                 #[doc = "Created via [DatasourcesActions::get()](struct.DatasourcesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     from_date_day: Option<i32>,
@@ -16708,7 +17379,798 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("fromDate.day", &self.from_date_day)]);
+                        let req = req.query(&[("fromDate.month", &self.from_date_month)]);
+                        let req = req.query(&[("fromDate.year", &self.from_date_year)]);
+                        let req = req.query(&[("toDate.day", &self.to_date_day)]);
+                        let req = req.query(&[("toDate.month", &self.to_date_month)]);
+                        let req = req.query(&[("toDate.year", &self.to_date_year)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+            }
+        }
+        pub mod query {
+            pub mod params {}
+            pub struct QueryActions<'a> {
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            }
+            impl<'a> QueryActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
+                #[doc = "Actions that can be performed on the searchapplications resource"]
+                pub fn searchapplications(
+                    &self,
+                ) -> crate::resources::stats::query::searchapplications::SearchapplicationsActions
+                {
+                    crate::resources::stats::query::searchapplications::SearchapplicationsActions {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                    }
+                }
+            }
+            pub mod searchapplications {
+                pub mod params {}
+                pub struct SearchapplicationsActions<'a> {
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                }
+                impl<'a> SearchapplicationsActions<'a> {
+                    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                        self.auth
+                    }
+                    #[doc = "Get the query statistics for search application.\n\n**Note:** This API requires a standard end user account to execute."]
+                    pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
+                        GetRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            name: name.into(),
+                            from_date_day: None,
+                            from_date_month: None,
+                            from_date_year: None,
+                            to_date_day: None,
+                            to_date_month: None,
+                            to_date_year: None,
+                        }
+                    }
+                }
+                #[doc = "Created via [SearchapplicationsActions::get()](struct.SearchapplicationsActions.html#method.get)"]
+                #[derive(Debug, Clone)]
+                pub struct GetRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    name: String,
+                    from_date_day: Option<i32>,
+                    from_date_month: Option<i32>,
+                    from_date_year: Option<i32>,
+                    to_date_day: Option<i32>,
+                    to_date_month: Option<i32>,
+                    to_date_year: Option<i32>,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+                    pub fn from_date_day(mut self, value: i32) -> Self {
+                        self.from_date_day = Some(value);
+                        self
+                    }
+                    #[doc = "Month of date. Must be from 1 to 12."]
+                    pub fn from_date_month(mut self, value: i32) -> Self {
+                        self.from_date_month = Some(value);
+                        self
+                    }
+                    #[doc = "Year of date. Must be from 1 to 9999."]
+                    pub fn from_date_year(mut self, value: i32) -> Self {
+                        self.from_date_year = Some(value);
+                        self
+                    }
+                    #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+                    pub fn to_date_day(mut self, value: i32) -> Self {
+                        self.to_date_day = Some(value);
+                        self
+                    }
+                    #[doc = "Month of date. Must be from 1 to 12."]
+                    pub fn to_date_month(mut self, value: i32) -> Self {
+                        self.to_date_month = Some(value);
+                        self
+                    }
+                    #[doc = "Year of date. Must be from 1 to 9999."]
+                    pub fn to_date_year(mut self, value: i32) -> Self {
+                        self.to_date_year = Some(value);
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::GetSearchApplicationQueryStatsResponse, crate::Error>
+                    {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::GetSearchApplicationQueryStatsResponse, crate::Error>
+                    {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://cloudsearch.googleapis.com/".to_owned();
+                        output.push_str("v1/stats/query/");
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("fromDate.day", &self.from_date_day)]);
+                        let req = req.query(&[("fromDate.month", &self.from_date_month)]);
+                        let req = req.query(&[("fromDate.year", &self.from_date_year)]);
+                        let req = req.query(&[("toDate.day", &self.to_date_day)]);
+                        let req = req.query(&[("toDate.month", &self.to_date_month)]);
+                        let req = req.query(&[("toDate.year", &self.to_date_year)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+            }
+        }
+        pub mod session {
+            pub mod params {}
+            pub struct SessionActions<'a> {
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            }
+            impl<'a> SessionActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
+                #[doc = "Actions that can be performed on the searchapplications resource"]
+                pub fn searchapplications(
+                    &self,
+                ) -> crate::resources::stats::session::searchapplications::SearchapplicationsActions
+                {
+                    crate :: resources :: stats :: session :: searchapplications :: SearchapplicationsActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                }
+            }
+            pub mod searchapplications {
+                pub mod params {}
+                pub struct SearchapplicationsActions<'a> {
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                }
+                impl<'a> SearchapplicationsActions<'a> {
+                    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                        self.auth
+                    }
+                    #[doc = "Get the # of search sessions, % of successful sessions with a click query\nstatistics for search application.\n\n**Note:** This API requires a standard end user account to execute."]
+                    pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
+                        GetRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            name: name.into(),
+                            from_date_day: None,
+                            from_date_month: None,
+                            from_date_year: None,
+                            to_date_day: None,
+                            to_date_month: None,
+                            to_date_year: None,
+                        }
+                    }
+                }
+                #[doc = "Created via [SearchapplicationsActions::get()](struct.SearchapplicationsActions.html#method.get)"]
+                #[derive(Debug, Clone)]
+                pub struct GetRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    name: String,
+                    from_date_day: Option<i32>,
+                    from_date_month: Option<i32>,
+                    from_date_year: Option<i32>,
+                    to_date_day: Option<i32>,
+                    to_date_month: Option<i32>,
+                    to_date_year: Option<i32>,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+                    pub fn from_date_day(mut self, value: i32) -> Self {
+                        self.from_date_day = Some(value);
+                        self
+                    }
+                    #[doc = "Month of date. Must be from 1 to 12."]
+                    pub fn from_date_month(mut self, value: i32) -> Self {
+                        self.from_date_month = Some(value);
+                        self
+                    }
+                    #[doc = "Year of date. Must be from 1 to 9999."]
+                    pub fn from_date_year(mut self, value: i32) -> Self {
+                        self.from_date_year = Some(value);
+                        self
+                    }
+                    #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+                    pub fn to_date_day(mut self, value: i32) -> Self {
+                        self.to_date_day = Some(value);
+                        self
+                    }
+                    #[doc = "Month of date. Must be from 1 to 12."]
+                    pub fn to_date_month(mut self, value: i32) -> Self {
+                        self.to_date_month = Some(value);
+                        self
+                    }
+                    #[doc = "Year of date. Must be from 1 to 9999."]
+                    pub fn to_date_year(mut self, value: i32) -> Self {
+                        self.to_date_year = Some(value);
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GetSearchApplicationSessionStatsResponse,
+                        crate::Error,
+                    > {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<
+                        crate::schemas::GetSearchApplicationSessionStatsResponse,
+                        crate::Error,
+                    > {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://cloudsearch.googleapis.com/".to_owned();
+                        output.push_str("v1/stats/session/");
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
+                        let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("fromDate.day", &self.from_date_day)]);
+                        let req = req.query(&[("fromDate.month", &self.from_date_month)]);
+                        let req = req.query(&[("fromDate.year", &self.from_date_year)]);
+                        let req = req.query(&[("toDate.day", &self.to_date_day)]);
+                        let req = req.query(&[("toDate.month", &self.to_date_month)]);
+                        let req = req.query(&[("toDate.year", &self.to_date_year)]);
+                        let req = req.query(&[("access_token", &self.access_token)]);
+                        let req = req.query(&[("alt", &self.alt)]);
+                        let req = req.query(&[("callback", &self.callback)]);
+                        let req = req.query(&[("fields", &self.fields)]);
+                        let req = req.query(&[("key", &self.key)]);
+                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                        let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                        let req = req.query(&[("quotaUser", &self.quota_user)]);
+                        let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                        let req = req.query(&[("uploadType", &self.upload_type)]);
+                        let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                        let req = req.bearer_auth(
+                            self.auth
+                                .access_token()
+                                .map_err(|err| crate::Error::OAuth2(err))?,
+                        );
+                        Ok(req)
+                    }
+                }
+            }
+        }
+        pub mod user {
+            pub mod params {}
+            pub struct UserActions<'a> {
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            }
+            impl<'a> UserActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
+                #[doc = "Actions that can be performed on the searchapplications resource"]
+                pub fn searchapplications(
+                    &self,
+                ) -> crate::resources::stats::user::searchapplications::SearchapplicationsActions
+                {
+                    crate::resources::stats::user::searchapplications::SearchapplicationsActions {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                    }
+                }
+            }
+            pub mod searchapplications {
+                pub mod params {}
+                pub struct SearchapplicationsActions<'a> {
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                }
+                impl<'a> SearchapplicationsActions<'a> {
+                    fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                        self.auth
+                    }
+                    #[doc = "Get the users statistics for search application.\n\n**Note:** This API requires a standard end user account to execute."]
+                    pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
+                        GetRequestBuilder {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                            access_token: None,
+                            alt: None,
+                            callback: None,
+                            fields: None,
+                            key: None,
+                            oauth_token: None,
+                            pretty_print: None,
+                            quota_user: None,
+                            upload_protocol: None,
+                            upload_type: None,
+                            xgafv: None,
+                            name: name.into(),
+                            from_date_day: None,
+                            from_date_month: None,
+                            from_date_year: None,
+                            to_date_day: None,
+                            to_date_month: None,
+                            to_date_year: None,
+                        }
+                    }
+                }
+                #[doc = "Created via [SearchapplicationsActions::get()](struct.SearchapplicationsActions.html#method.get)"]
+                #[derive(Debug, Clone)]
+                pub struct GetRequestBuilder<'a> {
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                    pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    name: String,
+                    from_date_day: Option<i32>,
+                    from_date_month: Option<i32>,
+                    from_date_year: Option<i32>,
+                    to_date_day: Option<i32>,
+                    to_date_month: Option<i32>,
+                    to_date_year: Option<i32>,
+                    access_token: Option<String>,
+                    alt: Option<crate::params::Alt>,
+                    callback: Option<String>,
+                    fields: Option<String>,
+                    key: Option<String>,
+                    oauth_token: Option<String>,
+                    pretty_print: Option<bool>,
+                    quota_user: Option<String>,
+                    upload_protocol: Option<String>,
+                    upload_type: Option<String>,
+                    xgafv: Option<crate::params::Xgafv>,
+                }
+                impl<'a> GetRequestBuilder<'a> {
+                    #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+                    pub fn from_date_day(mut self, value: i32) -> Self {
+                        self.from_date_day = Some(value);
+                        self
+                    }
+                    #[doc = "Month of date. Must be from 1 to 12."]
+                    pub fn from_date_month(mut self, value: i32) -> Self {
+                        self.from_date_month = Some(value);
+                        self
+                    }
+                    #[doc = "Year of date. Must be from 1 to 9999."]
+                    pub fn from_date_year(mut self, value: i32) -> Self {
+                        self.from_date_year = Some(value);
+                        self
+                    }
+                    #[doc = "Day of month. Must be from 1 to 31 and valid for the year and month."]
+                    pub fn to_date_day(mut self, value: i32) -> Self {
+                        self.to_date_day = Some(value);
+                        self
+                    }
+                    #[doc = "Month of date. Must be from 1 to 12."]
+                    pub fn to_date_month(mut self, value: i32) -> Self {
+                        self.to_date_month = Some(value);
+                        self
+                    }
+                    #[doc = "Year of date. Must be from 1 to 9999."]
+                    pub fn to_date_year(mut self, value: i32) -> Self {
+                        self.to_date_year = Some(value);
+                        self
+                    }
+                    #[doc = "OAuth access token."]
+                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                        self.access_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "JSONP"]
+                    pub fn callback(mut self, value: impl Into<String>) -> Self {
+                        self.callback = Some(value.into());
+                        self
+                    }
+                    #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                    pub fn key(mut self, value: impl Into<String>) -> Self {
+                        self.key = Some(value.into());
+                        self
+                    }
+                    #[doc = "OAuth 2.0 token for the current user."]
+                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                        self.oauth_token = Some(value.into());
+                        self
+                    }
+                    #[doc = "Returns response with indentations and line breaks."]
+                    pub fn pretty_print(mut self, value: bool) -> Self {
+                        self.pretty_print = Some(value);
+                        self
+                    }
+                    #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                    pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                        self.quota_user = Some(value.into());
+                        self
+                    }
+                    #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                    pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                        self.upload_protocol = Some(value.into());
+                        self
+                    }
+                    #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                    pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                        self.upload_type = Some(value.into());
+                        self
+                    }
+                    #[doc = "V1 error format."]
+                    pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                        self.xgafv = Some(value);
+                        self
+                    }
+                    #[doc = r" Execute the given operation. The fields requested are"]
+                    #[doc = r" determined by the FieldSelector attribute of the return type."]
+                    #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                    #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                    #[doc = r" are not generic over the return type and deserialize the"]
+                    #[doc = r" response into an auto-generated struct will all possible"]
+                    #[doc = r" fields."]
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                    {
+                        let fields = ::google_field_selector::to_string::<T>();
+                        let fields: Option<String> = if fields.is_empty() {
+                            None
+                        } else {
+                            Some(fields)
+                        };
+                        self.execute_with_fields(fields)
+                    }
+                    #[doc = r" Execute the given operation. This will not provide any"]
+                    #[doc = r" `fields` selector indicating that the server will determine"]
+                    #[doc = r" the fields returned. This typically includes the most common"]
+                    #[doc = r" fields, but it will not include every possible attribute of"]
+                    #[doc = r" the response resource."]
+                    pub fn execute_with_default_fields(
+                        self,
+                    ) -> Result<crate::schemas::GetSearchApplicationUserStatsResponse, crate::Error>
+                    {
+                        self.execute_with_fields(None::<&str>)
+                    }
+                    #[doc = r" Execute the given operation. This will provide a `fields`"]
+                    #[doc = r" selector of `*`. This will include every attribute of the"]
+                    #[doc = r" response resource and should be limited to use during"]
+                    #[doc = r" development or debugging."]
+                    pub fn execute_with_all_fields(
+                        self,
+                    ) -> Result<crate::schemas::GetSearchApplicationUserStatsResponse, crate::Error>
+                    {
+                        self.execute_with_fields(Some("*"))
+                    }
+                    #[doc = r" Execute the given operation. This will use the `fields`"]
+                    #[doc = r" selector provided and will deserialize the response into"]
+                    #[doc = r" whatever return value is provided."]
+                    pub fn execute_with_fields<T, F>(
+                        mut self,
+                        fields: Option<F>,
+                    ) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                        F: Into<String>,
+                    {
+                        self.fields = fields.map(Into::into);
+                        self._execute()
+                    }
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    where
+                        T: ::serde::de::DeserializeOwned,
+                    {
+                        let req = self._request(&self._path())?;
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
+                    }
+                    fn _path(&self) -> String {
+                        let mut output = "https://cloudsearch.googleapis.com/".to_owned();
+                        output.push_str("v1/stats/user/");
+                        {
+                            let var_as_str = &self.name;
+                            output.extend(::percent_encoding::utf8_percent_encode(
+                                &var_as_str,
+                                crate::RESERVED,
+                            ));
+                        }
+                        output
+                    }
+                    fn _request(
+                        &self,
+                        path: &str,
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("fromDate.day", &self.from_date_day)]);
                         let req = req.query(&[("fromDate.month", &self.from_date_month)]);
@@ -16755,9 +18217,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -16799,7 +18259,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

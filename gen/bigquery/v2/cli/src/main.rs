@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("bigquery2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190917")
+            .version("0.1.0-20200429")
             .about("A data platform for customers to create, manage, share and query data.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -166,14 +166,18 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             tabledata0 = tabledata0.subcommand(mcmd);
         }
         let mut tables0 = SubCommand::with_name("tables")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, patch and update");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: delete, get, get_iam_policy, insert, list, patch, set_iam_policy, test_iam_permissions and update");
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.");
             tables0 = tables0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get").about("Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.");
+            tables0 = tables0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.");
             tables0 = tables0.subcommand(mcmd);
         }
         {
@@ -189,6 +193,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("patch").about("Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports patch semantics.");
+            tables0 = tables0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
+            tables0 = tables0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             tables0 = tables0.subcommand(mcmd);
         }
         {

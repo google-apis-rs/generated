@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/rA4XrkQXRfMJJQlNvJhTbHl0DwY\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/GCgdBpFYQ1DCcxx78FRBSbT7_5E\"",
   "discoveryVersion": "v1",
   "id": "doubleclicksearch:v2",
   "name": "doubleclicksearch",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20190917",
+  "revision": "20200428",
   "title": "Search Ads 360 API",
   "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
   "ownerDomain": "google.com",
@@ -1565,135 +1565,6 @@
           "description": "Inserts a batch of new conversions into DoubleClick Search.",
           "parameters": {},
           "parameterOrder": [],
-          "request": {
-            "$ref": "ConversionList"
-          },
-          "response": {
-            "$ref": "ConversionList"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/doubleclicksearch"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
-        "patch": {
-          "id": "doubleclicksearch.conversion.patch",
-          "path": "conversion",
-          "httpMethod": "PATCH",
-          "description": "Updates a batch of conversions in DoubleClick Search. This method supports patch semantics.",
-          "parameters": {
-            "advertiserId": {
-              "description": "Numeric ID of the advertiser.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "string",
-              "format": "int64",
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "agencyId": {
-              "description": "Numeric ID of the agency.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "string",
-              "format": "int64",
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "endDate": {
-              "description": "Last date (inclusive) on which to retrieve conversions. Format is yyyymmdd.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "integer",
-              "format": "int32",
-              "minimum": "20091101",
-              "maximum": "99991231",
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "engineAccountId": {
-              "description": "Numeric ID of the engine account.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "string",
-              "format": "int64",
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "rowCount": {
-              "description": "The number of conversions to return per call.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "integer",
-              "format": "int32",
-              "minimum": "1",
-              "maximum": "1000",
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "startDate": {
-              "description": "First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "integer",
-              "format": "int32",
-              "minimum": "20091101",
-              "maximum": "99991231",
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "startRow": {
-              "description": "The 0-based starting index for retrieving conversions results.",
-              "default": null,
-              "location": "query",
-              "required": true,
-              "type": "integer",
-              "format": "uint32",
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "advertiserId",
-            "agencyId",
-            "endDate",
-            "engineAccountId",
-            "rowCount",
-            "startDate",
-            "startRow"
-          ],
           "request": {
             "$ref": "ConversionList"
           },

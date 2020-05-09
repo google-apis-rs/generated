@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/VCyF6WfWVwIuhIs_gw3LA4B3w1E\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/VCyF6WfWVwIuhIs_gw3LA4B3w1E\"",
   "discoveryVersion": "v1",
   "id": "oauth2:v2",
   "name": "oauth2",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20190522",
+  "revision": "20200213",
   "title": "Google OAuth2 API",
   "description": "Obtains end-user authorization grants for use with other Google APIs.",
   "ownerDomain": "google.com",
@@ -16,7 +16,7 @@
     "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
     "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
   },
-  "documentationLink": "https://developers.google.com/accounts/docs/OAuth2",
+  "documentationLink": "https://developers.google.com/identity/protocols/oauth2/",
   "protocol": "rest",
   "baseUrl": "https://www.googleapis.com/",
   "basePath": "/",
@@ -134,110 +134,19 @@
   "auth": {
     "oauth2": {
       "scopes": {
-        "https://www.googleapis.com/auth/plus.me": {
-          "description": "Associate you with your personal info on Google"
-        },
         "https://www.googleapis.com/auth/userinfo.email": {
           "description": "View your email address"
         },
         "https://www.googleapis.com/auth/userinfo.profile": {
           "description": "See your personal info, including any personal info you've made publicly available"
+        },
+        "openid": {
+          "description": "Associate you with your personal info on Google"
         }
       }
     }
   },
   "schemas": {
-    "Jwk": {
-      "id": "Jwk",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "keys": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "object",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {
-              "alg": {
-                "description": null,
-                "type": "string",
-                "format": null,
-                "enum": [],
-                "enumDescriptions": [],
-                "properties": {},
-                "additionalProperties": null,
-                "items": null
-              },
-              "e": {
-                "description": null,
-                "type": "string",
-                "format": null,
-                "enum": [],
-                "enumDescriptions": [],
-                "properties": {},
-                "additionalProperties": null,
-                "items": null
-              },
-              "kid": {
-                "description": null,
-                "type": "string",
-                "format": null,
-                "enum": [],
-                "enumDescriptions": [],
-                "properties": {},
-                "additionalProperties": null,
-                "items": null
-              },
-              "kty": {
-                "description": null,
-                "type": "string",
-                "format": null,
-                "enum": [],
-                "enumDescriptions": [],
-                "properties": {},
-                "additionalProperties": null,
-                "items": null
-              },
-              "n": {
-                "description": null,
-                "type": "string",
-                "format": null,
-                "enum": [],
-                "enumDescriptions": [],
-                "properties": {},
-                "additionalProperties": null,
-                "items": null
-              },
-              "use": {
-                "description": null,
-                "type": "string",
-                "format": null,
-                "enum": [],
-                "enumDescriptions": [],
-                "properties": {},
-                "additionalProperties": null,
-                "items": null
-              }
-            },
-            "additionalProperties": null,
-            "items": null
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "Tokeninfo": {
       "id": "Tokeninfo",
       "description": null,
@@ -246,16 +155,6 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "access_type": {
-          "description": "The access type granted with this token. It can be offline or online.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "audience": {
           "description": "Who is the intended audience for this token. In general the same as issued_to.",
           "type": "string",
@@ -306,16 +205,6 @@
           "additionalProperties": null,
           "items": null
         },
-        "token_handle": {
-          "description": "The token handle associated with this token.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "user_id": {
           "description": "The obfuscated user id.",
           "type": "string",
@@ -340,8 +229,8 @@
       "additionalProperties": null,
       "items": null
     },
-    "Userinfoplus": {
-      "id": "Userinfoplus",
+    "Userinfo": {
+      "id": "Userinfo",
       "description": null,
       "type": "object",
       "format": null,
@@ -480,10 +369,10 @@
                   "parameterOrder": [],
                   "request": null,
                   "response": {
-                    "$ref": "Userinfoplus"
+                    "$ref": "Userinfo"
                   },
                   "scopes": [
-                    "https://www.googleapis.com/auth/plus.me",
+                    "openid",
                     "https://www.googleapis.com/auth/userinfo.email",
                     "https://www.googleapis.com/auth/userinfo.profile"
                   ],
@@ -509,10 +398,10 @@
           "parameterOrder": [],
           "request": null,
           "response": {
-            "$ref": "Userinfoplus"
+            "$ref": "Userinfo"
           },
           "scopes": [
-            "https://www.googleapis.com/auth/plus.me",
+            "openid",
             "https://www.googleapis.com/auth/userinfo.email",
             "https://www.googleapis.com/auth/userinfo.profile"
           ],
@@ -526,24 +415,6 @@
     }
   },
   "methods": {
-    "getCertForOpenIdConnect": {
-      "id": "oauth2.getCertForOpenIdConnect",
-      "path": "oauth2/v2/certs",
-      "httpMethod": "GET",
-      "description": null,
-      "parameters": {},
-      "parameterOrder": [],
-      "request": null,
-      "response": {
-        "$ref": "Jwk"
-      },
-      "scopes": [],
-      "supportsMediaDownload": false,
-      "useMediaDownloadService": false,
-      "supportsSubscription": false,
-      "supportsMediaUpload": false,
-      "mediaUpload": null
-    },
     "tokeninfo": {
       "id": "oauth2.tokeninfo",
       "path": "oauth2/v2/tokeninfo",
@@ -565,20 +436,6 @@
           "repeated": false
         },
         "id_token": {
-          "description": null,
-          "default": null,
-          "location": "query",
-          "required": false,
-          "type": "string",
-          "format": null,
-          "minimum": null,
-          "maximum": null,
-          "pattern": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "repeated": false
-        },
-        "token_handle": {
           "description": null,
           "default": null,
           "location": "query",

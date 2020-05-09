@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("spanner1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190911")
+            .version("0.1.0-20200409")
             .about("Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -86,16 +86,67 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that the caller has on the specified instance resource.\n\nAttempting this RPC on a non-existent Cloud Spanner instance resource will\nresult in a NOT_FOUND error if the user has `spanner.instances.list`\npermission on the containing Google Cloud Project. Otherwise returns an\nempty set of permissions.");
             instances1 = instances1.subcommand(mcmd);
         }
+        let mut backup_operations2 = SubCommand::with_name("backup_operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists the backup long-running operations in\nthe given instance. A backup operation has a name of the form\n`projects/<project>/instances/<instance>/backups/<backup>/operations/<operation>`.\nThe long-running operation\nmetadata field type\n`metadata.type_url` describes the type of the metadata. Operations returned\ninclude those that have completed/failed/canceled within the last 7 days,\nand pending operations. Operations returned are ordered by\n`operation.metadata.value.progress.start_time` in descending order starting\nfrom the most recently started operation.");
+            backup_operations2 = backup_operations2.subcommand(mcmd);
+        }
+        let mut backups2 = SubCommand::with_name("backups")
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: create, delete, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
+        {
+            let mcmd = SubCommand::with_name("create").about("Starts creating a new Cloud Spanner Backup.\nThe returned backup long-running operation\nwill have a name of the format\n`projects/<project>/instances/<instance>/backups/<backup>/operations/<operation_id>`\nand can be used to track creation of the backup. The\nmetadata field type is\nCreateBackupMetadata. The\nresponse field type is\nBackup, if successful. Cancelling the returned operation will stop the\ncreation and delete the backup.\nThere can be only one pending backup creation per database. Backup creation\nof different databases can run concurrently.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Deletes a pending or completed Backup.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Gets metadata on a pending or completed Backup.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a database or backup resource.\nReturns an empty policy if a database or backup exists but does not have a\npolicy set.\n\nAuthorization requires `spanner.databases.getIamPolicy` permission on\nresource.\nFor backups, authorization requires `spanner.backups.getIamPolicy`\npermission on resource.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists completed and pending backups.\nBackups returned are ordered by `create_time` in descending order,\nstarting from the most recent `create_time`.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("patch").about("Updates a pending or completed Backup.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a database or backup resource.\nReplaces any existing policy.\n\nAuthorization requires `spanner.databases.setIamPolicy`\npermission on resource.\nFor backups, authorization requires `spanner.backups.setIamPolicy`\npermission on resource.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that the caller has on the specified database or backup\nresource.\n\nAttempting this RPC on a non-existent Cloud Spanner database will\nresult in a NOT_FOUND error if the user has\n`spanner.databases.list` permission on the containing Cloud\nSpanner instance. Otherwise returns an empty set of permissions.\nCalling this method on a backup that does not exist will\nresult in a NOT_FOUND error if the user has\n`spanner.backups.list` permission on the containing instance.");
+            backups2 = backups2.subcommand(mcmd);
+        }
+        let mut database_operations2 = SubCommand::with_name("database_operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists database longrunning-operations.\nA database operation has a name of the form\n`projects/<project>/instances/<instance>/databases/<database>/operations/<operation>`.\nThe long-running operation\nmetadata field type\n`metadata.type_url` describes the type of the metadata. Operations returned\ninclude those that have completed/failed/canceled within the last 7 days,\nand pending operations.");
+            database_operations2 = database_operations2.subcommand(mcmd);
+        }
         let mut databases2 = SubCommand::with_name("databases")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create, drop_database, get, get_ddl, get_iam_policy, list, set_iam_policy, test_iam_permissions and update_ddl");
+                        .about("methods: create, drop_database, get, get_ddl, get_iam_policy, list, restore, set_iam_policy, test_iam_permissions and update_ddl");
         {
             let mcmd = SubCommand::with_name("create").about("Creates a new Cloud Spanner database and starts to prepare it for serving.\nThe returned long-running operation will\nhave a name of the format `<database_name>/operations/<operation_id>` and\ncan be used to track preparation of the database. The\nmetadata field type is\nCreateDatabaseMetadata. The\nresponse field type is\nDatabase, if successful.");
             databases2 = databases2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("drop_database")
-                .about("Drops (aka deletes) a Cloud Spanner database.");
+            let mcmd = SubCommand::with_name("drop_database").about("Drops (aka deletes) a Cloud Spanner database.\nCompleted backups for the database will be retained according to their\n`expire_time`.");
             databases2 = databases2.subcommand(mcmd);
         }
         {
@@ -108,7 +159,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             databases2 = databases2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a database resource.\nReturns an empty policy if a database exists but does\nnot have a policy set.\n\nAuthorization requires `spanner.databases.getIamPolicy` permission on\nresource.");
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a database or backup resource.\nReturns an empty policy if a database or backup exists but does not have a\npolicy set.\n\nAuthorization requires `spanner.databases.getIamPolicy` permission on\nresource.\nFor backups, authorization requires `spanner.backups.getIamPolicy`\npermission on resource.");
             databases2 = databases2.subcommand(mcmd);
         }
         {
@@ -116,11 +167,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             databases2 = databases2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a database resource.\nReplaces any existing policy.\n\nAuthorization requires `spanner.databases.setIamPolicy`\npermission on resource.");
+            let mcmd = SubCommand::with_name("restore").about("Create a new database by restoring from a completed backup. The new\ndatabase must be in the same project and in an instance with the same\ninstance configuration as the instance containing\nthe backup. The returned database long-running\noperation has a name of the format\n`projects/<project>/instances/<instance>/databases/<database>/operations/<operation_id>`,\nand can be used to track the progress of the operation, and to cancel it.\nThe metadata field type is\nRestoreDatabaseMetadata.\nThe response type\nis Database, if\nsuccessful. Cancelling the returned operation will stop the restore and\ndelete the database.\nThere can be only one database being restored into an instance at a time.\nOnce the restore operation completes, a new restore operation can be\ninitiated, without waiting for the optimize operation associated with the\nfirst restore to complete.");
             databases2 = databases2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that the caller has on the specified database resource.\n\nAttempting this RPC on a non-existent Cloud Spanner database will\nresult in a NOT_FOUND error if the user has\n`spanner.databases.list` permission on the containing Cloud\nSpanner instance. Otherwise returns an empty set of permissions.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on a database or backup resource.\nReplaces any existing policy.\n\nAuthorization requires `spanner.databases.setIamPolicy`\npermission on resource.\nFor backups, authorization requires `spanner.backups.setIamPolicy`\npermission on resource.");
+            databases2 = databases2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that the caller has on the specified database or backup\nresource.\n\nAttempting this RPC on a non-existent Cloud Spanner database will\nresult in a NOT_FOUND error if the user has\n`spanner.databases.list` permission on the containing Cloud\nSpanner instance. Otherwise returns an empty set of permissions.\nCalling this method on a backup that does not exist will\nresult in a NOT_FOUND error if the user has\n`spanner.backups.list` permission on the containing instance.");
             databases2 = databases2.subcommand(mcmd);
         }
         {
@@ -165,6 +220,25 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request. If the\nserver doesn\'t support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.");
             operations3 = operations3.subcommand(mcmd);
         }
+        let mut operations3 = SubCommand::with_name("operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: cancel, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("cancel").about("Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.");
+            operations3 = operations3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.");
+            operations3 = operations3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            operations3 = operations3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request. If the\nserver doesn\'t support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.");
+            operations3 = operations3.subcommand(mcmd);
+        }
         let mut sessions3 = SubCommand::with_name("sessions")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: batch_create, begin_transaction, commit, create, delete, execute_batch_dml, execute_sql, execute_streaming_sql, get, list, partition_query, partition_read, read, rollback and streaming_read");
@@ -181,7 +255,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             sessions3 = sessions3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new session. A session can be used to perform\ntransactions that read and/or modify data in a Cloud Spanner database.\nSessions are meant to be reused for many consecutive\ntransactions.\n\nSessions can only execute one transaction at a time. To execute\nmultiple concurrent read-write/write-only transactions, create\nmultiple sessions. Note that standalone reads and queries use a\ntransaction internally, and count toward the one transaction\nlimit.\n\nActive sessions use additional server resources, so it is a good idea to\ndelete idle and unneeded sessions.\nAside from explicit deletes, Cloud Spanner can delete sessions for which no\noperations are sent for more than an hour. If a session is deleted,\nrequests to it return `NOT_FOUND`.\n\nIdle sessions can be kept alive by sending a trivial SQL query\nperiodically, e.g., `\"SELECT 1\"`.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new session. A session can be used to perform\ntransactions that read and/or modify data in a Cloud Spanner database.\nSessions are meant to be reused for many consecutive\ntransactions.\n\nSessions can only execute one transaction at a time. To execute\nmultiple concurrent read-write/write-only transactions, create\nmultiple sessions. Note that standalone reads and queries use a\ntransaction internally, and count toward the one transaction\nlimit.\n\nActive sessions use additional server resources, so it is a good idea to\ndelete idle and unneeded sessions.\nAside from explicit deletes, Cloud Spanner may delete sessions for which no\noperations are sent for more than an hour. If a session is deleted,\nrequests to it return `NOT_FOUND`.\n\nIdle sessions can be kept alive by sending a trivial SQL query\nperiodically, e.g., `\"SELECT 1\"`.");
             sessions3 = sessions3.subcommand(mcmd);
         }
         {
@@ -231,8 +305,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         databases2 = databases2.subcommand(sessions3);
         databases2 = databases2.subcommand(operations3);
+        backups2 = backups2.subcommand(operations3);
         instances1 = instances1.subcommand(operations2);
         instances1 = instances1.subcommand(databases2);
+        instances1 = instances1.subcommand(database_operations2);
+        instances1 = instances1.subcommand(backups2);
+        instances1 = instances1.subcommand(backup_operations2);
         projects0 = projects0.subcommand(instances1);
         projects0 = projects0.subcommand(instance_configs1);
         app = app.subcommand(projects0);

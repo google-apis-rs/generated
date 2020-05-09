@@ -7,7 +7,7 @@
   "canonicalName": "Container Analysis",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190913",
+  "revision": "20200501",
   "title": "Container Analysis API",
   "description": "An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.",
   "ownerDomain": "google.com",
@@ -299,6 +299,58 @@
       "additionalProperties": null,
       "items": null
     },
+    "ArtifactHashes": {
+      "id": "ArtifactHashes",
+      "description": "Defines a hash object for use in Materials and Products.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "sha256": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ArtifactRule": {
+      "id": "ArtifactRule",
+      "description": "Defines an object to declare an in-toto artifact rule",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "artifactRule": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Attestation": {
       "id": "Attestation",
       "description": "Occurrence that represents a single \"attestation\". The authenticity of an\nattestation can be verified using the attached signature. If the verifier\ntrusts the public key of the signer, then verifying the signature is\nsufficient to establish trust. In this circumstance, the authority to which\nthis attestation is attached is primarily useful for look-up (how to find\nthis attestation if you already know the authority and artifact to be\nverified) and intent (which authority was this attestation intended to sign\nfor).",
@@ -370,7 +422,7 @@
       "enumDescriptions": [],
       "properties": {
         "notes": {
-          "description": "The notes to create. Max allowed length is 1000.",
+          "description": "Required. The notes to create. Max allowed length is 1000.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -419,7 +471,7 @@
       "enumDescriptions": [],
       "properties": {
         "occurrences": {
-          "description": "The occurrences to create. Max allowed length is 1000.",
+          "description": "Required. The occurrences to create. Max allowed length is 1000.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -467,11 +519,11 @@
       "enumDescriptions": [],
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
+          "description": "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "$ref": "Expr"
         },
         "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
           "format": null,
           "enum": [],
@@ -731,6 +783,37 @@
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ByProducts": {
+      "id": "ByProducts",
+      "description": "Defines an object for the byproducts field in in-toto links. The suggested\nfields are \"stderr\", \"stdout\", and \"return-value\".",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "customValues": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
           "items": null
         }
       },
@@ -1437,7 +1520,8 @@
             "PACKAGE",
             "DEPLOYMENT",
             "DISCOVERY",
-            "ATTESTATION"
+            "ATTESTATION",
+            "INTOTO"
           ],
           "enumDescriptions": [
             "Unknown.",
@@ -1447,7 +1531,8 @@
             "This represents a package installed via a package manager.",
             "The note and occurrence track deployment events.",
             "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts."
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an in-toto link."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1542,16 +1627,47 @@
       "additionalProperties": null,
       "items": null
     },
+    "Environment": {
+      "id": "Environment",
+      "description": "Defines an object for the environment field in in-toto links. The suggested\nfields are \"variables\", \"filesystem\", and \"workdir\".",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "customValues": {
+          "description": null,
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Expr": {
       "id": "Expr",
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) > 0\"",
+      "description": "Represents a textual expression in the Common Expression Language (CEL)\nsyntax. CEL is a C-like expression language. The syntax and semantics of CEL\nare documented at https://github.com/google/cel-spec.\n\nExample (Comparison):\n\n    title: \"Summary size limit\"\n    description: \"Determines if a summary is less than 100 chars\"\n    expression: \"document.summary.size() < 100\"\n\nExample (Equality):\n\n    title: \"Requestor is owner\"\n    description: \"Determines if requestor is the document owner\"\n    expression: \"document.owner == request.auth.claims.email\"\n\nExample (Logic):\n\n    title: \"Public documents\"\n    description: \"Determine whether the document should be publicly visible\"\n    expression: \"document.type != 'private' && document.type != 'internal'\"\n\nExample (Data Manipulation):\n\n    title: \"Notification string\"\n    description: \"Create a notification string with a timestamp.\"\n    expression: \"'New message received at ' + string(document.create_time)\"\n\nThe exact variables and functions that may be referenced within an expression\nare determined by the service that evaluates it. See the service\ndocumentation for additional information.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "description": "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1561,7 +1677,7 @@
           "items": null
         },
         "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "description": "Textual representation of an expression in Common Expression Language\nsyntax.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1571,7 +1687,7 @@
           "items": null
         },
         "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "description": "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1581,7 +1697,7 @@
           "items": null
         },
         "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "description": "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1833,7 +1949,7 @@
       "enumDescriptions": [],
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM.",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`.",
           "$ref": "GetPolicyOptions"
         }
       },
@@ -1849,7 +1965,7 @@
       "enumDescriptions": [],
       "properties": {
         "requestedPolicyVersion": {
-          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
+          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1995,6 +2111,92 @@
         "derivedImage": {
           "description": "Required. Immutable. The child image derived from the base image.",
           "$ref": "Derived"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GrafeasV1beta1IntotoArtifact": {
+      "id": "GrafeasV1beta1IntotoArtifact",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "hashes": {
+          "description": null,
+          "$ref": "ArtifactHashes"
+        },
+        "resourceUri": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GrafeasV1beta1IntotoDetails": {
+      "id": "GrafeasV1beta1IntotoDetails",
+      "description": "This corresponds to a signed in-toto link - it is made up of one or more\nsignatures and the in-toto link itself. This is used for occurrences of a\nGrafeas in-toto note.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "signatures": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GrafeasV1beta1IntotoSignature"
+          }
+        },
+        "signed": {
+          "description": null,
+          "$ref": "Link"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GrafeasV1beta1IntotoSignature": {
+      "id": "GrafeasV1beta1IntotoSignature",
+      "description": "A signature object consists of the KeyID used and the signature itself.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "keyid": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sig": {
+          "description": null,
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -2200,6 +2402,92 @@
       "additionalProperties": null,
       "items": null
     },
+    "InToto": {
+      "id": "InToto",
+      "description": "This contains the fields corresponding to the definition of a software supply\nchain step in an in-toto layout. This information goes into a Grafeas note.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "expectedCommand": {
+          "description": "This field contains the expected command used to perform the step.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "expectedMaterials": {
+          "description": "The following fields contain in-toto artifact rules identifying the\nartifacts that enter this supply chain step, and exit the supply chain\nstep, i.e. materials and products of the step.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ArtifactRule"
+          }
+        },
+        "expectedProducts": {
+          "description": null,
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ArtifactRule"
+          }
+        },
+        "signingKeys": {
+          "description": "This field contains the public keys that can be used to verify the\nsignatures on the step metadata.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "SigningKey"
+          }
+        },
+        "stepName": {
+          "description": "This field identifies the name of the step in the supply chain.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "threshold": {
+          "description": "This field contains a value that indicates the minimum number of keys that\nneed to be used to sign the step's in-toto link.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Installation": {
       "id": "Installation",
       "description": "This represents how a particular software package may be installed on a\nsystem.",
@@ -2331,6 +2619,68 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "Link": {
+      "id": "Link",
+      "description": "This corresponds to an in-toto link.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "byproducts": {
+          "description": "ByProducts are data generated as part of a software supply chain step, but\nare not the actual result of the step.",
+          "$ref": "ByProducts"
+        },
+        "command": {
+          "description": "This field contains the full command executed for the step. This can also\nbe empty if links are generated for operations that aren't directly mapped\nto a specific command. Each term in the command is an independent string\nin the list. An example of a command in the in-toto metadata field is:\n\"command\": [\"git\", \"clone\", \"https://github.com/in-toto/demo-project.git\"]",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "environment": {
+          "description": "This is a field that can be used to capture information about the\nenvironment. It is suggested for this field to contain information that\ndetails environment variables, filesystem information, and the present\nworking directory. The recommended structure of this field is:\n\"environment\": {\n  \"custom_values\": {\n    \"variables\": \"<ENV>\",\n    \"filesystem\": \"<FS>\",\n    \"workdir\": \"<CWD>\",\n    \"<ANY OTHER RELEVANT FIELDS>\": \"...\"\n  }\n}",
+          "$ref": "Environment"
+        },
+        "materials": {
+          "description": "Materials are the supply chain artifacts that go into the step and are used\nfor the operation performed. The key of the map is the path of the artifact\nand the structure contains the recorded hash information. An example is:\n\"materials\": [\n  {\n    \"resource_uri\": \"foo/bar\",\n    \"hashes\": {\n      \"sha256\": \"ebebf...\",\n      <OTHER HASH ALGORITHMS>: <HASH VALUE>\n    }\n  }\n]",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GrafeasV1beta1IntotoArtifact"
+          }
+        },
+        "products": {
+          "description": "Products are the supply chain artifacts generated as a result of the step.\nThe structure is identical to that of materials.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GrafeasV1beta1IntotoArtifact"
+          }
         }
       },
       "additionalProperties": null,
@@ -2556,6 +2906,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "intoto": {
+          "description": "A note describing an in-toto link.",
+          "$ref": "InToto"
+        },
         "kind": {
           "description": "Output only. The type of analysis. This field can be used as a filter in\nlist requests.",
           "type": "string",
@@ -2568,7 +2922,8 @@
             "PACKAGE",
             "DEPLOYMENT",
             "DISCOVERY",
-            "ATTESTATION"
+            "ATTESTATION",
+            "INTOTO"
           ],
           "enumDescriptions": [
             "Unknown.",
@@ -2578,7 +2933,8 @@
             "This represents a package installed via a package manager.",
             "The note and occurrence track deployment events.",
             "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts."
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an in-toto link."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -2708,6 +3064,10 @@
           "description": "Describes the installation of a package on the linked resource.",
           "$ref": "GrafeasV1beta1PackageDetails"
         },
+        "intoto": {
+          "description": "Describes a specific in-toto link.",
+          "$ref": "GrafeasV1beta1IntotoDetails"
+        },
         "kind": {
           "description": "Output only. This explicitly denotes which of the occurrence details are\nspecified. This field can be used as a filter in list requests.",
           "type": "string",
@@ -2720,7 +3080,8 @@
             "PACKAGE",
             "DEPLOYMENT",
             "DISCOVERY",
-            "ATTESTATION"
+            "ATTESTATION",
+            "INTOTO"
           ],
           "enumDescriptions": [
             "Unknown.",
@@ -2730,7 +3091,8 @@
             "This represents a package installed via a package manager.",
             "The note and occurrence track deployment events.",
             "The note and occurrence track the initial discovery status of a resource.",
-            "This represents a logical \"role\" that can attest to artifacts."
+            "This represents a logical \"role\" that can attest to artifacts.",
+            "This represents an in-toto link."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -2902,14 +3264,14 @@
     },
     "Policy": {
       "id": "Policy",
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nFor some types of Google Cloud resources, a `binding` can also specify a\n`condition`, which is a logical expression that allows access to a resource\nonly if the expression evaluates to `true`. A condition can add constraints\nbased on attributes of the request, the resource, or both. To learn which\nresources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\n            \"user:eve@example.com\"\n          ],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+          "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2921,7 +3283,7 @@
           }
         },
         "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten.",
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -2931,7 +3293,7 @@
           "items": null
         },
         "version": {
-          "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset.",
+          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3170,6 +3532,58 @@
           "description": "The content of the signature, an opaque bytestring.\nThe payload that this signature verifies MUST be unambiguously provided\nwith the Signature during verification. A wrapper message might provide\nthe payload explicitly. Alternatively, a message might have a canonical\nserialization that can always be unambiguously computed to derive the\npayload.",
           "type": "string",
           "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SigningKey": {
+      "id": "SigningKey",
+      "description": "This defines the format used to record keys used in the software supply\nchain. An in-toto link is attested using one or more keys defined in the\nin-toto layout. An example of this is:\n{\n  \"key_id\": \"776a00e29f3559e0141b3b096f696abc6cfb0c657ab40f441132b345b0...\",\n  \"key_type\": \"rsa\",\n  \"public_key_value\": \"-----BEGIN PUBLIC KEY-----\\nMIIBojANBgkqhkiG9w0B...\",\n  \"key_scheme\": \"rsassa-pss-sha256\"\n}\nThe format for in-toto's key definition can be found in section 4.2 of the\nin-toto specification.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "keyId": {
+          "description": "key_id is an identifier for the signing key.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "keyScheme": {
+          "description": "This field contains the corresponding signature scheme.\nEg: \"rsassa-pss-sha256\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "keyType": {
+          "description": "This field identifies the specific signing method. Eg: \"rsa\", \"ed25519\",\nand \"ecdsa\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "publicKeyValue": {
+          "description": "This field contains the actual public key.",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -3683,7 +4097,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "The name of the note to list occurrences for in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
+                      "description": "Required. The name of the note to list occurrences for in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3752,7 +4166,7 @@
               "description": "Creates new notes in batch.",
               "parameters": {
                 "parent": {
-                  "description": "The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe notes are to be created.",
+                  "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe notes are to be created.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3791,7 +4205,7 @@
               "description": "Creates a new note.",
               "parameters": {
                 "noteId": {
-                  "description": "The ID to use for this note.",
+                  "description": "Required. The ID to use for this note.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3805,7 +4219,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe note is to be created.",
+                  "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe note is to be created.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3844,7 +4258,7 @@
               "description": "Deletes the specified note.",
               "parameters": {
                 "name": {
-                  "description": "The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
+                  "description": "Required. The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3881,7 +4295,7 @@
               "description": "Gets the specified note.",
               "parameters": {
                 "name": {
-                  "description": "The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
+                  "description": "Required. The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3999,7 +4413,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The name of the project to list notes for in the form of\n`projects/[PROJECT_ID]`.",
+                  "description": "Required. The name of the project to list notes for in the form of\n`projects/[PROJECT_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4036,7 +4450,7 @@
               "description": "Updates the specified note.",
               "parameters": {
                 "name": {
-                  "description": "The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
+                  "description": "Required. The name of the note in the form of\n`projects/[PROVIDER_ID]/notes/[NOTE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4172,7 +4586,7 @@
               "description": "Creates new occurrences in batch.",
               "parameters": {
                 "parent": {
-                  "description": "The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe occurrences are to be created.",
+                  "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe occurrences are to be created.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4211,7 +4625,7 @@
               "description": "Creates a new occurrence.",
               "parameters": {
                 "parent": {
-                  "description": "The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe occurrence is to be created.",
+                  "description": "Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which\nthe occurrence is to be created.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4250,7 +4664,7 @@
               "description": "Deletes the specified occurrence. For example, use this method to delete an\noccurrence when the occurrence is no longer applicable for the given\nresource.",
               "parameters": {
                 "name": {
-                  "description": "The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
+                  "description": "Required. The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4287,7 +4701,7 @@
               "description": "Gets the specified occurrence.",
               "parameters": {
                 "name": {
-                  "description": "The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
+                  "description": "Required. The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4363,7 +4777,7 @@
               "description": "Gets the note attached to the specified occurrence. Consumer projects can\nuse this method to get a note that belongs to a provider project.",
               "parameters": {
                 "name": {
-                  "description": "The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
+                  "description": "Required. The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4414,7 +4828,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The name of the project to get a vulnerability summary for in the form of\n`projects/[PROJECT_ID]`.",
+                  "description": "Required. The name of the project to get a vulnerability summary for in the form of\n`projects/[PROJECT_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4493,7 +4907,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The name of the project to list occurrences for in the form of\n`projects/[PROJECT_ID]`.",
+                  "description": "Required. The name of the project to list occurrences for in the form of\n`projects/[PROJECT_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4530,7 +4944,7 @@
               "description": "Updates the specified occurrence.",
               "parameters": {
                 "name": {
-                  "description": "The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
+                  "description": "Required. The name of the occurrence in the form of\n`projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4666,7 +5080,7 @@
               "description": "Gets the specified scan configuration.",
               "parameters": {
                 "name": {
-                  "description": "The name of the scan configuration in the form of\n`projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
+                  "description": "Required. The name of the scan configuration in the form of\n`projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4703,7 +5117,7 @@
               "description": "Lists scan configurations for the specified project.",
               "parameters": {
                 "filter": {
-                  "description": "The filter expression.",
+                  "description": "Required. The filter expression.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -4745,7 +5159,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The name of the project to list scan configurations for in the form of\n`projects/[PROJECT_ID]`.",
+                  "description": "Required. The name of the project to list scan configurations for in the form of\n`projects/[PROJECT_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -4782,7 +5196,7 @@
               "description": "Updates the specified scan configuration.",
               "parameters": {
                 "name": {
-                  "description": "The name of the scan configuration in the form of\n`projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
+                  "description": "Required. The name of the scan configuration in the form of\n`projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.",
                   "default": null,
                   "location": "path",
                   "required": true,

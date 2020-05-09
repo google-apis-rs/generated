@@ -7,7 +7,7 @@
   "canonicalName": "Abusive Experience Report",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190916",
+  "revision": "20200504",
   "title": "Abusive Experience Report API",
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "ownerDomain": "google.com",
@@ -197,15 +197,7 @@
       "repeated": false
     }
   },
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/xapi.zoo": {
-          "description": "Test scope for access to the Zoo service"
-        }
-      }
-    }
-  },
+  "auth": null,
   "schemas": {
     "SiteSummaryResponse": {
       "id": "SiteSummaryResponse",
@@ -366,9 +358,7 @@
           "response": {
             "$ref": "SiteSummaryResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
+          "scopes": [],
           "supportsMediaDownload": false,
           "useMediaDownloadService": false,
           "supportsSubscription": false,
@@ -391,9 +381,7 @@
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
-          ],
+          "scopes": [],
           "supportsMediaDownload": false,
           "useMediaDownloadService": false,
           "supportsSubscription": false,

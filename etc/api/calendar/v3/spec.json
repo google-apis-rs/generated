@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/pBLlVFuRXUL8z1AKbwcQNPAN0vA\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/9DzaytSdmaQ1zkNc9P_nvRDhSF0\"",
   "discoveryVersion": "v1",
   "id": "calendar:v3",
   "name": "calendar",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20190910",
+  "revision": "20200503",
   "title": "Calendar API",
   "description": "Manipulates events and other calendar data.",
   "ownerDomain": "google.com",
@@ -545,7 +545,7 @@
           "items": null
         },
         "hidden": {
-          "description": "Whether the calendar has been hidden from the list. Optional. The default is False.",
+          "description": "Whether the calendar has been hidden from the list. Optional. The attribute is only returned when the calendar is hidden, in which case the value is true.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -670,7 +670,7 @@
       "enumDescriptions": [],
       "properties": {
         "method": {
-          "description": "The method used to deliver the notification. Possible values are:  \n- \"email\" - Notifications are sent via email. \n- \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return notifications using this method. Any newly added SMS notifications will be ignored. See  Google Calendar SMS notifications to be removed for more information.\nNotifications are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS notifications are only available for G Suite customers.  \nRequired when adding a notification.",
+          "description": "The method used to deliver the notification. The possible value is:  \n- \"email\" - Notifications are sent via email.  \nRequired when adding a notification.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -923,7 +923,7 @@
           "items": null
         },
         "conferenceSolution": {
-          "description": "The conference solution, such as Hangouts or Hangouts Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required.",
+          "description": "The conference solution, such as Hangouts or Google Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required.",
           "$ref": "ConferenceSolution"
         },
         "createRequest": {
@@ -1114,7 +1114,7 @@
       "enumDescriptions": [],
       "properties": {
         "type": {
-          "description": "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:  \n- \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n- \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n- \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)",
+          "description": "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:  \n- \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n- \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n- \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)\n- \"addOn\" for 3P conference providers",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1136,7 +1136,7 @@
       "enumDescriptions": [],
       "properties": {
         "conferenceSolutionKey": {
-          "description": "The conference solution, such as Hangouts or Hangouts Meet.",
+          "description": "The conference solution, such as Hangouts or Google Meet.",
           "$ref": "ConferenceSolutionKey"
         },
         "requestId": {
@@ -1372,7 +1372,7 @@
           "items": null
         },
         "conferenceData": {
-          "description": "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests.",
+          "description": "The conference-related information, such as details of a Google Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests.",
           "$ref": "ConferenceData"
         },
         "created": {
@@ -1437,7 +1437,7 @@
           "items": null
         },
         "description": {
-          "description": "Description of the event. Optional.",
+          "description": "Description of the event. Can contain HTML. Optional.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2169,7 +2169,7 @@
       "enumDescriptions": [],
       "properties": {
         "method": {
-          "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return reminders using this method. Any newly added SMS reminders will be ignored. See  Google Calendar SMS notifications to be removed for more information.\nReminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n- \"popup\" - Reminders are sent via a UI popup.  \nRequired when adding a reminder.",
+          "description": "The method used by this reminder. Possible values are:  \n- \"email\" - Reminders are sent via email. \n- \"popup\" - Reminders are sent via a UI popup.  \nRequired when adding a reminder.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4015,7 +4015,7 @@
           "description": "Returns an event.",
           "parameters": {
             "alwaysIncludeEmail": {
-              "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+              "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
               "default": null,
               "location": "query",
               "required": false,
@@ -4298,7 +4298,7 @@
           "description": "Returns instances of the specified recurring event.",
           "parameters": {
             "alwaysIncludeEmail": {
-              "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+              "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
               "default": null,
               "location": "query",
               "required": false,
@@ -4479,7 +4479,7 @@
           "description": "Returns events on the specified calendar.",
           "parameters": {
             "alwaysIncludeEmail": {
-              "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+              "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
               "default": null,
               "location": "query",
               "required": false,
@@ -4867,7 +4867,7 @@
           "description": "Updates an event. This method supports patch semantics.",
           "parameters": {
             "alwaysIncludeEmail": {
-              "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+              "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
               "default": null,
               "location": "query",
               "required": false,
@@ -5103,7 +5103,7 @@
           "description": "Updates an event.",
           "parameters": {
             "alwaysIncludeEmail": {
-              "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+              "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
               "default": null,
               "location": "query",
               "required": false,
@@ -5250,7 +5250,7 @@
           "description": "Watch for changes to Events resources.",
           "parameters": {
             "alwaysIncludeEmail": {
-              "description": "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False.",
+              "description": "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided).",
               "default": null,
               "location": "query",
               "required": false,

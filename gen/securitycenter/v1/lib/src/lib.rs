@@ -1,29 +1,33 @@
-#![doc = "# Resources and Methods\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [*getOrganizationSettings*](resources/organizations/struct.GetOrganizationSettingsRequestBuilder.html), [*updateOrganizationSettings*](resources/organizations/struct.UpdateOrganizationSettingsRequestBuilder.html)\n      * [assets](resources/organizations/assets/struct.AssetsActions.html)\n        * [*group*](resources/organizations/assets/struct.GroupRequestBuilder.html), [*list*](resources/organizations/assets/struct.ListRequestBuilder.html), [*runDiscovery*](resources/organizations/assets/struct.RunDiscoveryRequestBuilder.html), [*updateSecurityMarks*](resources/organizations/assets/struct.UpdateSecurityMarksRequestBuilder.html)\n      * [operations](resources/organizations/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/organizations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/organizations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/operations/struct.GetRequestBuilder.html), [*list*](resources/organizations/operations/struct.ListRequestBuilder.html)\n      * [sources](resources/organizations/sources/struct.SourcesActions.html)\n        * [*create*](resources/organizations/sources/struct.CreateRequestBuilder.html), [*get*](resources/organizations/sources/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/organizations/sources/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/organizations/sources/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sources/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/organizations/sources/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/organizations/sources/struct.TestIamPermissionsRequestBuilder.html)\n        * [findings](resources/organizations/sources/findings/struct.FindingsActions.html)\n          * [*create*](resources/organizations/sources/findings/struct.CreateRequestBuilder.html), [*group*](resources/organizations/sources/findings/struct.GroupRequestBuilder.html), [*list*](resources/organizations/sources/findings/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sources/findings/struct.PatchRequestBuilder.html), [*setState*](resources/organizations/sources/findings/struct.SetStateRequestBuilder.html), [*updateSecurityMarks*](resources/organizations/sources/findings/struct.UpdateSecurityMarksRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [organizations](resources/organizations/struct.OrganizationsActions.html)\n      * [*getOrganizationSettings*](resources/organizations/struct.GetOrganizationSettingsRequestBuilder.html), [*updateOrganizationSettings*](resources/organizations/struct.UpdateOrganizationSettingsRequestBuilder.html)\n      * [assets](resources/organizations/assets/struct.AssetsActions.html)\n        * [*group*](resources/organizations/assets/struct.GroupRequestBuilder.html), [*list*](resources/organizations/assets/struct.ListRequestBuilder.html), [*runDiscovery*](resources/organizations/assets/struct.RunDiscoveryRequestBuilder.html), [*updateSecurityMarks*](resources/organizations/assets/struct.UpdateSecurityMarksRequestBuilder.html)\n      * [notification_configs](resources/organizations/notification_configs/struct.NotificationConfigsActions.html)\n        * [*create*](resources/organizations/notification_configs/struct.CreateRequestBuilder.html), [*delete*](resources/organizations/notification_configs/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/notification_configs/struct.GetRequestBuilder.html), [*list*](resources/organizations/notification_configs/struct.ListRequestBuilder.html), [*patch*](resources/organizations/notification_configs/struct.PatchRequestBuilder.html)\n      * [operations](resources/organizations/operations/struct.OperationsActions.html)\n        * [*cancel*](resources/organizations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/organizations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/organizations/operations/struct.GetRequestBuilder.html), [*list*](resources/organizations/operations/struct.ListRequestBuilder.html)\n      * [sources](resources/organizations/sources/struct.SourcesActions.html)\n        * [*create*](resources/organizations/sources/struct.CreateRequestBuilder.html), [*get*](resources/organizations/sources/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/organizations/sources/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/organizations/sources/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sources/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/organizations/sources/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/organizations/sources/struct.TestIamPermissionsRequestBuilder.html)\n        * [findings](resources/organizations/sources/findings/struct.FindingsActions.html)\n          * [*create*](resources/organizations/sources/findings/struct.CreateRequestBuilder.html), [*group*](resources/organizations/sources/findings/struct.GroupRequestBuilder.html), [*list*](resources/organizations/sources/findings/struct.ListRequestBuilder.html), [*patch*](resources/organizations/sources/findings/struct.PatchRequestBuilder.html), [*setState*](resources/organizations/sources/findings/struct.SetStateRequestBuilder.html), [*updateSecurityMarks*](resources/organizations/sources/findings/struct.UpdateSecurityMarksRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
-        #[doc = "The time at which the asset was created in Cloud SCC."]
+        #[doc = "The time at which the asset was created in Security Command Center."]
         #[serde(
             rename = "createTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "IAM Policy information associated with the GCP resource described by the\nCloud SCC asset. This information is managed and defined by the GCP\nresource and cannot be modified by the user."]
+        #[doc = "Cloud IAM Policy information associated with the Google Cloud resource\ndescribed by the Security Command Center asset. This information is managed\nand defined by the Google Cloud resource and cannot be modified by the\nuser."]
         #[serde(
             rename = "iamPolicy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub iam_policy: ::std::option::Option<crate::schemas::IamPolicy>,
-        #[doc = "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/assets/456\"."]
+        #[doc = "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/assets/{asset_id}\"."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Resource managed properties. These properties are managed and defined by\nthe GCP resource and cannot be modified by the user."]
+        #[doc = "Resource managed properties. These properties are managed and defined by\nthe Google Cloud resource and cannot be modified by the user."]
         #[serde(
             rename = "resourceProperties",
             default,
@@ -31,7 +35,7 @@ pub mod schemas {
         )]
         pub resource_properties:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Cloud SCC managed properties. These properties are managed by\nCloud SCC and cannot be modified by the user."]
+        #[doc = "Security Command Center managed properties. These properties are managed by\nSecurity Command Center and cannot be modified by the user."]
         #[serde(
             rename = "securityCenterProperties",
             default,
@@ -46,7 +50,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub security_marks: ::std::option::Option<crate::schemas::SecurityMarks>,
-        #[doc = "The time at which the asset was last updated, added, or deleted in Cloud\nSCC."]
+        #[doc = "The time at which the asset was last updated, added, or deleted in Security\nCommand Center."]
         #[serde(
             rename = "updateTime",
             default,
@@ -362,7 +366,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(
             rename = "members",
             default,
@@ -424,28 +428,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(
             rename = "title",
             default,
@@ -472,7 +476,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub category: ::std::option::Option<String>,
-        #[doc = "The time at which the finding was created in Cloud SCC."]
+        #[doc = "The time at which the finding was created in Security Command Center."]
         #[serde(
             rename = "createTime",
             default,
@@ -486,28 +490,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub event_time: ::std::option::Option<String>,
-        #[doc = "The URI that, if available, points to a web page outside of Cloud SCC\nwhere additional information about the finding can be found. This field is\nguaranteed to be either empty or a well formed URL."]
+        #[doc = "The URI that, if available, points to a web page outside of Security\nCommand Center where additional information about the finding can be found.\nThis field is guaranteed to be either empty or a well formed URL."]
         #[serde(
             rename = "externalUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub external_uri: ::std::option::Option<String>,
-        #[doc = "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/sources/456/findings/789\""]
+        #[doc = "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\""]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/123/sources/456\""]
+        #[doc = "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/{organization_id}/sources/{source_id}\""]
         #[serde(
             rename = "parent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent: ::std::option::Option<String>,
-        #[doc = "The full resource name of the Google Cloud Platform (GCP) resource this\nfinding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nThis field is immutable after creation time."]
+        #[doc = "For findings on Google Cloud resources, the full resource\nname of the Google Cloud resource this finding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nWhen the finding is for a non-Google Cloud resource, the resourceName can\nbe a customer or partner defined string. This field is immutable after\ncreation time."]
         #[serde(
             rename = "resourceName",
             default,
@@ -830,6 +834,695 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudSecuritycenterV1NotificationMessage {
+        #[doc = "If it's a Finding based notification config, this field will be\npopulated."]
+        #[serde(
+            rename = "finding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub finding: ::std::option::Option<crate::schemas::Finding>,
+        #[doc = "Name of the notification config that generated current notification."]
+        #[serde(
+            rename = "notificationConfigName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_config_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1NotificationMessage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1NotificationMessage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1Asset {
+        #[doc = "The time at which the asset was created in Security Command Center."]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "Cloud IAM Policy information associated with the Google Cloud resource\ndescribed by the Security Command Center asset. This information is managed\nand defined by the Google Cloud resource and cannot be modified by the\nuser."]
+        #[serde(
+            rename = "iamPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub iam_policy:
+            ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1IamPolicy>,
+        #[doc = "The relative resource name of this asset. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/assets/{asset_id}\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Resource managed properties. These properties are managed and defined by\nthe Google Cloud resource and cannot be modified by the user."]
+        #[serde(
+            rename = "resourceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_properties:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "Security Command Center managed properties. These properties are managed by\nSecurity Command Center and cannot be modified by the user."]
+        #[serde(
+            rename = "securityCenterProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub security_center_properties: ::std::option::Option<
+            crate::schemas::GoogleCloudSecuritycenterV1P1Beta1SecurityCenterProperties,
+        >,
+        #[doc = "User specified security marks. These marks are entirely managed by the user\nand come from the SecurityMarks resource that belongs to the asset."]
+        #[serde(
+            rename = "securityMarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub security_marks:
+            ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1SecurityMarks>,
+        #[doc = "The time at which the asset was last updated, added, or deleted in Cloud\nSCC."]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_time: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1P1Beta1Asset {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1P1Beta1Asset {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1Finding {
+        #[doc = "The additional taxonomy group within findings from a given source.\nThis field is immutable after creation time.\nExample: \"XSS_FLASH_INJECTION\""]
+        #[serde(
+            rename = "category",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub category: ::std::option::Option<String>,
+        #[doc = "The time at which the finding was created in Security Command Center."]
+        #[serde(
+            rename = "createTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_time: ::std::option::Option<String>,
+        #[doc = "The time at which the event took place. For example, if the finding\nrepresents an open firewall it would capture the time the detector believes\nthe firewall became open. The accuracy is determined by the detector."]
+        #[serde(
+            rename = "eventTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub event_time: ::std::option::Option<String>,
+        #[doc = "The URI that, if available, points to a web page outside of Security\nCommand Center where additional information about the finding can be found.\nThis field is guaranteed to be either empty or a well formed URL."]
+        #[serde(
+            rename = "externalUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub external_uri: ::std::option::Option<String>,
+        #[doc = "The relative resource name of this finding. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\""]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The relative resource name of the source the finding belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nThis field is immutable after creation time.\nFor example:\n\"organizations/{organization_id}/sources/{source_id}\""]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent: ::std::option::Option<String>,
+        #[doc = "For findings on Google Cloud resources, the full resource\nname of the Google Cloud resource this finding is for. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name\nWhen the finding is for a non-Google Cloud resource, the resourceName can\nbe a customer or partner defined string. This field is immutable after\ncreation time."]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_name: ::std::option::Option<String>,
+        #[doc = "Output only. User specified security marks. These marks are entirely\nmanaged by the user and come from the SecurityMarks resource that belongs\nto the finding."]
+        #[serde(
+            rename = "securityMarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub security_marks:
+            ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1SecurityMarks>,
+        #[doc = "Source specific properties. These properties are managed by the source\nthat writes the finding. The key names in the source_properties map must be\nbetween 1 and 255 characters, and must start with a letter and contain\nalphanumeric characters or underscores only."]
+        #[serde(
+            rename = "sourceProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub source_properties:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The state of the finding."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state:
+            ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1FindingState>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1P1Beta1Finding {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1P1Beta1Finding {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        #[doc = "The finding requires attention and has not been addressed yet."]
+        Active,
+        #[doc = "The finding has been fixed, triaged as a non-issue or otherwise addressed\nand is no longer active."]
+        Inactive,
+        #[doc = "Unspecified state."]
+        StateUnspecified,
+    }
+    impl GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudSecuritycenterV1P1Beta1FindingState::Active => "ACTIVE",
+                GoogleCloudSecuritycenterV1P1Beta1FindingState::Inactive => "INACTIVE",
+                GoogleCloudSecuritycenterV1P1Beta1FindingState::StateUnspecified => {
+                    "STATE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudSecuritycenterV1P1Beta1FindingState, ()> {
+            Ok(match s {
+                "ACTIVE" => GoogleCloudSecuritycenterV1P1Beta1FindingState::Active,
+                "INACTIVE" => GoogleCloudSecuritycenterV1P1Beta1FindingState::Inactive,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1P1Beta1FindingState::StateUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACTIVE" => GoogleCloudSecuritycenterV1P1Beta1FindingState::Active,
+                "INACTIVE" => GoogleCloudSecuritycenterV1P1Beta1FindingState::Inactive,
+                "STATE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1P1Beta1FindingState::StateUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1P1Beta1FindingState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1IamPolicy {
+        #[doc = "The JSON representation of the Policy associated with the asset.\nSee https://cloud.google.com/iam/docs/reference/rest/v1/Policy for\nformat details."]
+        #[serde(
+            rename = "policyBlob",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub policy_blob: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1P1Beta1IamPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1P1Beta1IamPolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1NotificationMessage {
+        #[doc = "If it's a Finding based notification config, this field will be\npopulated."]
+        #[serde(
+            rename = "finding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub finding:
+            ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1Finding>,
+        #[doc = "Name of the notification config that generated current notification."]
+        #[serde(
+            rename = "notificationConfigName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_config_name: ::std::option::Option<String>,
+        #[doc = "If it's an asset based notification config, this field will be\npopulated."]
+        #[serde(
+            rename = "temporalAsset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub temporal_asset:
+            ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1TemporalAsset>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudSecuritycenterV1P1Beta1NotificationMessage
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudSecuritycenterV1P1Beta1NotificationMessage
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponse {
+        #[doc = "The duration between asset discovery run start and end"]
+        #[serde(
+            rename = "duration",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub duration: ::std::option::Option<String>,
+        #[doc = "The state of an asset discovery run."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<
+            crate::schemas::GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponse
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponse
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState {
+        #[doc = "Asset discovery run completed successfully."]
+        Completed,
+        #[doc = "Asset discovery run state was unspecified."]
+        StateUnspecified,
+        #[doc = "Asset discovery run was cancelled with tasks still pending, as another\nrun for the same organization was started with a higher priority."]
+        Superseded,
+        #[doc = "Asset discovery run was killed and terminated."]
+        Terminated,
+    }
+    impl GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Completed => "COMPLETED" , GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: StateUnspecified => "STATE_UNSPECIFIED" , GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Superseded => "SUPERSEDED" , GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Terminated => "TERMINATED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState,
+            (),
+        > {
+            Ok ( match s { "COMPLETED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Completed , "STATE_UNSPECIFIED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: StateUnspecified , "SUPERSEDED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Superseded , "TERMINATED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Terminated , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "COMPLETED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Completed , "STATE_UNSPECIFIED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: StateUnspecified , "SUPERSEDED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Superseded , "TERMINATED" => GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState :: Terminated , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudSecuritycenterV1P1Beta1RunAssetDiscoveryResponseState
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1SecurityCenterProperties {
+        #[doc = "The user defined display name for this resource."]
+        #[serde(
+            rename = "resourceDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_display_name: ::std::option::Option<String>,
+        #[doc = "The full resource name of the Google Cloud resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
+        #[serde(
+            rename = "resourceName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_name: ::std::option::Option<String>,
+        #[doc = "Owners of the Google Cloud resource."]
+        #[serde(
+            rename = "resourceOwners",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_owners: ::std::option::Option<Vec<String>>,
+        #[doc = "The full resource name of the immediate parent of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
+        #[serde(
+            rename = "resourceParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_parent: ::std::option::Option<String>,
+        #[doc = "The user defined display name for the parent of this resource."]
+        #[serde(
+            rename = "resourceParentDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_parent_display_name: ::std::option::Option<String>,
+        #[doc = "The full resource name of the project the resource belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
+        #[serde(
+            rename = "resourceProject",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_project: ::std::option::Option<String>,
+        #[doc = "The user defined display name for the project of this resource."]
+        #[serde(
+            rename = "resourceProjectDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_project_display_name: ::std::option::Option<String>,
+        #[doc = "The type of the Google Cloud resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nSecurity Command Center and/or the producer of the resource and is\nimmutable after create time."]
+        #[serde(
+            rename = "resourceType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_type: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudSecuritycenterV1P1Beta1SecurityCenterProperties
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudSecuritycenterV1P1Beta1SecurityCenterProperties
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1SecurityMarks {
+        #[doc = "Mutable user specified security marks belonging to the parent resource.\nConstraints are as follows:\n\n* Keys and values are treated as case insensitive\n* Keys must be between 1 - 256 characters (inclusive)\n* Keys must be letters, numbers, underscores, or dashes\n* Values have leading and trailing whitespace trimmed, remaining\n  characters must be between 1 - 4096 characters (inclusive)"]
+        #[serde(
+            rename = "marks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub marks: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
+        #[doc = "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1P1Beta1SecurityMarks {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1P1Beta1SecurityMarks {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
+    pub struct GoogleCloudSecuritycenterV1P1Beta1TemporalAsset {
+        #[doc = "Asset data that includes attributes, properties and marks about the asset."]
+        #[serde(
+            rename = "asset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub asset: ::std::option::Option<crate::schemas::GoogleCloudSecuritycenterV1P1Beta1Asset>,
+        #[doc = "Represents if the asset was created/updated/deleted."]
+        #[serde(
+            rename = "changeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub change_type: ::std::option::Option<
+            crate::schemas::GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudSecuritycenterV1P1Beta1TemporalAsset {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudSecuritycenterV1P1Beta1TemporalAsset {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        #[doc = "Unspecified or default."]
+        ChangeTypeUnspecified,
+        #[doc = "Newly created Asset"]
+        Created,
+        #[doc = "Asset was deleted."]
+        Deleted,
+        #[doc = "Asset was updated."]
+        Updated,
+    }
+    impl GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType :: ChangeTypeUnspecified => "CHANGE_TYPE_UNSPECIFIED" , GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType :: Created => "CREATED" , GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType :: Deleted => "DELETED" , GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType :: Updated => "UPDATED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType, ()>
+        {
+            Ok(match s {
+                "CHANGE_TYPE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::ChangeTypeUnspecified
+                }
+                "CREATED" => GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::Created,
+                "DELETED" => GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::Deleted,
+                "UPDATED" => GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::Updated,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CHANGE_TYPE_UNSPECIFIED" => {
+                    GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::ChangeTypeUnspecified
+                }
+                "CREATED" => GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::Created,
+                "DELETED" => GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::Deleted,
+                "UPDATED" => GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType::Updated,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudSecuritycenterV1P1Beta1TemporalAssetChangeType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -998,14 +1691,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub compare_duration: ::std::option::Option<String>,
-        #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks.marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string."]
+        #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks.marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_display_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_parent_display_name: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_project_display_name: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string.\n\nUse a partial match on the empty string to filter based on a property\nexisting: \"resource_properties.my_property : \"\"\"\n\nUse a negated partial match on the empty string to filter based on a\nproperty not existing: \"-resource_properties.my_property : \"\"\""]
         #[serde(
             rename = "filter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter: ::std::option::Option<String>,
-        #[doc = "Expression that defines what assets fields to use for grouping. The string\nvalue should follow SQL syntax: comma separated list of fields. For\nexample:\n\"security_center_properties.resource_project,security_center_properties.project\".\n\nThe following fields are supported when compare_duration is not set:\n\n* security_center_properties.resource_project\n* security_center_properties.resource_type\n* security_center_properties.resource_parent\n\nThe following fields are supported when compare_duration is set:\n\n* security_center_properties.resource_type"]
+        #[doc = "Required. Expression that defines what assets fields to use for grouping. The string\nvalue should follow SQL syntax: comma separated list of fields. For\nexample:\n\"security_center_properties.resource_project,security_center_properties.project\".\n\nThe following fields are supported when compare_duration is not set:\n\n* security_center_properties.resource_project\n* security_center_properties.resource_project_display_name\n* security_center_properties.resource_type\n* security_center_properties.resource_parent\n* security_center_properties.resource_parent_display_name\n\nThe following fields are supported when compare_duration is set:\n\n* security_center_properties.resource_type\n* security_center_properties.resource_project_display_name\n* security_center_properties.resource_parent_display_name"]
         #[serde(
             rename = "groupBy",
             default,
@@ -1098,21 +1791,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GroupFindingsRequest {
-        #[doc = "When compare_duration is set, the GroupResult's \"state_change\" attribute is\nupdated to indicate whether the finding had its state changed, the\nfinding's state remained unchanged, or if the finding was added during the\ncompare_duration period of time that precedes the read_time. This is the\ntime between (read_time - compare_duration) and read_time.\n\nThe state_change value is derived based on the presence and state of the\nfinding at the two points in time. Intermediate state changes between the\ntwo times don't affect the result. For example, the results aren't affected\nif the finding is made inactive and then active again.\n\nPossible \"state_change\" values when compare_duration is specified:\n\n* \"CHANGED\":   indicates that the finding was present at the start of\n  compare_duration, but changed its state at read_time.\n* \"UNCHANGED\": indicates that the finding was present at the start of\n  compare_duration and did not change state at read_time.\n* \"ADDED\":     indicates that the finding was not present at the start\n  of compare_duration, but was present at read_time.\n\nIf compare_duration is not specified, then the only possible state_change\nis \"UNUSED\",  which will be the state_change set for all findings present\nat read_time.\n\nIf this field is set then `state_change` must be a specified field in\n`group_by`."]
+        #[doc = "When compare_duration is set, the GroupResult's \"state_change\" attribute is\nupdated to indicate whether the finding had its state changed, the\nfinding's state remained unchanged, or if the finding was added during the\ncompare_duration period of time that precedes the read_time. This is the\ntime between (read_time - compare_duration) and read_time.\n\nThe state_change value is derived based on the presence and state of the\nfinding at the two points in time. Intermediate state changes between the\ntwo times don't affect the result. For example, the results aren't affected\nif the finding is made inactive and then active again.\n\nPossible \"state_change\" values when compare_duration is specified:\n\n* \"CHANGED\":   indicates that the finding was present and matched the given\n  filter at the start of compare_duration, but changed its\n  state at read_time.\n* \"UNCHANGED\": indicates that the finding was present and matched the given\n  filter at the start of compare_duration and did not change\n  state at read_time.\n* \"ADDED\":     indicates that the finding did not match the given filter or\n  was not present at the start of compare_duration, but was\n  present at read_time.\n* \"REMOVED\":   indicates that the finding was present and matched the\n  filter at the start of compare_duration, but did not match\n  the filter at read_time.\n\nIf compare_duration is not specified, then the only possible state_change\nis \"UNUSED\",  which will be the state_change set for all findings present\nat read_time.\n\nIf this field is set then `state_change` must be a specified field in\n`group_by`."]
         #[serde(
             rename = "compareDuration",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub compare_duration: ::std::option::Option<String>,
-        #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* parent: `=`, `:`\n\n* resource_name: `=`, `:`\n\n* state: `=`, `:`\n\n* category: `=`, `:`\n\n* external_uri: `=`, `:`\n\n* event_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"event_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"event_time = 1560208038000\"\n\n* security_marks.marks: `=`, `:`\n\n* source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string."]
+        #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\n* name: `=`\n\n* parent: `=`, `:`\n\n* resource_name: `=`, `:`\n\n* state: `=`, `:`\n\n* category: `=`, `:`\n\n* external_uri: `=`, `:`\n\n* event_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"event_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"event_time = 1560208038000\"\n\n* security_marks.marks: `=`, `:`\n\n* source_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string.\n\nUse a partial match on the empty string to filter based on a property\nexisting: \"source_properties.my_property : \"\"\"\n\nUse a negated partial match on the empty string to filter based on a\nproperty not existing: \"-source_properties.my_property : \"\"\""]
         #[serde(
             rename = "filter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter: ::std::option::Option<String>,
-        #[doc = "Expression that defines what assets fields to use for grouping (including\n`state_change`). The string value should follow SQL syntax: comma separated\nlist of fields. For example: \"parent,resource_name\".\n\nThe following fields are supported:\n\n* resource_name\n* category\n* state\n* parent\n\nThe following fields are supported when compare_duration is set:\n\n* state_change"]
+        #[doc = "Required. Expression that defines what assets fields to use for grouping (including\n`state_change`). The string value should follow SQL syntax: comma separated\nlist of fields. For example: \"parent,resource_name\".\n\nThe following fields are supported:\n\n* resource_name\n* category\n* state\n* parent\n\nThe following fields are supported when compare_duration is set:\n\n* state_change"]
         #[serde(
             rename = "groupBy",
             default,
@@ -1451,6 +2144,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub finding: ::std::option::Option<crate::schemas::Finding>,
+        #[doc = "Output only. Resource that is associated with this finding."]
+        #[serde(
+            rename = "resource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource: ::std::option::Option<crate::schemas::Resource>,
         #[doc = "State change of the finding between the points in time."]
         #[serde(
             rename = "stateChange",
@@ -1555,6 +2255,44 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ListNotificationConfigsResponse {
+        #[doc = "Token to retrieve the next page of results, or empty if there are no more\nresults."]
+        #[serde(
+            rename = "nextPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Notification configs belonging to the requested parent."]
+        #[serde(
+            rename = "notificationConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_configs: ::std::option::Option<Vec<crate::schemas::NotificationConfig>>,
+    }
+    impl ::google_field_selector::FieldSelector for ListNotificationConfigsResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ListNotificationConfigsResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ListOperationsResponse {
         #[doc = "The standard List next-page token."]
@@ -1616,6 +2354,65 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ListSourcesResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct NotificationConfig {
+        #[doc = "The description of the notification config (max of 1024 characters)."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The relative resource name of this notification config. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/notificationConfigs/notify_public_bucket\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The PubSub topic to send notifications to. Its format is\n\"projects/[project_id]/topics/[topic]\"."]
+        #[serde(
+            rename = "pubsubTopic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pubsub_topic: ::std::option::Option<String>,
+        #[doc = "Output only. The service account that needs \"pubsub.topics.publish\"\npermission to publish to the PubSub topic."]
+        #[serde(
+            rename = "serviceAccount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_account: ::std::option::Option<String>,
+        #[doc = "The config for triggering streaming-based notifications."]
+        #[serde(
+            rename = "streamingConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub streaming_config: ::std::option::Option<crate::schemas::StreamingConfig>,
+    }
+    impl ::google_field_selector::FieldSelector for NotificationConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for NotificationConfig {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1697,7 +2494,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_asset_discovery: ::std::option::Option<bool>,
-        #[doc = "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/organizationSettings\"."]
+        #[doc = "The relative resource name of the settings. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/organizationSettings\"."]
         #[serde(
             rename = "name",
             default,
@@ -1735,21 +2532,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
         #[serde(
             rename = "version",
             default,
@@ -1763,6 +2560,65 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Policy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Resource {
+        #[doc = "The full resource name of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The human readable name of resource's parent."]
+        #[serde(
+            rename = "parentDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent_display_name: ::std::option::Option<String>,
+        #[doc = "The full resource name of resource's parent."]
+        #[serde(
+            rename = "parentName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent_name: ::std::option::Option<String>,
+        #[doc = "The human readable name of project that the resource belongs to."]
+        #[serde(
+            rename = "projectDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub project_display_name: ::std::option::Option<String>,
+        #[doc = "The full resource name of project that the resource belongs to."]
+        #[serde(
+            rename = "projectName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub project_name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Resource {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Resource {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1804,7 +2660,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SecurityCenterProperties {
-        #[doc = "The full resource name of the GCP resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
+        #[doc = "The user defined display name for this resource."]
+        #[serde(
+            rename = "resourceDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_display_name: ::std::option::Option<String>,
+        #[doc = "The full resource name of the Google Cloud resource this asset\nrepresents. This field is immutable after create time. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
         #[serde(
             rename = "resourceName",
             default,
@@ -1825,6 +2688,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_parent: ::std::option::Option<String>,
+        #[doc = "The user defined display name for the parent of this resource."]
+        #[serde(
+            rename = "resourceParentDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_parent_display_name: ::std::option::Option<String>,
         #[doc = "The full resource name of the project the resource belongs to. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name"]
         #[serde(
             rename = "resourceProject",
@@ -1832,7 +2702,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_project: ::std::option::Option<String>,
-        #[doc = "The type of the GCP resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nCloud SCC and/or the producer of the resource and is immutable\nafter create time."]
+        #[doc = "The user defined display name for the project of this resource."]
+        #[serde(
+            rename = "resourceProjectDisplayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_project_display_name: ::std::option::Option<String>,
+        #[doc = "The type of the Google Cloud resource. Examples include: APPLICATION,\nPROJECT, and ORGANIZATION. This is a case insensitive field defined by\nSecurity Command Center and/or the producer of the resource and is\nimmutable after create time."]
         #[serde(
             rename = "resourceType",
             default,
@@ -1870,7 +2747,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub marks: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/123/assets/456/securityMarks\"\n\"organizations/123/sources/456/findings/789/securityMarks\"."]
+        #[doc = "The relative resource name of the SecurityMarks. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExamples:\n\"organizations/{organization_id}/assets/{asset_id}/securityMarks\"\n\"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\"."]
         #[serde(
             rename = "name",
             default,
@@ -1901,14 +2778,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetFindingStateRequest {
-        #[doc = "The time at which the updated state takes effect."]
+        #[doc = "Required. The time at which the updated state takes effect."]
         #[serde(
             rename = "startTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
-        #[doc = "The desired State of the finding."]
+        #[doc = "Required. The desired State of the finding."]
         #[serde(
             rename = "state",
             default,
@@ -2053,7 +2930,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Source {
-        #[doc = "The description of the source (max of 1024 characters).\nExample:\n\"Cloud Security Scanner is a web security scanner for common\nvulnerabilities in App Engine applications. It can automatically\nscan and detect four common vulnerabilities, including cross-site-scripting\n(XSS), Flash injection, mixed content (HTTP in HTTPS), and\noutdated/insecure libraries.\""]
+        #[doc = "The description of the source (max of 1024 characters).\nExample:\n\"Web Security Scanner is a web security scanner for common\nvulnerabilities in App Engine applications. It can automatically\nscan and detect four common vulnerabilities, including cross-site-scripting\n(XSS), Flash injection, mixed content (HTTP in HTTPS), and\noutdated or insecure libraries.\""]
         #[serde(
             rename = "description",
             default,
@@ -2067,7 +2944,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/123/sources/456\""]
+        #[doc = "The relative resource name of this source. See:\nhttps://cloud.google.com/apis/design/resource_names#relative_resource_name\nExample:\n\"organizations/{organization_id}/sources/{source_id}\""]
         #[serde(
             rename = "name",
             default,
@@ -2116,6 +2993,37 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Status {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StreamingConfig {
+        #[doc = "Expression that defines the filter to apply across create/update events\nof assets or findings as specified by the event type. The expression is a\nlist of zero or more restrictions combined via logical operators `AND`\nand `OR`. Parentheses are supported, and `OR` has higher precedence than\n`AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a\n`-` character in front of them to indicate negation. The fields map to\nthose defined in the corresponding resource.\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes."]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for StreamingConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StreamingConfig {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2333,7 +3241,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2341,8 +3249,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2361,7 +3281,7 @@ pub mod resources {
     pub mod organizations {
         pub mod params {}
         pub struct OrganizationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OrganizationsActions<'a> {
@@ -2422,6 +3342,16 @@ pub mod resources {
                     auth: self.auth_ref(),
                 }
             }
+            #[doc = "Actions that can be performed on the notification_configs resource"]
+            pub fn notification_configs(
+                &self,
+            ) -> crate::resources::organizations::notification_configs::NotificationConfigsActions
+            {
+                crate::resources::organizations::notification_configs::NotificationConfigsActions {
+                    reqwest: &self.reqwest,
+                    auth: self.auth_ref(),
+                }
+            }
             #[doc = "Actions that can be performed on the operations resource"]
             pub fn operations(
                 &self,
@@ -2442,7 +3372,7 @@ pub mod resources {
         #[doc = "Created via [OrganizationsActions::get_organization_settings()](struct.OrganizationsActions.html#method.get_organization_settings)"]
         #[derive(Debug, Clone)]
         pub struct GetOrganizationSettingsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -2571,7 +3501,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2595,7 +3528,7 @@ pub mod resources {
         #[doc = "Created via [OrganizationsActions::update_organization_settings()](struct.OrganizationsActions.html#method.update_organization_settings)"]
         #[derive(Debug, Clone)]
         pub struct UpdateOrganizationSettingsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::OrganizationSettings,
             name: String,
@@ -2732,7 +3665,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("updateMask", &self.update_mask)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -2757,7 +3693,7 @@ pub mod resources {
         pub mod assets {
             pub mod params {}
             pub struct AssetsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> AssetsActions<'a> {
@@ -2868,7 +3804,7 @@ pub mod resources {
             #[doc = "Created via [AssetsActions::group()](struct.AssetsActions.html#method.group)"]
             #[derive(Debug, Clone)]
             pub struct GroupRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GroupAssetsRequest,
                 parent: String,
@@ -3003,7 +3939,10 @@ pub mod resources {
                     output.push_str("/assets:group");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3027,7 +3966,7 @@ pub mod resources {
             #[doc = "Created via [AssetsActions::list()](struct.AssetsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 compare_duration: Option<String>,
@@ -3060,12 +3999,12 @@ pub mod resources {
                     self.field_mask = Some(value.into());
                     self
                 }
-                #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following are the allowed field and operator combinations:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks.marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string."]
+                #[doc = "Expression that defines the filter to apply across assets.\nThe expression is a list of zero or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. The fields map to those\ndefined in the Asset resource. Examples include:\n\n* name\n* security_center_properties.resource_name\n* resource_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following are the allowed field and operator combinations:\n\n* name: `=`\n\n* update_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"update_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"update_time = 1560208038000\"\n\n* create_time: `=`, `>`, `<`, `>=`, `<=`\n  \n  Usage: This should be milliseconds since epoch or an RFC3339 string.\n  Examples:\n  \"create_time = \"2019-06-10T16:07:18-07:00\"\"\n  \"create_time = 1560208038000\"\n\n* iam_policy.policy_blob: `=`, `:`\n\n* resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\n* security_marks.marks: `=`, `:`\n\n* security_center_properties.resource_name: `=`, `:`\n\n* security_center_properties.resource_display_name: `=`, `:`\n\n* security_center_properties.resource_type: `=`, `:`\n\n* security_center_properties.resource_parent: `=`, `:`\n\n* security_center_properties.resource_parent_display_name: `=`, `:`\n\n* security_center_properties.resource_project: `=`, `:`\n\n* security_center_properties.resource_project_display_name: `=`, `:`\n\n* security_center_properties.resource_owners: `=`, `:`\n\nFor example, `resource_properties.size = 100` is a valid filter string.\n\nUse a partial match on the empty string to filter based on a property\nexisting: \"resource_properties.my_property : \"\"\"\n\nUse a negated partial match on the empty string to filter based on a\nproperty not existing: \"-resource_properties.my_property : \"\"\""]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Expression that defines what fields and order to use for sorting. The\nstring value should follow SQL syntax: comma separated list of fields. For\nexample: \"name,resource_properties.a_property\". The default sorting order\nis ascending. To specify descending order for a field, a suffix \" desc\"\nshould be appended to the field name. For example: \"name\ndesc,resource_properties.a_property\". Redundant space characters in the\nsyntax are insignificant. \"name desc,resource_properties.a_property\" and \"\nname     desc  ,   resource_properties.a_property  \" are equivalent.\n\nThe following fields are supported:\nname\nupdate_time\nresource_properties\nsecurity_marks.marks\nsecurity_center_properties.resource_name\nsecurity_center_properties.resource_parent\nsecurity_center_properties.resource_project\nsecurity_center_properties.resource_type"]
+                #[doc = "Expression that defines what fields and order to use for sorting. The\nstring value should follow SQL syntax: comma separated list of fields. For\nexample: \"name,resource_properties.a_property\". The default sorting order\nis ascending. To specify descending order for a field, a suffix \" desc\"\nshould be appended to the field name. For example: \"name\ndesc,resource_properties.a_property\". Redundant space characters in the\nsyntax are insignificant. \"name desc,resource_properties.a_property\" and \"\nname     desc  ,   resource_properties.a_property  \" are equivalent.\n\nThe following fields are supported:\nname\nupdate_time\nresource_properties\nsecurity_marks.marks\nsecurity_center_properties.resource_name\nsecurity_center_properties.resource_display_name\nsecurity_center_properties.resource_parent\nsecurity_center_properties.resource_parent_display_name\nsecurity_center_properties.resource_project\nsecurity_center_properties.resource_project_display_name\nsecurity_center_properties.resource_type"]
                 pub fn order_by(mut self, value: impl Into<String>) -> Self {
                     self.order_by = Some(value.into());
                     self
@@ -3305,7 +4244,10 @@ pub mod resources {
                     output.push_str("/assets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("compareDuration", &self.compare_duration)]);
                     let req = req.query(&[("fieldMask", &self.field_mask)]);
@@ -3347,7 +4289,7 @@ pub mod resources {
             #[doc = "Created via [AssetsActions::run_discovery()](struct.AssetsActions.html#method.run_discovery)"]
             #[derive(Debug, Clone)]
             pub struct RunDiscoveryRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::RunAssetDiscoveryRequest,
                 parent: String,
@@ -3482,7 +4424,10 @@ pub mod resources {
                     output.push_str("/assets:runDiscovery");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3506,7 +4451,7 @@ pub mod resources {
             #[doc = "Created via [AssetsActions::update_security_marks()](struct.AssetsActions.html#method.update_security_marks)"]
             #[derive(Debug, Clone)]
             pub struct UpdateSecurityMarksRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SecurityMarks,
                 name: String,
@@ -3652,9 +4597,1078 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("startTime", &self.start_time)]);
+                    let req = req.query(&[("updateMask", &self.update_mask)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+        }
+        pub mod notification_configs {
+            pub mod params {}
+            pub struct NotificationConfigsActions<'a> {
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+            }
+            impl<'a> NotificationConfigsActions<'a> {
+                fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                    self.auth
+                }
+                #[doc = "Creates a notification config."]
+                pub fn create(
+                    &self,
+                    request: crate::schemas::NotificationConfig,
+                    parent: impl Into<String>,
+                ) -> CreateRequestBuilder {
+                    CreateRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                        config_id: None,
+                    }
+                }
+                #[doc = "Deletes a notification config."]
+                pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
+                    DeleteRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        name: name.into(),
+                    }
+                }
+                #[doc = "Gets a notification config."]
+                pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
+                    GetRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        name: name.into(),
+                    }
+                }
+                #[doc = "Lists notification configs."]
+                pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
+                    ListRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        parent: parent.into(),
+                        page_size: None,
+                        page_token: None,
+                    }
+                }
+                #[doc = "Updates a notification config."]
+                pub fn patch(
+                    &self,
+                    request: crate::schemas::NotificationConfig,
+                    name: impl Into<String>,
+                ) -> PatchRequestBuilder {
+                    PatchRequestBuilder {
+                        reqwest: &self.reqwest,
+                        auth: self.auth_ref(),
+                        request,
+                        access_token: None,
+                        alt: None,
+                        callback: None,
+                        fields: None,
+                        key: None,
+                        oauth_token: None,
+                        pretty_print: None,
+                        quota_user: None,
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
+                        name: name.into(),
+                        update_mask: None,
+                    }
+                }
+            }
+            #[doc = "Created via [NotificationConfigsActions::create()](struct.NotificationConfigsActions.html#method.create)"]
+            #[derive(Debug, Clone)]
+            pub struct CreateRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::NotificationConfig,
+                parent: String,
+                config_id: Option<String>,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> CreateRequestBuilder<'a> {
+                #[doc = "Required.\nUnique identifier provided by the client within the parent scope.\nIt must be between 1 and 128 characters, and contains alphanumeric\ncharacters, underscores or hyphens only."]
+                pub fn config_id(mut self, value: impl Into<String>) -> Self {
+                    self.config_id = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::NotificationConfig, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::NotificationConfig, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://securitycenter.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/notificationConfigs");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::POST, path);
+                    let req = req.query(&[("configId", &self.config_id)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [NotificationConfigsActions::delete()](struct.NotificationConfigsActions.html#method.delete)"]
+            #[derive(Debug, Clone)]
+            pub struct DeleteRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                name: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> DeleteRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::Empty, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::Empty, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://securitycenter.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.name;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [NotificationConfigsActions::get()](struct.NotificationConfigsActions.html#method.get)"]
+            #[derive(Debug, Clone)]
+            pub struct GetRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                name: String,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> GetRequestBuilder<'a> {
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::NotificationConfig, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::NotificationConfig, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://securitycenter.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.name;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            #[doc = "Created via [NotificationConfigsActions::list()](struct.NotificationConfigsActions.html#method.list)"]
+            #[derive(Debug, Clone)]
+            pub struct ListRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                parent: String,
+                page_size: Option<i32>,
+                page_token: Option<String>,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> ListRequestBuilder<'a> {
+                #[doc = "The maximum number of results to return in a single response. Default is\n10, minimum is 1, maximum is 1000."]
+                pub fn page_size(mut self, value: i32) -> Self {
+                    self.page_size = Some(value);
+                    self
+                }
+                #[doc = "The value returned by the last `ListNotificationConfigsResponse`; indicates\nthat this is a continuation of a prior `ListNotificationConfigs` call, and\nthat the system should return the next page of data."]
+                pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                    self.page_token = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
+                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
+                #[doc = r" populated fields in the yielded items will be determined by the"]
+                #[doc = r" `FieldSelector` implementation."]
+                pub fn iter_notification_configs<T>(self) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_notification_configs_with_fields(fields)
+                }
+                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                #[doc = r" fields in `#items_type` will be the default fields populated by"]
+                #[doc = r" the server."]
+                pub fn iter_notification_configs_with_default_fields(
+                    self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::NotificationConfig>
+                {
+                    self.iter_notification_configs_with_fields(None::<String>)
+                }
+                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
+                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
+                #[doc = r" fields in `#items_type` will be all fields available. This should"]
+                #[doc = r" primarily be used during developement and debugging as fetching"]
+                #[doc = r" all fields can be expensive both in bandwidth and server"]
+                #[doc = r" resources."]
+                pub fn iter_notification_configs_with_all_fields(
+                    self,
+                ) -> crate::iter::PageItemIter<Self, crate::schemas::NotificationConfig>
+                {
+                    self.iter_notification_configs_with_fields(Some("*"))
+                }
+                pub fn iter_notification_configs_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageItemIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    self.fields = Some({
+                        let mut selector =
+                            concat!("nextPageToken,", "notificationConfigs").to_owned();
+                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
+                        if !items_fields.is_empty() {
+                            selector.push_str("(");
+                            selector.push_str(items_fields);
+                            selector.push_str(")");
+                        }
+                        selector
+                    });
+                    crate::iter::PageItemIter::new(self, "notificationConfigs")
+                }
+                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.iter_with_fields(fields)
+                }
+                pub fn iter_with_default_fields(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListNotificationConfigsResponse>
+                {
+                    self.iter_with_fields(None::<&str>)
+                }
+                pub fn iter_with_all_fields(
+                    self,
+                ) -> crate::iter::PageIter<Self, crate::schemas::ListNotificationConfigsResponse>
+                {
+                    self.iter_with_fields(Some("*"))
+                }
+                pub fn iter_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> crate::iter::PageIter<Self, T>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: AsRef<str>,
+                {
+                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
+                    if !fields.is_empty() {
+                        match fields.chars().rev().nth(0) {
+                            Some(',') | None => {}
+                            _ => fields.push_str(","),
+                        }
+                        fields.push_str("nextPageToken");
+                        self.fields = Some(fields);
+                    }
+                    crate::iter::PageIter::new(self)
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::ListNotificationConfigsResponse, crate::Error>
+                {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::ListNotificationConfigsResponse, crate::Error>
+                {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://securitycenter.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.parent;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output.push_str("/notificationConfigs");
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("pageSize", &self.page_size)]);
+                    let req = req.query(&[("pageToken", &self.page_token)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
+                    let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
+                    let req = req.query(&[("fields", &self.fields)]);
+                    let req = req.query(&[("key", &self.key)]);
+                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                    let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                    let req = req.query(&[("quotaUser", &self.quota_user)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                    let req = req.bearer_auth(
+                        self.auth
+                            .access_token()
+                            .map_err(|err| crate::Error::OAuth2(err))?,
+                    );
+                    Ok(req)
+                }
+            }
+            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
+                fn set_page_token(&mut self, value: String) {
+                    self.page_token = value.into();
+                }
+                fn execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    self._execute()
+                }
+            }
+            #[doc = "Created via [NotificationConfigsActions::patch()](struct.NotificationConfigsActions.html#method.patch)"]
+            #[derive(Debug, Clone)]
+            pub struct PatchRequestBuilder<'a> {
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                request: crate::schemas::NotificationConfig,
+                name: String,
+                update_mask: Option<String>,
+                access_token: Option<String>,
+                alt: Option<crate::params::Alt>,
+                callback: Option<String>,
+                fields: Option<String>,
+                key: Option<String>,
+                oauth_token: Option<String>,
+                pretty_print: Option<bool>,
+                quota_user: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
+            }
+            impl<'a> PatchRequestBuilder<'a> {
+                #[doc = "The FieldMask to use when updating the notification config.\n\nIf empty all mutable fields will be updated."]
+                pub fn update_mask(mut self, value: impl Into<String>) -> Self {
+                    self.update_mask = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
+                    self
+                }
+                #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                pub fn key(mut self, value: impl Into<String>) -> Self {
+                    self.key = Some(value.into());
+                    self
+                }
+                #[doc = "OAuth 2.0 token for the current user."]
+                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                    self.oauth_token = Some(value.into());
+                    self
+                }
+                #[doc = "Returns response with indentations and line breaks."]
+                pub fn pretty_print(mut self, value: bool) -> Self {
+                    self.pretty_print = Some(value);
+                    self
+                }
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                    self.quota_user = Some(value.into());
+                    self
+                }
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
+                    self
+                }
+                #[doc = r" Execute the given operation. The fields requested are"]
+                #[doc = r" determined by the FieldSelector attribute of the return type."]
+                #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                #[doc = r" are not generic over the return type and deserialize the"]
+                #[doc = r" response into an auto-generated struct will all possible"]
+                #[doc = r" fields."]
+                pub fn execute<T>(self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
+                {
+                    let fields = ::google_field_selector::to_string::<T>();
+                    let fields: Option<String> = if fields.is_empty() {
+                        None
+                    } else {
+                        Some(fields)
+                    };
+                    self.execute_with_fields(fields)
+                }
+                #[doc = r" Execute the given operation. This will not provide any"]
+                #[doc = r" `fields` selector indicating that the server will determine"]
+                #[doc = r" the fields returned. This typically includes the most common"]
+                #[doc = r" fields, but it will not include every possible attribute of"]
+                #[doc = r" the response resource."]
+                pub fn execute_with_default_fields(
+                    self,
+                ) -> Result<crate::schemas::NotificationConfig, crate::Error> {
+                    self.execute_with_fields(None::<&str>)
+                }
+                #[doc = r" Execute the given operation. This will provide a `fields`"]
+                #[doc = r" selector of `*`. This will include every attribute of the"]
+                #[doc = r" response resource and should be limited to use during"]
+                #[doc = r" development or debugging."]
+                pub fn execute_with_all_fields(
+                    self,
+                ) -> Result<crate::schemas::NotificationConfig, crate::Error> {
+                    self.execute_with_fields(Some("*"))
+                }
+                #[doc = r" Execute the given operation. This will use the `fields`"]
+                #[doc = r" selector provided and will deserialize the response into"]
+                #[doc = r" whatever return value is provided."]
+                pub fn execute_with_fields<T, F>(
+                    mut self,
+                    fields: Option<F>,
+                ) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                    F: Into<String>,
+                {
+                    self.fields = fields.map(Into::into);
+                    self._execute()
+                }
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                where
+                    T: ::serde::de::DeserializeOwned,
+                {
+                    let req = self._request(&self._path())?;
+                    let req = req.json(&self.request);
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
+                }
+                fn _path(&self) -> String {
+                    let mut output = "https://securitycenter.googleapis.com/".to_owned();
+                    output.push_str("v1/");
+                    {
+                        let var_as_str = &self.name;
+                        output.extend(::percent_encoding::utf8_percent_encode(
+                            &var_as_str,
+                            crate::RESERVED,
+                        ));
+                    }
+                    output
+                }
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+                    let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3679,7 +5693,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -3769,7 +5783,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
             #[derive(Debug, Clone)]
             pub struct CancelRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3902,7 +5916,10 @@ pub mod resources {
                     output.push_str(":cancel");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3926,7 +5943,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4058,7 +6075,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4082,7 +6102,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4214,7 +6234,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4238,7 +6261,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -4488,7 +6511,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -4527,7 +6553,7 @@ pub mod resources {
         pub mod sources {
             pub mod params {}
             pub struct SourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SourcesActions<'a> {
@@ -4709,7 +6735,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::create()](struct.SourcesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Source,
                 parent: String,
@@ -4844,7 +6870,10 @@ pub mod resources {
                     output.push_str("/sources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4868,7 +6897,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::get()](struct.SourcesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -5000,7 +7029,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5024,7 +7056,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::get_iam_policy()](struct.SourcesActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GetIamPolicyRequest,
                 resource: String,
@@ -5159,7 +7191,10 @@ pub mod resources {
                     output.push_str(":getIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5183,7 +7218,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::list()](struct.SourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -5428,7 +7463,10 @@ pub mod resources {
                     output.push_str("/sources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -5465,7 +7503,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::patch()](struct.SourcesActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Source,
                 name: String,
@@ -5605,7 +7643,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -5630,7 +7671,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::set_iam_policy()](struct.SourcesActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
@@ -5765,7 +7806,10 @@ pub mod resources {
                     output.push_str(":setIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5789,7 +7833,7 @@ pub mod resources {
             #[doc = "Created via [SourcesActions::test_iam_permissions()](struct.SourcesActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
@@ -5926,7 +7970,10 @@ pub mod resources {
                     output.push_str(":testIamPermissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5950,7 +7997,7 @@ pub mod resources {
             pub mod findings {
                 pub mod params {}
                 pub struct FindingsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> FindingsActions<'a> {
@@ -5982,7 +8029,7 @@ pub mod resources {
                             finding_id: None,
                         }
                     }
-                    #[doc = "Filters an organization or source's findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1/organizations/123/sources/-/findings"]
+                    #[doc = "Filters an organization or source's findings and  groups them by their\nspecified properties.\n\nTo group across all sources provide a `-` as the source id.\nExample: /v1/organizations/{organization_id}/sources/-/findings"]
                     pub fn group(
                         &self,
                         request: crate::schemas::GroupFindingsRequest,
@@ -6006,7 +8053,7 @@ pub mod resources {
                             parent: parent.into(),
                         }
                     }
-                    #[doc = "Lists an organization or source's findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1/organizations/123/sources/-/findings"]
+                    #[doc = "Lists an organization or source's findings.\n\nTo list across all sources provide a `-` as the source id.\nExample: /v1/organizations/{organization_id}/sources/-/findings"]
                     pub fn list(&self, parent: impl Into<String>) -> ListRequestBuilder {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
@@ -6111,7 +8158,7 @@ pub mod resources {
                 #[doc = "Created via [FindingsActions::create()](struct.FindingsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Finding,
                     parent: String,
@@ -6129,7 +8176,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "Unique identifier provided by the client within the parent scope.\nIt must be alphanumeric and less than or equal to 32 characters and\ngreater than 0 characters in length."]
+                    #[doc = "Required. Unique identifier provided by the client within the parent scope.\nIt must be alphanumeric and less than or equal to 32 characters and\ngreater than 0 characters in length."]
                     pub fn finding_id(mut self, value: impl Into<String>) -> Self {
                         self.finding_id = Some(value.into());
                         self
@@ -6255,7 +8302,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("findingId", &self.finding_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -6280,7 +8328,7 @@ pub mod resources {
                 #[doc = "Created via [FindingsActions::group()](struct.FindingsActions.html#method.group)"]
                 #[derive(Debug, Clone)]
                 pub struct GroupRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GroupFindingsRequest,
                     parent: String,
@@ -6420,7 +8468,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -6444,7 +8493,7 @@ pub mod resources {
                 #[doc = "Created via [FindingsActions::list()](struct.FindingsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     compare_duration: Option<String>,
@@ -6467,7 +8516,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
-                    #[doc = "When compare_duration is set, the ListFindingsResult's \"state_change\"\nattribute is updated to indicate whether the finding had its state changed,\nthe finding's state remained unchanged, or if the finding was added in any\nstate during the compare_duration period of time that precedes the\nread_time. This is the time between (read_time - compare_duration) and\nread_time.\n\nThe state_change value is derived based on the presence and state of the\nfinding at the two points in time. Intermediate state changes between the\ntwo times don't affect the result. For example, the results aren't affected\nif the finding is made inactive and then active again.\n\nPossible \"state_change\" values when compare_duration is specified:\n\n* \"CHANGED\":   indicates that the finding was present at the start of\n  compare_duration, but changed its state at read_time.\n* \"UNCHANGED\": indicates that the finding was present at the start of\n  compare_duration and did not change state at read_time.\n* \"ADDED\":     indicates that the finding was not present at the start\n  of compare_duration, but was present at read_time.\n\nIf compare_duration is not specified, then the only possible state_change\nis \"UNUSED\", which will be the state_change set for all findings present at\nread_time."]
+                    #[doc = "When compare_duration is set, the ListFindingsResult's \"state_change\"\nattribute is updated to indicate whether the finding had its state changed,\nthe finding's state remained unchanged, or if the finding was added in any\nstate during the compare_duration period of time that precedes the\nread_time. This is the time between (read_time - compare_duration) and\nread_time.\n\nThe state_change value is derived based on the presence and state of the\nfinding at the two points in time. Intermediate state changes between the\ntwo times don't affect the result. For example, the results aren't affected\nif the finding is made inactive and then active again.\n\nPossible \"state_change\" values when compare_duration is specified:\n\n* \"CHANGED\":   indicates that the finding was present and matched the given\n  filter at the start of compare_duration, but changed its\n  state at read_time.\n* \"UNCHANGED\": indicates that the finding was present and matched the given\n  filter at the start of compare_duration and did not change\n  state at read_time.\n* \"ADDED\":     indicates that the finding did not match the given filter or\n  was not present at the start of compare_duration, but was\n  present at read_time.\n* \"REMOVED\":   indicates that the finding was present and matched the\n  filter at the start of compare_duration, but did not match\n  the filter at read_time.\n\nIf compare_duration is not specified, then the only possible state_change\nis \"UNUSED\", which will be the state_change set for all findings present at\nread_time."]
                     pub fn compare_duration(mut self, value: impl Into<String>) -> Self {
                         self.compare_duration = Some(value.into());
                         self
@@ -6477,7 +8526,7 @@ pub mod resources {
                         self.field_mask = Some(value.into());
                         self
                     }
-                    #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\nname: `=`\nparent: `=`, `:`\nresource_name: `=`, `:`\nstate: `=`, `:`\ncategory: `=`, `:`\nexternal_uri: `=`, `:`\nevent_time: `=`, `>`, `<`, `>=`, `<=`\n\nUsage: This should be milliseconds since epoch or an RFC3339 string.\nExamples:\n\"event_time = \"2019-06-10T16:07:18-07:00\"\"\n\"event_time = 1560208038000\"\n\nsecurity_marks.marks: `=`, `:`\nsource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string."]
+                    #[doc = "Expression that defines the filter to apply across findings.\nThe expression is a list of one or more restrictions combined via logical\noperators `AND` and `OR`.\nParentheses are supported, and `OR` has higher precedence than `AND`.\n\nRestrictions have the form `<field> <operator> <value>` and may have a `-`\ncharacter in front of them to indicate negation. Examples include:\n\n* name\n* source_properties.a_property\n* security_marks.marks.marka\n\nThe supported operators are:\n\n* `=` for all value types.\n* `>`, `<`, `>=`, `<=` for integer values.\n* `:`, meaning substring matching, for strings.\n\nThe supported value types are:\n\n* string literals in quotes.\n* integer literals without quotes.\n* boolean literals `true` and `false` without quotes.\n\nThe following field and operator combinations are supported:\n\nname: `=`\nparent: `=`, `:`\nresource_name: `=`, `:`\nstate: `=`, `:`\ncategory: `=`, `:`\nexternal_uri: `=`, `:`\nevent_time: `=`, `>`, `<`, `>=`, `<=`\n\nUsage: This should be milliseconds since epoch or an RFC3339 string.\nExamples:\n\"event_time = \"2019-06-10T16:07:18-07:00\"\"\n\"event_time = 1560208038000\"\n\nsecurity_marks.marks: `=`, `:`\nsource_properties: `=`, `:`, `>`, `<`, `>=`, `<=`\n\nFor example, `source_properties.size = 100` is a valid filter string.\n\nUse a partial match on the empty string to filter based on a property\nexisting: \"source_properties.my_property : \"\"\"\n\nUse a negated partial match on the empty string to filter based on a\nproperty not existing: \"-source_properties.my_property : \"\"\""]
                     pub fn filter(mut self, value: impl Into<String>) -> Self {
                         self.filter = Some(value.into());
                         self
@@ -6728,7 +8777,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("compareDuration", &self.compare_duration)]);
                         let req = req.query(&[("fieldMask", &self.field_mask)]);
@@ -6770,7 +8820,7 @@ pub mod resources {
                 #[doc = "Created via [FindingsActions::patch()](struct.FindingsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Finding,
                     name: String,
@@ -6913,7 +8963,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -6938,7 +8989,7 @@ pub mod resources {
                 #[doc = "Created via [FindingsActions::set_state()](struct.FindingsActions.html#method.set_state)"]
                 #[derive(Debug, Clone)]
                 pub struct SetStateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetFindingStateRequest,
                     name: String,
@@ -7076,7 +9127,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7100,7 +9152,7 @@ pub mod resources {
                 #[doc = "Created via [FindingsActions::update_security_marks()](struct.FindingsActions.html#method.update_security_marks)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateSecurityMarksRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SecurityMarks,
                     name: String,
@@ -7249,7 +9301,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("startTime", &self.start_time)]);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -7292,9 +9345,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -7336,7 +9387,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

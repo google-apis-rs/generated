@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [detections](resources/detections/struct.DetectionsActions.html)\n      * [*detect*](resources/detections/struct.DetectRequestBuilder.html), [*list*](resources/detections/struct.ListRequestBuilder.html)\n    * [languages](resources/languages/struct.LanguagesActions.html)\n      * [*list*](resources/languages/struct.ListRequestBuilder.html)\n    * [translations](resources/translations/struct.TranslationsActions.html)\n      * [*list*](resources/translations/struct.ListRequestBuilder.html), [*translate*](resources/translations/struct.TranslateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Translate text from one language to another using Google Translate\n\n`https://www.googleapis.com/auth/cloud-translation`"]
+    pub const CLOUD_TRANSLATION: &str = "https://www.googleapis.com/auth/cloud-translation";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -476,7 +482,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -484,8 +490,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -518,7 +536,7 @@ pub mod resources {
     pub mod detections {
         pub mod params {}
         pub struct DetectionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DetectionsActions<'a> {
@@ -574,7 +592,7 @@ pub mod resources {
         #[doc = "Created via [DetectionsActions::detect()](struct.DetectionsActions.html#method.detect)"]
         #[derive(Debug, Clone)]
         pub struct DetectRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::DetectLanguageRequest,
             access_token: Option<String>,
@@ -710,7 +728,10 @@ pub mod resources {
                 output.push_str("v2/detect");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -736,7 +757,7 @@ pub mod resources {
         #[doc = "Created via [DetectionsActions::list()](struct.DetectionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             q: Vec<String>,
             access_token: Option<String>,
@@ -871,7 +892,10 @@ pub mod resources {
                 output.push_str("v2/detect");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("q", &self.q)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -899,7 +923,7 @@ pub mod resources {
     pub mod languages {
         pub mod params {}
         pub struct LanguagesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> LanguagesActions<'a> {
@@ -932,7 +956,7 @@ pub mod resources {
         #[doc = "Created via [LanguagesActions::list()](struct.LanguagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             model: Option<String>,
             target: Option<String>,
@@ -1078,7 +1102,10 @@ pub mod resources {
                 output.push_str("v2/languages");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("model", &self.model)]);
                 let req = req.query(&[("target", &self.target)]);
@@ -1179,7 +1206,7 @@ pub mod resources {
             }
         }
         pub struct TranslationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TranslationsActions<'a> {
@@ -1244,7 +1271,7 @@ pub mod resources {
         #[doc = "Created via [TranslationsActions::list()](struct.TranslationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             q: Vec<String>,
             target: String,
@@ -1407,7 +1434,10 @@ pub mod resources {
                 output.push_str("v2");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("q", &self.q)]);
                 let req = req.query(&[("target", &self.target)]);
@@ -1439,7 +1469,7 @@ pub mod resources {
         #[doc = "Created via [TranslationsActions::translate()](struct.TranslationsActions.html#method.translate)"]
         #[derive(Debug, Clone)]
         pub struct TranslateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TranslateTextRequest,
             access_token: Option<String>,
@@ -1575,7 +1605,10 @@ pub mod resources {
                 output.push_str("v2");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1616,9 +1649,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1660,7 +1691,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

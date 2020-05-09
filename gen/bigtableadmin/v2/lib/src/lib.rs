@@ -1,4 +1,29 @@
-#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html)\n      * [projects](resources/operations/projects/struct.ProjectsActions.html)\n        * [operations](resources/operations/projects/operations/struct.OperationsActions.html)\n          * [*list*](resources/operations/projects/operations/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [instances](resources/projects/instances/struct.InstancesActions.html)\n        * [*create*](resources/projects/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/instances/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/instances/struct.ListRequestBuilder.html), [*partialUpdateInstance*](resources/projects/instances/struct.PartialUpdateInstanceRequestBuilder.html), [*setIamPolicy*](resources/projects/instances/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/instances/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/instances/struct.UpdateRequestBuilder.html)\n        * [app_profiles](resources/projects/instances/app_profiles/struct.AppProfilesActions.html)\n          * [*create*](resources/projects/instances/app_profiles/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/app_profiles/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/app_profiles/struct.GetRequestBuilder.html), [*list*](resources/projects/instances/app_profiles/struct.ListRequestBuilder.html), [*patch*](resources/projects/instances/app_profiles/struct.PatchRequestBuilder.html)\n        * [clusters](resources/projects/instances/clusters/struct.ClustersActions.html)\n          * [*create*](resources/projects/instances/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/clusters/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/clusters/struct.GetRequestBuilder.html), [*list*](resources/projects/instances/clusters/struct.ListRequestBuilder.html), [*update*](resources/projects/instances/clusters/struct.UpdateRequestBuilder.html)\n        * [tables](resources/projects/instances/tables/struct.TablesActions.html)\n          * [*checkConsistency*](resources/projects/instances/tables/struct.CheckConsistencyRequestBuilder.html), [*create*](resources/projects/instances/tables/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/tables/struct.DeleteRequestBuilder.html), [*dropRowRange*](resources/projects/instances/tables/struct.DropRowRangeRequestBuilder.html), [*generateConsistencyToken*](resources/projects/instances/tables/struct.GenerateConsistencyTokenRequestBuilder.html), [*get*](resources/projects/instances/tables/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/instances/tables/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/instances/tables/struct.ListRequestBuilder.html), [*modifyColumnFamilies*](resources/projects/instances/tables/struct.ModifyColumnFamiliesRequestBuilder.html), [*setIamPolicy*](resources/projects/instances/tables/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/instances/tables/struct.TestIamPermissionsRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html)\n      * [projects](resources/operations/projects/struct.ProjectsActions.html)\n        * [operations](resources/operations/projects/operations/struct.OperationsActions.html)\n          * [*list*](resources/operations/projects/operations/struct.ListRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [instances](resources/projects/instances/struct.InstancesActions.html)\n        * [*create*](resources/projects/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/instances/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/instances/struct.ListRequestBuilder.html), [*partialUpdateInstance*](resources/projects/instances/struct.PartialUpdateInstanceRequestBuilder.html), [*setIamPolicy*](resources/projects/instances/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/instances/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/projects/instances/struct.UpdateRequestBuilder.html)\n        * [app_profiles](resources/projects/instances/app_profiles/struct.AppProfilesActions.html)\n          * [*create*](resources/projects/instances/app_profiles/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/app_profiles/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/app_profiles/struct.GetRequestBuilder.html), [*list*](resources/projects/instances/app_profiles/struct.ListRequestBuilder.html), [*patch*](resources/projects/instances/app_profiles/struct.PatchRequestBuilder.html)\n        * [clusters](resources/projects/instances/clusters/struct.ClustersActions.html)\n          * [*create*](resources/projects/instances/clusters/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/clusters/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/clusters/struct.GetRequestBuilder.html), [*list*](resources/projects/instances/clusters/struct.ListRequestBuilder.html), [*update*](resources/projects/instances/clusters/struct.UpdateRequestBuilder.html)\n          * [backups](resources/projects/instances/clusters/backups/struct.BackupsActions.html)\n            * [*getIamPolicy*](resources/projects/instances/clusters/backups/struct.GetIamPolicyRequestBuilder.html), [*setIamPolicy*](resources/projects/instances/clusters/backups/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/instances/clusters/backups/struct.TestIamPermissionsRequestBuilder.html)\n        * [tables](resources/projects/instances/tables/struct.TablesActions.html)\n          * [*checkConsistency*](resources/projects/instances/tables/struct.CheckConsistencyRequestBuilder.html), [*create*](resources/projects/instances/tables/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/tables/struct.DeleteRequestBuilder.html), [*dropRowRange*](resources/projects/instances/tables/struct.DropRowRangeRequestBuilder.html), [*generateConsistencyToken*](resources/projects/instances/tables/struct.GenerateConsistencyTokenRequestBuilder.html), [*get*](resources/projects/instances/tables/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/instances/tables/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/instances/tables/struct.ListRequestBuilder.html), [*modifyColumnFamilies*](resources/projects/instances/tables/struct.ModifyColumnFamiliesRequestBuilder.html), [*setIamPolicy*](resources/projects/instances/tables/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/instances/tables/struct.TestIamPermissionsRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Administer your Cloud Bigtable tables and clusters\n\n`https://www.googleapis.com/auth/bigtable.admin`"]
+    pub const BIGTABLE_ADMIN: &str = "https://www.googleapis.com/auth/bigtable.admin";
+    #[doc = "Administer your Cloud Bigtable clusters\n\n`https://www.googleapis.com/auth/bigtable.admin.cluster`"]
+    pub const BIGTABLE_ADMIN_CLUSTER: &str =
+        "https://www.googleapis.com/auth/bigtable.admin.cluster";
+    #[doc = "Administer your Cloud Bigtable clusters\n\n`https://www.googleapis.com/auth/bigtable.admin.instance`"]
+    pub const BIGTABLE_ADMIN_INSTANCE: &str =
+        "https://www.googleapis.com/auth/bigtable.admin.instance";
+    #[doc = "Administer your Cloud Bigtable tables\n\n`https://www.googleapis.com/auth/bigtable.admin.table`"]
+    pub const BIGTABLE_ADMIN_TABLE: &str = "https://www.googleapis.com/auth/bigtable.admin.table";
+    #[doc = "Administer your Cloud Bigtable tables and clusters\n\n`https://www.googleapis.com/auth/cloud-bigtable.admin`"]
+    pub const CLOUD_BIGTABLE_ADMIN: &str = "https://www.googleapis.com/auth/cloud-bigtable.admin";
+    #[doc = "Administer your Cloud Bigtable clusters\n\n`https://www.googleapis.com/auth/cloud-bigtable.admin.cluster`"]
+    pub const CLOUD_BIGTABLE_ADMIN_CLUSTER: &str =
+        "https://www.googleapis.com/auth/cloud-bigtable.admin.cluster";
+    #[doc = "Administer your Cloud Bigtable tables\n\n`https://www.googleapis.com/auth/cloud-bigtable.admin.table`"]
+    pub const CLOUD_BIGTABLE_ADMIN_TABLE: &str =
+        "https://www.googleapis.com/auth/cloud-bigtable.admin.table";
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform.read-only`"]
+    pub const CLOUD_PLATFORM_READ_ONLY: &str =
+        "https://www.googleapis.com/auth/cloud-platform.read-only";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -237,7 +262,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(
             rename = "members",
             default,
@@ -275,7 +300,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CheckConsistencyRequest {
-        #[doc = "The token created using GenerateConsistencyToken for the Table."]
+        #[doc = "Required. The token created using GenerateConsistencyToken for the Table."]
         #[serde(
             rename = "consistencyToken",
             default,
@@ -344,21 +369,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_storage_type: ::std::option::Option<crate::schemas::ClusterDefaultStorageType>,
-        #[doc = "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/<project>/locations/<zone>`."]
+        #[doc = "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/{project}/locations/{zone}`."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/<project>/instances/<instance>/clusters/a-z*`."]
+        #[doc = "Required. (`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/{project}/instances/{instance}/clusters/a-z*`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance."]
+        #[doc = "Required. The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance."]
         #[serde(
             rename = "serveNodes",
             default,
@@ -760,21 +785,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateClusterRequest {
-        #[doc = "The cluster to be created.\nFields marked `OutputOnly` must be left blank."]
+        #[doc = "Required. The cluster to be created.\nFields marked `OutputOnly` must be left blank."]
         #[serde(
             rename = "cluster",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster: ::std::option::Option<crate::schemas::Cluster>,
-        #[doc = "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
+        #[doc = "Required. The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
         #[serde(
             rename = "clusterId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cluster_id: ::std::option::Option<String>,
-        #[doc = "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/<project>/instances/<instance>`."]
+        #[doc = "Required. The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/{project}/instances/{instance}`."]
         #[serde(
             rename = "parent",
             default,
@@ -850,7 +875,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateInstanceRequest {
-        #[doc = "The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most two clusters can be specified."]
+        #[doc = "Required. The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most four clusters can be specified."]
         #[serde(
             rename = "clusters",
             default,
@@ -858,21 +883,21 @@ pub mod schemas {
         )]
         pub clusters:
             ::std::option::Option<::std::collections::BTreeMap<String, crate::schemas::Cluster>>,
-        #[doc = "The instance to create.\nFields marked `OutputOnly` must be left blank."]
+        #[doc = "Required. The instance to create.\nFields marked `OutputOnly` must be left blank."]
         #[serde(
             rename = "instance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<crate::schemas::Instance>,
-        #[doc = "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`."]
+        #[doc = "Required. The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`."]
         #[serde(
             rename = "instanceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance_id: ::std::option::Option<String>,
-        #[doc = "The unique name of the project in which to create the new instance.\nValues are of the form `projects/<project>`."]
+        #[doc = "Required. The unique name of the project in which to create the new instance.\nValues are of the form `projects/{project}`."]
         #[serde(
             rename = "parent",
             default,
@@ -910,14 +935,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub initial_splits: ::std::option::Option<Vec<crate::schemas::Split>>,
-        #[doc = "The Table to create."]
+        #[doc = "Required. The Table to create."]
         #[serde(
             rename = "table",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub table: ::std::option::Option<crate::schemas::Table>,
-        #[doc = "The name by which the new table should be referred to within the parent\ninstance, e.g., `foobar` rather than `<parent>/tables/foobar`.\nMaximum 50 characters."]
+        #[doc = "Required. The name by which the new table should be referred to within the parent\ninstance, e.g., `foobar` rather than `{parent}/tables/foobar`.\nMaximum 50 characters."]
         #[serde(
             rename = "tableId",
             default,
@@ -1010,28 +1035,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(
             rename = "title",
             default,
@@ -1231,28 +1256,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Instance {
-        #[doc = "The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."]
+        #[doc = "Required. The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes."]
+        #[doc = "Required. Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/<project>/instances/a-z+[a-z0-9]`."]
+        #[doc = "Required. (`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/{project}/instances/a-z+[a-z0-9]`."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The type of the instance. Defaults to `PRODUCTION`."]
+        #[doc = "Required. The type of the instance. Defaults to `PRODUCTION`."]
         #[serde(
             rename = "type",
             default,
@@ -1279,7 +1304,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceType {
-        #[doc = "The instance is meant for development and testing purposes only; it has\nno performance or uptime guarantees and is not covered by SLA.\nAfter a development instance is created, it can be upgraded by\nupdating the instance to type `PRODUCTION`. An instance created\nas a production instance cannot be changed to a development instance.\nWhen creating a development instance, `serve_nodes` on the cluster must\nnot be set."]
+        #[doc = "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces\na higher minimum node count than DEVELOPMENT."]
         Development,
         #[doc = "An instance meant for production use. `serve_nodes` must be set\non the cluster."]
         Production,
@@ -1801,7 +1826,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ModifyColumnFamiliesRequest {
-        #[doc = "Modifications to be atomically applied to the specified table's families.\nEntries are applied in order, meaning that earlier modifications can be\nmasked by later ones (in the case of repeated updates to the same family,\nfor example)."]
+        #[doc = "Required. Modifications to be atomically applied to the specified table's families.\nEntries are applied in order, meaning that earlier modifications can be\nmasked by later ones (in the case of repeated updates to the same family,\nfor example)."]
         #[serde(
             rename = "modifications",
             default,
@@ -1906,14 +1931,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PartialUpdateInstanceRequest {
-        #[doc = "The Instance which will (partially) replace the current value."]
+        #[doc = "Required. The Instance which will (partially) replace the current value."]
         #[serde(
             rename = "instance",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub instance: ::std::option::Option<crate::schemas::Instance>,
-        #[doc = "The subset of Instance fields which should be replaced.\nMust be explicitly set."]
+        #[doc = "Required. The subset of Instance fields which should be replaced.\nMust be explicitly set."]
         #[serde(
             rename = "updateMask",
             default,
@@ -1951,21 +1976,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
         #[serde(
             rename = "version",
             default,
@@ -2747,7 +2772,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2755,8 +2780,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2782,7 +2819,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -2857,7 +2894,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -2985,7 +3022,10 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3009,7 +3049,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3136,7 +3176,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3160,7 +3203,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3289,7 +3332,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3313,7 +3359,7 @@ pub mod resources {
         pub mod projects {
             pub mod params {}
             pub struct ProjectsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ProjectsActions<'a> {
@@ -3334,7 +3380,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -3367,7 +3413,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -3626,7 +3672,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3667,7 +3714,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -3692,7 +3739,7 @@ pub mod resources {
         pub mod instances {
             pub mod params {}
             pub struct InstancesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> InstancesActions<'a> {
@@ -3935,7 +3982,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CreateInstanceRequest,
                 parent: String,
@@ -4070,7 +4117,10 @@ pub mod resources {
                     output.push_str("/instances");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4094,7 +4144,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4226,7 +4276,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4250,7 +4303,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4382,7 +4435,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4406,7 +4462,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::get_iam_policy()](struct.InstancesActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::GetIamPolicyRequest,
                 resource: String,
@@ -4541,7 +4597,10 @@ pub mod resources {
                     output.push_str(":getIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4565,7 +4624,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_token: Option<String>,
@@ -4861,7 +4920,10 @@ pub mod resources {
                     output.push_str("/instances");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageToken", &self.page_token)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -4897,7 +4959,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::partial_update_instance()](struct.InstancesActions.html#method.partial_update_instance)"]
             #[derive(Debug, Clone)]
             pub struct PartialUpdateInstanceRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Instance,
                 name: String,
@@ -4915,7 +4977,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> PartialUpdateInstanceRequestBuilder<'a> {
-                #[doc = "The subset of Instance fields which should be replaced.\nMust be explicitly set."]
+                #[doc = "Required. The subset of Instance fields which should be replaced.\nMust be explicitly set."]
                 pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                     self.update_mask = Some(value.into());
                     self
@@ -5037,7 +5099,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -5062,7 +5127,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::set_iam_policy()](struct.InstancesActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
@@ -5197,7 +5262,10 @@ pub mod resources {
                     output.push_str(":setIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5221,7 +5289,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::test_iam_permissions()](struct.InstancesActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
@@ -5358,7 +5426,10 @@ pub mod resources {
                     output.push_str(":testIamPermissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5382,7 +5453,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::update()](struct.InstancesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Instance,
                 name: String,
@@ -5516,7 +5587,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5540,7 +5614,7 @@ pub mod resources {
             pub mod app_profiles {
                 pub mod params {}
                 pub struct AppProfilesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> AppProfilesActions<'a> {
@@ -5663,7 +5737,7 @@ pub mod resources {
                 #[doc = "Created via [AppProfilesActions::create()](struct.AppProfilesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AppProfile,
                     parent: String,
@@ -5682,7 +5756,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "The ID to be used when referring to the new app profile within its\ninstance, e.g., just `myprofile` rather than\n`projects/myproject/instances/myinstance/appProfiles/myprofile`."]
+                    #[doc = "Required. The ID to be used when referring to the new app profile within its\ninstance, e.g., just `myprofile` rather than\n`projects/myproject/instances/myinstance/appProfiles/myprofile`."]
                     pub fn app_profile_id(mut self, value: impl Into<String>) -> Self {
                         self.app_profile_id = Some(value.into());
                         self
@@ -5813,7 +5887,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("appProfileId", &self.app_profile_id)]);
                         let req = req.query(&[("ignoreWarnings", &self.ignore_warnings)]);
@@ -5839,7 +5914,7 @@ pub mod resources {
                 #[doc = "Created via [AppProfilesActions::delete()](struct.AppProfilesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     ignore_warnings: Option<bool>,
@@ -5856,7 +5931,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
-                    #[doc = "If true, ignore safety checks when deleting the app profile."]
+                    #[doc = "Required. If true, ignore safety checks when deleting the app profile."]
                     pub fn ignore_warnings(mut self, value: bool) -> Self {
                         self.ignore_warnings = Some(value);
                         self
@@ -5980,7 +6055,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("ignoreWarnings", &self.ignore_warnings)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -6005,7 +6081,7 @@ pub mod resources {
                 #[doc = "Created via [AppProfilesActions::get()](struct.AppProfilesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -6140,7 +6216,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -6164,7 +6241,7 @@ pub mod resources {
                 #[doc = "Created via [AppProfilesActions::list()](struct.AppProfilesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -6475,7 +6552,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6512,7 +6590,7 @@ pub mod resources {
                 #[doc = "Created via [AppProfilesActions::patch()](struct.AppProfilesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::AppProfile,
                     name: String,
@@ -6536,7 +6614,7 @@ pub mod resources {
                         self.ignore_warnings = Some(value);
                         self
                     }
-                    #[doc = "The subset of app profile fields which should be replaced.\nIf unset, all fields will be replaced."]
+                    #[doc = "Required. The subset of app profile fields which should be replaced.\nIf unset, all fields will be replaced."]
                     pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                         self.update_mask = Some(value.into());
                         self
@@ -6661,7 +6739,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("ignoreWarnings", &self.ignore_warnings)]);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -6688,7 +6767,7 @@ pub mod resources {
             pub mod clusters {
                 pub mod params {}
                 pub struct ClustersActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ClustersActions<'a> {
@@ -6802,11 +6881,21 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
+                    #[doc = "Actions that can be performed on the backups resource"]
+                    pub fn backups(
+                        &self,
+                    ) -> crate::resources::projects::instances::clusters::backups::BackupsActions
+                    {
+                        crate::resources::projects::instances::clusters::backups::BackupsActions {
+                            reqwest: &self.reqwest,
+                            auth: self.auth_ref(),
+                        }
+                    }
                 }
                 #[doc = "Created via [ClustersActions::create()](struct.ClustersActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Cluster,
                     parent: String,
@@ -6824,7 +6913,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
+                    #[doc = "Required. The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`."]
                     pub fn cluster_id(mut self, value: impl Into<String>) -> Self {
                         self.cluster_id = Some(value.into());
                         self
@@ -6950,7 +7039,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("clusterId", &self.cluster_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -6975,7 +7065,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::delete()](struct.ClustersActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -7110,7 +7200,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7134,7 +7225,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::get()](struct.ClustersActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -7269,7 +7360,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7293,7 +7385,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::list()](struct.ClustersActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_token: Option<String>,
@@ -7598,7 +7690,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageToken", &self.page_token)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -7634,7 +7727,7 @@ pub mod resources {
                 #[doc = "Created via [ClustersActions::update()](struct.ClustersActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Cluster,
                     name: String,
@@ -7771,7 +7864,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7790,6 +7884,584 @@ pub mod resources {
                                 .map_err(|err| crate::Error::OAuth2(err))?,
                         );
                         Ok(req)
+                    }
+                }
+                pub mod backups {
+                    pub mod params {}
+                    pub struct BackupsActions<'a> {
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    }
+                    impl<'a> BackupsActions<'a> {
+                        fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                            self.auth
+                        }
+                        #[doc = "Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset."]
+                        pub fn get_iam_policy(
+                            &self,
+                            request: crate::schemas::GetIamPolicyRequest,
+                            resource: impl Into<String>,
+                        ) -> GetIamPolicyRequestBuilder {
+                            GetIamPolicyRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                resource: resource.into(),
+                            }
+                        }
+                        #[doc = "Sets the access control policy on a Table resource.\nReplaces any existing policy."]
+                        pub fn set_iam_policy(
+                            &self,
+                            request: crate::schemas::SetIamPolicyRequest,
+                            resource: impl Into<String>,
+                        ) -> SetIamPolicyRequestBuilder {
+                            SetIamPolicyRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                resource: resource.into(),
+                            }
+                        }
+                        #[doc = "Returns permissions that the caller has on the specified table resource."]
+                        pub fn test_iam_permissions(
+                            &self,
+                            request: crate::schemas::TestIamPermissionsRequest,
+                            resource: impl Into<String>,
+                        ) -> TestIamPermissionsRequestBuilder {
+                            TestIamPermissionsRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                resource: resource.into(),
+                            }
+                        }
+                    }
+                    #[doc = "Created via [BackupsActions::get_iam_policy()](struct.BackupsActions.html#method.get_iam_policy)"]
+                    #[derive(Debug, Clone)]
+                    pub struct GetIamPolicyRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::GetIamPolicyRequest,
+                        resource: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> GetIamPolicyRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://bigtableadmin.googleapis.com/".to_owned();
+                            output.push_str("v2/");
+                            {
+                                let var_as_str = &self.resource;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":getIamPolicy");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                    #[doc = "Created via [BackupsActions::set_iam_policy()](struct.BackupsActions.html#method.set_iam_policy)"]
+                    #[derive(Debug, Clone)]
+                    pub struct SetIamPolicyRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::SetIamPolicyRequest,
+                        resource: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> SetIamPolicyRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://bigtableadmin.googleapis.com/".to_owned();
+                            output.push_str("v2/");
+                            {
+                                let var_as_str = &self.resource;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":setIamPolicy");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                    #[doc = "Created via [BackupsActions::test_iam_permissions()](struct.BackupsActions.html#method.test_iam_permissions)"]
+                    #[derive(Debug, Clone)]
+                    pub struct TestIamPermissionsRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::TestIamPermissionsRequest,
+                        resource: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> TestIamPermissionsRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error>
+                        {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error>
+                        {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://bigtableadmin.googleapis.com/".to_owned();
+                            output.push_str("v2/");
+                            {
+                                let var_as_str = &self.resource;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":testIamPermissions");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
                     }
                 }
             }
@@ -7965,7 +8637,7 @@ pub mod resources {
                     }
                 }
                 pub struct TablesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> TablesActions<'a> {
@@ -8107,7 +8779,7 @@ pub mod resources {
                             view: None,
                         }
                     }
-                    #[doc = "Gets the access control policy for an instance resource. Returns an empty\npolicy if an table exists but does not have a policy set."]
+                    #[doc = "Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset."]
                     pub fn get_iam_policy(
                         &self,
                         request: crate::schemas::GetIamPolicyRequest,
@@ -8177,7 +8849,7 @@ pub mod resources {
                             name: name.into(),
                         }
                     }
-                    #[doc = "Sets the access control policy on a table resource. Replaces any existing\npolicy."]
+                    #[doc = "Sets the access control policy on a Table resource.\nReplaces any existing policy."]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -8229,7 +8901,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::check_consistency()](struct.TablesActions.html#method.check_consistency)"]
                 #[derive(Debug, Clone)]
                 pub struct CheckConsistencyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CheckConsistencyRequest,
                     name: String,
@@ -8369,7 +9041,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8393,7 +9066,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::create()](struct.TablesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CreateTableRequest,
                     parent: String,
@@ -8531,7 +9204,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8555,7 +9229,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::delete()](struct.TablesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -8690,7 +9364,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8714,7 +9389,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::drop_row_range()](struct.TablesActions.html#method.drop_row_range)"]
                 #[derive(Debug, Clone)]
                 pub struct DropRowRangeRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DropRowRangeRequest,
                     name: String,
@@ -8852,7 +9527,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8876,7 +9552,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::generate_consistency_token()](struct.TablesActions.html#method.generate_consistency_token)"]
                 #[derive(Debug, Clone)]
                 pub struct GenerateConsistencyTokenRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GenerateConsistencyTokenRequest,
                     name: String,
@@ -9016,7 +9692,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9040,7 +9717,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::get()](struct.TablesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     view: Option<crate::resources::projects::instances::tables::params::GetView>,
@@ -9184,7 +9861,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("view", &self.view)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -9209,7 +9887,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::get_iam_policy()](struct.TablesActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GetIamPolicyRequest,
                     resource: String,
@@ -9347,7 +10025,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9371,7 +10050,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::list()](struct.TablesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -9400,7 +10079,7 @@ pub mod resources {
                         self.page_token = Some(value.into());
                         self
                     }
-                    #[doc = "The view to be applied to the returned tables' fields.\nDefaults to `NAME_ONLY` if unspecified; no others are currently supported."]
+                    #[doc = "The view to be applied to the returned tables' fields.\nOnly NAME_ONLY view (default) and REPLICATION_VIEW are supported."]
                     pub fn view(
                         mut self,
                         value: crate::resources::projects::instances::tables::params::ListView,
@@ -9633,7 +10312,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -9671,7 +10351,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::modify_column_families()](struct.TablesActions.html#method.modify_column_families)"]
                 #[derive(Debug, Clone)]
                 pub struct ModifyColumnFamiliesRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::ModifyColumnFamiliesRequest,
                     name: String,
@@ -9809,7 +10489,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9833,7 +10514,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::set_iam_policy()](struct.TablesActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -9971,7 +10652,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -9995,7 +10677,7 @@ pub mod resources {
                 #[doc = "Created via [TablesActions::test_iam_permissions()](struct.TablesActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -10135,7 +10817,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -10161,7 +10844,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -10213,7 +10896,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -10345,7 +11028,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10369,7 +11055,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -10620,7 +11306,10 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -10674,9 +11363,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -10718,7 +11405,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

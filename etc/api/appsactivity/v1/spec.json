@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/Fvs0SU1cYBfyKjYGj_WveAXOMkE\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/Gm3zNWNecZiJzJJJV8nxuWymBtM\"",
   "discoveryVersion": "v1",
   "id": "appsactivity:v1",
   "name": "appsactivity",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190917",
+  "revision": "20200428",
   "title": "Drive Activity API",
   "description": "Provides a historical view of activity.",
   "ownerDomain": "google.com",
@@ -451,12 +451,14 @@
           "format": null,
           "enum": [
             "commenter",
+            "fileOrganizer",
             "owner",
             "publishedReader",
             "reader",
             "writer"
           ],
           "enumDescriptions": [
+            "",
             "",
             "",
             "",

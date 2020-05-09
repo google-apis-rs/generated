@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Talent Solution",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190912",
+  "revision": "20200506",
   "title": "Cloud Talent Solution API",
   "description": "Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.\n",
   "ownerDomain": "google.com",
@@ -3675,6 +3675,31 @@
       "additionalProperties": null,
       "items": null
     },
+    "MendelDebugInput": {
+      "id": "MendelDebugInput",
+      "description": "Message representing input to a Mendel server for debug forcing.\nSee go/mendel-debug-forcing for more details.\nNext ID: 2",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "namespacedDebugInput": {
+          "description": "When a request spans multiple servers, a MendelDebugInput may travel with\nthe request and take effect in all the servers. This field is a map of\nnamespaces to NamespacedMendelDebugInput protos. In a single server, up to\ntwo NamespacedMendelDebugInput protos are applied:\n1. NamespacedMendelDebugInput with the global namespace (key == \"\").\n2. NamespacedMendelDebugInput with the server's namespace.\nWhen both NamespacedMendelDebugInput protos are present, they are merged.\nSee go/mendel-debug-forcing for more details.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "$ref": "NamespacedDebugInput"
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Money": {
       "id": "Money",
       "description": "Represents an amount of money with its currency type.",
@@ -3711,6 +3736,248 @@
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NamespacedDebugInput": {
+      "id": "NamespacedDebugInput",
+      "description": "Next ID: 15",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "absolutelyForcedExpNames": {
+          "description": "Set of experiment names to be absolutely forced.\nThese experiments will be forced without evaluating the conditions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "absolutelyForcedExpTags": {
+          "description": "Set of experiment tags to be absolutely forced.\nThe experiments with these tags will be forced without evaluating the\nconditions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "absolutelyForcedExps": {
+          "description": "Set of experiment ids to be absolutely forced.\nThese ids will be forced without evaluating the conditions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "conditionallyForcedExpNames": {
+          "description": "Set of experiment names to be conditionally forced.\nThese experiments will be forced only if their conditions and their\nparent domain's conditions are true.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "conditionallyForcedExpTags": {
+          "description": "Set of experiment tags to be conditionally forced.\nThe experiments with these tags will be forced only if their conditions\nand their parent domain's conditions are true.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "conditionallyForcedExps": {
+          "description": "Set of experiment ids to be conditionally forced.\nThese ids will be forced only if their conditions and their parent\ndomain's conditions are true.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "disableAutomaticEnrollmentSelection": {
+          "description": "If true, disable automatic enrollment selection (at all diversion\npoints). Automatic enrollment selection means experiment selection\nprocess based on the experiment's automatic enrollment condition. This\ndoes not disable selection of forced experiments.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "disableExpNames": {
+          "description": "Set of experiment names to be disabled.\nIf an experiment is disabled, it is never selected nor forced.\nIf an aggregate experiment is disabled, its partitions are disabled\ntogether. If an experiment with an enrollment is disabled, the enrollment\nis disabled together. If a name corresponds to a domain, the domain\nitself and all descendant experiments and domains are disabled together.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "disableExpTags": {
+          "description": "Set of experiment tags to be disabled. All experiments that are tagged\nwith one or more of these tags are disabled.\nIf an experiment is disabled, it is never selected nor forced.\nIf an aggregate experiment is disabled, its partitions are disabled\ntogether. If an experiment with an enrollment is disabled, the enrollment\nis disabled together.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "disableExps": {
+          "description": "Set of experiment ids to be disabled.\nIf an experiment is disabled, it is never selected nor forced.\nIf an aggregate experiment is disabled, its partitions are disabled\ntogether. If an experiment with an enrollment is disabled, the enrollment\nis disabled together. If an ID corresponds to a domain, the domain itself\nand all descendant experiments and domains are disabled together.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "disableManualEnrollmentSelection": {
+          "description": "If true, disable manual enrollment selection (at all diversion points).\nManual enrollment selection means experiment selection process based on\nthe request's manual enrollment states (a.k.a. opt-in experiments).\nThis does not disable selection of forced experiments.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "disableOrganicSelection": {
+          "description": "If true, disable organic experiment selection (at all diversion points).\nOrganic selection means experiment selection process based on traffic\nallocation and diversion condition evaluation.\nThis does not disable selection of forced experiments.\n\nThis is useful in cases when it is not known whether experiment selection\nbehavior is responsible for a error or breakage. Disabling organic\nselection may help to isolate the cause of a given problem.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "forcedFlags": {
+          "description": "Flags to force in a particular experiment state.\nMap from flag name to flag value.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "forcedRollouts": {
+          "description": "Rollouts to force in a particular experiment state.\nMap from rollout name to rollout value.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "boolean",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
           "items": null
         }
       },

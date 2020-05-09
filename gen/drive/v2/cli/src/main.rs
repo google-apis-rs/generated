@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("drive2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190912")
+            .version("0.1.0-20200423")
             .about("Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -121,8 +121,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates an existing comment. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Updates an existing comment.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
@@ -312,17 +311,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("update").about("Updates a property.");
             properties0 = properties0.subcommand(mcmd);
         }
-        let mut realtime0 = SubCommand::with_name("realtime")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: get and update");
-        {
-            let mcmd = SubCommand::with_name("get").about("Exports the contents of the Realtime API data model associated with this file as JSON.");
-            realtime0 = realtime0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("update").about("Overwrites the Realtime API data model associated with this file with the provided JSON data model.");
-            realtime0 = realtime0.subcommand(mcmd);
-        }
         let mut replies0 = SubCommand::with_name("replies")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, insert, list, patch and update");
@@ -345,8 +333,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             replies0 = replies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates an existing reply. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Updates an existing reply.");
             replies0 = replies0.subcommand(mcmd);
         }
         {
@@ -369,8 +356,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             revisions0 = revisions0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a revision. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Updates a revision.");
             revisions0 = revisions0.subcommand(mcmd);
         }
         {
@@ -406,7 +392,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(teamdrives0);
         app = app.subcommand(revisions0);
         app = app.subcommand(replies0);
-        app = app.subcommand(realtime0);
         app = app.subcommand(properties0);
         app = app.subcommand(permissions0);
         app = app.subcommand(parents0);

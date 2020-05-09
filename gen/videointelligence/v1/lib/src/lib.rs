@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [projects](resources/operations/projects/struct.ProjectsActions.html)\n        * [locations](resources/operations/projects/locations/struct.LocationsActions.html)\n          * [operations](resources/operations/projects/locations/operations/struct.OperationsActions.html)\n            * [*cancel*](resources/operations/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/projects/locations/operations/struct.GetRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n    * [videos](resources/videos/struct.VideosActions.html)\n      * [*annotate*](resources/videos/struct.AnnotateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -39,7 +43,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1AnnotateVideoRequest {
-        #[doc = "Requested video annotation features."]
+        #[doc = "Required. Requested video annotation features."]
         #[serde(
             rename = "features",
             default,
@@ -48,28 +52,28 @@ pub mod schemas {
         pub features: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems>,
         >,
-        #[doc = "The video data bytes.\nIf unset, the input video(s) should be specified via `input_uri`.\nIf set, `input_uri` should be unset."]
+        #[doc = "The video data bytes.\nIf unset, the input video(s) should be specified via the `input_uri`.\nIf set, `input_uri` must be unset."]
         #[serde(
             rename = "inputContent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_content: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Input video location. Currently, only\n[Google Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).\nA video URI may include wildcards in `object-id`, and thus identify\nmultiple videos. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` should be unset."]
+        #[doc = "Input video location. Currently, only\n[Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported. URIs must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/request-endpoints).\nTo identify multiple videos, a video URI may include wildcards in the\n`object-id`. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` must be unset."]
         #[serde(
             rename = "inputUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_uri: ::std::option::Option<String>,
-        #[doc = "Optional cloud region where annotation should take place. Supported cloud\nregions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region\nis specified, a region will be determined based on video file location."]
+        #[doc = "Optional. Cloud region where annotation should take place. Supported cloud\nregions are: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no\nregion is specified, the region will be determined based on video file\nlocation."]
         #[serde(
             rename = "locationId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location_id: ::std::option::Option<String>,
-        #[doc = "Optional location where the output (in JSON format) should be stored.\nCurrently, only [Google Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris)."]
+        #[doc = "Optional. Location where the output (in JSON format) should be stored.\nCurrently, only [Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported. These must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](https://cloud.google.com/storage/docs/request-endpoints)."]
         #[serde(
             rename = "outputUri",
             default,
@@ -100,6 +104,7 @@ pub mod schemas {
         ExplicitContentDetection,
         FeatureUnspecified,
         LabelDetection,
+        LogoRecognition,
         ObjectTracking,
         ShotChangeDetection,
         SpeechTranscription,
@@ -107,7 +112,7 @@ pub mod schemas {
     }
     impl GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: TextDetection => "TEXT_DETECTION" , }
+            match self { GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::convert::AsRef<str>
@@ -125,7 +130,7 @@ pub mod schemas {
             GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems,
             (),
         > {
-            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: TextDetection , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: TextDetection , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems {
@@ -149,7 +154,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1AnnotateVideoRequestFeaturesItems :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -254,6 +259,84 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2DetectedAttribute {
+        #[doc = "Detected attribute confidence. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of the attribute, for example, glasses, dark_glasses, mouth_open.\nA full list of supported type names will be provided in the document."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Text value of the detection result. For example, the value for \"HairColor\"\ncan be \"black\", \"blonde\", etc."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2DetectedAttribute
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2DetectedAttribute {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2DetectedLandmark {
+        #[doc = "The confidence score of the detected landmark. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of this landmark, for example, left_hand, right_shoulder."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The 2D point of the detected landmark using the normalized image\ncoordindate system. The normalized coordinates have the range from 0 to 1."]
+        #[serde(
+            rename = "point",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1Beta2NormalizedVertex,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2DetectedLandmark
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2DetectedLandmark {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -266,7 +349,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1Beta2Entity {
-        #[doc = "Textual description, e.g. `Fixed-gear bicycle`."]
+        #[doc = "Textual description, e.g., `Fixed-gear bicycle`."]
         #[serde(
             rename = "description",
             default,
@@ -320,6 +403,13 @@ pub mod schemas {
         pub frames: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2ExplicitContentFrame>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2ExplicitContentAnnotation
@@ -448,7 +538,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1Beta2LabelAnnotation {
-        #[doc = "Common categories for the detected entity.\nE.g. when the label is `Terrier` the category is likely `dog`. And in some\ncases there might be more than one categories e.g. `Terrier` could also be\na `pet`."]
+        #[doc = "Common categories for the detected entity.\nFor example, when the label is `Terrier`, the category is likely `dog`. And\nin some cases there might be more than one categories e.g., `Terrier` could\nalso be a `pet`."]
         #[serde(
             rename = "categoryEntities",
             default,
@@ -482,6 +572,13 @@ pub mod schemas {
         pub segments: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelSegment>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2LabelAnnotation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -548,6 +645,50 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2LogoRecognitionAnnotation {
+        #[doc = "Entity category information to specify the logo class that all the logo\ntracks within this LogoRecognitionAnnotation are recognized as."]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2Entity>,
+        #[doc = "All video segments where the recognized logo appears. There might be\nmultiple instances of the same logo class appearing in one VideoSegment."]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segments: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
+        >,
+        #[doc = "All logo tracks where the recognized logo appears. Each track corresponds\nto one logo instance appearing in consecutive frames."]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tracks:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2Track>>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2LogoRecognitionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1Beta2LogoRecognitionAnnotation
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -702,6 +843,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1Beta2ObjectTrackingAnnotation
@@ -770,7 +918,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transcript: ::std::option::Option<String>,
-        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
+        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is set to true, you will see all\nthe words from the beginning of the audio."]
         #[serde(
             rename = "words",
             default,
@@ -806,7 +954,7 @@ pub mod schemas {
         pub alternatives: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2SpeechRecognitionAlternative>,
         >,
-        #[doc = "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio."]
+        #[doc = "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of\nthe language in this result. This language code was detected to have the\nmost likelihood of being spoken in the audio."]
         #[serde(
             rename = "languageCode",
             default,
@@ -848,6 +996,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text: ::std::option::Option<String>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2TextAnnotation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -930,6 +1085,105 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2TimestampedObject {
+        #[doc = "Optional. The attributes of the object in the bounding box."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2DetectedAttribute>,
+        >,
+        #[doc = "Optional. The detected landmarks."]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2DetectedLandmark>,
+        >,
+        #[doc = "Normalized Bounding box in a frame, where the object is located."]
+        #[serde(
+            rename = "normalizedBoundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub normalized_bounding_box: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1Beta2NormalizedBoundingBox,
+        >,
+        #[doc = "Time-offset, relative to the beginning of the video,\ncorresponding to the video frame for this object."]
+        #[serde(
+            rename = "timeOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_offset: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1Beta2TimestampedObject
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2TimestampedObject {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Beta2Track {
+        #[doc = "Optional. Attributes in the track level."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2DetectedAttribute>,
+        >,
+        #[doc = "Optional. The confidence score of the tracked object."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "Video segment of a track."]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
+        #[doc = "The object with timestamp and attributes per frame in the track."]
+        #[serde(
+            rename = "timestampedObjects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub timestamped_objects: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2TimestampedObject>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Beta2Track {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Beta2Track {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -942,7 +1196,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none feature."]
         #[serde(
             rename = "feature",
             default,
@@ -951,7 +1205,7 @@ pub mod schemas {
         pub feature: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
@@ -965,7 +1219,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segment."]
         #[serde(
             rename = "segment",
             default,
@@ -1010,6 +1264,8 @@ pub mod schemas {
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Logo detection, tracking, and recognition."]
+        LogoRecognition,
         #[doc = "Object detection and tracking."]
         ObjectTracking,
         #[doc = "Shot change detection."]
@@ -1021,7 +1277,7 @@ pub mod schemas {
     }
     impl GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
+            match self { GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::convert::AsRef<str>
@@ -1039,7 +1295,7 @@ pub mod schemas {
             GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature,
             (),
         > {
-            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature {
@@ -1063,7 +1319,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1Beta2VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -1107,13 +1363,22 @@ pub mod schemas {
         pub frame_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_uri: ::std::option::Option<String>,
+        #[doc = "Annotations for list of logos detected, tracked and recognized in video."]
+        #[serde(
+            rename = "logoRecognitionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub logo_recognition_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LogoRecognitionAnnotation>,
+        >,
         #[doc = "Annotations for list of objects detected and tracked in video."]
         #[serde(
             rename = "objectAnnotations",
@@ -1131,7 +1396,7 @@ pub mod schemas {
         )]
         pub segment:
             ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Beta2VideoSegment>,
-        #[doc = "Topical label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Topical label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label."]
         #[serde(
             rename = "segmentLabelAnnotations",
             default,
@@ -1140,7 +1405,7 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Presence label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label. Compared to the\nexisting topical `segment_label_annotations`, this field presents more\nfine-grained, segment-level labels detected in video content and is made\navailable only when the client sets `LabelDetectionConfig.model` to\n\"builtin/latest\" in the request."]
         #[serde(
             rename = "segmentPresenceLabelAnnotations",
             default,
@@ -1167,7 +1432,7 @@ pub mod schemas {
         pub shot_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1Beta2LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label. Compared to the existing topical\n`shot_label_annotations`, this field presents more fine-grained, shot-level\nlabels detected in video content and is made available only when the client\nsets `LabelDetectionConfig.model` to \"builtin/latest\" in the request."]
         #[serde(
             rename = "shotPresenceLabelAnnotations",
             default,
@@ -1298,6 +1563,79 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1DetectedAttribute {
+        #[doc = "Detected attribute confidence. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of the attribute, for example, glasses, dark_glasses, mouth_open.\nA full list of supported type names will be provided in the document."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Text value of the detection result. For example, the value for \"HairColor\"\ncan be \"black\", \"blonde\", etc."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1DetectedAttribute {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1DetectedAttribute {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1DetectedLandmark {
+        #[doc = "The confidence score of the detected landmark. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of this landmark, for example, left_hand, right_shoulder."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The 2D point of the detected landmark using the normalized image\ncoordindate system. The normalized coordinates have the range from 0 to 1."]
+        #[serde(
+            rename = "point",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1NormalizedVertex>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1DetectedLandmark {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1DetectedLandmark {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -1310,7 +1648,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1Entity {
-        #[doc = "Textual description, e.g. `Fixed-gear bicycle`."]
+        #[doc = "Textual description, e.g., `Fixed-gear bicycle`."]
         #[serde(
             rename = "description",
             default,
@@ -1364,6 +1702,13 @@ pub mod schemas {
         pub frames: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1ExplicitContentFrame>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1ExplicitContentAnnotation
@@ -1540,7 +1885,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1LabelAnnotation {
-        #[doc = "Common categories for the detected entity.\nE.g. when the label is `Terrier` the category is likely `dog`. And in some\ncases there might be more than one categories e.g. `Terrier` could also be\na `pet`."]
+        #[doc = "Common categories for the detected entity.\nFor example, when the label is `Terrier`, the category is likely `dog`. And\nin some cases there might be more than one categories e.g., `Terrier` could\nalso be a `pet`."]
         #[serde(
             rename = "categoryEntities",
             default,
@@ -1571,6 +1916,13 @@ pub mod schemas {
         )]
         pub segments:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelSegment>>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1LabelAnnotation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1586,7 +1938,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1LabelDetectionConfig {
-        #[doc = "The confidence threshold we perform filtering on the labels from\nframe-level detection. If not set, it is set to 0.4 by default. The valid\nrange for this threshold is [0.1, 0.9]. Any value set outside of this\nrange will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model."]
+        #[doc = "The confidence threshold we perform filtering on the labels from\nframe-level detection. If not set, it is set to 0.4 by default. The valid\nrange for this threshold is [0.1, 0.9]. Any value set outside of this\nrange will be clipped.\nNote: For best results, follow the default threshold. We will update\nthe default threshold everytime when we release a new model."]
         #[serde(
             rename = "frameConfidenceThreshold",
             default,
@@ -1609,14 +1961,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub model: ::std::option::Option<String>,
-        #[doc = "Whether the video has been shot from a stationary (i.e. non-moving) camera.\nWhen set to true, might improve detection accuracy for moving objects.\nShould be used with `SHOT_AND_FRAME_MODE` enabled."]
+        #[doc = "Whether the video has been shot from a stationary (i.e., non-moving)\ncamera. When set to true, might improve detection accuracy for moving\nobjects. Should be used with `SHOT_AND_FRAME_MODE` enabled."]
         #[serde(
             rename = "stationaryCamera",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stationary_camera: ::std::option::Option<bool>,
-        #[doc = "The confidence threshold we perform filtering on the labels from\nvideo-level and shot-level detections. If not set, it is set to 0.3 by\ndefault. The valid range for this threshold is [0.1, 0.9]. Any value set\noutside of this range will be clipped.\nNote: for best results please follow the default threshold. We will update\nthe default threshold everytime when we release a new model."]
+        #[doc = "The confidence threshold we perform filtering on the labels from\nvideo-level and shot-level detections. If not set, it's set to 0.3 by\ndefault. The valid range for this threshold is [0.1, 0.9]. Any value set\noutside of this range will be clipped.\nNote: For best results, follow the default threshold. We will update\nthe default threshold everytime when we release a new model."]
         #[serde(
             rename = "videoConfidenceThreshold",
             default,
@@ -1768,6 +2120,47 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
+        #[doc = "Entity category information to specify the logo class that all the logo\ntracks within this LogoRecognitionAnnotation are recognized as."]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity: ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1Entity>,
+        #[doc = "All video segments where the recognized logo appears. There might be\nmultiple instances of the same logo class appearing in one VideoSegment."]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segments:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>>,
+        #[doc = "All logo tracks where the recognized logo appears. Each track corresponds\nto one logo instance appearing in consecutive frames."]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tracks: ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1Track>>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1LogoRecognitionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1LogoRecognitionAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct GoogleCloudVideointelligenceV1NormalizedBoundingBox {
         #[doc = "Bottom Y coordinate."]
         #[serde(
@@ -1908,6 +2301,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1ObjectTrackingAnnotation
@@ -2049,6 +2449,88 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1DetectedAttribute {
+        #[doc = "Detected attribute confidence. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of the attribute, for example, glasses, dark_glasses, mouth_open.\nA full list of supported type names will be provided in the document."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Text value of the detection result. For example, the value for \"HairColor\"\ncan be \"black\", \"blonde\", etc."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1DetectedAttribute
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1DetectedAttribute
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1DetectedLandmark {
+        #[doc = "The confidence score of the detected landmark. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of this landmark, for example, left_hand, right_shoulder."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The 2D point of the detected landmark using the normalized image\ncoordindate system. The normalized coordinates have the range from 0 to 1."]
+        #[serde(
+            rename = "point",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1NormalizedVertex,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1DetectedLandmark
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1DetectedLandmark
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2061,7 +2543,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P1Beta1Entity {
-        #[doc = "Textual description, e.g. `Fixed-gear bicycle`."]
+        #[doc = "Textual description, e.g., `Fixed-gear bicycle`."]
         #[serde(
             rename = "description",
             default,
@@ -2115,6 +2597,13 @@ pub mod schemas {
         pub frames: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1ExplicitContentFrame>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1ExplicitContentAnnotation
@@ -2243,7 +2732,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation {
-        #[doc = "Common categories for the detected entity.\nE.g. when the label is `Terrier` the category is likely `dog`. And in some\ncases there might be more than one categories e.g. `Terrier` could also be\na `pet`."]
+        #[doc = "Common categories for the detected entity.\nFor example, when the label is `Terrier`, the category is likely `dog`. And\nin some cases there might be more than one categories e.g., `Terrier` could\nalso be a `pet`."]
         #[serde(
             rename = "categoryEntities",
             default,
@@ -2277,6 +2766,13 @@ pub mod schemas {
         pub segments: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelSegment>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation
@@ -2346,6 +2842,50 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1LogoRecognitionAnnotation {
+        #[doc = "Entity category information to specify the logo class that all the logo\ntracks within this LogoRecognitionAnnotation are recognized as."]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1Entity>,
+        #[doc = "All video segments where the recognized logo appears. There might be\nmultiple instances of the same logo class appearing in one VideoSegment."]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segments: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment>,
+        >,
+        #[doc = "All logo tracks where the recognized logo appears. Each track corresponds\nto one logo instance appearing in consecutive frames."]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tracks:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1Track>>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1LogoRecognitionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1LogoRecognitionAnnotation
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2503,6 +3043,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1ObjectTrackingAnnotation
@@ -2571,7 +3118,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transcript: ::std::option::Option<String>,
-        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
+        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is set to true, you will see all\nthe words from the beginning of the audio."]
         #[serde(
             rename = "words",
             default,
@@ -2608,7 +3155,7 @@ pub mod schemas {
         pub alternatives: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1SpeechRecognitionAlternative>,
         >,
-        #[doc = "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio."]
+        #[doc = "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of\nthe language in this result. This language code was detected to have the\nmost likelihood of being spoken in the audio."]
         #[serde(
             rename = "languageCode",
             default,
@@ -2650,6 +3197,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text: ::std::option::Option<String>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P1Beta1TextAnnotation
@@ -2735,6 +3289,108 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1TimestampedObject {
+        #[doc = "Optional. The attributes of the object in the bounding box."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1DetectedAttribute>,
+        >,
+        #[doc = "Optional. The detected landmarks."]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1DetectedLandmark>,
+        >,
+        #[doc = "Normalized Bounding box in a frame, where the object is located."]
+        #[serde(
+            rename = "normalizedBoundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub normalized_bounding_box: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1NormalizedBoundingBox,
+        >,
+        #[doc = "Time-offset, relative to the beginning of the video,\ncorresponding to the video frame for this object."]
+        #[serde(
+            rename = "timeOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_offset: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P1Beta1TimestampedObject
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P1Beta1TimestampedObject
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P1Beta1Track {
+        #[doc = "Optional. Attributes in the track level."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1DetectedAttribute>,
+        >,
+        #[doc = "Optional. The confidence score of the tracked object."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "Video segment of a track."]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment,
+        >,
+        #[doc = "The object with timestamp and attributes per frame in the track."]
+        #[serde(
+            rename = "timestampedObjects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub timestamped_objects: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1TimestampedObject>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P1Beta1Track {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P1Beta1Track {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -2747,7 +3403,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none feature."]
         #[serde(
             rename = "feature",
             default,
@@ -2756,7 +3412,7 @@ pub mod schemas {
         pub feature: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
@@ -2770,7 +3426,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segment."]
         #[serde(
             rename = "segment",
             default,
@@ -2816,6 +3472,8 @@ pub mod schemas {
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Logo detection, tracking, and recognition."]
+        LogoRecognition,
         #[doc = "Object detection and tracking."]
         ObjectTracking,
         #[doc = "Shot change detection."]
@@ -2827,7 +3485,7 @@ pub mod schemas {
     }
     impl GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
+            match self { GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::convert::AsRef<str>
@@ -2845,7 +3503,7 @@ pub mod schemas {
             GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature,
             (),
         > {
-            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature {
@@ -2869,7 +3527,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P1Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -2913,13 +3571,22 @@ pub mod schemas {
         pub frame_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_uri: ::std::option::Option<String>,
+        #[doc = "Annotations for list of logos detected, tracked and recognized in video."]
+        #[serde(
+            rename = "logoRecognitionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub logo_recognition_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LogoRecognitionAnnotation>,
+        >,
         #[doc = "Annotations for list of objects detected and tracked in video."]
         #[serde(
             rename = "objectAnnotations",
@@ -2938,7 +3605,7 @@ pub mod schemas {
         pub segment: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P1Beta1VideoSegment,
         >,
-        #[doc = "Topical label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Topical label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label."]
         #[serde(
             rename = "segmentLabelAnnotations",
             default,
@@ -2947,7 +3614,7 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Presence label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label. Compared to the\nexisting topical `segment_label_annotations`, this field presents more\nfine-grained, segment-level labels detected in video content and is made\navailable only when the client sets `LabelDetectionConfig.model` to\n\"builtin/latest\" in the request."]
         #[serde(
             rename = "segmentPresenceLabelAnnotations",
             default,
@@ -2974,7 +3641,7 @@ pub mod schemas {
         pub shot_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P1Beta1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label. Compared to the existing topical\n`shot_label_annotations`, this field presents more fine-grained, shot-level\nlabels detected in video content and is made available only when the client\nsets `LabelDetectionConfig.model` to \"builtin/latest\" in the request."]
         #[serde(
             rename = "shotPresenceLabelAnnotations",
             default,
@@ -3168,6 +3835,88 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1DetectedAttribute {
+        #[doc = "Detected attribute confidence. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of the attribute, for example, glasses, dark_glasses, mouth_open.\nA full list of supported type names will be provided in the document."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Text value of the detection result. For example, the value for \"HairColor\"\ncan be \"black\", \"blonde\", etc."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1DetectedAttribute
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1DetectedAttribute
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1DetectedLandmark {
+        #[doc = "The confidence score of the detected landmark. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of this landmark, for example, left_hand, right_shoulder."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The 2D point of the detected landmark using the normalized image\ncoordindate system. The normalized coordinates have the range from 0 to 1."]
+        #[serde(
+            rename = "point",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1NormalizedVertex,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1DetectedLandmark
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1DetectedLandmark
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -3180,7 +3929,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P2Beta1Entity {
-        #[doc = "Textual description, e.g. `Fixed-gear bicycle`."]
+        #[doc = "Textual description, e.g., `Fixed-gear bicycle`."]
         #[serde(
             rename = "description",
             default,
@@ -3234,6 +3983,13 @@ pub mod schemas {
         pub frames: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1ExplicitContentFrame>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1ExplicitContentAnnotation
@@ -3362,7 +4118,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation {
-        #[doc = "Common categories for the detected entity.\nE.g. when the label is `Terrier` the category is likely `dog`. And in some\ncases there might be more than one categories e.g. `Terrier` could also be\na `pet`."]
+        #[doc = "Common categories for the detected entity.\nFor example, when the label is `Terrier`, the category is likely `dog`. And\nin some cases there might be more than one categories e.g., `Terrier` could\nalso be a `pet`."]
         #[serde(
             rename = "categoryEntities",
             default,
@@ -3396,6 +4152,13 @@ pub mod schemas {
         pub segments: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelSegment>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation
@@ -3465,6 +4228,50 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1LabelSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1LogoRecognitionAnnotation {
+        #[doc = "Entity category information to specify the logo class that all the logo\ntracks within this LogoRecognitionAnnotation are recognized as."]
+        #[serde(
+            rename = "entity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub entity:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1Entity>,
+        #[doc = "All video segments where the recognized logo appears. There might be\nmultiple instances of the same logo class appearing in one VideoSegment."]
+        #[serde(
+            rename = "segments",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segments: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment>,
+        >,
+        #[doc = "All logo tracks where the recognized logo appears. Each track corresponds\nto one logo instance appearing in consecutive frames."]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tracks:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1Track>>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1LogoRecognitionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1LogoRecognitionAnnotation
+    {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3622,6 +4429,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1ObjectTrackingAnnotation
@@ -3690,7 +4504,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transcript: ::std::option::Option<String>,
-        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
+        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is set to true, you will see all\nthe words from the beginning of the audio."]
         #[serde(
             rename = "words",
             default,
@@ -3727,7 +4541,7 @@ pub mod schemas {
         pub alternatives: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1SpeechRecognitionAlternative>,
         >,
-        #[doc = "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio."]
+        #[doc = "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of\nthe language in this result. This language code was detected to have the\nmost likelihood of being spoken in the audio."]
         #[serde(
             rename = "languageCode",
             default,
@@ -3769,6 +4583,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text: ::std::option::Option<String>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P2Beta1TextAnnotation
@@ -3854,6 +4675,108 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1TimestampedObject {
+        #[doc = "Optional. The attributes of the object in the bounding box."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1DetectedAttribute>,
+        >,
+        #[doc = "Optional. The detected landmarks."]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1DetectedLandmark>,
+        >,
+        #[doc = "Normalized Bounding box in a frame, where the object is located."]
+        #[serde(
+            rename = "normalizedBoundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub normalized_bounding_box: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1NormalizedBoundingBox,
+        >,
+        #[doc = "Time-offset, relative to the beginning of the video,\ncorresponding to the video frame for this object."]
+        #[serde(
+            rename = "timeOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_offset: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P2Beta1TimestampedObject
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P2Beta1TimestampedObject
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P2Beta1Track {
+        #[doc = "Optional. Attributes in the track level."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1DetectedAttribute>,
+        >,
+        #[doc = "Optional. The confidence score of the tracked object."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "Video segment of a track."]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment,
+        >,
+        #[doc = "The object with timestamp and attributes per frame in the track."]
+        #[serde(
+            rename = "timestampedObjects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub timestamped_objects: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1TimestampedObject>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P2Beta1Track {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P2Beta1Track {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -3866,7 +4789,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none feature."]
         #[serde(
             rename = "feature",
             default,
@@ -3875,7 +4798,7 @@ pub mod schemas {
         pub feature: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
@@ -3889,7 +4812,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segment."]
         #[serde(
             rename = "segment",
             default,
@@ -3935,6 +4858,8 @@ pub mod schemas {
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Logo detection, tracking, and recognition."]
+        LogoRecognition,
         #[doc = "Object detection and tracking."]
         ObjectTracking,
         #[doc = "Shot change detection."]
@@ -3946,7 +4871,7 @@ pub mod schemas {
     }
     impl GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
+            match self { GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::convert::AsRef<str>
@@ -3964,7 +4889,7 @@ pub mod schemas {
             GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature,
             (),
         > {
-            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature {
@@ -3988,7 +4913,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P2Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -4032,13 +4957,22 @@ pub mod schemas {
         pub frame_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_uri: ::std::option::Option<String>,
+        #[doc = "Annotations for list of logos detected, tracked and recognized in video."]
+        #[serde(
+            rename = "logoRecognitionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub logo_recognition_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LogoRecognitionAnnotation>,
+        >,
         #[doc = "Annotations for list of objects detected and tracked in video."]
         #[serde(
             rename = "objectAnnotations",
@@ -4057,7 +4991,7 @@ pub mod schemas {
         pub segment: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P2Beta1VideoSegment,
         >,
-        #[doc = "Topical label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Topical label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label."]
         #[serde(
             rename = "segmentLabelAnnotations",
             default,
@@ -4066,7 +5000,7 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Presence label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label. Compared to the\nexisting topical `segment_label_annotations`, this field presents more\nfine-grained, segment-level labels detected in video content and is made\navailable only when the client sets `LabelDetectionConfig.model` to\n\"builtin/latest\" in the request."]
         #[serde(
             rename = "segmentPresenceLabelAnnotations",
             default,
@@ -4093,7 +5027,7 @@ pub mod schemas {
         pub shot_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P2Beta1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label. Compared to the existing topical\n`shot_label_annotations`, this field presents more fine-grained, shot-level\nlabels detected in video content and is made available only when the client\nsets `LabelDetectionConfig.model` to \"builtin/latest\" in the request."]
         #[serde(
             rename = "shotPresenceLabelAnnotations",
             default,
@@ -4287,6 +5221,120 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1Celebrity {
+        #[doc = "Textual description of additional information about the celebrity, if\napplicable."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "The celebrity name."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "The resource name of the celebrity. Have the format\n`video-intelligence/kg-mid` indicates a celebrity from preloaded gallery.\nkg-mid is the id in Google knowledge graph, which is unique for the\ncelebrity."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1P3Beta1Celebrity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1Celebrity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1CelebrityRecognitionAnnotation {
+        #[doc = "The tracks detected from the input video, including recognized celebrities\nand other detected faces in the video."]
+        #[serde(
+            rename = "celebrityTracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub celebrity_tracks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1CelebrityTrack>,
+        >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1CelebrityRecognitionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1CelebrityRecognitionAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1CelebrityTrack {
+        #[doc = "Top N match of the celebrities for the face in this track."]
+        #[serde(
+            rename = "celebrities",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub celebrities: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1RecognizedCelebrity>,
+        >,
+        #[doc = "A track of a person's face."]
+        #[serde(
+            rename = "faceTrack",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub face_track:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1Track>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1CelebrityTrack
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1P3Beta1CelebrityTrack {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1DetectedAttribute {
@@ -4297,7 +5345,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub confidence: ::std::option::Option<f32>,
-        #[doc = "The name of the attribute, i.e. glasses, dark_glasses, mouth_open etc.\nA full list of supported type names will be provided in the document."]
+        #[doc = "The name of the attribute, for example, glasses, dark_glasses, mouth_open.\nA full list of supported type names will be provided in the document."]
         #[serde(
             rename = "name",
             default,
@@ -4327,6 +5375,48 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1DetectedLandmark {
+        #[doc = "The confidence score of the detected landmark. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "The name of this landmark, for example, left_hand, right_shoulder."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The 2D point of the detected landmark using the normalized image\ncoordindate system. The normalized coordinates have the range from 0 to 1."]
+        #[serde(
+            rename = "point",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub point: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P3Beta1NormalizedVertex,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1DetectedLandmark
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1DetectedLandmark
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -4339,7 +5429,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1Entity {
-        #[doc = "Textual description, e.g. `Fixed-gear bicycle`."]
+        #[doc = "Textual description, e.g., `Fixed-gear bicycle`."]
         #[serde(
             rename = "description",
             default,
@@ -4393,6 +5483,13 @@ pub mod schemas {
         pub frames: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1ExplicitContentFrame>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ExplicitContentAnnotation
@@ -4520,8 +5617,49 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1FaceDetectionAnnotation {
+        #[doc = "The thumbnail of a person's face."]
+        #[serde(
+            rename = "thumbnail",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub thumbnail: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "The face tracks with attributes."]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tracks:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1Track>>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1FaceDetectionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1FaceDetectionAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation {
-        #[doc = "Common categories for the detected entity.\nE.g. when the label is `Terrier` the category is likely `dog`. And in some\ncases there might be more than one categories e.g. `Terrier` could also be\na `pet`."]
+        #[doc = "Common categories for the detected entity.\nFor example, when the label is `Terrier`, the category is likely `dog`. And\nin some cases there might be more than one categories e.g., `Terrier` could\nalso be a `pet`."]
         #[serde(
             rename = "categoryEntities",
             default,
@@ -4555,6 +5693,13 @@ pub mod schemas {
         pub segments: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelSegment>,
         >,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation
@@ -4825,6 +5970,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub track_id: ::std::option::Option<i64>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingAnnotation
@@ -4878,6 +6030,74 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1PersonDetectionAnnotation {
+        #[doc = "The detected tracks of a person."]
+        #[serde(
+            rename = "tracks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tracks:
+            ::std::option::Option<Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1Track>>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1PersonDetectionAnnotation
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1PersonDetectionAnnotation
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1P3Beta1RecognizedCelebrity {
+        #[doc = "The recognized celebrity."]
+        #[serde(
+            rename = "celebrity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub celebrity:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1Celebrity>,
+        #[doc = "Recognition confidence. Range [0, 1]."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudVideointelligenceV1P3Beta1RecognizedCelebrity
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudVideointelligenceV1P3Beta1RecognizedCelebrity
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1SpeechRecognitionAlternative {
         #[doc = "Output only. The confidence estimate between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. This field is set only for the top alternative.\nThis field is not guaranteed to be accurate and users should not rely on it\nto be always provided.\nThe default of 0.0 is a sentinel value indicating `confidence` was not set."]
         #[serde(
@@ -4893,7 +6113,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transcript: ::std::option::Option<String>,
-        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
+        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is set to true, you will see all\nthe words from the beginning of the audio."]
         #[serde(
             rename = "words",
             default,
@@ -4930,7 +6150,7 @@ pub mod schemas {
         pub alternatives: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1SpeechRecognitionAlternative>,
         >,
-        #[doc = "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio."]
+        #[doc = "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of\nthe language in this result. This language code was detected to have the\nmost likelihood of being spoken in the audio."]
         #[serde(
             rename = "languageCode",
             default,
@@ -4963,7 +6183,7 @@ pub mod schemas {
         pub annotation_results: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1StreamingVideoAnnotationResults,
         >,
-        #[doc = "GCS URI that stores annotation results of one streaming session.\nIt is a directory that can hold multiple files in JSON format.\nExample uri format:\ngs://bucket_id/object_id/cloud_project_name-session_id"]
+        #[doc = "Google Cloud Storage(GCS) URI that stores annotation results of one\nstreaming session in JSON format.\nIt is the annotation_result_storage_directory\nfrom the request followed by '/cloud_project_number-session_id'."]
         #[serde(
             rename = "annotationResultsUri",
             default,
@@ -5067,6 +6287,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text: ::std::option::Option<String>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudVideointelligenceV1P3Beta1TextAnnotation
@@ -5164,6 +6391,15 @@ pub mod schemas {
         pub attributes: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1DetectedAttribute>,
         >,
+        #[doc = "Optional. The detected landmarks."]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1DetectedLandmark>,
+        >,
         #[doc = "Normalized Bounding box in a frame, where the object is located."]
         #[serde(
             rename = "normalizedBoundingBox",
@@ -5257,7 +6493,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none feature."]
         #[serde(
             rename = "feature",
             default,
@@ -5266,7 +6502,7 @@ pub mod schemas {
         pub feature: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
@@ -5280,7 +6516,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segment."]
         #[serde(
             rename = "segment",
             default,
@@ -5320,8 +6556,12 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
+        #[doc = "Celebrity recognition."]
+        CelebrityRecognition,
         #[doc = "Explicit content detection."]
         ExplicitContentDetection,
+        #[doc = "Human face detection."]
+        FaceDetection,
         #[doc = "Unspecified."]
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
@@ -5330,6 +6570,8 @@ pub mod schemas {
         LogoRecognition,
         #[doc = "Object detection and tracking."]
         ObjectTracking,
+        #[doc = "Person detection."]
+        PersonDetection,
         #[doc = "Shot change detection."]
         ShotChangeDetection,
         #[doc = "Speech transcription."]
@@ -5339,7 +6581,7 @@ pub mod schemas {
     }
     impl GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
+            match self { GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: CelebrityRecognition => "CELEBRITY_RECOGNITION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FaceDetection => "FACE_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: PersonDetection => "PERSON_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::convert::AsRef<str>
@@ -5357,7 +6599,7 @@ pub mod schemas {
             GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature,
             (),
         > {
-            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "CELEBRITY_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: CelebrityRecognition , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FACE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FaceDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "PERSON_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: PersonDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature {
@@ -5381,7 +6623,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "CELEBRITY_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: CelebrityRecognition , "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FACE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FaceDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ObjectTracking , "PERSON_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: PersonDetection , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -5400,6 +6642,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct GoogleCloudVideointelligenceV1P3Beta1VideoAnnotationResults {
+        #[doc = "Celebrity recognition annotations."]
+        #[serde(
+            rename = "celebrityRecognitionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub celebrity_recognition_annotations: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1P3Beta1CelebrityRecognitionAnnotation,
+        >,
         #[doc = "If set, indicates an error. Note that for a single `AnnotateVideoRequest`\nsome videos may succeed and some may fail."]
         #[serde(
             rename = "error",
@@ -5416,6 +6667,15 @@ pub mod schemas {
         pub explicit_annotation: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1ExplicitContentAnnotation,
         >,
+        #[doc = "Face detection annotations."]
+        #[serde(
+            rename = "faceDetectionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub face_detection_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1FaceDetectionAnnotation>,
+        >,
         #[doc = "Label annotations on frame level.\nThere is exactly one element for each unique label."]
         #[serde(
             rename = "frameLabelAnnotations",
@@ -5425,7 +6685,7 @@ pub mod schemas {
         pub frame_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
@@ -5450,6 +6710,15 @@ pub mod schemas {
         pub object_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1ObjectTrackingAnnotation>,
         >,
+        #[doc = "Person detection annotations."]
+        #[serde(
+            rename = "personDetectionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub person_detection_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1PersonDetectionAnnotation>,
+        >,
         #[doc = "Video segment on which the annotation is run."]
         #[serde(
             rename = "segment",
@@ -5459,7 +6728,7 @@ pub mod schemas {
         pub segment: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1P3Beta1VideoSegment,
         >,
-        #[doc = "Topical label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Topical label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label."]
         #[serde(
             rename = "segmentLabelAnnotations",
             default,
@@ -5468,7 +6737,7 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Presence label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label. Compared to the\nexisting topical `segment_label_annotations`, this field presents more\nfine-grained, segment-level labels detected in video content and is made\navailable only when the client sets `LabelDetectionConfig.model` to\n\"builtin/latest\" in the request."]
         #[serde(
             rename = "segmentPresenceLabelAnnotations",
             default,
@@ -5495,7 +6764,7 @@ pub mod schemas {
         pub shot_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1P3Beta1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label. Compared to the existing topical\n`shot_label_annotations`, this field presents more fine-grained, shot-level\nlabels detected in video content and is made available only when the client\nsets `LabelDetectionConfig.model` to \"builtin/latest\" in the request."]
         #[serde(
             rename = "shotPresenceLabelAnnotations",
             default,
@@ -5673,7 +6942,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1SpeechContext {
-        #[doc = "*Optional* A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech/limits#content)."]
+        #[doc = "Optional. A list of strings containing words and phrases \"hints\" so that\nthe speech recognition is more likely to recognize them. This can be used\nto improve the accuracy for specific words and phrases, for example, if\nspecific commands are typically spoken by the user. This can also be used\nto add additional words to the vocabulary of the recognizer. See\n[usage limits](https://cloud.google.com/speech/limits#content)."]
         #[serde(
             rename = "phrases",
             default,
@@ -5709,7 +6978,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub transcript: ::std::option::Option<String>,
-        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is true, you will see all the words\nfrom the beginning of the audio."]
+        #[doc = "Output only. A list of word-specific information for each recognized word.\nNote: When `enable_speaker_diarization` is set to true, you will see all\nthe words from the beginning of the audio."]
         #[serde(
             rename = "words",
             default,
@@ -5745,7 +7014,7 @@ pub mod schemas {
         pub alternatives: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>,
         >,
-        #[doc = "Output only. The\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of the\nlanguage in this result. This language code was detected to have the most\nlikelihood of being spoken in the audio."]
+        #[doc = "Output only. The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of\nthe language in this result. This language code was detected to have the\nmost likelihood of being spoken in the audio."]
         #[serde(
             rename = "languageCode",
             default,
@@ -5776,63 +7045,63 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
-        #[doc = "*Optional* For file formats, such as MXF or MKV, supporting multiple audio\ntracks, specify up to two tracks. Default: track 0."]
+        #[doc = "Optional. For file formats, such as MXF or MKV, supporting multiple audio\ntracks, specify up to two tracks. Default: track 0."]
         #[serde(
             rename = "audioTracks",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audio_tracks: ::std::option::Option<Vec<i32>>,
-        #[doc = "*Optional*\nIf set, specifies the estimated number of speakers in the conversation.\nIf not set, defaults to '2'.\nIgnored unless enable_speaker_diarization is set to true."]
+        #[doc = "Optional. If set, specifies the estimated number of speakers in the conversation.\nIf not set, defaults to '2'.\nIgnored unless enable_speaker_diarization is set to true."]
         #[serde(
             rename = "diarizationSpeakerCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub diarization_speaker_count: ::std::option::Option<i32>,
-        #[doc = "*Optional* If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all. The default 'false' value\ndoes not add punctuation to result hypotheses. NOTE: \"This is currently\noffered as an experimental service, complimentary to all users. In the\nfuture this may be exclusively available as a premium feature.\""]
+        #[doc = "Optional. If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all. The default 'false' value\ndoes not add punctuation to result hypotheses. NOTE: \"This is currently\noffered as an experimental service, complimentary to all users. In the\nfuture this may be exclusively available as a premium feature.\""]
         #[serde(
             rename = "enableAutomaticPunctuation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_automatic_punctuation: ::std::option::Option<bool>,
-        #[doc = "*Optional* If 'true', enables speaker detection for each recognized word in\nthe top alternative of the recognition result using a speaker_tag provided\nin the WordInfo.\nNote: When this is true, we send all the words from the beginning of the\naudio for the top alternative in every consecutive responses.\nThis is done in order to improve our speaker tags as our models learn to\nidentify the speakers in the conversation over time."]
+        #[doc = "Optional. If 'true', enables speaker detection for each recognized word in\nthe top alternative of the recognition result using a speaker_tag provided\nin the WordInfo.\nNote: When this is true, we send all the words from the beginning of the\naudio for the top alternative in every consecutive response.\nThis is done in order to improve our speaker tags as our models learn to\nidentify the speakers in the conversation over time."]
         #[serde(
             rename = "enableSpeakerDiarization",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_speaker_diarization: ::std::option::Option<bool>,
-        #[doc = "*Optional* If `true`, the top result includes a list of words and the\nconfidence for those words. If `false`, no word-level confidence\ninformation is returned. The default is `false`."]
+        #[doc = "Optional. If `true`, the top result includes a list of words and the\nconfidence for those words. If `false`, no word-level confidence\ninformation is returned. The default is `false`."]
         #[serde(
             rename = "enableWordConfidence",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub enable_word_confidence: ::std::option::Option<bool>,
-        #[doc = "*Optional* If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
+        #[doc = "Optional. If set to `true`, the server will attempt to filter out\nprofanities, replacing all but the initial character in each filtered word\nwith asterisks, e.g. \"f***\". If set to `false` or omitted, profanities\nwon't be filtered out."]
         #[serde(
             rename = "filterProfanity",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub filter_profanity: ::std::option::Option<bool>,
-        #[doc = "*Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language Support](https://cloud.google.com/speech/docs/languages)\nfor a list of the currently supported language codes."]
+        #[doc = "Required. *Required* The language of the supplied audio as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.\nExample: \"en-US\".\nSee [Language Support](https://cloud.google.com/speech/docs/languages)\nfor a list of the currently supported language codes."]
         #[serde(
             rename = "languageCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "*Optional* Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechTranscription`. The server may return fewer than\n`max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will\nreturn a maximum of one. If omitted, will return a maximum of one."]
+        #[doc = "Optional. Maximum number of recognition hypotheses to be returned.\nSpecifically, the maximum number of `SpeechRecognitionAlternative` messages\nwithin each `SpeechTranscription`. The server may return fewer than\n`max_alternatives`. Valid values are `0`-`30`. A value of `0` or `1` will\nreturn a maximum of one. If omitted, will return a maximum of one."]
         #[serde(
             rename = "maxAlternatives",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_alternatives: ::std::option::Option<i32>,
-        #[doc = "*Optional* A means to provide context to assist the speech recognition."]
+        #[doc = "Optional. A means to provide context to assist the speech recognition."]
         #[serde(
             rename = "speechContexts",
             default,
@@ -5874,6 +7143,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub text: ::std::option::Option<String>,
+        #[doc = "Feature version."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1TextAnnotation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -5993,6 +7269,103 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1TimestampedObject {
+        #[doc = "Optional. The attributes of the object in the bounding box."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1DetectedAttribute>,
+        >,
+        #[doc = "Optional. The detected landmarks."]
+        #[serde(
+            rename = "landmarks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub landmarks: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1DetectedLandmark>,
+        >,
+        #[doc = "Normalized Bounding box in a frame, where the object is located."]
+        #[serde(
+            rename = "normalizedBoundingBox",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub normalized_bounding_box: ::std::option::Option<
+            crate::schemas::GoogleCloudVideointelligenceV1NormalizedBoundingBox,
+        >,
+        #[doc = "Time-offset, relative to the beginning of the video,\ncorresponding to the video frame for this object."]
+        #[serde(
+            rename = "timeOffset",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub time_offset: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1TimestampedObject {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1TimestampedObject {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudVideointelligenceV1Track {
+        #[doc = "Optional. Attributes in the track level."]
+        #[serde(
+            rename = "attributes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attributes: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1DetectedAttribute>,
+        >,
+        #[doc = "Optional. The confidence score of the tracked object."]
+        #[serde(
+            rename = "confidence",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub confidence: ::std::option::Option<f32>,
+        #[doc = "Video segment of a track."]
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment:
+            ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>,
+        #[doc = "The object with timestamp and attributes per frame in the track."]
+        #[serde(
+            rename = "timestampedObjects",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub timestamped_objects: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1TimestampedObject>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudVideointelligenceV1Track {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudVideointelligenceV1Track {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -6005,7 +7378,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudVideointelligenceV1VideoAnnotationProgress {
-        #[doc = "Specifies which feature is being tracked if the request contains more than\none features."]
+        #[doc = "Specifies which feature is being tracked if the request contains more than\none feature."]
         #[serde(
             rename = "feature",
             default,
@@ -6014,7 +7387,7 @@ pub mod schemas {
         pub feature: ::std::option::Option<
             crate::schemas::GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
@@ -6028,7 +7401,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Specifies which segment is being tracked if the request contains more than\none segments."]
+        #[doc = "Specifies which segment is being tracked if the request contains more than\none segment."]
         #[serde(
             rename = "segment",
             default,
@@ -6073,6 +7446,8 @@ pub mod schemas {
         FeatureUnspecified,
         #[doc = "Label detection. Detect objects, such as dog or flower."]
         LabelDetection,
+        #[doc = "Logo detection, tracking, and recognition."]
+        LogoRecognition,
         #[doc = "Object detection and tracking."]
         ObjectTracking,
         #[doc = "Shot change detection."]
@@ -6084,7 +7459,7 @@ pub mod schemas {
     }
     impl GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
+            match self { GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection => "EXPLICIT_CONTENT_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified => "FEATURE_UNSPECIFIED" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection => "LABEL_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LogoRecognition => "LOGO_RECOGNITION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking => "OBJECT_TRACKING" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection => "SHOT_CHANGE_DETECTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription => "SPEECH_TRANSCRIPTION" , GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection => "TEXT_DETECTION" , }
         }
     }
     impl ::std::convert::AsRef<str> for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
@@ -6098,7 +7473,7 @@ pub mod schemas {
             s: &str,
         ) -> ::std::result::Result<GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature, ()>
         {
-            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature {
@@ -6122,7 +7497,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "EXPLICIT_CONTENT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ExplicitContentDetection , "FEATURE_UNSPECIFIED" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: FeatureUnspecified , "LABEL_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LabelDetection , "LOGO_RECOGNITION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: LogoRecognition , "OBJECT_TRACKING" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ObjectTracking , "SHOT_CHANGE_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: ShotChangeDetection , "SPEECH_TRANSCRIPTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: SpeechTranscription , "TEXT_DETECTION" => GoogleCloudVideointelligenceV1VideoAnnotationProgressFeature :: TextDetection , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector
@@ -6166,13 +7541,22 @@ pub mod schemas {
         pub frame_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
         >,
-        #[doc = "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."]
+        #[doc = "Video file location in\n[Cloud Storage](https://cloud.google.com/storage/)."]
         #[serde(
             rename = "inputUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_uri: ::std::option::Option<String>,
+        #[doc = "Annotations for list of logos detected, tracked and recognized in video."]
+        #[serde(
+            rename = "logoRecognitionAnnotations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub logo_recognition_annotations: ::std::option::Option<
+            Vec<crate::schemas::GoogleCloudVideointelligenceV1LogoRecognitionAnnotation>,
+        >,
         #[doc = "Annotations for list of objects detected and tracked in video."]
         #[serde(
             rename = "objectAnnotations",
@@ -6190,7 +7574,7 @@ pub mod schemas {
         )]
         pub segment:
             ::std::option::Option<crate::schemas::GoogleCloudVideointelligenceV1VideoSegment>,
-        #[doc = "Topical label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Topical label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label."]
         #[serde(
             rename = "segmentLabelAnnotations",
             default,
@@ -6199,7 +7583,7 @@ pub mod schemas {
         pub segment_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on video level or user specified segment level.\nThere is exactly one element for each unique label."]
+        #[doc = "Presence label annotations on video level or user-specified segment level.\nThere is exactly one element for each unique label. Compared to the\nexisting topical `segment_label_annotations`, this field presents more\nfine-grained, segment-level labels detected in video content and is made\navailable only when the client sets `LabelDetectionConfig.model` to\n\"builtin/latest\" in the request."]
         #[serde(
             rename = "segmentPresenceLabelAnnotations",
             default,
@@ -6225,7 +7609,7 @@ pub mod schemas {
         pub shot_label_annotations: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudVideointelligenceV1LabelAnnotation>,
         >,
-        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label."]
+        #[doc = "Presence label annotations on shot level. There is exactly one element for\neach unique label. Compared to the existing topical\n`shot_label_annotations`, this field presents more fine-grained, shot-level\nlabels detected in video content and is made available only when the client\nsets `LabelDetectionConfig.model` to \"builtin/latest\" in the request."]
         #[serde(
             rename = "shotPresenceLabelAnnotations",
             default,
@@ -6741,7 +8125,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -6749,8 +8133,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -6783,7 +8179,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -6801,7 +8197,7 @@ pub mod resources {
         pub mod projects {
             pub mod params {}
             pub struct ProjectsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ProjectsActions<'a> {
@@ -6822,7 +8218,7 @@ pub mod resources {
             pub mod locations {
                 pub mod params {}
                 pub struct LocationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> LocationsActions<'a> {
@@ -6836,7 +8232,7 @@ pub mod resources {
                 pub mod operations {
                     pub mod params {}
                     pub struct OperationsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> OperationsActions<'a> {
@@ -6904,7 +8300,7 @@ pub mod resources {
                     #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                     #[derive(Debug, Clone)]
                     pub struct CancelRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -7043,7 +8439,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7068,7 +8464,7 @@ pub mod resources {
                     #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -7206,7 +8602,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7231,7 +8627,7 @@ pub mod resources {
                     #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -7369,7 +8765,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7398,7 +8794,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -7416,7 +8812,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -7437,7 +8833,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -7532,7 +8928,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::GoogleLongrunningCancelOperationRequest,
                     name: String,
@@ -7672,7 +9068,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7696,7 +9093,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -7833,7 +9230,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -7857,7 +9255,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -7994,7 +9392,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -8018,7 +9417,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -8281,7 +9680,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -8322,7 +9722,7 @@ pub mod resources {
     pub mod videos {
         pub mod params {}
         pub struct VideosActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> VideosActions<'a> {
@@ -8355,7 +9755,7 @@ pub mod resources {
         #[doc = "Created via [VideosActions::annotate()](struct.VideosActions.html#method.annotate)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GoogleCloudVideointelligenceV1AnnotateVideoRequest,
             access_token: Option<String>,
@@ -8478,7 +9878,10 @@ pub mod resources {
                 output.push_str("v1/videos:annotate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -8517,9 +9920,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -8561,7 +9962,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

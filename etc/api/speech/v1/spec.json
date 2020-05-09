@@ -7,7 +7,7 @@
   "canonicalName": "Speech",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190918",
+  "revision": "20200502",
   "title": "Cloud Speech-to-Text API",
   "description": "Converts audio to text by applying powerful neural network models.",
   "ownerDomain": "google.com",
@@ -278,6 +278,16 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "uri": {
+          "description": "Output only. The URI of the audio file being transcribed. Empty if the audio was sent\nas byte content. ",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -456,7 +466,7 @@
           "$ref": "SpeakerDiarizationConfig"
         },
         "enableAutomaticPunctuation": {
-          "description": "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.\nNote: This is currently offered as an experimental service, complimentary\nto all users. In the future this may be exclusively available as a\npremium feature.",
+          "description": "If 'true', adds punctuation to recognition result hypotheses.\nThis feature is only available in select languages. Setting this for\nrequests in other languages has no effect at all.\nThe default 'false' value does not add punctuation to result hypotheses.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -671,16 +681,6 @@
           "additionalProperties": null,
           "items": null
         },
-        "obfuscatedId": {
-          "description": "Obfuscated (privacy-protected) ID of the user, to identify number of\nunique users using the service.",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "originalMediaType": {
           "description": "The original media the speech was recorded on.",
           "type": "string",
@@ -823,6 +823,16 @@
         },
         "minSpeakerCount": {
           "description": "Minimum number of speakers in the conversation. This range gives you more\nflexibility by allowing the system to automatically determine the correct\nnumber of speakers. If not set, the default value is 2.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "speakerTag": {
+          "description": "Output only. Unused.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1021,7 +1031,7 @@
           "items": null
         },
         "speakerTag": {
-          "description": "A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative.",
+          "description": "Output only. A distinct integer value is assigned for every speaker within\nthe audio. This field specifies which one of those speakers was detected to\nhave spoken this word. Value ranges from '1' to diarization_speaker_count.\nspeaker_tag is set if enable_speaker_diarization = 'true' and only in the\ntop alternative.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1074,7 +1084,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^.+$",
+              "pattern": "^.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

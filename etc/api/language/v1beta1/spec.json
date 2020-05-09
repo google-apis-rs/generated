@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Natural Language",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20190913",
+  "revision": "20200502",
   "title": "Cloud Natural Language API",
   "description": "Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.",
   "ownerDomain": "google.com",
@@ -767,7 +767,7 @@
           "items": null
         },
         "language": {
-          "description": "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned.",
+          "description": "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language\nSupport](https://cloud.google.com/natural-language/docs/languages) lists\ncurrently supported languages for each API method. If the language (either\nspecified by the caller or automatically detected) is not supported by the\ncalled API method, an `INVALID_ARGUMENT` error is returned.",
           "type": "string",
           "format": null,
           "enum": [],

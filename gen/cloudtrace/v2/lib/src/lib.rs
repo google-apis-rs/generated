@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [traces](resources/projects/traces/struct.TracesActions.html)\n        * [*batchWrite*](resources/projects/traces/struct.BatchWriteRequestBuilder.html)\n        * [spans](resources/projects/traces/spans/struct.SpansActions.html)\n          * [*createSpan*](resources/projects/traces/spans/struct.CreateSpanRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Write Trace data for a project or application\n\n`https://www.googleapis.com/auth/trace.append`"]
+    pub const TRACE_APPEND: &str = "https://www.googleapis.com/auth/trace.append";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -97,7 +103,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Attributes {
-        #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n````text\n\"/instance_id\": \"my-instance\"\n\"/http/user_agent\": \"\"\n\"/http/request_bytes\": 300\n\"abc.com/myattribute\": true````"]
+        #[doc = "The set of attributes. Each attribute's key can be up to 128 bytes\nlong. The value can be a string up to 256 bytes, a signed 64-bit integer,\nor the Boolean values `true` and `false`. For example:\n\n````text\n\"/instance_id\": { \"string_value\": { \"value\": \"my-instance\" } }\n\"/http/request_bytes\": { \"int_value\": 300 }\n\"abc.com/myattribute\": { \"bool_value\": false }````"]
         #[serde(
             rename = "attributeMap",
             default,
@@ -126,7 +132,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchWriteSpansRequest {
-        #[doc = "A list of new spans. The span names must not match existing\nspans, or the results are undefined."]
+        #[doc = "Required. A list of new spans. The span names must not match existing\nspans, or the results are undefined."]
         #[serde(
             rename = "spans",
             default,
@@ -512,21 +518,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub attributes: ::std::option::Option<crate::schemas::Attributes>,
-        #[doc = "An optional number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans."]
+        #[doc = "Optional. The number of child spans that were generated while this span\nwas active. If set, allows implementation to detect missing child spans."]
         #[serde(
             rename = "childSpanCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub child_span_count: ::std::option::Option<i32>,
-        #[doc = "A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces."]
+        #[doc = "Required. A description of the span's operation (up to 128 bytes).\nStackdriver Trace displays the description in the\nGoogle Cloud Platform Console.\nFor example, the display name can be a qualified method name or a file name\nand a line number where the operation is called. A best practice is to use\nthe same display name within an application and at the same call point.\nThis makes it easier to correlate spans in different traces."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<crate::schemas::TruncatableString>,
-        #[doc = "The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running."]
+        #[doc = "Required. The end time of the span. On the client side, this is the time kept by\nthe local machine where the span execution ends. On the server side, this\nis the time when the server application handler stops running."]
         #[serde(
             rename = "endTime",
             default,
@@ -554,14 +560,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent_span_id: ::std::option::Option<String>,
-        #[doc = "(Optional) Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation."]
+        #[doc = "Optional. Set this parameter to indicate whether this span is in\nthe same process as its parent. If you do not set this parameter,\nStackdriver Trace is unable to take advantage of this helpful\ninformation."]
         #[serde(
             rename = "sameProcessAsParentSpan",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub same_process_as_parent_span: ::std::option::Option<bool>,
-        #[doc = "The [SPAN_ID] portion of the span's resource name."]
+        #[doc = "Required. The [SPAN_ID] portion of the span's resource name."]
         #[serde(
             rename = "spanId",
             default,
@@ -582,14 +588,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stack_trace: ::std::option::Option<crate::schemas::StackTrace>,
-        #[doc = "The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running."]
+        #[doc = "Required. The start time of the span. On the client side, this is the time kept by\nthe local machine where the span execution starts. On the server side, this\nis the time when the server's application handler starts running."]
         #[serde(
             rename = "startTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
-        #[doc = "An optional final status for this span."]
+        #[doc = "Optional. The final status for this span."]
         #[serde(
             rename = "status",
             default,
@@ -1171,7 +1177,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1179,8 +1185,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1199,7 +1217,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1217,14 +1235,14 @@ pub mod resources {
         pub mod traces {
             pub mod params {}
             pub struct TracesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> TracesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Sends new spans to new or existing traces. You cannot update\nexisting spans."]
+                #[doc = "Sends new spans to new or existing traces. You cannot update\nexisting spans.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated."]
                 pub fn batch_write(
                     &self,
                     request: crate::schemas::BatchWriteSpansRequest,
@@ -1259,7 +1277,7 @@ pub mod resources {
             #[doc = "Created via [TracesActions::batch_write()](struct.TracesActions.html#method.batch_write)"]
             #[derive(Debug, Clone)]
             pub struct BatchWriteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchWriteSpansRequest,
                 name: String,
@@ -1394,7 +1412,10 @@ pub mod resources {
                     output.push_str("/traces:batchWrite");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1418,14 +1439,14 @@ pub mod resources {
             pub mod spans {
                 pub mod params {}
                 pub struct SpansActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> SpansActions<'a> {
                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                         self.auth
                     }
-                    #[doc = "Creates a new span."]
+                    #[doc = "Creates a new span.\nIn this case, writing traces is not considered an active developer\nmethod since traces are machine generated."]
                     pub fn create_span(
                         &self,
                         request: crate::schemas::Span,
@@ -1453,7 +1474,7 @@ pub mod resources {
                 #[doc = "Created via [SpansActions::create_span()](struct.SpansActions.html#method.create_span)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateSpanRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Span,
                     name: String,
@@ -1590,7 +1611,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -1631,9 +1653,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1675,7 +1695,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

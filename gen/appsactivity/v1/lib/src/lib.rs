@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [activities](resources/activities/struct.ActivitiesActions.html)\n      * [*list*](resources/activities/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View the activity history of your Google apps\n\n`https://www.googleapis.com/auth/activity`"]
+    pub const ACTIVITY: &str = "https://www.googleapis.com/auth/activity";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -604,6 +608,7 @@ pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum PermissionRole {
         Commenter,
+        FileOrganizer,
         Owner,
         PublishedReader,
         Reader,
@@ -613,6 +618,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 PermissionRole::Commenter => "commenter",
+                PermissionRole::FileOrganizer => "fileOrganizer",
                 PermissionRole::Owner => "owner",
                 PermissionRole::PublishedReader => "publishedReader",
                 PermissionRole::Reader => "reader",
@@ -630,6 +636,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<PermissionRole, ()> {
             Ok(match s {
                 "commenter" => PermissionRole::Commenter,
+                "fileOrganizer" => PermissionRole::FileOrganizer,
                 "owner" => PermissionRole::Owner,
                 "publishedReader" => PermissionRole::PublishedReader,
                 "reader" => PermissionRole::Reader,
@@ -659,6 +666,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "commenter" => PermissionRole::Commenter,
+                "fileOrganizer" => PermissionRole::FileOrganizer,
                 "owner" => PermissionRole::Owner,
                 "publishedReader" => PermissionRole::PublishedReader,
                 "reader" => PermissionRole::Reader,
@@ -963,7 +971,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -971,8 +979,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1061,7 +1081,7 @@ pub mod resources {
             }
         }
         pub struct ActivitiesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ActivitiesActions<'a> {
@@ -1093,7 +1113,7 @@ pub mod resources {
         #[doc = "Created via [ActivitiesActions::list()](struct.ActivitiesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             drive_ancestor_id: Option<String>,
             drive_file_id: Option<String>,
@@ -1333,7 +1353,10 @@ pub mod resources {
                 output.push_str("activities");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("drive.ancestorId", &self.drive_ancestor_id)]);
                 let req = req.query(&[("drive.fileId", &self.drive_file_id)]);
@@ -1386,9 +1409,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1430,7 +1451,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

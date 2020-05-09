@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudbuild1_alpha1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190824")
+            .version("0.1.0-20200506")
             .about("Creates and manages builds on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -40,26 +40,27 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list and patch");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a `WorkerPool` to run the builds, and returns the new worker pool.\n\nThis API is experimental.");
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a `WorkerPool` to run the builds, and returns the new worker pool.",
+            );
             worker_pools1 = worker_pools1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a `WorkerPool` by its project ID and WorkerPool name.\n\nThis API is experimental.");
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a `WorkerPool` by its project ID and WorkerPool name.");
             worker_pools1 = worker_pools1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Returns information about a `WorkerPool`.\n\nThis API is experimental.");
+            let mcmd =
+                SubCommand::with_name("get").about("Returns information about a `WorkerPool`.");
             worker_pools1 = worker_pools1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("List project\'s `WorkerPool`s.\n\nThis API is experimental.");
+            let mcmd = SubCommand::with_name("list").about("List project\'s `WorkerPool`s.");
             worker_pools1 = worker_pools1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Update a `WorkerPool`.\n\nThis API is experimental.");
+            let mcmd = SubCommand::with_name("patch").about("Update a `WorkerPool`.");
             worker_pools1 = worker_pools1.subcommand(mcmd);
         }
         projects0 = projects0.subcommand(worker_pools1);

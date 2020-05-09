@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/iWNAUK2jqHtNCpdlX8UikaqVJOg\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/wHt23iZe8Ye_ZkSeIpNeFO568Sc\"",
   "discoveryVersion": "v1",
   "id": "androidpublisher:v1.1",
   "name": "androidpublisher",
   "canonicalName": "Android Publisher",
   "fullyEncodeReservedExpansion": null,
   "version": "v1.1",
-  "revision": "20190917",
+  "revision": "20200428",
   "title": "Google Play Developer API",
   "description": "Accesses Android application developers' Google Play accounts.",
   "ownerDomain": "google.com",
@@ -222,58 +222,6 @@
       },
       "additionalProperties": null,
       "items": null
-    },
-    "SubscriptionPurchase": {
-      "id": "SubscriptionPurchase",
-      "description": "A SubscriptionPurchase resource indicates the status of a user's subscription purchase.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "autoRenewing": {
-          "description": "Whether the subscription will automatically be renewed when it reaches its current expiry time.",
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "initiationTimestampMsec": {
-          "description": "Time at which the subscription was granted, in milliseconds since the Epoch.",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "kind": {
-          "description": "This kind represents a subscriptionPurchase object in the androidpublisher service.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "validUntilTimestampMsec": {
-          "description": "Time at which the subscription will expire, in milliseconds since the Epoch.",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
     }
   },
   "resources": {
@@ -337,143 +285,6 @@
           "request": null,
           "response": {
             "$ref": "InappPurchase"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidpublisher"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        }
-      }
-    },
-    "purchases": {
-      "resources": {},
-      "methods": {
-        "cancel": {
-          "id": "androidpublisher.purchases.cancel",
-          "path": "{packageName}/subscriptions/{subscriptionId}/purchases/{token}/cancel",
-          "httpMethod": "POST",
-          "description": "Cancels a user's subscription purchase. The subscription remains valid until its expiration time.",
-          "parameters": {
-            "packageName": {
-              "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "subscriptionId": {
-              "description": "The purchased subscription ID (for example, 'monthly001').",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "token": {
-              "description": "The token provided to the user's device when the subscription was purchased.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "packageName",
-            "subscriptionId",
-            "token"
-          ],
-          "request": null,
-          "response": null,
-          "scopes": [
-            "https://www.googleapis.com/auth/androidpublisher"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
-        "get": {
-          "id": "androidpublisher.purchases.get",
-          "path": "{packageName}/subscriptions/{subscriptionId}/purchases/{token}",
-          "httpMethod": "GET",
-          "description": "Checks whether a user's subscription purchase is valid and returns its expiry time.",
-          "parameters": {
-            "packageName": {
-              "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "subscriptionId": {
-              "description": "The purchased subscription ID (for example, 'monthly001').",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "token": {
-              "description": "The token provided to the user's device when the subscription was purchased.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "packageName",
-            "subscriptionId",
-            "token"
-          ],
-          "request": null,
-          "response": {
-            "$ref": "SubscriptionPurchase"
           },
           "scopes": [
             "https://www.googleapis.com/auth/androidpublisher"

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("gmail1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190624")
+            .version("0.1.0-20200203")
             .about("Access Gmail mailboxes including sending user email.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -257,7 +257,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Adds a delegate with its verification status set directly to accepted, without sending any verification email. The delegate user must be a member of the same G Suite organization as the delegator user.\n\nGmail imposes limtations on the number of delegates and delegators each user in a G Suite organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators.\n\nNote that a delegate user must be referred to by their primary email address, and not an email alias.\n\nAlso note that when a new delegate is created, there may be up to a one minute delay before the new delegate is available for use.\n\nThis method is only available to service account clients that have been delegated domain-wide authority.");
+            let mcmd = SubCommand::with_name("create").about("Adds a delegate with its verification status set directly to accepted, without sending any verification email. The delegate user must be a member of the same G Suite organization as the delegator user.\n\nGmail imposes limitations on the number of delegates and delegators each user in a G Suite organization can have. These limits depend on your organization, but in general each user can have up to 25 delegates and up to 10 delegators.\n\nNote that a delegate user must be referred to by their primary email address, and not an email alias.\n\nAlso note that when a new delegate is created, there may be up to a one minute delay before the new delegate is available for use.\n\nThis method is only available to service account clients that have been delegated domain-wide authority.");
             delegates2 = delegates2.subcommand(mcmd);
         }
         {

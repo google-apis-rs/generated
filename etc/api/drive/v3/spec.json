@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/oiEAGg9nPcdJHNyn6eMdimrSJOM\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/fL_duPreaAEBlLVMyeWNercZKGY\"",
   "discoveryVersion": "v1",
   "id": "drive:v3",
   "name": "drive",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v3",
-  "revision": "20190912",
+  "revision": "20200423",
   "title": "Drive API",
   "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
   "ownerDomain": "google.com",
@@ -766,7 +766,7 @@
           "items": null
         },
         "author": {
-          "description": "The user who created the comment.",
+          "description": "The author of the comment. The author's email address and permission ID will not be populated.",
           "$ref": "User"
         },
         "content": {
@@ -1413,6 +1413,16 @@
               "additionalProperties": null,
               "items": null
             },
+            "canAddMyDriveParent": {
+              "description": "Whether the current user can add a parent for the item without removing an existing parent in the same request. Not populated for shared drive files.",
+              "type": "boolean",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
             "canChangeCopyRequiresWriterPermission": {
               "description": "Whether the current user can change the copyRequiresWriterPermission restriction of this file.",
               "type": "boolean",
@@ -1653,6 +1663,16 @@
               "additionalProperties": null,
               "items": null
             },
+            "canRemoveMyDriveParent": {
+              "description": "Whether the current user can remove a parent from the item without adding another parent in the same request. Not populated for shared drive files.",
+              "type": "boolean",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
             "canRename": {
               "description": "Whether the current user can rename this file.",
               "type": "boolean",
@@ -1859,7 +1879,7 @@
           "items": null
         },
         "hasAugmentedPermissions": {
-          "description": "Whether any users are granted file access directly on this file. This field is only populated for shared drive files.",
+          "description": "Whether there are permissions directly on this file. This field is only populated for items in shared drives.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -2097,7 +2117,7 @@
               "items": null
             },
             "rotation": {
-              "description": "The rotation in clockwise degrees from the image's original orientation.",
+              "description": "The number of clockwise 90 degree rotations applied from the image's original orientation.",
               "type": "integer",
               "format": "int32",
               "enum": [],
@@ -2376,6 +2396,37 @@
         "sharingUser": {
           "description": "The user who shared the file with the requesting user, if applicable.",
           "$ref": "User"
+        },
+        "shortcutDetails": {
+          "description": "Shortcut file details. Only populated for shortcut files, which have the mimeType field set to application/vnd.google-apps.shortcut.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {
+            "targetId": {
+              "description": "The ID of the file that this shortcut points to.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "targetMimeType": {
+              "description": "The MIME type of the file that this shortcut points to. The value of this field is a snapshot of the target's MIME type, captured when the shortcut is created.",
+              "type": "string",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "additionalProperties": null,
+          "items": null
         },
         "size": {
           "description": "The size of the file's content in bytes. This is only applicable to files with binary content in Google Drive.",
@@ -2717,7 +2768,7 @@
           "items": null
         },
         "displayName": {
-          "description": "A displayable name for users, groups or domains.",
+          "description": "The \"pretty\" name of the value of the permission. The following is a list of examples for each type of permission:  \n- user - User's full name, as defined for their Google account, such as \"Joe Smith.\" \n- group - Name of the Google Group, such as \"The Company Administrators.\" \n- domain - String domain name, such as \"thecompany.com.\" \n- anyone - No displayName is present.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2757,7 +2808,7 @@
           "items": null
         },
         "id": {
-          "description": "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId.",
+          "description": "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId. IDs should be treated as opaque values.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2801,7 +2852,7 @@
                 "items": null
               },
               "inheritedFrom": {
-                "description": "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the shared drive.",
+                "description": "The ID of the item from which this permission is inherited. This is an output-only field.",
                 "type": "string",
                 "format": null,
                 "enum": [],
@@ -2915,7 +2966,7 @@
           }
         },
         "type": {
-          "description": "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone",
+          "description": "The type of the grantee. Valid values are:  \n- user \n- group \n- domain \n- anyone  When creating a permission, if type is user or group, you must provide an emailAddress for the user or group. When type is domain, you must provide a domain. There isn't extra information required for a anyone type.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2991,7 +3042,7 @@
           "items": null
         },
         "author": {
-          "description": "The user who created the reply.",
+          "description": "The author of the reply. The author's email address and permission ID will not be populated.",
           "$ref": "User"
         },
         "content": {
@@ -3877,7 +3928,7 @@
           "description": "Gets the starting pageToken for listing future changes.",
           "parameters": {
             "driveId": {
-              "description": "The ID of the shared drive for which the starting pageToken for listing future changes from that shared drive will be returned.",
+              "description": "The ID of the shared drive for which the starting pageToken for listing future changes from that shared drive is returned.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3960,7 +4011,7 @@
           "description": "Lists the changes for a user or shared drive.",
           "parameters": {
             "driveId": {
-              "description": "The shared drive from which changes will be returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier.",
+              "description": "The shared drive from which changes are returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier.",
               "default": null,
               "location": "query",
               "required": false,
@@ -3988,7 +4039,7 @@
               "repeated": false
             },
             "includeItemsFromAllDrives": {
-              "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results.",
+              "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -4157,7 +4208,7 @@
           "description": "Subscribes to changes for a user.",
           "parameters": {
             "driveId": {
-              "description": "The shared drive from which changes will be returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier.",
+              "description": "The shared drive from which changes are returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier.",
               "default": null,
               "location": "query",
               "required": false,
@@ -4185,7 +4236,7 @@
               "repeated": false
             },
             "includeItemsFromAllDrives": {
-              "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results.",
+              "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -5041,6 +5092,20 @@
           "httpMethod": "POST",
           "description": "Creates a copy of a file and applies any requested updates with patch semantics.",
           "parameters": {
+            "enforceSingleParent": {
+              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "fileId": {
               "description": "The ID of the file.",
               "default": null,
@@ -5070,7 +5135,7 @@
               "repeated": false
             },
             "keepRevisionForever": {
-              "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive.",
+              "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -5153,6 +5218,20 @@
           "httpMethod": "POST",
           "description": "Creates a new file.",
           "parameters": {
+            "enforceSingleParent": {
+              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "ignoreDefaultVisibility": {
               "description": "Whether to ignore the domain's default visibility settings for the created file. Domain administrators can choose to make all uploaded files visible to the domain by default; this parameter bypasses that behavior for the request. Permissions are still inherited from parent folders.",
               "default": "false",
@@ -5168,7 +5247,7 @@
               "repeated": false
             },
             "keepRevisionForever": {
-              "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive.",
+              "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -5597,7 +5676,7 @@
               "repeated": false
             },
             "includeItemsFromAllDrives": {
-              "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results.",
+              "description": "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -5777,6 +5856,20 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "enforceSingleParent": {
+              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to add a single parent, the item is removed from all current folders and placed in the requested folder. Other requests that increase the number of parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "fileId": {
               "description": "The ID of the file.",
               "default": null,
@@ -5792,7 +5885,7 @@
               "repeated": false
             },
             "keepRevisionForever": {
-              "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive.",
+              "description": "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions.",
               "default": "false",
               "location": "query",
               "required": false,
@@ -6025,12 +6118,40 @@
               "enumDescriptions": [],
               "repeated": false
             },
+            "enforceSingleParent": {
+              "description": "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. See moveToNewOwnersRoot for details.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "fileId": {
               "description": "The ID of the file or shared drive.",
               "default": null,
               "location": "path",
               "required": true,
               "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "moveToNewOwnersRoot": {
+              "description": "This parameter only takes effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. When set to true, the item is moved to the new owner's My Drive root folder and all prior parents removed. If set to false, when enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false, existing parents are not changed; however, the file will be added to the new owner's My Drive root folder, unless it is already in the new owner's My Drive.",
+              "default": "false",
+              "location": "query",
+              "required": false,
+              "type": "boolean",
               "format": null,
               "minimum": null,
               "maximum": null,

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Functions",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta2",
-  "revision": "20190807",
+  "revision": "20200504",
   "title": "Cloud Functions API",
   "description": "Manages lightweight user-provided functions executed in response to events.",
   "ownerDomain": "google.com",
@@ -216,7 +216,7 @@
       "enumDescriptions": [],
       "properties": {
         "data": {
-          "description": "Input to be passed to the function.",
+          "description": "Required. Input to be passed to the function.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -695,6 +695,24 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "unreachable": {
+          "description": "Locations that could not be reached. The response does not include any\nfunctions from these locations.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -1275,7 +1293,7 @@
           "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
           "parameters": {
             "filter": {
-              "description": "Required. A filter for matching the requested operations.<br><br> The supported formats of <b>filter</b> are:<br> To query for specific function: <code>project:*,location:*,function:*</code><br> To query for all of the latest operations for a project: <code>project:*,latest:true</code>",
+              "description": "Required. A filter for matching the requested operations.<br><br> The supported formats of <b>filter</b> are:<br> To query for a specific function: <code>project:*,location:*,function:*</code><br> To query for all of the latest operations for a project: <code>project:*,latest:true</code>",
               "default": null,
               "location": "query",
               "required": false,
@@ -1303,7 +1321,7 @@
               "repeated": false
             },
             "pageSize": {
-              "description": "The standard list page size.",
+              "description": "The maximum number of records that should be returned.<br> Requested page size cannot exceed 100. If not set, the default page size is 100.<br><br> Pagination is only supported when querying for a specific function.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1317,7 +1335,7 @@
               "repeated": false
             },
             "pageToken": {
-              "description": "The standard list page token.",
+              "description": "Token identifying which result to start with, which is returned by a previous list call.<br><br> Pagination is only supported when querying for a specific function.",
               "default": null,
               "location": "query",
               "required": false,
@@ -1361,7 +1379,7 @@
                   "description": "Synchronously invokes a deployed Cloud Function. To be used for testing\npurposes as very limited traffic is allowed. For more information on\nthe actual limits refer to [API Calls](\nhttps://cloud.google.com/functions/quotas#rate_limits).",
                   "parameters": {
                     "name": {
-                      "description": "The name of the function to be called.",
+                      "description": "Required. The name of the function to be called.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1400,7 +1418,7 @@
                   "description": "Creates a new function. If a function with the given name already exists in\nthe specified project, the long running operation will return\n`ALREADY_EXISTS` error.",
                   "parameters": {
                     "location": {
-                      "description": "The project and location in which the function should be created, specified\nin the format `projects/*/locations/*`",
+                      "description": "Required. The project and location in which the function should be created, specified\nin the format `projects/*/locations/*`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1439,7 +1457,7 @@
                   "description": "Deletes a function with the given name from the specified project. If the\ngiven function is used by some trigger, the trigger will be updated to\nremove this function.",
                   "parameters": {
                     "name": {
-                      "description": "The name of the function which should be deleted.",
+                      "description": "Required. The name of the function which should be deleted.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1554,7 +1572,7 @@
                   "description": "Returns a function with the given name from the requested project.",
                   "parameters": {
                     "name": {
-                      "description": "The name of the function which details should be obtained.",
+                      "description": "Required. The name of the function which details should be obtained.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1591,7 +1609,7 @@
                   "description": "Returns a list of functions that belong to the requested project.",
                   "parameters": {
                     "location": {
-                      "description": "The project and location from which the function should be listed,\nspecified in the format `projects/*/locations/*`\nIf you want to list functions in all locations, use \"-\" in place of a\nlocation.",
+                      "description": "Required. The project and location from which the function should be listed,\nspecified in the format `projects/*/locations/*`\nIf you want to list functions in all locations, use \"-\" in place of a\nlocation. When listing functions in all locations, if one or more\nlocation(s) are unreachable, the response will contain functions from all\nreachable locations along with the names of any unreachable locations.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -1656,7 +1674,7 @@
                   "description": "Updates existing function.",
                   "parameters": {
                     "name": {
-                      "description": "The name of the function to be updated.",
+                      "description": "Required. The name of the function to be updated.",
                       "default": null,
                       "location": "path",
                       "required": true,

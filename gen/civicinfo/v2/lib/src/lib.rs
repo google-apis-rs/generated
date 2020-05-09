@@ -1,4 +1,5 @@
 #![doc = "# Resources and Methods\n    * [divisions](resources/divisions/struct.DivisionsActions.html)\n      * [*search*](resources/divisions/struct.SearchRequestBuilder.html)\n    * [elections](resources/elections/struct.ElectionsActions.html)\n      * [*electionQuery*](resources/elections/struct.ElectionQueryRequestBuilder.html), [*voterInfoQuery*](resources/elections/struct.VoterInfoQueryRequestBuilder.html)\n    * [representatives](resources/representatives/struct.RepresentativesActions.html)\n      * [*representativeInfoByAddress*](resources/representatives/struct.RepresentativeInfoByAddressRequestBuilder.html), [*representativeInfoByDivision*](resources/representatives/struct.RepresentativeInfoByDivisionRequestBuilder.html)\n"]
+pub mod scopes {}
 pub mod schemas {
     #[derive(
         Debug,
@@ -1063,194 +1064,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct LivegraphBacktraceRecordInfo {
-        #[serde(
-            rename = "dataSourcePublishMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub data_source_publish_msec: ::std::option::Option<i64>,
-        #[serde(
-            rename = "expId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exp_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "expInfo",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exp_info: ::std::option::Option<crate::schemas::LivegraphBacktraceRecordInfoExpInfo>,
-        #[serde(
-            rename = "isRecon",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_recon: ::std::option::Option<bool>,
-        #[serde(
-            rename = "isWlmThrottled",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_wlm_throttled: ::std::option::Option<bool>,
-        #[serde(
-            rename = "numberOfTriples",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub number_of_triples: ::std::option::Option<i64>,
-        #[serde(
-            rename = "priority",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub priority: ::std::option::Option<String>,
-        #[serde(
-            rename = "process",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub process: ::std::option::Option<String>,
-        #[serde(
-            rename = "proxyReceiveMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub proxy_receive_msec: ::std::option::Option<i64>,
-        #[serde(
-            rename = "proxySentMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub proxy_sent_msec: ::std::option::Option<i64>,
-        #[serde(
-            rename = "recordId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub record_id: ::std::option::Option<String>,
-        #[serde(
-            rename = "shouldMonitorLatency",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub should_monitor_latency: ::std::option::Option<bool>,
-        #[serde(
-            rename = "subscriberReceiveMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub subscriber_receive_msec: ::std::option::Option<i64>,
-        #[serde(
-            rename = "topicBuildFinishMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub topic_build_finish_msec: ::std::option::Option<i64>,
-        #[serde(
-            rename = "topicBuildStartMsec",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub topic_build_start_msec: ::std::option::Option<i64>,
-        #[serde(
-            rename = "version",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub version: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for LivegraphBacktraceRecordInfo {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for LivegraphBacktraceRecordInfo {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct LivegraphBacktraceRecordInfoExpInfo {
-        #[serde(
-            rename = "deletedIns",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub deleted_ins: ::std::option::Option<Vec<String>>,
-    }
-    impl ::google_field_selector::FieldSelector for LivegraphBacktraceRecordInfoExpInfo {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for LivegraphBacktraceRecordInfoExpInfo {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct MessageSet {
-        #[serde(
-            rename = "recordMessageSetExt",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub record_message_set_ext:
-            ::std::option::Option<crate::schemas::LivegraphBacktraceRecordInfo>,
-    }
-    impl ::google_field_selector::FieldSelector for MessageSet {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for MessageSet {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Office {
         #[doc = "The OCD ID of the division with which this office is associated."]
         #[serde(
@@ -1416,12 +1229,6 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metadata: ::std::option::Option<crate::schemas::FieldMetadataProto>,
-        #[serde(
-            rename = "temporaryData",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub temporary_data: ::std::option::Option<crate::schemas::MessageSet>,
     }
     impl ::google_field_selector::FieldSelector for PointProto {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2195,15 +2002,13 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        #[serde(with = "crate::parsed_string")]
-        pub start_lat_e7: ::std::option::Option<i64>,
+        pub start_lat_e7: ::std::option::Option<i32>,
         #[serde(
             rename = "startLngE7",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        #[serde(with = "crate::parsed_string")]
-        pub start_lng_e7: ::std::option::Option<i64>,
+        pub start_lng_e7: ::std::option::Option<i32>,
         #[serde(
             rename = "state",
             default,
@@ -2571,7 +2376,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2579,8 +2384,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2613,7 +2430,7 @@ pub mod resources {
     pub mod divisions {
         pub mod params {}
         pub struct DivisionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DivisionsActions<'a> {
@@ -2643,7 +2460,7 @@ pub mod resources {
         #[doc = "Created via [DivisionsActions::search()](struct.DivisionsActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::DivisionSearchRequest,
             query: Option<String>,
@@ -2748,7 +2565,10 @@ pub mod resources {
                 output.push_str("divisions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("query", &self.query)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2770,7 +2590,7 @@ pub mod resources {
     pub mod elections {
         pub mod params {}
         pub struct ElectionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ElectionsActions<'a> {
@@ -2822,7 +2642,7 @@ pub mod resources {
         #[doc = "Created via [ElectionsActions::election_query()](struct.ElectionsActions.html#method.election_query)"]
         #[derive(Debug, Clone)]
         pub struct ElectionQueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ElectionsQueryRequest,
             alt: Option<crate::params::Alt>,
@@ -2921,7 +2741,10 @@ pub mod resources {
                 output.push_str("elections");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2941,7 +2764,7 @@ pub mod resources {
         #[doc = "Created via [ElectionsActions::voter_info_query()](struct.ElectionsActions.html#method.voter_info_query)"]
         #[derive(Debug, Clone)]
         pub struct VoterInfoQueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::VoterInfoRequest,
             address: String,
@@ -3059,7 +2882,10 @@ pub mod resources {
                 output.push_str("voterinfo");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("address", &self.address)]);
                 let req = req.query(&[("electionId", &self.election_id)]);
@@ -3621,7 +3447,7 @@ pub mod resources {
             }
         }
         pub struct RepresentativesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RepresentativesActions<'a> {
@@ -3676,7 +3502,7 @@ pub mod resources {
         }
         #[doc = "Created via [RepresentativesActions::representative_info_by_address()](struct.RepresentativesActions.html#method.representative_info_by_address)"]
         #[derive(Debug, Clone)]
-        pub struct RepresentativeInfoByAddressRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+        pub struct RepresentativeInfoByAddressRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: RepresentativeInfoRequest , address : Option < String > , include_offices : Option < bool > , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressLevelsItems > > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByAddressRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
         impl<'a> RepresentativeInfoByAddressRequestBuilder<'a> {
             #[doc = "The address to look up. May only be specified if the field ocdId is not given in the URL."]
             pub fn address(mut self, value: impl Into<String>) -> Self {
@@ -3791,7 +3617,10 @@ pub mod resources {
                 output.push_str("representatives");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("address", &self.address)]);
                 let req = req.query(&[("includeOffices", &self.include_offices)]);
@@ -3814,7 +3643,7 @@ pub mod resources {
         }
         #[doc = "Created via [RepresentativesActions::representative_info_by_division()](struct.RepresentativesActions.html#method.representative_info_by_division)"]
         #[derive(Debug, Clone)]
-        pub struct RepresentativeInfoByDivisionRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
+        pub struct RepresentativeInfoByDivisionRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: DivisionRepresentativeInfoRequest , ocd_id : String , levels : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionLevelsItems > > , recursive : Option < bool > , roles : Option < Vec < crate :: resources :: representatives :: params :: RepresentativeInfoByDivisionRolesItems > > , alt : Option < crate :: params :: Alt > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , user_ip : Option < String > , }
         impl<'a> RepresentativeInfoByDivisionRequestBuilder<'a> {
             #[doc = "A list of office levels to filter by. Only offices that serve at least one of these levels will be returned. Divisions that don't contain a matching office will not be returned."]
             pub fn levels(
@@ -3931,7 +3760,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("levels", &self.levels)]);
                 let req = req.query(&[("recursive", &self.recursive)]);
@@ -3969,9 +3801,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4013,7 +3843,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

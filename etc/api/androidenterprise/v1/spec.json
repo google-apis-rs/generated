@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/jlXrD1fiaOwc6OzCpxTFi-JX6Os\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/i4NjzneJMSibgNsZXFFIJfd2Chs\"",
   "discoveryVersion": "v1",
   "id": "androidenterprise:v1",
   "name": "androidenterprise",
   "canonicalName": "Android Enterprise",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190917",
+  "revision": "20200429",
   "title": "Google Play EMM API",
   "description": "Manages the deployment of apps to Android for Work users.",
   "ownerDomain": "google.com",
@@ -172,7 +172,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#administratorWebToken\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -204,7 +204,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#administratorWebTokenSpec\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -394,7 +394,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#appRestrictionsSchema\".",
+          "description": "Deprecated.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -760,7 +760,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#approvalUrlInfo\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -782,7 +782,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#authenticationToken\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -888,7 +888,7 @@
           "items": null
         },
         "minimumVersionCode": {
-          "description": "The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update.",
+          "description": "The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -910,7 +910,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#configurationVariables\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -964,7 +964,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#device\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1084,7 +1084,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#deviceState\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1162,7 +1162,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#enterprise\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1214,7 +1214,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#enterpriseAccount\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1302,7 +1302,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#entitlement\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1398,7 +1398,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#groupLicense\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1538,7 +1538,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#install\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -1806,7 +1806,7 @@
           "$ref": "ConfigurationVariables"
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#managedConfiguration\".",
+          "description": "Deprecated.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1918,7 +1918,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#managedConfigurationsSettings\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -2298,7 +2298,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#notificationSet\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -2394,7 +2394,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#permission\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -2470,7 +2470,7 @@
           "items": null
         },
         "productPolicy": {
-          "description": "The list of product policies.",
+          "description": "The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the product policies to be applied.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -2613,6 +2613,24 @@
           "additionalProperties": null,
           "items": null
         },
+        "features": {
+          "description": "Noteworthy features (if any) of this product.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "iconUrl": {
           "description": "A link to an image that can be used as an icon for the product. This image is suitable for use at up to 512px x 512px.",
           "type": "string",
@@ -2624,7 +2642,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#product\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -2866,7 +2884,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#productPermissions\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -2976,7 +2994,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#productSet\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3222,7 +3240,7 @@
           "$ref": "ServiceAccountKey"
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#serviceAccount\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3274,7 +3292,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#serviceAccountKey\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3350,7 +3368,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#signupInfo\".",
+          "description": "Deprecated.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3392,7 +3410,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#storeCluster\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3464,7 +3482,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#storeLayout\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3574,7 +3592,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#storePage\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3730,7 +3748,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#user\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3772,7 +3790,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#userToken\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -3848,7 +3866,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#variableSet\".",
+          "description": null,
           "type": "string",
           "format": null,
           "enum": [],
@@ -4267,89 +4285,6 @@
           "request": null,
           "response": {
             "$ref": "DevicesListResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
-        "patch": {
-          "id": "androidenterprise.devices.patch",
-          "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}",
-          "httpMethod": "PATCH",
-          "description": "Updates the device policy. This method supports patch semantics.",
-          "parameters": {
-            "deviceId": {
-              "description": "The ID of the device.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "updateMask": {
-              "description": "Mask that identifies which fields to update. If not set, all modifiable fields will be modified.\n\nWhen set in a query parameter, this field should be specified as updateMask=<field1>,<field2>,...",
-              "default": null,
-              "location": "query",
-              "required": false,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "userId": {
-              "description": "The ID of the user.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "userId",
-            "deviceId"
-          ],
-          "request": {
-            "$ref": "Device"
-          },
-          "response": {
-            "$ref": "Device"
           },
           "scopes": [
             "https://www.googleapis.com/auth/androidenterprise"
@@ -5260,89 +5195,6 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
-        "patch": {
-          "id": "androidenterprise.entitlements.patch",
-          "path": "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
-          "httpMethod": "PATCH",
-          "description": "Adds or updates an entitlement to an app for a user. This method supports patch semantics.",
-          "parameters": {
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "entitlementId": {
-              "description": "The ID of the entitlement (a product ID), e.g. \"app:com.google.android.gm\".",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "install": {
-              "description": "Set to true to also install the product on all the user's devices where possible. Failure to install on one or more devices will not prevent this operation from returning successfully, as long as the entitlement was successfully assigned to the user.",
-              "default": null,
-              "location": "query",
-              "required": false,
-              "type": "boolean",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "userId": {
-              "description": "The ID of the user.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "userId",
-            "entitlementId"
-          ],
-          "request": {
-            "$ref": "Entitlement"
-          },
-          "response": {
-            "$ref": "Entitlement"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
         "update": {
           "id": "androidenterprise.entitlements.update",
           "path": "enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}",
@@ -5811,90 +5663,6 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
-        "patch": {
-          "id": "androidenterprise.installs.patch",
-          "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
-          "httpMethod": "PATCH",
-          "description": "Requests to install the latest version of an app to a device. If the app is already installed, then it is updated to the latest version if necessary. This method supports patch semantics.",
-          "parameters": {
-            "deviceId": {
-              "description": "The Android ID of the device.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "installId": {
-              "description": "The ID of the product represented by the install, e.g. \"app:com.google.android.gm\".",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "userId": {
-              "description": "The ID of the user.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "userId",
-            "deviceId",
-            "installId"
-          ],
-          "request": {
-            "$ref": "Install"
-          },
-          "response": {
-            "$ref": "Install"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
         "update": {
           "id": "androidenterprise.installs.update",
           "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}",
@@ -6213,90 +5981,6 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
-        "patch": {
-          "id": "androidenterprise.managedconfigurationsfordevice.patch",
-          "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
-          "httpMethod": "PATCH",
-          "description": "Adds or updates a per-device managed configuration for an app for the specified device. This method supports patch semantics.",
-          "parameters": {
-            "deviceId": {
-              "description": "The Android ID of the device.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "managedConfigurationForDeviceId": {
-              "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "userId": {
-              "description": "The ID of the user.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "userId",
-            "deviceId",
-            "managedConfigurationForDeviceId"
-          ],
-          "request": {
-            "$ref": "ManagedConfiguration"
-          },
-          "response": {
-            "$ref": "ManagedConfiguration"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
         "update": {
           "id": "androidenterprise.managedconfigurationsfordevice.update",
           "path": "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}",
@@ -6560,75 +6244,6 @@
           "request": null,
           "response": {
             "$ref": "ManagedConfigurationsForUserListResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
-        "patch": {
-          "id": "androidenterprise.managedconfigurationsforuser.patch",
-          "path": "enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}",
-          "httpMethod": "PATCH",
-          "description": "Adds or updates the managed configuration settings for an app for the specified user. If you support the Managed configurations iframe, you can apply managed configurations to a user by specifying an mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply managed configurations by passing a list of managed properties. This method supports patch semantics.",
-          "parameters": {
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "managedConfigurationForUserId": {
-              "description": "The ID of the managed configuration (a product ID), e.g. \"app:com.google.android.gm\".",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "userId": {
-              "description": "The ID of the user.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "userId",
-            "managedConfigurationForUserId"
-          ],
-          "request": {
-            "$ref": "ManagedConfiguration"
-          },
-          "response": {
-            "$ref": "ManagedConfiguration"
           },
           "scopes": [
             "https://www.googleapis.com/auth/androidenterprise"
@@ -7659,75 +7274,6 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
-        "patch": {
-          "id": "androidenterprise.storelayoutclusters.patch",
-          "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
-          "httpMethod": "PATCH",
-          "description": "Updates a cluster. This method supports patch semantics.",
-          "parameters": {
-            "clusterId": {
-              "description": "The ID of the cluster.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "pageId": {
-              "description": "The ID of the page.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "pageId",
-            "clusterId"
-          ],
-          "request": {
-            "$ref": "StoreCluster"
-          },
-          "response": {
-            "$ref": "StoreCluster"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
         "update": {
           "id": "androidenterprise.storelayoutclusters.update",
           "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}",
@@ -7970,60 +7516,6 @@
           "request": null,
           "response": {
             "$ref": "StoreLayoutPagesListResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
-        "patch": {
-          "id": "androidenterprise.storelayoutpages.patch",
-          "path": "enterprises/{enterpriseId}/storeLayout/pages/{pageId}",
-          "httpMethod": "PATCH",
-          "description": "Updates the content of a store page. This method supports patch semantics.",
-          "parameters": {
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "pageId": {
-              "description": "The ID of the page.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "pageId"
-          ],
-          "request": {
-            "$ref": "StorePage"
-          },
-          "response": {
-            "$ref": "StorePage"
           },
           "scopes": [
             "https://www.googleapis.com/auth/androidenterprise"
@@ -8442,60 +7934,6 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
-        "patch": {
-          "id": "androidenterprise.users.patch",
-          "path": "enterprises/{enterpriseId}/users/{userId}",
-          "httpMethod": "PATCH",
-          "description": "Updates the details of an EMM-managed user.\n\nCan be used with EMM-managed users only (not Google managed users). Pass the new details in the Users resource in the request body. Only the displayName field can be changed. Other fields must either be unset or have the currently active value. This method supports patch semantics.",
-          "parameters": {
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "userId": {
-              "description": "The ID of the user.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "userId"
-          ],
-          "request": {
-            "$ref": "User"
-          },
-          "response": {
-            "$ref": "User"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
         "revokeDeviceAccess": {
           "id": "androidenterprise.users.revokeDeviceAccess",
           "path": "enterprises/{enterpriseId}/users/{userId}/deviceAccess",
@@ -8877,60 +8315,6 @@
           "request": null,
           "response": {
             "$ref": "WebAppsListResponse"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/androidenterprise"
-          ],
-          "supportsMediaDownload": false,
-          "useMediaDownloadService": false,
-          "supportsSubscription": false,
-          "supportsMediaUpload": false,
-          "mediaUpload": null
-        },
-        "patch": {
-          "id": "androidenterprise.webapps.patch",
-          "path": "enterprises/{enterpriseId}/webApps/{webAppId}",
-          "httpMethod": "PATCH",
-          "description": "Updates an existing web app. This method supports patch semantics.",
-          "parameters": {
-            "enterpriseId": {
-              "description": "The ID of the enterprise.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            },
-            "webAppId": {
-              "description": "The ID of the web app.",
-              "default": null,
-              "location": "path",
-              "required": true,
-              "type": "string",
-              "format": null,
-              "minimum": null,
-              "maximum": null,
-              "pattern": null,
-              "enum": [],
-              "enumDescriptions": [],
-              "repeated": false
-            }
-          },
-          "parameterOrder": [
-            "enterpriseId",
-            "webAppId"
-          ],
-          "request": {
-            "$ref": "WebApp"
-          },
-          "response": {
-            "$ref": "WebApp"
           },
           "scopes": [
             "https://www.googleapis.com/auth/androidenterprise"

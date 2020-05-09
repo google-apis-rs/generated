@@ -7,7 +7,7 @@
   "canonicalName": "Manufacturer Center",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20190910",
+  "revision": "20200428",
   "title": "Manufacturer Center API",
   "description": "Public API for managing Manufacturer Center related data.",
   "ownerDomain": "google.com",
@@ -494,6 +494,24 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "richProductContent": {
+          "description": "Rich product content. For more information, see\nhttps://support.google.com/manufacturers/answer/9389865",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         },
         "scent": {
           "description": "The scent of the product. For more information, see\n https://support.google.com/manufacturers/answer/6124116#scent.",

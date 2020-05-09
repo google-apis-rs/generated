@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [documents](resources/documents/struct.DocumentsActions.html)\n      * [*analyzeEntities*](resources/documents/struct.AnalyzeEntitiesRequestBuilder.html), [*analyzeEntitySentiment*](resources/documents/struct.AnalyzeEntitySentimentRequestBuilder.html), [*analyzeSentiment*](resources/documents/struct.AnalyzeSentimentRequestBuilder.html), [*analyzeSyntax*](resources/documents/struct.AnalyzeSyntaxRequestBuilder.html), [*annotateText*](resources/documents/struct.AnnotateTextRequestBuilder.html), [*classifyText*](resources/documents/struct.ClassifyTextRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Apply machine learning models to reveal the structure and meaning of text\n\n`https://www.googleapis.com/auth/cloud-language`"]
+    pub const CLOUD_LANGUAGE: &str = "https://www.googleapis.com/auth/cloud-language";
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -805,7 +811,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub confidence: ::std::option::Option<f32>,
-        #[doc = "The name of the category representing the document, from the [predefined\ntaxonomy](/natural-language/docs/categories)."]
+        #[doc = "The name of the category representing the document, from the [predefined\ntaxonomy](https://cloud.google.com/natural-language/docs/categories)."]
         #[serde(
             rename = "name",
             default,
@@ -1417,7 +1423,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub gcs_content_uri: ::std::option::Option<String>,
-        #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language Support](/natural-language/docs/languages)\nlists currently supported languages for each API method.\nIf the language (either specified by the caller or automatically detected)\nis not supported by the called API method, an `INVALID_ARGUMENT` error\nis returned."]
+        #[doc = "The language of the document (if not specified, the language is\nautomatically detected). Both ISO and BCP-47 language codes are\naccepted.<br>\n[Language\nSupport](https://cloud.google.com/natural-language/docs/languages) lists\ncurrently supported languages for each API method. If the language (either\nspecified by the caller or automatically detected) is not supported by the\ncalled API method, an `INVALID_ARGUMENT` error is returned."]
         #[serde(
             rename = "language",
             default,
@@ -3456,7 +3462,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3464,8 +3470,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3484,7 +3502,7 @@ pub mod resources {
     pub mod documents {
         pub mod params {}
         pub struct DocumentsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DocumentsActions<'a> {
@@ -3627,7 +3645,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::analyze_entities()](struct.DocumentsActions.html#method.analyze_entities)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeEntitiesRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AnalyzeEntitiesRequest,
             access_token: Option<String>,
@@ -3750,7 +3768,10 @@ pub mod resources {
                 output.push_str("v1/documents:analyzeEntities");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3774,7 +3795,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::analyze_entity_sentiment()](struct.DocumentsActions.html#method.analyze_entity_sentiment)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeEntitySentimentRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AnalyzeEntitySentimentRequest,
             access_token: Option<String>,
@@ -3897,7 +3918,10 @@ pub mod resources {
                 output.push_str("v1/documents:analyzeEntitySentiment");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3921,7 +3945,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::analyze_sentiment()](struct.DocumentsActions.html#method.analyze_sentiment)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeSentimentRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AnalyzeSentimentRequest,
             access_token: Option<String>,
@@ -4044,7 +4068,10 @@ pub mod resources {
                 output.push_str("v1/documents:analyzeSentiment");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4068,7 +4095,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::analyze_syntax()](struct.DocumentsActions.html#method.analyze_syntax)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeSyntaxRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AnalyzeSyntaxRequest,
             access_token: Option<String>,
@@ -4191,7 +4218,10 @@ pub mod resources {
                 output.push_str("v1/documents:analyzeSyntax");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4215,7 +4245,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::annotate_text()](struct.DocumentsActions.html#method.annotate_text)"]
         #[derive(Debug, Clone)]
         pub struct AnnotateTextRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AnnotateTextRequest,
             access_token: Option<String>,
@@ -4338,7 +4368,10 @@ pub mod resources {
                 output.push_str("v1/documents:annotateText");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4362,7 +4395,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::classify_text()](struct.DocumentsActions.html#method.classify_text)"]
         #[derive(Debug, Clone)]
         pub struct ClassifyTextRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ClassifyTextRequest,
             access_token: Option<String>,
@@ -4485,7 +4518,10 @@ pub mod resources {
                 output.push_str("v1/documents:classifyText");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4524,9 +4560,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4568,7 +4602,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

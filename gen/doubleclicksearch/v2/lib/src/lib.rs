@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [conversion](resources/conversion/struct.ConversionActions.html)\n      * [*get*](resources/conversion/struct.GetRequestBuilder.html), [*insert*](resources/conversion/struct.InsertRequestBuilder.html), [*patch*](resources/conversion/struct.PatchRequestBuilder.html), [*update*](resources/conversion/struct.UpdateRequestBuilder.html), [*updateAvailability*](resources/conversion/struct.UpdateAvailabilityRequestBuilder.html)\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*generate*](resources/reports/struct.GenerateRequestBuilder.html), [*get*](resources/reports/struct.GetRequestBuilder.html), [*getFile*](resources/reports/struct.GetFileRequestBuilder.html), [*request*](resources/reports/struct.RequestRequestBuilder.html)\n    * [saved_columns](resources/saved_columns/struct.SavedColumnsActions.html)\n      * [*list*](resources/saved_columns/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [conversion](resources/conversion/struct.ConversionActions.html)\n      * [*get*](resources/conversion/struct.GetRequestBuilder.html), [*insert*](resources/conversion/struct.InsertRequestBuilder.html), [*update*](resources/conversion/struct.UpdateRequestBuilder.html), [*updateAvailability*](resources/conversion/struct.UpdateAvailabilityRequestBuilder.html)\n    * [reports](resources/reports/struct.ReportsActions.html)\n      * [*generate*](resources/reports/struct.GenerateRequestBuilder.html), [*get*](resources/reports/struct.GetRequestBuilder.html), [*getFile*](resources/reports/struct.GetFileRequestBuilder.html), [*request*](resources/reports/struct.RequestRequestBuilder.html)\n    * [saved_columns](resources/saved_columns/struct.SavedColumnsActions.html)\n      * [*list*](resources/saved_columns/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your advertising data in DoubleClick Search\n\n`https://www.googleapis.com/auth/doubleclicksearch`"]
+    pub const DOUBLECLICKSEARCH: &str = "https://www.googleapis.com/auth/doubleclicksearch";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -1175,7 +1179,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1183,8 +1187,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1217,7 +1233,7 @@ pub mod resources {
     pub mod conversion {
         pub mod params {}
         pub struct ConversionActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ConversionActions<'a> {
@@ -1273,38 +1289,6 @@ pub mod resources {
                     user_ip: None,
                 }
             }
-            #[doc = "Updates a batch of conversions in DoubleClick Search. This method supports patch semantics."]
-            pub fn patch(
-                &self,
-                request: crate::schemas::ConversionList,
-                advertiser_id: i64,
-                agency_id: i64,
-                end_date: i32,
-                engine_account_id: i64,
-                row_count: i32,
-                start_date: i32,
-                start_row: u32,
-            ) -> PatchRequestBuilder {
-                PatchRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    advertiser_id,
-                    agency_id,
-                    end_date,
-                    engine_account_id,
-                    row_count,
-                    start_date,
-                    start_row,
-                }
-            }
             #[doc = "Updates a batch of conversions in DoubleClick Search."]
             pub fn update(&self, request: crate::schemas::ConversionList) -> UpdateRequestBuilder {
                 UpdateRequestBuilder {
@@ -1342,7 +1326,7 @@ pub mod resources {
         #[doc = "Created via [ConversionActions::get()](struct.ConversionActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             agency_id: i64,
             advertiser_id: i64,
@@ -1497,7 +1481,10 @@ pub mod resources {
                 output.push_str("/conversion");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("endDate", &self.end_date)]);
                 let req = req.query(&[("rowCount", &self.row_count)]);
@@ -1525,7 +1512,7 @@ pub mod resources {
         #[doc = "Created via [ConversionActions::insert()](struct.ConversionActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ConversionList,
             alt: Option<crate::params::Alt>,
@@ -1624,141 +1611,11 @@ pub mod resources {
                 output.push_str("conversion");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [ConversionActions::patch()](struct.ConversionActions.html#method.patch)"]
-        #[derive(Debug, Clone)]
-        pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::ConversionList,
-            advertiser_id: i64,
-            agency_id: i64,
-            end_date: i32,
-            engine_account_id: i64,
-            row_count: i32,
-            start_date: i32,
-            start_row: u32,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            #[doc = r" Execute the given operation. The fields requested are"]
-            #[doc = r" determined by the FieldSelector attribute of the return type."]
-            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
-            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
-            #[doc = r" are not generic over the return type and deserialize the"]
-            #[doc = r" response into an auto-generated struct will all possible"]
-            #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.execute_with_fields(fields)
-            }
-            #[doc = r" Execute the given operation. This will not provide any"]
-            #[doc = r" `fields` selector indicating that the server will determine"]
-            #[doc = r" the fields returned. This typically includes the most common"]
-            #[doc = r" fields, but it will not include every possible attribute of"]
-            #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::ConversionList, crate::Error> {
-                self.execute_with_fields(None::<&str>)
-            }
-            #[doc = r" Execute the given operation. This will provide a `fields`"]
-            #[doc = r" selector of `*`. This will include every attribute of the"]
-            #[doc = r" response resource and should be limited to use during"]
-            #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::ConversionList, crate::Error> {
-                self.execute_with_fields(Some("*"))
-            }
-            #[doc = r" Execute the given operation. This will use the `fields`"]
-            #[doc = r" selector provided and will deserialize the response into"]
-            #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: Into<String>,
-            {
-                self.fields = fields.map(Into::into);
-                self._execute()
-            }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
-                Ok(crate::error_from_response(req.send()?)?.json()?)
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/doubleclicksearch/v2/".to_owned();
-                output.push_str("conversion");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::PATCH, path);
-                let req = req.query(&[("advertiserId", &self.advertiser_id)]);
-                let req = req.query(&[("agencyId", &self.agency_id)]);
-                let req = req.query(&[("endDate", &self.end_date)]);
-                let req = req.query(&[("engineAccountId", &self.engine_account_id)]);
-                let req = req.query(&[("rowCount", &self.row_count)]);
-                let req = req.query(&[("startDate", &self.start_date)]);
-                let req = req.query(&[("startRow", &self.start_row)]);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
@@ -1777,7 +1634,7 @@ pub mod resources {
         #[doc = "Created via [ConversionActions::update()](struct.ConversionActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ConversionList,
             alt: Option<crate::params::Alt>,
@@ -1876,7 +1733,10 @@ pub mod resources {
                 output.push_str("conversion");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1896,7 +1756,7 @@ pub mod resources {
         #[doc = "Created via [ConversionActions::update_availability()](struct.ConversionActions.html#method.update_availability)"]
         #[derive(Debug, Clone)]
         pub struct UpdateAvailabilityRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UpdateAvailabilityRequest,
             alt: Option<crate::params::Alt>,
@@ -1995,7 +1855,10 @@ pub mod resources {
                 output.push_str("conversion/updateAvailability");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2016,7 +1879,7 @@ pub mod resources {
     pub mod reports {
         pub mod params {}
         pub struct ReportsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ReportsActions<'a> {
@@ -2095,7 +1958,7 @@ pub mod resources {
         #[doc = "Created via [ReportsActions::generate()](struct.ReportsActions.html#method.generate)"]
         #[derive(Debug, Clone)]
         pub struct GenerateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReportRequest,
             alt: Option<crate::params::Alt>,
@@ -2192,7 +2055,10 @@ pub mod resources {
                 output.push_str("reports/generate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2212,7 +2078,7 @@ pub mod resources {
         #[doc = "Created via [ReportsActions::get()](struct.ReportsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             report_id: String,
             alt: Option<crate::params::Alt>,
@@ -2315,7 +2181,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2335,7 +2204,7 @@ pub mod resources {
         #[doc = "Created via [ReportsActions::get_file()](struct.ReportsActions.html#method.get_file)"]
         #[derive(Debug, Clone)]
         pub struct GetFileRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             report_id: String,
             report_fragment: i32,
@@ -2431,7 +2300,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2451,7 +2323,7 @@ pub mod resources {
         #[doc = "Created via [ReportsActions::request()](struct.ReportsActions.html#method.request)"]
         #[derive(Debug, Clone)]
         pub struct RequestRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReportRequest,
             alt: Option<crate::params::Alt>,
@@ -2548,7 +2420,10 @@ pub mod resources {
                 output.push_str("reports");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2569,7 +2444,7 @@ pub mod resources {
     pub mod saved_columns {
         pub mod params {}
         pub struct SavedColumnsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SavedColumnsActions<'a> {
@@ -2596,7 +2471,7 @@ pub mod resources {
         #[doc = "Created via [SavedColumnsActions::list()](struct.SavedColumnsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             agency_id: i64,
             advertiser_id: i64,
@@ -2713,7 +2588,10 @@ pub mod resources {
                 output.push_str("/savedcolumns");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2748,9 +2626,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -2792,7 +2668,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

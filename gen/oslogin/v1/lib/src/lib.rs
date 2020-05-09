@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [users](resources/users/struct.UsersActions.html)\n      * [*getLoginProfile*](resources/users/struct.GetLoginProfileRequestBuilder.html), [*importSshPublicKey*](resources/users/struct.ImportSshPublicKeyRequestBuilder.html)\n      * [projects](resources/users/projects/struct.ProjectsActions.html)\n        * [*delete*](resources/users/projects/struct.DeleteRequestBuilder.html)\n      * [ssh_public_keys](resources/users/ssh_public_keys/struct.SshPublicKeysActions.html)\n        * [*delete*](resources/users/ssh_public_keys/struct.DeleteRequestBuilder.html), [*get*](resources/users/ssh_public_keys/struct.GetRequestBuilder.html), [*patch*](resources/users/ssh_public_keys/struct.PatchRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and manage your Google Compute Engine resources\n\n`https://www.googleapis.com/auth/compute`"]
+    pub const COMPUTE: &str = "https://www.googleapis.com/auth/compute";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -68,7 +74,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct LoginProfile {
-        #[doc = "A unique user ID."]
+        #[doc = "Required. A unique user ID."]
         #[serde(
             rename = "name",
             default,
@@ -144,6 +150,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub home_directory: ::std::option::Option<String>,
+        #[doc = "Output only. The canonical resource name."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
         #[doc = "The operating system type where this account applies."]
         #[serde(
             rename = "operatingSystemType",
@@ -316,6 +329,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
+        #[doc = "Output only. The canonical resource name."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SshPublicKey {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -478,7 +498,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -486,8 +506,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -506,7 +538,7 @@ pub mod resources {
     pub mod users {
         pub mod params {}
         pub struct UsersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> UsersActions<'a> {
@@ -582,7 +614,7 @@ pub mod resources {
         #[doc = "Created via [UsersActions::get_login_profile()](struct.UsersActions.html#method.get_login_profile)"]
         #[derive(Debug, Clone)]
         pub struct GetLoginProfileRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             project_id: Option<String>,
@@ -724,7 +756,10 @@ pub mod resources {
                 output.push_str("/loginProfile");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("projectId", &self.project_id)]);
                 let req = req.query(&[("systemId", &self.system_id)]);
@@ -750,7 +785,7 @@ pub mod resources {
         #[doc = "Created via [UsersActions::import_ssh_public_key()](struct.UsersActions.html#method.import_ssh_public_key)"]
         #[derive(Debug, Clone)]
         pub struct ImportSshPublicKeyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::SshPublicKey,
             parent: String,
@@ -888,7 +923,10 @@ pub mod resources {
                 output.push_str(":importSshPublicKey");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("projectId", &self.project_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -913,7 +951,7 @@ pub mod resources {
         pub mod projects {
             pub mod params {}
             pub struct ProjectsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ProjectsActions<'a> {
@@ -943,7 +981,7 @@ pub mod resources {
             #[doc = "Created via [ProjectsActions::delete()](struct.ProjectsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1075,7 +1113,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1100,7 +1141,7 @@ pub mod resources {
         pub mod ssh_public_keys {
             pub mod params {}
             pub struct SshPublicKeysActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SshPublicKeysActions<'a> {
@@ -1174,7 +1215,7 @@ pub mod resources {
             #[doc = "Created via [SshPublicKeysActions::delete()](struct.SshPublicKeysActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1306,7 +1347,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1330,7 +1374,7 @@ pub mod resources {
             #[doc = "Created via [SshPublicKeysActions::get()](struct.SshPublicKeysActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1462,7 +1506,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1486,7 +1533,7 @@ pub mod resources {
             #[doc = "Created via [SshPublicKeysActions::patch()](struct.SshPublicKeysActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SshPublicKey,
                 name: String,
@@ -1626,7 +1673,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -1667,9 +1717,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1711,7 +1759,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("androidpublisher3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190917")
+            .version("0.1.0-20200428")
             .about("Accesses Android application developers\' Google Play accounts.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -130,6 +130,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Reply to a single review, or update an existing reply.");
             reviews0 = reviews0.subcommand(mcmd);
         }
+        let mut systemapks0 = SubCommand::with_name("systemapks")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: variants");
         let mut apks1 = SubCommand::with_name("apks")
             .setting(AppSettings::ColoredHelp)
             .about("methods: addexternallyhosted, list and upload");
@@ -160,7 +163,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: upload");
         {
-            let mcmd = SubCommand::with_name("upload").about("Uploads the deobfuscation file of the specified APK. If a deobfuscation file already exists, it will be replaced.");
+            let mcmd = SubCommand::with_name("upload").about("Uploads the deobfuscation file of the specified APK. If a deobfuscation or symbolication file already exists, it will be replaced. See https://developer.android.com/studio/build/shrink-code to learn more about deobfuscation files.");
             deobfuscationfiles1 = deobfuscationfiles1.subcommand(mcmd);
         }
         let mut details1 = SubCommand::with_name("details")
@@ -341,6 +344,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Lists the purchases that were canceled, refunded or charged-back.");
             voidedpurchases1 = voidedpurchases1.subcommand(mcmd);
         }
+        let mut variants1 = SubCommand::with_name("variants")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, download, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates a new variant of APK which is suitable for inclusion in a system image.",
+            );
+            variants1 = variants1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("download").about("Download a previously created APK which is suitable for inclusion in a system image.");
+            variants1 = variants1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns a previously created system APK variant.");
+            variants1 = variants1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Returns the list of previously created system APK variants.");
+            variants1 = variants1.subcommand(mcmd);
+        }
+        systemapks0 = systemapks0.subcommand(variants1);
         purchases0 = purchases0.subcommand(voidedpurchases1);
         purchases0 = purchases0.subcommand(subscriptions1);
         purchases0 = purchases0.subcommand(products1);
@@ -353,6 +380,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         edits0 = edits0.subcommand(deobfuscationfiles1);
         edits0 = edits0.subcommand(bundles1);
         edits0 = edits0.subcommand(apks1);
+        app = app.subcommand(systemapks0);
         app = app.subcommand(reviews0);
         app = app.subcommand(purchases0);
         app = app.subcommand(orders0);

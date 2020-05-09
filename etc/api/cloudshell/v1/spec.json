@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Shell",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190918",
+  "revision": "20200507",
   "title": "Cloud Shell API",
   "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud.\n",
   "ownerDomain": "google.com",
@@ -248,7 +248,7 @@
           "items": null
         },
         "id": {
-          "description": "Output only. The environment's identifier, which is always \"default\".",
+          "description": "Output only. The environment's identifier, unique among the user's\nenvironments.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -278,6 +278,24 @@
           "items": {
             "$ref": "PublicKey"
           }
+        },
+        "size": {
+          "description": "Indicates the size of the backing VM running the environment.  If set to\nsomething other than DEFAULT, it will be reverted to the default VM size\nafter vm_size_expire_time.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "VM_SIZE_UNSPECIFIED",
+            "DEFAULT",
+            "BOOSTED"
+          ],
+          "enumDescriptions": [
+            "The VM size is unknown.",
+            "The default VM size.",
+            "The boosted VM size."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         },
         "sshHost": {
           "description": "Output only. Host to which clients can connect to initiate SSH sessions\nwith the environment.",
@@ -329,6 +347,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "vmSizeExpireTime": {
+          "description": "Output only. The time when the Environment will expire back to the default\nVM size.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "webHost": {
           "description": "Output only. Host to which clients can connect to initiate HTTPS or WSS\nconnections with the environment.",
           "type": "string",
@@ -338,6 +366,24 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "webPorts": {
+          "description": "Output only. Ports to which clients can connect to initiate HTTPS or WSS\nconnections with the environment.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "integer",
+            "format": "int32",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -523,13 +569,17 @@
             "STATE_UNSPECIFIED",
             "STARTING",
             "UNARCHIVING_DISK",
+            "AWAITING_VM",
+            "AWAITING_COMPUTE_RESOURCES",
             "FINISHED"
           ],
           "enumDescriptions": [
             "The environment's start state is unknown.",
             "The environment is in the process of being started, but no additional\ndetails are available.",
             "Startup is waiting for the user's disk to be unarchived. This can happen\nwhen the user returns to Cloud Shell after not having used it for a\nwhile, and suggests that startup will take longer than normal.",
-            "Startup is complete and the user should be able to establish an SSH\nconnection to their environment."
+            "Startup is waiting for a VM to be assigned to the environment. This\nshould normally happen very quickly, but an environment might stay in\nthis state for an extended period of time if the system is experiencing\nheavy load.",
+            "Startup is waiting for compute resources to be assigned to the\nenvironment. This should normally happen very quickly, but an environment\nmight stay in this state for an extended period of time if the system is\nexperiencing heavy load.",
+            "Startup has completed. If the start operation was successful, the user\nshould be able to establish an SSH connection to their environment.\nOtherwise, the operation will contain details of the failure."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -634,7 +684,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -673,7 +723,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -710,7 +760,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false

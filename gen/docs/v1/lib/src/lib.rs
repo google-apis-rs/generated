@@ -1,4 +1,16 @@
 #![doc = "# Resources and Methods\n    * [documents](resources/documents/struct.DocumentsActions.html)\n      * [*batchUpdate*](resources/documents/struct.BatchUpdateRequestBuilder.html), [*create*](resources/documents/struct.CreateRequestBuilder.html), [*get*](resources/documents/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your Google Docs documents\n\n`https://www.googleapis.com/auth/documents`"]
+    pub const DOCUMENTS: &str = "https://www.googleapis.com/auth/documents";
+    #[doc = "View your Google Docs documents\n\n`https://www.googleapis.com/auth/documents.readonly`"]
+    pub const DOCUMENTS_READONLY: &str = "https://www.googleapis.com/auth/documents.readonly";
+    #[doc = "See, edit, create, and delete all of your Google Drive files\n\n`https://www.googleapis.com/auth/drive`"]
+    pub const DRIVE: &str = "https://www.googleapis.com/auth/drive";
+    #[doc = "View and manage Google Drive files and folders that you have opened or created with this app\n\n`https://www.googleapis.com/auth/drive.file`"]
+    pub const DRIVE_FILE: &str = "https://www.googleapis.com/auth/drive.file";
+    #[doc = "See and download all your Google Drive files\n\n`https://www.googleapis.com/auth/drive.readonly`"]
+    pub const DRIVE_READONLY: &str = "https://www.googleapis.com/auth/drive.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -422,6 +434,367 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ColumnBreak {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateFooterRequest {
+        #[doc = "The type of footer to create."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::CreateFooterRequestType>,
+        #[doc = "The location of the SectionBreak\nimmediately preceding the section whose SectionStyle this footer should belong to. If this is\nunset or refers to the first section break in the document, the footer\napplies to the document style."]
+        #[serde(
+            rename = "sectionBreakLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub section_break_location: ::std::option::Option<crate::schemas::Location>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateFooterRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateFooterRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreateFooterRequestType {
+        #[doc = "A default header/footer."]
+        Default,
+        #[doc = "The header/footer type is unspecified."]
+        HeaderFooterTypeUnspecified,
+    }
+    impl CreateFooterRequestType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreateFooterRequestType::Default => "DEFAULT",
+                CreateFooterRequestType::HeaderFooterTypeUnspecified => {
+                    "HEADER_FOOTER_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreateFooterRequestType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreateFooterRequestType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreateFooterRequestType, ()> {
+            Ok(match s {
+                "DEFAULT" => CreateFooterRequestType::Default,
+                "HEADER_FOOTER_TYPE_UNSPECIFIED" => {
+                    CreateFooterRequestType::HeaderFooterTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for CreateFooterRequestType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreateFooterRequestType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreateFooterRequestType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEFAULT" => CreateFooterRequestType::Default,
+                "HEADER_FOOTER_TYPE_UNSPECIFIED" => {
+                    CreateFooterRequestType::HeaderFooterTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for CreateFooterRequestType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateFooterRequestType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateFooterResponse {
+        #[doc = "The ID of the created footer."]
+        #[serde(
+            rename = "footerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub footer_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateFooterResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateFooterResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateFootnoteRequest {
+        #[doc = "Inserts the footnote reference at the end of the document body.\n\nFootnote references cannot be inserted inside a header, footer or\nfootnote. Since footnote references can only be inserted in the body, the\nsegment ID field\nmust be empty."]
+        #[serde(
+            rename = "endOfSegmentLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_of_segment_location: ::std::option::Option<crate::schemas::EndOfSegmentLocation>,
+        #[doc = "Inserts the footnote reference at a specific index in the document.\n\nThe footnote reference must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nFootnote references cannot be inserted inside an equation,\nheader, footer or footnote. Since footnote references can only be\ninserted in the body, the segment ID field must be empty."]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub location: ::std::option::Option<crate::schemas::Location>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateFootnoteRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateFootnoteRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateFootnoteResponse {
+        #[doc = "The ID of the created footnote."]
+        #[serde(
+            rename = "footnoteId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub footnote_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateFootnoteResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateFootnoteResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateHeaderRequest {
+        #[doc = "The type of header to create."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<crate::schemas::CreateHeaderRequestType>,
+        #[doc = "The location of the SectionBreak\nwhich begins the section this header should belong to. If\n`section_break_location' is unset or if it refers to the first section\nbreak in the document body, the header applies to the\nDocumentStyle"]
+        #[serde(
+            rename = "sectionBreakLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub section_break_location: ::std::option::Option<crate::schemas::Location>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateHeaderRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateHeaderRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CreateHeaderRequestType {
+        #[doc = "A default header/footer."]
+        Default,
+        #[doc = "The header/footer type is unspecified."]
+        HeaderFooterTypeUnspecified,
+    }
+    impl CreateHeaderRequestType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CreateHeaderRequestType::Default => "DEFAULT",
+                CreateHeaderRequestType::HeaderFooterTypeUnspecified => {
+                    "HEADER_FOOTER_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CreateHeaderRequestType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CreateHeaderRequestType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CreateHeaderRequestType, ()> {
+            Ok(match s {
+                "DEFAULT" => CreateHeaderRequestType::Default,
+                "HEADER_FOOTER_TYPE_UNSPECIFIED" => {
+                    CreateHeaderRequestType::HeaderFooterTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for CreateHeaderRequestType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CreateHeaderRequestType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CreateHeaderRequestType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DEFAULT" => CreateHeaderRequestType::Default,
+                "HEADER_FOOTER_TYPE_UNSPECIFIED" => {
+                    CreateHeaderRequestType::HeaderFooterTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for CreateHeaderRequestType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateHeaderRequestType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CreateHeaderResponse {
+        #[doc = "The ID of the created header."]
+        #[serde(
+            rename = "headerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for CreateHeaderResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CreateHeaderResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -903,6 +1276,68 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for DeleteContentRangeRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeleteFooterRequest {
+        #[doc = "The id of the footer to delete. If this footer is defined on\nDocumentStyle, the reference to\nthis footer is removed, resulting in no footer of that type for\nthe first section of the document. If this footer is defined on a\nSectionStyle, the reference to this\nfooter is removed and the footer of that type is now continued from\nthe previous section."]
+        #[serde(
+            rename = "footerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub footer_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DeleteFooterRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeleteFooterRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct DeleteHeaderRequest {
+        #[doc = "The id of the header to delete. If this header is defined on\nDocumentStyle, the reference to\nthis header is removed, resulting in no header of that type for\nthe first section of the document. If this header is defined on a\nSectionStyle, the reference to this\nheader is removed and the header of that type is now continued from\nthe previous section."]
+        #[serde(
+            rename = "headerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DeleteHeaderRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeleteHeaderRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1470,6 +1905,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub margin_bottom: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of space between the bottom of the page and the contents of the\nfooter."]
+        #[serde(
+            rename = "marginFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_footer: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The amount of space between the top of the page and the contents of the\nheader."]
+        #[serde(
+            rename = "marginHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_header: ::std::option::Option<crate::schemas::Dimension>,
         #[doc = "The left page margin.\n\nUpdating the left page margin on the document style clears the left page\nmargin on all section styles. It may also cause columns to resize in all\nsections."]
         #[serde(
             rename = "marginLeft",
@@ -1505,14 +1954,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_size: ::std::option::Option<crate::schemas::Size>,
-        #[doc = "Indicates whether to use the even page header / footer IDs for the even\npages.\n\nThis property is read-only."]
+        #[doc = "Indicates whether DocumentStyle\nmargin_header,\nSectionStyle\nmargin_header and\nDocumentStyle\nmargin_footer,\nSectionStyle\nmargin_footer are\nrespected. When false, the default values in the Docs editor for header and\nfooter margin are used.\n\nThis property is read-only."]
+        #[serde(
+            rename = "useCustomHeaderFooterMargins",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub use_custom_header_footer_margins: ::std::option::Option<bool>,
+        #[doc = "Indicates whether to use the even page header / footer IDs for the even\npages."]
         #[serde(
             rename = "useEvenPageHeaderFooter",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub use_even_page_header_footer: ::std::option::Option<bool>,
-        #[doc = "Indicates whether to use the first page header / footer IDs for the first\npage.\n\nThis property is read-only."]
+        #[doc = "Indicates whether to use the first page header / footer IDs for the first\npage."]
         #[serde(
             rename = "useFirstPageHeaderFooter",
             default,
@@ -1600,6 +2056,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub margin_bottom_suggested: ::std::option::Option<bool>,
+        #[doc = "Indicates if there was a suggested change to margin_footer."]
+        #[serde(
+            rename = "marginFooterSuggested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_footer_suggested: ::std::option::Option<bool>,
+        #[doc = "Indicates if there was a suggested change to margin_header."]
+        #[serde(
+            rename = "marginHeaderSuggested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_header_suggested: ::std::option::Option<bool>,
         #[doc = "Indicates if there was a suggested change to margin_left."]
         #[serde(
             rename = "marginLeftSuggested",
@@ -1635,6 +2105,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub page_size_suggestion_state: ::std::option::Option<crate::schemas::SizeSuggestionState>,
+        #[doc = "Indicates if there was a suggested change to\nuse_custom_header_footer_margins."]
+        #[serde(
+            rename = "useCustomHeaderFooterMarginsSuggested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub use_custom_header_footer_margins_suggested: ::std::option::Option<bool>,
         #[doc = "Indicates if there was a suggested change to use_even_page_header_footer."]
         #[serde(
             rename = "useEvenPageHeaderFooterSuggested",
@@ -2849,6 +3326,134 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for InsertPageBreakRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct InsertSectionBreakRequest {
+        #[doc = "Inserts a newline and a section break at the end of the document body.\n\nSection breaks cannot be inserted inside a footnote, header or footer.\nBecause section breaks can only be inserted inside the body, the segment\nID field must be\nempty."]
+        #[serde(
+            rename = "endOfSegmentLocation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub end_of_segment_location: ::std::option::Option<crate::schemas::EndOfSegmentLocation>,
+        #[doc = "Inserts a newline and a section break at a specific index in the\ndocument.\n\nThe section break must be inserted inside the bounds of an existing\nParagraph. For instance, it cannot be\ninserted at a table's start index (i.e. between the table and its\npreceding paragraph).\n\nSection breaks cannot be inserted inside a table, equation, footnote,\nheader, or footer. Since section breaks can only be inserted inside the\nbody, the segment ID field\nmust be empty."]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub location: ::std::option::Option<crate::schemas::Location>,
+        #[doc = "The type of section to insert."]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub section_type:
+            ::std::option::Option<crate::schemas::InsertSectionBreakRequestSectionType>,
+    }
+    impl ::google_field_selector::FieldSelector for InsertSectionBreakRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InsertSectionBreakRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum InsertSectionBreakRequestSectionType {
+        #[doc = "The section starts immediately after the last paragraph of the previous\nsection."]
+        Continuous,
+        #[doc = "The section starts on the next page."]
+        NextPage,
+        #[doc = "The section type is unspecified."]
+        SectionTypeUnspecified,
+    }
+    impl InsertSectionBreakRequestSectionType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                InsertSectionBreakRequestSectionType::Continuous => "CONTINUOUS",
+                InsertSectionBreakRequestSectionType::NextPage => "NEXT_PAGE",
+                InsertSectionBreakRequestSectionType::SectionTypeUnspecified => {
+                    "SECTION_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for InsertSectionBreakRequestSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for InsertSectionBreakRequestSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<InsertSectionBreakRequestSectionType, ()> {
+            Ok(match s {
+                "CONTINUOUS" => InsertSectionBreakRequestSectionType::Continuous,
+                "NEXT_PAGE" => InsertSectionBreakRequestSectionType::NextPage,
+                "SECTION_TYPE_UNSPECIFIED" => {
+                    InsertSectionBreakRequestSectionType::SectionTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for InsertSectionBreakRequestSectionType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for InsertSectionBreakRequestSectionType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for InsertSectionBreakRequestSectionType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CONTINUOUS" => InsertSectionBreakRequestSectionType::Continuous,
+                "NEXT_PAGE" => InsertSectionBreakRequestSectionType::NextPage,
+                "SECTION_TYPE_UNSPECIFIED" => {
+                    InsertSectionBreakRequestSectionType::SectionTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for InsertSectionBreakRequestSectionType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for InsertSectionBreakRequestSectionType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5702,9 +6307,75 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ReplaceNamedRangeContentRequest {
+        #[doc = "The ID of the named range whose content will be replaced.\n\nIf there is no named range with the given ID a 400 bad request error is\nreturned."]
+        #[serde(
+            rename = "namedRangeId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub named_range_id: ::std::option::Option<String>,
+        #[doc = "The name of the NamedRanges whose\ncontent will be replaced.\n\nIf there are multiple named ranges with the given name, then\nthe content of each one will be replaced. If there are no named ranges\nwith the given name, then the request will be a no-op."]
+        #[serde(
+            rename = "namedRangeName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub named_range_name: ::std::option::Option<String>,
+        #[doc = "Replaces the content of the specified named range(s) with the given text."]
+        #[serde(
+            rename = "text",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ReplaceNamedRangeContentRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ReplaceNamedRangeContentRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Request {
+        #[doc = "Creates a footer."]
+        #[serde(
+            rename = "createFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_footer: ::std::option::Option<crate::schemas::CreateFooterRequest>,
+        #[doc = "Creates a footnote."]
+        #[serde(
+            rename = "createFootnote",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_footnote: ::std::option::Option<crate::schemas::CreateFootnoteRequest>,
+        #[doc = "Creates a header."]
+        #[serde(
+            rename = "createHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_header: ::std::option::Option<crate::schemas::CreateHeaderRequest>,
         #[doc = "Creates a named range."]
         #[serde(
             rename = "createNamedRange",
@@ -5727,6 +6398,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub delete_content_range: ::std::option::Option<crate::schemas::DeleteContentRangeRequest>,
+        #[doc = "Deletes a footer from the document."]
+        #[serde(
+            rename = "deleteFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub delete_footer: ::std::option::Option<crate::schemas::DeleteFooterRequest>,
+        #[doc = "Deletes a header from the document."]
+        #[serde(
+            rename = "deleteHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub delete_header: ::std::option::Option<crate::schemas::DeleteHeaderRequest>,
         #[doc = "Deletes a named range."]
         #[serde(
             rename = "deleteNamedRange",
@@ -5778,6 +6463,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub insert_page_break: ::std::option::Option<crate::schemas::InsertPageBreakRequest>,
+        #[doc = "Inserts a section break at the specified location."]
+        #[serde(
+            rename = "insertSectionBreak",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub insert_section_break: ::std::option::Option<crate::schemas::InsertSectionBreakRequest>,
         #[doc = "Inserts a table at the specified location."]
         #[serde(
             rename = "insertTable",
@@ -5827,6 +6519,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub replace_image: ::std::option::Option<crate::schemas::ReplaceImageRequest>,
+        #[doc = "Replaces the content in a named range."]
+        #[serde(
+            rename = "replaceNamedRangeContent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub replace_named_range_content:
+            ::std::option::Option<crate::schemas::ReplaceNamedRangeContentRequest>,
         #[doc = "Unmerges cells in a table."]
         #[serde(
             rename = "unmergeTableCells",
@@ -5850,6 +6550,13 @@ pub mod schemas {
         )]
         pub update_paragraph_style:
             ::std::option::Option<crate::schemas::UpdateParagraphStyleRequest>,
+        #[doc = "Updates the section style of the specified range."]
+        #[serde(
+            rename = "updateSectionStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_section_style: ::std::option::Option<crate::schemas::UpdateSectionStyleRequest>,
         #[doc = "Updates the style of table cells."]
         #[serde(
             rename = "updateTableCellStyle",
@@ -5905,6 +6612,27 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Response {
+        #[doc = "The result of creating a footer."]
+        #[serde(
+            rename = "createFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_footer: ::std::option::Option<crate::schemas::CreateFooterResponse>,
+        #[doc = "The result of creating a footnote."]
+        #[serde(
+            rename = "createFootnote",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_footnote: ::std::option::Option<crate::schemas::CreateFootnoteResponse>,
+        #[doc = "The result of creating a header."]
+        #[serde(
+            rename = "createHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub create_header: ::std::option::Option<crate::schemas::CreateHeaderResponse>,
         #[doc = "The result of creating a named range."]
         #[serde(
             rename = "createNamedRange",
@@ -6028,7 +6756,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub padding_end: ::std::option::Option<crate::schemas::Dimension>,
-        #[doc = "The width of the column."]
+        #[doc = "Output only. The width of the column."]
         #[serde(
             rename = "width",
             default,
@@ -6050,14 +6778,14 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SectionStyle {
-        #[doc = "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor."]
+        #[doc = "The section's columns properties.\n\nIf empty, the section contains one column with the default properties in\nthe Docs editor.\nA section can be updated to have no more than three columns.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property will result in a 400 bad request error."]
         #[serde(
             rename = "columnProperties",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub column_properties: ::std::option::Option<Vec<crate::schemas::SectionColumnProperties>>,
-        #[doc = "The style of column separators.\n\nThis style can be set even when there is one column in the section."]
+        #[doc = "The style of column separators.\n\nThis style can be set even when there is one column in the section.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
         #[serde(
             rename = "columnSeparatorStyle",
             default,
@@ -6065,13 +6793,118 @@ pub mod schemas {
         )]
         pub column_separator_style:
             ::std::option::Option<crate::schemas::SectionStyleColumnSeparatorStyle>,
-        #[doc = "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT."]
+        #[doc = "The content direction of this section. If unset, the value defaults to\nLEFT_TO_RIGHT.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
         #[serde(
             rename = "contentDirection",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_direction: ::std::option::Option<crate::schemas::SectionStyleContentDirection>,
+        #[doc = "The ID of the default footer. If unset, the value inherits from the\nprevious SectionBreak's SectionStyle.\nIf the value is unset in the first SectionBreak, it inherits from\nDocumentStyle's default_footer_id.\n\nThis property is read-only."]
+        #[serde(
+            rename = "defaultFooterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub default_footer_id: ::std::option::Option<String>,
+        #[doc = "The ID of the default header. If unset, the value inherits from the\nprevious SectionBreak's SectionStyle.\nIf the value is unset in the first SectionBreak, it inherits from\nDocumentStyle's default_header_id.\n\nThis property is read-only."]
+        #[serde(
+            rename = "defaultHeaderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub default_header_id: ::std::option::Option<String>,
+        #[doc = "The ID of the footer used only for even pages. If the value of\nDocumentStyle's use_even_page_header_footer is true,\nthis value is used for the footers on even pages in the section. If it\nis false, the footers on even pages uses the default_footer_id. If unset, the value\ninherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\neven_page_footer_id.\n\nThis property is read-only."]
+        #[serde(
+            rename = "evenPageFooterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub even_page_footer_id: ::std::option::Option<String>,
+        #[doc = "The ID of the header used only for even pages. If the value of\nDocumentStyle's use_even_page_header_footer is true,\nthis value is used for the headers on even pages in the section. If it\nis false, the headers on even pages uses the default_header_id. If unset, the value\ninherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\neven_page_header_id.\n\nThis property is read-only."]
+        #[serde(
+            rename = "evenPageHeaderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub even_page_header_id: ::std::option::Option<String>,
+        #[doc = "The ID of the footer used only for the first page of the section.\nIf use_first_page_header_footer is true,\nthis value is used for the footer on the first page of the section. If\nit is false, the footer on the first page of the section uses the\ndefault_footer_id.\nIf unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\nfirst_page_footer_id.\n\nThis property is read-only."]
+        #[serde(
+            rename = "firstPageFooterId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub first_page_footer_id: ::std::option::Option<String>,
+        #[doc = "The ID of the header used only for the first page of the section.\nIf use_first_page_header_footer is true,\nthis value is used for the header on the first page of the section. If\nit is false, the header on the first page of the section uses the\ndefault_header_id.\nIf unset, the value inherits from the previous SectionBreak's SectionStyle. If the value is unset in\nthe first SectionBreak, it inherits from DocumentStyle's\nfirst_page_header_id.\n\nThis property is read-only."]
+        #[serde(
+            rename = "firstPageHeaderId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub first_page_header_id: ::std::option::Option<String>,
+        #[doc = "The bottom page margin of the section. If unset, uses margin_bottom from DocumentStyle.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "marginBottom",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_bottom: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The footer margin of the section. If unset, uses margin_footer from DocumentStyle. If\nupdated, use_custom_header_footer_margins is set\nto true on DocumentStyle. The value of use_custom_header_footer_margins on\nDocumentStyle indicates if a footer margin is being respected for this\nsection\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "marginFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_footer: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The header margin of the section. If unset, uses margin_header from DocumentStyle. If\nupdated, use_custom_header_footer_margins is set\nto true on DocumentStyle. The value of use_custom_header_footer_margins on\nDocumentStyle indicates if a header margin is being respected for this\nsection.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "marginHeader",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_header: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The left page margin of the section. If unset, uses margin_left from DocumentStyle.\nUpdating left margin causes columns in this section to resize. Since\nthe margin affects column width, it is applied before column properties.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "marginLeft",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_left: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The right page margin of the section. If unset, uses margin_right from DocumentStyle.\nUpdating right margin causes columns in this section to resize. Since\nthe margin affects column width, it is applied before column properties.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "marginRight",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_right: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The top page margin of the section. If unset, uses margin_top from DocumentStyle.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "marginTop",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub margin_top: ::std::option::Option<crate::schemas::Dimension>,
+        #[doc = "The page number from which to start counting the number of pages for this\nsection. If unset, page numbering continues from the previous section.\nIf the value is unset in the first\nSectionBreak, refer to DocumentStyle's\npage_number_start.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "pageNumberStart",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub page_number_start: ::std::option::Option<i32>,
+        #[doc = "Output only. The type of section."]
+        #[serde(
+            rename = "sectionType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub section_type: ::std::option::Option<crate::schemas::SectionStyleSectionType>,
+        #[doc = "Indicates whether to use the first page header / footer IDs for the first\npage of the section. If unset, it inherits from DocumentStyle's\nuse_first_page_header_footer for the\nfirst section. If the value is unset for subsequent sectors, it should be\ninterpreted as false.\n\nWhen updating this property, setting a concrete value is required.\nUnsetting this property results in a 400 bad request error."]
+        #[serde(
+            rename = "useFirstPageHeaderFooter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub use_first_page_header_footer: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for SectionStyle {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -6243,6 +7076,82 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for SectionStyleContentDirection {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum SectionStyleSectionType {
+        #[doc = "The section starts immediately after the last paragraph of the previous\nsection."]
+        Continuous,
+        #[doc = "The section starts on the next page."]
+        NextPage,
+        #[doc = "The section type is unspecified."]
+        SectionTypeUnspecified,
+    }
+    impl SectionStyleSectionType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                SectionStyleSectionType::Continuous => "CONTINUOUS",
+                SectionStyleSectionType::NextPage => "NEXT_PAGE",
+                SectionStyleSectionType::SectionTypeUnspecified => "SECTION_TYPE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SectionStyleSectionType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SectionStyleSectionType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SectionStyleSectionType, ()> {
+            Ok(match s {
+                "CONTINUOUS" => SectionStyleSectionType::Continuous,
+                "NEXT_PAGE" => SectionStyleSectionType::NextPage,
+                "SECTION_TYPE_UNSPECIFIED" => SectionStyleSectionType::SectionTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for SectionStyleSectionType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for SectionStyleSectionType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for SectionStyleSectionType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CONTINUOUS" => SectionStyleSectionType::Continuous,
+                "NEXT_PAGE" => SectionStyleSectionType::NextPage,
+                "SECTION_TYPE_UNSPECIFIED" => SectionStyleSectionType::SectionTypeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for SectionStyleSectionType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SectionStyleSectionType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -8292,6 +9201,42 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct UpdateSectionStyleRequest {
+        #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `section_style` is\nimplied and must not be specified. A single `\"*\"` can be used as\nshort-hand for listing every field.\n\nFor example to update the left margin, set `fields` to `\"margin_left\"`."]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fields: ::std::option::Option<String>,
+        #[doc = "The range overlapping the sections to style.\n\nBecause section breaks can only be inserted inside the body, the segment\nID field must be empty."]
+        #[serde(
+            rename = "range",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub range: ::std::option::Option<crate::schemas::Range>,
+        #[doc = "The styles to  be set on the section.\n\nCertain section style changes may cause other changes in order to mirror\nthe behavior of the Docs editor. See the documentation of SectionStyle for more information."]
+        #[serde(
+            rename = "sectionStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub section_style: ::std::option::Option<crate::schemas::SectionStyle>,
+    }
+    impl ::google_field_selector::FieldSelector for UpdateSectionStyleRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UpdateSectionStyleRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct UpdateTableCellStyleRequest {
         #[doc = "The fields that should be updated.\n\nAt least one field must be specified. The root `tableCellStyle` is implied\nand should not be specified. A single `\"*\"` can be used as short-hand for\nlisting every field.\n\nFor example to update the table cell background color, set `fields` to\n`\"backgroundColor\"`.\n\nTo reset a property to its default value, include its field name in the\nfield mask but leave the field itself unset."]
         #[serde(
@@ -8681,7 +9626,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -8689,8 +9634,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -8805,7 +9762,7 @@ pub mod resources {
             }
         }
         pub struct DocumentsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DocumentsActions<'a> {
@@ -8879,7 +9836,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::batch_update()](struct.DocumentsActions.html#method.batch_update)"]
         #[derive(Debug, Clone)]
         pub struct BatchUpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchUpdateDocumentRequest,
             document_id: String,
@@ -9011,7 +9968,10 @@ pub mod resources {
                 output.push_str(":batchUpdate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -9035,7 +9995,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::create()](struct.DocumentsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Document,
             access_token: Option<String>,
@@ -9156,7 +10116,10 @@ pub mod resources {
                 output.push_str("v1/documents");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -9180,7 +10143,7 @@ pub mod resources {
         #[doc = "Created via [DocumentsActions::get()](struct.DocumentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             document_id: String,
             suggestions_view_mode:
@@ -9317,7 +10280,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("suggestionsViewMode", &self.suggestions_view_mode)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9357,9 +10323,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -9401,7 +10365,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [instances](resources/projects/instances/struct.InstancesActions.html)\n        * [*create*](resources/projects/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/struct.GetRequestBuilder.html), [*list*](resources/projects/instances/struct.ListRequestBuilder.html)\n        * [workerpools](resources/projects/instances/workerpools/struct.WorkerpoolsActions.html)\n          * [*create*](resources/projects/instances/workerpools/struct.CreateRequestBuilder.html), [*delete*](resources/projects/instances/workerpools/struct.DeleteRequestBuilder.html), [*get*](resources/projects/instances/workerpools/struct.GetRequestBuilder.html), [*list*](resources/projects/instances/workerpools/struct.ListRequestBuilder.html), [*patch*](resources/projects/instances/workerpools/struct.PatchRequestBuilder.html)\n      * [operations](resources/projects/operations/struct.OperationsActions.html)\n        * [*get*](resources/projects/operations/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -36,6 +40,13 @@ pub mod schemas {
         )]
         pub input_root_digest:
             ::std::option::Option<crate::schemas::BuildBazelRemoteExecutionV2Digest>,
+        #[doc = "List of required supported NodeProperty\nkeys. In order to ensure that equivalent `Action`s always hash to the same\nvalue, the supported node properties MUST be lexicographically sorted by name.\nSorting of strings is done by code point, equivalently, by the UTF-8 bytes.\n\nThe interpretation of these properties is server-dependent. If a property is\nnot recognized by the server, the server will return an `INVALID_ARGUMENT`\nerror."]
+        #[serde(
+            rename = "outputNodeProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_node_properties: ::std::option::Option<Vec<String>>,
         #[doc = "A timeout after which the execution should be killed. If the timeout is\nabsent, then the client is specifying that the execution should continue\nas long as the server will let it. The server SHOULD impose a timeout if\nthe client does not specify one, however, if the client does specify a\ntimeout that is longer than the server's maximum timeout, the server MUST\nreject the request.\n\nThe timeout is a part of the\nAction message, and\ntherefore two `Actions` with different timeouts are different, even if they\nare otherwise identical. This is because, if they were not, running an\n`Action` with a lower timeout than is required might result in a cache hit\nfrom an execution run with a longer timeout, hiding the fact that the\ntimeout is too short. By encoding it directly in the `Action`, a lower\ntimeout will result in a cache miss and the execution timeout will fail\nimmediately, rather than whenever the cache entry gets evicted."]
         #[serde(
             rename = "timeout",
@@ -83,7 +94,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub exit_code: ::std::option::Option<i32>,
-        #[doc = "The output directories of the action. For each output directory requested\nin the `output_directories` field of the Action, if the corresponding\ndirectory existed after the action completed, a single entry will be\npresent in the output list, which will contain the digest of a\nTree message containing the\ndirectory tree, and the path equal exactly to the corresponding Action\noutput_directories member.\n\nAs an example, suppose the Action had an output directory `a/b/dir` and the\nexecution produced the following contents in `a/b/dir`: a file named `bar`\nand a directory named `foo` with an executable file named `baz`. Then,\noutput_directory will contain (hashes shortened for readability):\n\n````textjson\n// OutputDirectory proto:\n{\n  path: \"a/b/dir\"\n  tree_digest: {\n    hash: \"4a73bc9d03...\",\n    size: 55\n  }\n}\n// Tree proto with hash \"4a73bc9d03...\" and size 55:\n{\n  root: {\n    files: [\n      {\n        name: \"bar\",\n        digest: {\n          hash: \"4a73bc9d03...\",\n          size: 65534\n        }\n      }\n    ],\n    directories: [\n      {\n        name: \"foo\",\n        digest: {\n          hash: \"4cf2eda940...\",\n          size: 43\n        }\n      }\n    ]\n  }\n  children : {\n    // (Directory proto with hash \"4cf2eda940...\" and size 43)\n    files: [\n      {\n        name: \"baz\",\n        digest: {\n          hash: \"b2c941073e...\",\n          size: 1294,\n        },\n        is_executable: true\n      }\n    ]\n  }\n}\n````\n\nIf an output of the same name was found, but was not a directory, the\nserver will return a FAILED_PRECONDITION."]
+        #[doc = "The output directories of the action. For each output directory requested\nin the `output_directories` or `output_paths` field of the Action, if the\ncorresponding directory existed after the action completed, a single entry\nwill be present in the output list, which will contain the digest of a\nTree message containing the\ndirectory tree, and the path equal exactly to the corresponding Action\noutput_directories member.\n\nAs an example, suppose the Action had an output directory `a/b/dir` and the\nexecution produced the following contents in `a/b/dir`: a file named `bar`\nand a directory named `foo` with an executable file named `baz`. Then,\noutput_directory will contain (hashes shortened for readability):\n\n````textjson\n// OutputDirectory proto:\n{\n  path: \"a/b/dir\"\n  tree_digest: {\n    hash: \"4a73bc9d03...\",\n    size: 55\n  }\n}\n// Tree proto with hash \"4a73bc9d03...\" and size 55:\n{\n  root: {\n    files: [\n      {\n        name: \"bar\",\n        digest: {\n          hash: \"4a73bc9d03...\",\n          size: 65534\n        }\n      }\n    ],\n    directories: [\n      {\n        name: \"foo\",\n        digest: {\n          hash: \"4cf2eda940...\",\n          size: 43\n        }\n      }\n    ]\n  }\n  children : {\n    // (Directory proto with hash \"4cf2eda940...\" and size 43)\n    files: [\n      {\n        name: \"baz\",\n        digest: {\n          hash: \"b2c941073e...\",\n          size: 1294,\n        },\n        is_executable: true\n      }\n    ]\n  }\n}\n````\n\nIf an output of the same name as listed in `output_files` of\nthe Command was found in `output_directories`, but was not a directory, the\nserver will return a FAILED_PRECONDITION."]
         #[serde(
             rename = "outputDirectories",
             default,
@@ -91,7 +102,7 @@ pub mod schemas {
         )]
         pub output_directories:
             ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2OutputDirectory>>,
-        #[doc = "The output directories of the action that are symbolic links to other\ndirectories. Those may be links to other output directories, or input\ndirectories, or even absolute paths outside of the working directory,\nif the server supports\nSymlinkAbsolutePathStrategy.ALLOWED.\nFor each output directory requested in the `output_directories` field of\nthe Action, if the directory existed after the action completed, a\nsingle entry will be present either in this field, or in the\n`output_directories` field, if the directory was not a symbolic link.\n\nIf an output of the same name was found, but was a symbolic link to a file\ninstead of a directory, the server will return a FAILED_PRECONDITION.\nIf the action does not produce the requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted."]
+        #[doc = "The output directories of the action that are symbolic links to other\ndirectories. Those may be links to other output directories, or input\ndirectories, or even absolute paths outside of the working directory,\nif the server supports\nSymlinkAbsolutePathStrategy.ALLOWED.\nFor each output directory requested in the `output_directories` field of\nthe Action, if the directory existed after the action completed, a\nsingle entry will be present either in this field, or in the\n`output_directories` field, if the directory was not a symbolic link.\n\nIf an output of the same name was found, but was a symbolic link to a file\ninstead of a directory, the server will return a FAILED_PRECONDITION.\nIf the action does not produce the requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted.\n\nDEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API\nshould still populate this field in addition to `output_symlinks`."]
         #[serde(
             rename = "outputDirectorySymlinks",
             default,
@@ -99,7 +110,7 @@ pub mod schemas {
         )]
         pub output_directory_symlinks:
             ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2OutputSymlink>>,
-        #[doc = "The output files of the action that are symbolic links to other files. Those\nmay be links to other output files, or input files, or even absolute paths\noutside of the working directory, if the server supports\nSymlinkAbsolutePathStrategy.ALLOWED.\nFor each output file requested in the `output_files` field of the Action,\nif the corresponding file existed after\nthe action completed, a single entry will be present either in this field,\nor in the `output_files` field, if the file was not a symbolic link.\n\nIf an output symbolic link of the same name was found, but its target\ntype was not a regular file, the server will return a FAILED_PRECONDITION.\nIf the action does not produce the requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted."]
+        #[doc = "The output files of the action that are symbolic links to other files. Those\nmay be links to other output files, or input files, or even absolute paths\noutside of the working directory, if the server supports\nSymlinkAbsolutePathStrategy.ALLOWED.\nFor each output file requested in the `output_files` or `output_paths`\nfield of the Action, if the corresponding file existed after\nthe action completed, a single entry will be present either in this field,\nor in the `output_files` field, if the file was not a symbolic link.\n\nIf an output symbolic link of the same name as listed in `output_files` of\nthe Command was found, but its target type was not a regular file, the\nserver will return a FAILED_PRECONDITION.\nIf the action does not produce the requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted.\n\nDEPRECATED as of v2.1. Servers that wish to be compatible with v2.0 API\nshould still populate this field in addition to `output_symlinks`."]
         #[serde(
             rename = "outputFileSymlinks",
             default,
@@ -107,7 +118,7 @@ pub mod schemas {
         )]
         pub output_file_symlinks:
             ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2OutputSymlink>>,
-        #[doc = "The output files of the action. For each output file requested in the\n`output_files` field of the Action, if the corresponding file existed after\nthe action completed, a single entry will be present either in this field,\nor the `output_file_symlinks` field if the file was a symbolic link to\nanother file.\n\nIf an output of the same name was found, but was a directory rather\nthan a regular file, the server will return a FAILED_PRECONDITION.\nIf the action does not produce the requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted."]
+        #[doc = "The output files of the action. For each output file requested in the\n`output_files` or `output_paths` field of the Action, if the corresponding\nfile existed after the action completed, a single entry will be present\neither in this field, or the `output_file_symlinks` field if the file was\na symbolic link to another file (`output_symlinks` field after v2.1).\n\nIf an output listed in `output_files` was found, but was a directory rather\nthan a regular file, the server will return a FAILED_PRECONDITION.\nIf the action does not produce the requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted."]
         #[serde(
             rename = "outputFiles",
             default,
@@ -115,6 +126,14 @@ pub mod schemas {
         )]
         pub output_files:
             ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2OutputFile>>,
+        #[doc = "New in v2.1: this field will only be populated if the command\n`output_paths` field was used, and not the pre v2.1 `output_files` or\n`output_directories` fields.\nThe output paths of the action that are symbolic links to other paths. Those\nmay be links to other outputs, or inputs, or even absolute paths\noutside of the working directory, if the server supports\nSymlinkAbsolutePathStrategy.ALLOWED.\nA single entry for each output requested in `output_paths`\nfield of the Action, if the corresponding path existed after\nthe action completed and was a symbolic link.\n\nIf the action does not produce a requested output, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted."]
+        #[serde(
+            rename = "outputSymlinks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_symlinks:
+            ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2OutputSymlink>>,
         #[doc = "The digest for a blob containing the standard error of the action, which\ncan be retrieved from the\nContentAddressableStorage."]
         #[serde(
             rename = "stderrDigest",
@@ -183,20 +202,27 @@ pub mod schemas {
         pub environment_variables: ::std::option::Option<
             Vec<crate::schemas::BuildBazelRemoteExecutionV2CommandEnvironmentVariable>,
         >,
-        #[doc = "A list of the output directories that the client expects to retrieve from\nthe action. Only the listed directories will be returned (an entire\ndirectory structure will be returned as a\nTree message digest, see\nOutputDirectory), as\nwell as files listed in `output_files`. Other files or directories that\nmay be created during command execution are discarded.\n\nThe paths are relative to the working directory of the action execution.\nThe paths are specified using a single forward slash (`/`) as a path\nseparator, even if the execution platform natively uses a different\nseparator. The path MUST NOT include a trailing slash, nor a leading slash,\nbeing a relative path. The special value of empty string is allowed,\nalthough not recommended, and can be used to capture the entire working\ndirectory tree, including inputs.\n\nIn order to ensure consistent hashing of the same Action, the output paths\nMUST be sorted lexicographically by code point (or, equivalently, by UTF-8\nbytes).\n\nAn output directory cannot be duplicated or have the same path as any of\nthe listed output files. An output directory is allowed to be a parent of\nanother output directory.\n\nDirectories leading up to the output directories (but not the output\ndirectories themselves) are created by the worker prior to execution, even\nif they are not explicitly part of the input root."]
+        #[doc = "A list of the output directories that the client expects to retrieve from\nthe action. Only the listed directories will be returned (an entire\ndirectory structure will be returned as a\nTree message digest, see\nOutputDirectory), as\nwell as files listed in `output_files`. Other files or directories that\nmay be created during command execution are discarded.\n\nThe paths are relative to the working directory of the action execution.\nThe paths are specified using a single forward slash (`/`) as a path\nseparator, even if the execution platform natively uses a different\nseparator. The path MUST NOT include a trailing slash, nor a leading slash,\nbeing a relative path. The special value of empty string is allowed,\nalthough not recommended, and can be used to capture the entire working\ndirectory tree, including inputs.\n\nIn order to ensure consistent hashing of the same Action, the output paths\nMUST be sorted lexicographically by code point (or, equivalently, by UTF-8\nbytes).\n\nAn output directory cannot be duplicated or have the same path as any of\nthe listed output files. An output directory is allowed to be a parent of\nanother output directory.\n\nDirectories leading up to the output directories (but not the output\ndirectories themselves) are created by the worker prior to execution, even\nif they are not explicitly part of the input root.\n\nDEPRECATED since 2.1: Use `output_paths` instead."]
         #[serde(
             rename = "outputDirectories",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub output_directories: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of the output files that the client expects to retrieve from the\naction. Only the listed files, as well as directories listed in\n`output_directories`, will be returned to the client as output.\nOther files or directories that may be created during command execution\nare discarded.\n\nThe paths are relative to the working directory of the action execution.\nThe paths are specified using a single forward slash (`/`) as a path\nseparator, even if the execution platform natively uses a different\nseparator. The path MUST NOT include a trailing slash, nor a leading slash,\nbeing a relative path.\n\nIn order to ensure consistent hashing of the same Action, the output paths\nMUST be sorted lexicographically by code point (or, equivalently, by UTF-8\nbytes).\n\nAn output file cannot be duplicated, be a parent of another output file, or\nhave the same path as any of the listed output directories.\n\nDirectories leading up to the output files are created by the worker prior\nto execution, even if they are not explicitly part of the input root."]
+        #[doc = "A list of the output files that the client expects to retrieve from the\naction. Only the listed files, as well as directories listed in\n`output_directories`, will be returned to the client as output.\nOther files or directories that may be created during command execution\nare discarded.\n\nThe paths are relative to the working directory of the action execution.\nThe paths are specified using a single forward slash (`/`) as a path\nseparator, even if the execution platform natively uses a different\nseparator. The path MUST NOT include a trailing slash, nor a leading slash,\nbeing a relative path.\n\nIn order to ensure consistent hashing of the same Action, the output paths\nMUST be sorted lexicographically by code point (or, equivalently, by UTF-8\nbytes).\n\nAn output file cannot be duplicated, be a parent of another output file, or\nhave the same path as any of the listed output directories.\n\nDirectories leading up to the output files are created by the worker prior\nto execution, even if they are not explicitly part of the input root.\n\nDEPRECATED since v2.1: Use `output_paths` instead."]
         #[serde(
             rename = "outputFiles",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub output_files: ::std::option::Option<Vec<String>>,
+        #[doc = "A list of the output paths that the client expects to retrieve from the\naction. Only the listed paths will be returned to the client as output.\nThe type of the output (file or directory) is not specified, and will be\ndetermined by the server after action execution. If the resulting path is\na file, it will be returned in an\nOutputFile) typed field.\nIf the path is a directory, the entire directory structure will be returned\nas a Tree message digest, see\nOutputDirectory)\nOther files or directories that may be created during command execution\nare discarded.\n\nThe paths are relative to the working directory of the action execution.\nThe paths are specified using a single forward slash (`/`) as a path\nseparator, even if the execution platform natively uses a different\nseparator. The path MUST NOT include a trailing slash, nor a leading slash,\nbeing a relative path.\n\nIn order to ensure consistent hashing of the same Action, the output paths\nMUST be deduplicated and sorted lexicographically by code point (or,\nequivalently, by UTF-8 bytes).\n\nDirectories leading up to the output paths are created by the worker prior\nto execution, even if they are not explicitly part of the input root.\n\nNew in v2.1: this field supersedes the DEPRECATED `output_files` and\n`output_directories` fields. If `output_paths` is used, `output_files` and\n`output_directories` will be ignored!"]
+        #[serde(
+            rename = "outputPaths",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_paths: ::std::option::Option<Vec<String>>,
         #[doc = "The platform requirements for the execution environment. The server MAY\nchoose to execute the action on any worker satisfying the requirements, so\nthe client SHOULD ensure that running the action on any such worker will\nhave the same result.\nA detailed lexicon for this can be found in the accompanying platform.md."]
         #[serde(
             rename = "platform",
@@ -331,6 +357,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub files: ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2FileNode>>,
+        #[doc = "The node properties of the Directory."]
+        #[serde(
+            rename = "nodeProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub node_properties:
+            ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2NodeProperty>>,
         #[doc = "The symlinks in the directory."]
         #[serde(
             rename = "symlinks",
@@ -724,6 +758,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "The node properties of the FileNode."]
+        #[serde(
+            rename = "nodeProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub node_properties:
+            ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2NodeProperty>>,
     }
     impl ::google_field_selector::FieldSelector for BuildBazelRemoteExecutionV2FileNode {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -769,6 +811,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for BuildBazelRemoteExecutionV2LogFile {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct BuildBazelRemoteExecutionV2NodeProperty {
+        #[doc = "The property name."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The property value."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for BuildBazelRemoteExecutionV2NodeProperty {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BuildBazelRemoteExecutionV2NodeProperty {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -845,6 +925,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub is_executable: ::std::option::Option<bool>,
+        #[doc = "The supported node properties of the OutputFile, if requested by the Action."]
+        #[serde(
+            rename = "nodeProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub node_properties:
+            ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2NodeProperty>>,
         #[doc = "The full path of the file relative to the working directory, including the\nfilename. The path separator is a forward slash `/`. Since this is a\nrelative path, it MUST NOT begin with a leading forward slash."]
         #[serde(
             rename = "path",
@@ -876,6 +964,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BuildBazelRemoteExecutionV2OutputSymlink {
+        #[doc = "The supported node properties of the OutputSymlink, if requested by the\nAction."]
+        #[serde(
+            rename = "nodeProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub node_properties:
+            ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2NodeProperty>>,
         #[doc = "The full path of the symlink relative to the working directory, including the\nfilename. The path separator is a forward slash `/`. Since this is a\nrelative path, it MUST NOT begin with a leading forward slash."]
         #[serde(
             rename = "path",
@@ -1044,6 +1140,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
+        #[doc = "The node properties of the SymlinkNode."]
+        #[serde(
+            rename = "nodeProperties",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub node_properties:
+            ::std::option::Option<Vec<crate::schemas::BuildBazelRemoteExecutionV2NodeProperty>>,
         #[doc = "The target path of the symlink. The path separator is a forward slash `/`.\nThe target path can be relative to the parent directory of the symlink or\nit can be an absolute path starting with `/`. Support for absolute paths\ncan be checked using the Capabilities\nAPI. The canonical form forbids the substrings `/./` and `//` in the target\npath. `..` components are allowed anywhere in the target path."]
         #[serde(
             rename = "target",
@@ -1159,6 +1263,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub docker_prep: ::std::option::Option<String>,
+        #[doc = "The timestamp when docker preparation begins."]
+        #[serde(
+            rename = "dockerPrepStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub docker_prep_start_time: ::std::option::Option<String>,
         #[doc = "The time spent downloading the input files and constructing the working\ndirectory."]
         #[serde(
             rename = "download",
@@ -1166,6 +1277,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub download: ::std::option::Option<String>,
+        #[doc = "The timestamp when downloading the input files begins."]
+        #[serde(
+            rename = "downloadStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub download_start_time: ::std::option::Option<String>,
+        #[doc = "The timestamp when execution begins."]
+        #[serde(
+            rename = "execStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exec_start_time: ::std::option::Option<String>,
         #[doc = "The time spent executing the command (i.e., doing useful work)."]
         #[serde(
             rename = "execution",
@@ -1201,6 +1326,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub upload: ::std::option::Option<String>,
+        #[doc = "The timestamp when uploading the output files begins."]
+        #[serde(
+            rename = "uploadStartTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub upload_start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandDurations {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1304,6 +1436,14 @@ pub mod schemas {
         CleanupError,
         #[doc = "The command had passed its expiry time while it was still running."]
         DeadlineExceeded,
+        #[doc = "Docker failed to run containers with CreateComputeSystem error."]
+        DockerCreateComputeSystemError,
+        #[doc = "The bot couldn't start the container."]
+        DockerCreateContainerError,
+        #[doc = "Docker failed to create OCI runtime because of file not found."]
+        DockerCreateRuntimeFileNotFound,
+        #[doc = "Docker failed to create OCI runtime because of permission denied."]
+        DockerCreateRuntimePermissionDenied,
         #[doc = "The bot failed to check docker images."]
         DockerImageExistError,
         #[doc = "The docker image cannot be found."]
@@ -1312,24 +1452,46 @@ pub mod schemas {
         DockerImagePermissionDenied,
         #[doc = "The bot failed to pull docker image."]
         DockerImagePullError,
+        #[doc = "Docker incompatible operating system error."]
+        DockerIncompatibleOsError,
+        #[doc = "The docker ulimit is not valid."]
+        DockerInvalidUlimit,
         #[doc = "The bot failed to login to docker."]
         DockerLoginError,
+        #[doc = "Docker failed to run containers with hcsshim::PrepareLayer error."]
+        DockerPreparelayerError,
         #[doc = "There are issues with docker service/runtime."]
         DockerUnavailable,
+        #[doc = "The docker capability is unknown."]
+        DockerUnknownCapability,
+        #[doc = "The command failed with unknown docker errors."]
+        DockerUnknownError,
+        #[doc = "The docker runtime is unknown."]
+        DockerUnknownRuntime,
         #[doc = "The bot failed to download the inputs."]
         DownloadInputsError,
         #[doc = "The inputs contain duplicate files."]
         DuplicateInputs,
+        #[doc = "The command failed because the system is not in a state required for the\ncommand, e.g. the command inputs cannot be found on the server."]
+        FailedPrecondition,
         #[doc = "The command failed because of some invariants expected by the underlying\nsystem have been broken. This usually indicates a bug wit the system."]
         Internal,
         #[doc = "The command input was invalid."]
         InvalidArgument,
+        #[doc = "The local casproxy is not running."]
+        LocalCasproxyNotRunning,
+        #[doc = "The command failed with \"no cuda-capable device is detected\" error."]
+        NoCudaCapableDevice,
         #[doc = "The resources requested by the command were not found."]
         NotFound,
         #[doc = "The command succeeded."]
         Ok,
         #[doc = "The command failed due to permission errors."]
         PermissionDenied,
+        #[doc = "The bot encountered errors from remote CAS when downloading blobs."]
+        RemoteCasDownloadError,
+        #[doc = "The bot encountered errors from remote CAS when uploading blobs."]
+        RemoteCasUploadError,
         #[doc = "Unknown error."]
         Unknown,
         #[doc = "The bot failed to upload the outputs."]
@@ -1341,56 +1503,7 @@ pub mod schemas {
     }
     impl GoogleDevtoolsRemotebuildbotCommandStatusCode {
         pub fn as_str(self) -> &'static str {
-            match self {
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Aborted => "ABORTED",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::CleanupError => "CLEANUP_ERROR",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded => {
-                    "DEADLINE_EXCEEDED"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageExistError => {
-                    "DOCKER_IMAGE_EXIST_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound => {
-                    "DOCKER_IMAGE_NOT_FOUND"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePermissionDenied => {
-                    "DOCKER_IMAGE_PERMISSION_DENIED"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError => {
-                    "DOCKER_IMAGE_PULL_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError => {
-                    "DOCKER_LOGIN_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable => {
-                    "DOCKER_UNAVAILABLE"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError => {
-                    "DOWNLOAD_INPUTS_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs => {
-                    "DUPLICATE_INPUTS"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal => "INTERNAL",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument => {
-                    "INVALID_ARGUMENT"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound => "NOT_FOUND",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok => "OK",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied => {
-                    "PERMISSION_DENIED"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown => "UNKNOWN",
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError => {
-                    "UPLOAD_OUTPUTS_ERROR"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotFound => {
-                    "WORKING_DIR_NOT_FOUND"
-                }
-                GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotInBaseDir => {
-                    "WORKING_DIR_NOT_IN_BASE_DIR"
-                }
-            }
+            match self { GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted => "ABORTED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError => "CLEANUP_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded => "DEADLINE_EXCEEDED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError => "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError => "DOCKER_CREATE_CONTAINER_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound => "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied => "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError => "DOCKER_IMAGE_EXIST_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound => "DOCKER_IMAGE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied => "DOCKER_IMAGE_PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError => "DOCKER_IMAGE_PULL_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError => "DOCKER_INCOMPATIBLE_OS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit => "DOCKER_INVALID_ULIMIT" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError => "DOCKER_LOGIN_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError => "DOCKER_PREPARELAYER_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable => "DOCKER_UNAVAILABLE" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability => "DOCKER_UNKNOWN_CAPABILITY" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError => "DOCKER_UNKNOWN_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime => "DOCKER_UNKNOWN_RUNTIME" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError => "DOWNLOAD_INPUTS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs => "DUPLICATE_INPUTS" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition => "FAILED_PRECONDITION" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal => "INTERNAL" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument => "INVALID_ARGUMENT" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning => "LOCAL_CASPROXY_NOT_RUNNING" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice => "NO_CUDA_CAPABLE_DEVICE" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound => "NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok => "OK" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied => "PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError => "REMOTE_CAS_DOWNLOAD_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError => "REMOTE_CAS_UPLOAD_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown => "UNKNOWN" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError => "UPLOAD_OUTPUTS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound => "WORKING_DIR_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir => "WORKING_DIR_NOT_IN_BASE_DIR" , }
         }
     }
     impl ::std::convert::AsRef<str> for GoogleDevtoolsRemotebuildbotCommandStatusCode {
@@ -1403,57 +1516,7 @@ pub mod schemas {
         fn from_str(
             s: &str,
         ) -> ::std::result::Result<GoogleDevtoolsRemotebuildbotCommandStatusCode, ()> {
-            Ok(match s {
-                "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Aborted,
-                "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode::CleanupError,
-                "DEADLINE_EXCEEDED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded
-                }
-                "DOCKER_IMAGE_EXIST_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageExistError
-                }
-                "DOCKER_IMAGE_NOT_FOUND" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound
-                }
-                "DOCKER_IMAGE_PERMISSION_DENIED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePermissionDenied
-                }
-                "DOCKER_IMAGE_PULL_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError
-                }
-                "DOCKER_LOGIN_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError
-                }
-                "DOCKER_UNAVAILABLE" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable
-                }
-                "DOWNLOAD_INPUTS_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError
-                }
-                "DUPLICATE_INPUTS" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs
-                }
-                "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal,
-                "INVALID_ARGUMENT" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument
-                }
-                "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound,
-                "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok,
-                "PERMISSION_DENIED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied
-                }
-                "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown,
-                "UPLOAD_OUTPUTS_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError
-                }
-                "WORKING_DIR_NOT_FOUND" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotFound
-                }
-                "WORKING_DIR_NOT_IN_BASE_DIR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotInBaseDir
-                }
-                _ => return Err(()),
-            })
+            Ok ( match s { "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted , "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError , "DEADLINE_EXCEEDED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded , "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError , "DOCKER_CREATE_CONTAINER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError , "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound , "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied , "DOCKER_IMAGE_EXIST_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError , "DOCKER_IMAGE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound , "DOCKER_IMAGE_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied , "DOCKER_IMAGE_PULL_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError , "DOCKER_INCOMPATIBLE_OS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError , "DOCKER_INVALID_ULIMIT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit , "DOCKER_LOGIN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError , "DOCKER_PREPARELAYER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError , "DOCKER_UNAVAILABLE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable , "DOCKER_UNKNOWN_CAPABILITY" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability , "DOCKER_UNKNOWN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError , "DOCKER_UNKNOWN_RUNTIME" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime , "DOWNLOAD_INPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError , "DUPLICATE_INPUTS" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs , "FAILED_PRECONDITION" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition , "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal , "INVALID_ARGUMENT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument , "LOCAL_CASPROXY_NOT_RUNNING" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning , "NO_CUDA_CAPABLE_DEVICE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice , "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound , "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok , "PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied , "REMOTE_CAS_DOWNLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError , "REMOTE_CAS_UPLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError , "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown , "UPLOAD_OUTPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError , "WORKING_DIR_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound , "WORKING_DIR_NOT_IN_BASE_DIR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemotebuildbotCommandStatusCode {
@@ -1475,62 +1538,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Aborted,
-                "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode::CleanupError,
-                "DEADLINE_EXCEEDED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DeadlineExceeded
-                }
-                "DOCKER_IMAGE_EXIST_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageExistError
-                }
-                "DOCKER_IMAGE_NOT_FOUND" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImageNotFound
-                }
-                "DOCKER_IMAGE_PERMISSION_DENIED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePermissionDenied
-                }
-                "DOCKER_IMAGE_PULL_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerImagePullError
-                }
-                "DOCKER_LOGIN_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerLoginError
-                }
-                "DOCKER_UNAVAILABLE" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DockerUnavailable
-                }
-                "DOWNLOAD_INPUTS_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DownloadInputsError
-                }
-                "DUPLICATE_INPUTS" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::DuplicateInputs
-                }
-                "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Internal,
-                "INVALID_ARGUMENT" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::InvalidArgument
-                }
-                "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode::NotFound,
-                "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Ok,
-                "PERMISSION_DENIED" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::PermissionDenied
-                }
-                "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode::Unknown,
-                "UPLOAD_OUTPUTS_ERROR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::UploadOutputsError
-                }
-                "WORKING_DIR_NOT_FOUND" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotFound
-                }
-                "WORKING_DIR_NOT_IN_BASE_DIR" => {
-                    GoogleDevtoolsRemotebuildbotCommandStatusCode::WorkingDirNotInBaseDir
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
+            Ok ( match value { "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted , "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError , "DEADLINE_EXCEEDED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded , "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError , "DOCKER_CREATE_CONTAINER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError , "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound , "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied , "DOCKER_IMAGE_EXIST_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError , "DOCKER_IMAGE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound , "DOCKER_IMAGE_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied , "DOCKER_IMAGE_PULL_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError , "DOCKER_INCOMPATIBLE_OS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError , "DOCKER_INVALID_ULIMIT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit , "DOCKER_LOGIN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError , "DOCKER_PREPARELAYER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError , "DOCKER_UNAVAILABLE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable , "DOCKER_UNKNOWN_CAPABILITY" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability , "DOCKER_UNKNOWN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError , "DOCKER_UNKNOWN_RUNTIME" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime , "DOWNLOAD_INPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError , "DUPLICATE_INPUTS" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs , "FAILED_PRECONDITION" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition , "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal , "INVALID_ARGUMENT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument , "LOCAL_CASPROXY_NOT_RUNNING" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning , "NO_CUDA_CAPABLE_DEVICE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice , "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound , "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok , "PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied , "REMOTE_CAS_DOWNLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError , "REMOTE_CAS_UPLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError , "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown , "UPLOAD_OUTPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError , "WORKING_DIR_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound , "WORKING_DIR_NOT_IN_BASE_DIR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatusCode {
@@ -1539,6 +1547,79 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemotebuildbotCommandStatusCode {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildbotResourceUsage {
+        #[serde(
+            rename = "cpuUsedPercent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cpu_used_percent: ::std::option::Option<f64>,
+        #[serde(
+            rename = "diskUsage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disk_usage:
+            ::std::option::Option<crate::schemas::GoogleDevtoolsRemotebuildbotResourceUsageStat>,
+        #[serde(
+            rename = "memoryUsage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub memory_usage:
+            ::std::option::Option<crate::schemas::GoogleDevtoolsRemotebuildbotResourceUsageStat>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotResourceUsage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemotebuildbotResourceUsage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildbotResourceUsageStat {
+        #[serde(
+            rename = "total",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub total: ::std::option::Option<u64>,
+        #[serde(
+            rename = "used",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub used: ::std::option::Option<u64>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotResourceUsageStat {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemotebuildbotResourceUsageStat {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1581,6 +1662,50 @@ pub mod schemas {
     }
     impl ::google_field_selector::ToFieldType
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaAcceleratorConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaAutoscale {
+        #[doc = "The maximal number of workers. Must be equal to or greater than min_size."]
+        #[serde(
+            rename = "maxSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub max_size: ::std::option::Option<i64>,
+        #[doc = "The minimal number of workers. Must be greater than 0."]
+        #[serde(
+            rename = "minSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub min_size: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaAutoscale
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaAutoscale
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -2145,6 +2270,64 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateInstanceRequest {
+        #[doc = "Specifies the instance to update."]
+        #[serde(
+            rename = "instance",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub instance: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance,
+        >,
+        #[doc = "Deprecated, use instance.logging_enabled instead.\nWhether to enable Stackdriver logging for this instance."]
+        #[serde(
+            rename = "loggingEnabled",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub logging_enabled: ::std::option::Option<bool>,
+        #[doc = "Deprecated, use instance.Name instead.\nName of the instance to update.\nFormat: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]`."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The update mask applies to instance. For the `FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask\nIf an empty update_mask is provided, only the non-default valued field in\nthe worker pool field will be updated. Note that in order to update a field\nto the default value (zero, false, empty string) an explicit update_mask\nmust be provided."]
+        #[serde(
+            rename = "updateMask",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_mask: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateInstanceRequest
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateInstanceRequest
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateWorkerPoolRequest {
         #[doc = "The update mask applies to worker_pool. For the `FieldMask` definition,\nsee\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask\nIf an empty update_mask is provided, only the non-default valued field in\nthe worker pool field will be updated. Note that in order to update a field\nto the default value (zero, false, empty string) an explicit update_mask\nmust be provided."]
         #[serde(
@@ -2207,7 +2390,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub disk_size_gb: ::std::option::Option<i64>,
-        #[doc = "Required. Disk Type to use for the worker.\nSee [Storage\noptions](https://cloud.google.com/compute/docs/disks/#introduction).\nCurrently only `pd-standard` is supported."]
+        #[doc = "Required. Disk Type to use for the worker.\nSee [Storage\noptions](https://cloud.google.com/compute/docs/disks/#introduction).\nCurrently only `pd-standard` and `pd-ssd` are supported."]
         #[serde(
             rename = "diskType",
             default,
@@ -2228,6 +2411,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub machine_type: ::std::option::Option<String>,
+        #[doc = "The maximum number of actions a worker can execute concurrently."]
+        #[serde(
+            rename = "maxConcurrentActions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub max_concurrent_actions: ::std::option::Option<i64>,
         #[doc = "Minimum CPU platform to use when creating the worker.\nSee [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms)."]
         #[serde(
             rename = "minCpuPlatform",
@@ -2277,6 +2468,22 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool {
+        #[doc = "The autoscale policy to apply on a pool."]
+        #[serde(
+            rename = "autoscale",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub autoscale: ::std::option::Option<
+            crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaAutoscale,
+        >,
+        #[doc = "Channel specifies the release channel of the pool."]
+        #[serde(
+            rename = "channel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub channel: ::std::option::Option<String>,
         #[doc = "WorkerPool resource name formatted as:\n`projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`.\nname should not be populated when creating a worker pool since it is\nprovided in the `poolId` field."]
         #[serde(
             rename = "name",
@@ -2302,7 +2509,7 @@ pub mod schemas {
         pub worker_config: ::std::option::Option<
             crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerConfig,
         >,
-        #[doc = "The desired number of workers in the worker pool. Must be a value between\n0 and 1000."]
+        #[doc = "The desired number of workers in the worker pool. Must be a value between\n0 and 15000."]
         #[serde(
             rename = "workerCount",
             default,
@@ -2451,836 +2658,6 @@ pub mod schemas {
     impl ::google_field_selector::ToFieldType
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPoolState
     {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestActionResult {
-        #[doc = "The exit code of the command."]
-        #[serde(
-            rename = "exitCode",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exit_code: ::std::option::Option<i32>,
-        #[doc = "The output directories of the action. For each output directory requested\nin the `output_directories` field of the Action, if the corresponding\ndirectory existed after the action completed, a single entry will be\npresent in the output list, which will contain the digest of\na Tree message containing\nthe directory tree, and the path equal exactly to the corresponding Action\noutput_directories member.\nAs an example, suppose the Action had an output directory `a/b/dir` and the\nexecution produced the following contents in `a/b/dir`: a file named `bar`\nand a directory named `foo` with an executable file named `baz`. Then,\noutput_directory will contain (hashes shortened for readability):\n\n````textjson\n// OutputDirectory proto:\n{\n  path: \"a/b/dir\"\n  tree_digest: {\n    hash: \"4a73bc9d03...\",\n    size: 55\n  }\n}\n// Tree proto with hash \"4a73bc9d03...\" and size 55:\n{\n  root: {\n    files: [\n      {\n        name: \"bar\",\n        digest: {\n          hash: \"4a73bc9d03...\",\n          size: 65534\n        }\n      }\n    ],\n    directories: [\n      {\n        name: \"foo\",\n        digest: {\n          hash: \"4cf2eda940...\",\n          size: 43\n        }\n      }\n    ]\n  }\n  children : {\n    // (Directory proto with hash \"4cf2eda940...\" and size 43)\n    files: [\n      {\n        name: \"baz\",\n        digest: {\n          hash: \"b2c941073e...\",\n          size: 1294,\n        },\n        is_executable: true\n      }\n    ]\n  }\n}\n````"]
-        #[serde(
-            rename = "outputDirectories",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub output_directories: ::std::option::Option<
-            Vec<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestOutputDirectory>,
-        >,
-        #[doc = "The output files of the action. For each output file requested in the\n`output_files` field of the Action, if the corresponding file existed after\nthe action completed, a single entry will be present in the output list.\n\nIf the action does not produce the requested output, or produces a\ndirectory where a regular file is expected or vice versa, then that output\nwill be omitted from the list. The server is free to arrange the output\nlist as desired; clients MUST NOT assume that the output list is sorted."]
-        #[serde(
-            rename = "outputFiles",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub output_files: ::std::option::Option<
-            Vec<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestOutputFile>,
-        >,
-        #[doc = "The digest for a blob containing the standard error of the action, which\ncan be retrieved from the\nContentAddressableStorage.\nSee `stderr_raw` for when this will be set."]
-        #[serde(
-            rename = "stderrDigest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stderr_digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "The standard error buffer of the action. The server will determine, based\non the size of the buffer, whether to return it in raw form or to return\na digest in `stderr_digest` that points to the buffer. If neither is set,\nthen the buffer is empty. The client SHOULD NOT assume it will get one of\nthe raw buffer or a digest on any given request and should be prepared to\nhandle either."]
-        #[serde(
-            rename = "stderrRaw",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stderr_raw: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The digest for a blob containing the standard output of the action, which\ncan be retrieved from the\nContentAddressableStorage.\nSee `stdout_raw` for when this will be set."]
-        #[serde(
-            rename = "stdoutDigest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stdout_digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "The standard output buffer of the action. The server will determine, based\non the size of the buffer, whether to return it in raw form or to return\na digest in `stdout_digest` that points to the buffer. If neither is set,\nthen the buffer is empty. The client SHOULD NOT assume it will get one of\nthe raw buffer or a digest on any given request and should be prepared to\nhandle either."]
-        #[serde(
-            rename = "stdoutRaw",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stdout_raw: ::std::option::Option<::google_api_bytes::Bytes>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestActionResult {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestActionResult {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestCommand {
-        #[doc = "The arguments to the command. The first argument must be the path to the\nexecutable, which must be either a relative path, in which case it is\nevaluated with respect to the input root, or an absolute path.\n\nThe working directory will always be the input root."]
-        #[serde(
-            rename = "arguments",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub arguments: ::std::option::Option<Vec<String>>,
-        #[doc = "The environment variables to set when running the program. The worker may\nprovide its own default environment variables; these defaults can be\noverridden using this field. Additional variables can also be specified.\n\nIn order to ensure that equivalent `Command`s always hash to the same\nvalue, the environment variables MUST be lexicographically sorted by name.\nSorting of strings is done by code point, equivalently, by the UTF-8 bytes."]
-        #[serde(
-            rename = "environmentVariables",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub environment_variables: ::std::option::Option<
-            Vec<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestCommandEnvironmentVariable>,
-        >,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestCommand {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestCommand {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestCommandEnvironmentVariable {
-        #[doc = "The variable name."]
-        #[serde(
-            rename = "name",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub name: ::std::option::Option<String>,
-        #[doc = "The variable value."]
-        #[serde(
-            rename = "value",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub value: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleDevtoolsRemoteexecutionV1TestCommandEnvironmentVariable
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType
-        for GoogleDevtoolsRemoteexecutionV1TestCommandEnvironmentVariable
-    {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestDigest {
-        #[doc = "The hash. In the case of SHA-256, it will always be a lowercase hex string\nexactly 64 characters long."]
-        #[serde(
-            rename = "hash",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub hash: ::std::option::Option<String>,
-        #[doc = "The size of the blob, in bytes."]
-        #[serde(
-            rename = "sizeBytes",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub size_bytes: ::std::option::Option<i64>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestDigest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestDigest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestDirectory {
-        #[doc = "The subdirectories in the directory."]
-        #[serde(
-            rename = "directories",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub directories: ::std::option::Option<
-            Vec<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDirectoryNode>,
-        >,
-        #[doc = "The files in the directory."]
-        #[serde(
-            rename = "files",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub files:
-            ::std::option::Option<Vec<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestFileNode>>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestDirectory {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestDirectory {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestDirectoryNode {
-        #[doc = "The digest of the\nDirectory object\nrepresented. See Digest\nfor information about how to take the digest of a proto message."]
-        #[serde(
-            rename = "digest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "The name of the directory."]
-        #[serde(
-            rename = "name",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestDirectoryNode {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestDirectoryNode {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata {
-        #[doc = "The digest of the Action\nbeing executed."]
-        #[serde(
-            rename = "actionDigest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub action_digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[serde(
-            rename = "stage",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stage: ::std::option::Option<
-            crate::schemas::GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage,
-        >,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard error."]
-        #[serde(
-            rename = "stderrStreamName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stderr_stream_name: ::std::option::Option<String>,
-        #[doc = "If set, the client can use this name with\nByteStream.Read to stream the\nstandard output."]
-        #[serde(
-            rename = "stdoutStreamName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub stdout_stream_name: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadata
-    {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-    pub enum GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        #[doc = "Checking the result against the cache."]
-        CacheCheck,
-        #[doc = "Finished execution."]
-        Completed,
-        #[doc = "Currently being executed by a worker."]
-        Executing,
-        #[doc = "Currently idle, awaiting a free machine to execute."]
-        Queued,
-        Unknown,
-    }
-    impl GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        pub fn as_str(self) -> &'static str {
-            match self {
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::CacheCheck => {
-                    "CACHE_CHECK"
-                }
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed => {
-                    "COMPLETED"
-                }
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Executing => {
-                    "EXECUTING"
-                }
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued => {
-                    "QUEUED"
-                }
-                GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown => {
-                    "UNKNOWN"
-                }
-            }
-        }
-    }
-    impl ::std::convert::AsRef<str>
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage
-    {
-        fn as_ref(&self) -> &str {
-            self.as_str()
-        }
-    }
-    impl ::std::str::FromStr for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        type Err = ();
-        fn from_str(
-            s: &str,
-        ) -> ::std::result::Result<
-            GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage,
-            (),
-        > {
-            Ok(match s {
-                "CACHE_CHECK" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::CacheCheck
-                }
-                "COMPLETED" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed
-                }
-                "EXECUTING" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Executing
-                }
-                "QUEUED" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued
-                }
-                "UNKNOWN" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown
-                }
-                _ => return Err(()),
-            })
-        }
-    }
-    impl ::std::fmt::Display for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-            f.write_str(self.as_str())
-        }
-    }
-    impl ::serde::Serialize for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage {
-        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-        where
-            S: ::serde::ser::Serializer,
-        {
-            serializer.serialize_str(self.as_str())
-        }
-    }
-    impl<'de> ::serde::Deserialize<'de>
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage
-    {
-        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-        where
-            D: ::serde::de::Deserializer<'de>,
-        {
-            let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok(match value {
-                "CACHE_CHECK" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::CacheCheck
-                }
-                "COMPLETED" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Completed
-                }
-                "EXECUTING" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Executing
-                }
-                "QUEUED" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Queued
-                }
-                "UNKNOWN" => {
-                    GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage::Unknown
-                }
-                _ => {
-                    return Err(::serde::de::Error::custom(format!(
-                        "invalid enum for #name: {}",
-                        value
-                    )))
-                }
-            })
-        }
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType
-        for GoogleDevtoolsRemoteexecutionV1TestExecuteOperationMetadataStage
-    {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestExecuteResponse {
-        #[doc = "True if the result was served from cache, false if it was executed."]
-        #[serde(
-            rename = "cachedResult",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub cached_result: ::std::option::Option<bool>,
-        #[doc = "The result of the action."]
-        #[serde(
-            rename = "result",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub result:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestActionResult>,
-        #[doc = "An optional list of additional log outputs the server wishes to provide. A\nserver can use this to return execution-specific logs however it wishes.\nThis is intended primarily to make it easier for users to debug issues that\nmay be outside of the actual job execution, such as by identifying the\nworker executing the action or by providing logs from the worker's setup\nphase. The keys SHOULD be human readable so that a client can display them\nto a user."]
-        #[serde(
-            rename = "serverLogs",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub server_logs: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::GoogleDevtoolsRemoteexecutionV1TestLogFile,
-            >,
-        >,
-        #[doc = "If the status has a code other than `OK`, it indicates that the action did\nnot finish execution. For example, if the operation times out during\nexecution, the status will have a `DEADLINE_EXCEEDED` code. Servers MUST\nuse this field for errors in execution, rather than the error field on the\n`Operation` object.\n\nIf the status code is other than `OK`, then the result MUST NOT be cached.\nFor an error status, the `result` field is optional; the server may\npopulate the output-, stdout-, and stderr-related fields if it has any\ninformation available, such as the stdout and stderr of a timed-out action."]
-        #[serde(
-            rename = "status",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub status: ::std::option::Option<crate::schemas::GoogleRpcStatus>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestExecuteResponse {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestExecuteResponse {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestFileNode {
-        #[doc = "The digest of the file's content."]
-        #[serde(
-            rename = "digest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "True if file is executable, false otherwise."]
-        #[serde(
-            rename = "isExecutable",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_executable: ::std::option::Option<bool>,
-        #[doc = "The name of the file."]
-        #[serde(
-            rename = "name",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub name: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestFileNode {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestFileNode {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestLogFile {
-        #[doc = "The digest of the log contents."]
-        #[serde(
-            rename = "digest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "This is a hint as to the purpose of the log, and is set to true if the log\nis human-readable text that can be usefully displayed to a user, and false\notherwise. For instance, if a command-line client wishes to print the\nserver logs to the terminal for a failed action, this allows it to avoid\ndisplaying a binary file."]
-        #[serde(
-            rename = "humanReadable",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub human_readable: ::std::option::Option<bool>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestLogFile {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestLogFile {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestOutputDirectory {
-        #[doc = "DEPRECATED: This field is deprecated and should no longer be used."]
-        #[serde(
-            rename = "digest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "The full path of the directory relative to the working directory. The path\nseparator is a forward slash `/`. Since this is a relative path, it MUST\nNOT begin with a leading forward slash. The empty string value is allowed,\nand it denotes the entire working directory."]
-        #[serde(
-            rename = "path",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub path: ::std::option::Option<String>,
-        #[doc = "The digest of the encoded\nTree proto containing the\ndirectory's contents."]
-        #[serde(
-            rename = "treeDigest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub tree_digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestOutputDirectory {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestOutputDirectory {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestOutputFile {
-        #[doc = "The raw content of the file.\n\nThis field may be used by the server to provide the content of a file\ninline in an\nActionResult and\navoid requiring that the client make a separate call to\n[ContentAddressableStorage.GetBlob] to retrieve it.\n\nThe client SHOULD NOT assume that it will get raw content with any request,\nand always be prepared to retrieve it via `digest`."]
-        #[serde(
-            rename = "content",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub content: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "The digest of the file's content."]
-        #[serde(
-            rename = "digest",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub digest:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDigest>,
-        #[doc = "True if file is executable, false otherwise."]
-        #[serde(
-            rename = "isExecutable",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub is_executable: ::std::option::Option<bool>,
-        #[doc = "The full path of the file relative to the input root, including the\nfilename. The path separator is a forward slash `/`. Since this is a\nrelative path, it MUST NOT begin with a leading forward slash."]
-        #[serde(
-            rename = "path",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub path: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestOutputFile {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestOutputFile {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestRequestMetadata {
-        #[doc = "An identifier that ties multiple requests to the same action.\nFor example, multiple requests to the CAS, Action Cache, and Execution\nAPI are used in order to compile foo.cc."]
-        #[serde(
-            rename = "actionId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub action_id: ::std::option::Option<String>,
-        #[doc = "An identifier to tie multiple tool invocations together. For example,\nruns of foo_test, bar_test and baz_test on a post-submit of a given patch."]
-        #[serde(
-            rename = "correlatedInvocationsId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub correlated_invocations_id: ::std::option::Option<String>,
-        #[doc = "The details for the tool invoking the requests."]
-        #[serde(
-            rename = "toolDetails",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub tool_details:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestToolDetails>,
-        #[doc = "An identifier that ties multiple actions together to a final result.\nFor example, multiple actions are required to build and run foo_test."]
-        #[serde(
-            rename = "toolInvocationId",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub tool_invocation_id: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestRequestMetadata {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestRequestMetadata {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestToolDetails {
-        #[doc = "Name of the tool, e.g. bazel."]
-        #[serde(
-            rename = "toolName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub tool_name: ::std::option::Option<String>,
-        #[doc = "Version of the tool used for the request, e.g. 5.0.3."]
-        #[serde(
-            rename = "toolVersion",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub tool_version: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestToolDetails {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestToolDetails {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct GoogleDevtoolsRemoteexecutionV1TestTree {
-        #[doc = "All the child directories: the directories referred to by the root and,\nrecursively, all its children. In order to reconstruct the directory tree,\nthe client must take the digests of each of the child directories and then\nbuild up a tree starting from the `root`."]
-        #[serde(
-            rename = "children",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub children: ::std::option::Option<
-            Vec<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDirectory>,
-        >,
-        #[doc = "The root directory in the tree."]
-        #[serde(
-            rename = "root",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub root:
-            ::std::option::Option<crate::schemas::GoogleDevtoolsRemoteexecutionV1TestDirectory>,
-    }
-    impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemoteexecutionV1TestTree {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for GoogleDevtoolsRemoteexecutionV1TestTree {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4215,7 +3592,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -4223,8 +3600,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -4243,7 +3632,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -4268,7 +3657,7 @@ pub mod resources {
         pub mod instances {
             pub mod params {}
             pub struct InstancesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> InstancesActions<'a> {
@@ -4369,7 +3758,7 @@ pub mod resources {
             }
             #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
             #[derive(Debug, Clone)]
-            pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateInstanceRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateInstanceRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> CreateRequestBuilder<'a> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -4492,7 +3881,10 @@ pub mod resources {
                     output.push_str("/instances");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4516,7 +3908,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4651,7 +4043,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4675,7 +4070,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4814,7 +4209,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4838,7 +4236,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 access_token: Option<String>,
@@ -4966,7 +4364,10 @@ pub mod resources {
                     output.push_str("/instances");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4990,7 +4391,7 @@ pub mod resources {
             pub mod workerpools {
                 pub mod params {}
                 pub struct WorkerpoolsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> WorkerpoolsActions<'a> {
@@ -5106,7 +4507,7 @@ pub mod resources {
                 }
                 #[doc = "Created via [WorkerpoolsActions::create()](struct.WorkerpoolsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
-                pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateWorkerPoolRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateWorkerPoolRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> CreateRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -5232,7 +4633,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5256,7 +4658,7 @@ pub mod resources {
                 #[doc = "Created via [WorkerpoolsActions::delete()](struct.WorkerpoolsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5394,7 +4796,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5418,7 +4821,7 @@ pub mod resources {
                 #[doc = "Created via [WorkerpoolsActions::get()](struct.WorkerpoolsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -5560,7 +4963,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5584,7 +4988,7 @@ pub mod resources {
                 #[doc = "Created via [WorkerpoolsActions::list()](struct.WorkerpoolsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     filter: Option<String>,
@@ -5721,7 +5125,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -5745,7 +5150,7 @@ pub mod resources {
                 }
                 #[doc = "Created via [WorkerpoolsActions::patch()](struct.WorkerpoolsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
-                pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateWorkerPoolRequest , name : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateWorkerPoolRequest , name : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> PatchRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -5870,7 +5275,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5896,7 +5302,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -5926,7 +5332,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -6061,7 +5467,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6101,9 +5510,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -6145,7 +5552,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

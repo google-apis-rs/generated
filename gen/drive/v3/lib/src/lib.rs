@@ -1,4 +1,23 @@
 #![doc = "# Resources and Methods\n    * [about](resources/about/struct.AboutActions.html)\n      * [*get*](resources/about/struct.GetRequestBuilder.html)\n    * [changes](resources/changes/struct.ChangesActions.html)\n      * [*getStartPageToken*](resources/changes/struct.GetStartPageTokenRequestBuilder.html), [*list*](resources/changes/struct.ListRequestBuilder.html), [*watch*](resources/changes/struct.WatchRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*stop*](resources/channels/struct.StopRequestBuilder.html)\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*create*](resources/comments/struct.CreateRequestBuilder.html), [*delete*](resources/comments/struct.DeleteRequestBuilder.html), [*get*](resources/comments/struct.GetRequestBuilder.html), [*list*](resources/comments/struct.ListRequestBuilder.html), [*update*](resources/comments/struct.UpdateRequestBuilder.html)\n    * [drives](resources/drives/struct.DrivesActions.html)\n      * [*create*](resources/drives/struct.CreateRequestBuilder.html), [*delete*](resources/drives/struct.DeleteRequestBuilder.html), [*get*](resources/drives/struct.GetRequestBuilder.html), [*hide*](resources/drives/struct.HideRequestBuilder.html), [*list*](resources/drives/struct.ListRequestBuilder.html), [*unhide*](resources/drives/struct.UnhideRequestBuilder.html), [*update*](resources/drives/struct.UpdateRequestBuilder.html)\n    * [files](resources/files/struct.FilesActions.html)\n      * [*copy*](resources/files/struct.CopyRequestBuilder.html), [*create*](resources/files/struct.CreateRequestBuilder.html), [*delete*](resources/files/struct.DeleteRequestBuilder.html), [*emptyTrash*](resources/files/struct.EmptyTrashRequestBuilder.html), [*export*](resources/files/struct.ExportRequestBuilder.html), [*generateIds*](resources/files/struct.GenerateIdsRequestBuilder.html), [*get*](resources/files/struct.GetRequestBuilder.html), [*list*](resources/files/struct.ListRequestBuilder.html), [*update*](resources/files/struct.UpdateRequestBuilder.html), [*watch*](resources/files/struct.WatchRequestBuilder.html)\n    * [permissions](resources/permissions/struct.PermissionsActions.html)\n      * [*create*](resources/permissions/struct.CreateRequestBuilder.html), [*delete*](resources/permissions/struct.DeleteRequestBuilder.html), [*get*](resources/permissions/struct.GetRequestBuilder.html), [*list*](resources/permissions/struct.ListRequestBuilder.html), [*update*](resources/permissions/struct.UpdateRequestBuilder.html)\n    * [replies](resources/replies/struct.RepliesActions.html)\n      * [*create*](resources/replies/struct.CreateRequestBuilder.html), [*delete*](resources/replies/struct.DeleteRequestBuilder.html), [*get*](resources/replies/struct.GetRequestBuilder.html), [*list*](resources/replies/struct.ListRequestBuilder.html), [*update*](resources/replies/struct.UpdateRequestBuilder.html)\n    * [revisions](resources/revisions/struct.RevisionsActions.html)\n      * [*delete*](resources/revisions/struct.DeleteRequestBuilder.html), [*get*](resources/revisions/struct.GetRequestBuilder.html), [*list*](resources/revisions/struct.ListRequestBuilder.html), [*update*](resources/revisions/struct.UpdateRequestBuilder.html)\n    * [teamdrives](resources/teamdrives/struct.TeamdrivesActions.html)\n      * [*create*](resources/teamdrives/struct.CreateRequestBuilder.html), [*delete*](resources/teamdrives/struct.DeleteRequestBuilder.html), [*get*](resources/teamdrives/struct.GetRequestBuilder.html), [*list*](resources/teamdrives/struct.ListRequestBuilder.html), [*update*](resources/teamdrives/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "See, edit, create, and delete all of your Google Drive files\n\n`https://www.googleapis.com/auth/drive`"]
+    pub const DRIVE: &str = "https://www.googleapis.com/auth/drive";
+    #[doc = "View and manage its own configuration data in your Google Drive\n\n`https://www.googleapis.com/auth/drive.appdata`"]
+    pub const DRIVE_APPDATA: &str = "https://www.googleapis.com/auth/drive.appdata";
+    #[doc = "View and manage Google Drive files and folders that you have opened or created with this app\n\n`https://www.googleapis.com/auth/drive.file`"]
+    pub const DRIVE_FILE: &str = "https://www.googleapis.com/auth/drive.file";
+    #[doc = "View and manage metadata of files in your Google Drive\n\n`https://www.googleapis.com/auth/drive.metadata`"]
+    pub const DRIVE_METADATA: &str = "https://www.googleapis.com/auth/drive.metadata";
+    #[doc = "View metadata for files in your Google Drive\n\n`https://www.googleapis.com/auth/drive.metadata.readonly`"]
+    pub const DRIVE_METADATA_READONLY: &str =
+        "https://www.googleapis.com/auth/drive.metadata.readonly";
+    #[doc = "View the photos, videos and albums in your Google Photos\n\n`https://www.googleapis.com/auth/drive.photos.readonly`"]
+    pub const DRIVE_PHOTOS_READONLY: &str = "https://www.googleapis.com/auth/drive.photos.readonly";
+    #[doc = "See and download all your Google Drive files\n\n`https://www.googleapis.com/auth/drive.readonly`"]
+    pub const DRIVE_READONLY: &str = "https://www.googleapis.com/auth/drive.readonly";
+    #[doc = "Modify your Google Apps Script scripts' behavior\n\n`https://www.googleapis.com/auth/drive.scripts`"]
+    pub const DRIVE_SCRIPTS: &str = "https://www.googleapis.com/auth/drive.scripts";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -515,7 +534,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub anchor: ::std::option::Option<String>,
-        #[doc = "The user who created the comment."]
+        #[doc = "The author of the comment. The author's email address and permission ID will not be populated."]
         #[serde(
             rename = "author",
             default,
@@ -1147,7 +1166,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub full_file_extension: ::std::option::Option<String>,
-        #[doc = "Whether any users are granted file access directly on this file. This field is only populated for shared drive files."]
+        #[doc = "Whether there are permissions directly on this file. This field is only populated for items in shared drives."]
         #[serde(
             rename = "hasAugmentedPermissions",
             default,
@@ -1330,6 +1349,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sharing_user: ::std::option::Option<crate::schemas::User>,
+        #[doc = "Shortcut file details. Only populated for shortcut files, which have the mimeType field set to application/vnd.google-apps.shortcut."]
+        #[serde(
+            rename = "shortcutDetails",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub shortcut_details: ::std::option::Option<crate::schemas::FileShortcutDetails>,
         #[doc = "The size of the file's content in bytes. This is only applicable to files with binary content in Google Drive."]
         #[serde(
             rename = "size",
@@ -1483,6 +1509,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_add_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can add a parent for the item without removing an existing parent in the same request. Not populated for shared drive files."]
+        #[serde(
+            rename = "canAddMyDriveParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub can_add_my_drive_parent: ::std::option::Option<bool>,
         #[doc = "Whether the current user can change the copyRequiresWriterPermission restriction of this file."]
         #[serde(
             rename = "canChangeCopyRequiresWriterPermission",
@@ -1651,6 +1684,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub can_remove_children: ::std::option::Option<bool>,
+        #[doc = "Whether the current user can remove a parent from the item without adding another parent in the same request. Not populated for shared drive files."]
+        #[serde(
+            rename = "canRemoveMyDriveParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub can_remove_my_drive_parent: ::std::option::Option<bool>,
         #[doc = "Whether the current user can rename this file."]
         #[serde(
             rename = "canRename",
@@ -1882,7 +1922,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metering_mode: ::std::option::Option<String>,
-        #[doc = "The rotation in clockwise degrees from the image's original orientation."]
+        #[doc = "The number of clockwise 90 degree rotations applied from the image's original orientation."]
         #[serde(
             rename = "rotation",
             default,
@@ -1967,6 +2007,44 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for FileImageMediaMetadataLocation {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct FileShortcutDetails {
+        #[doc = "The ID of the file that this shortcut points to."]
+        #[serde(
+            rename = "targetId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub target_id: ::std::option::Option<String>,
+        #[doc = "The MIME type of the file that this shortcut points to. The value of this field is a snapshot of the target's MIME type, captured when the shortcut is created."]
+        #[serde(
+            rename = "targetMimeType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub target_mime_type: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for FileShortcutDetails {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FileShortcutDetails {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2132,7 +2210,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deleted: ::std::option::Option<bool>,
-        #[doc = "A displayable name for users, groups or domains."]
+        #[doc = "The \"pretty\" name of the value of the permission. The following is a list of examples for each type of permission:\n\n* user - User's full name, as defined for their Google account, such as \"Joe Smith.\" \n* group - Name of the Google Group, such as \"The Company Administrators.\" \n* domain - String domain name, such as \"thecompany.com.\" \n* anyone - No displayName is present."]
         #[serde(
             rename = "displayName",
             default,
@@ -2160,7 +2238,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expiration_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
-        #[doc = "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId."]
+        #[doc = "The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as permissionId. IDs should be treated as opaque values."]
         #[serde(
             rename = "id",
             default,
@@ -2189,7 +2267,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub photo_link: ::std::option::Option<String>,
-        #[doc = "The type of the grantee. Valid values are:\n\n* user \n* group \n* domain \n* anyone"]
+        #[doc = "The type of the grantee. Valid values are:\n\n* user \n* group \n* domain \n* anyone  When creating a permission, if type is user or group, you must provide an emailAddress for the user or group. When type is domain, you must provide a domain. There isn't extra information required for a anyone type."]
         #[serde(
             rename = "type",
             default,
@@ -2242,7 +2320,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub inherited: ::std::option::Option<bool>,
-        #[doc = "The ID of the item from which this permission is inherited. This is an output-only field and is only populated for members of the shared drive."]
+        #[doc = "The ID of the item from which this permission is inherited. This is an output-only field."]
         #[serde(
             rename = "inheritedFrom",
             default,
@@ -2391,7 +2469,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub action: ::std::option::Option<String>,
-        #[doc = "The user who created the reply."]
+        #[doc = "The author of the reply. The author's email address and permission ID will not be populated."]
         #[serde(
             rename = "author",
             default,
@@ -3217,7 +3295,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3225,8 +3303,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3308,7 +3398,7 @@ pub mod resources {
     pub mod about {
         pub mod params {}
         pub struct AboutActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AboutActions<'a> {
@@ -3333,7 +3423,7 @@ pub mod resources {
         #[doc = "Created via [AboutActions::get()](struct.AboutActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3428,7 +3518,10 @@ pub mod resources {
                 output.push_str("about");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3449,7 +3542,7 @@ pub mod resources {
     pub mod changes {
         pub mod params {}
         pub struct ChangesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ChangesActions<'a> {
@@ -3535,7 +3628,7 @@ pub mod resources {
         #[doc = "Created via [ChangesActions::get_start_page_token()](struct.ChangesActions.html#method.get_start_page_token)"]
         #[derive(Debug, Clone)]
         pub struct GetStartPageTokenRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             drive_id: Option<String>,
             supports_all_drives: Option<bool>,
@@ -3550,7 +3643,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> GetStartPageTokenRequestBuilder<'a> {
-            #[doc = "The ID of the shared drive for which the starting pageToken for listing future changes from that shared drive will be returned."]
+            #[doc = "The ID of the shared drive for which the starting pageToken for listing future changes from that shared drive is returned."]
             pub fn drive_id(mut self, value: impl Into<String>) -> Self {
                 self.drive_id = Some(value.into());
                 self
@@ -3656,7 +3749,10 @@ pub mod resources {
                 output.push_str("changes/startPageToken");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("driveId", &self.drive_id)]);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
@@ -3680,7 +3776,7 @@ pub mod resources {
         #[doc = "Created via [ChangesActions::list()](struct.ChangesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_token: String,
             drive_id: Option<String>,
@@ -3703,7 +3799,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "The shared drive from which changes will be returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier."]
+            #[doc = "The shared drive from which changes are returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier."]
             pub fn drive_id(mut self, value: impl Into<String>) -> Self {
                 self.drive_id = Some(value.into());
                 self
@@ -3713,7 +3809,7 @@ pub mod resources {
                 self.include_corpus_removals = Some(value);
                 self
             }
-            #[doc = "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results."]
+            #[doc = "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results."]
             pub fn include_items_from_all_drives(mut self, value: bool) -> Self {
                 self.include_items_from_all_drives = Some(value);
                 self
@@ -3942,7 +4038,10 @@ pub mod resources {
                 output.push_str("changes");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageToken", &self.page_token)]);
                 let req = req.query(&[("driveId", &self.drive_id)]);
@@ -3988,7 +4087,7 @@ pub mod resources {
         #[doc = "Created via [ChangesActions::watch()](struct.ChangesActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             page_token: String,
@@ -4012,7 +4111,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> WatchRequestBuilder<'a> {
-            #[doc = "The shared drive from which changes will be returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier."]
+            #[doc = "The shared drive from which changes are returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier."]
             pub fn drive_id(mut self, value: impl Into<String>) -> Self {
                 self.drive_id = Some(value.into());
                 self
@@ -4022,7 +4121,7 @@ pub mod resources {
                 self.include_corpus_removals = Some(value);
                 self
             }
-            #[doc = "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results."]
+            #[doc = "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results."]
             pub fn include_items_from_all_drives(mut self, value: bool) -> Self {
                 self.include_items_from_all_drives = Some(value);
                 self
@@ -4152,7 +4251,10 @@ pub mod resources {
                 output.push_str("changes/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("pageToken", &self.page_token)]);
                 let req = req.query(&[("driveId", &self.drive_id)]);
@@ -4188,7 +4290,7 @@ pub mod resources {
     pub mod channels {
         pub mod params {}
         pub struct ChannelsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ChannelsActions<'a> {
@@ -4214,7 +4316,7 @@ pub mod resources {
         #[doc = "Created via [ChannelsActions::stop()](struct.ChannelsActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             alt: Option<crate::params::Alt>,
@@ -4262,7 +4364,10 @@ pub mod resources {
                 output.push_str("channels/stop");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4283,7 +4388,7 @@ pub mod resources {
     pub mod comments {
         pub mod params {}
         pub struct CommentsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> CommentsActions<'a> {
@@ -4396,7 +4501,7 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::create()](struct.CommentsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Comment,
             file_id: String,
@@ -4502,7 +4607,10 @@ pub mod resources {
                 output.push_str("/comments");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4522,7 +4630,7 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::delete()](struct.CommentsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             comment_id: String,
@@ -4585,7 +4693,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4605,7 +4716,7 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::get()](struct.CommentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             comment_id: String,
@@ -4723,7 +4834,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeDeleted", &self.include_deleted)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4744,7 +4858,7 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::list()](struct.CommentsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             include_deleted: Option<bool>,
@@ -4972,7 +5086,10 @@ pub mod resources {
                 output.push_str("/comments");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeDeleted", &self.include_deleted)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -5007,7 +5124,7 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::update()](struct.CommentsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Comment,
             file_id: String,
@@ -5121,7 +5238,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5142,7 +5262,7 @@ pub mod resources {
     pub mod drives {
         pub mod params {}
         pub struct DrivesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DrivesActions<'a> {
@@ -5273,7 +5393,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::create()](struct.DrivesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Drive,
             request_id: String,
@@ -5371,7 +5491,10 @@ pub mod resources {
                 output.push_str("drives");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("requestId", &self.request_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5392,7 +5515,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::delete()](struct.DrivesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             drive_id: String,
             alt: Option<crate::params::Alt>,
@@ -5446,7 +5569,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5466,7 +5592,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::get()](struct.DrivesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             drive_id: String,
             use_domain_admin_access: Option<bool>,
@@ -5575,7 +5701,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5596,7 +5725,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::hide()](struct.DrivesActions.html#method.hide)"]
         #[derive(Debug, Clone)]
         pub struct HideRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             drive_id: String,
             alt: Option<crate::params::Alt>,
@@ -5700,7 +5829,10 @@ pub mod resources {
                 output.push_str("/hide");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5720,7 +5852,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::list()](struct.DrivesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_size: Option<i32>,
             page_token: Option<String>,
@@ -5939,7 +6071,10 @@ pub mod resources {
                 output.push_str("drives");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -5974,7 +6109,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::unhide()](struct.DrivesActions.html#method.unhide)"]
         #[derive(Debug, Clone)]
         pub struct UnhideRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             drive_id: String,
             alt: Option<crate::params::Alt>,
@@ -6078,7 +6213,10 @@ pub mod resources {
                 output.push_str("/unhide");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6098,7 +6236,7 @@ pub mod resources {
         #[doc = "Created via [DrivesActions::update()](struct.DrivesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Drive,
             drive_id: String,
@@ -6209,7 +6347,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6303,7 +6444,7 @@ pub mod resources {
             }
         }
         pub struct FilesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> FilesActions<'a> {
@@ -6328,6 +6469,7 @@ pub mod resources {
                     quota_user: None,
                     user_ip: None,
                     file_id: file_id.into(),
+                    enforce_single_parent: None,
                     ignore_default_visibility: None,
                     keep_revision_forever: None,
                     ocr_language: None,
@@ -6348,6 +6490,7 @@ pub mod resources {
                     pretty_print: None,
                     quota_user: None,
                     user_ip: None,
+                    enforce_single_parent: None,
                     ignore_default_visibility: None,
                     keep_revision_forever: None,
                     ocr_language: None,
@@ -6487,6 +6630,7 @@ pub mod resources {
                     user_ip: None,
                     file_id: file_id.into(),
                     add_parents: None,
+                    enforce_single_parent: None,
                     keep_revision_forever: None,
                     ocr_language: None,
                     remove_parents: None,
@@ -6522,10 +6666,11 @@ pub mod resources {
         #[doc = "Created via [FilesActions::copy()](struct.FilesActions.html#method.copy)"]
         #[derive(Debug, Clone)]
         pub struct CopyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::File,
             file_id: String,
+            enforce_single_parent: Option<bool>,
             ignore_default_visibility: Option<bool>,
             keep_revision_forever: Option<bool>,
             ocr_language: Option<String>,
@@ -6540,12 +6685,17 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> CopyRequestBuilder<'a> {
+            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail."]
+            pub fn enforce_single_parent(mut self, value: bool) -> Self {
+                self.enforce_single_parent = Some(value);
+                self
+            }
             #[doc = "Whether to ignore the domain's default visibility settings for the created file. Domain administrators can choose to make all uploaded files visible to the domain by default; this parameter bypasses that behavior for the request. Permissions are still inherited from parent folders."]
             pub fn ignore_default_visibility(mut self, value: bool) -> Self {
                 self.ignore_default_visibility = Some(value);
                 self
             }
-            #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive."]
+            #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions."]
             pub fn keep_revision_forever(mut self, value: bool) -> Self {
                 self.keep_revision_forever = Some(value);
                 self
@@ -6656,8 +6806,12 @@ pub mod resources {
                 output.push_str("/copy");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
                 let req =
                     req.query(&[("ignoreDefaultVisibility", &self.ignore_default_visibility)]);
                 let req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
@@ -6682,9 +6836,10 @@ pub mod resources {
         #[doc = "Created via [FilesActions::create()](struct.FilesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::File,
+            enforce_single_parent: Option<bool>,
             ignore_default_visibility: Option<bool>,
             keep_revision_forever: Option<bool>,
             ocr_language: Option<String>,
@@ -6700,12 +6855,17 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> CreateRequestBuilder<'a> {
+            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. Requests that specify more than one parent fail."]
+            pub fn enforce_single_parent(mut self, value: bool) -> Self {
+                self.enforce_single_parent = Some(value);
+                self
+            }
             #[doc = "Whether to ignore the domain's default visibility settings for the created file. Domain administrators can choose to make all uploaded files visible to the domain by default; this parameter bypasses that behavior for the request. Permissions are still inherited from parent folders."]
             pub fn ignore_default_visibility(mut self, value: bool) -> Self {
                 self.ignore_default_visibility = Some(value);
                 self
             }
-            #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive."]
+            #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions."]
             pub fn keep_revision_forever(mut self, value: bool) -> Self {
                 self.keep_revision_forever = Some(value);
                 self
@@ -6789,7 +6949,7 @@ pub mod resources {
                     ::reqwest::header::CONTENT_TYPE,
                     format!("multipart/related; boundary={}", multipart.boundary()),
                 );
-                let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _resumable_upload_path(&self) -> String {
@@ -6888,8 +7048,12 @@ pub mod resources {
                 output.push_str("files");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
                 let req =
                     req.query(&[("ignoreDefaultVisibility", &self.ignore_default_visibility)]);
                 let req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
@@ -6918,7 +7082,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::delete()](struct.FilesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             supports_all_drives: Option<bool>,
@@ -6984,7 +7148,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
                 let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
@@ -7006,7 +7173,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::empty_trash()](struct.FilesActions.html#method.empty_trash)"]
         #[derive(Debug, Clone)]
         pub struct EmptyTrashRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -7052,7 +7219,10 @@ pub mod resources {
                 output.push_str("files/trash");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -7072,7 +7242,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::export()](struct.FilesActions.html#method.export)"]
         #[derive(Debug, Clone)]
         pub struct ExportRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             mime_type: String,
@@ -7151,7 +7321,10 @@ pub mod resources {
                 output.push_str("/export");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("mimeType", &self.mime_type)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7172,7 +7345,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::generate_ids()](struct.FilesActions.html#method.generate_ids)"]
         #[derive(Debug, Clone)]
         pub struct GenerateIdsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             count: Option<i32>,
             space: Option<String>,
@@ -7281,7 +7454,10 @@ pub mod resources {
                 output.push_str("files/generateIds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("count", &self.count)]);
                 let req = req.query(&[("space", &self.space)]);
@@ -7303,7 +7479,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::get()](struct.FilesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             acknowledge_abuse: Option<bool>,
@@ -7444,7 +7620,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
@@ -7467,7 +7646,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::list()](struct.FilesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             corpora: Option<String>,
             corpus: Option<crate::resources::files::params::ListCorpus>,
@@ -7506,7 +7685,7 @@ pub mod resources {
                 self.drive_id = Some(value.into());
                 self
             }
-            #[doc = "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items will be included in the results."]
+            #[doc = "Deprecated - Whether both My Drive and shared drive items should be included in results. This parameter will only be effective until June 1, 2020. Afterwards shared drive items are included in the results."]
             pub fn include_items_from_all_drives(mut self, value: bool) -> Self {
                 self.include_items_from_all_drives = Some(value);
                 self
@@ -7738,7 +7917,10 @@ pub mod resources {
                 output.push_str("files");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("corpora", &self.corpora)]);
                 let req = req.query(&[("corpus", &self.corpus)]);
@@ -7785,11 +7967,12 @@ pub mod resources {
         #[doc = "Created via [FilesActions::update()](struct.FilesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::File,
             file_id: String,
             add_parents: Option<String>,
+            enforce_single_parent: Option<bool>,
             keep_revision_forever: Option<bool>,
             ocr_language: Option<String>,
             remove_parents: Option<String>,
@@ -7810,7 +7993,12 @@ pub mod resources {
                 self.add_parents = Some(value.into());
                 self
             }
-            #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive."]
+            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. If the item's owner makes a request to add a single parent, the item is removed from all current folders and placed in the requested folder. Other requests that increase the number of parents fail, except when the canAddMyDriveParent file capability is true and a single parent is being added."]
+            pub fn enforce_single_parent(mut self, value: bool) -> Self {
+                self.enforce_single_parent = Some(value);
+                self
+            }
+            #[doc = "Whether to set the 'keepForever' field in the new head revision. This is only applicable to files with binary content in Google Drive. Only 200 revisions for the file can be kept forever. If the limit is reached, try deleting pinned revisions."]
             pub fn keep_revision_forever(mut self, value: bool) -> Self {
                 self.keep_revision_forever = Some(value);
                 self
@@ -7906,7 +8094,7 @@ pub mod resources {
                     ::reqwest::header::CONTENT_TYPE,
                     format!("multipart/related; boundary={}", multipart.boundary()),
                 );
-                let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _resumable_upload_path(&self) -> String {
@@ -8019,9 +8207,13 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("addParents", &self.add_parents)]);
+                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
                 let req = req.query(&[("keepRevisionForever", &self.keep_revision_forever)]);
                 let req = req.query(&[("ocrLanguage", &self.ocr_language)]);
                 let req = req.query(&[("removeParents", &self.remove_parents)]);
@@ -8049,7 +8241,7 @@ pub mod resources {
         #[doc = "Created via [FilesActions::watch()](struct.FilesActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             file_id: String,
@@ -8196,7 +8388,10 @@ pub mod resources {
                 output.push_str("/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
@@ -8220,7 +8415,7 @@ pub mod resources {
     pub mod permissions {
         pub mod params {}
         pub struct PermissionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PermissionsActions<'a> {
@@ -8246,6 +8441,8 @@ pub mod resources {
                     user_ip: None,
                     file_id: file_id.into(),
                     email_message: None,
+                    enforce_single_parent: None,
+                    move_to_new_owners_root: None,
                     send_notification_email: None,
                     supports_all_drives: None,
                     supports_team_drives: None,
@@ -8350,11 +8547,13 @@ pub mod resources {
         #[doc = "Created via [PermissionsActions::create()](struct.PermissionsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Permission,
             file_id: String,
             email_message: Option<String>,
+            enforce_single_parent: Option<bool>,
+            move_to_new_owners_root: Option<bool>,
             send_notification_email: Option<bool>,
             supports_all_drives: Option<bool>,
             supports_team_drives: Option<bool>,
@@ -8372,6 +8571,16 @@ pub mod resources {
             #[doc = "A plain text custom message to include in the notification email."]
             pub fn email_message(mut self, value: impl Into<String>) -> Self {
                 self.email_message = Some(value.into());
+                self
+            }
+            #[doc = "Set to true to opt in to API behavior that aims for all items to have exactly one parent. This parameter only takes effect if the item is not in a shared drive. See moveToNewOwnersRoot for details."]
+            pub fn enforce_single_parent(mut self, value: bool) -> Self {
+                self.enforce_single_parent = Some(value);
+                self
+            }
+            #[doc = "This parameter only takes effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. When set to true, the item is moved to the new owner's My Drive root folder and all prior parents removed. If set to false, when enforceSingleParent=true, parents are not changed. If set to false, when enforceSingleParent=false, existing parents are not changed; however, the file will be added to the new owner's My Drive root folder, unless it is already in the new owner's My Drive."]
+            pub fn move_to_new_owners_root(mut self, value: bool) -> Self {
+                self.move_to_new_owners_root = Some(value);
                 self
             }
             #[doc = "Whether to send a notification email when sharing to users or groups. This defaults to true for users and groups, and is not allowed for other requests. It must not be disabled for ownership transfers."]
@@ -8494,9 +8703,14 @@ pub mod resources {
                 output.push_str("/permissions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("emailMessage", &self.email_message)]);
+                let req = req.query(&[("enforceSingleParent", &self.enforce_single_parent)]);
+                let req = req.query(&[("moveToNewOwnersRoot", &self.move_to_new_owners_root)]);
                 let req = req.query(&[("sendNotificationEmail", &self.send_notification_email)]);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
                 let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
@@ -8520,7 +8734,7 @@ pub mod resources {
         #[doc = "Created via [PermissionsActions::delete()](struct.PermissionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             permission_id: String,
@@ -8601,7 +8815,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
                 let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
@@ -8624,7 +8841,7 @@ pub mod resources {
         #[doc = "Created via [PermissionsActions::get()](struct.PermissionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             permission_id: String,
@@ -8756,7 +8973,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
                 let req = req.query(&[("supportsTeamDrives", &self.supports_team_drives)]);
@@ -8779,7 +8999,7 @@ pub mod resources {
         #[doc = "Created via [PermissionsActions::list()](struct.PermissionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             page_size: Option<i32>,
@@ -9013,7 +9233,10 @@ pub mod resources {
                 output.push_str("/permissions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -9049,7 +9272,7 @@ pub mod resources {
         #[doc = "Created via [PermissionsActions::update()](struct.PermissionsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Permission,
             file_id: String,
@@ -9195,7 +9418,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("removeExpiration", &self.remove_expiration)]);
                 let req = req.query(&[("supportsAllDrives", &self.supports_all_drives)]);
@@ -9221,7 +9447,7 @@ pub mod resources {
     pub mod replies {
         pub mod params {}
         pub struct RepliesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RepliesActions<'a> {
@@ -9346,7 +9572,7 @@ pub mod resources {
         #[doc = "Created via [RepliesActions::create()](struct.RepliesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Reply,
             file_id: String,
@@ -9461,7 +9687,10 @@ pub mod resources {
                 output.push_str("/replies");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -9481,7 +9710,7 @@ pub mod resources {
         #[doc = "Created via [RepliesActions::delete()](struct.RepliesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             comment_id: String,
@@ -9553,7 +9782,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -9573,7 +9805,7 @@ pub mod resources {
         #[doc = "Created via [RepliesActions::get()](struct.RepliesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             comment_id: String,
@@ -9700,7 +9932,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeDeleted", &self.include_deleted)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -9721,7 +9956,7 @@ pub mod resources {
         #[doc = "Created via [RepliesActions::list()](struct.RepliesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             comment_id: String,
@@ -9952,7 +10187,10 @@ pub mod resources {
                 output.push_str("/replies");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeDeleted", &self.include_deleted)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -9986,7 +10224,7 @@ pub mod resources {
         #[doc = "Created via [RepliesActions::update()](struct.RepliesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Reply,
             file_id: String,
@@ -10109,7 +10347,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -10130,7 +10371,7 @@ pub mod resources {
     pub mod revisions {
         pub mod params {}
         pub struct RevisionsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RevisionsActions<'a> {
@@ -10221,7 +10462,7 @@ pub mod resources {
         #[doc = "Created via [RevisionsActions::delete()](struct.RevisionsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             revision_id: String,
@@ -10284,7 +10525,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -10304,7 +10548,7 @@ pub mod resources {
         #[doc = "Created via [RevisionsActions::get()](struct.RevisionsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             revision_id: String,
@@ -10452,7 +10696,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("acknowledgeAbuse", &self.acknowledge_abuse)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -10473,7 +10720,7 @@ pub mod resources {
         #[doc = "Created via [RevisionsActions::list()](struct.RevisionsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             file_id: String,
             page_size: Option<i32>,
@@ -10689,7 +10936,10 @@ pub mod resources {
                 output.push_str("/revisions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -10722,7 +10972,7 @@ pub mod resources {
         #[doc = "Created via [RevisionsActions::update()](struct.RevisionsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Revision,
             file_id: String,
@@ -10836,7 +11086,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -10857,7 +11110,7 @@ pub mod resources {
     pub mod teamdrives {
         pub mod params {}
         pub struct TeamdrivesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TeamdrivesActions<'a> {
@@ -10958,7 +11211,7 @@ pub mod resources {
         #[doc = "Created via [TeamdrivesActions::create()](struct.TeamdrivesActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TeamDrive,
             request_id: String,
@@ -11058,7 +11311,10 @@ pub mod resources {
                 output.push_str("teamdrives");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("requestId", &self.request_id)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11079,7 +11335,7 @@ pub mod resources {
         #[doc = "Created via [TeamdrivesActions::delete()](struct.TeamdrivesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             team_drive_id: String,
             alt: Option<crate::params::Alt>,
@@ -11133,7 +11389,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -11153,7 +11412,7 @@ pub mod resources {
         #[doc = "Created via [TeamdrivesActions::get()](struct.TeamdrivesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             team_drive_id: String,
             use_domain_admin_access: Option<bool>,
@@ -11264,7 +11523,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11285,7 +11547,7 @@ pub mod resources {
         #[doc = "Created via [TeamdrivesActions::list()](struct.TeamdrivesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             page_size: Option<i32>,
             page_token: Option<String>,
@@ -11504,7 +11766,10 @@ pub mod resources {
                 output.push_str("teamdrives");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -11539,7 +11804,7 @@ pub mod resources {
         #[doc = "Created via [TeamdrivesActions::update()](struct.TeamdrivesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TeamDrive,
             team_drive_id: String,
@@ -11652,7 +11917,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("useDomainAdminAccess", &self.use_domain_admin_access)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11688,9 +11956,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -11732,7 +11998,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();
@@ -11947,13 +12215,13 @@ mod parsed_string {
     }
 }
 pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     url: String,
     progress: Option<i64>,
 }
 
 impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
+    pub fn new(reqwest: ::reqwest::blocking::Client, url: String) -> Self {
         ResumableUpload {
             reqwest,
             url,
@@ -12001,7 +12269,7 @@ impl ResumableUpload {
         let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
         let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
         let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
+        let req = req.body(::reqwest::blocking::Body::sized(reader, content_length));
         req.send()?.error_for_status()?;
         Ok(())
     }

@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [achievements](resources/achievements/struct.AchievementsActions.html)\n      * [*reset*](resources/achievements/struct.ResetRequestBuilder.html), [*resetAll*](resources/achievements/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/achievements/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/achievements/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/achievements/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*listHidden*](resources/applications/struct.ListHiddenRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*reset*](resources/events/struct.ResetRequestBuilder.html), [*resetAll*](resources/events/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/events/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/events/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/events/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [players](resources/players/struct.PlayersActions.html)\n      * [*hide*](resources/players/struct.HideRequestBuilder.html), [*unhide*](resources/players/struct.UnhideRequestBuilder.html)\n    * [quests](resources/quests/struct.QuestsActions.html)\n      * [*reset*](resources/quests/struct.ResetRequestBuilder.html), [*resetAll*](resources/quests/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/quests/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/quests/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/quests/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [rooms](resources/rooms/struct.RoomsActions.html)\n      * [*reset*](resources/rooms/struct.ResetRequestBuilder.html), [*resetForAllPlayers*](resources/rooms/struct.ResetForAllPlayersRequestBuilder.html)\n    * [scores](resources/scores/struct.ScoresActions.html)\n      * [*reset*](resources/scores/struct.ResetRequestBuilder.html), [*resetAll*](resources/scores/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/scores/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/scores/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/scores/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [turn_based_matches](resources/turn_based_matches/struct.TurnBasedMatchesActions.html)\n      * [*reset*](resources/turn_based_matches/struct.ResetRequestBuilder.html), [*resetForAllPlayers*](resources/turn_based_matches/struct.ResetForAllPlayersRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [achievements](resources/achievements/struct.AchievementsActions.html)\n      * [*reset*](resources/achievements/struct.ResetRequestBuilder.html), [*resetAll*](resources/achievements/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/achievements/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/achievements/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/achievements/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*listHidden*](resources/applications/struct.ListHiddenRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*reset*](resources/events/struct.ResetRequestBuilder.html), [*resetAll*](resources/events/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/events/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/events/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/events/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [players](resources/players/struct.PlayersActions.html)\n      * [*hide*](resources/players/struct.HideRequestBuilder.html), [*unhide*](resources/players/struct.UnhideRequestBuilder.html)\n    * [rooms](resources/rooms/struct.RoomsActions.html)\n      * [*reset*](resources/rooms/struct.ResetRequestBuilder.html), [*resetForAllPlayers*](resources/rooms/struct.ResetForAllPlayersRequestBuilder.html)\n    * [scores](resources/scores/struct.ScoresActions.html)\n      * [*reset*](resources/scores/struct.ResetRequestBuilder.html), [*resetAll*](resources/scores/struct.ResetAllRequestBuilder.html), [*resetAllForAllPlayers*](resources/scores/struct.ResetAllForAllPlayersRequestBuilder.html), [*resetForAllPlayers*](resources/scores/struct.ResetForAllPlayersRequestBuilder.html), [*resetMultipleForAllPlayers*](resources/scores/struct.ResetMultipleForAllPlayersRequestBuilder.html)\n    * [turn_based_matches](resources/turn_based_matches/struct.TurnBasedMatchesActions.html)\n      * [*reset*](resources/turn_based_matches/struct.ResetRequestBuilder.html), [*resetForAllPlayers*](resources/turn_based_matches/struct.ResetForAllPlayersRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Create, edit, and delete your Google Play Games activity\n\n`https://www.googleapis.com/auth/games`"]
+    pub const GAMES: &str = "https://www.googleapis.com/auth/games";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -446,6 +450,13 @@ pub mod schemas {
         )]
         pub experience_info:
             ::std::option::Option<crate::schemas::GamesPlayerExperienceInfoResource>,
+        #[doc = "The friend status of the given player, relative to the requester. This is unset if the player is not sharing their friends list with the game."]
+        #[serde(
+            rename = "friendStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub friend_status: ::std::option::Option<String>,
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#player."]
         #[serde(
             rename = "kind",
@@ -676,44 +687,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct QuestsResetMultipleForAllRequest {
-        #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#questsResetMultipleForAllRequest."]
-        #[serde(
-            rename = "kind",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub kind: ::std::option::Option<String>,
-        #[doc = "The IDs of quests to reset."]
-        #[serde(
-            rename = "quest_ids",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub quest_ids: ::std::option::Option<Vec<String>>,
-    }
-    impl ::google_field_selector::FieldSelector for QuestsResetMultipleForAllRequest {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for QuestsResetMultipleForAllRequest {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct ScoresResetMultipleForAllRequest {
         #[doc = "Uniquely identifies the type of this resource. Value is always the fixed string gamesManagement#scoresResetMultipleForAllRequest."]
         #[serde(
@@ -810,7 +783,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -818,8 +791,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -854,13 +839,6 @@ impl Client {
             auth: self.auth_ref(),
         }
     }
-    #[doc = "Actions that can be performed on the quests resource"]
-    pub fn quests(&self) -> crate::resources::quests::QuestsActions {
-        crate::resources::quests::QuestsActions {
-            reqwest: &self.reqwest,
-            auth: self.auth_ref(),
-        }
-    }
     #[doc = "Actions that can be performed on the rooms resource"]
     pub fn rooms(&self) -> crate::resources::rooms::RoomsActions {
         crate::resources::rooms::RoomsActions {
@@ -889,7 +867,7 @@ pub mod resources {
     pub mod achievements {
         pub mod params {}
         pub struct AchievementsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AchievementsActions<'a> {
@@ -979,7 +957,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset()](struct.AchievementsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             alt: Option<crate::params::Alt>,
@@ -1085,7 +1063,10 @@ pub mod resources {
                 output.push_str("/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1105,7 +1086,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_all()](struct.AchievementsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1202,7 +1183,10 @@ pub mod resources {
                 output.push_str("achievements/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1222,7 +1206,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_all_for_all_players()](struct.AchievementsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1268,7 +1252,10 @@ pub mod resources {
                 output.push_str("achievements/resetAllForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1288,7 +1275,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_for_all_players()](struct.AchievementsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             alt: Option<crate::params::Alt>,
@@ -1343,7 +1330,10 @@ pub mod resources {
                 output.push_str("/resetForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1363,7 +1353,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_multiple_for_all_players()](struct.AchievementsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AchievementResetMultipleForAllRequest,
             alt: Option<crate::params::Alt>,
@@ -1411,7 +1401,10 @@ pub mod resources {
                 output.push_str("achievements/resetMultipleForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1432,7 +1425,7 @@ pub mod resources {
     pub mod applications {
         pub mod params {}
         pub struct ApplicationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ApplicationsActions<'a> {
@@ -1463,7 +1456,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::list_hidden()](struct.ApplicationsActions.html#method.list_hidden)"]
         #[derive(Debug, Clone)]
         pub struct ListHiddenRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             max_results: Option<i32>,
@@ -1679,7 +1672,10 @@ pub mod resources {
                 output.push_str("/players/hidden");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -1713,14 +1709,14 @@ pub mod resources {
     pub mod events {
         pub mod params {}
         pub struct EventsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> EventsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. All quests for this player that use the event will also be reset."]
+            #[doc = "Resets all player progress on the event with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application."]
             pub fn reset(&self, event_id: impl Into<String>) -> ResetRequestBuilder {
                 ResetRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1735,7 +1731,7 @@ pub mod resources {
                     event_id: event_id.into(),
                 }
             }
-            #[doc = "Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application. All quests for this player will also be reset."]
+            #[doc = "Resets all player progress on all events for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application."]
             pub fn reset_all(&self) -> ResetAllRequestBuilder {
                 ResetAllRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1749,7 +1745,7 @@ pub mod resources {
                     user_ip: None,
                 }
             }
-            #[doc = "Resets all draft events for all players. This method is only available to user accounts for your developer console. All quests that use any of these events will also be reset."]
+            #[doc = "Resets all draft events for all players. This method is only available to user accounts for your developer console."]
             pub fn reset_all_for_all_players(&self) -> ResetAllForAllPlayersRequestBuilder {
                 ResetAllForAllPlayersRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1763,7 +1759,7 @@ pub mod resources {
                     user_ip: None,
                 }
             }
-            #[doc = "Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset. All quests that use the event will also be reset."]
+            #[doc = "Resets the event with the given ID for all players. This method is only available to user accounts for your developer console. Only draft events can be reset."]
             pub fn reset_for_all_players(
                 &self,
                 event_id: impl Into<String>,
@@ -1781,7 +1777,7 @@ pub mod resources {
                     event_id: event_id.into(),
                 }
             }
-            #[doc = "Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset. All quests that use any of the events will also be reset."]
+            #[doc = "Resets events with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft events may be reset."]
             pub fn reset_multiple_for_all_players(
                 &self,
                 request: crate::schemas::EventsResetMultipleForAllRequest,
@@ -1803,7 +1799,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset()](struct.EventsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             event_id: String,
             alt: Option<crate::params::Alt>,
@@ -1858,7 +1854,10 @@ pub mod resources {
                 output.push_str("/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1878,7 +1877,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_all()](struct.EventsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1924,7 +1923,10 @@ pub mod resources {
                 output.push_str("events/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1944,7 +1946,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_all_for_all_players()](struct.EventsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1990,7 +1992,10 @@ pub mod resources {
                 output.push_str("events/resetAllForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2010,7 +2015,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_for_all_players()](struct.EventsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             event_id: String,
             alt: Option<crate::params::Alt>,
@@ -2065,7 +2070,10 @@ pub mod resources {
                 output.push_str("/resetForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2085,7 +2093,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_multiple_for_all_players()](struct.EventsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::EventsResetMultipleForAllRequest,
             alt: Option<crate::params::Alt>,
@@ -2133,7 +2141,10 @@ pub mod resources {
                 output.push_str("events/resetMultipleForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2154,7 +2165,7 @@ pub mod resources {
     pub mod players {
         pub mod params {}
         pub struct PlayersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PlayersActions<'a> {
@@ -2205,7 +2216,7 @@ pub mod resources {
         #[doc = "Created via [PlayersActions::hide()](struct.PlayersActions.html#method.hide)"]
         #[derive(Debug, Clone)]
         pub struct HideRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             player_id: String,
@@ -2268,7 +2279,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2288,7 +2302,7 @@ pub mod resources {
         #[doc = "Created via [PlayersActions::unhide()](struct.PlayersActions.html#method.unhide)"]
         #[derive(Debug, Clone)]
         pub struct UnhideRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             player_id: String,
@@ -2351,449 +2365,11 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-    }
-    pub mod quests {
-        pub mod params {}
-        pub struct QuestsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-        }
-        impl<'a> QuestsActions<'a> {
-            fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
-                self.auth
-            }
-            #[doc = "Resets all player progress on the quest with the given ID for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application."]
-            pub fn reset(&self, quest_id: impl Into<String>) -> ResetRequestBuilder {
-                ResetRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    quest_id: quest_id.into(),
-                }
-            }
-            #[doc = "Resets all player progress on all quests for the currently authenticated player. This method is only accessible to whitelisted tester accounts for your application."]
-            pub fn reset_all(&self) -> ResetAllRequestBuilder {
-                ResetAllRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                }
-            }
-            #[doc = "Resets all draft quests for all players. This method is only available to user accounts for your developer console."]
-            pub fn reset_all_for_all_players(&self) -> ResetAllForAllPlayersRequestBuilder {
-                ResetAllForAllPlayersRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                }
-            }
-            #[doc = "Resets all player progress on the quest with the given ID for all players. This method is only available to user accounts for your developer console. Only draft quests can be reset."]
-            pub fn reset_for_all_players(
-                &self,
-                quest_id: impl Into<String>,
-            ) -> ResetForAllPlayersRequestBuilder {
-                ResetForAllPlayersRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                    quest_id: quest_id.into(),
-                }
-            }
-            #[doc = "Resets quests with the given IDs for all players. This method is only available to user accounts for your developer console. Only draft quests may be reset."]
-            pub fn reset_multiple_for_all_players(
-                &self,
-                request: crate::schemas::QuestsResetMultipleForAllRequest,
-            ) -> ResetMultipleForAllPlayersRequestBuilder {
-                ResetMultipleForAllPlayersRequestBuilder {
-                    reqwest: &self.reqwest,
-                    auth: self.auth_ref(),
-                    request,
-                    alt: None,
-                    fields: None,
-                    key: None,
-                    oauth_token: None,
-                    pretty_print: None,
-                    quota_user: None,
-                    user_ip: None,
-                }
-            }
-        }
-        #[doc = "Created via [QuestsActions::reset()](struct.QuestsActions.html#method.reset)"]
-        #[derive(Debug, Clone)]
-        pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            quest_id: String,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ResetRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
-                output.push_str("quests/");
-                {
-                    let var_as_str = &self.quest_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/reset");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [QuestsActions::reset_all()](struct.QuestsActions.html#method.reset_all)"]
-        #[derive(Debug, Clone)]
-        pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ResetAllRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
-                output.push_str("quests/reset");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [QuestsActions::reset_all_for_all_players()](struct.QuestsActions.html#method.reset_all_for_all_players)"]
-        #[derive(Debug, Clone)]
-        pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ResetAllForAllPlayersRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
-                output.push_str("quests/resetAllForAllPlayers");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [QuestsActions::reset_for_all_players()](struct.QuestsActions.html#method.reset_for_all_players)"]
-        #[derive(Debug, Clone)]
-        pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            quest_id: String,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ResetForAllPlayersRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
-                output.push_str("quests/");
-                {
-                    let var_as_str = &self.quest_id;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/resetForAllPlayers");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
-                let req = req.query(&[("alt", &self.alt)]);
-                let req = req.query(&[("fields", &self.fields)]);
-                let req = req.query(&[("key", &self.key)]);
-                let req = req.query(&[("oauth_token", &self.oauth_token)]);
-                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
-                let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
-                Ok(req)
-            }
-        }
-        #[doc = "Created via [QuestsActions::reset_multiple_for_all_players()](struct.QuestsActions.html#method.reset_multiple_for_all_players)"]
-        #[derive(Debug, Clone)]
-        pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
-            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            request: crate::schemas::QuestsResetMultipleForAllRequest,
-            alt: Option<crate::params::Alt>,
-            fields: Option<String>,
-            key: Option<String>,
-            oauth_token: Option<String>,
-            pretty_print: Option<bool>,
-            quota_user: Option<String>,
-            user_ip: Option<String>,
-        }
-        impl<'a> ResetMultipleForAllPlayersRequestBuilder<'a> {
-            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
-            pub fn key(mut self, value: impl Into<String>) -> Self {
-                self.key = Some(value.into());
-                self
-            }
-            #[doc = "OAuth 2.0 token for the current user."]
-            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                self.oauth_token = Some(value.into());
-                self
-            }
-            #[doc = "Returns response with indentations and line breaks."]
-            pub fn pretty_print(mut self, value: bool) -> Self {
-                self.pretty_print = Some(value);
-                self
-            }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
-            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
-                self.quota_user = Some(value.into());
-                self
-            }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
-                self
-            }
-            pub fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
-                let req = req.json(&self.request);
-                crate::error_from_response(req.send()?)?;
-                Ok(())
-            }
-            fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
-                output.push_str("quests/resetMultipleForAllPlayers");
-                output
-            }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
-                let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
@@ -2813,7 +2389,7 @@ pub mod resources {
     pub mod rooms {
         pub mod params {}
         pub struct RoomsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RoomsActions<'a> {
@@ -2852,7 +2428,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::reset()](struct.RoomsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -2898,7 +2474,10 @@ pub mod resources {
                 output.push_str("rooms/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2918,7 +2497,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::reset_for_all_players()](struct.RoomsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -2964,7 +2543,10 @@ pub mod resources {
                 output.push_str("rooms/resetForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2985,7 +2567,7 @@ pub mod resources {
     pub mod scores {
         pub mod params {}
         pub struct ScoresActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ScoresActions<'a> {
@@ -3075,7 +2657,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset()](struct.ScoresActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             alt: Option<crate::params::Alt>,
@@ -3181,7 +2763,10 @@ pub mod resources {
                 output.push_str("/scores/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3201,7 +2786,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_all()](struct.ScoresActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3298,7 +2883,10 @@ pub mod resources {
                 output.push_str("scores/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3318,7 +2906,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_all_for_all_players()](struct.ScoresActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3364,7 +2952,10 @@ pub mod resources {
                 output.push_str("scores/resetAllForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3384,7 +2975,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_for_all_players()](struct.ScoresActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             alt: Option<crate::params::Alt>,
@@ -3439,7 +3030,10 @@ pub mod resources {
                 output.push_str("/scores/resetForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3459,7 +3053,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_multiple_for_all_players()](struct.ScoresActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ScoresResetMultipleForAllRequest,
             alt: Option<crate::params::Alt>,
@@ -3507,7 +3101,10 @@ pub mod resources {
                 output.push_str("scores/resetMultipleForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3528,7 +3125,7 @@ pub mod resources {
     pub mod turn_based_matches {
         pub mod params {}
         pub struct TurnBasedMatchesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TurnBasedMatchesActions<'a> {
@@ -3567,7 +3164,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::reset()](struct.TurnBasedMatchesActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3613,7 +3210,10 @@ pub mod resources {
                 output.push_str("turnbasedmatches/reset");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3633,7 +3233,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::reset_for_all_players()](struct.TurnBasedMatchesActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3679,7 +3279,10 @@ pub mod resources {
                 output.push_str("turnbasedmatches/resetForAllPlayers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3714,9 +3317,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3758,7 +3359,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

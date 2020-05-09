@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudidentity1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190911")
+            .version("0.1.0-20200505")
             .about("API for provisioning and managing identity resources.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -50,7 +50,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd =
-                SubCommand::with_name("list").about("List groups within a customer or a domain.");
+                SubCommand::with_name("list").about("Lists groups within a customer or a domain.");
             groups0 = groups0.subcommand(mcmd);
         }
         {
@@ -81,7 +81,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             memberships1 = memberships1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("List Memberships within a Group.");
+            let mcmd = SubCommand::with_name("list").about("Lists Memberships within a Group.");
             memberships1 = memberships1.subcommand(mcmd);
         }
         {

@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n    * [services](resources/services/struct.ServicesActions.html)\n      * [*search*](resources/services/struct.SearchRequestBuilder.html)\n      * [tenancy_units](resources/services/tenancy_units/struct.TenancyUnitsActions.html)\n        * [*addProject*](resources/services/tenancy_units/struct.AddProjectRequestBuilder.html), [*applyProjectConfig*](resources/services/tenancy_units/struct.ApplyProjectConfigRequestBuilder.html), [*attachProject*](resources/services/tenancy_units/struct.AttachProjectRequestBuilder.html), [*create*](resources/services/tenancy_units/struct.CreateRequestBuilder.html), [*delete*](resources/services/tenancy_units/struct.DeleteRequestBuilder.html), [*deleteProject*](resources/services/tenancy_units/struct.DeleteProjectRequestBuilder.html), [*list*](resources/services/tenancy_units/struct.ListRequestBuilder.html), [*removeProject*](resources/services/tenancy_units/struct.RemoveProjectRequestBuilder.html), [*undeleteProject*](resources/services/tenancy_units/struct.UndeleteProjectRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -267,7 +271,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AuthProvider {
-        #[doc = "The list of JWT\n[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).\nthat are allowed to access. A JWT containing any of these audiences will\nbe accepted. When this setting is absent, only JWTs with audience\n\"https://Service_name/API_name\"\nwill be accepted. For example, if no audiences are in the setting,\nLibraryService API will only accept JWTs with the following audience\n\"https://library-example.googleapis.com/google.example.library.v1.LibraryService\".\n\nExample:\n\n````text\naudiences: bookstore_android.apps.googleusercontent.com,\n           bookstore_web.apps.googleusercontent.com````"]
+        #[doc = "The list of JWT\n[audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).\nthat are allowed to access. A JWT containing any of these audiences will\nbe accepted. When this setting is absent, JWTs with audiences:\n\n* \"https://[service.name]/[google.protobuf.Api.name]\"\n* \"https://[service.name]/\"\n  will be accepted.\n  For example, if no audiences are in the setting, LibraryService API will\n  accept JWTs with the following audiences:\n* \n\nhttps://library-example.googleapis.com/google.example.library.v1.LibraryService\n\n* https://library-example.googleapis.com/\n\nExample:\n\n````text\naudiences: bookstore_android.apps.googleusercontent.com,\n           bookstore_web.apps.googleusercontent.com````"]
         #[serde(
             rename = "audiences",
             default,
@@ -302,6 +306,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub jwks_uri: ::std::option::Option<String>,
+        #[doc = "Defines the locations to extract the JWT.\n\nJWT locations can be either from HTTP headers or URL query parameters.\nThe rule is that the first match wins. The checking order is: checking\nall headers first, then URL query parameters.\n\nIf not specified,  default to use following 3 locations:\n\n1. Authorization: Bearer\n1. x-goog-iap-jwt-assertion\n1. access_token query parameter\n\nDefault locations can be specified as followings:\njwt_locations:\n\n* header: Authorization\n  value_prefix: \"Bearer \"\n* header: x-goog-iap-jwt-assertion\n* query: access_token"]
+        #[serde(
+            rename = "jwtLocations",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub jwt_locations: ::std::option::Option<Vec<crate::schemas::JwtLocation>>,
     }
     impl ::google_field_selector::FieldSelector for AuthProvider {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -467,21 +478,28 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BackendRule {
-        #[doc = "The address of the API backend."]
+        #[doc = "The address of the API backend.\n\nThe scheme is used to determine the backend protocol and security.\nThe following schemes are accepted:\n\nSCHEME        PROTOCOL    SECURITY\nhttp://       HTTP        None\nhttps://      HTTP        TLS\ngrpc://       gRPC        None\ngrpcs://      gRPC        TLS\n\nIt is recommended to explicitly include a scheme. Leaving out the scheme\nmay cause constrasting behaviors across platforms.\n\nIf the port is unspecified, the default is:\n\n* 80 for schemes without TLS\n* 443 for schemes with TLS\n\nFor HTTP backends, use protocol\nto specify the protocol version."]
         #[serde(
             rename = "address",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub address: ::std::option::Option<String>,
-        #[doc = "The number of seconds to wait for a response from a request.  The default\ndeadline for gRPC is infinite (no deadline) and HTTP requests is 5 seconds."]
+        #[doc = "The number of seconds to wait for a response from a request. The default\nvaries based on the request protocol and deployment environment."]
         #[serde(
             rename = "deadline",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub deadline: ::std::option::Option<f64>,
-        #[doc = "The JWT audience is used when generating a JWT id token for the backend."]
+        #[doc = "When disable_auth is true, a JWT ID token won't be generated and the\noriginal \"Authorization\" HTTP header will be preserved. If the header is\nused to carry the original token and is expected by the backend, this\nfield must be set to true to preserve the header."]
+        #[serde(
+            rename = "disableAuth",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_auth: ::std::option::Option<bool>,
+        #[doc = "The JWT audience is used when generating a JWT ID token for the backend.\nThis ID token will be added in the HTTP \"authorization\" header, and sent\nto the backend."]
         #[serde(
             rename = "jwtAudience",
             default,
@@ -508,6 +526,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub path_translation: ::std::option::Option<crate::schemas::BackendRulePathTranslation>,
+        #[doc = "The protocol used for sending a request to the backend.\nThe supported values are \"http/1.1\" and \"h2\".\n\nThe default value is inferred from the scheme in the\naddress field:\n\nSCHEME        PROTOCOL\nhttp://       http/1.1\nhttps://      http/1.1\ngrpc://       h2\ngrpcs://      h2\n\nFor secure HTTP backends (https://) that support HTTP/2, set this field\nto \"h2\" for improved performance.\n\nConfiguring this field to non-default values is only supported for secure\nHTTP backends. This field will be ignored for all other backends.\n\nSee\nhttps://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids\nfor more details on the supported values."]
+        #[serde(
+            rename = "protocol",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub protocol: ::std::option::Option<String>,
+        #[doc = "Unimplemented. Do not use.\n\nThe new name the selected proto elements should be renamed to.\n\nThe package, the service and the method can all be renamed.\nThe backend server should implement the renamed proto. However, clients\nshould call the original method, and ESF routes the traffic to the renamed\nmethod.\n\nHTTP clients should call the URL mapped to the original method.\ngRPC and Stubby clients should call the original method with package name.\n\nFor legacy reasons, ESF allows Stubby clients to call with the\nshort name (without the package name). However, for API Versioning(or\nmultiple methods mapped to the same short name), all Stubby clients must\ncall the method's full name with the package name, otherwise the first one\n(selector) wins.\n\nIf this `rename_to` is specified with a trailing `*`, the `selector` must\nbe specified with a trailing `*` as well. The all element short names\nmatched by the `*` in the selector will be kept in the `rename_to`.\n\nFor example,\nrename_rules:\n- selector: |-\ngoogle.example.library.v1.*\nrename_to: google.example.library.*\n\nThe selector matches `google.example.library.v1.Library.CreateShelf` and\n`google.example.library.v1.Library.CreateBook`, they will be renamed to\n`google.example.library.Library.CreateShelf` and\n`google.example.library.Library.CreateBook`. It essentially renames the\nproto package name section of the matched proto service and methods."]
+        #[serde(
+            rename = "renameTo",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rename_to: ::std::option::Option<String>,
         #[doc = "Selects the methods to which this rule applies.\n\nRefer to selector for syntax details."]
         #[serde(
             rename = "selector",
@@ -1753,6 +1785,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub additional_bindings: ::std::option::Option<Vec<crate::schemas::HttpRule>>,
+        #[doc = "When this flag is set to true, HTTP requests will be allowed to invoke a\nhalf-duplex streaming method."]
+        #[serde(
+            rename = "allowHalfDuplex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub allow_half_duplex: ::std::option::Option<bool>,
         #[doc = "The name of the request field whose value is mapped to the HTTP request\nbody, or `*` for mapping all request fields not captured by the path\npattern to the HTTP body, or omitted for not having any HTTP request body.\n\nNOTE: the referred field must be present at the top-level of the request\nmessage type."]
         #[serde(
             rename = "body",
@@ -1823,6 +1862,51 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for HttpRule {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct JwtLocation {
+        #[doc = "Specifies HTTP header name to extract JWT token."]
+        #[serde(
+            rename = "header",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header: ::std::option::Option<String>,
+        #[doc = "Specifies URL query parameter name to extract JWT token."]
+        #[serde(
+            rename = "query",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub query: ::std::option::Option<String>,
+        #[doc = "The value prefix. The value format is \"value_prefix{token}\"\nOnly applies to \"in\" header type. Must be empty for \"in\" query type.\nIf not empty, the header value has to match (case sensitive) this prefix.\nIf not matched, JWT will not be extracted. If matched, JWT will be\nextracted after the prefix is removed.\n\nFor example, for \"Authorization: Bearer {JWT}\",\nvalue_prefix=\"Bearer \" with a space at the end."]
+        #[serde(
+            rename = "valuePrefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value_prefix: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for JwtLocation {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for JwtLocation {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2329,6 +2413,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub metric_kind: ::std::option::Option<crate::schemas::MetricDescriptorMetricKind>,
+        #[doc = "Read-only. If present, then a time\nseries, which is identified partially by\na metric type and a MonitoredResourceDescriptor, that is associated\nwith this metric type can only be associated with one of the monitored\nresource types listed here."]
+        #[serde(
+            rename = "monitoredResourceTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub monitored_resource_types: ::std::option::Option<Vec<String>>,
         #[doc = "The resource name of the metric descriptor."]
         #[serde(
             rename = "name",
@@ -2343,7 +2434,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "The unit in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The\nsupported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10**3)\n* `M`     mega    (10**6)\n* `G`     giga    (10**9)\n* `T`     tera    (10**12)\n* `P`     peta    (10**15)\n* `E`     exa     (10**18)\n* `Z`     zetta   (10**21)\n* `Y`     yotta   (10**24)\n* `m`     milli   (10**-3)\n* `u`     micro   (10**-6)\n* `n`     nano    (10**-9)\n* `p`     pico    (10**-12)\n* `f`     femto   (10**-15)\n* `a`     atto    (10**-18)\n* `z`     zepto   (10**-21)\n* `y`     yocto   (10**-24)\n* `Ki`    kibi    (2**10)\n* `Mi`    mebi    (2**20)\n* `Gi`    gibi    (2**30)\n* `Ti`    tebi    (2**40)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division (as an infix operator, e.g. `1/s`).\n* `.`    multiplication (as an infix operator, e.g. `GBy.d`)\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT` and is\n  equivalent to `1` if it is used alone. For examples,\n  `{requests}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing '{' or '}'.\n* `1` represents dimensionless value 1, such as in `1/s`.\n* `%` represents dimensionless value 1/100, and annotates values giving\n  a percentage."]
+        #[doc = "The units in which the metric value is reported. It is only applicable\nif the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit`\ndefines the representation of the stored metric values.\n\nDifferent systems may scale the values to be more easily displayed (so a\nvalue of `0.02KBy` *might* be displayed as `20By`, and a value of\n`3523KBy` *might* be displayed as `3.5MBy`). However, if the `unit` is\n`KBy`, then the value of the metric is always in thousands of bytes, no\nmatter how it may be displayed..\n\nIf you want a custom metric to record the exact number of CPU-seconds used\nby a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is\n`s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005\nCPU-seconds, then the value is written as `12005`.\n\nAlternatively, if you want a custom metric to record data in a more\ngranular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is\n`ks{CPU}`, and then write the value `12.005` (which is `12005/1000`),\nor use `Kis{CPU}` and write `11.723` (which is `12005/1024`).\n\nThe supported units are a subset of [The Unified Code for Units of\nMeasure](http://unitsofmeasure.org/ucum.html) standard:\n\n**Basic units (UNIT)**\n\n* `bit`   bit\n* `By`    byte\n* `s`     second\n* `min`   minute\n* `h`     hour\n* `d`     day\n\n**Prefixes (PREFIX)**\n\n* `k`     kilo    (10^3)\n\n* `M`     mega    (10^6)\n\n* `G`     giga    (10^9)\n\n* `T`     tera    (10^12)\n\n* `P`     peta    (10^15)\n\n* `E`     exa     (10^18)\n\n* `Z`     zetta   (10^21)\n\n* `Y`     yotta   (10^24)\n\n* `m`     milli   (10^-3)\n\n* `u`     micro   (10^-6)\n\n* `n`     nano    (10^-9)\n\n* `p`     pico    (10^-12)\n\n* `f`     femto   (10^-15)\n\n* `a`     atto    (10^-18)\n\n* `z`     zepto   (10^-21)\n\n* `y`     yocto   (10^-24)\n\n* `Ki`    kibi    (2^10)\n\n* `Mi`    mebi    (2^20)\n\n* `Gi`    gibi    (2^30)\n\n* `Ti`    tebi    (2^40)\n\n* `Pi`    pebi    (2^50)\n\n**Grammar**\n\nThe grammar also includes these connectors:\n\n* `/`    division or ratio (as an infix operator). For examples,\n  `kBy/{email}` or `MiBy/10ms` (although you should almost never\n  have `/s` in a metric `unit`; rates should always be computed at\n  query time from the underlying cumulative or delta value).\n* `.`    multiplication or composition (as an infix operator). For\n  examples, `GBy.d` or `k{watt}.h`.\n\nThe grammar for a unit is as follows:\n\n````text\nExpression = Component { \".\" Component } { \"/\" Component } ;\n\nComponent = ( [ PREFIX ] UNIT | \"%\" ) [ Annotation ]\n          | Annotation\n          | \"1\"\n          ;\n\nAnnotation = \"{\" NAME \"}\" ;\n````\n\nNotes:\n\n* `Annotation` is just a comment if it follows a `UNIT`. If the annotation\n  is used alone, then the unit is equivalent to `1`. For examples,\n  `{request}/s == 1/s`, `By{transmitted}/s == By/s`.\n* `NAME` is a sequence of non-blank printable ASCII characters not\n  containing `{` or `}`.\n* `1` represents a unitary [dimensionless\n  unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such\n  as in `1/s`. It is typically used when none of the basic units are\n  appropriate. For example, \"new users per day\" can be represented as\n  `1/d` or `{new-users}/d` (and a metric value `5` would mean \"5 new\n  users). Alternatively, \"thousands of page views per day\" would be\n  represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric\n  value of `5.3` would mean \"5300 page views per day\").\n* `%` represents dimensionless value of 1/100, and annotates values giving\n  a percentage (so the metric values are typically in the range of 0..100,\n  and a metric value `3` means \"3 percent\").\n* `10^2.%` indicates a metric contains a ratio, typically in the range\n  0..1, that will be multiplied by 100 and displayed as a percentage\n  (so a metric value `0.03` means \"3 percent\")."]
         #[serde(
             rename = "unit",
             default,
@@ -2370,11 +2461,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricDescriptorLaunchStage {
-        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don\u{2019}t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
+        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don’t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
         Alpha,
         #[doc = "Beta is the point at which we are ready to open a release for any\ncustomer to use. There are no SLA or technical support obligations in a\nBeta release. Products will be complete from a feature perspective, but\nmay have some open outstanding issues. Beta releases are suitable for\nlimited production use cases."]
         Beta,
-        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the \u{201c}Deprecation Policy\u{201d} section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
+        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the “Deprecation Policy” section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
         Deprecated,
         #[doc = "Early Access features are limited to a closed group of testers. To use\nthese features, you must sign up in advance and sign a Trusted Tester\nagreement (which includes confidentiality provisions). These features may\nbe unstable, changed in backward-incompatible ways, and are not\nguaranteed to be released."]
         EarlyAccess,
@@ -2382,6 +2473,10 @@ pub mod schemas {
         Ga,
         #[doc = "Do not use this default value."]
         LaunchStageUnspecified,
+        #[doc = "Prelaunch features are hidden from users and are only visible internally."]
+        Prelaunch,
+        #[doc = "The feature is not yet implemented. Users can not use it."]
+        Unimplemented,
     }
     impl MetricDescriptorLaunchStage {
         pub fn as_str(self) -> &'static str {
@@ -2392,6 +2487,8 @@ pub mod schemas {
                 MetricDescriptorLaunchStage::EarlyAccess => "EARLY_ACCESS",
                 MetricDescriptorLaunchStage::Ga => "GA",
                 MetricDescriptorLaunchStage::LaunchStageUnspecified => "LAUNCH_STAGE_UNSPECIFIED",
+                MetricDescriptorLaunchStage::Prelaunch => "PRELAUNCH",
+                MetricDescriptorLaunchStage::Unimplemented => "UNIMPLEMENTED",
             }
         }
     }
@@ -2410,6 +2507,8 @@ pub mod schemas {
                 "EARLY_ACCESS" => MetricDescriptorLaunchStage::EarlyAccess,
                 "GA" => MetricDescriptorLaunchStage::Ga,
                 "LAUNCH_STAGE_UNSPECIFIED" => MetricDescriptorLaunchStage::LaunchStageUnspecified,
+                "PRELAUNCH" => MetricDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorLaunchStage::Unimplemented,
                 _ => return Err(()),
             })
         }
@@ -2440,6 +2539,8 @@ pub mod schemas {
                 "EARLY_ACCESS" => MetricDescriptorLaunchStage::EarlyAccess,
                 "GA" => MetricDescriptorLaunchStage::Ga,
                 "LAUNCH_STAGE_UNSPECIFIED" => MetricDescriptorLaunchStage::LaunchStageUnspecified,
+                "PRELAUNCH" => MetricDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorLaunchStage::Unimplemented,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2656,7 +2757,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ingest_delay: ::std::option::Option<String>,
-        #[doc = "Deprecated. Please use the MetricDescriptor.launch_stage instead.\nThe launch stage of the metric definition."]
+        #[doc = "Deprecated. Must use the MetricDescriptor.launch_stage instead."]
         #[serde(
             rename = "launchStage",
             default,
@@ -2684,11 +2785,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MetricDescriptorMetadataLaunchStage {
-        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don\u{2019}t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
+        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don’t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
         Alpha,
         #[doc = "Beta is the point at which we are ready to open a release for any\ncustomer to use. There are no SLA or technical support obligations in a\nBeta release. Products will be complete from a feature perspective, but\nmay have some open outstanding issues. Beta releases are suitable for\nlimited production use cases."]
         Beta,
-        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the \u{201c}Deprecation Policy\u{201d} section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
+        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the “Deprecation Policy” section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
         Deprecated,
         #[doc = "Early Access features are limited to a closed group of testers. To use\nthese features, you must sign up in advance and sign a Trusted Tester\nagreement (which includes confidentiality provisions). These features may\nbe unstable, changed in backward-incompatible ways, and are not\nguaranteed to be released."]
         EarlyAccess,
@@ -2696,6 +2797,10 @@ pub mod schemas {
         Ga,
         #[doc = "Do not use this default value."]
         LaunchStageUnspecified,
+        #[doc = "Prelaunch features are hidden from users and are only visible internally."]
+        Prelaunch,
+        #[doc = "The feature is not yet implemented. Users can not use it."]
+        Unimplemented,
     }
     impl MetricDescriptorMetadataLaunchStage {
         pub fn as_str(self) -> &'static str {
@@ -2708,6 +2813,8 @@ pub mod schemas {
                 MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified => {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
+                MetricDescriptorMetadataLaunchStage::Prelaunch => "PRELAUNCH",
+                MetricDescriptorMetadataLaunchStage::Unimplemented => "UNIMPLEMENTED",
             }
         }
     }
@@ -2728,6 +2835,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MetricDescriptorMetadataLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorMetadataLaunchStage::Unimplemented,
                 _ => return Err(()),
             })
         }
@@ -2760,6 +2869,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MetricDescriptorMetadataLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MetricDescriptorMetadataLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MetricDescriptorMetadataLaunchStage::Unimplemented,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -2924,11 +3035,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum MonitoredResourceDescriptorLaunchStage {
-        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don\u{2019}t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
+        #[doc = "Alpha is a limited availability test for releases before they are cleared\nfor widespread use. By Alpha, all significant design issues are resolved\nand we are in the process of verifying functionality. Alpha customers\nneed to apply for access, agree to applicable terms, and have their\nprojects whitelisted. Alpha releases don’t have to be feature complete,\nno SLAs are provided, and there are no technical support obligations, but\nthey will be far enough along that customers can actually use them in\ntest environments or for limited-use tests -- just like they would in\nnormal production cases."]
         Alpha,
         #[doc = "Beta is the point at which we are ready to open a release for any\ncustomer to use. There are no SLA or technical support obligations in a\nBeta release. Products will be complete from a feature perspective, but\nmay have some open outstanding issues. Beta releases are suitable for\nlimited production use cases."]
         Beta,
-        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the \u{201c}Deprecation Policy\u{201d} section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
+        #[doc = "Deprecated features are scheduled to be shut down and removed. For more\ninformation, see the “Deprecation Policy” section of our [Terms of\nService](https://cloud.google.com/terms/)\nand the [Google Cloud Platform Subject to the Deprecation\nPolicy](https://cloud.google.com/terms/deprecation) documentation."]
         Deprecated,
         #[doc = "Early Access features are limited to a closed group of testers. To use\nthese features, you must sign up in advance and sign a Trusted Tester\nagreement (which includes confidentiality provisions). These features may\nbe unstable, changed in backward-incompatible ways, and are not\nguaranteed to be released."]
         EarlyAccess,
@@ -2936,6 +3047,10 @@ pub mod schemas {
         Ga,
         #[doc = "Do not use this default value."]
         LaunchStageUnspecified,
+        #[doc = "Prelaunch features are hidden from users and are only visible internally."]
+        Prelaunch,
+        #[doc = "The feature is not yet implemented. Users can not use it."]
+        Unimplemented,
     }
     impl MonitoredResourceDescriptorLaunchStage {
         pub fn as_str(self) -> &'static str {
@@ -2948,6 +3063,8 @@ pub mod schemas {
                 MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified => {
                     "LAUNCH_STAGE_UNSPECIFIED"
                 }
+                MonitoredResourceDescriptorLaunchStage::Prelaunch => "PRELAUNCH",
+                MonitoredResourceDescriptorLaunchStage::Unimplemented => "UNIMPLEMENTED",
             }
         }
     }
@@ -2968,6 +3085,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MonitoredResourceDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MonitoredResourceDescriptorLaunchStage::Unimplemented,
                 _ => return Err(()),
             })
         }
@@ -3000,6 +3119,8 @@ pub mod schemas {
                 "LAUNCH_STAGE_UNSPECIFIED" => {
                     MonitoredResourceDescriptorLaunchStage::LaunchStageUnspecified
                 }
+                "PRELAUNCH" => MonitoredResourceDescriptorLaunchStage::Prelaunch,
+                "UNIMPLEMENTED" => MonitoredResourceDescriptorLaunchStage::Unimplemented,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -3522,7 +3643,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub billing: ::std::option::Option<crate::schemas::Billing>,
-        #[doc = "The semantic version of the service configuration. The config version\naffects the interpretation of the service configuration. For example,\ncertain features are enabled by default for certain config versions.\nThe latest config version is `3`."]
+        #[doc = "The semantic version of the service configuration. The config version\naffects the interpretation of the service configuration. For example,\ncertain features are enabled by default for certain config versions.\n\nThe latest config version is `3`."]
         #[serde(
             rename = "configVersion",
             default,
@@ -3578,7 +3699,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http: ::std::option::Option<crate::schemas::Http>,
-        #[doc = "A unique ID for a specific instance of this message, typically assigned\nby the client for tracking purpose. If empty, the server may choose to\ngenerate one instead. Must be no longer than 60 characters."]
+        #[doc = "A unique ID for a specific instance of this message, typically assigned\nby the client for tracking purpose. Must be no longer than 63 characters\nand only lower case letters, digits, '.', '_' and '-' are allowed. If\nempty, the server may choose to generate one instead."]
         #[serde(
             rename = "id",
             default,
@@ -3729,6 +3850,51 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ServiceAccountConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ServiceIdentity {
+        #[doc = "Optional. A user-specified opaque description of the service account.\nMust be less than or equal to 256 UTF-8 bytes."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Optional. A user-specified name for the service account.\nMust be less than or equal to 100 UTF-8 bytes."]
+        #[serde(
+            rename = "displayName",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub display_name: ::std::option::Option<String>,
+        #[doc = "A service account project that hosts the service accounts.\n\nAn example name would be:\n`projects/123456789`"]
+        #[serde(
+            rename = "serviceAccountParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_account_parent: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ServiceIdentity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ServiceIdentity {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -4417,6 +4583,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub rules: ::std::option::Option<Vec<crate::schemas::UsageRule>>,
+        #[doc = "The configuration of a per-product per-project service identity."]
+        #[serde(
+            rename = "serviceIdentity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_identity: ::std::option::Option<crate::schemas::ServiceIdentity>,
     }
     impl ::google_field_selector::FieldSelector for Usage {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -4595,6 +4768,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct V1Beta1GenerateServiceIdentityResponse {
+        #[doc = "ServiceIdentity that was created or retrieved."]
+        #[serde(
+            rename = "identity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub identity: ::std::option::Option<crate::schemas::V1Beta1ServiceIdentity>,
+    }
+    impl ::google_field_selector::FieldSelector for V1Beta1GenerateServiceIdentityResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for V1Beta1GenerateServiceIdentityResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct V1Beta1ImportProducerOverridesResponse {
         #[doc = "The overrides that were created from the imported data."]
         #[serde(
@@ -4627,7 +4831,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct V1Beta1QuotaOverride {
-        #[doc = "If this map is nonempty, then this override applies only to specific values\nfor dimensions defined in the limit unit.\n\nFor example, an override on a limit with the unit 1/{project}/{region}\ncould contain an entry with the key \"region\" and the value \"us-east-1\";\nthe override is only applied to quota consumed in that region.\n\nThis map has the following restrictions:\n\n* Keys that are not defined in the limit's unit are not valid keys.\n  Any string appearing in {brackets} in the unit (besides {project} or\n  {user}) is a defined key.\n* \"project\" is not a valid key; the project is already specified in\n  the parent resource name.\n* \"user\" is not a valid key; the API does not support quota overrides\n  that apply only to a specific user.\n* If \"region\" appears as a key, its value must be a valid Cloud region.\n* If \"zone\" appears as a key, its value must be a valid Cloud zone.\n* If any valid key other than \"region\" or \"zone\" appears in the map, then\n  all valid keys other than \"region\" or \"zone\" must also appear in the map."]
+        #[doc = "If this map is nonempty, then this override applies only to specific values\nfor dimensions defined in the limit unit.\n\nFor example, an override on a limit with the unit 1/{project}/{region}\ncould contain an entry with the key \"region\" and the value \"us-east-1\";\nthe override is only applied to quota consumed in that region.\n\nThis map has the following restrictions:\n\n* Keys that are not defined in the limit's unit are not valid keys.\n  Any string appearing in {brackets} in the unit (besides {project} or\n  {user}) is a defined key.\n* \"project\" is not a valid key; the project is already specified in\n  the parent resource name.\n* \"user\" is not a valid key; the API does not support quota overrides\n  that apply only to a specific user.\n* If \"region\" appears as a key, its value must be a valid Cloud region.\n* If \"zone\" appears as a key, its value must be a valid Cloud zone.\n* If any valid key other than \"region\" or \"zone\" appears in the map, then\n  all valid keys other than \"region\" or \"zone\" must also appear in the\n  map."]
         #[serde(
             rename = "dimensions",
             default,
@@ -4706,6 +4910,103 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct V1Beta1ServiceIdentity {
+        #[doc = "The email address of the service identity."]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub email: ::std::option::Option<String>,
+        #[doc = "P4 service identity resource name.\n\nAn example name would be:\n`services/serviceconsumermanagement.googleapis.com/projects/123/serviceIdentities/default`"]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The P4 service identity configuration tag. This must be defined in\nactivation_grants. If not specified when creating the account, the tag is\nset to \"default\"."]
+        #[serde(
+            rename = "tag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tag: ::std::option::Option<String>,
+        #[doc = "The unique and stable id of the service identity."]
+        #[serde(
+            rename = "uniqueId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub unique_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for V1Beta1ServiceIdentity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for V1Beta1ServiceIdentity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct V1DefaultIdentity {
+        #[doc = "The email address of the default identity."]
+        #[serde(
+            rename = "email",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub email: ::std::option::Option<String>,
+        #[doc = "Default identity resource name.\n\nAn example name would be:\n`services/serviceconsumermanagement.googleapis.com/projects/123/defaultIdentity`"]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The unique and stable id of the default identity."]
+        #[serde(
+            rename = "uniqueId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub unique_id: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for V1DefaultIdentity {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for V1DefaultIdentity {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
         Copy,
         Default,
         :: serde :: Deserialize,
@@ -4742,6 +5043,158 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for V1EnableConsumerResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct V1GenerateDefaultIdentityResponse {
+        #[doc = "Status of the role attachment. Under development (go/si-attach-role),\ncurrently always return ATTACH_STATUS_UNSPECIFIED)"]
+        #[serde(
+            rename = "attachStatus",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub attach_status:
+            ::std::option::Option<crate::schemas::V1GenerateDefaultIdentityResponseAttachStatus>,
+        #[doc = "DefaultIdentity that was created or retrieved."]
+        #[serde(
+            rename = "identity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub identity: ::std::option::Option<crate::schemas::V1DefaultIdentity>,
+        #[doc = "Role attached to consumer project. Empty if not attached in this\nrequest. (Under development, currently always return empty.)"]
+        #[serde(
+            rename = "role",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub role: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for V1GenerateDefaultIdentityResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for V1GenerateDefaultIdentityResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum V1GenerateDefaultIdentityResponseAttachStatus {
+        #[doc = "Role attachment was denied in this request by customer set org policy.\n(go/si-attach-role)"]
+        AttachDeniedByOrgPolicy,
+        #[doc = "The request specified that no attempt should be made to attach the role."]
+        AttachSkipped,
+        #[doc = "Indicates that the AttachStatus was not set."]
+        AttachStatusUnspecified,
+        #[doc = "The default identity was attached to a role successfully in this request."]
+        Attached,
+        #[doc = "Role was attached to the consumer project at some point in time. Tenant\nmanager doesn't make assertion about the current state of the identity\nwith respect to the consumer.\n\nRole attachment should happen only once after activation and cannot be\nreattached after customer removes it. (go/si-attach-role)"]
+        PreviouslyAttached,
+    }
+    impl V1GenerateDefaultIdentityResponseAttachStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                V1GenerateDefaultIdentityResponseAttachStatus::AttachDeniedByOrgPolicy => {
+                    "ATTACH_DENIED_BY_ORG_POLICY"
+                }
+                V1GenerateDefaultIdentityResponseAttachStatus::AttachSkipped => "ATTACH_SKIPPED",
+                V1GenerateDefaultIdentityResponseAttachStatus::AttachStatusUnspecified => {
+                    "ATTACH_STATUS_UNSPECIFIED"
+                }
+                V1GenerateDefaultIdentityResponseAttachStatus::Attached => "ATTACHED",
+                V1GenerateDefaultIdentityResponseAttachStatus::PreviouslyAttached => {
+                    "PREVIOUSLY_ATTACHED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for V1GenerateDefaultIdentityResponseAttachStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for V1GenerateDefaultIdentityResponseAttachStatus {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<V1GenerateDefaultIdentityResponseAttachStatus, ()> {
+            Ok(match s {
+                "ATTACH_DENIED_BY_ORG_POLICY" => {
+                    V1GenerateDefaultIdentityResponseAttachStatus::AttachDeniedByOrgPolicy
+                }
+                "ATTACH_SKIPPED" => V1GenerateDefaultIdentityResponseAttachStatus::AttachSkipped,
+                "ATTACH_STATUS_UNSPECIFIED" => {
+                    V1GenerateDefaultIdentityResponseAttachStatus::AttachStatusUnspecified
+                }
+                "ATTACHED" => V1GenerateDefaultIdentityResponseAttachStatus::Attached,
+                "PREVIOUSLY_ATTACHED" => {
+                    V1GenerateDefaultIdentityResponseAttachStatus::PreviouslyAttached
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for V1GenerateDefaultIdentityResponseAttachStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for V1GenerateDefaultIdentityResponseAttachStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for V1GenerateDefaultIdentityResponseAttachStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ATTACH_DENIED_BY_ORG_POLICY" => {
+                    V1GenerateDefaultIdentityResponseAttachStatus::AttachDeniedByOrgPolicy
+                }
+                "ATTACH_SKIPPED" => V1GenerateDefaultIdentityResponseAttachStatus::AttachSkipped,
+                "ATTACH_STATUS_UNSPECIFIED" => {
+                    V1GenerateDefaultIdentityResponseAttachStatus::AttachStatusUnspecified
+                }
+                "ATTACHED" => V1GenerateDefaultIdentityResponseAttachStatus::Attached,
+                "PREVIOUSLY_ATTACHED" => {
+                    V1GenerateDefaultIdentityResponseAttachStatus::PreviouslyAttached
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for V1GenerateDefaultIdentityResponseAttachStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for V1GenerateDefaultIdentityResponseAttachStatus {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5042,7 +5495,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -5050,8 +5503,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -5077,7 +5542,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -5172,7 +5637,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CancelOperationRequest,
             name: String,
@@ -5302,7 +5767,10 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5326,7 +5794,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -5453,7 +5921,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5477,7 +5948,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -5606,7 +6077,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5630,7 +6104,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             filter: Option<String>,
@@ -5875,7 +6349,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -5914,7 +6391,7 @@ pub mod resources {
     pub mod services {
         pub mod params {}
         pub struct ServicesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ServicesActions<'a> {
@@ -5956,7 +6433,7 @@ pub mod resources {
         #[doc = "Created via [ServicesActions::search()](struct.ServicesActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             page_size: Option<i32>,
@@ -6204,7 +6681,10 @@ pub mod resources {
                 output.push_str(":search");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("pageSize", &self.page_size)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -6242,7 +6722,7 @@ pub mod resources {
         pub mod tenancy_units {
             pub mod params {}
             pub struct TenancyUnitsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> TenancyUnitsActions<'a> {
@@ -6462,7 +6942,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::add_project()](struct.TenancyUnitsActions.html#method.add_project)"]
             #[derive(Debug, Clone)]
             pub struct AddProjectRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AddTenantProjectRequest,
                 parent: String,
@@ -6597,7 +7077,10 @@ pub mod resources {
                     output.push_str(":addProject");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6621,7 +7104,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::apply_project_config()](struct.TenancyUnitsActions.html#method.apply_project_config)"]
             #[derive(Debug, Clone)]
             pub struct ApplyProjectConfigRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ApplyTenantProjectConfigRequest,
                 name: String,
@@ -6756,7 +7239,10 @@ pub mod resources {
                     output.push_str(":applyProjectConfig");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6780,7 +7266,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::attach_project()](struct.TenancyUnitsActions.html#method.attach_project)"]
             #[derive(Debug, Clone)]
             pub struct AttachProjectRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AttachTenantProjectRequest,
                 name: String,
@@ -6915,7 +7401,10 @@ pub mod resources {
                     output.push_str(":attachProject");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -6939,7 +7428,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::create()](struct.TenancyUnitsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CreateTenancyUnitRequest,
                 parent: String,
@@ -7074,7 +7563,10 @@ pub mod resources {
                     output.push_str("/tenancyUnits");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7098,7 +7590,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::delete()](struct.TenancyUnitsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -7230,7 +7722,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7254,7 +7749,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::delete_project()](struct.TenancyUnitsActions.html#method.delete_project)"]
             #[derive(Debug, Clone)]
             pub struct DeleteProjectRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::DeleteTenantProjectRequest,
                 name: String,
@@ -7389,7 +7884,10 @@ pub mod resources {
                     output.push_str(":deleteProject");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7413,7 +7911,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::list()](struct.TenancyUnitsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 filter: Option<String>,
@@ -7666,7 +8164,10 @@ pub mod resources {
                     output.push_str("/tenancyUnits");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -7704,7 +8205,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::remove_project()](struct.TenancyUnitsActions.html#method.remove_project)"]
             #[derive(Debug, Clone)]
             pub struct RemoveProjectRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::RemoveTenantProjectRequest,
                 name: String,
@@ -7839,7 +8340,10 @@ pub mod resources {
                     output.push_str(":removeProject");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -7863,7 +8367,7 @@ pub mod resources {
             #[doc = "Created via [TenancyUnitsActions::undelete_project()](struct.TenancyUnitsActions.html#method.undelete_project)"]
             #[derive(Debug, Clone)]
             pub struct UndeleteProjectRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::UndeleteTenantProjectRequest,
                 name: String,
@@ -7998,7 +8502,10 @@ pub mod resources {
                     output.push_str(":undeleteProject");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8038,9 +8545,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -8082,7 +8587,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

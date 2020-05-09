@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [*detectLanguage*](resources/projects/struct.DetectLanguageRequestBuilder.html), [*getSupportedLanguages*](resources/projects/struct.GetSupportedLanguagesRequestBuilder.html), [*translateText*](resources/projects/struct.TranslateTextRequestBuilder.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*batchTranslateText*](resources/projects/locations/struct.BatchTranslateTextRequestBuilder.html), [*detectLanguage*](resources/projects/locations/struct.DetectLanguageRequestBuilder.html), [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*getSupportedLanguages*](resources/projects/locations/struct.GetSupportedLanguagesRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html), [*translateText*](resources/projects/locations/struct.TranslateTextRequestBuilder.html)\n        * [glossaries](resources/projects/locations/glossaries/struct.GlossariesActions.html)\n          * [*create*](resources/projects/locations/glossaries/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/glossaries/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/glossaries/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/glossaries/struct.ListRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html), [*wait*](resources/projects/locations/operations/struct.WaitRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Translate text from one language to another using Google Translate\n\n`https://www.googleapis.com/auth/cloud-translation`"]
+    pub const CLOUD_TRANSLATION: &str = "https://www.googleapis.com/auth/cloud-translation";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -29,14 +35,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub input_configs: ::std::option::Option<Vec<crate::schemas::InputConfig>>,
-        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels."]
+        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Optional. The models to use for translation. Map's key is target language\ncode. Map's value is model name. Value can be a built-in general model,\nor an AutoML Translation model.\n\nThe value format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\nIf the map is empty or a specific model is\nnot requested for a language pair, then default google model (nmt) is used."]
+        #[doc = "Optional. The models to use for translation. Map's key is target language\ncode. Map's value is model name. Value can be a built-in general model,\nor an AutoML Translation model.\n\nThe value format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\nIf the map is empty or a specific model is\nnot requested for a language pair, then default google model (nmt) is used."]
         #[serde(
             rename = "models",
             default,
@@ -119,7 +125,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content: ::std::option::Option<String>,
-        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels."]
+        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information."]
         #[serde(
             rename = "labels",
             default,
@@ -133,7 +139,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mime_type: ::std::option::Option<String>,
-        #[doc = "Optional. The language detection model to be used.\n\nFormat:\n`projects/{project-id}/locations/{location-id}/models/language-detection/{model-id}`\n\nOnly one language detection model is currently supported:\n`projects/{project-id}/locations/{location-id}/models/language-detection/default`.\n\nIf not specified, the default model is used."]
+        #[doc = "Optional. The language detection model to be used.\n\nFormat:\n`projects/{project-number-or-id}/locations/{location-id}/models/language-detection/{model-id}`\n\nOnly one language detection model is currently supported:\n`projects/{project-number-or-id}/locations/{location-id}/models/language-detection/default`.\n\nIf not specified, the default model is used."]
         #[serde(
             rename = "model",
             default,
@@ -336,7 +342,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_pair: ::std::option::Option<crate::schemas::LanguageCodePair>,
-        #[doc = "Required. The resource name of the glossary. Glossary names have the form\n`projects/{project-id}/locations/{location-id}/glossaries/{glossary-id}`."]
+        #[doc = "Required. The resource name of the glossary. Glossary names have the form\n`projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`."]
         #[serde(
             rename = "name",
             default,
@@ -904,7 +910,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub glossary_config: ::std::option::Option<crate::schemas::TranslateTextGlossaryConfig>,
-        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://goo.gl/xmQnxf for more information on and examples of labels."]
+        #[doc = "Optional. The labels with user-defined metadata for the request.\n\nLabel keys and values can be no longer than 63 characters\n(Unicode codepoints), can only contain lowercase letters, numeric\ncharacters, underscores and dashes. International characters are allowed.\nLabel values are optional. Label keys must start with a letter.\n\nSee https://cloud.google.com/translate/docs/labels for more information."]
         #[serde(
             rename = "labels",
             default,
@@ -918,7 +924,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mime_type: ::std::option::Option<String>,
-        #[doc = "Optional. The `model` type requested for this translation.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\nFor global (non-regionalized) requests, use `location-id` `global`.\nFor example,\n`projects/{project-id}/locations/global/models/general/nmt`.\n\nIf missing, the system decides which google base model to use."]
+        #[doc = "Optional. The `model` type requested for this translation.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\nFor global (non-regionalized) requests, use `location-id` `global`.\nFor example,\n`projects/{project-number-or-id}/locations/global/models/general/nmt`.\n\nIf missing, the system decides which google base model to use."]
         #[serde(
             rename = "model",
             default,
@@ -1015,7 +1021,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub glossary_config: ::std::option::Option<crate::schemas::TranslateTextGlossaryConfig>,
-        #[doc = "Only present when `model` is present in the request.\nThis is same as `model` provided in the request."]
+        #[doc = "Only present when `model` is present in the request.\n`model` here is normalized to have project number.\n\nFor example:\nIf the `model` requested in TranslationTextRequest is\n`projects/{project-id}/locations/{location-id}/models/general/nmt` then\n`model` here would be normalized to\n`projects/{project-number}/locations/{location-id}/models/general/nmt`."]
         #[serde(
             rename = "model",
             default,
@@ -1222,7 +1228,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1230,8 +1236,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1250,7 +1268,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1340,7 +1358,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::detect_language()](struct.ProjectsActions.html#method.detect_language)"]
         #[derive(Debug, Clone)]
         pub struct DetectLanguageRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::DetectLanguageRequest,
             parent: String,
@@ -1472,7 +1490,10 @@ pub mod resources {
                 output.push_str(":detectLanguage");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1496,7 +1517,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::get_supported_languages()](struct.ProjectsActions.html#method.get_supported_languages)"]
         #[derive(Debug, Clone)]
         pub struct GetSupportedLanguagesRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             display_language_code: Option<String>,
@@ -1519,7 +1540,7 @@ pub mod resources {
                 self.display_language_code = Some(value.into());
                 self
             }
-            #[doc = "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model."]
+            #[doc = "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model."]
             pub fn model(mut self, value: impl Into<String>) -> Self {
                 self.model = Some(value.into());
                 self
@@ -1638,7 +1659,10 @@ pub mod resources {
                 output.push_str("/supportedLanguages");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("displayLanguageCode", &self.display_language_code)]);
                 let req = req.query(&[("model", &self.model)]);
@@ -1664,7 +1688,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::translate_text()](struct.ProjectsActions.html#method.translate_text)"]
         #[derive(Debug, Clone)]
         pub struct TranslateTextRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::TranslateTextRequest,
             parent: String,
@@ -1796,7 +1820,10 @@ pub mod resources {
                 output.push_str(":translateText");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1820,7 +1847,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -1988,7 +2015,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::batch_translate_text()](struct.LocationsActions.html#method.batch_translate_text)"]
             #[derive(Debug, Clone)]
             pub struct BatchTranslateTextRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchTranslateTextRequest,
                 parent: String,
@@ -2123,7 +2150,10 @@ pub mod resources {
                     output.push_str(":batchTranslateText");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2147,7 +2177,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::detect_language()](struct.LocationsActions.html#method.detect_language)"]
             #[derive(Debug, Clone)]
             pub struct DetectLanguageRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::DetectLanguageRequest,
                 parent: String,
@@ -2282,7 +2312,10 @@ pub mod resources {
                     output.push_str(":detectLanguage");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2306,7 +2339,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2438,7 +2471,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2462,7 +2498,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get_supported_languages()](struct.LocationsActions.html#method.get_supported_languages)"]
             #[derive(Debug, Clone)]
             pub struct GetSupportedLanguagesRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 display_language_code: Option<String>,
@@ -2485,7 +2521,7 @@ pub mod resources {
                     self.display_language_code = Some(value.into());
                     self
                 }
-                #[doc = "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-id}/locations/{location-id}/models/general/base`\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model."]
+                #[doc = "Optional. Get supported languages of this model.\n\nThe format depends on model type:\n\n* AutoML Translation models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`\n\n* General (built-in) models:\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,\n  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`\n\nReturns languages supported by the specified model.\nIf missing, we get supported languages of Google general base (PBMT) model."]
                 pub fn model(mut self, value: impl Into<String>) -> Self {
                     self.model = Some(value.into());
                     self
@@ -2607,7 +2643,10 @@ pub mod resources {
                     output.push_str("/supportedLanguages");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("displayLanguageCode", &self.display_language_code)]);
                     let req = req.query(&[("model", &self.model)]);
@@ -2633,7 +2672,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -2884,7 +2923,10 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -2922,7 +2964,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::translate_text()](struct.LocationsActions.html#method.translate_text)"]
             #[derive(Debug, Clone)]
             pub struct TranslateTextRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TranslateTextRequest,
                 parent: String,
@@ -3057,7 +3099,10 @@ pub mod resources {
                     output.push_str(":translateText");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3081,7 +3126,7 @@ pub mod resources {
             pub mod glossaries {
                 pub mod params {}
                 pub struct GlossariesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> GlossariesActions<'a> {
@@ -3176,7 +3221,7 @@ pub mod resources {
                 #[doc = "Created via [GlossariesActions::create()](struct.GlossariesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Glossary,
                     parent: String,
@@ -3314,7 +3359,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3338,7 +3384,7 @@ pub mod resources {
                 #[doc = "Created via [GlossariesActions::delete()](struct.GlossariesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3473,7 +3519,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3497,7 +3544,7 @@ pub mod resources {
                 #[doc = "Created via [GlossariesActions::get()](struct.GlossariesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3632,7 +3679,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3656,7 +3704,7 @@ pub mod resources {
                 #[doc = "Created via [GlossariesActions::list()](struct.GlossariesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     filter: Option<String>,
@@ -3915,7 +3963,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3954,7 +4003,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -4073,7 +4122,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CancelOperationRequest,
                     name: String,
@@ -4211,7 +4260,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4235,7 +4285,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4370,7 +4420,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4394,7 +4445,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4529,7 +4580,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4553,7 +4605,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -4812,7 +4864,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -4850,7 +4903,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::wait()](struct.OperationsActions.html#method.wait)"]
                 #[derive(Debug, Clone)]
                 pub struct WaitRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::WaitOperationRequest,
                     name: String,
@@ -4988,7 +5041,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5029,9 +5083,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -5073,7 +5125,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

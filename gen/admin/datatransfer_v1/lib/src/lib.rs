@@ -1,4 +1,11 @@
 #![doc = "# Resources and Methods\n    * [applications](resources/applications/struct.ApplicationsActions.html)\n      * [*get*](resources/applications/struct.GetRequestBuilder.html), [*list*](resources/applications/struct.ListRequestBuilder.html)\n    * [transfers](resources/transfers/struct.TransfersActions.html)\n      * [*get*](resources/transfers/struct.GetRequestBuilder.html), [*insert*](resources/transfers/struct.InsertRequestBuilder.html), [*list*](resources/transfers/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage data transfers between users in your organization\n\n`https://www.googleapis.com/auth/admin.datatransfer`"]
+    pub const ADMIN_DATATRANSFER: &str = "https://www.googleapis.com/auth/admin.datatransfer";
+    #[doc = "View data transfers between users in your organization\n\n`https://www.googleapis.com/auth/admin.datatransfer.readonly`"]
+    pub const ADMIN_DATATRANSFER_READONLY: &str =
+        "https://www.googleapis.com/auth/admin.datatransfer.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -42,7 +49,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transfered."]
+        #[doc = "The list of all possible transfer parameters for this application. These parameters can be used to select the data of the user in this application to be transferred."]
         #[serde(
             rename = "transferParams",
             default,
@@ -81,7 +88,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub application_id: ::std::option::Option<i64>,
-        #[doc = "The transfer parameters for the application. These parameters are used to select the data which will get transfered in context of this application."]
+        #[doc = "The transfer parameters for the application. These parameters are used to select the data which will get transferred in context of this application."]
         #[serde(
             rename = "applicationTransferParams",
             default,
@@ -127,7 +134,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub key: ::std::option::Option<String>,
-        #[doc = "The value of the coressponding transfer parameter. eg: 'PRIVATE' or 'SHARED'"]
+        #[doc = "The value of the corresponding transfer parameter. eg: 'PRIVATE' or 'SHARED'"]
         #[serde(
             rename = "value",
             default,
@@ -239,14 +246,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "ID of the user to whom the data is being transfered."]
+        #[doc = "ID of the user to whom the data is being transferred."]
         #[serde(
             rename = "newOwnerUserId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub new_owner_user_id: ::std::option::Option<String>,
-        #[doc = "ID of the user whose data is being transfered."]
+        #[doc = "ID of the user whose data is being transferred."]
         #[serde(
             rename = "oldOwnerUserId",
             default,
@@ -400,7 +407,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -408,8 +415,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -435,7 +454,7 @@ pub mod resources {
     pub mod applications {
         pub mod params {}
         pub struct ApplicationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ApplicationsActions<'a> {
@@ -478,7 +497,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::get()](struct.ApplicationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: i64,
             alt: Option<crate::params::Alt>,
@@ -584,7 +603,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -604,7 +626,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::list()](struct.ApplicationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             customer_id: Option<String>,
             max_results: Option<i32>,
@@ -618,7 +640,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Immutable ID of the Google Apps account."]
+            #[doc = "Immutable ID of the G Suite account."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
@@ -817,7 +839,10 @@ pub mod resources {
                 output.push_str("applications");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -852,7 +877,7 @@ pub mod resources {
     pub mod transfers {
         pub mod params {}
         pub struct TransfersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TransfersActions<'a> {
@@ -913,7 +938,7 @@ pub mod resources {
         #[doc = "Created via [TransfersActions::get()](struct.TransfersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             data_transfer_id: String,
             alt: Option<crate::params::Alt>,
@@ -1018,7 +1043,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1038,7 +1066,7 @@ pub mod resources {
         #[doc = "Created via [TransfersActions::insert()](struct.TransfersActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::DataTransfer,
             alt: Option<crate::params::Alt>,
@@ -1137,7 +1165,10 @@ pub mod resources {
                 output.push_str("transfers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1157,7 +1188,7 @@ pub mod resources {
         #[doc = "Created via [TransfersActions::list()](struct.TransfersActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             customer_id: Option<String>,
             max_results: Option<i32>,
@@ -1174,7 +1205,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Immutable ID of the Google Apps account."]
+            #[doc = "Immutable ID of the G Suite account."]
             pub fn customer_id(mut self, value: impl Into<String>) -> Self {
                 self.customer_id = Some(value.into());
                 self
@@ -1390,7 +1421,10 @@ pub mod resources {
                 output.push_str("transfers");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("customerId", &self.customer_id)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -1442,9 +1476,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1486,7 +1518,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

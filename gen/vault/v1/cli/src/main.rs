@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("vault1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190731")
+            .version("0.1.0-20200501")
             .about("Archiving and eDiscovery for G Suite.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -79,8 +79,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             matters0 = matters0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates the specified matter.\nThis updates only the name and description of the matter, identified by\nmatter id. Changes to any other fields are ignored.\nReturns the default view of the matter.");
+            let mcmd = SubCommand::with_name("update").about("Updates the specified matter.\nThis updates only the name and description of the matter, identified by\nmatter ID. Changes to any other fields are ignored.\nReturns the default view of the matter.");
             matters0 = matters0.subcommand(mcmd);
+        }
+        let mut operations0 = SubCommand::with_name("operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: delete");
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a long-running operation. This method indicates that the client is\nno longer interested in the operation result. It does not cancel the\noperation. If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.");
+            operations0 = operations0.subcommand(mcmd);
         }
         let mut exports1 = SubCommand::with_name("exports")
             .setting(AppSettings::ColoredHelp)
@@ -171,6 +178,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         matters0 = matters0.subcommand(saved_queries1);
         matters0 = matters0.subcommand(holds1);
         matters0 = matters0.subcommand(exports1);
+        app = app.subcommand(operations0);
         app = app.subcommand(matters0);
 
         Self { app }

@@ -1,4 +1,8 @@
-#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [datasets](resources/projects/locations/datasets/struct.DatasetsActions.html)\n          * [*create*](resources/projects/locations/datasets/struct.CreateRequestBuilder.html), [*deidentify*](resources/projects/locations/datasets/struct.DeidentifyRequestBuilder.html), [*delete*](resources/projects/locations/datasets/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/datasets/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/datasets/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/struct.TestIamPermissionsRequestBuilder.html)\n          * [dicom_stores](resources/projects/locations/datasets/dicom_stores/struct.DicomStoresActions.html)\n            * [*create*](resources/projects/locations/datasets/dicom_stores/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/dicom_stores/struct.DeleteRequestBuilder.html), [*export*](resources/projects/locations/datasets/dicom_stores/struct.ExportRequestBuilder.html), [*get*](resources/projects/locations/datasets/dicom_stores/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/dicom_stores/struct.GetIamPolicyRequestBuilder.html), [*import*](resources/projects/locations/datasets/dicom_stores/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/datasets/dicom_stores/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/dicom_stores/struct.PatchRequestBuilder.html), [*searchForInstances*](resources/projects/locations/datasets/dicom_stores/struct.SearchForInstancesRequestBuilder.html), [*searchForSeries*](resources/projects/locations/datasets/dicom_stores/struct.SearchForSeriesRequestBuilder.html), [*searchForStudies*](resources/projects/locations/datasets/dicom_stores/struct.SearchForStudiesRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/dicom_stores/struct.SetIamPolicyRequestBuilder.html), [*storeInstances*](resources/projects/locations/datasets/dicom_stores/struct.StoreInstancesRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/dicom_stores/struct.TestIamPermissionsRequestBuilder.html)\n            * [studies](resources/projects/locations/datasets/dicom_stores/studies/struct.StudiesActions.html)\n              * [*delete*](resources/projects/locations/datasets/dicom_stores/studies/struct.DeleteRequestBuilder.html), [*retrieveMetadata*](resources/projects/locations/datasets/dicom_stores/studies/struct.RetrieveMetadataRequestBuilder.html), [*retrieveStudy*](resources/projects/locations/datasets/dicom_stores/studies/struct.RetrieveStudyRequestBuilder.html), [*searchForInstances*](resources/projects/locations/datasets/dicom_stores/studies/struct.SearchForInstancesRequestBuilder.html), [*searchForSeries*](resources/projects/locations/datasets/dicom_stores/studies/struct.SearchForSeriesRequestBuilder.html), [*storeInstances*](resources/projects/locations/datasets/dicom_stores/studies/struct.StoreInstancesRequestBuilder.html)\n              * [series](resources/projects/locations/datasets/dicom_stores/studies/series/struct.SeriesActions.html)\n                * [*delete*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.DeleteRequestBuilder.html), [*retrieveMetadata*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.RetrieveMetadataRequestBuilder.html), [*retrieveSeries*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.RetrieveSeriesRequestBuilder.html), [*searchForInstances*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.SearchForInstancesRequestBuilder.html)\n                * [instances](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.InstancesActions.html)\n                  * [*delete*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.DeleteRequestBuilder.html), [*retrieveInstance*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.RetrieveInstanceRequestBuilder.html), [*retrieveMetadata*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.RetrieveMetadataRequestBuilder.html), [*retrieveRendered*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.RetrieveRenderedRequestBuilder.html)\n                  * [frames](resources/projects/locations/datasets/dicom_stores/studies/series/instances/frames/struct.FramesActions.html)\n                    * [*retrieveFrames*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/frames/struct.RetrieveFramesRequestBuilder.html), [*retrieveRendered*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/frames/struct.RetrieveRenderedRequestBuilder.html)\n          * [fhir_stores](resources/projects/locations/datasets/fhir_stores/struct.FhirStoresActions.html)\n            * [*create*](resources/projects/locations/datasets/fhir_stores/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/fhir_stores/struct.DeleteRequestBuilder.html), [*export*](resources/projects/locations/datasets/fhir_stores/struct.ExportRequestBuilder.html), [*get*](resources/projects/locations/datasets/fhir_stores/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/fhir_stores/struct.GetIamPolicyRequestBuilder.html), [*import*](resources/projects/locations/datasets/fhir_stores/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/datasets/fhir_stores/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/fhir_stores/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/fhir_stores/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/fhir_stores/struct.TestIamPermissionsRequestBuilder.html)\n            * [fhir](resources/projects/locations/datasets/fhir_stores/fhir/struct.FhirActions.html)\n              * [*Observation-lastn*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ObservationLastnRequestBuilder.html), [*Patient-everything*](resources/projects/locations/datasets/fhir_stores/fhir/struct.PatientEverythingRequestBuilder.html), [*Resource-purge*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ResourcePurgeRequestBuilder.html), [*capabilities*](resources/projects/locations/datasets/fhir_stores/fhir/struct.CapabilitiesRequestBuilder.html), [*conditionalDelete*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConditionalDeleteRequestBuilder.html), [*conditionalPatch*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConditionalPatchRequestBuilder.html), [*conditionalUpdate*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConditionalUpdateRequestBuilder.html), [*create*](resources/projects/locations/datasets/fhir_stores/fhir/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/fhir_stores/fhir/struct.DeleteRequestBuilder.html), [*executeBundle*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ExecuteBundleRequestBuilder.html), [*history*](resources/projects/locations/datasets/fhir_stores/fhir/struct.HistoryRequestBuilder.html), [*patch*](resources/projects/locations/datasets/fhir_stores/fhir/struct.PatchRequestBuilder.html), [*read*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ReadRequestBuilder.html), [*search*](resources/projects/locations/datasets/fhir_stores/fhir/struct.SearchRequestBuilder.html), [*update*](resources/projects/locations/datasets/fhir_stores/fhir/struct.UpdateRequestBuilder.html), [*vread*](resources/projects/locations/datasets/fhir_stores/fhir/struct.VreadRequestBuilder.html)\n          * [hl_7v2_stores](resources/projects/locations/datasets/hl_7v2_stores/struct.Hl7V2StoresActions.html)\n            * [*create*](resources/projects/locations/datasets/hl_7v2_stores/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/hl_7v2_stores/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/datasets/hl_7v2_stores/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/hl_7v2_stores/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/datasets/hl_7v2_stores/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/hl_7v2_stores/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/hl_7v2_stores/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/hl_7v2_stores/struct.TestIamPermissionsRequestBuilder.html)\n            * [messages](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.MessagesActions.html)\n              * [*create*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.GetRequestBuilder.html), [*ingest*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.IngestRequestBuilder.html), [*list*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.PatchRequestBuilder.html)\n          * [operations](resources/projects/locations/datasets/operations/struct.OperationsActions.html)\n            * [*get*](resources/projects/locations/datasets/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/datasets/operations/struct.ListRequestBuilder.html)\n"]
+#![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [datasets](resources/projects/locations/datasets/struct.DatasetsActions.html)\n          * [*create*](resources/projects/locations/datasets/struct.CreateRequestBuilder.html), [*deidentify*](resources/projects/locations/datasets/struct.DeidentifyRequestBuilder.html), [*delete*](resources/projects/locations/datasets/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/datasets/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/datasets/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/struct.TestIamPermissionsRequestBuilder.html)\n          * [annotation_stores](resources/projects/locations/datasets/annotation_stores/struct.AnnotationStoresActions.html)\n            * [*getIamPolicy*](resources/projects/locations/datasets/annotation_stores/struct.GetIamPolicyRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/annotation_stores/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/annotation_stores/struct.TestIamPermissionsRequestBuilder.html)\n          * [dicom_stores](resources/projects/locations/datasets/dicom_stores/struct.DicomStoresActions.html)\n            * [*create*](resources/projects/locations/datasets/dicom_stores/struct.CreateRequestBuilder.html), [*deidentify*](resources/projects/locations/datasets/dicom_stores/struct.DeidentifyRequestBuilder.html), [*delete*](resources/projects/locations/datasets/dicom_stores/struct.DeleteRequestBuilder.html), [*export*](resources/projects/locations/datasets/dicom_stores/struct.ExportRequestBuilder.html), [*get*](resources/projects/locations/datasets/dicom_stores/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/dicom_stores/struct.GetIamPolicyRequestBuilder.html), [*import*](resources/projects/locations/datasets/dicom_stores/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/datasets/dicom_stores/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/dicom_stores/struct.PatchRequestBuilder.html), [*searchForInstances*](resources/projects/locations/datasets/dicom_stores/struct.SearchForInstancesRequestBuilder.html), [*searchForSeries*](resources/projects/locations/datasets/dicom_stores/struct.SearchForSeriesRequestBuilder.html), [*searchForStudies*](resources/projects/locations/datasets/dicom_stores/struct.SearchForStudiesRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/dicom_stores/struct.SetIamPolicyRequestBuilder.html), [*storeInstances*](resources/projects/locations/datasets/dicom_stores/struct.StoreInstancesRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/dicom_stores/struct.TestIamPermissionsRequestBuilder.html)\n            * [studies](resources/projects/locations/datasets/dicom_stores/studies/struct.StudiesActions.html)\n              * [*delete*](resources/projects/locations/datasets/dicom_stores/studies/struct.DeleteRequestBuilder.html), [*retrieveMetadata*](resources/projects/locations/datasets/dicom_stores/studies/struct.RetrieveMetadataRequestBuilder.html), [*retrieveStudy*](resources/projects/locations/datasets/dicom_stores/studies/struct.RetrieveStudyRequestBuilder.html), [*searchForInstances*](resources/projects/locations/datasets/dicom_stores/studies/struct.SearchForInstancesRequestBuilder.html), [*searchForSeries*](resources/projects/locations/datasets/dicom_stores/studies/struct.SearchForSeriesRequestBuilder.html), [*storeInstances*](resources/projects/locations/datasets/dicom_stores/studies/struct.StoreInstancesRequestBuilder.html)\n              * [series](resources/projects/locations/datasets/dicom_stores/studies/series/struct.SeriesActions.html)\n                * [*delete*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.DeleteRequestBuilder.html), [*retrieveMetadata*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.RetrieveMetadataRequestBuilder.html), [*retrieveSeries*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.RetrieveSeriesRequestBuilder.html), [*searchForInstances*](resources/projects/locations/datasets/dicom_stores/studies/series/struct.SearchForInstancesRequestBuilder.html)\n                * [instances](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.InstancesActions.html)\n                  * [*delete*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.DeleteRequestBuilder.html), [*retrieveInstance*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.RetrieveInstanceRequestBuilder.html), [*retrieveMetadata*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.RetrieveMetadataRequestBuilder.html), [*retrieveRendered*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/struct.RetrieveRenderedRequestBuilder.html)\n                  * [frames](resources/projects/locations/datasets/dicom_stores/studies/series/instances/frames/struct.FramesActions.html)\n                    * [*retrieveFrames*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/frames/struct.RetrieveFramesRequestBuilder.html), [*retrieveRendered*](resources/projects/locations/datasets/dicom_stores/studies/series/instances/frames/struct.RetrieveRenderedRequestBuilder.html)\n          * [fhir_stores](resources/projects/locations/datasets/fhir_stores/struct.FhirStoresActions.html)\n            * [*create*](resources/projects/locations/datasets/fhir_stores/struct.CreateRequestBuilder.html), [*deidentify*](resources/projects/locations/datasets/fhir_stores/struct.DeidentifyRequestBuilder.html), [*delete*](resources/projects/locations/datasets/fhir_stores/struct.DeleteRequestBuilder.html), [*export*](resources/projects/locations/datasets/fhir_stores/struct.ExportRequestBuilder.html), [*get*](resources/projects/locations/datasets/fhir_stores/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/fhir_stores/struct.GetIamPolicyRequestBuilder.html), [*import*](resources/projects/locations/datasets/fhir_stores/struct.ImportRequestBuilder.html), [*list*](resources/projects/locations/datasets/fhir_stores/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/fhir_stores/struct.PatchRequestBuilder.html), [*search*](resources/projects/locations/datasets/fhir_stores/struct.SearchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/fhir_stores/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/fhir_stores/struct.TestIamPermissionsRequestBuilder.html)\n            * [fhir](resources/projects/locations/datasets/fhir_stores/fhir/struct.FhirActions.html)\n              * [*ConceptMap-search-translate*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConceptMapSearchTranslateRequestBuilder.html), [*ConceptMap-translate*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConceptMapTranslateRequestBuilder.html), [*Observation-lastn*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ObservationLastnRequestBuilder.html), [*Patient-everything*](resources/projects/locations/datasets/fhir_stores/fhir/struct.PatientEverythingRequestBuilder.html), [*Resource-purge*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ResourcePurgeRequestBuilder.html), [*capabilities*](resources/projects/locations/datasets/fhir_stores/fhir/struct.CapabilitiesRequestBuilder.html), [*conditionalDelete*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConditionalDeleteRequestBuilder.html), [*conditionalPatch*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConditionalPatchRequestBuilder.html), [*conditionalUpdate*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ConditionalUpdateRequestBuilder.html), [*create*](resources/projects/locations/datasets/fhir_stores/fhir/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/fhir_stores/fhir/struct.DeleteRequestBuilder.html), [*executeBundle*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ExecuteBundleRequestBuilder.html), [*history*](resources/projects/locations/datasets/fhir_stores/fhir/struct.HistoryRequestBuilder.html), [*patch*](resources/projects/locations/datasets/fhir_stores/fhir/struct.PatchRequestBuilder.html), [*read*](resources/projects/locations/datasets/fhir_stores/fhir/struct.ReadRequestBuilder.html), [*search*](resources/projects/locations/datasets/fhir_stores/fhir/struct.SearchRequestBuilder.html), [*update*](resources/projects/locations/datasets/fhir_stores/fhir/struct.UpdateRequestBuilder.html), [*vread*](resources/projects/locations/datasets/fhir_stores/fhir/struct.VreadRequestBuilder.html)\n          * [hl_7v2_stores](resources/projects/locations/datasets/hl_7v2_stores/struct.Hl7V2StoresActions.html)\n            * [*create*](resources/projects/locations/datasets/hl_7v2_stores/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/hl_7v2_stores/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/datasets/hl_7v2_stores/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/projects/locations/datasets/hl_7v2_stores/struct.GetIamPolicyRequestBuilder.html), [*list*](resources/projects/locations/datasets/hl_7v2_stores/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/hl_7v2_stores/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/projects/locations/datasets/hl_7v2_stores/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/projects/locations/datasets/hl_7v2_stores/struct.TestIamPermissionsRequestBuilder.html)\n            * [messages](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.MessagesActions.html)\n              * [*create*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.GetRequestBuilder.html), [*ingest*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.IngestRequestBuilder.html), [*list*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/datasets/hl_7v2_stores/messages/struct.PatchRequestBuilder.html)\n          * [operations](resources/projects/locations/datasets/operations/struct.OperationsActions.html)\n            * [*cancel*](resources/projects/locations/datasets/operations/struct.CancelRequestBuilder.html), [*get*](resources/projects/locations/datasets/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/datasets/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -177,7 +181,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
+        #[doc = "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n  on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n  who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n  account. For example, `alice@example.com` .\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n  account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n  For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a user that has been recently deleted. For\n  example, `alice@example.com?uid=123456789012345678901`. If the user is\n  recovered, this value reverts to `user:{emailid}` and the recovered user\n  retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n  unique identifier) representing a service account that has been recently\n  deleted. For example,\n  `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n  If the service account is undeleted, this value reverts to\n  `serviceAccount:{emailid}` and the undeleted service account retains the\n  role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n  identifier) representing a Google group that has been recently\n  deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n  the group is recovered, this value reverts to `group:{emailid}` and the\n  recovered group retains the role in the binding.\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n  users of that domain. For example, `google.com` or `example.com`."]
         #[serde(
             rename = "members",
             default,
@@ -198,6 +202,30 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Binding {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Copy,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct CancelOperationRequest {}
+    impl ::google_field_selector::FieldSelector for CancelOperationRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CancelOperationRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -315,7 +343,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The default timezone used by this dataset. Must be a either a valid IANA\ntime zone name such as \"America/New_York\" or empty, which defaults to UTC.\nThis is used for parsing times in resources (e.g., HL7 messages) where no\nexplicit timezone is specified."]
+        #[doc = "The default timezone used by this dataset. Must be a either a valid IANA\ntime zone name such as \"America/New_York\" or empty, which defaults to UTC.\nThis is used for parsing times in resources, such as HL7 messages, where no\nexplicit timezone is specified."]
         #[serde(
             rename = "timeZone",
             default,
@@ -436,7 +464,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub config: ::std::option::Option<crate::schemas::DeidentifyConfig>,
-        #[doc = "The name of the dataset resource to create and write the redacted data to\n(e.g.,\n\n* The destination dataset must not exist.\n* The destination dataset must be in the same project as the source\n  dataset. De-identifying data across multiple projects is not supported."]
+        #[doc = "The name of the dataset resource to create and write the redacted data to.\n\n* The destination dataset must not exist.\n* The destination dataset must be in the same project and location as the\n  source dataset. De-identifying data across multiple projects or locations\n  is not supported."]
         #[serde(
             rename = "destinationDataset",
             default,
@@ -466,8 +494,53 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DeidentifyDicomStoreRequest {
+        #[doc = "De-identify configuration."]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<crate::schemas::DeidentifyConfig>,
+        #[doc = "The name of the DICOM store to create and write the redacted data to.\nFor example,\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.\n\n* The destination dataset must exist.\n* The source dataset and destination dataset must both reside in the same\n  project. De-identifying data across multiple projects is not supported.\n* The destination DICOM store must not exist.\n* The caller must have the necessary permissions to create the destination\n  DICOM store."]
+        #[serde(
+            rename = "destinationStore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub destination_store: ::std::option::Option<String>,
+        #[doc = "Filter configuration."]
+        #[serde(
+            rename = "filterConfig",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_config: ::std::option::Option<crate::schemas::DicomFilterConfig>,
+    }
+    impl ::google_field_selector::FieldSelector for DeidentifyDicomStoreRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeidentifyDicomStoreRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DeidentifyErrorDetails {
-        #[doc = "Number of resources failed to process."]
+        #[doc = "Number of resources that failed to process."]
         #[serde(
             rename = "failureResourceCount",
             default,
@@ -475,7 +548,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub failure_resource_count: ::std::option::Option<i64>,
-        #[doc = "Number of stores failed to process."]
+        #[doc = "Number of stores that failed to process."]
         #[serde(
             rename = "failureStoreCount",
             default,
@@ -522,7 +595,60 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DeidentifyFhirStoreRequest {
+        #[doc = "Deidentify configuration."]
+        #[serde(
+            rename = "config",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<crate::schemas::DeidentifyConfig>,
+        #[doc = "The name of the FHIR store to create and write the redacted data to.\nFor example,\n`projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.\n\n* The destination dataset must exist.\n* The source dataset and destination dataset must both reside in the same\n  project. De-identifying data across multiple projects is not supported.\n* The destination FHIR store must exist.\n* The caller must have the healthcare.fhirResources.update permission to\n  write to the destination FHIR store."]
+        #[serde(
+            rename = "destinationStore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub destination_store: ::std::option::Option<String>,
+        #[doc = "A filter specifying the resources to include in the output. If not\nspecified, all resources are included in the output."]
+        #[serde(
+            rename = "resourceFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_filter: ::std::option::Option<crate::schemas::FhirFilter>,
+    }
+    impl ::google_field_selector::FieldSelector for DeidentifyFhirStoreRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DeidentifyFhirStoreRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DeidentifySummary {
+        #[doc = "Number of resources that failed to process.\nThe failures might be caused by:\n\n* Invalid user input data\n* Transient errors that could be skipped"]
+        #[serde(
+            rename = "failureResourceCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub failure_resource_count: ::std::option::Option<i64>,
         #[doc = "Number of resources successfully processed."]
         #[serde(
             rename = "successResourceCount",
@@ -712,6 +838,37 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct DicomFilterConfig {
+        #[doc = "The Cloud Storage location of the filter configuration file.\nThe `gcs_uri` must be in the format `gs://bucket/path/to/object`.\nThe filter configuration file must contain a list of resource paths\nseparated by newline characters (\\n or \\r\\n). Each resource path\nmust be in the format\n\"/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]\"\n\nThe Cloud Healthcare API service account must have the\n`roles/storage.objectViewer` Cloud IAM role for this Cloud Storage\nlocation."]
+        #[serde(
+            rename = "resourcePathsGcsUri",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_paths_gcs_uri: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for DicomFilterConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DicomFilterConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct DicomStore {
         #[doc = "User-supplied key-value pairs used to organize DICOM stores.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding\nof maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression:\n\\p{Ll}\\p{Lo}{0,62}\n\nLabel values are optional, must be between 1 and 63 characters long, have\na UTF-8 encoding of maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be associated with a given store."]
         #[serde(
@@ -845,6 +1002,30 @@ pub mod schemas {
         PartialOrd,
         Ord,
         Eq,
+        Copy,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ExportDicomDataResponse {}
+    impl ::google_field_selector::FieldSelector for ExportDicomDataResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ExportDicomDataResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
         Default,
         :: serde :: Deserialize,
         :: serde :: Serialize,
@@ -892,28 +1073,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Expr {
-        #[doc = "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
+        #[doc = "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."]
+        #[doc = "Textual representation of an expression in Common Expression Language\nsyntax."]
         #[serde(
             rename = "expression",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub expression: ::std::option::Option<String>,
-        #[doc = "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
+        #[doc = "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."]
         #[serde(
             rename = "location",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub location: ::std::option::Option<String>,
-        #[doc = "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
+        #[doc = "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."]
         #[serde(
             rename = "title",
             default,
@@ -944,7 +1125,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FhirConfig {
-        #[doc = "Specifies FHIR paths to match and how to transform them. Any field that\nis not matched by a FieldMetadata will be passed through to the output\ndataset unmodified. All extensions are removed in the output."]
+        #[doc = "Specifies FHIR paths to match and how to transform them. Any field that\nis not matched by a FieldMetadata is passed through to the output\ndataset unmodified. All extensions are removed in the output.\nIf a field can be matched by more than one FieldMetadata, the first\nFieldMetadata.Action is applied."]
         #[serde(
             rename = "fieldMetadataList",
             default,
@@ -974,29 +1155,60 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct FhirFilter {
+        #[doc = "List of resources to include in the output. If this list is empty or\nnot specified, all resources are included in the output."]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resources: ::std::option::Option<crate::schemas::Resources>,
+    }
+    impl ::google_field_selector::FieldSelector for FhirFilter {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FhirFilter {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct FhirStore {
-        #[doc = "Whether to disable referential integrity in this FHIR store. This field is\nimmutable after FHIR store creation.\nThe default value is false, meaning that the API will enforce referential\nintegrity and fail the requests that will result in inconsistent state in\nthe FHIR store.\nWhen this field is set to true, the API will skip referential integrity\ncheck. Consequently, operations that rely on references, such as\nGetPatientEverything, will not return all the results if broken references\nexist."]
+        #[doc = "If true, overrides the default search behavior for this FHIR store to\n`handling=strict` which returns an error for unrecognized search\nparameters. If false, uses the FHIR specification default\n`handling=lenient` which ignores unrecognized search parameters.\nThe handling can always be changed from the default on an individual API\ncall by setting the HTTP header `Prefer: handling=strict` or\n`Prefer: handling=lenient`."]
+        #[serde(
+            rename = "defaultSearchHandlingStrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub default_search_handling_strict: ::std::option::Option<bool>,
+        #[doc = "Whether to disable referential integrity in this FHIR store. This field is\nimmutable after FHIR store creation.\nThe default value is false, meaning that the API enforces referential\nintegrity and fails the requests that result in inconsistent state in\nthe FHIR store.\nWhen this field is set to true, the API skips referential integrity\nchecks. Consequently, operations that rely on references, such as\nGetPatientEverything, do not return all the results if broken references\nexist."]
         #[serde(
             rename = "disableReferentialIntegrity",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disable_referential_integrity: ::std::option::Option<bool>,
-        #[doc = "Whether to disable resource versioning for this FHIR store. This field can\nnot be changed after the creation of FHIR store.\nIf set to false, which is the default behavior, all write operations will\ncause historical versions to be recorded automatically. The historical\nversions can be fetched through the history APIs, but cannot be updated.\nIf set to true, no historical versions will be kept. The server will send\nback errors for attempts to read the historical versions."]
+        #[doc = "Whether to disable resource versioning for this FHIR store. This field can\nnot be changed after the creation of FHIR store.\nIf set to false, which is the default behavior, all write operations\ncause historical versions to be recorded automatically. The historical\nversions can be fetched through the history APIs, but cannot be updated.\nIf set to true, no historical versions are kept. The server sends\nerrors for attempts to read the historical versions."]
         #[serde(
             rename = "disableResourceVersioning",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub disable_resource_versioning: ::std::option::Option<bool>,
-        #[doc = "Whether to allow the bulk import API to accept history bundles and directly\ninsert historical resource versions into the FHIR store. Importing resource\nhistories creates resource interactions that appear to have occurred in the\npast, which clients may not want to allow. If set to false, history bundles\nwithin an import will fail with an error."]
-        #[serde(
-            rename = "enableHistoryImport",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub enable_history_import: ::std::option::Option<bool>,
-        #[doc = "Whether this FHIR store has the [updateCreate\ncapability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).\nThis determines if the client can use an Update operation to create a new\nresource with a client-specified ID. If false, all IDs are server-assigned\nthrough the Create operation and attempts to Update a non-existent resource\nwill return errors. Please treat the audit logs with appropriate levels of\ncare if client-specified resource IDs contain sensitive data such as\npatient identifiers, those IDs will be part of the FHIR resource path\nrecorded in Cloud audit logs and Cloud Pub/Sub notifications."]
+        #[doc = "Whether this FHIR store has the [updateCreate\ncapability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).\nThis determines if the client can use an Update operation to create a new\nresource with a client-specified ID. If false, all IDs are server-assigned\nthrough the Create operation and attempts to update a non-existent resource\nreturn errors. Please treat the audit logs with appropriate levels of\ncare if client-specified resource IDs contain sensitive data such as\npatient identifiers, those IDs are part of the FHIR resource path\nrecorded in Cloud audit logs and Cloud Pub/Sub notifications."]
         #[serde(
             rename = "enableUpdateCreate",
             default,
@@ -1017,13 +1229,27 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "If non-empty, publish all resource modifications of this FHIR store to\nthis destination. The Cloud Pub/Sub message attributes will contain a map\nwith a string describing the action that has triggered the notification,\ne.g. \"action\":\"CreateResource\"."]
+        #[doc = "If non-empty, publish all resource modifications of this FHIR store to\nthis destination. The Cloud Pub/Sub message attributes contain a map\nwith a string describing the action that has triggered the notification.\nFor example, \"action\":\"CreateResource\"."]
         #[serde(
             rename = "notificationConfig",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
+        #[doc = "A list of streaming configs that configure the destinations of streaming\nexport for every resource mutation in this FHIR store. Each store is\nallowed to have up to 10 streaming configs.\nAfter a new config is added, the next resource mutation is streamed to\nthe new location in addition to the existing ones.\nWhen a location is removed from the list, the server stops\nstreaming to that location. Before adding a new config, you must add the\nrequired\n[`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor)\nrole to your project's **Cloud Healthcare Service Agent**\n[service account](https://cloud.google.com/iam/docs/service-accounts).\nSome lag (typically on the order of dozens of seconds) is expected before\nthe results show up in the streaming destination."]
+        #[serde(
+            rename = "streamConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub stream_configs: ::std::option::Option<Vec<crate::schemas::StreamConfig>>,
+        #[doc = "The FHIR specification version that this FHIR store supports natively. This\nfield is immutable after store creation. Requests are rejected if they\ncontain FHIR resources of a different version.\nAn empty value is treated as STU3."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<crate::schemas::FhirStoreVersion>,
     }
     impl ::google_field_selector::FieldSelector for FhirStore {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1031,6 +1257,146 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for FhirStore {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum FhirStoreVersion {
+        #[doc = "Draft Standard for Trial Use, [Release 2](https://www.hl7.org/fhir/DSTU2)"]
+        Dstu2,
+        #[doc = "[Release 4](https://www.hl7.org/fhir/R4)"]
+        R4,
+        #[doc = "Standard for Trial Use, [Release 3](https://www.hl7.org/fhir/STU3)"]
+        Stu3,
+        #[doc = "VERSION_UNSPECIFIED is treated as STU3 to accommodate the existing FHIR\nstores."]
+        VersionUnspecified,
+    }
+    impl FhirStoreVersion {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                FhirStoreVersion::Dstu2 => "DSTU2",
+                FhirStoreVersion::R4 => "R4",
+                FhirStoreVersion::Stu3 => "STU3",
+                FhirStoreVersion::VersionUnspecified => "VERSION_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for FhirStoreVersion {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for FhirStoreVersion {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<FhirStoreVersion, ()> {
+            Ok(match s {
+                "DSTU2" => FhirStoreVersion::Dstu2,
+                "R4" => FhirStoreVersion::R4,
+                "STU3" => FhirStoreVersion::Stu3,
+                "VERSION_UNSPECIFIED" => FhirStoreVersion::VersionUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for FhirStoreVersion {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for FhirStoreVersion {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for FhirStoreVersion {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DSTU2" => FhirStoreVersion::Dstu2,
+                "R4" => FhirStoreVersion::R4,
+                "STU3" => FhirStoreVersion::Stu3,
+                "VERSION_UNSPECIFIED" => FhirStoreVersion::VersionUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for FhirStoreVersion {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for FhirStoreVersion {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Field {
+        #[doc = "The maximum number of times this field can be repeated. 0 or -1 means\nunbounded."]
+        #[serde(
+            rename = "maxOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_occurs: ::std::option::Option<i32>,
+        #[doc = "The minimum number of times this field must be present/repeated."]
+        #[serde(
+            rename = "minOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub min_occurs: ::std::option::Option<i32>,
+        #[doc = "The name of the field. For example, \"PID-1\" or just \"1\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "The type of this field. A Type with this name must be defined in an\nHl7TypesConfig."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
+        #[doc = "The HL7v2 table this field refers to. For example, PID-15 (Patient's\nPrimary Language) usually refers to table \"0296\"."]
+        #[serde(
+            rename = "table",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub table: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Field {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Field {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1055,7 +1421,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub action: ::std::option::Option<crate::schemas::FieldMetadataAction>,
-        #[doc = "List of paths to FHIR fields to be redacted. Each path is a\nperiod-separated list where each component is either a field name or\nFHIR type name, for example: Patient, HumanName.\nFor \"choice\" types (those defined in the FHIR spec with the form:\nfield[x]) we use two separate components. e.g. \"deceasedAge.unit\" is\nmatched by \"Deceased.Age.unit\".\nSupported types are: AdministrativeGenderCode, Code, Date, DateTime,\nDecimal, HumanName, Id, LanguageCode, Markdown, MimeTypeCode, Oid,\nString, Uri, Uuid, Xhtml."]
+        #[doc = "List of paths to FHIR fields to redact. Each path is a\nperiod-separated list where each component is either a field name or\nFHIR type name. All types begin with an upper case letter. For example,\nthe resource field \"Patient.Address.city\", which uses a string type,\ncan be matched by \"Patient.Address.String\". Path also supports partial\nmatching. For example, \"Patient.Address.city\" can be matched by\n\"Address.city\" (Patient omitted). Partial matching and type matching\ncan be combined, for example \"Patient.Address.city\" can be matched by\n\"Address.String\". For \"choice\" types (those defined in the FHIR spec\nwith the form: field[x]), use two separate components. For example,\n\"deceasedAge.unit\" is matched by \"Deceased.Age.unit\". Supported types\nare: AdministrativeGenderCode, Code, Date, DateTime, Decimal,\nHumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.\nThe sub-type for HumanName(for example HumanName.given,\nHumanName.family) can be omitted."]
         #[serde(
             rename = "paths",
             default,
@@ -1081,7 +1447,7 @@ pub mod schemas {
         DoNotTransform,
         #[doc = "Inspect and transform any found PHI."]
         InspectAndTransform,
-        #[doc = "Transform the entire field."]
+        #[doc = "Transform the entire field based on transformations specified in\nTextConfig. When the specified transformation cannot be applied to a\nfield (for example, a Crypto Hash transformation cannot be applied\nto a FHIR Date field), RedactConfig is used."]
         Transform,
     }
     impl FieldMetadataAction {
@@ -1166,8 +1532,88 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GoogleCloudHealthcareV1Beta1DeidentifyDeidentifyDicomStoreSummary {
+        #[doc = "Number of objects that processing failed for."]
+        #[serde(
+            rename = "failureResourceCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub failure_resource_count: ::std::option::Option<i64>,
+        #[doc = "Number of objects successfully processed."]
+        #[serde(
+            rename = "successResourceCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub success_resource_count: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudHealthcareV1Beta1DeidentifyDeidentifyDicomStoreSummary
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudHealthcareV1Beta1DeidentifyDeidentifyDicomStoreSummary
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudHealthcareV1Beta1DeidentifyDeidentifyFhirStoreSummary {
+        #[doc = "Number of resources successfully processed."]
+        #[serde(
+            rename = "successResourceCount",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub success_resource_count: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleCloudHealthcareV1Beta1DeidentifyDeidentifyFhirStoreSummary
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleCloudHealthcareV1Beta1DeidentifyDeidentifyFhirStoreSummary
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct GoogleCloudHealthcareV1Beta1DicomBigQueryDestination {
-        #[doc = "If the destination table already exists and this flag is `TRUE`, the table\nwill be overwritten by the contents of the DICOM store. If the flag is not\nset and the destination table already exists, the export call returns an\nerror."]
+        #[doc = "If the destination table already exists and this flag is `TRUE`, the table\nis overwritten by the contents of the DICOM store. If the flag is not\nset and the destination table already exists, the export call returns an\nerror."]
         #[serde(
             rename = "force",
             default,
@@ -1207,14 +1653,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudHealthcareV1Beta1DicomGcsDestination {
-        #[doc = "MIME types supported by DICOM spec.\nEach file will be written in the following format:\n`.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}`\nThe frame_number component will exist only for multi-frame instances.\n\nRefer to the DICOM conformance statement for permissible MIME types:\nhttps://cloud.google.com/healthcare/docs/dicom#wado-rs\n\nThe following extensions will be used for output files:\napplication/dicom -> .dcm\nimage/jpeg -> .jpg\nimage/png -> .png\n\nIf unspecified, the instances will be exported in their original\nDICOM format."]
+        #[doc = "MIME types supported by DICOM spec.\nEach file is written in the following format:\n`.../{study_id}/{series_id}/{instance_id}[/{frame_number}].{extension}`\nThe frame_number component exists only for multi-frame instances.\n\nSupported MIME types are consistent with supported formats in DICOMweb:\nhttps://cloud.google.com/healthcare/docs/dicom#retrieve_transaction.\nSpecifically, the following are supported:\n\n* application/dicom; transfer-syntax=1.2.840.10008.1.2.1\n  (uncompressed DICOM)\n* application/dicom; transfer-syntax=1.2.840.10008.1.2.4.50\n  (DICOM with embedded JPEG Baseline)\n* application/dicom; transfer-syntax=1.2.840.10008.1.2.4.90\n  (DICOM with embedded JPEG 2000 Lossless Only)\n* application/dicom; transfer-syntax=1.2.840.10008.1.2.4.91\n  (DICOM with embedded JPEG 2000)h\n* application/dicom; transfer-syntax=*\n  (DICOM with no transcoding)\n* application/octet-stream; transfer-syntax=1.2.840.10008.1.2.1\n  (raw uncompressed PixelData)\n* application/octet-stream; transfer-syntax=*\n  (raw PixelData in whatever format it was uploaded in)\n* image/jpeg; transfer-syntax=1.2.840.10008.1.2.4.50\n  (Consumer JPEG)\n* image/png\n\nThe following extensions are used for output files:\n\n* application/dicom -> .dcm\n* image/jpeg -> .jpg\n* image/png -> .png\n* application/octet-stream -> no extension\n\nIf unspecified, the instances are exported in the original\nDICOM format they were uploaded in."]
         #[serde(
             rename = "mimeType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mime_type: ::std::option::Option<String>,
-        #[doc = "The Cloud Storage destination to export to.\n\nURI for a Cloud Storage directory where result files should be written (in\nthe format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no\ntrailing slash, the service will append one when composing the object path.\nThe user is responsible for creating the Cloud Storage bucket referenced in\n`uri_prefix`."]
+        #[doc = "The Cloud Storage destination to export to.\n\nURI for a Cloud Storage directory where the server writes the result files,\nin the format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no\ntrailing slash, the service appends one when composing the object path.\nThe user is responsible for creating the Cloud Storage bucket referenced in\n`uri_prefix`."]
         #[serde(
             rename = "uriPrefix",
             default,
@@ -1588,6 +2034,158 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct GroupOrSegment {
+        #[serde(
+            rename = "group",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<crate::schemas::SchemaGroup>,
+        #[serde(
+            rename = "segment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub segment: ::std::option::Option<crate::schemas::SchemaSegment>,
+    }
+    impl ::google_field_selector::FieldSelector for GroupOrSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GroupOrSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Hl7SchemaConfig {
+        #[doc = "Map from each HL7v2 message type and trigger event pair, such as ADT_A04,\nto its schema configuration root group."]
+        #[serde(
+            rename = "messageSchemaConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub message_schema_configs: ::std::option::Option<
+            ::std::collections::BTreeMap<String, crate::schemas::SchemaGroup>,
+        >,
+        #[doc = "Each VersionSource is tested and only if they all match is the schema used\nfor the message."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<Vec<crate::schemas::VersionSource>>,
+    }
+    impl ::google_field_selector::FieldSelector for Hl7SchemaConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Hl7SchemaConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Hl7TypesConfig {
+        #[doc = "The HL7v2 type definitions."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<Vec<crate::schemas::Type>>,
+        #[doc = "The version selectors that this config applies to. A message must match\nALL version sources to apply."]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<Vec<crate::schemas::VersionSource>>,
+    }
+    impl ::google_field_selector::FieldSelector for Hl7TypesConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Hl7TypesConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Hl7V2NotificationConfig {
+        #[doc = "Restricts notifications sent for messages matching a filter. If this is\nempty, all messages are matched. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\n\nFields/functions available for filtering are:\n\n* `message_type`, from the MSH-9.1 field. For example,\n  `NOT message_type = \"ADT\"`.\n* `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in\n  the dataset's time_zone, from the MSH-7 segment. For example,\n  `send_date < \"2017-01-02\"`.\n* `send_time`, the timestamp when the message was sent, using the\n  RFC3339 time format for comparisons, from the MSH-7 segment. For example,\n  `send_time < \"2017-01-02T00:00:00-05:00\"`.\n* `send_facility`, the care center that the message came from, from the\n  MSH-4 segment. For example, `send_facility = \"ABC\"`.\n* `PatientId(value, type)`, which matches if the message lists a patient\n  having an ID of the given value and type in the PID-2, PID-3, or PID-4\n  segments. For example, `PatientId(\"123456\", \"MRN\")`.\n* `labels.x`, a string value of the label with key `x` as set using the\n  Message.labels\n  map. For example, `labels.\"priority\"=\"high\"`. The operator `:*` can be\n  used to assert the existence of a label. For example,\n  `labels.\"priority\":*`."]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "The [Cloud Pubsub](https://cloud.google.com/pubsub/docs/) topic that\nnotifications of changes are published on. Supplied by the client. The\nnotification is a `PubsubMessage` with the following fields:\n\n* `PubsubMessage.Data` contains the resource name.\n* `PubsubMessage.MessageId` is the ID of this notification. It is\n  guaranteed to be unique within the topic.\n* `PubsubMessage.PublishTime` is the time at which the message was\n  published.\n\nNote that notifications are only sent if the topic is non-empty. [Topic\nnames](https://cloud.google.com/pubsub/docs/overview#names) must be\nscoped to a project. cloud-healthcare@system.gserviceaccount.com must\nhave publisher permissions on the given Pubsub topic. Not having adequate\npermissions causes the calls that send notifications to fail.\n\nIf a notification cannot be published to Cloud Pub/Sub, errors will be\nlogged to Stackdriver (see [Viewing logs](/healthcare/docs/how-\ntos/stackdriver-logging))."]
+        #[serde(
+            rename = "pubsubTopic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub pubsub_topic: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for Hl7V2NotificationConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Hl7V2NotificationConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct Hl7V2Store {
         #[doc = "User-supplied key-value pairs used to organize HL7v2 stores.\n\nLabel keys must be between 1 and 63 characters long, have a UTF-8 encoding\nof maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression:\n\\p{Ll}\\p{Lo}{0,62}\n\nLabel values are optional, must be between 1 and 63 characters long, have\na UTF-8 encoding of maximum 128 bytes, and must conform to the\nfollowing PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}\n\nNo more than 64 labels can be associated with a given store."]
         #[serde(
@@ -1603,13 +2201,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The notification destination all messages (both Ingest & Create) are\npublished on. Only the message name is sent as part of the notification. If\nthis is unset, no notifications will be sent. Supplied by the client."]
+        #[doc = "The notification destination all messages (both Ingest & Create) are\npublished on. Only the message name is sent as part of the notification. If\nthis is unset, no notifications are sent. Supplied by the client."]
         #[serde(
             rename = "notificationConfig",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub notification_config: ::std::option::Option<crate::schemas::NotificationConfig>,
+        #[doc = "A list of notification configs. Each configuration uses a filter to\ndetermine whether to publish a message (both Ingest & Create) on\nthe corresponding notification destination. Only the message name is sent\nas part of the notification. Supplied by the client."]
+        #[serde(
+            rename = "notificationConfigs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_configs:
+            ::std::option::Option<Vec<crate::schemas::Hl7V2NotificationConfig>>,
         #[doc = "The configuration for the parser. It determines how the server parses the\nmessages."]
         #[serde(
             rename = "parserConfig",
@@ -1617,6 +2223,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parser_config: ::std::option::Option<crate::schemas::ParserConfig>,
+        #[doc = "Determines whether duplicate messages should be rejected. A duplicate\nmessage is a message with the same raw bytes as a message that has already\nbeen ingested/created in this HL7v2 store.\nThe default value is false, meaning that the store accepts the duplicate\nmessages and it also returns the same ACK message in the\nIngestMessageResponse as has been returned previously. Note that only\none resource is created in the store.\nWhen this field is set to true,\nCreateMessage/IngestMessage\nrequests with a duplicate message will be rejected by the store, and\nIngestMessageErrorDetail returns a NACK message upon rejection."]
+        #[serde(
+            rename = "rejectDuplicateMessage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub reject_duplicate_message: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Hl7V2Store {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1784,7 +2397,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ImportDicomDataErrorDetails {
-        #[doc = "Deprecated. Use only for debugging purposes.\n\nContains sample errors encountered in imports of individual resources\n(for example, a Cloud Storage object)."]
+        #[doc = "Deprecated. Use only for debugging purposes.\n\nContains sample errors encountered in imports of individual resources.\nFor example, a Cloud Storage object."]
         #[serde(
             rename = "sampleErrors",
             default,
@@ -1830,6 +2443,30 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for ImportDicomDataRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Copy,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct ImportDicomDataResponse {}
+    impl ::google_field_selector::FieldSelector for ImportDicomDataResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ImportDicomDataResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -2000,7 +2637,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub date_shift_config: ::std::option::Option<crate::schemas::DateShiftConfig>,
-        #[doc = "InfoTypes to apply this transformation to. If this is not specified, the\ntransformation applies to any info_type."]
+        #[doc = "InfoTypes to apply this transformation to. If this is not specified, this\ntransformation becomes the default transformation, and is used for any\ninfo_type that is not specified in another transformation."]
         #[serde(
             rename = "infoTypes",
             default,
@@ -2294,13 +2931,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ListMessagesResponse {
-        #[doc = "The returned message names. Won't be more values than the value of\npage_size in the request."]
+        #[doc = "The returned Messages. Won't be more Messages than the value of\npage_size in the request. See\nview for\npopulated fields."]
         #[serde(
-            rename = "messages",
+            rename = "hl7V2Messages",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub messages: ::std::option::Option<Vec<String>>,
+        pub hl_7v2_messages: ::std::option::Option<Vec<crate::schemas::Message>>,
         #[doc = "Token to retrieve the next page of results or empty if there are no more\nresults in the list."]
         #[serde(
             rename = "nextPageToken",
@@ -2429,7 +3066,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "The message type and trigger event for this message. MSH-9."]
+        #[doc = "The message type for this message. MSH-9.1."]
         #[serde(
             rename = "messageType",
             default,
@@ -2457,6 +3094,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub patient_ids: ::std::option::Option<Vec<crate::schemas::PatientId>>,
+        #[doc = "The parsed version of the raw message data schematized according to this\nstore's schemas and type definitions."]
+        #[serde(
+            rename = "schematizedData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub schematized_data: ::std::option::Option<crate::schemas::SchematizedData>,
         #[doc = "The hospital that this message came from. MSH-4."]
         #[serde(
             rename = "sendFacility",
@@ -2495,7 +3139,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct NotificationConfig {
-        #[doc = "The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that\nnotifications of changes are published on. Supplied by the client.\nPubsubMessage.Data will contain the resource name.\nPubsubMessage.MessageId is the ID of this message. It is guaranteed to be\nunique within the topic.\nPubsubMessage.PublishTime is the time at which the message was published.\nNotifications are only sent if the topic is\nnon-empty. [Topic\nnames](https://cloud.google.com/pubsub/docs/overview#names) must be scoped\nto a project. cloud-healthcare@system.gserviceaccount.com must have\npublisher permissions on the given Cloud Pub/Sub topic. Not having adequate\npermissions will cause the calls that send notifications to fail."]
+        #[doc = "The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that\nnotifications of changes are published on. Supplied by the client.\nPubsubMessage.Data contains the resource name.\nPubsubMessage.MessageId is the ID of this message. It is guaranteed to be\nunique within the topic.\nPubsubMessage.PublishTime is the time at which the message was published.\nNotifications are only sent if the topic is\nnon-empty. [Topic\nnames](https://cloud.google.com/pubsub/docs/overview#names) must be scoped\nto a project. cloud-healthcare@system.gserviceaccount.com must have\npublisher permissions on the given Cloud Pub/Sub topic. Not having adequate\npermissions causes the calls that send notifications to fail.\n\nIf a notification can't be published to Cloud Pub/Sub, errors are logged to\nStackdriver (see [Viewing\nlogs](/healthcare/docs/how-tos/stackdriver-logging)). If the number of\nerrors exceeds a certain rate, some aren't submitted."]
         #[serde(
             rename = "pubsubTopic",
             default,
@@ -2583,6 +3227,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub api_method_name: ::std::option::Option<String>,
+        #[doc = "Specifies if cancellation was requested for the operation."]
+        #[serde(
+            rename = "cancelRequested",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cancel_requested: ::std::option::Option<bool>,
         #[serde(
             rename = "counter",
             default,
@@ -2603,6 +3254,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
+        #[doc = "A link to audit and error logs in the log viewer. Error logs are generated\nonly by some operations, listed at\nhttps://cloud.google.com/healthcare/docs/how-tos/stackdriver-logging."]
+        #[serde(
+            rename = "logsUrl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub logs_url: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for OperationMetadata {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -2664,7 +3322,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub allow_null_header: ::std::option::Option<bool>,
-        #[doc = "Byte(s) to be used as the segment terminator. If this is unset, '\\r' will\nbe used as segment terminator."]
+        #[doc = "Schemas used to parse messages in this store, if schematized parsing is\ndesired."]
+        #[serde(
+            rename = "schema",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub schema: ::std::option::Option<crate::schemas::SchemaPackage>,
+        #[doc = "Byte(s) to use as the segment terminator. If this is unset, '\\r' is\nused as segment terminator, matching the HL7 version 2\nspecification."]
         #[serde(
             rename = "segmentTerminator",
             default,
@@ -2695,7 +3360,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PatientId {
-        #[doc = "ID type, e.g. MRN or NHS."]
+        #[doc = "ID type. For example, MRN or NHS."]
         #[serde(
             rename = "type",
             default,
@@ -2740,21 +3405,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub audit_configs: ::std::option::Option<Vec<crate::schemas::AuditConfig>>,
-        #[doc = "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."]
+        #[doc = "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member."]
         #[serde(
             rename = "bindings",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bindings: ::std::option::Option<Vec<crate::schemas::Binding>>,
-        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten."]
+        #[doc = "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost."]
         #[serde(
             rename = "etag",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Deprecated."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
         #[serde(
             rename = "version",
             default,
@@ -2880,8 +3545,39 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct Resources {
+        #[doc = "List of resources IDs. For example, \"Patient/1234\"."]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resources: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for Resources {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Resources {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct SchemaConfig {
-        #[doc = "The depth for all recursive structures in the output analytics\nschema. For example, `concept` in the CodeSystem resource is a recursive\nstructure; when the depth is 2, the CodeSystem table will have a column\ncalled `concept.concept` but not `concept.concept.concept`. If not\nspecified or set to 0, the server will use the default value 2."]
+        #[doc = "The depth for all recursive structures in the output analytics\nschema. For example, `concept` in the CodeSystem resource is a recursive\nstructure; when the depth is 2, the CodeSystem table will have a column\ncalled `concept.concept` but not `concept.concept.concept`. If not\nspecified or set to 0, the server will use the default value 2. The\nmaximum depth allowed is 5."]
         #[serde(
             rename = "recursiveStructureDepth",
             default,
@@ -2995,8 +3691,285 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct SchemaGroup {
+        #[doc = "True indicates that this is a choice group, meaning that only one of its\nsegments can exist in a given message."]
+        #[serde(
+            rename = "choice",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub choice: ::std::option::Option<bool>,
+        #[doc = "The maximum number of times this group can be repeated. 0 or -1 means\nunbounded."]
+        #[serde(
+            rename = "maxOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_occurs: ::std::option::Option<i32>,
+        #[doc = "Nested groups and/or segments."]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub members: ::std::option::Option<Vec<crate::schemas::GroupOrSegment>>,
+        #[doc = "The minimum number of times this group must be present/repeated."]
+        #[serde(
+            rename = "minOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub min_occurs: ::std::option::Option<i32>,
+        #[doc = "The name of this group. For example, \"ORDER_DETAIL\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for SchemaGroup {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SchemaGroup {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SchemaPackage {
+        #[doc = "Flag to ignore all min_occurs restrictions in the schema. This means that\nincoming messages can omit any group, segment, field, component, or\nsubcomponent."]
+        #[serde(
+            rename = "ignoreMinOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ignore_min_occurs: ::std::option::Option<bool>,
+        #[doc = "Schema configs that are layered based on their VersionSources that\nmatch the incoming message. Schema configs present in higher indices\noverride those in lower indices with the same message type and trigger\nevent if their VersionSources all match an incoming message."]
+        #[serde(
+            rename = "schemas",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub schemas: ::std::option::Option<Vec<crate::schemas::Hl7SchemaConfig>>,
+        #[doc = "Determines how messages that don't parse successfully are handled."]
+        #[serde(
+            rename = "schematizedParsingType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub schematized_parsing_type:
+            ::std::option::Option<crate::schemas::SchemaPackageSchematizedParsingType>,
+        #[doc = "Schema type definitions that are layered based on their VersionSources\nthat match the incoming message. Type definitions present in higher indices\noverride those in lower indices with the same type name if their\nVersionSources all match an incoming message."]
+        #[serde(
+            rename = "types",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub types: ::std::option::Option<Vec<crate::schemas::Hl7TypesConfig>>,
+    }
+    impl ::google_field_selector::FieldSelector for SchemaPackage {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SchemaPackage {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum SchemaPackageSchematizedParsingType {
+        #[doc = "Messages that fail to parse are rejected from ingestion/insertion and\nreturn an error code."]
+        HardFail,
+        #[doc = "Unspecified schematized parsing type, equivalent to `SOFT_FAIL`."]
+        SchematizedParsingTypeUnspecified,
+        #[doc = "Messages that fail to parse are still stored and ACKed but a parser error\nis stored in place of the schematized data."]
+        SoftFail,
+    }
+    impl SchemaPackageSchematizedParsingType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                SchemaPackageSchematizedParsingType::HardFail => "HARD_FAIL",
+                SchemaPackageSchematizedParsingType::SchematizedParsingTypeUnspecified => {
+                    "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED"
+                }
+                SchemaPackageSchematizedParsingType::SoftFail => "SOFT_FAIL",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SchemaPackageSchematizedParsingType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SchemaPackageSchematizedParsingType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SchemaPackageSchematizedParsingType, ()> {
+            Ok(match s {
+                "HARD_FAIL" => SchemaPackageSchematizedParsingType::HardFail,
+                "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED" => {
+                    SchemaPackageSchematizedParsingType::SchematizedParsingTypeUnspecified
+                }
+                "SOFT_FAIL" => SchemaPackageSchematizedParsingType::SoftFail,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for SchemaPackageSchematizedParsingType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for SchemaPackageSchematizedParsingType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for SchemaPackageSchematizedParsingType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "HARD_FAIL" => SchemaPackageSchematizedParsingType::HardFail,
+                "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED" => {
+                    SchemaPackageSchematizedParsingType::SchematizedParsingTypeUnspecified
+                }
+                "SOFT_FAIL" => SchemaPackageSchematizedParsingType::SoftFail,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for SchemaPackageSchematizedParsingType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SchemaPackageSchematizedParsingType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SchemaSegment {
+        #[doc = "The maximum number of times this segment can be present in this group.\n0 or -1 means unbounded."]
+        #[serde(
+            rename = "maxOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_occurs: ::std::option::Option<i32>,
+        #[doc = "The minimum number of times this segment can be present in this group."]
+        #[serde(
+            rename = "minOccurs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub min_occurs: ::std::option::Option<i32>,
+        #[doc = "The Segment type. For example, \"PID\"."]
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub r#type: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for SchemaSegment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SchemaSegment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SchematizedData {
+        #[doc = "JSON output of the parser."]
+        #[serde(
+            rename = "data",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data: ::std::option::Option<String>,
+        #[doc = "The error output of the parser."]
+        #[serde(
+            rename = "error",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub error: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for SchematizedData {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SchematizedData {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct SearchResourcesRequest {
-        #[doc = "The FHIR resource type to search, such as Patient or Observation. For a\ncomplete list, see the [FHIR Resource\nIndex](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html)."]
+        #[doc = "The FHIR resource type to search, such as Patient or Observation. For a\ncomplete list, see the FHIR Resource Index\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html))."]
         #[serde(
             rename = "resourceType",
             default,
@@ -3027,21 +4000,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Segment {
-        #[doc = "A mapping from the positional location to the value.\nThe key string uses zero-based indexes separated by dots to identify\nFields, components and sub-components. A bracket notation is also used to\nidentify different instances of a repeated field.\nRegex for key: (\\d+)([\\d+])?(.\\d+)?(.\\d+)?\n\nExamples of (key, value) pairs:\n\n* (0.1, \"foo\"): Component 1 of Field 0 has the value \"foo\".\n* (1.1.2, \"bar\"): Sub-component 2 of Component 1 of field 1 has the value\n  \"bar\".\n* (1[2].1, \"baz\"): Component 1 of Instance 2 of Field 1, which is repeated,\n  has the value \"baz\"."]
+        #[doc = "A mapping from the positional location to the value.\nThe key string uses zero-based indexes separated by dots to identify\nFields, components and sub-components. A bracket notation is also used to\nidentify different instances of a repeated field.\nRegex for key: (\\d+)([\\d+])?(.\\d+)?(.\\d+)?\n\nExamples of (key, value) pairs:\n\n* (0.1, \"hemoglobin\") denotes that the first component of Field 0 has the\n  value \"hemoglobin\".\n\n* (1.1.2, \"CBC\") denotes that the second sub-component of the first\n  component of Field 1 has the value \"CBC\".\n\n* (1[0].1, \"HbA1c\") denotes that the first component of the\n  first Instance of Field 1, which is repeated, has the value \"HbA1c\"."]
         #[serde(
             rename = "fields",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fields: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "A string that indicates the type of segment, e.g., EVN, PID."]
+        #[doc = "A string that indicates the type of segment. For example, EVN or PID."]
         #[serde(
             rename = "segmentId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub segment_id: ::std::option::Option<String>,
-        #[doc = "Set ID for segments that can be in a set. This can be empty if it is\nmissing or it is not applicable."]
+        #[doc = "Set ID for segments that can be in a set. This can be empty if it's\nmissing or isn't applicable."]
         #[serde(
             rename = "setId",
             default,
@@ -3128,6 +4101,46 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Status {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct StreamConfig {
+        #[doc = "The destination BigQuery structure that contains both the dataset\nlocation and corresponding schema config.\n\nThe output is organized in one table per resource type. The server\nreuses the existing tables (if any) that are named after the resource\ntypes, e.g. \"Patient\", \"Observation\". When there is no existing table\nfor a given resource type, the server attempts to create one.\n\nWhen a table schema doesn't align with the schema config, either\nbecause of existing incompatible schema or out of band incompatible\nmodification, the server does not stream in new data.\n\nOne resolution in this case is to delete the incompatible\ntable and let the server recreate one, though the newly created table\nonly contains data after the table recreation.\n\nBigQuery imposes a 1 MB limit on streaming insert row size, therefore\nany resource mutation that generates more than 1 MB of BigQuery data\nwill not be streamed.\n\nResults are appended to the corresponding BigQuery tables. Different\nversions of the same resource are distinguishable by the meta.versionId\nand meta.lastUpdated columns. The operation (CREATE/UPDATE/DELETE) that\nresults in the new version is recorded in the meta.tag.\n\nThe tables contain all historical resource versions since streaming was\nenabled. For query convenience, the server also creates one view per\ntable of the same name containing only the current resource version.\n\nIf a resource mutation cannot be streamed to BigQuery, errors will be\nlogged to Stackdriver (see [Viewing logs](/healthcare/docs/how-\ntos/stackdriver-logging))."]
+        #[serde(
+            rename = "bigqueryDestination",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bigquery_destination: ::std::option::Option<
+            crate::schemas::GoogleCloudHealthcareV1Beta1FhirBigQueryDestination,
+        >,
+        #[doc = "Supply a FHIR resource type (such as \"Patient\" or \"Observation\").\nSee https://www.hl7.org/fhir/valueset-resource-types.html for a list of\nall FHIR resource types.\nThe server treats an empty list as an intent to stream all the\nsupported resource types in this FHIR store."]
+        #[serde(
+            rename = "resourceTypes",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resource_types: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for StreamConfig {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for StreamConfig {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3252,6 +4265,170 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for TextConfig {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct Type {
+        #[doc = "The (sub) fields this type has (if not primitive)."]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fields: ::std::option::Option<Vec<crate::schemas::Field>>,
+        #[doc = "The name of this type. This would be the segment or datatype name.\nFor example, \"PID\" or \"XPN\"."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "If this is a primitive type then this field is the type of the primitive\nFor example, STRING. Leave unspecified for composite types."]
+        #[serde(
+            rename = "primitive",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub primitive: ::std::option::Option<crate::schemas::TypePrimitive>,
+    }
+    impl ::google_field_selector::FieldSelector for Type {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Type {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum TypePrimitive {
+        #[doc = "Not a primitive."]
+        PrimitiveUnspecified,
+        #[doc = "String primitive."]
+        String,
+        #[doc = "Like STRING, but all delimiters below this element are ignored."]
+        UnescapedString,
+        #[doc = "Element that can have unschematized children."]
+        Varies,
+    }
+    impl TypePrimitive {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                TypePrimitive::PrimitiveUnspecified => "PRIMITIVE_UNSPECIFIED",
+                TypePrimitive::String => "STRING",
+                TypePrimitive::UnescapedString => "UNESCAPED_STRING",
+                TypePrimitive::Varies => "VARIES",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for TypePrimitive {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for TypePrimitive {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<TypePrimitive, ()> {
+            Ok(match s {
+                "PRIMITIVE_UNSPECIFIED" => TypePrimitive::PrimitiveUnspecified,
+                "STRING" => TypePrimitive::String,
+                "UNESCAPED_STRING" => TypePrimitive::UnescapedString,
+                "VARIES" => TypePrimitive::Varies,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for TypePrimitive {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for TypePrimitive {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for TypePrimitive {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "PRIMITIVE_UNSPECIFIED" => TypePrimitive::PrimitiveUnspecified,
+                "STRING" => TypePrimitive::String,
+                "UNESCAPED_STRING" => TypePrimitive::UnescapedString,
+                "VARIES" => TypePrimitive::Varies,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for TypePrimitive {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for TypePrimitive {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct VersionSource {
+        #[doc = "The field to extract from the MSH segment. For example, \"3.1\" or \"18[1].1\"."]
+        #[serde(
+            rename = "mshField",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub msh_field: ::std::option::Option<String>,
+        #[doc = "The value to match with the field. For example, \"My Application Name\" or\n\"2.3\"."]
+        #[serde(
+            rename = "value",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for VersionSource {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for VersionSource {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -3407,7 +4584,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3415,8 +4592,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3435,7 +4624,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -3453,7 +4642,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -3515,7 +4704,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3647,7 +4836,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3671,7 +4863,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -3922,7 +5114,10 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -3960,7 +5155,7 @@ pub mod resources {
             pub mod datasets {
                 pub mod params {}
                 pub struct DatasetsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> DatasetsActions<'a> {
@@ -3992,7 +5187,7 @@ pub mod resources {
                             dataset_id: None,
                         }
                     }
-                    #[doc = "Creates a new dataset containing de-identified data from the source\ndataset. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifySummary.\nIf errors occur,\ndetails field type is\nDeidentifyErrorDetails.\nErrors are also logged to Stackdriver\n(see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging))."]
+                    #[doc = "Creates a new dataset containing de-identified data from the source\ndataset. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifySummary.\nIf errors occur,\nerror\ndetails field type is\nDeidentifyErrorDetails.\nThe LRO result may still be successful if de-identification fails for some\nDICOM instances. The new de-identified dataset will not contain these\nfailed resources. Failed resource totals are tracked in\nDeidentifySummary.failure_resource_count.\nError details are also logged to Stackdriver Logging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)."]
                     pub fn deidentify(
                         &self,
                         request: crate::schemas::DeidentifyDatasetRequest,
@@ -4123,7 +5318,7 @@ pub mod resources {
                             update_mask: None,
                         }
                     }
-                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                    #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                     pub fn set_iam_policy(
                         &self,
                         request: crate::schemas::SetIamPolicyRequest,
@@ -4171,6 +5366,9 @@ pub mod resources {
                             resource: resource.into(),
                         }
                     }
+                    #[doc = "Actions that can be performed on the annotation_stores resource"]pub fn annotation_stores ( & self ) -> crate :: resources :: projects :: locations :: datasets :: annotation_stores :: AnnotationStoresActions{
+                        crate :: resources :: projects :: locations :: datasets :: annotation_stores :: AnnotationStoresActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
+                    }
                     #[doc = "Actions that can be performed on the dicom_stores resource"]pub fn dicom_stores ( & self ) -> crate :: resources :: projects :: locations :: datasets :: dicom_stores :: DicomStoresActions{
                         crate :: resources :: projects :: locations :: datasets :: dicom_stores :: DicomStoresActions { reqwest : & self . reqwest , auth : self . auth_ref ( ) , }
                     }
@@ -4187,7 +5385,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::create()](struct.DatasetsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Dataset,
                     parent: String,
@@ -4331,7 +5529,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("datasetId", &self.dataset_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -4356,7 +5555,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::deidentify()](struct.DatasetsActions.html#method.deidentify)"]
                 #[derive(Debug, Clone)]
                 pub struct DeidentifyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DeidentifyDatasetRequest,
                     source_dataset: String,
@@ -4494,7 +5693,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4518,7 +5718,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::delete()](struct.DatasetsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4653,7 +5853,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4677,7 +5878,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::get()](struct.DatasetsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4812,7 +6013,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4836,7 +6038,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::get_iam_policy()](struct.DatasetsActions.html#method.get_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct GetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     resource: String,
                     options_requested_policy_version: Option<i32>,
@@ -4853,7 +6055,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetIamPolicyRequestBuilder<'a> {
-                    #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                    #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                     pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                         self.options_requested_policy_version = Some(value);
                         self
@@ -4978,7 +6180,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[(
                             "options.requestedPolicyVersion",
@@ -5006,7 +6209,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::list()](struct.DatasetsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -5259,7 +6462,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -5296,7 +6500,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::patch()](struct.DatasetsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Dataset,
                     name: String,
@@ -5439,7 +6643,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -5464,7 +6669,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::set_iam_policy()](struct.DatasetsActions.html#method.set_iam_policy)"]
                 #[derive(Debug, Clone)]
                 pub struct SetIamPolicyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::SetIamPolicyRequest,
                     resource: String,
@@ -5602,7 +6807,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5626,7 +6832,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::test_iam_permissions()](struct.DatasetsActions.html#method.test_iam_permissions)"]
                 #[derive(Debug, Clone)]
                 pub struct TestIamPermissionsRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::TestIamPermissionsRequest,
                     resource: String,
@@ -5766,7 +6972,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5787,10 +6994,595 @@ pub mod resources {
                         Ok(req)
                     }
                 }
+                pub mod annotation_stores {
+                    pub mod params {}
+                    pub struct AnnotationStoresActions<'a> {
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                    }
+                    impl<'a> AnnotationStoresActions<'a> {
+                        fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
+                            self.auth
+                        }
+                        #[doc = "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."]
+                        pub fn get_iam_policy(
+                            &self,
+                            resource: impl Into<String>,
+                        ) -> GetIamPolicyRequestBuilder {
+                            GetIamPolicyRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                resource: resource.into(),
+                                options_requested_policy_version: None,
+                            }
+                        }
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
+                        pub fn set_iam_policy(
+                            &self,
+                            request: crate::schemas::SetIamPolicyRequest,
+                            resource: impl Into<String>,
+                        ) -> SetIamPolicyRequestBuilder {
+                            SetIamPolicyRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                resource: resource.into(),
+                            }
+                        }
+                        #[doc = "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning."]
+                        pub fn test_iam_permissions(
+                            &self,
+                            request: crate::schemas::TestIamPermissionsRequest,
+                            resource: impl Into<String>,
+                        ) -> TestIamPermissionsRequestBuilder {
+                            TestIamPermissionsRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                resource: resource.into(),
+                            }
+                        }
+                    }
+                    #[doc = "Created via [AnnotationStoresActions::get_iam_policy()](struct.AnnotationStoresActions.html#method.get_iam_policy)"]
+                    #[derive(Debug, Clone)]
+                    pub struct GetIamPolicyRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        resource: String,
+                        options_requested_policy_version: Option<i32>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> GetIamPolicyRequestBuilder<'a> {
+                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
+                        pub fn options_requested_policy_version(mut self, value: i32) -> Self {
+                            self.options_requested_policy_version = Some(value);
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.resource;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":getIamPolicy");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[(
+                                "options.requestedPolicyVersion",
+                                &self.options_requested_policy_version,
+                            )]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                    #[doc = "Created via [AnnotationStoresActions::set_iam_policy()](struct.AnnotationStoresActions.html#method.set_iam_policy)"]
+                    #[derive(Debug, Clone)]
+                    pub struct SetIamPolicyRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::SetIamPolicyRequest,
+                        resource: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> SetIamPolicyRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Policy, crate::Error> {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.resource;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":setIamPolicy");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                    #[doc = "Created via [AnnotationStoresActions::test_iam_permissions()](struct.AnnotationStoresActions.html#method.test_iam_permissions)"]
+                    #[derive(Debug, Clone)]
+                    pub struct TestIamPermissionsRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::TestIamPermissionsRequest,
+                        resource: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> TestIamPermissionsRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error>
+                        {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error>
+                        {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.resource;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":testIamPermissions");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
+                }
                 pub mod dicom_stores {
                     pub mod params {}
                     pub struct DicomStoresActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> DicomStoresActions<'a> {
@@ -5822,6 +7614,30 @@ pub mod resources {
                                 dicom_store_id: None,
                             }
                         }
+                        #[doc = "De-identifies data from the source store and writes it to the destination\nstore. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifyDicomStoreSummary. If errors occur,\nerror\ndetails field type is\nDeidentifyErrorDetails.\nThe LRO result may still be successful if de-identification fails for some\nDICOM instances. The output DICOM store will not contain\nthese failed resources. Failed resource totals are tracked in\nDeidentifySummary.failure_resource_count.\nError details are also logged to Stackdriver\n(see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging))."]
+                        pub fn deidentify(
+                            &self,
+                            request: crate::schemas::DeidentifyDicomStoreRequest,
+                            source_store: impl Into<String>,
+                        ) -> DeidentifyRequestBuilder {
+                            DeidentifyRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                source_store: source_store.into(),
+                            }
+                        }
                         #[doc = "Deletes the specified DICOM store and removes all images that are contained\nwithin it."]
                         pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                             DeleteRequestBuilder {
@@ -5841,7 +7657,7 @@ pub mod resources {
                                 name: name.into(),
                             }
                         }
-                        #[doc = "Exports data to the specified destination by copying it from the DICOM\nstore.\nThe metadata field type is\nOperationMetadata."]
+                        #[doc = "Exports data to the specified destination by copying it from the DICOM\nstore.\nErrors are also logged to Stackdriver Logging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging).\nThe metadata field type is\nOperationMetadata."]
                         pub fn export(
                             &self,
                             request: crate::schemas::ExportDicomDataRequest,
@@ -5907,7 +7723,7 @@ pub mod resources {
                                 options_requested_policy_version: None,
                             }
                         }
-                        #[doc = "Imports data into the DICOM store by copying it from the specified source.\nFor errors, the Operation will be populated with error details (in the form\nof ImportDicomDataErrorDetails in error.details), which will hold\nfiner-grained error information. Errors are also logged to Stackdriver\n(see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).\nThe metadata field type is\nOperationMetadata."]
+                        #[doc = "Imports data into the DICOM store by copying it from the specified source.\nFor errors, the Operation is populated with error details (in the form\nof ImportDicomDataErrorDetails in error.details), which hold\nfiner-grained error information. Errors are also logged to Stackdriver\nLogging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging).\nThe metadata field type is\nOperationMetadata."]
                         pub fn import(
                             &self,
                             request: crate::schemas::ImportDicomDataRequest,
@@ -6050,7 +7866,7 @@ pub mod resources {
                                 dicom_web_path: dicom_web_path.into(),
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -6131,7 +7947,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::create()](struct.DicomStoresActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::DicomStore,
                         parent: String,
@@ -6278,7 +8094,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("dicomStoreId", &self.dicom_store_id)]);
@@ -6301,10 +8117,176 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [DicomStoresActions::deidentify()](struct.DicomStoresActions.html#method.deidentify)"]
+                    #[derive(Debug, Clone)]
+                    pub struct DeidentifyRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::DeidentifyDicomStoreRequest,
+                        source_store: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> DeidentifyRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Operation, crate::Error>
+                        {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Operation, crate::Error>
+                        {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.source_store;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":deidentify");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
                     #[doc = "Created via [DicomStoresActions::delete()](struct.DicomStoresActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -6440,7 +8422,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -6465,7 +8447,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::export()](struct.DicomStoresActions.html#method.export)"]
                     #[derive(Debug, Clone)]
                     pub struct ExportRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::ExportDicomDataRequest,
                         name: String,
@@ -6606,7 +8588,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -6631,7 +8613,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::get()](struct.DicomStoresActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -6769,7 +8751,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -6794,7 +8776,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::get_iam_policy()](struct.DicomStoresActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         resource: String,
                         options_requested_policy_version: Option<i32>,
@@ -6811,7 +8793,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -6937,7 +8919,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[(
@@ -6966,7 +8948,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::import()](struct.DicomStoresActions.html#method.import)"]
                     #[derive(Debug, Clone)]
                     pub struct ImportRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::ImportDicomDataRequest,
                         name: String,
@@ -7107,7 +9089,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7132,7 +9114,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::list()](struct.DicomStoresActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         filter: Option<String>,
@@ -7151,7 +9133,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Restricts stores returned to those matching a filter. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\nOnly filtering on labels is supported, for example `labels.key=value`."]
+                        #[doc = "Restricts stores returned to those matching a filter. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\nOnly filtering on labels is supported. For example, `labels.key=value`."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
                             self
@@ -7396,7 +9378,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -7435,7 +9417,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::patch()](struct.DicomStoresActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::DicomStore,
                         name: String,
@@ -7581,7 +9563,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -7607,7 +9589,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::search_for_instances()](struct.DicomStoresActions.html#method.search_for_instances)"]
                     #[derive(Debug, Clone)]
                     pub struct SearchForInstancesRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         dicom_web_path: String,
@@ -7754,7 +9736,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7779,7 +9761,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::search_for_series()](struct.DicomStoresActions.html#method.search_for_series)"]
                     #[derive(Debug, Clone)]
                     pub struct SearchForSeriesRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         dicom_web_path: String,
@@ -7926,7 +9908,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -7951,7 +9933,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::search_for_studies()](struct.DicomStoresActions.html#method.search_for_studies)"]
                     #[derive(Debug, Clone)]
                     pub struct SearchForStudiesRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         dicom_web_path: String,
@@ -8098,7 +10080,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -8123,7 +10105,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::set_iam_policy()](struct.DicomStoresActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::SetIamPolicyRequest,
                         resource: String,
@@ -8262,7 +10244,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -8287,7 +10269,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::store_instances()](struct.DicomStoresActions.html#method.store_instances)"]
                     #[derive(Debug, Clone)]
                     pub struct StoreInstancesRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::HttpBody,
                         parent: String,
@@ -8436,7 +10418,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -8461,7 +10443,7 @@ pub mod resources {
                     #[doc = "Created via [DicomStoresActions::test_iam_permissions()](struct.DicomStoresActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::TestIamPermissionsRequest,
                         resource: String,
@@ -8602,7 +10584,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -8627,14 +10609,14 @@ pub mod resources {
                     pub mod studies {
                         pub mod params {}
                         pub struct StudiesActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> StudiesActions<'a> {
                             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                 self.auth
                             }
-                            #[doc = "DeleteStudy deletes all instances within the given study. Delete requests\nare equivalent to the GET requests specified in the WADO-RS standard."]
+                            #[doc = "DeleteStudy deletes all instances within the given study. Delete requests\nare equivalent to the GET requests specified in the Retrieve transaction."]
                             pub fn delete(
                                 &self,
                                 parent: impl Into<String>,
@@ -8787,7 +10769,7 @@ pub mod resources {
                         #[doc = "Created via [StudiesActions::delete()](struct.StudiesActions.html#method.delete)"]
                         #[derive(Debug, Clone)]
                         pub struct DeleteRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             dicom_web_path: String,
@@ -8934,7 +10916,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -8959,7 +10941,7 @@ pub mod resources {
                         #[doc = "Created via [StudiesActions::retrieve_metadata()](struct.StudiesActions.html#method.retrieve_metadata)"]
                         #[derive(Debug, Clone)]
                         pub struct RetrieveMetadataRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             dicom_web_path: String,
@@ -9106,7 +11088,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9131,7 +11113,7 @@ pub mod resources {
                         #[doc = "Created via [StudiesActions::retrieve_study()](struct.StudiesActions.html#method.retrieve_study)"]
                         #[derive(Debug, Clone)]
                         pub struct RetrieveStudyRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             dicom_web_path: String,
@@ -9278,7 +11260,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9303,7 +11285,7 @@ pub mod resources {
                         #[doc = "Created via [StudiesActions::search_for_instances()](struct.StudiesActions.html#method.search_for_instances)"]
                         #[derive(Debug, Clone)]
                         pub struct SearchForInstancesRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             dicom_web_path: String,
@@ -9450,7 +11432,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9475,7 +11457,7 @@ pub mod resources {
                         #[doc = "Created via [StudiesActions::search_for_series()](struct.StudiesActions.html#method.search_for_series)"]
                         #[derive(Debug, Clone)]
                         pub struct SearchForSeriesRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             dicom_web_path: String,
@@ -9622,7 +11604,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9647,7 +11629,7 @@ pub mod resources {
                         #[doc = "Created via [StudiesActions::store_instances()](struct.StudiesActions.html#method.store_instances)"]
                         #[derive(Debug, Clone)]
                         pub struct StoreInstancesRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             parent: String,
@@ -9796,7 +11778,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -9821,14 +11803,14 @@ pub mod resources {
                         pub mod series {
                             pub mod params {}
                             pub struct SeriesActions<'a> {
-                                pub(crate) reqwest: &'a reqwest::Client,
+                                pub(crate) reqwest: &'a reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             }
                             impl<'a> SeriesActions<'a> {
                                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                     self.auth
                                 }
-                                #[doc = "DeleteSeries deletes all instances within the given study and series.\nDelete requests are equivalent to the GET requests specified in the WADO-RS\nstandard."]
+                                #[doc = "DeleteSeries deletes all instances within the given study and series.\nDelete requests are equivalent to the GET requests specified in the\nRetrieve transaction."]
                                 pub fn delete(
                                     &self,
                                     parent: impl Into<String>,
@@ -9933,7 +11915,7 @@ pub mod resources {
                             #[doc = "Created via [SeriesActions::delete()](struct.SeriesActions.html#method.delete)"]
                             #[derive(Debug, Clone)]
                             pub struct DeleteRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 dicom_web_path: String,
@@ -10081,7 +12063,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -10107,7 +12089,7 @@ pub mod resources {
                             #[doc = "Created via [SeriesActions::retrieve_metadata()](struct.SeriesActions.html#method.retrieve_metadata)"]
                             #[derive(Debug, Clone)]
                             pub struct RetrieveMetadataRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 dicom_web_path: String,
@@ -10255,7 +12237,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -10281,7 +12263,7 @@ pub mod resources {
                             #[doc = "Created via [SeriesActions::retrieve_series()](struct.SeriesActions.html#method.retrieve_series)"]
                             #[derive(Debug, Clone)]
                             pub struct RetrieveSeriesRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 dicom_web_path: String,
@@ -10429,7 +12411,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -10455,7 +12437,7 @@ pub mod resources {
                             #[doc = "Created via [SeriesActions::search_for_instances()](struct.SeriesActions.html#method.search_for_instances)"]
                             #[derive(Debug, Clone)]
                             pub struct SearchForInstancesRequestBuilder<'a> {
-                                pub(crate) reqwest: &'a ::reqwest::Client,
+                                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 parent: String,
                                 dicom_web_path: String,
@@ -10603,7 +12585,7 @@ pub mod resources {
                                 fn _request(
                                     &self,
                                     path: &str,
-                                ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                 {
                                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -10629,14 +12611,14 @@ pub mod resources {
                             pub mod instances {
                                 pub mod params {}
                                 pub struct InstancesActions<'a> {
-                                    pub(crate) reqwest: &'a reqwest::Client,
+                                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                 }
                                 impl<'a> InstancesActions<'a> {
                                     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                         self.auth
                                     }
-                                    #[doc = "DeleteInstance deletes an instance associated with the given study, series,\nand SOP Instance UID. Delete requests are equivalent to the GET requests\nspecified in the WADO-RS standard."]
+                                    #[doc = "DeleteInstance deletes an instance associated with the given study, series,\nand SOP Instance UID. Delete requests are equivalent to the GET requests\nspecified in the Retrieve transaction."]
                                     pub fn delete(
                                         &self,
                                         parent: impl Into<String>,
@@ -10742,7 +12724,7 @@ pub mod resources {
                                 #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
                                 #[derive(Debug, Clone)]
                                 pub struct DeleteRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     parent: String,
                                     dicom_web_path: String,
@@ -10896,7 +12878,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::DELETE, path);
@@ -10924,7 +12906,7 @@ pub mod resources {
                                 #[doc = "Created via [InstancesActions::retrieve_instance()](struct.InstancesActions.html#method.retrieve_instance)"]
                                 #[derive(Debug, Clone)]
                                 pub struct RetrieveInstanceRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     parent: String,
                                     dicom_web_path: String,
@@ -11078,7 +13060,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -11106,7 +13088,7 @@ pub mod resources {
                                 #[doc = "Created via [InstancesActions::retrieve_metadata()](struct.InstancesActions.html#method.retrieve_metadata)"]
                                 #[derive(Debug, Clone)]
                                 pub struct RetrieveMetadataRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     parent: String,
                                     dicom_web_path: String,
@@ -11260,7 +13242,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -11288,7 +13270,7 @@ pub mod resources {
                                 #[doc = "Created via [InstancesActions::retrieve_rendered()](struct.InstancesActions.html#method.retrieve_rendered)"]
                                 #[derive(Debug, Clone)]
                                 pub struct RetrieveRenderedRequestBuilder<'a> {
-                                    pub(crate) reqwest: &'a ::reqwest::Client,
+                                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     parent: String,
                                     dicom_web_path: String,
@@ -11442,7 +13424,7 @@ pub mod resources {
                                     fn _request(
                                         &self,
                                         path: &str,
-                                    ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                     {
                                         let req =
                                             self.reqwest.request(::reqwest::Method::GET, path);
@@ -11470,7 +13452,7 @@ pub mod resources {
                                 pub mod frames {
                                     pub mod params {}
                                     pub struct FramesActions<'a> {
-                                        pub(crate) reqwest: &'a reqwest::Client,
+                                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                     }
                                     impl<'a> FramesActions<'a> {
@@ -11534,7 +13516,7 @@ pub mod resources {
                                     #[doc = "Created via [FramesActions::retrieve_frames()](struct.FramesActions.html#method.retrieve_frames)"]
                                     #[derive(Debug, Clone)]
                                     pub struct RetrieveFramesRequestBuilder<'a> {
-                                        pub(crate) reqwest: &'a ::reqwest::Client,
+                                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                         parent: String,
                                         dicom_web_path: String,
@@ -11707,7 +13689,7 @@ pub mod resources {
                                         fn _request(
                                             &self,
                                             path: &str,
-                                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                         {
                                             let req =
                                                 self.reqwest.request(::reqwest::Method::GET, path);
@@ -11740,7 +13722,7 @@ pub mod resources {
                                     #[doc = "Created via [FramesActions::retrieve_rendered()](struct.FramesActions.html#method.retrieve_rendered)"]
                                     #[derive(Debug, Clone)]
                                     pub struct RetrieveRenderedRequestBuilder<'a> {
-                                        pub(crate) reqwest: &'a ::reqwest::Client,
+                                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                                         parent: String,
                                         dicom_web_path: String,
@@ -11913,7 +13895,7 @@ pub mod resources {
                                         fn _request(
                                             &self,
                                             path: &str,
-                                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                                         {
                                             let req =
                                                 self.reqwest.request(::reqwest::Method::GET, path);
@@ -11951,7 +13933,7 @@ pub mod resources {
                 pub mod fhir_stores {
                     pub mod params {}
                     pub struct FhirStoresActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> FhirStoresActions<'a> {
@@ -11981,6 +13963,30 @@ pub mod resources {
                                 xgafv: None,
                                 parent: parent.into(),
                                 fhir_store_id: None,
+                            }
+                        }
+                        #[doc = "De-identifies data from the source store and writes it to the destination\nstore. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifyFhirStoreSummary. If errors occur,\nerror\ndetails field type is\nDeidentifyErrorDetails.\nErrors are also logged to Stackdriver\n(see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging))."]
+                        pub fn deidentify(
+                            &self,
+                            request: crate::schemas::DeidentifyFhirStoreRequest,
+                            source_store: impl Into<String>,
+                        ) -> DeidentifyRequestBuilder {
+                            DeidentifyRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                source_store: source_store.into(),
                             }
                         }
                         #[doc = "Deletes the specified FHIR store and removes all resources within it."]
@@ -12068,7 +14074,7 @@ pub mod resources {
                                 options_requested_policy_version: None,
                             }
                         }
-                        #[doc = "Import resources to the FHIR store by loading data from the specified\nsources. This method is optimized to load large quantities of data using\nimport semantics that ignore some FHIR store configuration options and are\nnot suitable for all use cases. It is primarily intended to load data into\nan empty FHIR store that is not being used by other clients. In cases\nwhere this method is not appropriate, consider using ExecuteBundle to\nload data.\n\nEvery resource in the input must contain a client-supplied ID, and will be\nstored using that ID regardless of the\nenable_update_create setting on the FHIR\nstore.\n\nThe import process does not enforce referential integrity, regardless of\nthe\ndisable_referential_integrity\nsetting on the FHIR store. This allows the import of resources with\narbitrary interdependencies without considering grouping or ordering, but\nif the input data contains invalid references or if some resources fail to\nbe imported, the FHIR store might be left in a state that violates\nreferential integrity.\n\nIf a resource with the specified ID already exists, the most recent\nversion of the resource is overwritten without creating a new historical\nversion, regardless of the\ndisable_resource_versioning\nsetting on the FHIR store. If transient failures occur during the import,\nit is possible that successfully imported resources will be overwritten\nmore than once.\n\nThe import operation is idempotent unless the input data contains multiple\nvalid resources with the same ID but different contents. In that case,\nafter the import completes, the store will contain exactly one resource\nwith that ID but there is no ordering guarantee on which version of the\ncontents it will have. The operation result counters do not count\nduplicate IDs as an error and will count one success for each resource in\nthe input, which might result in a success count larger than the number\nof resources in the FHIR store. This often occurs when importing data\norganized in bundles produced by Patient-everything\nwhere each bundle contains its own copy of a resource such as Practitioner\nthat might be referred to by many patients.\n\nIf some resources fail to import, for example due to parsing errors,\nsuccessfully imported resources are not rolled back.\n\nThe location and format of the input data is specified by the parameters\nbelow. Note that if no format is specified, this method assumes the\n`BUNDLE` format. When using the `BUNDLE` format this method ignores the\n`Bundle.type` field, except for the special case of `history`, and does\nnot apply any of the bundle processing semantics for batch or transaction\nbundles. Unlike in ExecuteBundle, transaction bundles are not executed\nas a single transaction and bundle-internal references are not rewritten.\nThe bundle is treated as a collection of resources to be written as\nprovided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As\nan example, this allows the import of `searchset` bundles produced by a\nFHIR search or\nPatient-everything operation.\n\nIf history imports are enabled by setting\nenable_history_import in the FHIR\nstore's configuration, this method can import historical versions\nof a resource by supplying a bundle of type `history` and using the\n`BUNDLE` format. The historical versions in the bundle must have\n`lastUpdated` timestamps, and the resulting resource history on the server\nwill appear as if the versions had been created at those timestamps. If a\ncurrent or historical version with the supplied resource ID already\nexists, the bundle is rejected to avoid creating an inconsistent sequence\nof resource versions.\n\nThis method returns an Operation that can\nbe used to track the status of the import by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Stackdriver (see [Viewing\nlogs](/healthcare/docs/how-tos/stackdriver-logging)). Otherwise, when the\noperation finishes, a detailed response of type ImportResourcesResponse\nis returned in the response field.\nThe metadata field type for this\noperation is OperationMetadata."]
+                        #[doc = "Import resources to the FHIR store by loading data from the specified\nsources. This method is optimized to load large quantities of data using\nimport semantics that ignore some FHIR store configuration options and are\nnot suitable for all use cases. It is primarily intended to load data into\nan empty FHIR store that is not being used by other clients. In cases\nwhere this method is not appropriate, consider using ExecuteBundle to\nload data.\n\nEvery resource in the input must contain a client-supplied ID, and will be\nstored using that ID regardless of the\nenable_update_create setting on the FHIR\nstore.\n\nThe import process does not enforce referential integrity, regardless of\nthe\ndisable_referential_integrity\nsetting on the FHIR store. This allows the import of resources with\narbitrary interdependencies without considering grouping or ordering, but\nif the input data contains invalid references or if some resources fail to\nbe imported, the FHIR store might be left in a state that violates\nreferential integrity.\n\nThe import process does not trigger Cloud Pub/Sub notification or BigQuery\nstreaming update, regardless of how those are configured on the FHIR store.\n\nIf a resource with the specified ID already exists, the most recent\nversion of the resource is overwritten without creating a new historical\nversion, regardless of the\ndisable_resource_versioning\nsetting on the FHIR store. If transient failures occur during the import,\nit is possible that successfully imported resources will be overwritten\nmore than once.\n\nThe import operation is idempotent unless the input data contains multiple\nvalid resources with the same ID but different contents. In that case,\nafter the import completes, the store will contain exactly one resource\nwith that ID but there is no ordering guarantee on which version of the\ncontents it will have. The operation result counters do not count\nduplicate IDs as an error and will count one success for each resource in\nthe input, which might result in a success count larger than the number\nof resources in the FHIR store. This often occurs when importing data\norganized in bundles produced by Patient-everything\nwhere each bundle contains its own copy of a resource such as Practitioner\nthat might be referred to by many patients.\n\nIf some resources fail to import, for example due to parsing errors,\nsuccessfully imported resources are not rolled back.\n\nThe location and format of the input data is specified by the parameters\nbelow. Note that if no format is specified, this method assumes the\n`BUNDLE` format. When using the `BUNDLE` format this method ignores the\n`Bundle.type` field, except that `history` bundles are rejected, and does\nnot apply any of the bundle processing semantics for batch or transaction\nbundles. Unlike in ExecuteBundle, transaction bundles are not executed\nas a single transaction and bundle-internal references are not rewritten.\nThe bundle is treated as a collection of resources to be written as\nprovided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As\nan example, this allows the import of `searchset` bundles produced by a\nFHIR search or\nPatient-everything operation.\n\nThis method returns an Operation that can\nbe used to track the status of the import by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Stackdriver (see [Viewing\nlogs](/healthcare/docs/how-tos/stackdriver-logging)). Otherwise, when the\noperation finishes, a detailed response of type ImportResourcesResponse\nis returned in the response field.\nThe metadata field type for this\noperation is OperationMetadata."]
                         pub fn import(
                             &self,
                             request: crate::schemas::ImportResourcesRequest,
@@ -12139,7 +14145,27 @@ pub mod resources {
                                 update_mask: None,
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                        #[doc = "Searches for resources in the given FHIR store according to criteria\nspecified as query parameters.\n\nImplements the FHIR standard search interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#search))\nusing the search semantics described in the FHIR Search specification\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/search.html)).\n\nSupports three methods of search defined by the specification:\n\n* `GET [base]?[parameters]` to search across all resources.\n* `GET [base]/[type]?[parameters]` to search resources of a specified\n  type.\n* `POST [base]/[type]/_search?[parameters]` as an alternate form having\n  the same semantics as the `GET` method.\n\nThe `GET` methods do not support compartment searches. The `POST` method\ndoes not support `application/x-www-form-urlencoded` search parameters.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\nsearch.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead.\n\nThe server's capability statement, retrieved through\ncapabilities, indicates what search parameters\nare supported on each FHIR resource. A list of all search parameters\ndefined by the specification can be found in the FHIR Search Parameter\nRegistry\n([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)).\nFHIR search parameters for DSTU2 can be found on each resource's definition\npage.\n\nSupported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,\n`:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.\n\nSupported search result parameters: `_sort`, `_count`, `_include`,\n`_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.\n\nThe maximum number of search results returned defaults to 100, which can\nbe overridden by the `_count` parameter up to a maximum limit of 1000. If\nthere are additional results, the returned `Bundle` will contain\npagination links.\n\nResources with a total size larger than 5MB or a field count larger than\n50,000 might not be fully searchable as the server might trim its generated\nsearch index in those cases.\n\nNote: FHIR resources are indexed asynchronously, so there might be a slight\ndelay between the time a resource is created or changes and when the change\nis reflected in search results."]
+                        pub fn search(&self, parent: impl Into<String>) -> SearchRequestBuilder {
+                            SearchRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                parent: parent.into(),
+                                resource_type: None,
+                            }
+                        }
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -12194,7 +14220,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::create()](struct.FhirStoresActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::FhirStore,
                         parent: String,
@@ -12341,7 +14367,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("fhirStoreId", &self.fhir_store_id)]);
@@ -12364,10 +14390,176 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [FhirStoresActions::deidentify()](struct.FhirStoresActions.html#method.deidentify)"]
+                    #[derive(Debug, Clone)]
+                    pub struct DeidentifyRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::DeidentifyFhirStoreRequest,
+                        source_store: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> DeidentifyRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Operation, crate::Error>
+                        {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Operation, crate::Error>
+                        {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.source_store;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":deidentify");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
                     #[doc = "Created via [FhirStoresActions::delete()](struct.FhirStoresActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -12503,7 +14695,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -12528,7 +14720,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::export()](struct.FhirStoresActions.html#method.export)"]
                     #[derive(Debug, Clone)]
                     pub struct ExportRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::ExportResourcesRequest,
                         name: String,
@@ -12669,7 +14861,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -12694,7 +14886,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::get()](struct.FhirStoresActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -12832,7 +15024,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -12857,7 +15049,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::get_iam_policy()](struct.FhirStoresActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         resource: String,
                         options_requested_policy_version: Option<i32>,
@@ -12874,7 +15066,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -13000,7 +15192,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[(
@@ -13029,7 +15221,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::import()](struct.FhirStoresActions.html#method.import)"]
                     #[derive(Debug, Clone)]
                     pub struct ImportRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::ImportResourcesRequest,
                         name: String,
@@ -13170,7 +15362,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -13195,7 +15387,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::list()](struct.FhirStoresActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         filter: Option<String>,
@@ -13459,7 +15651,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -13498,7 +15690,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::patch()](struct.FhirStoresActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::FhirStore,
                         name: String,
@@ -13644,7 +15836,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -13667,10 +15859,181 @@ pub mod resources {
                             Ok(req)
                         }
                     }
+                    #[doc = "Created via [FhirStoresActions::search()](struct.FhirStoresActions.html#method.search)"]
+                    #[derive(Debug, Clone)]
+                    pub struct SearchRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        parent: String,
+                        resource_type: Option<String>,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> SearchRequestBuilder<'a> {
+                        #[doc = "The FHIR resource type to search, such as Patient or Observation. For a\ncomplete list, see the FHIR Resource Index\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html))."]
+                        pub fn resource_type(mut self, value: impl Into<String>) -> Self {
+                            self.resource_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::HttpBody, crate::Error>
+                        {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::HttpBody, crate::Error>
+                        {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.parent;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str("/fhir");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::GET, path);
+                            let req = req.query(&[("resourceType", &self.resource_type)]);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
                     #[doc = "Created via [FhirStoresActions::set_iam_policy()](struct.FhirStoresActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::SetIamPolicyRequest,
                         resource: String,
@@ -13809,7 +16172,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -13834,7 +16197,7 @@ pub mod resources {
                     #[doc = "Created via [FhirStoresActions::test_iam_permissions()](struct.FhirStoresActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::TestIamPermissionsRequest,
                         resource: String,
@@ -13975,7 +16338,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -14000,14 +16363,68 @@ pub mod resources {
                     pub mod fhir {
                         pub mod params {}
                         pub struct FhirActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> FhirActions<'a> {
                             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                                 self.auth
                             }
-                            #[doc = "Retrieves the N most recent `Observation` resources for a subject matching\nsearch criteria specified as query parameters, grouped by\n`Observation.code`, sorted from most recent to oldest.\n\nImplements the FHIR extended operation\n[Observation-lastn](http://hl7.org/implement/standards/fhir/STU3/observation-operations.html#lastn).\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method. This operation accepts an additional\nquery parameter `max`, which specifies N, the maximum number of\nObservations to return from each group, with a default of 1.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\noperation.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Translates a code from one value set to another by searching for\nappropriate concept maps.\n\nImplements the FHIR standard $translate operation\n([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),\n[STU3](https://www.hl7.org/fhir/STU3/operation-conceptmap-translate.html),\n[R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)).\n\nOn success, the response body contains a JSON-encoded representation\nof a FHIR Parameters resource, which includes the translation result.\nErrors generated by the FHIR store contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            pub fn concept_map_search_translate(
+                                &self,
+                                parent: impl Into<String>,
+                            ) -> ConceptMapSearchTranslateRequestBuilder
+                            {
+                                ConceptMapSearchTranslateRequestBuilder {
+                                    reqwest: &self.reqwest,
+                                    auth: self.auth_ref(),
+                                    access_token: None,
+                                    alt: None,
+                                    callback: None,
+                                    fields: None,
+                                    key: None,
+                                    oauth_token: None,
+                                    pretty_print: None,
+                                    quota_user: None,
+                                    upload_protocol: None,
+                                    upload_type: None,
+                                    xgafv: None,
+                                    parent: parent.into(),
+                                    code: None,
+                                    concept_map_version: None,
+                                    source: None,
+                                    system: None,
+                                    target: None,
+                                    url: None,
+                                }
+                            }
+                            #[doc = "Translates a code from one value set to another using a concept map.\n\nImplements the FHIR standard $translate operation\n([DSTU2](https://www.hl7.org/fhir/DSTU2/operation-conceptmap-translate.html),\n[STU3](https://www.hl7.org/fhir/STU3/operation-conceptmap-translate.html),\n[R4](https://www.hl7.org/fhir/R4/operation-conceptmap-translate.html)).\n\nOn success, the response body contains a JSON-encoded representation\nof a FHIR Parameters resource, which includes the translation result.\nErrors generated by the FHIR store contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            pub fn concept_map_translate(
+                                &self,
+                                name: impl Into<String>,
+                            ) -> ConceptMapTranslateRequestBuilder {
+                                ConceptMapTranslateRequestBuilder {
+                                    reqwest: &self.reqwest,
+                                    auth: self.auth_ref(),
+                                    access_token: None,
+                                    alt: None,
+                                    callback: None,
+                                    fields: None,
+                                    key: None,
+                                    oauth_token: None,
+                                    pretty_print: None,
+                                    quota_user: None,
+                                    upload_protocol: None,
+                                    upload_type: None,
+                                    xgafv: None,
+                                    name: name.into(),
+                                    code: None,
+                                    concept_map_version: None,
+                                    system: None,
+                                }
+                            }
+                            #[doc = "Retrieves the N most recent `Observation` resources for a subject matching\nsearch criteria specified as query parameters, grouped by\n`Observation.code`, sorted from most recent to oldest.\n\nImplements the FHIR extended operation Observation-lastn\n([STU3](http://hl7.org/implement/standards/fhir/STU3/observation-operations.html#lastn),\n[R4](http://hl7.org/implement/standards/fhir/R4/observation-operations.html#lastn)).\n\nDSTU2 doesn't define the Observation-lastn method, but the server supports\nit the same way it supports STU3.\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method. The following search parameters must\nbe provided:\n\n````text\n- `subject` or `patient` to specify a subject for the Observation.\n- `code`, `category` or any of the composite parameters that include\n  `code`.\n````\n\nAny other valid Observation search parameters can also be provided. This\noperation accepts an additional query parameter `max`, which specifies N,\nthe maximum number of Observations to return from each group, with a\ndefault of 1.\n\nSearches with over 1000 results are rejected. Results are counted before\ngrouping and limiting the results with `max`. To stay within the limit,\nconstrain these searches using Observation search parameters such as\n`_lastUpdated` or `date`.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\noperation.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn observation_lastn(
                                 &self,
                                 parent: impl Into<String>,
@@ -14029,7 +16446,7 @@ pub mod resources {
                                     parent: parent.into(),
                                 }
                             }
-                            #[doc = "Retrieves all the resources directly referenced by a patient, as well as\nall of the resources in the patient compartment.\n\nImplements the FHIR extended operation\n[Patient-everything](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#everything).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\noperation.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Retrieves all the resources directly referenced by a patient, as well as\nall of the resources in the patient compartment.\n\nImplements the FHIR extended operation Patient-everything\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#everything),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#everything),\n[R4](http://hl7.org/implement/standards/fhir/R4/patient-operations.html#everything)).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\noperation.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn patient_everything(
                                 &self,
                                 name: impl Into<String>,
@@ -14077,7 +16494,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Gets the FHIR [capability\nstatement](http://hl7.org/implement/standards/fhir/STU3/capabilitystatement.html)\nfor the store, which contains a description of functionality supported by\nthe server.\n\nImplements the FHIR standard [capabilities\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#capabilities).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `CapabilityStatement` resource."]
+                            #[doc = "Gets the FHIR capability statement\n([STU3](http://hl7.org/implement/standards/fhir/STU3/capabilitystatement.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/capabilitystatement.html)),\nor the [conformance\nstatement](http://hl7.org/implement/standards/fhir/DSTU2/conformance.html)\nin the DSTU2 case for the store, which contains a description of\nfunctionality supported by the server.\n\nImplements the FHIR standard capabilities interaction\n([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#capabilities),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#capabilities)),\nor the [conformance\ninteraction](http://hl7.org/implement/standards/fhir/DSTU2/http.html#conformance)\nin the DSTU2 case.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `CapabilityStatement` resource."]
                             pub fn capabilities(
                                 &self,
                                 name: impl Into<String>,
@@ -14099,7 +16516,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Deletes FHIR resources that match a search query.\n\nImplements the FHIR standard [conditional delete\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.13.1).\nIf multiple resources match, all of them will be deleted.\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method.\n\nNote: Unless resource versioning is disabled by setting the\ndisable_resource_versioning flag\non the FHIR store, the deleted resources will be moved to a history\nrepository that can still be retrieved through vread\nand related methods, unless they are removed by the\npurge method."]
+                            #[doc = "Deletes FHIR resources that match a search query.\n\nImplements the FHIR standard conditional delete interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.12.1),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.13.1),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#3.1.0.7.1)).\nIf multiple resources match, all of them will be deleted.\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method.\n\nNote: Unless resource versioning is disabled by setting the\ndisable_resource_versioning flag\non the FHIR store, the deleted resources will be moved to a history\nrepository that can still be retrieved through vread\nand related methods, unless they are removed by the\npurge method."]
                             pub fn conditional_delete(
                                 &self,
                                 parent: impl Into<String>,
@@ -14123,7 +16540,7 @@ pub mod resources {
                                     r#type: r#type.into(),
                                 }
                             }
-                            #[doc = "If a resource is found based on the search criteria specified in the query\nparameters, updates part of that resource by applying the operations\nspecified in a [JSON Patch](http://jsonpatch.com/) document.\n\nImplements the FHIR standard [conditional patch\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#patch).\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method.\n\nIf the search criteria identify more than one match, the request will\nreturn a `412 Precondition Failed` error.\n\nThe request body must contain a JSON Patch document, and the request\nheaders must contain `Content-Type: application/json-patch+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "If a resource is found based on the search criteria specified in the query\nparameters, updates part of that resource by applying the operations\nspecified in a [JSON Patch](http://jsonpatch.com/) document.\n\nImplements the FHIR standard conditional patch interaction\n([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#patch),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#patch)).\n\nDSTU2 doesn't define a conditional patch method, but the server supports it\nin the same way it supports STU3.\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method.\n\nIf the search criteria identify more than one match, the request will\nreturn a `412 Precondition Failed` error.\n\nThe request body must contain a JSON Patch document, and the request\nheaders must contain `Content-Type: application/json-patch+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn conditional_patch(
                                 &self,
                                 request: crate::schemas::HttpBody,
@@ -14149,7 +16566,7 @@ pub mod resources {
                                     r#type: r#type.into(),
                                 }
                             }
-                            #[doc = "If a resource is found based on the search criteria specified in the query\nparameters, updates the entire contents of that resource.\n\nImplements the FHIR standard [conditional update\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#cond-update).\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method.\n\nIf the search criteria identify more than one match, the request will\nreturn a `412 Precondition Failed` error.\nIf the search criteria identify zero matches, and the supplied resource\nbody contains an `id`, and the FHIR store has\nenable_update_create set, creates the\nresource with the client-specified ID. If the search criteria identify zero\nmatches, and the supplied resource body does not contain an `id`, the\nresource will be created with a server-assigned ID as per the\ncreate method.\n\nThe request body must contain a JSON-encoded FHIR resource, and the request\nheaders must contain `Content-Type: application/fhir+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "If a resource is found based on the search criteria specified in the query\nparameters, updates the entire contents of that resource.\n\nImplements the FHIR standard conditional update interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.10.2),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#cond-update),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#cond-update)).\n\nSearch terms are provided as query parameters following the same pattern as\nthe search method.\n\nIf the search criteria identify more than one match, the request will\nreturn a `412 Precondition Failed` error.\nIf the search criteria identify zero matches, and the supplied resource\nbody contains an `id`, and the FHIR store has\nenable_update_create set, creates the\nresource with the client-specified ID. If the search criteria identify zero\nmatches, and the supplied resource body does not contain an `id`, the\nresource will be created with a server-assigned ID as per the\ncreate method.\n\nThe request body must contain a JSON-encoded FHIR resource, and the request\nheaders must contain `Content-Type: application/fhir+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn conditional_update(
                                 &self,
                                 request: crate::schemas::HttpBody,
@@ -14175,7 +16592,7 @@ pub mod resources {
                                     r#type: r#type.into(),
                                 }
                             }
-                            #[doc = "Creates a FHIR resource.\n\nImplements the FHIR standard [create\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#create),\nwhich creates a new resource with a server-assigned resource ID.\n\nAlso supports the FHIR standard [conditional create\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),\nspecified by supplying an `If-None-Exist` header containing a FHIR search\nquery. If no resources match this search query, the server processes the\ncreate operation as normal.\n\nThe request body must contain a JSON-encoded FHIR resource, and the request\nheaders must contain `Content-Type: application/fhir+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the resource as it was created on the server, including the\nserver-assigned resource ID and version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Creates a FHIR resource.\n\nImplements the FHIR standard create interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)),\nwhich creates a new resource with a server-assigned resource ID.\n\nAlso supports the FHIR standard conditional create interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#ccreate),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#ccreate),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#ccreate)),\nspecified by supplying an `If-None-Exist` header containing a FHIR search\nquery. If no resources match this search query, the server processes the\ncreate operation as normal.\n\nThe request body must contain a JSON-encoded FHIR resource, and the request\nheaders must contain `Content-Type: application/fhir+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the resource as it was created on the server, including the\nserver-assigned resource ID and version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn create(
                                 &self,
                                 request: crate::schemas::HttpBody,
@@ -14201,7 +16618,7 @@ pub mod resources {
                                     r#type: r#type.into(),
                                 }
                             }
-                            #[doc = "Deletes a FHIR resource.\n\nImplements the FHIR standard [delete\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#delete).\n\nNote: Unless resource versioning is disabled by setting the\ndisable_resource_versioning flag\non the FHIR store, the deleted resources will be moved to a history\nrepository that can still be retrieved through vread\nand related methods, unless they are removed by the\npurge method."]
+                            #[doc = "Deletes a FHIR resource.\n\nImplements the FHIR standard delete interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#delete),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#delete),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#delete)).\n\nNote: Unless resource versioning is disabled by setting the\ndisable_resource_versioning flag\non the FHIR store, the deleted resources will be moved to a history\nrepository that can still be retrieved through vread\nand related methods, unless they are removed by the\npurge method."]
                             pub fn delete(&self, name: impl Into<String>) -> DeleteRequestBuilder {
                                 DeleteRequestBuilder {
                                     reqwest: &self.reqwest,
@@ -14220,7 +16637,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Executes all the requests in the given Bundle.\n\nImplements the FHIR standard [batch/transaction\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#transaction).\n\nSupports all interactions within a bundle, except search. This method\naccepts Bundles of type `batch` and `transaction`, processing them\naccording to the [batch processing\nrules](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1)\nand [transaction processing\nrules](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2).\n\nThe request body must contain a JSON-encoded FHIR `Bundle` resource, and\nthe request headers must contain `Content-Type: application/fhir+json`.\n\nFor a batch bundle or a successful transaction the response body will\ncontain a JSON-encoded representation of a `Bundle` resource of type\n`batch-response` or `transaction-response` containing one entry for each\nentry in the request, with the outcome of processing the entry. In the\ncase of an error for a transaction bundle, the response body will contain\na JSON-encoded `OperationOutcome` resource describing the reason for the\nerror. If the request cannot be mapped to a valid API method on a FHIR\nstore, a generic GCP error might be returned instead."]
+                            #[doc = "Executes all the requests in the given Bundle.\n\nImplements the FHIR standard batch/transaction interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#transaction),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#transaction),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#transaction)).\n\nSupports all interactions within a bundle, except search. This method\naccepts Bundles of type `batch` and `transaction`, processing them\naccording to the batch processing rules\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.1),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.1),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#brules))\nand transaction processing rules\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#2.1.0.16.2),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#2.21.0.17.2),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#trules)).\n\nThe request body must contain a JSON-encoded FHIR `Bundle` resource, and\nthe request headers must contain `Content-Type: application/fhir+json`.\n\nFor a batch bundle or a successful transaction the response body will\ncontain a JSON-encoded representation of a `Bundle` resource of type\n`batch-response` or `transaction-response` containing one entry for each\nentry in the request, with the outcome of processing the entry. In the\ncase of an error for a transaction bundle, the response body will contain\na JSON-encoded `OperationOutcome` resource describing the reason for the\nerror. If the request cannot be mapped to a valid API method on a FHIR\nstore, a generic GCP error might be returned instead."]
                             pub fn execute_bundle(
                                 &self,
                                 request: crate::schemas::HttpBody,
@@ -14244,7 +16661,7 @@ pub mod resources {
                                     parent: parent.into(),
                                 }
                             }
-                            #[doc = "Lists all the versions of a resource (including the current version and\ndeleted versions) from the FHIR store.\n\nImplements the per-resource form of the FHIR standard [history\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#history).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `history`, containing the version history\nsorted from most recent to oldest versions.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Lists all the versions of a resource (including the current version and\ndeleted versions) from the FHIR store.\n\nImplements the per-resource form of the FHIR standard history interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#history),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#history),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#history)).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `history`, containing the version history\nsorted from most recent to oldest versions.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn history(
                                 &self,
                                 name: impl Into<String>,
@@ -14266,11 +16683,11 @@ pub mod resources {
                                     name: name.into(),
                                     at: None,
                                     count: None,
-                                    page: None,
+                                    page_token: None,
                                     since: None,
                                 }
                             }
-                            #[doc = "Updates part of an existing resource by applying the operations specified\nin a [JSON Patch](http://jsonpatch.com/) document.\n\nImplements the FHIR standard [patch\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#patch).\n\nThe request body must contain a JSON Patch document, and the request\nheaders must contain `Content-Type: application/json-patch+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Updates part of an existing resource by applying the operations specified\nin a [JSON Patch](http://jsonpatch.com/) document.\n\nImplements the FHIR standard patch interaction\n([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#patch),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#patch)).\n\nDSTU2 doesn't define a patch method, but the server supports it in the same\nway it supports STU3.\n\nThe request body must contain a JSON Patch document, and the request\nheaders must contain `Content-Type: application/json-patch+json`.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn patch(
                                 &self,
                                 request: crate::schemas::HttpBody,
@@ -14294,7 +16711,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Gets the contents of a FHIR resource.\n\nImplements the FHIR standard [read\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#read).\n\nAlso supports the FHIR standard [conditional read\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#cread)\nspecified by supplying an `If-Modified-Since` header with a date/time value\nor an `If-None-Match` header with an ETag value.\n\nOn success, the response body will contain a JSON-encoded representation\nof the resource.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Gets the contents of a FHIR resource.\n\nImplements the FHIR standard read interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#read),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#read),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#read)).\n\nAlso supports the FHIR standard conditional read interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#cread),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#cread),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#cread))\nspecified by supplying an `If-Modified-Since` header with a date/time value\nor an `If-None-Match` header with an ETag value.\n\nOn success, the response body will contain a JSON-encoded representation\nof the resource.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn read(&self, name: impl Into<String>) -> ReadRequestBuilder {
                                 ReadRequestBuilder {
                                     reqwest: &self.reqwest,
@@ -14313,7 +16730,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Searches for resources in the given FHIR store according to criteria\nspecified as query parameters.\n\nImplements the FHIR standard [search\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#search)\nusing the search semantics described in the [FHIR Search\nspecification](http://hl7.org/implement/standards/fhir/STU3/search.html).\n\nSupports three methods of search defined by the specification:\n\n* `GET [base]?[parameters]` to search across all resources.\n* `GET [base]/[type]?[parameters]` to search resources of a specified\n  type.\n* `POST [base]/[type]/_search?[parameters]` as an alternate form having\n  the same semantics as the `GET` method.\n\nThe `GET` methods do not support compartment searches. The `POST` method\ndoes not support `application/x-www-form-urlencoded` search parameters.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\nsearch.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead.\n\nThe server's capability statement, retrieved through\ncapabilities, indicates what search parameters\nare supported on each FHIR resource. A list of all search parameters\ndefined by the specification can be found in the [FHIR Search Parameter\nRegistry](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html).\n\nSupported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,\n`:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.\n\nSupported search result parameters: `_sort`, `_count`, `_include`,\n`_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.\n\nThe maximum number of search results returned defaults to 100, which can\nbe overridden by the `_count` parameter up to a maximum limit of 1000. If\nthere are additional results, the returned `Bundle` will contain\npagination links.\n\nResources with a total size larger than 5MB or a field count larger than\n50,000 might not be fully searchable as the server might trim its generated\nsearch index in those cases.\n\nNote: FHIR resources are indexed asynchronously, so there might be a slight\ndelay between the time a resource is created or changes and when the change\nis reflected in search results."]
+                            #[doc = "Searches for resources in the given FHIR store according to criteria\nspecified as query parameters.\n\nImplements the FHIR standard search interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#search))\nusing the search semantics described in the FHIR Search specification\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/search.html)).\n\nSupports three methods of search defined by the specification:\n\n* `GET [base]?[parameters]` to search across all resources.\n* `GET [base]/[type]?[parameters]` to search resources of a specified\n  type.\n* `POST [base]/[type]/_search?[parameters]` as an alternate form having\n  the same semantics as the `GET` method.\n\nThe `GET` methods do not support compartment searches. The `POST` method\ndoes not support `application/x-www-form-urlencoded` search parameters.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\nsearch.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead.\n\nThe server's capability statement, retrieved through\ncapabilities, indicates what search parameters\nare supported on each FHIR resource. A list of all search parameters\ndefined by the specification can be found in the FHIR Search Parameter\nRegistry\n([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)).\nFHIR search parameters for DSTU2 can be found on each resource's definition\npage.\n\nSupported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,\n`:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.\n\nSupported search result parameters: `_sort`, `_count`, `_include`,\n`_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.\n\nThe maximum number of search results returned defaults to 100, which can\nbe overridden by the `_count` parameter up to a maximum limit of 1000. If\nthere are additional results, the returned `Bundle` will contain\npagination links.\n\nResources with a total size larger than 5MB or a field count larger than\n50,000 might not be fully searchable as the server might trim its generated\nsearch index in those cases.\n\nNote: FHIR resources are indexed asynchronously, so there might be a slight\ndelay between the time a resource is created or changes and when the change\nis reflected in search results."]
                             pub fn search(
                                 &self,
                                 request: crate::schemas::SearchResourcesRequest,
@@ -14337,7 +16754,7 @@ pub mod resources {
                                     parent: parent.into(),
                                 }
                             }
-                            #[doc = "Updates the entire contents of a resource.\n\nImplements the FHIR standard [update\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#update).\n\nIf the specified resource does\nnot exist and the FHIR store has\nenable_update_create set, creates the\nresource with the client-specified ID.\n\nThe request body must contain a JSON-encoded FHIR resource, and the request\nheaders must contain `Content-Type: application/fhir+json`. The resource\nmust contain an `id` element having an identical value to the ID in the\nREST path of the request.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Updates the entire contents of a resource.\n\nImplements the FHIR standard update interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#update),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#update),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)).\n\nIf the specified resource does\nnot exist and the FHIR store has\nenable_update_create set, creates the\nresource with the client-specified ID.\n\nThe request body must contain a JSON-encoded FHIR resource, and the request\nheaders must contain `Content-Type: application/fhir+json`. The resource\nmust contain an `id` element having an identical value to the ID in the\nREST path of the request.\n\nOn success, the response body will contain a JSON-encoded representation\nof the updated resource, including the server-assigned version ID.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn update(
                                 &self,
                                 request: crate::schemas::HttpBody,
@@ -14361,7 +16778,7 @@ pub mod resources {
                                     name: name.into(),
                                 }
                             }
-                            #[doc = "Gets the contents of a version (current or historical) of a FHIR resource\nby version ID.\n\nImplements the FHIR standard [vread\ninteraction](http://hl7.org/implement/standards/fhir/STU3/http.html#vread).\n\nOn success, the response body will contain a JSON-encoded representation\nof the resource.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
+                            #[doc = "Gets the contents of a version (current or historical) of a FHIR resource\nby version ID.\n\nImplements the FHIR standard vread interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#vread),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#vread),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#vread)).\n\nOn success, the response body will contain a JSON-encoded representation\nof the resource.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead."]
                             pub fn vread(&self, name: impl Into<String>) -> VreadRequestBuilder {
                                 VreadRequestBuilder {
                                     reqwest: &self.reqwest,
@@ -14381,10 +16798,403 @@ pub mod resources {
                                 }
                             }
                         }
+                        #[doc = "Created via [FhirActions::concept_map_search_translate()](struct.FhirActions.html#method.concept_map_search_translate)"]
+                        #[derive(Debug, Clone)]
+                        pub struct ConceptMapSearchTranslateRequestBuilder<'a> {
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                            parent: String,
+                            code: Option<String>,
+                            concept_map_version: Option<String>,
+                            source: Option<String>,
+                            system: Option<String>,
+                            target: Option<String>,
+                            url: Option<String>,
+                            access_token: Option<String>,
+                            alt: Option<crate::params::Alt>,
+                            callback: Option<String>,
+                            fields: Option<String>,
+                            key: Option<String>,
+                            oauth_token: Option<String>,
+                            pretty_print: Option<bool>,
+                            quota_user: Option<String>,
+                            upload_protocol: Option<String>,
+                            upload_type: Option<String>,
+                            xgafv: Option<crate::params::Xgafv>,
+                        }
+                        impl<'a> ConceptMapSearchTranslateRequestBuilder<'a> {
+                            #[doc = "The code to translate."]
+                            pub fn code(mut self, value: impl Into<String>) -> Self {
+                                self.code = Some(value.into());
+                                self
+                            }
+                            #[doc = "The version of the concept map to use. If unset, the most current version\nis used."]
+                            pub fn concept_map_version(mut self, value: impl Into<String>) -> Self {
+                                self.concept_map_version = Some(value.into());
+                                self
+                            }
+                            #[doc = "The source value set of the concept map to be used. If unset, target is\nused to search for concept maps."]
+                            pub fn source(mut self, value: impl Into<String>) -> Self {
+                                self.source = Some(value.into());
+                                self
+                            }
+                            #[doc = "The system for the code to be translated."]
+                            pub fn system(mut self, value: impl Into<String>) -> Self {
+                                self.system = Some(value.into());
+                                self
+                            }
+                            #[doc = "The target value set of the concept map to be used. If unset, source is\nused to search for concept maps."]
+                            pub fn target(mut self, value: impl Into<String>) -> Self {
+                                self.target = Some(value.into());
+                                self
+                            }
+                            #[doc = "The canonical url of the concept map to use. If unset, the source and\ntarget is used to search for concept maps."]
+                            pub fn url(mut self, value: impl Into<String>) -> Self {
+                                self.url = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth access token."]
+                            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                                self.access_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "JSONP"]
+                            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                                self.callback = Some(value.into());
+                                self
+                            }
+                            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                            pub fn key(mut self, value: impl Into<String>) -> Self {
+                                self.key = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth 2.0 token for the current user."]
+                            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                                self.oauth_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Returns response with indentations and line breaks."]
+                            pub fn pretty_print(mut self, value: bool) -> Self {
+                                self.pretty_print = Some(value);
+                                self
+                            }
+                            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                                self.quota_user = Some(value.into());
+                                self
+                            }
+                            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                                self.upload_protocol = Some(value.into());
+                                self
+                            }
+                            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                                self.upload_type = Some(value.into());
+                                self
+                            }
+                            #[doc = "V1 error format."]
+                            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                                self.xgafv = Some(value);
+                                self
+                            }
+                            #[doc = r" Execute the given operation. The fields requested are"]
+                            #[doc = r" determined by the FieldSelector attribute of the return type."]
+                            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                            #[doc = r" are not generic over the return type and deserialize the"]
+                            #[doc = r" response into an auto-generated struct will all possible"]
+                            #[doc = r" fields."]
+                            pub fn execute<T>(self) -> Result<T, crate::Error>
+                            where
+                                T: ::serde::de::DeserializeOwned
+                                    + ::google_field_selector::FieldSelector,
+                            {
+                                let fields = ::google_field_selector::to_string::<T>();
+                                let fields: Option<String> = if fields.is_empty() {
+                                    None
+                                } else {
+                                    Some(fields)
+                                };
+                                self.execute_with_fields(fields)
+                            }
+                            #[doc = r" Execute the given operation. This will not provide any"]
+                            #[doc = r" `fields` selector indicating that the server will determine"]
+                            #[doc = r" the fields returned. This typically includes the most common"]
+                            #[doc = r" fields, but it will not include every possible attribute of"]
+                            #[doc = r" the response resource."]
+                            pub fn execute_with_default_fields(
+                                self,
+                            ) -> Result<crate::schemas::HttpBody, crate::Error>
+                            {
+                                self.execute_with_fields(None::<&str>)
+                            }
+                            #[doc = r" Execute the given operation. This will provide a `fields`"]
+                            #[doc = r" selector of `*`. This will include every attribute of the"]
+                            #[doc = r" response resource and should be limited to use during"]
+                            #[doc = r" development or debugging."]
+                            pub fn execute_with_all_fields(
+                                self,
+                            ) -> Result<crate::schemas::HttpBody, crate::Error>
+                            {
+                                self.execute_with_fields(Some("*"))
+                            }
+                            #[doc = r" Execute the given operation. This will use the `fields`"]
+                            #[doc = r" selector provided and will deserialize the response into"]
+                            #[doc = r" whatever return value is provided."]
+                            pub fn execute_with_fields<T, F>(
+                                mut self,
+                                fields: Option<F>,
+                            ) -> Result<T, crate::Error>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                                F: Into<String>,
+                            {
+                                self.fields = fields.map(Into::into);
+                                self._execute()
+                            }
+                            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                            {
+                                let req = self._request(&self._path())?;
+                                Ok(crate::error_from_response(req.send()?)?.json()?)
+                            }
+                            fn _path(&self) -> String {
+                                let mut output = "https://healthcare.googleapis.com/".to_owned();
+                                output.push_str("v1beta1/");
+                                {
+                                    let var_as_str = &self.parent;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output.push_str("/fhir/ConceptMap/$translate");
+                                output
+                            }
+                            fn _request(
+                                &self,
+                                path: &str,
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                            {
+                                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                                let req = req.query(&[("code", &self.code)]);
+                                let req =
+                                    req.query(&[("conceptMapVersion", &self.concept_map_version)]);
+                                let req = req.query(&[("source", &self.source)]);
+                                let req = req.query(&[("system", &self.system)]);
+                                let req = req.query(&[("target", &self.target)]);
+                                let req = req.query(&[("url", &self.url)]);
+                                let req = req.query(&[("access_token", &self.access_token)]);
+                                let req = req.query(&[("alt", &self.alt)]);
+                                let req = req.query(&[("callback", &self.callback)]);
+                                let req = req.query(&[("fields", &self.fields)]);
+                                let req = req.query(&[("key", &self.key)]);
+                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                let req = req.query(&[("uploadType", &self.upload_type)]);
+                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                let req = req.bearer_auth(
+                                    self.auth
+                                        .access_token()
+                                        .map_err(|err| crate::Error::OAuth2(err))?,
+                                );
+                                Ok(req)
+                            }
+                        }
+                        #[doc = "Created via [FhirActions::concept_map_translate()](struct.FhirActions.html#method.concept_map_translate)"]
+                        #[derive(Debug, Clone)]
+                        pub struct ConceptMapTranslateRequestBuilder<'a> {
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                            name: String,
+                            code: Option<String>,
+                            concept_map_version: Option<String>,
+                            system: Option<String>,
+                            access_token: Option<String>,
+                            alt: Option<crate::params::Alt>,
+                            callback: Option<String>,
+                            fields: Option<String>,
+                            key: Option<String>,
+                            oauth_token: Option<String>,
+                            pretty_print: Option<bool>,
+                            quota_user: Option<String>,
+                            upload_protocol: Option<String>,
+                            upload_type: Option<String>,
+                            xgafv: Option<crate::params::Xgafv>,
+                        }
+                        impl<'a> ConceptMapTranslateRequestBuilder<'a> {
+                            #[doc = "The code to translate."]
+                            pub fn code(mut self, value: impl Into<String>) -> Self {
+                                self.code = Some(value.into());
+                                self
+                            }
+                            #[doc = "The version of the concept map to use. If unset, the most current version\nis used."]
+                            pub fn concept_map_version(mut self, value: impl Into<String>) -> Self {
+                                self.concept_map_version = Some(value.into());
+                                self
+                            }
+                            #[doc = "The system for the code to be translated."]
+                            pub fn system(mut self, value: impl Into<String>) -> Self {
+                                self.system = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth access token."]
+                            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                                self.access_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "JSONP"]
+                            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                                self.callback = Some(value.into());
+                                self
+                            }
+                            #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                            pub fn key(mut self, value: impl Into<String>) -> Self {
+                                self.key = Some(value.into());
+                                self
+                            }
+                            #[doc = "OAuth 2.0 token for the current user."]
+                            pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                                self.oauth_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Returns response with indentations and line breaks."]
+                            pub fn pretty_print(mut self, value: bool) -> Self {
+                                self.pretty_print = Some(value);
+                                self
+                            }
+                            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                            pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                                self.quota_user = Some(value.into());
+                                self
+                            }
+                            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                                self.upload_protocol = Some(value.into());
+                                self
+                            }
+                            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                                self.upload_type = Some(value.into());
+                                self
+                            }
+                            #[doc = "V1 error format."]
+                            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                                self.xgafv = Some(value);
+                                self
+                            }
+                            #[doc = r" Execute the given operation. The fields requested are"]
+                            #[doc = r" determined by the FieldSelector attribute of the return type."]
+                            #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                            #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                            #[doc = r" are not generic over the return type and deserialize the"]
+                            #[doc = r" response into an auto-generated struct will all possible"]
+                            #[doc = r" fields."]
+                            pub fn execute<T>(self) -> Result<T, crate::Error>
+                            where
+                                T: ::serde::de::DeserializeOwned
+                                    + ::google_field_selector::FieldSelector,
+                            {
+                                let fields = ::google_field_selector::to_string::<T>();
+                                let fields: Option<String> = if fields.is_empty() {
+                                    None
+                                } else {
+                                    Some(fields)
+                                };
+                                self.execute_with_fields(fields)
+                            }
+                            #[doc = r" Execute the given operation. This will not provide any"]
+                            #[doc = r" `fields` selector indicating that the server will determine"]
+                            #[doc = r" the fields returned. This typically includes the most common"]
+                            #[doc = r" fields, but it will not include every possible attribute of"]
+                            #[doc = r" the response resource."]
+                            pub fn execute_with_default_fields(
+                                self,
+                            ) -> Result<crate::schemas::HttpBody, crate::Error>
+                            {
+                                self.execute_with_fields(None::<&str>)
+                            }
+                            #[doc = r" Execute the given operation. This will provide a `fields`"]
+                            #[doc = r" selector of `*`. This will include every attribute of the"]
+                            #[doc = r" response resource and should be limited to use during"]
+                            #[doc = r" development or debugging."]
+                            pub fn execute_with_all_fields(
+                                self,
+                            ) -> Result<crate::schemas::HttpBody, crate::Error>
+                            {
+                                self.execute_with_fields(Some("*"))
+                            }
+                            #[doc = r" Execute the given operation. This will use the `fields`"]
+                            #[doc = r" selector provided and will deserialize the response into"]
+                            #[doc = r" whatever return value is provided."]
+                            pub fn execute_with_fields<T, F>(
+                                mut self,
+                                fields: Option<F>,
+                            ) -> Result<T, crate::Error>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                                F: Into<String>,
+                            {
+                                self.fields = fields.map(Into::into);
+                                self._execute()
+                            }
+                            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                            where
+                                T: ::serde::de::DeserializeOwned,
+                            {
+                                let req = self._request(&self._path())?;
+                                Ok(crate::error_from_response(req.send()?)?.json()?)
+                            }
+                            fn _path(&self) -> String {
+                                let mut output = "https://healthcare.googleapis.com/".to_owned();
+                                output.push_str("v1beta1/");
+                                {
+                                    let var_as_str = &self.name;
+                                    output.extend(::percent_encoding::utf8_percent_encode(
+                                        &var_as_str,
+                                        crate::RESERVED,
+                                    ));
+                                }
+                                output.push_str("/$translate");
+                                output
+                            }
+                            fn _request(
+                                &self,
+                                path: &str,
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                            {
+                                let req = self.reqwest.request(::reqwest::Method::GET, path);
+                                let req = req.query(&[("code", &self.code)]);
+                                let req =
+                                    req.query(&[("conceptMapVersion", &self.concept_map_version)]);
+                                let req = req.query(&[("system", &self.system)]);
+                                let req = req.query(&[("access_token", &self.access_token)]);
+                                let req = req.query(&[("alt", &self.alt)]);
+                                let req = req.query(&[("callback", &self.callback)]);
+                                let req = req.query(&[("fields", &self.fields)]);
+                                let req = req.query(&[("key", &self.key)]);
+                                let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                                let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                                let req = req.query(&[("quotaUser", &self.quota_user)]);
+                                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                                let req = req.query(&[("uploadType", &self.upload_type)]);
+                                let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                                let req = req.bearer_auth(
+                                    self.auth
+                                        .access_token()
+                                        .map_err(|err| crate::Error::OAuth2(err))?,
+                                );
+                                Ok(req)
+                            }
+                        }
                         #[doc = "Created via [FhirActions::observation_lastn()](struct.FhirActions.html#method.observation_lastn)"]
                         #[derive(Debug, Clone)]
                         pub struct ObservationLastnRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             access_token: Option<String>,
@@ -14523,7 +17333,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -14548,7 +17358,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::patient_everything()](struct.FhirActions.html#method.patient_everything)"]
                         #[derive(Debug, Clone)]
                         pub struct PatientEverythingRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             count: Option<i32>,
@@ -14711,12 +17521,12 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("_count", &self.count)]);
                                 let req = req.query(&[("end", &self.end)]);
-                                let req = req.query(&[("pageToken", &self.page_token)]);
+                                let req = req.query(&[("_page_token", &self.page_token)]);
                                 let req = req.query(&[("start", &self.start)]);
                                 let req = req.query(&[("access_token", &self.access_token)]);
                                 let req = req.query(&[("alt", &self.alt)]);
@@ -14740,7 +17550,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::resource_purge()](struct.FhirActions.html#method.resource_purge)"]
                         #[derive(Debug, Clone)]
                         pub struct ResourcePurgeRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -14879,7 +17689,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -14904,7 +17714,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::capabilities()](struct.FhirActions.html#method.capabilities)"]
                         #[derive(Debug, Clone)]
                         pub struct CapabilitiesRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -15043,7 +17853,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -15068,7 +17878,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::conditional_delete()](struct.FhirActions.html#method.conditional_delete)"]
                         #[derive(Debug, Clone)]
                         pub struct ConditionalDeleteRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             parent: String,
                             r#type: String,
@@ -15215,7 +18025,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -15240,7 +18050,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::conditional_patch()](struct.FhirActions.html#method.conditional_patch)"]
                         #[derive(Debug, Clone)]
                         pub struct ConditionalPatchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             parent: String,
@@ -15389,7 +18199,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -15414,7 +18224,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::conditional_update()](struct.FhirActions.html#method.conditional_update)"]
                         #[derive(Debug, Clone)]
                         pub struct ConditionalUpdateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             parent: String,
@@ -15563,7 +18373,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -15588,7 +18398,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::create()](struct.FhirActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             parent: String,
@@ -15737,7 +18547,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -15762,7 +18572,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::delete()](struct.FhirActions.html#method.delete)"]
                         #[derive(Debug, Clone)]
                         pub struct DeleteRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -15900,7 +18710,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -15925,7 +18735,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::execute_bundle()](struct.FhirActions.html#method.execute_bundle)"]
                         #[derive(Debug, Clone)]
                         pub struct ExecuteBundleRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             parent: String,
@@ -16066,7 +18876,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -16091,12 +18901,12 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::history()](struct.FhirActions.html#method.history)"]
                         #[derive(Debug, Clone)]
                         pub struct HistoryRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             at: Option<String>,
                             count: Option<i32>,
-                            page: Option<String>,
+                            page_token: Option<String>,
                             since: Option<String>,
                             access_token: Option<String>,
                             alt: Option<crate::params::Alt>,
@@ -16121,9 +18931,9 @@ pub mod resources {
                                 self.count = Some(value);
                                 self
                             }
-                            #[doc = "Used to retrieve the first, previous, next, or last page of resource\nversions when using pagination. Value should be set to the value of the\n`link.url` field returned in the response to the previous request, where\n`link.relation` is \"first\", \"previous\", \"next\" or \"last\".\n\nOmit `page` if no previous request has been made."]
-                            pub fn page(mut self, value: impl Into<String>) -> Self {
-                                self.page = Some(value.into());
+                            #[doc = "Used to retrieve the first, previous, next, or last page of resource\nversions when using pagination. Value should be set to the value of\n`_page_token` set in next or previous page links' URLs. Next and previous\npage are returned in the response bundle's links field, where\n`link.relation` is \"previous\" or \"next\".\n\nOmit `_page_token` if no previous request has been made."]
+                            pub fn page_token(mut self, value: impl Into<String>) -> Self {
+                                self.page_token = Some(value.into());
                                 self
                             }
                             #[doc = "Only include resource versions that were created at or after the given\ninstant in time. The instant in time uses the format\nYYYY-MM-DDThh:mm:ss.sss+zz:zz (for example 2015-02-07T13:28:17.239+02:00 or\n2017-01-01T00:00:00Z). The time must be specified to the second and\ninclude a time zone."]
@@ -16254,13 +19064,13 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
-                                let req = req.query(&[("at", &self.at)]);
-                                let req = req.query(&[("count", &self.count)]);
-                                let req = req.query(&[("page", &self.page)]);
-                                let req = req.query(&[("since", &self.since)]);
+                                let req = req.query(&[("_at", &self.at)]);
+                                let req = req.query(&[("_count", &self.count)]);
+                                let req = req.query(&[("_page_token", &self.page_token)]);
+                                let req = req.query(&[("_since", &self.since)]);
                                 let req = req.query(&[("access_token", &self.access_token)]);
                                 let req = req.query(&[("alt", &self.alt)]);
                                 let req = req.query(&[("callback", &self.callback)]);
@@ -16283,7 +19093,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::patch()](struct.FhirActions.html#method.patch)"]
                         #[derive(Debug, Clone)]
                         pub struct PatchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             name: String,
@@ -16423,7 +19233,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -16448,7 +19258,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::read()](struct.FhirActions.html#method.read)"]
                         #[derive(Debug, Clone)]
                         pub struct ReadRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -16586,7 +19396,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -16611,7 +19421,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::search()](struct.FhirActions.html#method.search)"]
                         #[derive(Debug, Clone)]
                         pub struct SearchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::SearchResourcesRequest,
                             parent: String,
@@ -16752,7 +19562,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -16777,7 +19587,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::update()](struct.FhirActions.html#method.update)"]
                         #[derive(Debug, Clone)]
                         pub struct UpdateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::HttpBody,
                             name: String,
@@ -16917,7 +19727,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -16942,7 +19752,7 @@ pub mod resources {
                         #[doc = "Created via [FhirActions::vread()](struct.FhirActions.html#method.vread)"]
                         #[derive(Debug, Clone)]
                         pub struct VreadRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -17080,7 +19890,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -17107,7 +19917,7 @@ pub mod resources {
                 pub mod hl_7v2_stores {
                     pub mod params {}
                     pub struct Hl7V2StoresActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> Hl7V2StoresActions<'a> {
@@ -17247,7 +20057,7 @@ pub mod resources {
                                 update_mask: None,
                             }
                         }
-                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy."]
+                        #[doc = "Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED"]
                         pub fn set_iam_policy(
                             &self,
                             request: crate::schemas::SetIamPolicyRequest,
@@ -17302,7 +20112,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::create()](struct.Hl7V2StoresActions.html#method.create)"]
                     #[derive(Debug, Clone)]
                     pub struct CreateRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::Hl7V2Store,
                         parent: String,
@@ -17449,7 +20259,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("hl7V2StoreId", &self.hl_7v2_store_id)]);
@@ -17475,7 +20285,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::delete()](struct.Hl7V2StoresActions.html#method.delete)"]
                     #[derive(Debug, Clone)]
                     pub struct DeleteRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -17611,7 +20421,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -17636,7 +20446,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::get()](struct.Hl7V2StoresActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -17774,7 +20584,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -17799,7 +20609,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::get_iam_policy()](struct.Hl7V2StoresActions.html#method.get_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct GetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         resource: String,
                         options_requested_policy_version: Option<i32>,
@@ -17816,7 +20626,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> GetIamPolicyRequestBuilder<'a> {
-                        #[doc = "Optional. The policy format version to be returned.\nAcceptable values are 0, 1, and 3.\nIf the value is 0, or the field is omitted, policy format version 1 will be\nreturned."]
+                        #[doc = "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset."]
                         pub fn options_requested_policy_version(mut self, value: i32) -> Self {
                             self.options_requested_policy_version = Some(value);
                             self
@@ -17942,7 +20752,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[(
@@ -17971,7 +20781,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::list()](struct.Hl7V2StoresActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         filter: Option<String>,
@@ -17990,7 +20800,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "Restricts stores returned to those matching a filter. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\nOnly filtering on labels is supported, for example `labels.key=value`."]
+                        #[doc = "Restricts stores returned to those matching a filter. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\nOnly filtering on labels is supported. For example, `labels.key=value`."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
                             self
@@ -18235,7 +21045,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -18274,7 +21084,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::patch()](struct.Hl7V2StoresActions.html#method.patch)"]
                     #[derive(Debug, Clone)]
                     pub struct PatchRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::Hl7V2Store,
                         name: String,
@@ -18420,7 +21230,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                             let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -18446,7 +21256,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::set_iam_policy()](struct.Hl7V2StoresActions.html#method.set_iam_policy)"]
                     #[derive(Debug, Clone)]
                     pub struct SetIamPolicyRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::SetIamPolicyRequest,
                         resource: String,
@@ -18585,7 +21395,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -18610,7 +21420,7 @@ pub mod resources {
                     #[doc = "Created via [Hl7V2StoresActions::test_iam_permissions()](struct.Hl7V2StoresActions.html#method.test_iam_permissions)"]
                     #[derive(Debug, Clone)]
                     pub struct TestIamPermissionsRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         request: crate::schemas::TestIamPermissionsRequest,
                         resource: String,
@@ -18751,7 +21561,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::POST, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -18777,6 +21587,7 @@ pub mod resources {
                         pub mod params {
                             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                             pub enum GetView {
+                                Basic,
                                 Full,
                                 MessageViewUnspecified,
                                 ParsedOnly,
@@ -18785,6 +21596,7 @@ pub mod resources {
                             impl GetView {
                                 pub fn as_str(self) -> &'static str {
                                     match self {
+                                        GetView::Basic => "BASIC",
                                         GetView::Full => "FULL",
                                         GetView::MessageViewUnspecified => {
                                             "MESSAGE_VIEW_UNSPECIFIED"
@@ -18803,6 +21615,7 @@ pub mod resources {
                                 type Err = ();
                                 fn from_str(s: &str) -> ::std::result::Result<GetView, ()> {
                                     Ok(match s {
+                                        "BASIC" => GetView::Basic,
                                         "FULL" => GetView::Full,
                                         "MESSAGE_VIEW_UNSPECIFIED" => {
                                             GetView::MessageViewUnspecified
@@ -18841,6 +21654,7 @@ pub mod resources {
                                 {
                                     let value: &'de str = <&str>::deserialize(deserializer)?;
                                     Ok(match value {
+                                        "BASIC" => GetView::Basic,
                                         "FULL" => GetView::Full,
                                         "MESSAGE_VIEW_UNSPECIFIED" => {
                                             GetView::MessageViewUnspecified
@@ -18866,9 +21680,104 @@ pub mod resources {
                                     ::google_field_selector::FieldType::Leaf
                                 }
                             }
+                            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                            pub enum ListView {
+                                Basic,
+                                Full,
+                                MessageViewUnspecified,
+                                ParsedOnly,
+                                RawOnly,
+                            }
+                            impl ListView {
+                                pub fn as_str(self) -> &'static str {
+                                    match self {
+                                        ListView::Basic => "BASIC",
+                                        ListView::Full => "FULL",
+                                        ListView::MessageViewUnspecified => {
+                                            "MESSAGE_VIEW_UNSPECIFIED"
+                                        }
+                                        ListView::ParsedOnly => "PARSED_ONLY",
+                                        ListView::RawOnly => "RAW_ONLY",
+                                    }
+                                }
+                            }
+                            impl ::std::convert::AsRef<str> for ListView {
+                                fn as_ref(&self) -> &str {
+                                    self.as_str()
+                                }
+                            }
+                            impl ::std::str::FromStr for ListView {
+                                type Err = ();
+                                fn from_str(s: &str) -> ::std::result::Result<ListView, ()> {
+                                    Ok(match s {
+                                        "BASIC" => ListView::Basic,
+                                        "FULL" => ListView::Full,
+                                        "MESSAGE_VIEW_UNSPECIFIED" => {
+                                            ListView::MessageViewUnspecified
+                                        }
+                                        "PARSED_ONLY" => ListView::ParsedOnly,
+                                        "RAW_ONLY" => ListView::RawOnly,
+                                        _ => return Err(()),
+                                    })
+                                }
+                            }
+                            impl ::std::fmt::Display for ListView {
+                                fn fmt(
+                                    &self,
+                                    f: &mut std::fmt::Formatter<'_>,
+                                ) -> ::std::fmt::Result {
+                                    f.write_str(self.as_str())
+                                }
+                            }
+                            impl ::serde::Serialize for ListView {
+                                fn serialize<S>(
+                                    &self,
+                                    serializer: S,
+                                ) -> ::std::result::Result<S::Ok, S::Error>
+                                where
+                                    S: ::serde::ser::Serializer,
+                                {
+                                    serializer.serialize_str(self.as_str())
+                                }
+                            }
+                            impl<'de> ::serde::Deserialize<'de> for ListView {
+                                fn deserialize<D>(
+                                    deserializer: D,
+                                ) -> ::std::result::Result<Self, D::Error>
+                                where
+                                    D: ::serde::de::Deserializer<'de>,
+                                {
+                                    let value: &'de str = <&str>::deserialize(deserializer)?;
+                                    Ok(match value {
+                                        "BASIC" => ListView::Basic,
+                                        "FULL" => ListView::Full,
+                                        "MESSAGE_VIEW_UNSPECIFIED" => {
+                                            ListView::MessageViewUnspecified
+                                        }
+                                        "PARSED_ONLY" => ListView::ParsedOnly,
+                                        "RAW_ONLY" => ListView::RawOnly,
+                                        _ => {
+                                            return Err(::serde::de::Error::custom(format!(
+                                                "invalid enum for #name: {}",
+                                                value
+                                            )))
+                                        }
+                                    })
+                                }
+                            }
+                            impl ::google_field_selector::FieldSelector for ListView {
+                                fn fields() -> Vec<::google_field_selector::Field> {
+                                    Vec::new()
+                                }
+                            }
+                            impl ::google_field_selector::ToFieldType for ListView {
+                                fn field_type() -> ::google_field_selector::FieldType {
+                                    ::google_field_selector::FieldType::Leaf
+                                }
+                            }
                         }
                         pub struct MessagesActions<'a> {
-                            pub(crate) reqwest: &'a reqwest::Client,
+                            pub(crate) reqwest: &'a reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         }
                         impl<'a> MessagesActions<'a> {
@@ -18938,7 +21847,7 @@ pub mod resources {
                                     view: None,
                                 }
                             }
-                            #[doc = "Ingests a new HL7v2 message from the hospital and sends a notification to\nthe Cloud Pub/Sub topic. Return is an HL7v2 ACK message if the message was\nsuccessfully stored. Otherwise an error is returned.  If an identical\nHL7v2 message is created twice only one resource is created on the server\nand no error is reported."]
+                            #[doc = "Ingests a new HL7v2 message from the hospital and sends a notification to\nthe Cloud Pub/Sub topic. Return is an HL7v2 ACK message if the message was\nsuccessfully stored. Otherwise an error is returned."]
                             pub fn ingest(
                                 &self,
                                 request: crate::schemas::IngestMessageRequest,
@@ -18983,9 +21892,10 @@ pub mod resources {
                                     order_by: None,
                                     page_size: None,
                                     page_token: None,
+                                    view: None,
                                 }
                             }
-                            #[doc = "Update the message."]
+                            #[doc = "Update the message.\n\nThe contents of the message in Message.data and data extracted from\nthe contents such as Message.create_time cannot be altered. Only the\nMessage.labels field is allowed to be updated. The labels in the\nrequest are merged with the existing set of labels. Existing labels with\nthe same keys are updated."]
                             pub fn patch(
                                 &self,
                                 request: crate::schemas::Message,
@@ -19014,7 +21924,7 @@ pub mod resources {
                         #[doc = "Created via [MessagesActions::create()](struct.MessagesActions.html#method.create)"]
                         #[derive(Debug, Clone)]
                         pub struct CreateRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::CreateMessageRequest,
                             parent: String,
@@ -19155,7 +22065,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -19180,7 +22090,7 @@ pub mod resources {
                         #[doc = "Created via [MessagesActions::delete()](struct.MessagesActions.html#method.delete)"]
                         #[derive(Debug, Clone)]
                         pub struct DeleteRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             name: String,
                             access_token: Option<String>,
@@ -19318,7 +22228,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -19342,9 +22252,9 @@ pub mod resources {
                         }
                         #[doc = "Created via [MessagesActions::get()](struct.MessagesActions.html#method.get)"]
                         #[derive(Debug, Clone)]
-                        pub struct GetRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , name : String , view : Option < crate :: resources :: projects :: locations :: datasets :: hl_7v2_stores :: messages :: params :: GetView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                        pub struct GetRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , name : String , view : Option < crate :: resources :: projects :: locations :: datasets :: hl_7v2_stores :: messages :: params :: GetView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> GetRequestBuilder<'a> {
-                            #[doc = "Specifies which parts of the Message resource should be returned\nin the response."]
+                            #[doc = "Specifies which parts of the Message resource to return in the response.\nWhen unspecified, equivalent to FULL."]
                             pub fn view(
                                 mut self,
                                 value : crate :: resources :: projects :: locations :: datasets :: hl_7v2_stores :: messages :: params :: GetView,
@@ -19474,7 +22384,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("view", &self.view)]);
@@ -19500,7 +22410,7 @@ pub mod resources {
                         #[doc = "Created via [MessagesActions::ingest()](struct.MessagesActions.html#method.ingest)"]
                         #[derive(Debug, Clone)]
                         pub struct IngestRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::IngestMessageRequest,
                             parent: String,
@@ -19641,7 +22551,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -19665,28 +22575,9 @@ pub mod resources {
                         }
                         #[doc = "Created via [MessagesActions::list()](struct.MessagesActions.html#method.list)"]
                         #[derive(Debug, Clone)]
-                        pub struct ListRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
-                            pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-                            parent: String,
-                            filter: Option<String>,
-                            order_by: Option<String>,
-                            page_size: Option<i32>,
-                            page_token: Option<String>,
-                            access_token: Option<String>,
-                            alt: Option<crate::params::Alt>,
-                            callback: Option<String>,
-                            fields: Option<String>,
-                            key: Option<String>,
-                            oauth_token: Option<String>,
-                            pretty_print: Option<bool>,
-                            quota_user: Option<String>,
-                            upload_protocol: Option<String>,
-                            upload_type: Option<String>,
-                            xgafv: Option<crate::params::Xgafv>,
-                        }
+                        pub struct ListRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , parent : String , filter : Option < String > , order_by : Option < String > , page_size : Option < i32 > , page_token : Option < String > , view : Option < crate :: resources :: projects :: locations :: datasets :: hl_7v2_stores :: messages :: params :: ListView > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                         impl<'a> ListRequestBuilder<'a> {
-                            #[doc = "Restricts messages returned to those matching a filter. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\n\nFields/functions available for filtering are:\n\n* `message_type`, from the MSH-9 segment; for example\n  `NOT message_type = \"ADT\"`\n* `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in\n  the dataset's time_zone, from the MSH-7 segment; for example\n  `send_date < \"2017-01-02\"`\n* `send_time`, the timestamp when the message was sent, using the\n  RFC3339 time format for comparisons, from the MSH-7 segment; for example\n  `send_time < \"2017-01-02T00:00:00-05:00\"`\n* `send_facility`, the care center that the message came from, from the\n  MSH-4 segment; for example `send_facility = \"ABC\"`\n* `HL7RegExp(expr)`, which does regular expression matching of `expr`\n  against the message payload using re2 (http://code.google.com/p/re2/)\n  syntax; for example `HL7RegExp(\"^.*\\|.*\\|EMERG\")`\n* `PatientId(value, type)`, which matches if the message lists a patient\n  having an ID of the given value and type in the PID-2, PID-3, or PID-4\n  segments; for example `PatientId(\"123456\", \"MRN\")`\n* `labels.x`, a string value of the label with key `x` as set using the\n  Message.labels\n  map, for example `labels.\"priority\"=\"high\"`. The operator `:*` can be used\n  to assert the existence of a label, for example `labels.\"priority\":*`.\n\nLimitations on conjunctions:\n\n* Negation on the patient ID function or the labels field is not\n  supported, for example these queries are invalid:\n  `NOT PatientId(\"123456\", \"MRN\")`, `NOT labels.\"tag1\":*`,\n  `NOT labels.\"tag2\"=\"val2\"`.\n* Conjunction of multiple patient ID functions is not supported, for\n  example this query is invalid:\n  `PatientId(\"123456\", \"MRN\") AND PatientId(\"456789\", \"MRN\")`.\n* Conjunction of multiple labels fields is also not supported, for\n  example this query is invalid: `labels.\"tag1\":* AND labels.\"tag2\"=\"val2\"`.\n* Conjunction of one patient ID function, one labels field and conditions\n  on other fields is supported, for example this query is valid:\n  `PatientId(\"123456\", \"MRN\") AND labels.\"tag1\":* AND message_type = \"ADT\"`."]
+                            #[doc = "Restricts messages returned to those matching a filter. Syntax:\nhttps://cloud.google.com/appengine/docs/standard/python/search/query_strings\n\nFields/functions available for filtering are:\n\n* `message_type`, from the MSH-9.1 field. For example,\n  `NOT message_type = \"ADT\"`.\n* `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent in\n  the dataset's time_zone, from the MSH-7 segment. For example,\n  `send_date < \"2017-01-02\"`.\n* `send_time`, the timestamp when the message was sent, using the\n  RFC3339 time format for comparisons, from the MSH-7 segment. For example,\n  `send_time < \"2017-01-02T00:00:00-05:00\"`.\n* `send_facility`, the care center that the message came from, from the\n  MSH-4 segment. For example, `send_facility = \"ABC\"`.\n* `PatientId(value, type)`, which matches if the message lists a patient\n  having an ID of the given value and type in the PID-2, PID-3, or PID-4\n  segments. For example, `PatientId(\"123456\", \"MRN\")`.\n* `labels.x`, a string value of the label with key `x` as set using the\n  Message.labels\n  map. For example, `labels.\"priority\"=\"high\"`. The operator `:*` can be used\n  to assert the existence of a label. For example, `labels.\"priority\":*`."]
                             pub fn filter(mut self, value: impl Into<String>) -> Self {
                                 self.filter = Some(value.into());
                                 self
@@ -19704,6 +22595,14 @@ pub mod resources {
                             #[doc = "The next_page_token value returned from the previous List request, if any."]
                             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                                 self.page_token = Some(value.into());
+                                self
+                            }
+                            #[doc = "Specifies the parts of the Message to return in the response.\nWhen unspecified, equivalent to BASIC. Setting this to anything other than\nBASIC with a `page_size` larger than the default can generate a large\nresponse, which impacts the performance of this method."]
+                            pub fn view(
+                                mut self,
+                                value : crate :: resources :: projects :: locations :: datasets :: hl_7v2_stores :: messages :: params :: ListView,
+                            ) -> Self {
+                                self.view = Some(value);
                                 self
                             }
                             #[doc = "OAuth access token."]
@@ -19756,7 +22655,9 @@ pub mod resources {
                             #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
                             #[doc = r" populated fields in the yielded items will be determined by the"]
                             #[doc = r" `FieldSelector` implementation."]
-                            pub fn iter_messages<T>(self) -> crate::iter::PageItemIter<Self, T>
+                            pub fn iter_hl_7v_2_messages<T>(
+                                self,
+                            ) -> crate::iter::PageItemIter<Self, T>
                             where
                                 T: ::serde::de::DeserializeOwned
                                     + ::google_field_selector::FieldSelector,
@@ -19767,17 +22668,17 @@ pub mod resources {
                                 } else {
                                     Some(fields)
                                 };
-                                self.iter_messages_with_fields(fields)
+                                self.iter_hl_7v_2_messages_with_fields(fields)
                             }
                             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
                             #[doc = r" fields in `#items_type` will be the default fields populated by"]
                             #[doc = r" the server."]
-                            pub fn iter_messages_with_default_fields(
+                            pub fn iter_hl_7v_2_messages_with_default_fields(
                                 self,
-                            ) -> crate::iter::PageItemIter<Self, String>
+                            ) -> crate::iter::PageItemIter<Self, crate::schemas::Message>
                             {
-                                self.iter_messages_with_fields(None::<String>)
+                                self.iter_hl_7v_2_messages_with_fields(None::<String>)
                             }
                             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
                             #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
@@ -19785,13 +22686,13 @@ pub mod resources {
                             #[doc = r" primarily be used during developement and debugging as fetching"]
                             #[doc = r" all fields can be expensive both in bandwidth and server"]
                             #[doc = r" resources."]
-                            pub fn iter_messages_with_all_fields(
+                            pub fn iter_hl_7v_2_messages_with_all_fields(
                                 self,
-                            ) -> crate::iter::PageItemIter<Self, String>
+                            ) -> crate::iter::PageItemIter<Self, crate::schemas::Message>
                             {
-                                self.iter_messages_with_fields(Some("*"))
+                                self.iter_hl_7v_2_messages_with_fields(Some("*"))
                             }
-                            pub fn iter_messages_with_fields<T, F>(
+                            pub fn iter_hl_7v_2_messages_with_fields<T, F>(
                                 mut self,
                                 fields: Option<F>,
                             ) -> crate::iter::PageItemIter<Self, T>
@@ -19801,7 +22702,7 @@ pub mod resources {
                             {
                                 self.fields = Some({
                                     let mut selector =
-                                        concat!("nextPageToken,", "messages").to_owned();
+                                        concat!("nextPageToken,", "hl7V2Messages").to_owned();
                                     let items_fields =
                                         fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
                                     if !items_fields.is_empty() {
@@ -19811,7 +22712,7 @@ pub mod resources {
                                     }
                                     selector
                                 });
-                                crate::iter::PageItemIter::new(self, "messages")
+                                crate::iter::PageItemIter::new(self, "hl7V2Messages")
                             }
                             pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
                             where
@@ -19936,13 +22837,14 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                                 let req = req.query(&[("filter", &self.filter)]);
                                 let req = req.query(&[("orderBy", &self.order_by)]);
                                 let req = req.query(&[("pageSize", &self.page_size)]);
                                 let req = req.query(&[("pageToken", &self.page_token)]);
+                                let req = req.query(&[("view", &self.view)]);
                                 let req = req.query(&[("access_token", &self.access_token)]);
                                 let req = req.query(&[("alt", &self.alt)]);
                                 let req = req.query(&[("callback", &self.callback)]);
@@ -19976,7 +22878,7 @@ pub mod resources {
                         #[doc = "Created via [MessagesActions::patch()](struct.MessagesActions.html#method.patch)"]
                         #[derive(Debug, Clone)]
                         pub struct PatchRequestBuilder<'a> {
-                            pub(crate) reqwest: &'a ::reqwest::Client,
+                            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                             request: crate::schemas::Message,
                             name: String,
@@ -19994,7 +22896,7 @@ pub mod resources {
                             xgafv: Option<crate::params::Xgafv>,
                         }
                         impl<'a> PatchRequestBuilder<'a> {
-                            #[doc = "The update mask applies to the resource. For the `FieldMask` definition,\nsee\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask\nOnly the `labels` field is allowed to be updated.\nThe labels in the request will be merged with the existing set of labels.\nExisting labels with the same keys will be updated."]
+                            #[doc = "The update mask applies to the resource. For the `FieldMask` definition,\nsee\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask"]
                             pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                                 self.update_mask = Some(value.into());
                                 self
@@ -20122,7 +23024,7 @@ pub mod resources {
                             fn _request(
                                 &self,
                                 path: &str,
-                            ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                             {
                                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                                 let req = req.query(&[("updateMask", &self.update_mask)]);
@@ -20150,12 +23052,36 @@ pub mod resources {
                 pub mod operations {
                     pub mod params {}
                     pub struct OperationsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> OperationsActions<'a> {
                         fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                             self.auth
+                        }
+                        #[doc = "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`."]
+                        pub fn cancel(
+                            &self,
+                            request: crate::schemas::CancelOperationRequest,
+                            name: impl Into<String>,
+                        ) -> CancelRequestBuilder {
+                            CancelRequestBuilder {
+                                reqwest: &self.reqwest,
+                                auth: self.auth_ref(),
+                                request,
+                                access_token: None,
+                                alt: None,
+                                callback: None,
+                                fields: None,
+                                key: None,
+                                oauth_token: None,
+                                pretty_print: None,
+                                quota_user: None,
+                                upload_protocol: None,
+                                upload_type: None,
+                                xgafv: None,
+                                name: name.into(),
+                            }
                         }
                         #[doc = "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."]
                         pub fn get(&self, name: impl Into<String>) -> GetRequestBuilder {
@@ -20199,10 +23125,174 @@ pub mod resources {
                             }
                         }
                     }
+                    #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
+                    #[derive(Debug, Clone)]
+                    pub struct CancelRequestBuilder<'a> {
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+                        pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
+                        request: crate::schemas::CancelOperationRequest,
+                        name: String,
+                        access_token: Option<String>,
+                        alt: Option<crate::params::Alt>,
+                        callback: Option<String>,
+                        fields: Option<String>,
+                        key: Option<String>,
+                        oauth_token: Option<String>,
+                        pretty_print: Option<bool>,
+                        quota_user: Option<String>,
+                        upload_protocol: Option<String>,
+                        upload_type: Option<String>,
+                        xgafv: Option<crate::params::Xgafv>,
+                    }
+                    impl<'a> CancelRequestBuilder<'a> {
+                        #[doc = "OAuth access token."]
+                        pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                            self.access_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "JSONP"]
+                        pub fn callback(mut self, value: impl Into<String>) -> Self {
+                            self.callback = Some(value.into());
+                            self
+                        }
+                        #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
+                        pub fn key(mut self, value: impl Into<String>) -> Self {
+                            self.key = Some(value.into());
+                            self
+                        }
+                        #[doc = "OAuth 2.0 token for the current user."]
+                        pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
+                            self.oauth_token = Some(value.into());
+                            self
+                        }
+                        #[doc = "Returns response with indentations and line breaks."]
+                        pub fn pretty_print(mut self, value: bool) -> Self {
+                            self.pretty_print = Some(value);
+                            self
+                        }
+                        #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
+                        pub fn quota_user(mut self, value: impl Into<String>) -> Self {
+                            self.quota_user = Some(value.into());
+                            self
+                        }
+                        #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                        pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                            self.upload_protocol = Some(value.into());
+                            self
+                        }
+                        #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                        pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                            self.upload_type = Some(value.into());
+                            self
+                        }
+                        #[doc = "V1 error format."]
+                        pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                            self.xgafv = Some(value);
+                            self
+                        }
+                        #[doc = r" Execute the given operation. The fields requested are"]
+                        #[doc = r" determined by the FieldSelector attribute of the return type."]
+                        #[doc = r" This allows for flexible and ergonomic partial responses. See"]
+                        #[doc = r" `execute_standard` and `execute_debug` for interfaces that"]
+                        #[doc = r" are not generic over the return type and deserialize the"]
+                        #[doc = r" response into an auto-generated struct will all possible"]
+                        #[doc = r" fields."]
+                        pub fn execute<T>(self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned
+                                + ::google_field_selector::FieldSelector,
+                        {
+                            let fields = ::google_field_selector::to_string::<T>();
+                            let fields: Option<String> = if fields.is_empty() {
+                                None
+                            } else {
+                                Some(fields)
+                            };
+                            self.execute_with_fields(fields)
+                        }
+                        #[doc = r" Execute the given operation. This will not provide any"]
+                        #[doc = r" `fields` selector indicating that the server will determine"]
+                        #[doc = r" the fields returned. This typically includes the most common"]
+                        #[doc = r" fields, but it will not include every possible attribute of"]
+                        #[doc = r" the response resource."]
+                        pub fn execute_with_default_fields(
+                            self,
+                        ) -> Result<crate::schemas::Empty, crate::Error> {
+                            self.execute_with_fields(None::<&str>)
+                        }
+                        #[doc = r" Execute the given operation. This will provide a `fields`"]
+                        #[doc = r" selector of `*`. This will include every attribute of the"]
+                        #[doc = r" response resource and should be limited to use during"]
+                        #[doc = r" development or debugging."]
+                        pub fn execute_with_all_fields(
+                            self,
+                        ) -> Result<crate::schemas::Empty, crate::Error> {
+                            self.execute_with_fields(Some("*"))
+                        }
+                        #[doc = r" Execute the given operation. This will use the `fields`"]
+                        #[doc = r" selector provided and will deserialize the response into"]
+                        #[doc = r" whatever return value is provided."]
+                        pub fn execute_with_fields<T, F>(
+                            mut self,
+                            fields: Option<F>,
+                        ) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                            F: Into<String>,
+                        {
+                            self.fields = fields.map(Into::into);
+                            self._execute()
+                        }
+                        fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                        where
+                            T: ::serde::de::DeserializeOwned,
+                        {
+                            let req = self._request(&self._path())?;
+                            let req = req.json(&self.request);
+                            Ok(crate::error_from_response(req.send()?)?.json()?)
+                        }
+                        fn _path(&self) -> String {
+                            let mut output = "https://healthcare.googleapis.com/".to_owned();
+                            output.push_str("v1beta1/");
+                            {
+                                let var_as_str = &self.name;
+                                output.extend(::percent_encoding::utf8_percent_encode(
+                                    &var_as_str,
+                                    crate::RESERVED,
+                                ));
+                            }
+                            output.push_str(":cancel");
+                            output
+                        }
+                        fn _request(
+                            &self,
+                            path: &str,
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                        {
+                            let req = self.reqwest.request(::reqwest::Method::POST, path);
+                            let req = req.query(&[("access_token", &self.access_token)]);
+                            let req = req.query(&[("alt", &self.alt)]);
+                            let req = req.query(&[("callback", &self.callback)]);
+                            let req = req.query(&[("fields", &self.fields)]);
+                            let req = req.query(&[("key", &self.key)]);
+                            let req = req.query(&[("oauth_token", &self.oauth_token)]);
+                            let req = req.query(&[("prettyPrint", &self.pretty_print)]);
+                            let req = req.query(&[("quotaUser", &self.quota_user)]);
+                            let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                            let req = req.query(&[("uploadType", &self.upload_type)]);
+                            let req = req.query(&[("$.xgafv", &self.xgafv)]);
+                            let req = req.bearer_auth(
+                                self.auth
+                                    .access_token()
+                                    .map_err(|err| crate::Error::OAuth2(err))?,
+                            );
+                            Ok(req)
+                        }
+                    }
                     #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -20340,7 +23430,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -20365,7 +23455,7 @@ pub mod resources {
                     #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         filter: Option<String>,
@@ -20629,7 +23719,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -20686,9 +23776,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -20730,7 +23818,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

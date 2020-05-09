@@ -1,0 +1,3927 @@
+{
+  "kind": "discovery#restDescription",
+  "etag": null,
+  "discoveryVersion": "v1",
+  "id": "identitytoolkit:v2",
+  "name": "identitytoolkit",
+  "canonicalName": "Identity Toolkit",
+  "fullyEncodeReservedExpansion": true,
+  "version": "v2",
+  "revision": "20200503",
+  "title": "Identity Toolkit API",
+  "description": "The Google Identity Toolkit API lets you use open standards to verify a\n    user's identity.",
+  "ownerDomain": "google.com",
+  "ownerName": "Google",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "documentationLink": "https://firebase.google.com/docs/auth/",
+  "protocol": "rest",
+  "baseUrl": "https://identitytoolkit.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://identitytoolkit.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
+  "version_module": true,
+  "packagePath": null,
+  "labels": null,
+  "features": null,
+  "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "location": "query",
+      "required": false,
+      "type": "boolean",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    }
+  },
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/firebase": {
+          "description": "View and administer all your Firebase data and settings"
+        }
+      }
+    }
+  },
+  "schemas": {
+    "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp",
+      "description": "Standard Identity Toolkit-trusted IDPs.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "Description of the Idp",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "idpId": {
+          "description": "Id the of Idp",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig",
+      "description": "Configurations options for authenticating with a the standard set of Identity\nToolkit-trusted IDPs.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "clientId": {
+          "description": "OAuth client ID.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "clientSecret": {
+          "description": "OAuth client secret.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enabled": {
+          "description": "True if allows the user to sign in with the provider.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "The name of the DefaultSupportedIdpConfig resource, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2HashConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2HashConfig",
+      "description": "History information of the hash algorithm and key. Different accounts'\npasswords may be generated by different version.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "algorithm": {
+          "description": "Output only. Different password hash algorithms used in Identity Toolkit.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "HASH_ALGORITHM_UNSPECIFIED",
+            "HMAC_SHA256",
+            "HMAC_SHA1",
+            "HMAC_MD5",
+            "SCRYPT",
+            "PBKDF_SHA1",
+            "MD5",
+            "HMAC_SHA512",
+            "SHA1",
+            "BCRYPT",
+            "PBKDF2_SHA256",
+            "SHA256",
+            "SHA512",
+            "STANDARD_SCRYPT"
+          ],
+          "enumDescriptions": [
+            "Default value. Do not use.",
+            "HMAC_SHA256",
+            "HMAC_SHA1",
+            "HMAC_MD5",
+            "SCRYPT",
+            "PBKDF_SHA1",
+            "MD5",
+            "HMAC_SHA512",
+            "SHA1",
+            "BCRYPT",
+            "PBKDF2_SHA256",
+            "SHA256",
+            "SHA512",
+            "STANDARD_SCRYPT"
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "memoryCost": {
+          "description": "Output only. Memory cost for hash calculation. Used by scrypt and other\nsimilar password derivation algorithms. See\nhttps://tools.ietf.org/html/rfc7914 for explanation of field.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "rounds": {
+          "description": "Output only. How many rounds for hash calculation. Used by scrypt and other\nsimilar password derivation algorithms.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "saltSeparator": {
+          "description": "Output only. Non-printable character to be inserted between the salt and\nplain text password in base64.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "signerKey": {
+          "description": "Output only. Signer key in base64.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2IdpCertificate": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2IdpCertificate",
+      "description": "The proto for the IDP's certificate data to verify the signature in the\nSAMLResponse issued by the IDP.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "x509Certificate": {
+          "description": "The x509 certificate",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2IdpConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2IdpConfig",
+      "description": "The proto for storing SAML IdP (Identity Provider) configuration when the\nproject acts as the relying party.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "idpCertificates": {
+          "description": "IDP's public keys for verifying signature in the assertions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2IdpCertificate"
+          }
+        },
+        "idpEntityId": {
+          "description": "Unique identifier for all SAML entities.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "signRequest": {
+          "description": "Indicates if outbounding SAMLRequest should be signed.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "ssoUrl": {
+          "description": "URL to send Authentication request to.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig",
+      "description": "The proto for storing a pair of SAML RP-IDP configurations when the project\nacts as the relying party.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "displayName": {
+          "description": "The config's display name set by developers.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enabled": {
+          "description": "True if allows the user to sign in with the provider.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "idpConfig": {
+          "description": "The proto for storing SAML IdP (Identity Provider) configuration when the\nproject acts as the relying party.",
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2IdpConfig"
+        },
+        "name": {
+          "description": "The name of the InboundSamlConfig resource, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.\nIgnored during create requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "spConfig": {
+          "description": "The proto for storing SAML SP (Service Provider) configuration when the\nproject acts as the relying party to receive and accept an authentication\nassertion issued by a SAML identity provider.",
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2SpConfig"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse",
+      "description": "Response for DefaultSupportedIdpConfigs",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "defaultSupportedIdpConfigs": {
+          "description": "The set of configs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+          }
+        },
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse",
+      "description": "Response for ListDefaultSupportedIdps",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "defaultSupportedIdps": {
+          "description": "The set of configs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdp"
+          }
+        },
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse",
+      "description": "Response for ListInboundSamlConfigs",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "inboundSamlConfigs": {
+          "description": "The set of configs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+          }
+        },
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse",
+      "description": "Response for ListOAuthIdpConfigs",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "oauthIdpConfigs": {
+          "description": "The set of configs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse",
+      "description": "Response message for ListTenants.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "The token to get the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "tenants": {
+          "description": "A list of tenants under the given agent project.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2Tenant"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig",
+      "description": "Options related to MultiFactor Authentication for the project.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enabledProviders": {
+          "description": "A list of usable second factors for this project.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [
+            "Illegal Provider, should not be used",
+            "SMS is enabled as a second factor for this project."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "PROVIDER_UNSPECIFIED",
+              "PHONE_SMS"
+            ],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "state": {
+          "description": "Whether MultiFactor Authentication has been enabled for this project.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "DISABLED",
+            "ENABLED",
+            "ADMIN_ENABLED"
+          ],
+          "enumDescriptions": [
+            "Illegal State, should not be used.",
+            "Multi-factor authentication cannot be used for this project",
+            "Multi-factor authentication can be used for this project",
+            "Multi-factor authentication can be used for this project,\nbut can only be set up by project administrators"
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig",
+      "description": "Configuration options for authenticating with an OAuth IDP.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "clientId": {
+          "description": "The client id of an OAuth client.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "clientSecret": {
+          "description": "The client secret of the OAuth client, to enable OIDC code flow.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "The config's display name set by developers.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enabled": {
+          "description": "True if allows the user to sign in with the provider.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "issuer": {
+          "description": "For OIDC Idps, the issuer identifier.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "The name of the OAuthIdpConfig resource, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.\nIgnored during create requests.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "responseType": {
+          "description": "The multiple response type to request for in the OAuth authorization flow.\nThis can possibly be a combination of set bits (e.g. {id_token, token}).",
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthResponseType"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2OAuthResponseType": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2OAuthResponseType",
+      "description": "The multiple response type to request for in the OAuth authorization flow.\nThis can possibly be a combination of set bits (e.g. {id_token, token}).",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "code": {
+          "description": "If true, authorization code is returned from IdP's authorization\nendpoint.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "idToken": {
+          "description": "If true, ID token is returned from IdP's authorization endpoint.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "token": {
+          "description": "If true, access token is returned from IdP's authorization endpoint.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2SpCertificate": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2SpCertificate",
+      "description": "The proto for the SP's certificate data for IDP to verify the SAMLRequest\ngenerated by the SP.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "expiresAt": {
+          "description": "Timestamp of the cert expiration instance.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "x509Certificate": {
+          "description": "Self-signed public certificate.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2SpConfig": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2SpConfig",
+      "description": "The proto for storing SAML SP (Service Provider) configuration when the\nproject acts as the relying party to receive and accept an authentication\nassertion issued by a SAML identity provider.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "callbackUri": {
+          "description": "Callback URI where responses from IDP are handled.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "spCertificates": {
+          "description": "Output only. Public certificates generated by the server to verify the signature in\nSAMLRequest in the SP-initiated flow.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2SpCertificate"
+          }
+        },
+        "spEntityId": {
+          "description": "Unique identifier for all SAML entities.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitAdminV2Tenant": {
+      "id": "GoogleCloudIdentitytoolkitAdminV2Tenant",
+      "description": "A Tenant contains configuration for the tenant in a multi-tenant project.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allowPasswordSignup": {
+          "description": "Whether to allow email/password user authentication.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "disableAuth": {
+          "description": "Whether authentication is disabled for the tenant. If true, the users under\nthe disabled tenant are not allowed to sign-in. Admins of the disabled\ntenant are not able to manage its users.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayName": {
+          "description": "Display name of the tenant.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enableAnonymousUser": {
+          "description": "Whether to enable anonymous user authentication.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "enableEmailLinkSignin": {
+          "description": "Whether to enable email link user authentication.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "hashConfig": {
+          "description": "Output only. Hash config information of a tenant for display on Pantheon. This can only\nbe displayed on Pantheon to avoid the sensitive information to get\naccidentally leaked. Only returned in GetTenant response to restrict\nreading of this information. Requires firebaseauth.configs.getHashConfig\npermission on the agent project for returning this field.",
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2HashConfig"
+        },
+        "mfaConfig": {
+          "description": "The tenant-level configuration of MFA options.",
+          "$ref": "GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig"
+        },
+        "name": {
+          "description": "Output only. Resource name of a tenant. For example:\n\"projects/{project-id}/tenants/{tenant-id}\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest": {
+      "id": "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest",
+      "description": "Finishes enrolling a second factor for the user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "displayName": {
+          "description": "Display name which is entered  by users to distinguish between different\nsecond factors with same type or different type.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "idToken": {
+          "description": "Required. ID token.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneVerificationInfo": {
+          "description": "Verification info to authorize sending an SMS for phone verification.",
+          "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse": {
+      "id": "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse",
+      "description": "FinalizeMfaEnrollment response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "idToken": {
+          "description": "ID token updated to reflect MFA enrollment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneAuthInfo": {
+          "description": null,
+          "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo"
+        },
+        "refreshToken": {
+          "description": "Refresh token updated to reflect MFA enrollment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo": {
+      "id": "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "androidVerificationProof": {
+          "description": "Android only. Uses for \"instant\" phone number verification though GmsCore.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "code": {
+          "description": "User-entered verification code.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneNumber": {
+          "description": "Required if Android verification proof is presented.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sessionInfo": {
+          "description": "An opaque string that represents the enrollment session.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo": {
+      "id": "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "androidVerificationProof": {
+          "description": "Android only. Long-lived replacement for valid code tied to android device.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "androidVerificationProofExpireTime": {
+          "description": "Android only. Expiration time of verification proof in seconds.",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneNumber": {
+          "description": "For Android verification proof.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest": {
+      "id": "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest",
+      "description": "Finalizes sign-in by verifying MFA challenge.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "mfaPendingCredential": {
+          "description": "Required. Pending credential from first factor sign-in.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneVerificationInfo": {
+          "description": "Proof of completion of the SMS based MFA challenge.",
+          "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneRequestInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse": {
+      "id": "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse",
+      "description": "FinalizeMfaSignIn response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "idToken": {
+          "description": "ID token for the authenticated user.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneAuthInfo": {
+          "description": "Extra phone auth info, including android verification proof.",
+          "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaPhoneResponseInfo"
+        },
+        "refreshToken": {
+          "description": "Refresh token for the authenticated user.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest": {
+      "id": "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest",
+      "description": "Sends MFA enrollment verification SMS for a user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "idToken": {
+          "description": "Required. User's ID token.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneEnrollmentInfo": {
+          "description": "Verification info to authorize sending an SMS for phone verification.",
+          "$ref": "GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse": {
+      "id": "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse",
+      "description": "StartMfaEnrollment response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "phoneSessionInfo": {
+          "description": "Verification info to authorize sending an SMS for phone verification.",
+          "$ref": "GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo": {
+      "id": "GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "iosReceipt": {
+          "description": "iOS only. Receipt of successful app token validation with APNS.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "iosSecret": {
+          "description": "iOS only. Secret delivered to iOS app via APNS.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneNumber": {
+          "description": "Required for enrollment. Phone number to be enrolled as MFA.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "recaptchaToken": {
+          "description": "Web only. Recaptcha solution.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo": {
+      "id": "GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "sessionInfo": {
+          "description": "An opaque string that represents the enrollment session.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2StartMfaSignInRequest": {
+      "id": "GoogleCloudIdentitytoolkitV2StartMfaSignInRequest",
+      "description": "Starts multi-factor sign-in by sending the multi-factor auth challenge.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "mfaEnrollmentId": {
+          "description": "Required. MFA enrollment id from the user's list of current MFA enrollments.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "mfaPendingCredential": {
+          "description": "Required. Pending credential from first factor sign-in.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneSignInInfo": {
+          "description": "Verification info to authorize sending an SMS for phone verification.",
+          "$ref": "GoogleCloudIdentitytoolkitV2StartMfaPhoneRequestInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2StartMfaSignInResponse": {
+      "id": "GoogleCloudIdentitytoolkitV2StartMfaSignInResponse",
+      "description": "StartMfaSignIn response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "phoneResponseInfo": {
+          "description": "MultiFactor sign-in session information specific to SMS-type second\nfactors. Along with the one-time code retrieved from the sent SMS, the\ncontents of this session information should be passed to\nFinalizeMfaSignIn to complete the sign in.",
+          "$ref": "GoogleCloudIdentitytoolkitV2StartMfaPhoneResponseInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2WithdrawMfaRequest": {
+      "id": "GoogleCloudIdentitytoolkitV2WithdrawMfaRequest",
+      "description": "Withdraws MFA.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "idToken": {
+          "description": "Required. User's ID token.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "mfaEnrollmentId": {
+          "description": "Required. MFA enrollment id from a current MFA enrollment.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudIdentitytoolkitV2WithdrawMfaResponse": {
+      "id": "GoogleCloudIdentitytoolkitV2WithdrawMfaResponse",
+      "description": "Withdraws MultiFactorAuth response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "idToken": {
+          "description": "ID token updated to reflect removal of the second factor.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "refreshToken": {
+          "description": "Refresh token updated to reflect removal of the second factor.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1AuditConfig": {
+      "id": "GoogleIamV1AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleIamV1AuditLogConfig"
+          }
+        },
+        "service": {
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1AuditLogConfig": {
+      "id": "GoogleIamV1AuditLogConfig",
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "logType": {
+          "description": "The log type that this config enables.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "LOG_TYPE_UNSPECIFIED",
+            "ADMIN_READ",
+            "DATA_WRITE",
+            "DATA_READ"
+          ],
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1Binding": {
+      "id": "GoogleIamV1Binding",
+      "description": "Associates `members` with a `role`.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "condition": {
+          "description": "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+          "$ref": "GoogleTypeExpr"
+        },
+        "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "role": {
+          "description": "Role that is assigned to `members`.\nFor example, `roles/viewer`, `roles/editor`, or `roles/owner`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1GetIamPolicyRequest": {
+      "id": "GoogleIamV1GetIamPolicyRequest",
+      "description": "Request message for `GetIamPolicy` method.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "options": {
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`.",
+          "$ref": "GoogleIamV1GetPolicyOptions"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1GetPolicyOptions": {
+      "id": "GoogleIamV1GetPolicyOptions",
+      "description": "Encapsulates settings provided to GetIamPolicy.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "requestedPolicyVersion": {
+          "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1Policy": {
+      "id": "GoogleIamV1Policy",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nFor some types of Google Cloud resources, a `binding` can also specify a\n`condition`, which is a logical expression that allows access to a resource\nonly if the expression evaluates to `true`. A condition can add constraints\nbased on attributes of the request, the resource, or both. To learn which\nresources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\n            \"user:eve@example.com\"\n          ],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "auditConfigs": {
+          "description": "Specifies cloud audit logging configuration for this policy.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleIamV1AuditConfig"
+          }
+        },
+        "bindings": {
+          "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleIamV1Binding"
+          }
+        },
+        "etag": {
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "version": {
+          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1SetIamPolicyRequest": {
+      "id": "GoogleIamV1SetIamPolicyRequest",
+      "description": "Request message for `SetIamPolicy` method.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "policy": {
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
+          "$ref": "GoogleIamV1Policy"
+        },
+        "updateMask": {
+          "description": "OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only\nthe fields in the mask will be modified. If no mask is provided, the\nfollowing default mask is used:\n\n`paths: \"bindings, etag\"`",
+          "type": "string",
+          "format": "google-fieldmask",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1TestIamPermissionsRequest": {
+      "id": "GoogleIamV1TestIamPermissionsRequest",
+      "description": "Request message for `TestIamPermissions` method.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "permissions": {
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleIamV1TestIamPermissionsResponse": {
+      "id": "GoogleIamV1TestIamPermissionsResponse",
+      "description": "Response message for `TestIamPermissions` method.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "permissions": {
+          "description": "A subset of `TestPermissionsRequest.permissions` that the caller is\nallowed.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleProtobufEmpty": {
+      "id": "GoogleProtobufEmpty",
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleTypeExpr": {
+      "id": "GoogleTypeExpr",
+      "description": "Represents a textual expression in the Common Expression Language (CEL)\nsyntax. CEL is a C-like expression language. The syntax and semantics of CEL\nare documented at https://github.com/google/cel-spec.\n\nExample (Comparison):\n\n    title: \"Summary size limit\"\n    description: \"Determines if a summary is less than 100 chars\"\n    expression: \"document.summary.size() < 100\"\n\nExample (Equality):\n\n    title: \"Requestor is owner\"\n    description: \"Determines if requestor is the document owner\"\n    expression: \"document.owner == request.auth.claims.email\"\n\nExample (Logic):\n\n    title: \"Public documents\"\n    description: \"Determine whether the document should be publicly visible\"\n    expression: \"document.type != 'private' && document.type != 'internal'\"\n\nExample (Data Manipulation):\n\n    title: \"Notification string\"\n    description: \"Create a notification string with a timestamp.\"\n    expression: \"'New message received at ' + string(document.create_time)\"\n\nThe exact variables and functions that may be referenced within an expression\nare determined by the service that evaluates it. See the service\ndocumentation for additional information.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "description": {
+          "description": "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "expression": {
+          "description": "Textual representation of an expression in Common Expression Language\nsyntax.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "location": {
+          "description": "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "title": {
+          "description": "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    }
+  },
+  "resources": {
+    "accounts": {
+      "resources": {
+        "mfaEnrollment": {
+          "resources": {},
+          "methods": {
+            "finalize": {
+              "id": "identitytoolkit.accounts.mfaEnrollment.finalize",
+              "path": "v2/accounts/mfaEnrollment:finalize",
+              "httpMethod": "POST",
+              "description": "Finishes enrolling a second factor for the user.",
+              "parameters": {},
+              "parameterOrder": [],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaEnrollmentResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "start": {
+              "id": "identitytoolkit.accounts.mfaEnrollment.start",
+              "path": "v2/accounts/mfaEnrollment:start",
+              "httpMethod": "POST",
+              "description": "Step one of the MFA enrollment process. In SMS case, this sends an\nSMS verification code to the user.",
+              "parameters": {},
+              "parameterOrder": [],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartMfaEnrollmentResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "withdraw": {
+              "id": "identitytoolkit.accounts.mfaEnrollment.withdraw",
+              "path": "v2/accounts/mfaEnrollment:withdraw",
+              "httpMethod": "POST",
+              "description": "Revokes one second factor from the enrolled second factors for an account.",
+              "parameters": {},
+              "parameterOrder": [],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2WithdrawMfaRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2WithdrawMfaResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "mfaSignIn": {
+          "resources": {},
+          "methods": {
+            "finalize": {
+              "id": "identitytoolkit.accounts.mfaSignIn.finalize",
+              "path": "v2/accounts/mfaSignIn:finalize",
+              "httpMethod": "POST",
+              "description": "Verifies the MFA challenge and performs sign-in",
+              "parameters": {},
+              "parameterOrder": [],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "start": {
+              "id": "identitytoolkit.accounts.mfaSignIn.start",
+              "path": "v2/accounts/mfaSignIn:start",
+              "httpMethod": "POST",
+              "description": "Sends the MFA challenge",
+              "parameters": {},
+              "parameterOrder": [],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartMfaSignInRequest"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitV2StartMfaSignInResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
+      "methods": {}
+    },
+    "defaultSupportedIdps": {
+      "resources": {},
+      "methods": {
+        "list": {
+          "id": "identitytoolkit.defaultSupportedIdps.list",
+          "path": "v2/defaultSupportedIdps",
+          "httpMethod": "GET",
+          "description": "List all default supported Idps.",
+          "parameters": {
+            "pageSize": {
+              "description": "The maximum number of items to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "The next_page_token value returned from a previous List request, if any.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/firebase"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
+    "projects": {
+      "resources": {
+        "defaultSupportedIdpConfigs": {
+          "resources": {},
+          "methods": {
+            "create": {
+              "id": "identitytoolkit.projects.defaultSupportedIdpConfigs.create",
+              "path": "v2/{+parent}/defaultSupportedIdpConfigs",
+              "httpMethod": "POST",
+              "description": "Create a default supported Idp configuration for an Identity Toolkit\nproject.",
+              "parameters": {
+                "idpId": {
+                  "description": "The id of the Idp to create a config for. Call ListDefaultSupportedIdps\nfor list of all default supported Idps.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name where the config to be created, for example:\n\"projects/my-awesome-project\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "identitytoolkit.projects.defaultSupportedIdpConfigs.delete",
+              "path": "v2/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Delete a default supported Idp configuration for an Identity Toolkit\nproject.",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the config, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/defaultSupportedIdpConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "identitytoolkit.projects.defaultSupportedIdpConfigs.get",
+              "path": "v2/{+name}",
+              "httpMethod": "GET",
+              "description": "Retrieve a default supported Idp configuration for an Identity Toolkit\nproject.",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the config, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/defaultSupportedIdpConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "identitytoolkit.projects.defaultSupportedIdpConfigs.list",
+              "path": "v2/{+parent}/defaultSupportedIdpConfigs",
+              "httpMethod": "GET",
+              "description": "List all default supported Idp configurations for an Identity Toolkit\nproject.",
+              "parameters": {
+                "pageSize": {
+                  "description": "The maximum number of items to return.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "The next_page_token value returned from a previous List request, if any.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name, for example, \"projects/my-awesome-project\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "identitytoolkit.projects.defaultSupportedIdpConfigs.patch",
+              "path": "v2/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Update a default supported Idp configuration for an Identity Toolkit\nproject.",
+              "parameters": {
+                "name": {
+                  "description": "The name of the DefaultSupportedIdpConfig resource, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/defaultSupportedIdpConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "The update mask applies to the resource. For the `FieldMask` definition,\nsee\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "inboundSamlConfigs": {
+          "resources": {},
+          "methods": {
+            "create": {
+              "id": "identitytoolkit.projects.inboundSamlConfigs.create",
+              "path": "v2/{+parent}/inboundSamlConfigs",
+              "httpMethod": "POST",
+              "description": "Create an inbound SAML configuration for an Identity Toolkit project.",
+              "parameters": {
+                "inboundSamlConfigId": {
+                  "description": "The id to use for this config.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name where the config to be created, for example:\n\"projects/my-awesome-project\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "identitytoolkit.projects.inboundSamlConfigs.delete",
+              "path": "v2/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Delete an inbound SAML configuration for an Identity Toolkit project.",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the config to be deleted, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/inboundSamlConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "identitytoolkit.projects.inboundSamlConfigs.get",
+              "path": "v2/{+name}",
+              "httpMethod": "GET",
+              "description": "Retrieve an inbound SAML configuration for an Identity Toolkit project.",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the config, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/inboundSamlConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "identitytoolkit.projects.inboundSamlConfigs.list",
+              "path": "v2/{+parent}/inboundSamlConfigs",
+              "httpMethod": "GET",
+              "description": "List all inbound SAML configurations for an Identity Toolkit project.",
+              "parameters": {
+                "pageSize": {
+                  "description": "The maximum number of items to return.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "The next_page_token value returned from a previous List request, if any.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name, for example, \"projects/my-awesome-project\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "identitytoolkit.projects.inboundSamlConfigs.patch",
+              "path": "v2/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Update an inbound SAML configuration for an Identity Toolkit project.",
+              "parameters": {
+                "name": {
+                  "description": "The name of the InboundSamlConfig resource, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.\nIgnored during create requests.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/inboundSamlConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "The update mask applies to the resource. Empty update mask will result in\nupdating nothing. For the `FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "oauthIdpConfigs": {
+          "resources": {},
+          "methods": {
+            "create": {
+              "id": "identitytoolkit.projects.oauthIdpConfigs.create",
+              "path": "v2/{+parent}/oauthIdpConfigs",
+              "httpMethod": "POST",
+              "description": "Create an Oidc Idp configuration for an Identity Toolkit project.",
+              "parameters": {
+                "oauthIdpConfigId": {
+                  "description": "The id to use for this config.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name where the config to be created, for example:\n\"projects/my-awesome-project\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "identitytoolkit.projects.oauthIdpConfigs.delete",
+              "path": "v2/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Delete an Oidc Idp configuration for an Identity Toolkit project.",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the config to be deleted, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/oauthIdpConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "identitytoolkit.projects.oauthIdpConfigs.get",
+              "path": "v2/{+name}",
+              "httpMethod": "GET",
+              "description": "Retrieve an Oidc Idp configuration for an Identity Toolkit project.",
+              "parameters": {
+                "name": {
+                  "description": "The resource name of the config, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/oauthIdpConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "identitytoolkit.projects.oauthIdpConfigs.list",
+              "path": "v2/{+parent}/oauthIdpConfigs",
+              "httpMethod": "GET",
+              "description": "List all Oidc Idp configurations for an Identity Toolkit project.",
+              "parameters": {
+                "pageSize": {
+                  "description": "The maximum number of items to return.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "The next_page_token value returned from a previous List request, if any.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name, for example, \"projects/my-awesome-project\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "identitytoolkit.projects.oauthIdpConfigs.patch",
+              "path": "v2/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Update an Oidc Idp configuration for an Identity Toolkit project.",
+              "parameters": {
+                "name": {
+                  "description": "The name of the OAuthIdpConfig resource, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.\nIgnored during create requests.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/oauthIdpConfigs/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "The update mask applies to the resource. Empty update mask will result in\nupdating nothing. For the `FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        },
+        "tenants": {
+          "resources": {
+            "defaultSupportedIdpConfigs": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "identitytoolkit.projects.tenants.defaultSupportedIdpConfigs.create",
+                  "path": "v2/{+parent}/defaultSupportedIdpConfigs",
+                  "httpMethod": "POST",
+                  "description": "Create a default supported Idp configuration for an Identity Toolkit\nproject.",
+                  "parameters": {
+                    "idpId": {
+                      "description": "The id of the Idp to create a config for. Call ListDefaultSupportedIdps\nfor list of all default supported Idps.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name where the config to be created, for example:\n\"projects/my-awesome-project\"",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "identitytoolkit.projects.tenants.defaultSupportedIdpConfigs.delete",
+                  "path": "v2/{+name}",
+                  "httpMethod": "DELETE",
+                  "description": "Delete a default supported Idp configuration for an Identity Toolkit\nproject.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the config, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/defaultSupportedIdpConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "get": {
+                  "id": "identitytoolkit.projects.tenants.defaultSupportedIdpConfigs.get",
+                  "path": "v2/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Retrieve a default supported Idp configuration for an Identity Toolkit\nproject.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the config, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/defaultSupportedIdpConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "identitytoolkit.projects.tenants.defaultSupportedIdpConfigs.list",
+                  "path": "v2/{+parent}/defaultSupportedIdpConfigs",
+                  "httpMethod": "GET",
+                  "description": "List all default supported Idp configurations for an Identity Toolkit\nproject.",
+                  "parameters": {
+                    "pageSize": {
+                      "description": "The maximum number of items to return.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "The next_page_token value returned from a previous List request, if any.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name, for example, \"projects/my-awesome-project\".",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2ListDefaultSupportedIdpConfigsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "patch": {
+                  "id": "identitytoolkit.projects.tenants.defaultSupportedIdpConfigs.patch",
+                  "path": "v2/{+name}",
+                  "httpMethod": "PATCH",
+                  "description": "Update a default supported Idp configuration for an Identity Toolkit\nproject.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the DefaultSupportedIdpConfig resource, for example:\n\"projects/my-awesome-project/defaultSupportedIdpConfigs/google.com\"",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/defaultSupportedIdpConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "updateMask": {
+                      "description": "The update mask applies to the resource. For the `FieldMask` definition,\nsee\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "google-fieldmask",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2DefaultSupportedIdpConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            },
+            "inboundSamlConfigs": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "identitytoolkit.projects.tenants.inboundSamlConfigs.create",
+                  "path": "v2/{+parent}/inboundSamlConfigs",
+                  "httpMethod": "POST",
+                  "description": "Create an inbound SAML configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "inboundSamlConfigId": {
+                      "description": "The id to use for this config.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name where the config to be created, for example:\n\"projects/my-awesome-project\"",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "identitytoolkit.projects.tenants.inboundSamlConfigs.delete",
+                  "path": "v2/{+name}",
+                  "httpMethod": "DELETE",
+                  "description": "Delete an inbound SAML configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the config to be deleted, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/inboundSamlConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "get": {
+                  "id": "identitytoolkit.projects.tenants.inboundSamlConfigs.get",
+                  "path": "v2/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Retrieve an inbound SAML configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the config, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/inboundSamlConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "identitytoolkit.projects.tenants.inboundSamlConfigs.list",
+                  "path": "v2/{+parent}/inboundSamlConfigs",
+                  "httpMethod": "GET",
+                  "description": "List all inbound SAML configurations for an Identity Toolkit project.",
+                  "parameters": {
+                    "pageSize": {
+                      "description": "The maximum number of items to return.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "The next_page_token value returned from a previous List request, if any.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name, for example, \"projects/my-awesome-project\".",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2ListInboundSamlConfigsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "patch": {
+                  "id": "identitytoolkit.projects.tenants.inboundSamlConfigs.patch",
+                  "path": "v2/{+name}",
+                  "httpMethod": "PATCH",
+                  "description": "Update an inbound SAML configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the InboundSamlConfig resource, for example:\n'projects/my-awesome-project/inboundSamlConfigs/my-config-id'.\nIgnored during create requests.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/inboundSamlConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "updateMask": {
+                      "description": "The update mask applies to the resource. Empty update mask will result in\nupdating nothing. For the `FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "google-fieldmask",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2InboundSamlConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            },
+            "oauthIdpConfigs": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "identitytoolkit.projects.tenants.oauthIdpConfigs.create",
+                  "path": "v2/{+parent}/oauthIdpConfigs",
+                  "httpMethod": "POST",
+                  "description": "Create an Oidc Idp configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "oauthIdpConfigId": {
+                      "description": "The id to use for this config.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name where the config to be created, for example:\n\"projects/my-awesome-project\"",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "identitytoolkit.projects.tenants.oauthIdpConfigs.delete",
+                  "path": "v2/{+name}",
+                  "httpMethod": "DELETE",
+                  "description": "Delete an Oidc Idp configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the config to be deleted, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/oauthIdpConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleProtobufEmpty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "get": {
+                  "id": "identitytoolkit.projects.tenants.oauthIdpConfigs.get",
+                  "path": "v2/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Retrieve an Oidc Idp configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "name": {
+                      "description": "The resource name of the config, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/oauthIdpConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "identitytoolkit.projects.tenants.oauthIdpConfigs.list",
+                  "path": "v2/{+parent}/oauthIdpConfigs",
+                  "httpMethod": "GET",
+                  "description": "List all Oidc Idp configurations for an Identity Toolkit project.",
+                  "parameters": {
+                    "pageSize": {
+                      "description": "The maximum number of items to return.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "The next_page_token value returned from a previous List request, if any.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "parent": {
+                      "description": "The parent resource name, for example, \"projects/my-awesome-project\".",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2ListOAuthIdpConfigsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "patch": {
+                  "id": "identitytoolkit.projects.tenants.oauthIdpConfigs.patch",
+                  "path": "v2/{+name}",
+                  "httpMethod": "PATCH",
+                  "description": "Update an Oidc Idp configuration for an Identity Toolkit project.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the OAuthIdpConfig resource, for example:\n'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'.\nIgnored during create requests.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/tenants/[^/]+/oauthIdpConfigs/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "updateMask": {
+                      "description": "The update mask applies to the resource. Empty update mask will result in\nupdating nothing. For the `FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "google-fieldmask",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudIdentitytoolkitAdminV2OAuthIdpConfig"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/firebase"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {
+            "create": {
+              "id": "identitytoolkit.projects.tenants.create",
+              "path": "v2/{+parent}/tenants",
+              "httpMethod": "POST",
+              "description": "Create a tenant. Requires write permission on the Agent project.",
+              "parameters": {
+                "parent": {
+                  "description": "The parent resource name where the tenant will be created. For example,\n\"projects/project1\".",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2Tenant"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2Tenant"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "identitytoolkit.projects.tenants.delete",
+              "path": "v2/{+name}",
+              "httpMethod": "DELETE",
+              "description": "Delete a tenant. Requires write permission on the Agent project.",
+              "parameters": {
+                "name": {
+                  "description": "Resource name of the tenant to delete.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleProtobufEmpty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "get": {
+              "id": "identitytoolkit.projects.tenants.get",
+              "path": "v2/{+name}",
+              "httpMethod": "GET",
+              "description": "Get a tenant. Requires read permission on the Tenant resource.",
+              "parameters": {
+                "name": {
+                  "description": "Resource name of the tenant to retrieve.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2Tenant"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "getIamPolicy": {
+              "id": "identitytoolkit.projects.tenants.getIamPolicy",
+              "path": "v2/{+resource}:getIamPolicy",
+              "httpMethod": "POST",
+              "description": "Gets the access control policy for a resource. An error is returned if the\nresource does not exist. An empty policy is returned if the resource exists\nbut does not have a policy set on it. Caller must have the right Google IAM\npermission on the resource.",
+              "parameters": {
+                "resource": {
+                  "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "request": {
+                "$ref": "GoogleIamV1GetIamPolicyRequest"
+              },
+              "response": {
+                "$ref": "GoogleIamV1Policy"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "identitytoolkit.projects.tenants.list",
+              "path": "v2/{+parent}/tenants",
+              "httpMethod": "GET",
+              "description": "List tenants under the given agent project. Requires read permission on the\nAgent project.",
+              "parameters": {
+                "pageSize": {
+                  "description": "The maximum number of results to return, capped at 1000. If not specified,\nthe default value is 20.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "The pagination token from the response of a previous request.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "parent": {
+                  "description": "Required. The parent resource name to list tenants for.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2ListTenantsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "identitytoolkit.projects.tenants.patch",
+              "path": "v2/{+name}",
+              "httpMethod": "PATCH",
+              "description": "Update a tenant. Requires write permission on the Tenant resource.",
+              "parameters": {
+                "name": {
+                  "description": "Output only. Resource name of a tenant. For example:\n\"projects/{project-id}/tenants/{tenant-id}\"",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "If provided, only update fields set in the update mask. Otherwise, all\nsettable fields will be updated. For the `FieldMask` definition, see\nhttps://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "request": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2Tenant"
+              },
+              "response": {
+                "$ref": "GoogleCloudIdentitytoolkitAdminV2Tenant"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "setIamPolicy": {
+              "id": "identitytoolkit.projects.tenants.setIamPolicy",
+              "path": "v2/{+resource}:setIamPolicy",
+              "httpMethod": "POST",
+              "description": "Sets the access control policy for a resource. If the policy exists, it is\nreplaced. Caller must have the right Google IAM permission on the resource.",
+              "parameters": {
+                "resource": {
+                  "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "request": {
+                "$ref": "GoogleIamV1SetIamPolicyRequest"
+              },
+              "response": {
+                "$ref": "GoogleIamV1Policy"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "testIamPermissions": {
+              "id": "identitytoolkit.projects.tenants.testIamPermissions",
+              "path": "v2/{+resource}:testIamPermissions",
+              "httpMethod": "POST",
+              "description": "Returns the caller's permissions on a resource. An error is returned if the\nresource does not exist. A caller is not required to\nhave Google IAM permission to make this request.",
+              "parameters": {
+                "resource": {
+                  "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/tenants/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "resource"
+              ],
+              "request": {
+                "$ref": "GoogleIamV1TestIamPermissionsRequest"
+              },
+              "response": {
+                "$ref": "GoogleIamV1TestIamPermissionsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/firebase"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
+      "methods": {}
+    }
+  },
+  "methods": {}
+}

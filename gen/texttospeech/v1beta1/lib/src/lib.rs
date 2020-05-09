@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [text](resources/text/struct.TextActions.html)\n      * [*synthesize*](resources/text/struct.SynthesizeRequestBuilder.html)\n    * [voices](resources/voices/struct.VoicesActions.html)\n      * [*list*](resources/voices/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -25,7 +29,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pitch: ::std::option::Option<f64>,
-        #[doc = "The synthesis sample rate (in hertz) for this audio. Optional. When this is\nspecified in SynthesizeSpeechRequest, if this is different from the voice's\nnatural sample rate, then the synthesizer will honor this request by\nconverting to the desired sample rate (which might result in worse audio\nquality), unless the specified sample rate is not supported for the\nencoding chosen, in which case it will fail the request and return\ngoogle.rpc.Code.INVALID_ARGUMENT."]
+        #[doc = "Optional. The synthesis sample rate (in hertz) for this audio. When this is\nspecified in SynthesizeSpeechRequest, if this is different from the voice's\nnatural sample rate, then the synthesizer will honor this request by\nconverting to the desired sample rate (which might result in worse audio\nquality), unless the specified sample rate is not supported for the\nencoding chosen, in which case it will fail the request and return\ngoogle.rpc.Code.INVALID_ARGUMENT."]
         #[serde(
             rename = "sampleRateHertz",
             default,
@@ -420,21 +424,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct VoiceSelectionParams {
-        #[doc = "The language (and optionally also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". Required. This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\"."]
+        #[doc = "Required. The language (and potentially also the region) of the voice expressed as a\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.\n\"en-US\". This should not include a script tag (e.g. use\n\"cmn-cn\" rather than \"cmn-Hant-cn\"), because the script will be inferred\nfrom the input provided in the SynthesisInput.  The TTS service\nwill use this parameter to help choose an appropriate voice.  Note that\nthe TTS service may choose a voice with a slightly different language code\nthan the one selected; it may substitute a different region\n(e.g. using en-US rather than en-CA if there isn't a Canadian voice\navailable), or even a different language, e.g. using \"nb\" (Norwegian\nBokmal) instead of \"no\" (Norwegian)\"."]
         #[serde(
             rename = "languageCode",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language_code: ::std::option::Option<String>,
-        #[doc = "The name of the voice. Optional; if not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
+        #[doc = "The name of the voice. If not set, the service will choose a\nvoice based on the other parameters such as language_code and gender."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "The preferred gender of the voice. Optional; if not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
+        #[doc = "The preferred gender of the voice. If not set, the service will\nchoose a voice based on the other parameters such as language_code and\nname. Note that this is only a preference, not requirement; if a\nvoice of the appropriate gender is not available, the synthesizer should\nsubstitute a voice with a different gender rather than failing the request."]
         #[serde(
             rename = "ssmlGender",
             default,
@@ -690,7 +694,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -698,8 +702,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -725,7 +741,7 @@ pub mod resources {
     pub mod text {
         pub mod params {}
         pub struct TextActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TextActions<'a> {
@@ -758,7 +774,7 @@ pub mod resources {
         #[doc = "Created via [TextActions::synthesize()](struct.TextActions.html#method.synthesize)"]
         #[derive(Debug, Clone)]
         pub struct SynthesizeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::SynthesizeSpeechRequest,
             access_token: Option<String>,
@@ -881,7 +897,10 @@ pub mod resources {
                 output.push_str("v1beta1/text:synthesize");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -906,7 +925,7 @@ pub mod resources {
     pub mod voices {
         pub mod params {}
         pub struct VoicesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> VoicesActions<'a> {
@@ -936,7 +955,7 @@ pub mod resources {
         #[doc = "Created via [VoicesActions::list()](struct.VoicesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             language_code: Option<String>,
             access_token: Option<String>,
@@ -952,7 +971,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Optional (but recommended)\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices."]
+            #[doc = "Optional. Recommended.\n[BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If\nspecified, the ListVoices call will only return voices that can be used to\nsynthesize this language_code. E.g. when specifying \"en-NZ\", you will get\nsupported \"en-*\" voices; when specifying \"no\", you will get supported\n\"no-*\" (Norwegian) and \"nb-*\" (Norwegian Bokmal) voices; specifying \"zh\"\nwill also get supported \"cmn-*\" voices; specifying \"zh-hk\" will also get\nsupported \"yue-*\" voices."]
             pub fn language_code(mut self, value: impl Into<String>) -> Self {
                 self.language_code = Some(value.into());
                 self
@@ -1063,7 +1082,10 @@ pub mod resources {
                 output.push_str("v1beta1/voices");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("languageCode", &self.language_code)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -1103,9 +1125,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1147,7 +1167,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

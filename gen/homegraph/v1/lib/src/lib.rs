@@ -1,4 +1,5 @@
 #![doc = "# Resources and Methods\n    * [agent_users](resources/agent_users/struct.AgentUsersActions.html)\n      * [*delete*](resources/agent_users/struct.DeleteRequestBuilder.html)\n    * [devices](resources/devices/struct.DevicesActions.html)\n      * [*query*](resources/devices/struct.QueryRequestBuilder.html), [*reportStateAndNotification*](resources/devices/struct.ReportStateAndNotificationRequestBuilder.html), [*requestSync*](resources/devices/struct.RequestSyncRequestBuilder.html), [*sync*](resources/devices/struct.SyncRequestBuilder.html)\n"]
+pub mod scopes {}
 pub mod schemas {
     #[derive(
         Debug,
@@ -13,7 +14,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AgentDeviceId {
-        #[doc = "Third-party partner's device ID."]
+        #[doc = "Third-party device ID."]
         #[serde(
             rename = "id",
             default,
@@ -44,14 +45,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AgentOtherDeviceId {
-        #[doc = "The agent's ID. Generally it is the agent's AoG project id."]
+        #[doc = "Project ID for your smart home Action."]
         #[serde(
             rename = "agentId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub agent_id: ::std::option::Option<String>,
-        #[doc = "Device ID defined by the agent. The device_id must be unique."]
+        #[doc = "Unique third-party device ID."]
         #[serde(
             rename = "deviceId",
             default,
@@ -79,13 +80,14 @@ pub mod schemas {
         )]
         pub attributes:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "Custom JSON data provided by the manufacturer and attached to QUERY and\nEXECUTE requests in AoG."]
+        #[doc = "Custom device attributes stored in Home Graph and provided to your\nsmart home Action in each\n[QUERY](https://developers.google.com/assistant/smarthome/reference/intent/query)\nand\n[EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute)\nintent."]
         #[serde(
             rename = "customData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub custom_data: ::std::option::Option<String>,
+        pub custom_data:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
         #[doc = "Device manufacturer, model, hardware version, and software version."]
         #[serde(
             rename = "deviceInfo",
@@ -93,56 +95,63 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub device_info: ::std::option::Option<crate::schemas::DeviceInfo>,
-        #[doc = "Third-party partner's device ID."]
+        #[doc = "Third-party device ID."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "Name of the device given by the third party. This includes names given to\nthe device via third party device manufacturer's app, model names for the\ndevice, etc."]
+        #[doc = "Names given to this device by your smart home Action."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<crate::schemas::DeviceNames>,
-        #[doc = "IDs of other devices associated with this device. This is used to\nrepresent a device group (e.g. bonded zone) or \"facets\" synced\nthrough different flows (e.g. Google Nest Hub Max with a Nest Camera).\n\nThis may also be used to pass in alternate IDs used to identify a cloud\nsynced device for local execution (i.e. local verification). If used for\nlocal verification, this field is synced from the cloud."]
+        #[doc = "Indicates whether your smart home Action will report notifications\nto Google for this device via\nReportStateAndNotification.\n\nIf your smart home Action enables users to control device notifications,\nyou should update this field and call\nRequestSyncDevices."]
+        #[serde(
+            rename = "notificationSupportedByAgent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub notification_supported_by_agent: ::std::option::Option<bool>,
+        #[doc = "Alternate IDs associated with this device.\nThis is used to identify cloud synced devices enabled for [local\nfulfillment](https://developers.google.com/assistant/smarthome/concepts/local)."]
         #[serde(
             rename = "otherDeviceIds",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub other_device_ids: ::std::option::Option<Vec<crate::schemas::AgentOtherDeviceId>>,
-        #[doc = "Hardware type of the device (e.g. light, outlet, etc)."]
+        #[doc = "Hardware type of the device.\nSee [device\ntypes](https://developers.google.com/assistant/smarthome/guides)."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
-        #[doc = "If the third-party partner's cloud configuration includes placing devices\nin rooms, the name of the room can be provided here."]
+        #[doc = "Suggested name for the room where this device is installed.\nGoogle attempts to use this value during user setup."]
         #[serde(
             rename = "roomHint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub room_hint: ::std::option::Option<String>,
-        #[doc = "As in roomHint, for structures that users set up in the partner's system."]
+        #[doc = "Suggested name for the structure where this device is installed.\nGoogle attempts to use this value during user setup."]
         #[serde(
             rename = "structureHint",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub structure_hint: ::std::option::Option<String>,
-        #[doc = "Traits supported by the device."]
+        #[doc = "Traits supported by the device.\nSee [device\ntraits](https://developers.google.com/assistant/smarthome/traits)."]
         #[serde(
             rename = "traits",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub traits: ::std::option::Option<Vec<String>>,
-        #[doc = "Indicates whether the state of this device is being reported to Google\nthrough ReportStateAndNotification call."]
+        #[doc = "Indicates whether your smart home Action will report state of this device\nto Google via\nReportStateAndNotification."]
         #[serde(
             rename = "willReportState",
             default,
@@ -225,7 +234,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct DeviceNames {
-        #[doc = "List of names provided by the partner rather than the user, often\nmanufacturer names, SKUs, etc."]
+        #[doc = "List of names provided by the manufacturer rather than the user, such as\nserial numbers, SKUs, etc."]
         #[serde(
             rename = "defaultNames",
             default,
@@ -301,7 +310,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub agent_user_id: ::std::option::Option<String>,
-        #[doc = "Required. Inputs containing third-party partner's device IDs for which to\nget the device states."]
+        #[doc = "Required. Inputs containing third-party device IDs for which to\nget the device states."]
         #[serde(
             rename = "inputs",
             default,
@@ -339,7 +348,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct QueryRequestInput {
-        #[doc = "Payload containing third-party partner's device IDs."]
+        #[doc = "Payload containing third-party device IDs."]
         #[serde(
             rename = "payload",
             default,
@@ -370,7 +379,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct QueryRequestPayload {
-        #[doc = "Third-party partner's device IDs for which to get the device states."]
+        #[doc = "Third-party device IDs for which to get the device states."]
         #[serde(
             rename = "devices",
             default,
@@ -442,7 +451,7 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct ReportStateAndNotificationDevice {
-        #[doc = "Notifications metadata for devices."]
+        #[doc = "Notifications metadata for devices. See the **Device NOTIFICATIONS**\nsection of the individual trait [reference\nguides](https://developers.google.com/assistant/smarthome/traits)."]
         #[serde(
             rename = "notifications",
             default,
@@ -450,7 +459,7 @@ pub mod schemas {
         )]
         pub notifications:
             ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "States of devices to update."]
+        #[doc = "States of devices to update. See the **Device STATES** section\nof the individual trait [reference\nguides](https://developers.google.com/assistant/smarthome/traits)."]
         #[serde(
             rename = "states",
             default,
@@ -492,7 +501,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub follow_up_token: ::std::option::Option<String>,
-        #[doc = "State of devices to update and notification metadata for devices. For\nexample, if a user turns a light on manually, a state update should be\nsent so that the information is always the current status of the device.\nNotifications are independent from the state and its piece of the payload\nshould contain everything necessary to notify the user. Although it may be\nrelated to a state change, it does not need to be. For example, if a\ndevice can turn on/off and change temperature, the states reported would\ninclude both \"on\" and \"70 degrees\" but the 3p may choose not to send any\nnotification for that, or to only say that the \"the room is heating up\",\nkeeping state and notification independent."]
+        #[doc = "Required. State of devices to update and notification metadata for devices."]
         #[serde(
             rename = "payload",
             default,
@@ -561,14 +570,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RequestSyncDevicesRequest {
-        #[doc = "Required. Third-party user ID issued by agent's third-party identity\nprovider."]
+        #[doc = "Required. Third-party user ID."]
         #[serde(
             rename = "agentUserId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub agent_user_id: ::std::option::Option<String>,
-        #[doc = "Optional. If set, the request will be added to a queue and a response will\nbe returned immediately. The queue allows for de-duplication of\nsimultaneous requests."]
+        #[doc = "Optional. If set, the request will be added to a queue and a response will\nbe returned immediately. This enables concurrent requests for the given\n`agent_user_id`, but the caller will not receive any error responses."]
         #[serde(
             rename = "async",
             default,
@@ -873,7 +882,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -881,8 +890,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -908,14 +929,14 @@ pub mod resources {
     pub mod agent_users {
         pub mod params {}
         pub struct AgentUsersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AgentUsersActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Unlinks an agent user from Google. As a result, all data related to this\nuser will be deleted.\n\nHere is how the agent user is created in Google:\n\n1. When a user opens their Google Home App, they can begin linking a 3p\n   partner.\n1. User is guided through the OAuth process.\n1. After entering the 3p credentials, Google gets the 3p OAuth token and\n   uses it to make a Sync call to the 3p partner and gets back all of the\n   user's data, including `agent_user_id` and devices.\n1. Google creates the agent user and stores a mapping from the\n   `agent_user_id` -> Google ID mapping. Google also\n   stores all of the user's devices under that Google ID.\n\nThe mapping from `agent_user_id` to Google ID is many to many, since one\nGoogle user can have multiple 3p accounts, and multiple Google users can\nmap to one `agent_user_id` (e.g., a husband and wife share one Nest account\nusername/password).\n\nThe third-party user's identity is passed in as `agent_user_id`.\nThe agent is identified by the JWT signed by the partner's service account.\n\nNote: Special characters (except \"/\") in `agent_user_id` must be\nURL-encoded."]
+            #[doc = "Unlinks the given third-party user from your smart home Action.\nAll data related to this user will be deleted.\n\nFor more details on how users link their accounts, see\n[fulfillment and\nauthentication](https://developers.google.com/assistant/smarthome/concepts/fulfillment-authentication).\n\nThe third-party user's identity is passed in via the `agent_user_id`\n(see DeleteAgentUserRequest).\nThis request must be authorized using service account credentials from your\nActions console project."]
             pub fn delete(&self, agent_user_id: impl Into<String>) -> DeleteRequestBuilder {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
@@ -939,7 +960,7 @@ pub mod resources {
         #[doc = "Created via [AgentUsersActions::delete()](struct.AgentUsersActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             agent_user_id: String,
             request_id: Option<String>,
@@ -1072,7 +1093,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("requestId", &self.request_id)]);
                 let req = req.query(&[("access_token", &self.access_token)]);
@@ -1098,14 +1122,14 @@ pub mod resources {
     pub mod devices {
         pub mod params {}
         pub struct DevicesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DevicesActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets the device states for the devices in QueryRequest.\nThe third-party user's identity is passed in as `agent_user_id`. The agent\nis identified by the JWT signed by the third-party partner's service\naccount."]
+            #[doc = "Gets the current states in Home Graph for the given set of the third-party\nuser's devices.\n\nThe third-party user's identity is passed in via the `agent_user_id`\n(see QueryRequest).\nThis request must be authorized using service account credentials from your\nActions console project."]
             pub fn query(&self, request: crate::schemas::QueryRequest) -> QueryRequestBuilder {
                 QueryRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1124,7 +1148,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Reports device state and optionally sends device notifications. Called by\nan agent when the device state of a third-party changes or the agent wants\nto send a notification about the device. See\n[Implement Report State](/actions/smarthome/report-state) for more\ninformation.\nThis method updates a predefined set of states for a device, which all\ndevices have according to their prescribed traits (for example, a light\nwill have the [OnOff](/actions/smarthome/traits/onoff) trait that reports\nthe state `on` as a boolean value).\nA new state may not be created and an INVALID_ARGUMENT code will be thrown\nif so. It also optionally takes in a list of Notifications that may be\ncreated, which are associated to this state change.\n\nThe third-party user's identity is passed in as `agent_user_id`.\nThe agent is identified by the JWT signed by the partner's service account."]
+            #[doc = "Reports device state and optionally sends device notifications.\nCalled by your smart home Action when the state of a third-party device\nchanges or you need to send a notification about the device.\nSee [Implement Report\nState](https://developers.google.com/assistant/smarthome/develop/report-state)\nfor more information.\n\nThis method updates the device state according to its declared\n[traits](https://developers.google.com/assistant/smarthome/concepts/devices-traits).\nPublishing a new state value outside of these traits will result in an\n`INVALID_ARGUMENT` error response.\n\nThe third-party user's identity is passed in via the `agent_user_id`\n(see ReportStateAndNotificationRequest).\nThis request must be authorized using service account credentials from your\nActions console project."]
             pub fn report_state_and_notification(
                 &self,
                 request: crate::schemas::ReportStateAndNotificationRequest,
@@ -1146,7 +1170,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Requests a `SYNC` call from Google to a 3p partner's home control agent for\na user.\n\nThe third-party user's identity is passed in as `agent_user_id`\n(see RequestSyncDevicesRequest) and forwarded back to the agent.\nThe agent is identified by the API key or JWT signed by the partner's\nservice account."]
+            #[doc = "Requests Google to send an `action.devices.SYNC`\n[intent](https://developers.google.com/assistant/smarthome/reference/intent/sync)\nto your smart home Action to update device metadata for the given user.\n\nThe third-party user's identity is passed via the `agent_user_id`\n(see RequestSyncDevicesRequest).\nThis request must be authorized using service account credentials from your\nActions console project."]
             pub fn request_sync(
                 &self,
                 request: crate::schemas::RequestSyncDevicesRequest,
@@ -1168,7 +1192,7 @@ pub mod resources {
                     xgafv: None,
                 }
             }
-            #[doc = "Gets all the devices associated with the given third-party user.\nThe third-party user's identity is passed in as `agent_user_id`. The agent\nis identified by the JWT signed by the third-party partner's service\naccount."]
+            #[doc = "Gets all the devices associated with the given third-party user.\n\nThe third-party user's identity is passed in via the `agent_user_id`\n(see SyncRequest).\nThis request must be authorized using service account credentials from your\nActions console project."]
             pub fn sync(&self, request: crate::schemas::SyncRequest) -> SyncRequestBuilder {
                 SyncRequestBuilder {
                     reqwest: &self.reqwest,
@@ -1191,7 +1215,7 @@ pub mod resources {
         #[doc = "Created via [DevicesActions::query()](struct.DevicesActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::QueryRequest,
             access_token: Option<String>,
@@ -1314,7 +1338,10 @@ pub mod resources {
                 output.push_str("v1/devices:query");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1338,7 +1365,7 @@ pub mod resources {
         #[doc = "Created via [DevicesActions::report_state_and_notification()](struct.DevicesActions.html#method.report_state_and_notification)"]
         #[derive(Debug, Clone)]
         pub struct ReportStateAndNotificationRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ReportStateAndNotificationRequest,
             access_token: Option<String>,
@@ -1463,7 +1490,10 @@ pub mod resources {
                 output.push_str("v1/devices:reportStateAndNotification");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1487,7 +1517,7 @@ pub mod resources {
         #[doc = "Created via [DevicesActions::request_sync()](struct.DevicesActions.html#method.request_sync)"]
         #[derive(Debug, Clone)]
         pub struct RequestSyncRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::RequestSyncDevicesRequest,
             access_token: Option<String>,
@@ -1610,7 +1640,10 @@ pub mod resources {
                 output.push_str("v1/devices:requestSync");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1634,7 +1667,7 @@ pub mod resources {
         #[doc = "Created via [DevicesActions::sync()](struct.DevicesActions.html#method.sync)"]
         #[derive(Debug, Clone)]
         pub struct SyncRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::SyncRequest,
             access_token: Option<String>,
@@ -1757,7 +1790,10 @@ pub mod resources {
                 output.push_str("v1/devices:sync");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1796,9 +1832,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1840,7 +1874,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

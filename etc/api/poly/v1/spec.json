@@ -7,7 +7,7 @@
   "canonicalName": "Poly Service",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190917",
+  "revision": "20200424",
   "title": "Poly API",
   "description": "The Poly API provides read access to assets hosted on <a href=\"https://poly.google.com\">poly.google.com</a> to all, and upload access to <a href=\"https://poly.google.com\">poly.google.com</a> for whitelisted accounts.\n",
   "ownerDomain": "google.com",

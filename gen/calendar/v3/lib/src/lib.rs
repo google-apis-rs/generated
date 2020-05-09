@@ -1,4 +1,18 @@
 #![doc = "# Resources and Methods\n    * [acl](resources/acl/struct.AclActions.html)\n      * [*delete*](resources/acl/struct.DeleteRequestBuilder.html), [*get*](resources/acl/struct.GetRequestBuilder.html), [*insert*](resources/acl/struct.InsertRequestBuilder.html), [*list*](resources/acl/struct.ListRequestBuilder.html), [*patch*](resources/acl/struct.PatchRequestBuilder.html), [*update*](resources/acl/struct.UpdateRequestBuilder.html), [*watch*](resources/acl/struct.WatchRequestBuilder.html)\n    * [calendar_list](resources/calendar_list/struct.CalendarListActions.html)\n      * [*delete*](resources/calendar_list/struct.DeleteRequestBuilder.html), [*get*](resources/calendar_list/struct.GetRequestBuilder.html), [*insert*](resources/calendar_list/struct.InsertRequestBuilder.html), [*list*](resources/calendar_list/struct.ListRequestBuilder.html), [*patch*](resources/calendar_list/struct.PatchRequestBuilder.html), [*update*](resources/calendar_list/struct.UpdateRequestBuilder.html), [*watch*](resources/calendar_list/struct.WatchRequestBuilder.html)\n    * [calendars](resources/calendars/struct.CalendarsActions.html)\n      * [*clear*](resources/calendars/struct.ClearRequestBuilder.html), [*delete*](resources/calendars/struct.DeleteRequestBuilder.html), [*get*](resources/calendars/struct.GetRequestBuilder.html), [*insert*](resources/calendars/struct.InsertRequestBuilder.html), [*patch*](resources/calendars/struct.PatchRequestBuilder.html), [*update*](resources/calendars/struct.UpdateRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*stop*](resources/channels/struct.StopRequestBuilder.html)\n    * [colors](resources/colors/struct.ColorsActions.html)\n      * [*get*](resources/colors/struct.GetRequestBuilder.html)\n    * [events](resources/events/struct.EventsActions.html)\n      * [*delete*](resources/events/struct.DeleteRequestBuilder.html), [*get*](resources/events/struct.GetRequestBuilder.html), [*import*](resources/events/struct.ImportRequestBuilder.html), [*insert*](resources/events/struct.InsertRequestBuilder.html), [*instances*](resources/events/struct.InstancesRequestBuilder.html), [*list*](resources/events/struct.ListRequestBuilder.html), [*move*](resources/events/struct.MoveRequestBuilder.html), [*patch*](resources/events/struct.PatchRequestBuilder.html), [*quickAdd*](resources/events/struct.QuickAddRequestBuilder.html), [*update*](resources/events/struct.UpdateRequestBuilder.html), [*watch*](resources/events/struct.WatchRequestBuilder.html)\n    * [freebusy](resources/freebusy/struct.FreebusyActions.html)\n      * [*query*](resources/freebusy/struct.QueryRequestBuilder.html)\n    * [settings](resources/settings/struct.SettingsActions.html)\n      * [*get*](resources/settings/struct.GetRequestBuilder.html), [*list*](resources/settings/struct.ListRequestBuilder.html), [*watch*](resources/settings/struct.WatchRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "See, edit, share, and permanently delete all the calendars you can access using Google Calendar\n\n`https://www.googleapis.com/auth/calendar`"]
+    pub const CALENDAR: &str = "https://www.googleapis.com/auth/calendar";
+    #[doc = "View and edit events on all your calendars\n\n`https://www.googleapis.com/auth/calendar.events`"]
+    pub const CALENDAR_EVENTS: &str = "https://www.googleapis.com/auth/calendar.events";
+    #[doc = "View events on all your calendars\n\n`https://www.googleapis.com/auth/calendar.events.readonly`"]
+    pub const CALENDAR_EVENTS_READONLY: &str =
+        "https://www.googleapis.com/auth/calendar.events.readonly";
+    #[doc = "View your calendars\n\n`https://www.googleapis.com/auth/calendar.readonly`"]
+    pub const CALENDAR_READONLY: &str = "https://www.googleapis.com/auth/calendar.readonly";
+    #[doc = "View your Calendar settings\n\n`https://www.googleapis.com/auth/calendar.settings.readonly`"]
+    pub const CALENDAR_SETTINGS_READONLY: &str =
+        "https://www.googleapis.com/auth/calendar.settings.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -371,7 +385,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub foreground_color: ::std::option::Option<String>,
-        #[doc = "Whether the calendar has been hidden from the list. Optional. The default is False."]
+        #[doc = "Whether the calendar has been hidden from the list. Optional. The attribute is only returned when the calendar is hidden, in which case the value is true."]
         #[serde(
             rename = "hidden",
             default,
@@ -497,7 +511,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CalendarNotification {
-        #[doc = "The method used to deliver the notification. Possible values are:\n\n* \"email\" - Notifications are sent via email. \n* \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return notifications using this method. Any newly added SMS notifications will be ignored. See  Google Calendar SMS notifications to be removed for more information.\n  Notifications are sent via SMS. This value is read-only and is ignored on inserts and updates. SMS notifications are only available for G Suite customers.  \n  Required when adding a notification."]
+        #[doc = "The method used to deliver the notification. The possible value is:\n\n* \"email\" - Notifications are sent via email.  \n  Required when adding a notification."]
         #[serde(
             rename = "method",
             default,
@@ -731,7 +745,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub conference_id: ::std::option::Option<String>,
-        #[doc = "The conference solution, such as Hangouts or Hangouts Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
+        #[doc = "The conference solution, such as Hangouts or Google Meet.\nUnset for a conference with a failed create request.\nEither conferenceSolution and at least one entryPoint, or createRequest is required."]
         #[serde(
             rename = "conferenceSolution",
             default,
@@ -966,7 +980,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ConferenceSolutionKey {
-        #[doc = "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:\n\n* \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n* \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n* \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)"]
+        #[doc = "The conference solution type.\nIf a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications.\nThe possible values are:\n\n* \"eventHangout\" for Hangouts for consumers (http://hangouts.google.com)\n* \"eventNamedHangout\" for classic Hangouts for G Suite users (http://hangouts.google.com)\n* \"hangoutsMeet\" for Hangouts Meet (http://meet.google.com)\n* \"addOn\" for 3P conference providers"]
         #[serde(
             rename = "type",
             default,
@@ -997,7 +1011,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CreateConferenceRequest {
-        #[doc = "The conference solution, such as Hangouts or Hangouts Meet."]
+        #[doc = "The conference solution, such as Hangouts or Google Meet."]
         #[serde(
             rename = "conferenceSolutionKey",
             default,
@@ -1209,7 +1223,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color_id: ::std::option::Option<String>,
-        #[doc = "The conference-related information, such as details of a Hangouts Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."]
+        #[doc = "The conference-related information, such as details of a Google Meet conference. To create new conference details use the createRequest field. To persist your changes, remember to set the conferenceDataVersion request parameter to 1 for all event modification requests."]
         #[serde(
             rename = "conferenceData",
             default,
@@ -1230,7 +1244,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub creator: ::std::option::Option<crate::schemas::EventCreator>,
-        #[doc = "Description of the event. Optional."]
+        #[doc = "Description of the event. Can contain HTML. Optional."]
         #[serde(
             rename = "description",
             default,
@@ -1960,7 +1974,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct EventReminder {
-        #[doc = "The method used by this reminder. Possible values are:\n\n* \"email\" - Reminders are sent via email. \n* \"sms\" - Deprecated. Once this feature is shutdown, the API will no longer return reminders using this method. Any newly added SMS reminders will be ignored. See  Google Calendar SMS notifications to be removed for more information.\n  Reminders are sent via SMS. These are only available for G Suite customers. Requests to set SMS reminders for other account types are ignored. \n* \"popup\" - Reminders are sent via a UI popup.  \n  Required when adding a reminder."]
+        #[doc = "The method used by this reminder. Possible values are:\n\n* \"email\" - Reminders are sent via email. \n* \"popup\" - Reminders are sent via a UI popup.  \n  Required when adding a reminder."]
         #[serde(
             rename = "method",
             default,
@@ -2541,7 +2555,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2549,8 +2563,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2618,7 +2644,7 @@ pub mod resources {
     pub mod acl {
         pub mod params {}
         pub struct AclActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AclActions<'a> {
@@ -2779,7 +2805,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::delete()](struct.AclActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             rule_id: String,
@@ -2842,7 +2868,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2862,7 +2891,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::get()](struct.AclActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             rule_id: String,
@@ -2974,7 +3003,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2994,7 +3026,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::insert()](struct.AclActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AclRule,
             calendar_id: String,
@@ -3106,7 +3138,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("sendNotifications", &self.send_notifications)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3127,7 +3162,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::list()](struct.AclActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             max_results: Option<i32>,
@@ -3349,7 +3384,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3384,7 +3422,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::patch()](struct.AclActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AclRule,
             calendar_id: String,
@@ -3504,7 +3542,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("sendNotifications", &self.send_notifications)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3525,7 +3566,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::update()](struct.AclActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AclRule,
             calendar_id: String,
@@ -3645,7 +3686,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("sendNotifications", &self.send_notifications)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3666,7 +3710,7 @@ pub mod resources {
         #[doc = "Created via [AclActions::watch()](struct.AclActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             calendar_id: String,
@@ -3796,7 +3840,10 @@ pub mod resources {
                 output.push_str("/acl/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3984,7 +4031,7 @@ pub mod resources {
             }
         }
         pub struct CalendarListActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> CalendarListActions<'a> {
@@ -4127,7 +4174,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::delete()](struct.CalendarListActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             alt: Option<crate::params::Alt>,
@@ -4181,7 +4228,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4201,7 +4251,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::get()](struct.CalendarListActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             alt: Option<crate::params::Alt>,
@@ -4306,7 +4356,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4326,7 +4379,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::insert()](struct.CalendarListActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CalendarListEntry,
             color_rgb_format: Option<bool>,
@@ -4431,7 +4484,10 @@ pub mod resources {
                 output.push_str("users/me/calendarList");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("colorRgbFormat", &self.color_rgb_format)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4452,7 +4508,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::list()](struct.CalendarListActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             max_results: Option<i32>,
             min_access_role: Option<crate::resources::calendar_list::params::ListMinAccessRole>,
@@ -4686,7 +4742,10 @@ pub mod resources {
                 output.push_str("users/me/calendarList");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("minAccessRole", &self.min_access_role)]);
@@ -4723,7 +4782,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::patch()](struct.CalendarListActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CalendarListEntry,
             calendar_id: String,
@@ -4836,7 +4895,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("colorRgbFormat", &self.color_rgb_format)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4857,7 +4919,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::update()](struct.CalendarListActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CalendarListEntry,
             calendar_id: String,
@@ -4970,7 +5032,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("colorRgbFormat", &self.color_rgb_format)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4991,7 +5056,7 @@ pub mod resources {
         #[doc = "Created via [CalendarListActions::watch()](struct.CalendarListActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             max_results: Option<i32>,
@@ -5127,7 +5192,10 @@ pub mod resources {
                 output.push_str("users/me/calendarList/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("minAccessRole", &self.min_access_role)]);
@@ -5154,7 +5222,7 @@ pub mod resources {
     pub mod calendars {
         pub mod params {}
         pub struct CalendarsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> CalendarsActions<'a> {
@@ -5265,7 +5333,7 @@ pub mod resources {
         #[doc = "Created via [CalendarsActions::clear()](struct.CalendarsActions.html#method.clear)"]
         #[derive(Debug, Clone)]
         pub struct ClearRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             alt: Option<crate::params::Alt>,
@@ -5320,7 +5388,10 @@ pub mod resources {
                 output.push_str("/clear");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5340,7 +5411,7 @@ pub mod resources {
         #[doc = "Created via [CalendarsActions::delete()](struct.CalendarsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             alt: Option<crate::params::Alt>,
@@ -5394,7 +5465,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5414,7 +5488,7 @@ pub mod resources {
         #[doc = "Created via [CalendarsActions::get()](struct.CalendarsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             alt: Option<crate::params::Alt>,
@@ -5517,7 +5591,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5537,7 +5614,7 @@ pub mod resources {
         #[doc = "Created via [CalendarsActions::insert()](struct.CalendarsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Calendar,
             alt: Option<crate::params::Alt>,
@@ -5634,7 +5711,10 @@ pub mod resources {
                 output.push_str("calendars");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5654,7 +5734,7 @@ pub mod resources {
         #[doc = "Created via [CalendarsActions::patch()](struct.CalendarsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Calendar,
             calendar_id: String,
@@ -5759,7 +5839,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5779,7 +5862,7 @@ pub mod resources {
         #[doc = "Created via [CalendarsActions::update()](struct.CalendarsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Calendar,
             calendar_id: String,
@@ -5884,7 +5967,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5905,7 +5991,7 @@ pub mod resources {
     pub mod channels {
         pub mod params {}
         pub struct ChannelsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ChannelsActions<'a> {
@@ -5931,7 +6017,7 @@ pub mod resources {
         #[doc = "Created via [ChannelsActions::stop()](struct.ChannelsActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             alt: Option<crate::params::Alt>,
@@ -5979,7 +6065,10 @@ pub mod resources {
                 output.push_str("channels/stop");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6000,7 +6089,7 @@ pub mod resources {
     pub mod colors {
         pub mod params {}
         pub struct ColorsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ColorsActions<'a> {
@@ -6025,7 +6114,7 @@ pub mod resources {
         #[doc = "Created via [ColorsActions::get()](struct.ColorsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -6120,7 +6209,10 @@ pub mod resources {
                 output.push_str("colors");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6740,7 +6832,7 @@ pub mod resources {
             }
         }
         pub struct EventsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> EventsActions<'a> {
@@ -7043,7 +7135,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::delete()](struct.EventsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             event_id: String,
@@ -7121,7 +7213,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("sendNotifications", &self.send_notifications)]);
                 let req = req.query(&[("sendUpdates", &self.send_updates)]);
@@ -7143,7 +7238,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::get()](struct.EventsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             event_id: String,
@@ -7159,7 +7254,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False."]
+            #[doc = "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided)."]
             pub fn always_include_email(mut self, value: bool) -> Self {
                 self.always_include_email = Some(value);
                 self
@@ -7273,7 +7368,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alwaysIncludeEmail", &self.always_include_email)]);
                 let req = req.query(&[("maxAttendees", &self.max_attendees)]);
@@ -7296,7 +7394,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::import()](struct.EventsActions.html#method.import)"]
         #[derive(Debug, Clone)]
         pub struct ImportRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Event,
             calendar_id: String,
@@ -7414,7 +7512,10 @@ pub mod resources {
                 output.push_str("/events/import");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("conferenceDataVersion", &self.conference_data_version)]);
                 let req = req.query(&[("supportsAttachments", &self.supports_attachments)]);
@@ -7436,7 +7537,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::insert()](struct.EventsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Event,
             calendar_id: String,
@@ -7575,7 +7676,10 @@ pub mod resources {
                 output.push_str("/events");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("conferenceDataVersion", &self.conference_data_version)]);
                 let req = req.query(&[("maxAttendees", &self.max_attendees)]);
@@ -7600,7 +7704,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::instances()](struct.EventsActions.html#method.instances)"]
         #[derive(Debug, Clone)]
         pub struct InstancesRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             event_id: String,
@@ -7622,7 +7726,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> InstancesRequestBuilder<'a> {
-            #[doc = "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False."]
+            #[doc = "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided)."]
             pub fn always_include_email(mut self, value: bool) -> Self {
                 self.always_include_email = Some(value);
                 self
@@ -7922,7 +8026,10 @@ pub mod resources {
                 output.push_str("/instances");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alwaysIncludeEmail", &self.always_include_email)]);
                 let req = req.query(&[("maxAttendees", &self.max_attendees)]);
@@ -7962,7 +8069,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::list()](struct.EventsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             always_include_email: Option<bool>,
@@ -7991,7 +8098,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False."]
+            #[doc = "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided)."]
             pub fn always_include_email(mut self, value: bool) -> Self {
                 self.always_include_email = Some(value);
                 self
@@ -8326,7 +8433,10 @@ pub mod resources {
                 output.push_str("/events");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alwaysIncludeEmail", &self.always_include_email)]);
                 let req = req.query(&[("iCalUID", &self.i_cal_uid)]);
@@ -8375,7 +8485,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::r#move()](struct.EventsActions.html#method.r#move)"]
         #[derive(Debug, Clone)]
         pub struct MoveRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             event_id: String,
@@ -8504,7 +8614,10 @@ pub mod resources {
                 output.push_str("/move");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("destination", &self.destination)]);
                 let req = req.query(&[("sendNotifications", &self.send_notifications)]);
@@ -8527,7 +8640,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::patch()](struct.EventsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Event,
             calendar_id: String,
@@ -8547,7 +8660,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False."]
+            #[doc = "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided)."]
             pub fn always_include_email(mut self, value: bool) -> Self {
                 self.always_include_email = Some(value);
                 self
@@ -8680,7 +8793,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("alwaysIncludeEmail", &self.always_include_email)]);
                 let req = req.query(&[("conferenceDataVersion", &self.conference_data_version)]);
@@ -8706,7 +8822,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::quick_add()](struct.EventsActions.html#method.quick_add)"]
         #[derive(Debug, Clone)]
         pub struct QuickAddRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             calendar_id: String,
             text: String,
@@ -8826,7 +8942,10 @@ pub mod resources {
                 output.push_str("/events/quickAdd");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("text", &self.text)]);
                 let req = req.query(&[("sendNotifications", &self.send_notifications)]);
@@ -8849,7 +8968,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::update()](struct.EventsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Event,
             calendar_id: String,
@@ -8869,7 +8988,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False."]
+            #[doc = "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided)."]
             pub fn always_include_email(mut self, value: bool) -> Self {
                 self.always_include_email = Some(value);
                 self
@@ -9002,7 +9121,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("alwaysIncludeEmail", &self.always_include_email)]);
                 let req = req.query(&[("conferenceDataVersion", &self.conference_data_version)]);
@@ -9028,7 +9150,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::watch()](struct.EventsActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             calendar_id: String,
@@ -9058,7 +9180,7 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> WatchRequestBuilder<'a> {
-            #[doc = "Whether to always include a value in the email field for the organizer, creator and attendees, even if no real email is available (i.e. a generated, non-working value will be provided). The use of this option is discouraged and should only be used by clients which cannot handle the absence of an email address value in the mentioned places. Optional. The default is False."]
+            #[doc = "Deprecated and ignored. A value will always be returned in the email field for the organizer, creator and attendees, even if no real email address is available (i.e. a generated, non-working value will be provided)."]
             pub fn always_include_email(mut self, value: bool) -> Self {
                 self.always_include_email = Some(value);
                 self
@@ -9239,7 +9361,10 @@ pub mod resources {
                 output.push_str("/events/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alwaysIncludeEmail", &self.always_include_email)]);
                 let req = req.query(&[("iCalUID", &self.i_cal_uid)]);
@@ -9278,7 +9403,7 @@ pub mod resources {
     pub mod freebusy {
         pub mod params {}
         pub struct FreebusyActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> FreebusyActions<'a> {
@@ -9304,7 +9429,7 @@ pub mod resources {
         #[doc = "Created via [FreebusyActions::query()](struct.FreebusyActions.html#method.query)"]
         #[derive(Debug, Clone)]
         pub struct QueryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::FreeBusyRequest,
             alt: Option<crate::params::Alt>,
@@ -9403,7 +9528,10 @@ pub mod resources {
                 output.push_str("freeBusy");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -9424,7 +9552,7 @@ pub mod resources {
     pub mod settings {
         pub mod params {}
         pub struct SettingsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SettingsActions<'a> {
@@ -9485,7 +9613,7 @@ pub mod resources {
         #[doc = "Created via [SettingsActions::get()](struct.SettingsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             setting: String,
             alt: Option<crate::params::Alt>,
@@ -9588,7 +9716,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -9608,7 +9739,7 @@ pub mod resources {
         #[doc = "Created via [SettingsActions::list()](struct.SettingsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             max_results: Option<i32>,
             page_token: Option<String>,
@@ -9819,7 +9950,10 @@ pub mod resources {
                 output.push_str("users/me/settings");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -9853,7 +9987,7 @@ pub mod resources {
         #[doc = "Created via [SettingsActions::watch()](struct.SettingsActions.html#method.watch)"]
         #[derive(Debug, Clone)]
         pub struct WatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             max_results: Option<i32>,
@@ -9968,7 +10102,10 @@ pub mod resources {
                 output.push_str("users/me/settings/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -10006,9 +10143,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -10050,7 +10185,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

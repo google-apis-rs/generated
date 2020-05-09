@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [locations](resources/projects/locations/struct.LocationsActions.html)\n        * [*get*](resources/projects/locations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/struct.ListRequestBuilder.html)\n        * [instances](resources/projects/locations/instances/struct.InstancesActions.html)\n          * [*create*](resources/projects/locations/instances/struct.CreateRequestBuilder.html), [*delete*](resources/projects/locations/instances/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/instances/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/instances/struct.ListRequestBuilder.html), [*patch*](resources/projects/locations/instances/struct.PatchRequestBuilder.html)\n        * [operations](resources/projects/locations/operations/struct.OperationsActions.html)\n          * [*cancel*](resources/projects/locations/operations/struct.CancelRequestBuilder.html), [*delete*](resources/projects/locations/operations/struct.DeleteRequestBuilder.html), [*get*](resources/projects/locations/operations/struct.GetRequestBuilder.html), [*list*](resources/projects/locations/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -164,18 +168,13 @@ pub mod schemas {
         pub provisioned_resources: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>,
         >,
-        #[doc = "The map between RolloutType and the corresponding RolloutMetadata.\nThis is only mutated by rollout service. For actuation implementation,\nthis information is pass-through for Rollout management. Producer shall\nnot modify by itself.\nFor update of a single entry in this map, the update field mask shall\nfollow this sementics: go/advanced-field-masks"]
+        #[doc = "Link to the SLM instance template. Only populated when updating SLM\ninstances via SSA's Actuation service adaptor.\nService producers with custom control plane (e.g. Cloud SQL) doesn't\nneed to populate this field. Instead they should use software_versions."]
         #[serde(
-            rename = "rolloutMetadata",
+            rename = "slmInstanceTemplate",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub rollout_metadata: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata,
-            >,
-        >,
+        pub slm_instance_template: ::std::option::Option<String>,
         #[doc = "Output only. SLO metadata for instance classification in the\nStandardized dataplane SLO platform.\nSee go/cloud-ssa-standard-slo for feature description."]
         #[serde(
             rename = "sloMetadata",
@@ -236,6 +235,8 @@ pub mod schemas {
         Creating,
         #[doc = "Instance is being deleted."]
         Deleting,
+        #[doc = "Instance encountered an error and is in indeterministic state."]
+        Error,
         #[doc = "Instance has been created and is ready to use."]
         Ready,
         #[doc = "Instance is unheathy and under repair."]
@@ -254,6 +255,7 @@ pub mod schemas {
                 GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Deleting => {
                     "DELETING"
                 }
+                GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Error => "ERROR",
                 GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Ready => "READY",
                 GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Repairing => {
                     "REPAIRING"
@@ -285,6 +287,7 @@ pub mod schemas {
                 "DELETING" => {
                     GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Deleting
                 }
+                "ERROR" => GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Error,
                 "READY" => GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Ready,
                 "REPAIRING" => {
                     GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Repairing
@@ -327,6 +330,7 @@ pub mod schemas {
                 "DELETING" => {
                     GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Deleting
                 }
+                "ERROR" => GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Error,
                 "READY" => GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Ready,
                 "REPAIRING" => {
                     GoogleCloudSaasacceleratorManagementProvidersV1InstanceState::Repairing
@@ -387,6 +391,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
+        #[doc = "The rollout management policy this maintenance schedule is associated\nwith. When doing reschedule update request, the reschedule should be\nagainst this given policy."]
+        #[serde(
+            rename = "rolloutManagementPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rollout_management_policy: ::std::option::Option<String>,
         #[doc = "The scheduled start time for the maintenance."]
         #[serde(
             rename = "startTime",
@@ -472,62 +483,6 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata {
-        #[doc = "Whether the instance update has been rescheduled."]
-        #[serde(
-            rename = "rescheduled",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub rescheduled: ::std::option::Option<bool>,
-        #[doc = "The scheduled end time for the maintenance window during which update\ncan be performed on the instance."]
-        #[serde(
-            rename = "scheduledEndTime",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub scheduled_end_time: ::std::option::Option<String>,
-        #[doc = "The scheduled start time for the maintenance window during which\nupdate can be performed on the instance."]
-        #[serde(
-            rename = "scheduledStartTime",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub scheduled_start_time: ::std::option::Option<String>,
-        #[doc = "The target release to be applied to the instance."]
-        #[serde(
-            rename = "targetRelease",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub target_release: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector
-        for GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-    {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType
-        for GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata
-    {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
         #[doc = "Type of the resource. This can be either a GCP resource or a custom one\n(e.g. another cloud provider's VM). For GCP compute resources use singular\nform of the names listed in GCP compute API documentation\n(https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with\n'compute-', for example: 'compute-instance', 'compute-disk',\n'compute-autoscaler'."]
         #[serde(
@@ -570,40 +525,31 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata {
-        #[doc = "Instance level notification metadata."]
+    pub struct GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
+        #[doc = "Whether an instance is eligible or ineligible."]
         #[serde(
-            rename = "notification",
+            rename = "eligible",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub notification: ::std::option::Option<
-            crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1NotificationMetadata,
-        >,
-        #[doc = "The last Release that has been applied to the instance."]
+        pub eligible: ::std::option::Option<bool>,
+        #[doc = "User-defined reason for the current value of instance eligibility. Usually,\nthis can be directly mapped to the internal state. An empty reason is\nallowed."]
         #[serde(
-            rename = "releaseName",
+            rename = "reason",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub release_name: ::std::option::Option<String>,
-        #[doc = "The last rollout that has been applied to the instance."]
-        #[serde(
-            rename = "rolloutName",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub rollout_name: ::std::option::Option<String>,
+        pub reason: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
-        for GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
+        for GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
     {
         fn fields() -> Vec<::google_field_selector::Field> {
             Vec::new()
         }
     }
     impl ::google_field_selector::ToFieldType
-        for GoogleCloudSaasacceleratorManagementProvidersV1RolloutMetadata
+        for GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
     {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
@@ -624,18 +570,11 @@ pub mod schemas {
     pub struct GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
         #[doc = "Exclusion duration. No restrictions on the possible values.\n\nWhen an ongoing operation is taking longer than initially expected,\nan existing entry in the exclusion list can be updated by extending the\nduration. This is supported by the subsystem exporting eligibility data\nas long as such extension is committed at least 10 minutes before the\noriginal exclusion expiration - otherwise it is possible that there will\nbe \"gaps\" in the exclusion application in the exported timeseries."]
         #[serde(
-            rename = "exclusionDuration",
+            rename = "duration",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub exclusion_duration: ::std::option::Option<String>,
-        #[doc = "Start time of the exclusion. No alignment (e.g. to a full minute) needed."]
-        #[serde(
-            rename = "exclusionStartTime",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exclusion_start_time: ::std::option::Option<String>,
+        pub duration: ::std::option::Option<String>,
         #[doc = "Human-readable reason for the exclusion.\nThis should be a static string (e.g. \"Disruptive update in progress\")\nand should not contain dynamically generated data (e.g. instance name).\nCan be left empty."]
         #[serde(
             rename = "reason",
@@ -650,6 +589,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sli_name: ::std::option::Option<String>,
+        #[doc = "Start time of the exclusion. No alignment (e.g. to a full minute) needed."]
+        #[serde(
+            rename = "startTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
@@ -678,7 +624,16 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
-        #[doc = "List of SLO exclusion windows. When multiple entries in the list match\n(matching the exclusion time-window against current time point)\nthe exclusion reason used in the first matching entry will be published.\n\nIt is not needed to include expired exclusion in this list, as only the\ncurrently applicable exclusions are taken into account by the eligibility\nexporting subsystem (the historical state of exclusions will be reflected\nin the historically produced timeseries regardless of the current state).\n\nThis field can be used to mark the instance as temporary ineligible\nfor the purpose of SLO calculation. For permanent instance SLO exclusion,\na dedicated tier name can be used that does not have targets specified\nin the service SLO configuration."]
+        #[doc = "Optional. User-defined instance eligibility."]
+        #[serde(
+            rename = "eligibility",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub eligibility: ::std::option::Option<
+            crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility,
+        >,
+        #[doc = "List of SLO exclusion windows. When multiple entries in the list match\n(matching the exclusion time-window against current time point)\nthe exclusion reason used in the first matching entry will be published.\n\nIt is not needed to include expired exclusion in this list, as only the\ncurrently applicable exclusions are taken into account by the eligibility\nexporting subsystem (the historical state of exclusions will be reflected\nin the historically produced timeseries regardless of the current state).\n\nThis field can be used to mark the instance as temporary ineligible\nfor the purpose of SLO calculation. For permanent instance SLO exclusion,\nuse of custom instance eligibility is recommended. See 'eligibility' field\nbelow."]
         #[serde(
             rename = "exclusions",
             default,
@@ -687,7 +642,7 @@ pub mod schemas {
         pub exclusions: ::std::option::Option<
             Vec<crate::schemas::GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>,
         >,
-        #[doc = "Optional: list of nodes.\nSome producers need to use per-node metadata to calculate SLO.\nThis field allows such producers to publish per-node SLO meta data,\nwhich will be consumed by SSA Eligibility Exporter and published in the\nform of per node metric to Monarch."]
+        #[doc = "Optional. List of nodes.\nSome producers need to use per-node metadata to calculate SLO.\nThis field allows such producers to publish per-node SLO meta data,\nwhich will be consumed by SSA Eligibility Exporter and published in the\nform of per node metric to Monarch."]
         #[serde(
             rename = "nodes",
             default,
@@ -738,7 +693,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub create_time: ::std::option::Option<String>,
-        #[doc = "Optional. A description of the instance (2048 characters or less)."]
+        #[doc = "The description of the instance (2048 characters or less)."]
         #[serde(
             rename = "description",
             default,
@@ -766,7 +721,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<::std::collections::BTreeMap<String, String>>,
-        #[doc = "Output only. The resource name of the instance, in the format\nprojects/{project_id}/locations/{location_id}/instances/{instance_id}."]
+        #[doc = "Output only. The resource name of the instance, in the format\nprojects/{project}/locations/{location}/instances/{instance}."]
         #[serde(
             rename = "name",
             default,
@@ -905,9 +860,15 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum InstanceTier {
-        #[doc = "PREMIUM tier."]
+        #[doc = "BASIC instances offer a maximum capacity of 63.9 TB.\nBASIC_HDD is an alias for STANDARD Tier, offering economical\nperformance backed by HDD."]
+        BasicHdd,
+        #[doc = "BASIC instances offer a maximum capacity of 63.9 TB.\nBASIC_SSD is an alias for PREMIUM Tier, and offers improved\nperformance backed by SSD."]
+        BasicSsd,
+        #[doc = "HIGH_SCALE instances offer expanded capacity and performance scaling\ncapabilities."]
+        HighScaleSsd,
+        #[doc = "PREMIUM tier. BASIC_SSD is the preferred term for this tier."]
         Premium,
-        #[doc = "STANDARD tier."]
+        #[doc = "STANDARD tier. BASIC_HDD is the preferred term for this tier."]
         Standard,
         #[doc = "Not set."]
         TierUnspecified,
@@ -915,6 +876,9 @@ pub mod schemas {
     impl InstanceTier {
         pub fn as_str(self) -> &'static str {
             match self {
+                InstanceTier::BasicHdd => "BASIC_HDD",
+                InstanceTier::BasicSsd => "BASIC_SSD",
+                InstanceTier::HighScaleSsd => "HIGH_SCALE_SSD",
                 InstanceTier::Premium => "PREMIUM",
                 InstanceTier::Standard => "STANDARD",
                 InstanceTier::TierUnspecified => "TIER_UNSPECIFIED",
@@ -930,6 +894,9 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<InstanceTier, ()> {
             Ok(match s {
+                "BASIC_HDD" => InstanceTier::BasicHdd,
+                "BASIC_SSD" => InstanceTier::BasicSsd,
+                "HIGH_SCALE_SSD" => InstanceTier::HighScaleSsd,
                 "PREMIUM" => InstanceTier::Premium,
                 "STANDARD" => InstanceTier::Standard,
                 "TIER_UNSPECIFIED" => InstanceTier::TierUnspecified,
@@ -957,6 +924,9 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "BASIC_HDD" => InstanceTier::BasicHdd,
+                "BASIC_SSD" => InstanceTier::BasicSsd,
+                "HIGH_SCALE_SSD" => InstanceTier::HighScaleSsd,
                 "PREMIUM" => InstanceTier::Premium,
                 "STANDARD" => InstanceTier::Standard,
                 "TIER_UNSPECIFIED" => InstanceTier::TierUnspecified,
@@ -1557,7 +1527,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1565,8 +1535,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1585,7 +1567,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1603,7 +1585,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -1647,6 +1629,7 @@ pub mod resources {
                         xgafv: None,
                         name: name.into(),
                         filter: None,
+                        include_unrevealed_locations: None,
                         page_size: None,
                         page_token: None,
                     }
@@ -1675,7 +1658,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1807,7 +1790,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1831,10 +1817,11 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
+                include_unrevealed_locations: Option<bool>,
                 page_size: Option<i32>,
                 page_token: Option<String>,
                 access_token: Option<String>,
@@ -1853,6 +1840,11 @@ pub mod resources {
                 #[doc = "The standard list filter."]
                 pub fn filter(mut self, value: impl Into<String>) -> Self {
                     self.filter = Some(value.into());
+                    self
+                }
+                #[doc = "If true, the returned list will include locations which are not yet\nrevealed."]
+                pub fn include_unrevealed_locations(mut self, value: bool) -> Self {
+                    self.include_unrevealed_locations = Some(value);
                     self
                 }
                 #[doc = "The standard list page size."]
@@ -2082,9 +2074,16 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
+                    let req = req.query(&[(
+                        "includeUnrevealedLocations",
+                        &self.include_unrevealed_locations,
+                    )]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -2120,7 +2119,7 @@ pub mod resources {
             pub mod instances {
                 pub mod params {}
                 pub struct InstancesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> InstancesActions<'a> {
@@ -2242,7 +2241,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
                 #[derive(Debug, Clone)]
                 pub struct CreateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Instance,
                     parent: String,
@@ -2260,7 +2259,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> CreateRequestBuilder<'a> {
-                    #[doc = "The name of the instance to create.\nThe name must be unique for the specified project and location."]
+                    #[doc = "Required. The name of the instance to create.\nThe name must be unique for the specified project and location."]
                     pub fn instance_id(mut self, value: impl Into<String>) -> Self {
                         self.instance_id = Some(value.into());
                         self
@@ -2386,7 +2385,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("instanceId", &self.instance_id)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -2411,7 +2411,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -2546,7 +2546,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -2570,7 +2571,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -2705,7 +2706,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -2729,7 +2731,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     filter: Option<String>,
@@ -3051,7 +3053,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("orderBy", &self.order_by)]);
@@ -3090,7 +3093,7 @@ pub mod resources {
                 #[doc = "Created via [InstancesActions::patch()](struct.InstancesActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Instance,
                     name: String,
@@ -3108,7 +3111,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> PatchRequestBuilder<'a> {
-                    #[doc = "Mask of fields to update.  At least one path must be supplied in this\nfield.  The elements of the repeated paths field may only include these\nfields:\n\"description\""]
+                    #[doc = "Mask of fields to update.  At least one path must be supplied in this\nfield.  The elements of the repeated paths field may only include these\nfields:\n\n* \"description\"\n* \"file_shares\"\n* \"labels\""]
                     pub fn update_mask(mut self, value: impl Into<String>) -> Self {
                         self.update_mask = Some(value.into());
                         self
@@ -3233,7 +3236,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("updateMask", &self.update_mask)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -3259,7 +3263,7 @@ pub mod resources {
             pub mod operations {
                 pub mod params {}
                 pub struct OperationsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> OperationsActions<'a> {
@@ -3354,7 +3358,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
                 #[derive(Debug, Clone)]
                 pub struct CancelRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::CancelOperationRequest,
                     name: String,
@@ -3492,7 +3496,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3516,7 +3521,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3651,7 +3656,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3675,7 +3681,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3810,7 +3816,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3834,7 +3841,7 @@ pub mod resources {
                 #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     filter: Option<String>,
@@ -4093,7 +4100,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("pageSize", &self.page_size)]);
@@ -4148,9 +4156,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4192,7 +4198,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

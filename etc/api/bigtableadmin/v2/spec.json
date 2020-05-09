@@ -7,7 +7,7 @@
   "canonicalName": "Bigtable Admin",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20190906",
+  "revision": "20200424",
   "title": "Cloud Bigtable Admin API",
   "description": "Administer your Cloud Bigtable tables and instances.",
   "ownerDomain": "google.com",
@@ -378,7 +378,7 @@
           "$ref": "Expr"
         },
         "members": {
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@example.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n* `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a user that has been recently deleted. For\n   example, `alice@example.com?uid=123456789012345678901`. If the user is\n   recovered, this value reverts to `user:{emailid}` and the recovered user\n   retains the role in the binding.\n\n* `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus\n   unique identifier) representing a service account that has been recently\n   deleted. For example,\n   `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`.\n   If the service account is undeleted, this value reverts to\n   `serviceAccount:{emailid}` and the undeleted service account retains the\n   role in the binding.\n\n* `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique\n   identifier) representing a Google group that has been recently\n   deleted. For example, `admins@example.com?uid=123456789012345678901`. If\n   the group is recovered, this value reverts to `group:{emailid}` and the\n   recovered group retains the role in the binding.\n\n\n* `domain:{domain}`: The G Suite domain (primary) that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
           "format": null,
           "enum": [],
@@ -418,7 +418,7 @@
       "enumDescriptions": [],
       "properties": {
         "consistencyToken": {
-          "description": "The token created using GenerateConsistencyToken for the Table.",
+          "description": "Required. The token created using GenerateConsistencyToken for the Table.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -480,7 +480,7 @@
           "items": null
         },
         "location": {
-          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/<project>/locations/<zone>`.",
+          "description": "(`CreationOnly`)\nThe location where this cluster's nodes and storage reside. For best\nperformance, clients should be located as close as possible to this\ncluster. Currently only zones are supported, so values should be of the\nform `projects/{project}/locations/{zone}`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -490,7 +490,7 @@
           "items": null
         },
         "name": {
-          "description": "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/<project>/instances/<instance>/clusters/a-z*`.",
+          "description": "Required. (`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/{project}/instances/{instance}/clusters/a-z*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -500,7 +500,7 @@
           "items": null
         },
         "serveNodes": {
-          "description": "The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance.",
+          "description": "Required. The number of nodes allocated to this cluster. More nodes enable higher\nthroughput and more consistent performance.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -643,11 +643,11 @@
       "enumDescriptions": [],
       "properties": {
         "cluster": {
-          "description": "The cluster to be created.\nFields marked `OutputOnly` must be left blank.",
+          "description": "Required. The cluster to be created.\nFields marked `OutputOnly` must be left blank.",
           "$ref": "Cluster"
         },
         "clusterId": {
-          "description": "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.",
+          "description": "Required. The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -657,7 +657,7 @@
           "items": null
         },
         "parent": {
-          "description": "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/<project>/instances/<instance>`.",
+          "description": "Required. The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/{project}/instances/{instance}`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -715,7 +715,7 @@
       "enumDescriptions": [],
       "properties": {
         "clusters": {
-          "description": "The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most two clusters can be specified.",
+          "description": "Required. The clusters to be created within the instance, mapped by desired\ncluster ID, e.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.\nFields marked `OutputOnly` must be left blank.\nCurrently, at most four clusters can be specified.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -728,11 +728,11 @@
           "items": null
         },
         "instance": {
-          "description": "The instance to create.\nFields marked `OutputOnly` must be left blank.",
+          "description": "Required. The instance to create.\nFields marked `OutputOnly` must be left blank.",
           "$ref": "Instance"
         },
         "instanceId": {
-          "description": "The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`.",
+          "description": "Required. The ID to be used when referring to the new instance within its project,\ne.g., just `myinstance` rather than\n`projects/myproject/instances/myinstance`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -742,7 +742,7 @@
           "items": null
         },
         "parent": {
-          "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/<project>`.",
+          "description": "Required. The unique name of the project in which to create the new instance.\nValues are of the form `projects/{project}`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -776,11 +776,11 @@
           }
         },
         "table": {
-          "description": "The Table to create.",
+          "description": "Required. The Table to create.",
           "$ref": "Table"
         },
         "tableId": {
-          "description": "The name by which the new table should be referred to within the parent\ninstance, e.g., `foobar` rather than `<parent>/tables/foobar`.\nMaximum 50 characters.",
+          "description": "Required. The name by which the new table should be referred to within the parent\ninstance, e.g., `foobar` rather than `{parent}/tables/foobar`.\nMaximum 50 characters.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -838,14 +838,14 @@
     },
     "Expr": {
       "id": "Expr",
-      "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) > 0\"",
+      "description": "Represents a textual expression in the Common Expression Language (CEL)\nsyntax. CEL is a C-like expression language. The syntax and semantics of CEL\nare documented at https://github.com/google/cel-spec.\n\nExample (Comparison):\n\n    title: \"Summary size limit\"\n    description: \"Determines if a summary is less than 100 chars\"\n    expression: \"document.summary.size() < 100\"\n\nExample (Equality):\n\n    title: \"Requestor is owner\"\n    description: \"Determines if requestor is the document owner\"\n    expression: \"document.owner == request.auth.claims.email\"\n\nExample (Logic):\n\n    title: \"Public documents\"\n    description: \"Determine whether the document should be publicly visible\"\n    expression: \"document.type != 'private' && document.type != 'internal'\"\n\nExample (Data Manipulation):\n\n    title: \"Notification string\"\n    description: \"Create a notification string with a timestamp.\"\n    expression: \"'New message received at ' + string(document.create_time)\"\n\nThe exact variables and functions that may be referenced within an expression\nare determined by the service that evaluates it. See the service\ndocumentation for additional information.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
+          "description": "Optional. Description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -855,7 +855,7 @@
           "items": null
         },
         "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
+          "description": "Textual representation of an expression in Common Expression Language\nsyntax.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -865,7 +865,7 @@
           "items": null
         },
         "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
+          "description": "Optional. String indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -875,7 +875,7 @@
           "items": null
         },
         "title": {
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "description": "Optional. Title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1008,7 +1008,7 @@
       "enumDescriptions": [],
       "properties": {
         "displayName": {
-          "description": "The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion.",
+          "description": "Required. The descriptive name for this instance as it appears in UIs.\nCan be changed at any time, but should be kept globally unique\nto avoid confusion.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1018,7 +1018,7 @@
           "items": null
         },
         "labels": {
-          "description": "Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes.",
+          "description": "Required. Labels are a flexible and lightweight mechanism for organizing cloud\nresources into groups that reflect a customer's organizational needs and\ndeployment strategies. They can be used to filter resources and aggregate\nmetrics.\n\n* Label keys must be between 1 and 63 characters long and must conform to\n  the regular expression: `\\p{Ll}\\p{Lo}{0,62}`.\n* Label values must be between 0 and 63 characters long and must conform to\n  the regular expression: `[\\p{Ll}\\p{Lo}\\p{N}_-]{0,63}`.\n* No more than 64 labels can be associated with a given resource.\n* Keys and values must both be under 128 bytes.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1037,7 +1037,7 @@
           "items": null
         },
         "name": {
-          "description": "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/<project>/instances/a-z+[a-z0-9]`.",
+          "description": "Required. (`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/{project}/instances/a-z+[a-z0-9]`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1065,7 +1065,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of the instance. Defaults to `PRODUCTION`.",
+          "description": "Required. The type of the instance. Defaults to `PRODUCTION`.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1076,7 +1076,7 @@
           "enumDescriptions": [
             "The type of the instance is unspecified. If set when creating an\ninstance, a `PRODUCTION` instance will be created. If set when updating\nan instance, the type will be left unchanged.",
             "An instance meant for production use. `serve_nodes` must be set\non the cluster.",
-            "The instance is meant for development and testing purposes only; it has\nno performance or uptime guarantees and is not covered by SLA.\nAfter a development instance is created, it can be upgraded by\nupdating the instance to type `PRODUCTION`. An instance created\nas a production instance cannot be changed to a development instance.\nWhen creating a development instance, `serve_nodes` on the cluster must\nnot be set."
+            "DEPRECATED: Prefer PRODUCTION for all use cases, as it no longer enforces\na higher minimum node count than DEVELOPMENT."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1497,7 +1497,7 @@
       "enumDescriptions": [],
       "properties": {
         "modifications": {
-          "description": "Modifications to be atomically applied to the specified table's families.\nEntries are applied in order, meaning that earlier modifications can be\nmasked by later ones (in the case of repeated updates to the same family,\nfor example).",
+          "description": "Required. Modifications to be atomically applied to the specified table's families.\nEntries are applied in order, meaning that earlier modifications can be\nmasked by later ones (in the case of repeated updates to the same family,\nfor example).",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1606,11 +1606,11 @@
       "enumDescriptions": [],
       "properties": {
         "instance": {
-          "description": "The Instance which will (partially) replace the current value.",
+          "description": "Required. The Instance which will (partially) replace the current value.",
           "$ref": "Instance"
         },
         "updateMask": {
-          "description": "The subset of Instance fields which should be replaced.\nMust be explicitly set.",
+          "description": "Required. The subset of Instance fields which should be replaced.\nMust be explicitly set.",
           "type": "string",
           "format": "google-fieldmask",
           "enum": [],
@@ -1625,7 +1625,7 @@
     },
     "Policy": {
       "id": "Policy",
-      "description": "Defines an Identity and Access Management (IAM) policy. It is used to\nspecify access control policies for Cloud Platform resources.\n\n\nA `Policy` consists of a list of `bindings`. A `binding` binds a list of\n`members` to a `role`, where the members can be user accounts, Google groups,\nGoogle domains, and service accounts. A `role` is a named list of permissions\ndefined by IAM.\n\n**JSON Example**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/owner\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-other-app@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/viewer\",\n          \"members\": [\"user:sean@example.com\"]\n        }\n      ]\n    }\n\n**YAML Example**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-other-app@appspot.gserviceaccount.com\n      role: roles/owner\n    - members:\n      - user:sean@example.com\n      role: roles/viewer\n\n\nFor a description of IAM and its features, see the\n[IAM developer's guide](https://cloud.google.com/iam/docs).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nOptionally, a `binding` can specify a `condition`, which is a logical\nexpression that allows access to a resource only if the expression evaluates\nto `true`. A condition can add constraints based on attributes of the\nrequest, the resource, or both.\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1644,7 +1644,7 @@
           }
         },
         "bindings": {
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error.",
+          "description": "Associates a list of `members` to a `role`. Optionally, may specify a\n`condition` that determines how and when the `bindings` are applied. Each\nof the `bindings` must contain at least one member.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1656,7 +1656,7 @@
           }
         },
         "etag": {
-          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten.",
+          "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -1666,7 +1666,7 @@
           "items": null
         },
         "version": {
-          "description": "Specifies the format of the policy.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nPolicies with any conditional bindings must specify version 3. Policies\nwithout any conditional bindings may specify any valid value or leave the\nfield unset.",
+          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2141,7 +2141,7 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^operations/projects/.+$",
+                      "pattern": "^operations/projects/.*$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -2219,7 +2219,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -2261,7 +2261,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -2303,7 +2303,7 @@
               "format": null,
               "minimum": null,
               "maximum": null,
-              "pattern": "^operations/.+$",
+              "pattern": "^operations/.*$",
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
@@ -2347,7 +2347,7 @@
                   "description": "Creates an app profile within an instance.",
                   "parameters": {
                     "appProfileId": {
-                      "description": "The ID to be used when referring to the new app profile within its\ninstance, e.g., just `myprofile` rather than\n`projects/myproject/instances/myinstance/appProfiles/myprofile`.",
+                      "description": "Required. The ID to be used when referring to the new app profile within its\ninstance, e.g., just `myprofile` rather than\n`projects/myproject/instances/myinstance/appProfiles/myprofile`.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2375,7 +2375,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The unique name of the instance in which to create the new app profile.\nValues are of the form\n`projects/<project>/instances/<instance>`.",
+                      "description": "Required. The unique name of the instance in which to create the new app profile.\nValues are of the form\n`projects/{project}/instances/{instance}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2419,7 +2419,7 @@
                   "description": "Deletes an app profile from an instance.",
                   "parameters": {
                     "ignoreWarnings": {
-                      "description": "If true, ignore safety checks when deleting the app profile.",
+                      "description": "Required. If true, ignore safety checks when deleting the app profile.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2433,7 +2433,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "The unique name of the app profile to be deleted. Values are of the form\n`projects/<project>/instances/<instance>/appProfiles/<app_profile>`.",
+                      "description": "Required. The unique name of the app profile to be deleted. Values are of the form\n`projects/{project}/instances/{instance}/appProfiles/{app_profile}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2475,7 +2475,7 @@
                   "description": "Gets information about an app profile.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the requested app profile. Values are of the form\n`projects/<project>/instances/<instance>/appProfiles/<app_profile>`.",
+                      "description": "Required. The unique name of the requested app profile. Values are of the form\n`projects/{project}/instances/{instance}/appProfiles/{app_profile}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2546,7 +2546,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The unique name of the instance for which a list of app profiles is\nrequested. Values are of the form\n`projects/<project>/instances/<instance>`.\nUse `<instance> = '-'` to list AppProfiles for all Instances in a project,\ne.g., `projects/myproject/instances/-`.",
+                      "description": "Required. The unique name of the instance for which a list of app profiles is\nrequested. Values are of the form\n`projects/{project}/instances/{instance}`.\nUse `{instance} = '-'` to list AppProfiles for all Instances in a project,\ne.g., `projects/myproject/instances/-`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2616,7 +2616,7 @@
                       "repeated": false
                     },
                     "updateMask": {
-                      "description": "The subset of app profile fields which should be replaced.\nIf unset, all fields will be replaced.",
+                      "description": "Required. The subset of app profile fields which should be replaced.\nIf unset, all fields will be replaced.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2656,7 +2656,142 @@
               }
             },
             "clusters": {
-              "resources": {},
+              "resources": {
+                "backups": {
+                  "resources": {},
+                  "methods": {
+                    "getIamPolicy": {
+                      "id": "bigtableadmin.projects.instances.clusters.backups.getIamPolicy",
+                      "path": "v2/{+resource}:getIamPolicy",
+                      "httpMethod": "POST",
+                      "description": "Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset.",
+                      "parameters": {
+                        "resource": {
+                          "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "request": {
+                        "$ref": "GetIamPolicyRequest"
+                      },
+                      "response": {
+                        "$ref": "Policy"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigtable.admin",
+                        "https://www.googleapis.com/auth/bigtable.admin.table",
+                        "https://www.googleapis.com/auth/cloud-bigtable.admin",
+                        "https://www.googleapis.com/auth/cloud-bigtable.admin.table",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "setIamPolicy": {
+                      "id": "bigtableadmin.projects.instances.clusters.backups.setIamPolicy",
+                      "path": "v2/{+resource}:setIamPolicy",
+                      "httpMethod": "POST",
+                      "description": "Sets the access control policy on a Table resource.\nReplaces any existing policy.",
+                      "parameters": {
+                        "resource": {
+                          "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "request": {
+                        "$ref": "SetIamPolicyRequest"
+                      },
+                      "response": {
+                        "$ref": "Policy"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigtable.admin",
+                        "https://www.googleapis.com/auth/bigtable.admin.table",
+                        "https://www.googleapis.com/auth/cloud-bigtable.admin",
+                        "https://www.googleapis.com/auth/cloud-bigtable.admin.table",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    },
+                    "testIamPermissions": {
+                      "id": "bigtableadmin.projects.instances.clusters.backups.testIamPermissions",
+                      "path": "v2/{+resource}:testIamPermissions",
+                      "httpMethod": "POST",
+                      "description": "Returns permissions that the caller has on the specified table resource.",
+                      "parameters": {
+                        "resource": {
+                          "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "resource"
+                      ],
+                      "request": {
+                        "$ref": "TestIamPermissionsRequest"
+                      },
+                      "response": {
+                        "$ref": "TestIamPermissionsResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigtable.admin",
+                        "https://www.googleapis.com/auth/bigtable.admin.table",
+                        "https://www.googleapis.com/auth/cloud-bigtable.admin",
+                        "https://www.googleapis.com/auth/cloud-bigtable.admin.table",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
               "methods": {
                 "create": {
                   "id": "bigtableadmin.projects.instances.clusters.create",
@@ -2665,7 +2800,7 @@
                   "description": "Creates a cluster within an instance.",
                   "parameters": {
                     "clusterId": {
-                      "description": "The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.",
+                      "description": "Required. The ID to be used when referring to the new cluster within its instance,\ne.g., just `mycluster` rather than\n`projects/myproject/instances/myinstance/clusters/mycluster`.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -2679,7 +2814,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/<project>/instances/<instance>`.",
+                      "description": "Required. The unique name of the instance in which to create the new cluster.\nValues are of the form\n`projects/{project}/instances/{instance}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2723,7 +2858,7 @@
                   "description": "Deletes a cluster from an instance.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the cluster to be deleted. Values are of the form\n`projects/<project>/instances/<instance>/clusters/<cluster>`.",
+                      "description": "Required. The unique name of the cluster to be deleted. Values are of the form\n`projects/{project}/instances/{instance}/clusters/{cluster}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2765,7 +2900,7 @@
                   "description": "Gets information about a cluster.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the requested cluster. Values are of the form\n`projects/<project>/instances/<instance>/clusters/<cluster>`.",
+                      "description": "Required. The unique name of the requested cluster. Values are of the form\n`projects/{project}/instances/{instance}/clusters/{cluster}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2822,7 +2957,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The unique name of the instance for which a list of clusters is requested.\nValues are of the form `projects/<project>/instances/<instance>`.\nUse `<instance> = '-'` to list Clusters for all Instances in a project,\ne.g., `projects/myproject/instances/-`.",
+                      "description": "Required. The unique name of the instance for which a list of clusters is requested.\nValues are of the form `projects/{project}/instances/{instance}`.\nUse `{instance} = '-'` to list Clusters for all Instances in a project,\ne.g., `projects/myproject/instances/-`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2865,7 +3000,7 @@
                   "description": "Updates a cluster within an instance.",
                   "parameters": {
                     "name": {
-                      "description": "(`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/<project>/instances/<instance>/clusters/a-z*`.",
+                      "description": "Required. (`OutputOnly`)\nThe unique name of the cluster. Values are of the form\n`projects/{project}/instances/{instance}/clusters/a-z*`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2914,7 +3049,7 @@
                   "description": "Checks replication consistency based on a consistency token, that is, if\nreplication has caught up based on the conditions specified in the token\nand the check request.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the Table for which to check replication consistency.\nValues are of the form\n`projects/<project>/instances/<instance>/tables/<table>`.",
+                      "description": "Required. The unique name of the Table for which to check replication consistency.\nValues are of the form\n`projects/{project}/instances/{instance}/tables/{table}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -2957,7 +3092,7 @@
                   "description": "Creates a new table in the specified instance.\nThe table can be created with a full set of initial column families,\nspecified in the request.",
                   "parameters": {
                     "parent": {
-                      "description": "The unique name of the instance in which to create the table.\nValues are of the form `projects/<project>/instances/<instance>`.",
+                      "description": "Required. The unique name of the instance in which to create the table.\nValues are of the form `projects/{project}/instances/{instance}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3000,7 +3135,7 @@
                   "description": "Permanently deletes a specified table and all of its data.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the table to be deleted.\nValues are of the form\n`projects/<project>/instances/<instance>/tables/<table>`.",
+                      "description": "Required. The unique name of the table to be deleted.\nValues are of the form\n`projects/{project}/instances/{instance}/tables/{table}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3041,7 +3176,7 @@
                   "description": "Permanently drop/delete a row range from a specified table. The request can\nspecify whether to delete all rows in a table, or only those that match a\nparticular prefix.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the table on which to drop a range of rows.\nValues are of the form\n`projects/<project>/instances/<instance>/tables/<table>`.",
+                      "description": "Required. The unique name of the table on which to drop a range of rows.\nValues are of the form\n`projects/{project}/instances/{instance}/tables/{table}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3084,7 +3219,7 @@
                   "description": "Generates a consistency token for a Table, which can be used in\nCheckConsistency to check whether mutations to the table that finished\nbefore this call started have been replicated. The tokens will be available\nfor 90 days.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the Table for which to create a consistency token.\nValues are of the form\n`projects/<project>/instances/<instance>/tables/<table>`.",
+                      "description": "Required. The unique name of the Table for which to create a consistency token.\nValues are of the form\n`projects/{project}/instances/{instance}/tables/{table}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3127,7 +3262,7 @@
                   "description": "Gets metadata information about the specified table.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the requested table.\nValues are of the form\n`projects/<project>/instances/<instance>/tables/<table>`.",
+                      "description": "Required. The unique name of the requested table.\nValues are of the form\n`projects/{project}/instances/{instance}/tables/{table}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3186,7 +3321,7 @@
                   "id": "bigtableadmin.projects.instances.tables.getIamPolicy",
                   "path": "v2/{+resource}:getIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Gets the access control policy for an instance resource. Returns an empty\npolicy if an table exists but does not have a policy set.",
+                  "description": "Gets the access control policy for a Table resource.\nReturns an empty policy if the resource exists but does not have a policy\nset.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
@@ -3260,7 +3395,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "The unique name of the instance for which tables should be listed.\nValues are of the form `projects/<project>/instances/<instance>`.",
+                      "description": "Required. The unique name of the instance for which tables should be listed.\nValues are of the form `projects/{project}/instances/{instance}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3274,7 +3409,7 @@
                       "repeated": false
                     },
                     "view": {
-                      "description": "The view to be applied to the returned tables' fields.\nDefaults to `NAME_ONLY` if unspecified; no others are currently supported.",
+                      "description": "The view to be applied to the returned tables' fields.\nOnly NAME_ONLY view (default) and REPLICATION_VIEW are supported.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -3322,7 +3457,7 @@
                   "description": "Performs a series of column family modifications on the specified table.\nEither all or none of the modifications will occur before this method\nreturns, but data requests received prior to that point may see a table\nwhere only some modifications have taken effect.",
                   "parameters": {
                     "name": {
-                      "description": "The unique name of the table whose families should be modified.\nValues are of the form\n`projects/<project>/instances/<instance>/tables/<table>`.",
+                      "description": "Required. The unique name of the table whose families should be modified.\nValues are of the form\n`projects/{project}/instances/{instance}/tables/{table}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -3362,7 +3497,7 @@
                   "id": "bigtableadmin.projects.instances.tables.setIamPolicy",
                   "path": "v2/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on a table resource. Replaces any existing\npolicy.",
+                  "description": "Sets the access control policy on a Table resource.\nReplaces any existing policy.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
@@ -3455,7 +3590,7 @@
               "description": "Create an instance within a project.",
               "parameters": {
                 "parent": {
-                  "description": "The unique name of the project in which to create the new instance.\nValues are of the form `projects/<project>`.",
+                  "description": "Required. The unique name of the project in which to create the new instance.\nValues are of the form `projects/{project}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3499,7 +3634,7 @@
               "description": "Delete an instance from a project.",
               "parameters": {
                 "name": {
-                  "description": "The unique name of the instance to be deleted.\nValues are of the form `projects/<project>/instances/<instance>`.",
+                  "description": "Required. The unique name of the instance to be deleted.\nValues are of the form `projects/{project}/instances/{instance}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3541,7 +3676,7 @@
               "description": "Gets information about an instance.",
               "parameters": {
                 "name": {
-                  "description": "The unique name of the requested instance. Values are of the form\n`projects/<project>/instances/<instance>`.",
+                  "description": "Required. The unique name of the requested instance. Values are of the form\n`projects/{project}/instances/{instance}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3642,7 +3777,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "The unique name of the project for which a list of instances is requested.\nValues are of the form `projects/<project>`.",
+                  "description": "Required. The unique name of the project for which a list of instances is requested.\nValues are of the form `projects/{project}`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3685,7 +3820,7 @@
               "description": "Partially updates an instance within a project. This method can modify all\nfields of an Instance and is the preferred way to update an Instance.",
               "parameters": {
                 "name": {
-                  "description": "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/<project>/instances/a-z+[a-z0-9]`.",
+                  "description": "Required. (`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/{project}/instances/a-z+[a-z0-9]`.",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -3699,7 +3834,7 @@
                   "repeated": false
                 },
                 "updateMask": {
-                  "description": "The subset of Instance fields which should be replaced.\nMust be explicitly set.",
+                  "description": "Required. The subset of Instance fields which should be replaced.\nMust be explicitly set.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3831,7 +3966,7 @@
               "description": "Updates an instance within a project. This method updates only the display\nname and type for an Instance. To update other Instance properties, such as\nlabels, use PartialUpdateInstance.",
               "parameters": {
                 "name": {
-                  "description": "(`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/<project>/instances/a-z+[a-z0-9]`.",
+                  "description": "Required. (`OutputOnly`)\nThe unique name of the instance. Values are of the form\n`projects/{project}/instances/a-z+[a-z0-9]`.",
                   "default": null,
                   "location": "path",
                   "required": true,

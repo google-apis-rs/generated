@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("ml1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190913")
+            .version("0.1.0-20200425")
             .about("An API to enable creating and using machine learning models.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -35,13 +35,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get_config and predict");
+            .about("methods: explain, get_config and predict");
+        {
+            let mcmd = SubCommand::with_name("explain").about("Performs explanation on the data in the request.\nAI Platform implements a custom `explain` verb on top of an HTTP POST\nmethod.");
+            projects0 = projects0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get_config").about("Get the service account information associated with your project. You need\nthis information in order to grant the service account permissions for\nthe Google Cloud Storage location where you put your model training code\nfor training the model with Google Cloud Machine Learning.");
             projects0 = projects0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("predict").about("Performs prediction on the data in the request.\nAI Platform implements a custom `predict` verb on top of an HTTP POST\nmethod. <p>For details of the request and response format, see the **guide\nto the [predict request format](/ml-engine/docs/v1/predict-request)**.");
+            let mcmd = SubCommand::with_name("predict").about("Performs online prediction on the data in the request.\n\n<div>{% dynamic include \"/ai-platform/includes/___predict-request\" %}</div>");
             projects0 = projects0.subcommand(mcmd);
         }
         let mut jobs1 = SubCommand::with_name("jobs")
@@ -73,7 +77,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             jobs1 = jobs1.subcommand(mcmd);
         }
         {
@@ -96,11 +100,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create, delete, get, get_iam_policy, list, patch, set_iam_policy and test_iam_permissions");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a model which will later contain one or more versions.\n\nYou must add at least one version before you can request predictions from\nthe model. Add versions by calling\n[projects.models.versions.create](/ml-engine/reference/rest/v1/projects.models.versions/create).");
+            let mcmd = SubCommand::with_name("create").about("Creates a model which will later contain one or more versions.\n\nYou must add at least one version before you can request predictions from\nthe model. Add versions by calling\nprojects.models.versions.create.");
             models1 = models1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a model.\n\nYou can only delete a model if there are no versions in it. You can delete\nversions by calling\n[projects.models.versions.delete](/ml-engine/reference/rest/v1/projects.models.versions/delete).");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a model.\n\nYou can only delete a model if there are no versions in it. You can delete\nversions by calling\nprojects.models.versions.delete.");
             models1 = models1.subcommand(mcmd);
         }
         {
@@ -120,7 +124,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             models1 = models1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
             models1 = models1.subcommand(mcmd);
         }
         {
@@ -142,11 +146,42 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request. If the\nserver doesn\'t support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.");
             operations1 = operations1.subcommand(mcmd);
         }
+        let mut operations2 = SubCommand::with_name("operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: cancel and get");
+        {
+            let mcmd = SubCommand::with_name("cancel").about("Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.");
+            operations2 = operations2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            operations2 = operations2.subcommand(mcmd);
+        }
+        let mut studies2 = SubCommand::with_name("studies")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a study.");
+            studies2 = studies2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a study.");
+            studies2 = studies2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a study.");
+            studies2 = studies2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists all the studies in a region for an associated project.");
+            studies2 = studies2.subcommand(mcmd);
+        }
         let mut versions2 = SubCommand::with_name("versions")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch and set_default");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new version of a model from a trained TensorFlow model.\n\nIf the version created in the cloud by this call is the first deployed\nversion of the specified model, it will be made the default version of the\nmodel. When you add a version to a model that already has one or more\nversions, the default version does not automatically change. If you want a\nnew version to be the default, you must call\n[projects.models.versions.setDefault](/ml-engine/reference/rest/v1/projects.models.versions/setDefault).");
+            let mcmd = SubCommand::with_name("create").about("Creates a new version of a model from a trained TensorFlow model.\n\nIf the version created in the cloud by this call is the first deployed\nversion of the specified model, it will be made the default version of the\nmodel. When you add a version to a model that already has one or more\nversions, the default version does not automatically change. If you want a\nnew version to be the default, you must call\nprojects.models.versions.setDefault.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
@@ -154,7 +189,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets information about a model version.\n\nModels can have multiple versions. You can call\n[projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list)\nto get the same information that this method returns for all of the\nversions of a model.");
+            let mcmd = SubCommand::with_name("get").about("Gets information about a model version.\n\nModels can have multiple versions. You can call\nprojects.models.versions.list\nto get the same information that this method returns for all of the\nversions of a model.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
@@ -162,14 +197,58 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             versions2 = versions2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates the specified Version resource.\n\nCurrently the only update-able fields are `description` and\n`autoScaling.minNodes`.");
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified Version resource.\n\nCurrently the only update-able fields are `description`,\n`requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.");
             versions2 = versions2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("set_default").about("Designates a version to be the default for the model.\n\nThe default version is used for prediction requests made against the model\nthat don\'t specify a version.\n\nThe first version to be created for a model is automatically set as the\ndefault. You must make any subsequent changes to the default version\nsetting manually using this method.");
             versions2 = versions2.subcommand(mcmd);
         }
+        let mut trials3 = SubCommand::with_name("trials")
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: add_measurement, check_early_stopping_state, complete, create, delete, get, list, stop and suggest");
+        {
+            let mcmd = SubCommand::with_name("add_measurement").about("Adds a measurement of the objective metrics to a trial. This measurement\nis assumed to have been taken before the trial is complete.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("check_early_stopping_state").about("Checks  whether a trial should stop or not. Returns a\nlong-running operation. When the operation is successful,\nit will contain a\nCheckTrialEarlyStoppingStateResponse.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("complete").about("Marks a trial as complete.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("create").about("Adds a user provided trial to a study.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a trial.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets a trial.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("list").about("Lists the trials associated with a study.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("stop").about("Stops a trial.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("suggest").about("Adds one or more trials to a study, with parameter values\nsuggested by AI Platform Optimizer. Returns a long-running\noperation associated with the generation of trial suggestions.\nWhen this long-running operation succeeds, it will contain\na SuggestTrialsResponse.");
+            trials3 = trials3.subcommand(mcmd);
+        }
+        studies2 = studies2.subcommand(trials3);
         models1 = models1.subcommand(versions2);
+        locations1 = locations1.subcommand(studies2);
+        locations1 = locations1.subcommand(operations2);
         projects0 = projects0.subcommand(operations1);
         projects0 = projects0.subcommand(models1);
         projects0 = projects0.subcommand(locations1);

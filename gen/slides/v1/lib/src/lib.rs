@@ -1,4 +1,21 @@
 #![doc = "# Resources and Methods\n    * [presentations](resources/presentations/struct.PresentationsActions.html)\n      * [*batchUpdate*](resources/presentations/struct.BatchUpdateRequestBuilder.html), [*create*](resources/presentations/struct.CreateRequestBuilder.html), [*get*](resources/presentations/struct.GetRequestBuilder.html)\n      * [pages](resources/presentations/pages/struct.PagesActions.html)\n        * [*get*](resources/presentations/pages/struct.GetRequestBuilder.html), [*getThumbnail*](resources/presentations/pages/struct.GetThumbnailRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "See, edit, create, and delete all of your Google Drive files\n\n`https://www.googleapis.com/auth/drive`"]
+    pub const DRIVE: &str = "https://www.googleapis.com/auth/drive";
+    #[doc = "View and manage Google Drive files and folders that you have opened or created with this app\n\n`https://www.googleapis.com/auth/drive.file`"]
+    pub const DRIVE_FILE: &str = "https://www.googleapis.com/auth/drive.file";
+    #[doc = "See and download all your Google Drive files\n\n`https://www.googleapis.com/auth/drive.readonly`"]
+    pub const DRIVE_READONLY: &str = "https://www.googleapis.com/auth/drive.readonly";
+    #[doc = "View and manage your Google Slides presentations\n\n`https://www.googleapis.com/auth/presentations`"]
+    pub const PRESENTATIONS: &str = "https://www.googleapis.com/auth/presentations";
+    #[doc = "View your Google Slides presentations\n\n`https://www.googleapis.com/auth/presentations.readonly`"]
+    pub const PRESENTATIONS_READONLY: &str =
+        "https://www.googleapis.com/auth/presentations.readonly";
+    #[doc = "See, edit, create, and delete your spreadsheets in Google Drive\n\n`https://www.googleapis.com/auth/spreadsheets`"]
+    pub const SPREADSHEETS: &str = "https://www.googleapis.com/auth/spreadsheets";
+    #[doc = "View your Google Spreadsheets\n\n`https://www.googleapis.com/auth/spreadsheets.readonly`"]
+    pub const SPREADSHEETS_READONLY: &str = "https://www.googleapis.com/auth/spreadsheets.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -5808,14 +5825,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locale: ::std::option::Option<String>,
-        #[doc = "The slide masters in the presentation. A slide master contains all common\npage elements and the common properties for a set of layouts. They serve\nthree purposes:\n\n* Placeholder shapes on a master contain the default text styles and shape\n  properties of all placeholder shapes on pages that use that master.\n* The master page properties define the common page properties inherited by\n  its layouts.\n* Any other shapes on the master slide will appear on all slides using that\n  master, regardless of their layout."]
+        #[doc = "The slide masters in the presentation. A slide master contains all common\npage elements and the common properties for a set of layouts. They serve\nthree purposes:\n\n* Placeholder shapes on a master contain the default text styles and shape\n  properties of all placeholder shapes on pages that use that master.\n* The master page properties define the common page properties inherited by\n  its layouts.\n* Any other shapes on the master slide appear on all slides using that\n  master, regardless of their layout."]
         #[serde(
             rename = "masters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub masters: ::std::option::Option<Vec<crate::schemas::Page>>,
-        #[doc = "The notes master in the presentation. It serves three purposes:\n\n* Placeholder shapes on a notes master contain the default text styles and\n  shape properties of all placeholder shapes on notes pages. Specifically,\n  a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a\n  `BODY` placeholder shape contains the speaker notes.\n* The notes master page properties define the common page properties\n  inherited by all notes pages.\n* Any other shapes on the notes master will appear on all notes pages.\n\nThe notes master is read-only."]
+        #[doc = "The notes master in the presentation. It serves three purposes:\n\n* Placeholder shapes on a notes master contain the default text styles and\n  shape properties of all placeholder shapes on notes pages. Specifically,\n  a `SLIDE_IMAGE` placeholder shape contains the slide thumbnail, and a\n  `BODY` placeholder shape contains the speaker notes.\n* The notes master page properties define the common page properties\n  inherited by all notes pages.\n* Any other shapes on the notes master appears on all notes pages.\n\nThe notes master is read-only."]
         #[serde(
             rename = "notesMaster",
             default,
@@ -11724,7 +11741,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -11732,8 +11749,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -11752,7 +11781,7 @@ pub mod resources {
     pub mod presentations {
         pub mod params {}
         pub struct PresentationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PresentationsActions<'a> {
@@ -11832,7 +11861,7 @@ pub mod resources {
         #[doc = "Created via [PresentationsActions::batch_update()](struct.PresentationsActions.html#method.batch_update)"]
         #[derive(Debug, Clone)]
         pub struct BatchUpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchUpdatePresentationRequest,
             presentation_id: String,
@@ -11964,7 +11993,10 @@ pub mod resources {
                 output.push_str(":batchUpdate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -11988,7 +12020,7 @@ pub mod resources {
         #[doc = "Created via [PresentationsActions::create()](struct.PresentationsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Presentation,
             access_token: Option<String>,
@@ -12111,7 +12143,10 @@ pub mod resources {
                 output.push_str("v1/presentations");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12135,7 +12170,7 @@ pub mod resources {
         #[doc = "Created via [PresentationsActions::get()](struct.PresentationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             presentation_id: String,
             access_token: Option<String>,
@@ -12264,7 +12299,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12415,7 +12453,7 @@ pub mod resources {
                 }
             }
             pub struct PagesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> PagesActions<'a> {
@@ -12476,7 +12514,7 @@ pub mod resources {
             #[doc = "Created via [PagesActions::get()](struct.PagesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 presentation_id: String,
                 page_object_id: String,
@@ -12615,7 +12653,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -12638,9 +12679,9 @@ pub mod resources {
             }
             #[doc = "Created via [PagesActions::get_thumbnail()](struct.PagesActions.html#method.get_thumbnail)"]
             #[derive(Debug, Clone)]
-            pub struct GetThumbnailRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , presentation_id : String , page_object_id : String , thumbnail_properties_mime_type : Option < crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesMimeType > , thumbnail_properties_thumbnail_size : Option < crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesThumbnailSize > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct GetThumbnailRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , presentation_id : String , page_object_id : String , thumbnail_properties_mime_type : Option < crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesMimeType > , thumbnail_properties_thumbnail_size : Option < crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesThumbnailSize > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> GetThumbnailRequestBuilder<'a> {
-                #[doc = "The optional mime type of the thumbnail image.\n\nIf you don't specify the mime type, the default mime type will be PNG."]
+                #[doc = "The optional mime type of the thumbnail image.\n\nIf you don't specify the mime type, the mime type defaults to PNG."]
                 pub fn thumbnail_properties_mime_type(
                     mut self,
                     value : crate :: resources :: presentations :: pages :: params :: GetThumbnailThumbnailPropertiesMimeType,
@@ -12781,7 +12822,10 @@ pub mod resources {
                     output.push_str("/thumbnail");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "thumbnailProperties.mimeType",
@@ -12829,9 +12873,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -12873,7 +12915,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

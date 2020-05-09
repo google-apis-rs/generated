@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [controller](resources/controller/struct.ControllerActions.html)\n      * [debuggees](resources/controller/debuggees/struct.DebuggeesActions.html)\n        * [*register*](resources/controller/debuggees/struct.RegisterRequestBuilder.html)\n        * [breakpoints](resources/controller/debuggees/breakpoints/struct.BreakpointsActions.html)\n          * [*list*](resources/controller/debuggees/breakpoints/struct.ListRequestBuilder.html), [*update*](resources/controller/debuggees/breakpoints/struct.UpdateRequestBuilder.html)\n    * [debugger](resources/debugger/struct.DebuggerActions.html)\n      * [debuggees](resources/debugger/debuggees/struct.DebuggeesActions.html)\n        * [*list*](resources/debugger/debuggees/struct.ListRequestBuilder.html)\n        * [breakpoints](resources/debugger/debuggees/breakpoints/struct.BreakpointsActions.html)\n          * [*delete*](resources/debugger/debuggees/breakpoints/struct.DeleteRequestBuilder.html), [*get*](resources/debugger/debuggees/breakpoints/struct.GetRequestBuilder.html), [*list*](resources/debugger/debuggees/breakpoints/struct.ListRequestBuilder.html), [*set*](resources/debugger/debuggees/breakpoints/struct.SetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "Use Stackdriver Debugger\n\n`https://www.googleapis.com/auth/cloud_debugger`"]
+    pub const CLOUD_DEBUGGER: &str = "https://www.googleapis.com/auth/cloud_debugger";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -139,6 +145,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub action: ::std::option::Option<crate::schemas::BreakpointAction>,
+        #[doc = "The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value\nis meaningless when the breakpoint is not in CANARY_ACTIVE state."]
+        #[serde(
+            rename = "canaryExpireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub canary_expire_time: ::std::option::Option<String>,
         #[doc = "Condition that triggers the breakpoint.\nThe condition is a compound boolean expression composed using expressions\nin a programming language at the source location."]
         #[serde(
             rename = "condition",
@@ -223,6 +236,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub stack_frames: ::std::option::Option<Vec<crate::schemas::StackFrame>>,
+        #[doc = "The current state of the breakpoint."]
+        #[serde(
+            rename = "state",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub state: ::std::option::Option<crate::schemas::BreakpointState>,
         #[doc = "Breakpoint status.\n\nThe status includes an error flag and a human readable message.\nThis field is usually unset. The message can be either\ninformational or an error message. Regardless, clients should always\ndisplay the text message back to the user.\n\nError status indicates complete failure of the breakpoint.\n\nExample (non-final state): `Still loading symbols...`\n\nExamples (final state):\n\n* `Invalid line number` referring to location\n* `Field f not found in class C` referring to condition"]
         #[serde(
             rename = "status",
@@ -402,6 +422,92 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum BreakpointState {
+        #[doc = "Enabling canary and successfully assigning canary agents."]
+        StateCanaryActive,
+        #[doc = "Enabling canary but no agents are available."]
+        StateCanaryPendingAgents,
+        #[doc = "Breakpoint is hit/complete/failed."]
+        StateIsFinal,
+        #[doc = "Breakpoint rolling out to all agents."]
+        StateRollingToAll,
+        #[doc = "Breakpoint state UNSPECIFIED."]
+        StateUnspecified,
+    }
+    impl BreakpointState {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                BreakpointState::StateCanaryActive => "STATE_CANARY_ACTIVE",
+                BreakpointState::StateCanaryPendingAgents => "STATE_CANARY_PENDING_AGENTS",
+                BreakpointState::StateIsFinal => "STATE_IS_FINAL",
+                BreakpointState::StateRollingToAll => "STATE_ROLLING_TO_ALL",
+                BreakpointState::StateUnspecified => "STATE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BreakpointState {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BreakpointState {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BreakpointState, ()> {
+            Ok(match s {
+                "STATE_CANARY_ACTIVE" => BreakpointState::StateCanaryActive,
+                "STATE_CANARY_PENDING_AGENTS" => BreakpointState::StateCanaryPendingAgents,
+                "STATE_IS_FINAL" => BreakpointState::StateIsFinal,
+                "STATE_ROLLING_TO_ALL" => BreakpointState::StateRollingToAll,
+                "STATE_UNSPECIFIED" => BreakpointState::StateUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for BreakpointState {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for BreakpointState {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for BreakpointState {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "STATE_CANARY_ACTIVE" => BreakpointState::StateCanaryActive,
+                "STATE_CANARY_PENDING_AGENTS" => BreakpointState::StateCanaryPendingAgents,
+                "STATE_IS_FINAL" => BreakpointState::StateIsFinal,
+                "STATE_ROLLING_TO_ALL" => BreakpointState::StateRollingToAll,
+                "STATE_UNSPECIFIED" => BreakpointState::StateUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for BreakpointState {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BreakpointState {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -550,6 +656,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub agent_version: ::std::option::Option<String>,
+        #[doc = "Used when setting breakpoint canary for this debuggee."]
+        #[serde(
+            rename = "canaryMode",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub canary_mode: ::std::option::Option<crate::schemas::DebuggeeCanaryMode>,
         #[doc = "Human readable description of the debuggee.\nIncluding a human-readable project name, environment name and version\ninformation is recommended."]
         #[serde(
             rename = "description",
@@ -627,6 +740,92 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Debuggee {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum DebuggeeCanaryMode {
+        #[doc = "Always disable breakpoint canary regardless of the value of breakpoint's\ncanary option."]
+        CanaryModeAlwaysDisabled,
+        #[doc = "Always enable breakpoint canary regardless of the value of breakpoint's\ncanary option."]
+        CanaryModeAlwaysEnabled,
+        #[doc = "Depends on the breakpoint's canary option. Disable canary by default if\nthe breakpoint's canary option is not specified."]
+        CanaryModeDefaultDisabled,
+        #[doc = "Depends on the breakpoint's canary option. Enable canary by default if\nthe breakpoint's canary option is not specified."]
+        CanaryModeDefaultEnabled,
+        #[doc = "CANARY_MODE_UNSPECIFIED is equivalent to CANARY_MODE_ALWAYS_DISABLED so\nthat if the debuggee is not configured to use the canary feature, the\nfeature will be disabled."]
+        CanaryModeUnspecified,
+    }
+    impl DebuggeeCanaryMode {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                DebuggeeCanaryMode::CanaryModeAlwaysDisabled => "CANARY_MODE_ALWAYS_DISABLED",
+                DebuggeeCanaryMode::CanaryModeAlwaysEnabled => "CANARY_MODE_ALWAYS_ENABLED",
+                DebuggeeCanaryMode::CanaryModeDefaultDisabled => "CANARY_MODE_DEFAULT_DISABLED",
+                DebuggeeCanaryMode::CanaryModeDefaultEnabled => "CANARY_MODE_DEFAULT_ENABLED",
+                DebuggeeCanaryMode::CanaryModeUnspecified => "CANARY_MODE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for DebuggeeCanaryMode {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for DebuggeeCanaryMode {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<DebuggeeCanaryMode, ()> {
+            Ok(match s {
+                "CANARY_MODE_ALWAYS_DISABLED" => DebuggeeCanaryMode::CanaryModeAlwaysDisabled,
+                "CANARY_MODE_ALWAYS_ENABLED" => DebuggeeCanaryMode::CanaryModeAlwaysEnabled,
+                "CANARY_MODE_DEFAULT_DISABLED" => DebuggeeCanaryMode::CanaryModeDefaultDisabled,
+                "CANARY_MODE_DEFAULT_ENABLED" => DebuggeeCanaryMode::CanaryModeDefaultEnabled,
+                "CANARY_MODE_UNSPECIFIED" => DebuggeeCanaryMode::CanaryModeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for DebuggeeCanaryMode {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for DebuggeeCanaryMode {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for DebuggeeCanaryMode {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CANARY_MODE_ALWAYS_DISABLED" => DebuggeeCanaryMode::CanaryModeAlwaysDisabled,
+                "CANARY_MODE_ALWAYS_ENABLED" => DebuggeeCanaryMode::CanaryModeAlwaysEnabled,
+                "CANARY_MODE_DEFAULT_DISABLED" => DebuggeeCanaryMode::CanaryModeDefaultDisabled,
+                "CANARY_MODE_DEFAULT_ENABLED" => DebuggeeCanaryMode::CanaryModeDefaultEnabled,
+                "CANARY_MODE_UNSPECIFIED" => DebuggeeCanaryMode::CanaryModeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for DebuggeeCanaryMode {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for DebuggeeCanaryMode {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1024,7 +1223,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RegisterDebuggeeRequest {
-        #[doc = "Debuggee information to register.\nThe fields `project`, `uniquifier`, `description` and `agent_version`\nof the debuggee must be set."]
+        #[doc = "Required. Debuggee information to register.\nThe fields `project`, `uniquifier`, `description` and `agent_version`\nof the debuggee must be set."]
         #[serde(
             rename = "debuggee",
             default,
@@ -1055,6 +1254,13 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct RegisterDebuggeeResponse {
+        #[doc = "A unique ID generated for the agent.\nEach RegisterDebuggee request will generate a new agent ID."]
+        #[serde(
+            rename = "agentId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub agent_id: ::std::option::Option<String>,
         #[doc = "Debuggee resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields).\nIf the field `is_disabled` is set to `true`, the agent should disable\nitself by removing all breakpoints and detaching from the application.\nIt should however continue to poll `RegisterDebuggee` until reenabled."]
         #[serde(
             rename = "debuggee",
@@ -1124,7 +1330,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SetBreakpointResponse {
-        #[doc = "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fileds)."]
+        #[doc = "Breakpoint resource.\nThe field `id` is guaranteed to be set (in addition to the echoed fields)."]
         #[serde(
             rename = "breakpoint",
             default,
@@ -1340,6 +1546,8 @@ pub mod schemas {
     pub enum StatusMessageRefersTo {
         #[doc = "Status applies to the breakpoint and is related to its age."]
         BreakpointAge,
+        #[doc = "Status applies to the breakpoint when the breakpoint failed to exit the\ncanary state."]
+        BreakpointCanaryFailed,
         #[doc = "Status applies to the breakpoint and is related to its condition."]
         BreakpointCondition,
         #[doc = "Status applies to the breakpoint and is related to its expressions."]
@@ -1357,6 +1565,7 @@ pub mod schemas {
         pub fn as_str(self) -> &'static str {
             match self {
                 StatusMessageRefersTo::BreakpointAge => "BREAKPOINT_AGE",
+                StatusMessageRefersTo::BreakpointCanaryFailed => "BREAKPOINT_CANARY_FAILED",
                 StatusMessageRefersTo::BreakpointCondition => "BREAKPOINT_CONDITION",
                 StatusMessageRefersTo::BreakpointExpression => "BREAKPOINT_EXPRESSION",
                 StatusMessageRefersTo::BreakpointSourceLocation => "BREAKPOINT_SOURCE_LOCATION",
@@ -1376,6 +1585,7 @@ pub mod schemas {
         fn from_str(s: &str) -> ::std::result::Result<StatusMessageRefersTo, ()> {
             Ok(match s {
                 "BREAKPOINT_AGE" => StatusMessageRefersTo::BreakpointAge,
+                "BREAKPOINT_CANARY_FAILED" => StatusMessageRefersTo::BreakpointCanaryFailed,
                 "BREAKPOINT_CONDITION" => StatusMessageRefersTo::BreakpointCondition,
                 "BREAKPOINT_EXPRESSION" => StatusMessageRefersTo::BreakpointExpression,
                 "BREAKPOINT_SOURCE_LOCATION" => StatusMessageRefersTo::BreakpointSourceLocation,
@@ -1407,6 +1617,7 @@ pub mod schemas {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "BREAKPOINT_AGE" => StatusMessageRefersTo::BreakpointAge,
+                "BREAKPOINT_CANARY_FAILED" => StatusMessageRefersTo::BreakpointCanaryFailed,
                 "BREAKPOINT_CONDITION" => StatusMessageRefersTo::BreakpointCondition,
                 "BREAKPOINT_EXPRESSION" => StatusMessageRefersTo::BreakpointExpression,
                 "BREAKPOINT_SOURCE_LOCATION" => StatusMessageRefersTo::BreakpointSourceLocation,
@@ -1445,7 +1656,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UpdateActiveBreakpointRequest {
-        #[doc = "Updated breakpoint information.\nThe field `id` must be set.\nThe agent must echo all Breakpoint specification fields in the update."]
+        #[doc = "Required. Updated breakpoint information.\nThe field `id` must be set.\nThe agent must echo all Breakpoint specification fields in the update."]
         #[serde(
             rename = "breakpoint",
             default,
@@ -1704,7 +1915,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1712,8 +1923,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1739,7 +1962,7 @@ pub mod resources {
     pub mod controller {
         pub mod params {}
         pub struct ControllerActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ControllerActions<'a> {
@@ -1757,7 +1980,7 @@ pub mod resources {
         pub mod debuggees {
             pub mod params {}
             pub struct DebuggeesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DebuggeesActions<'a> {
@@ -1800,7 +2023,7 @@ pub mod resources {
             #[doc = "Created via [DebuggeesActions::register()](struct.DebuggeesActions.html#method.register)"]
             #[derive(Debug, Clone)]
             pub struct RegisterRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::RegisterDebuggeeRequest,
                 access_token: Option<String>,
@@ -1928,7 +2151,10 @@ pub mod resources {
                     output.push_str("v2/controller/debuggees/register");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1952,7 +2178,7 @@ pub mod resources {
             pub mod breakpoints {
                 pub mod params {}
                 pub struct BreakpointsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> BreakpointsActions<'a> {
@@ -1976,6 +2202,7 @@ pub mod resources {
                             upload_type: None,
                             xgafv: None,
                             debuggee_id: debuggee_id.into(),
+                            agent_id: None,
                             success_on_timeout: None,
                             wait_token: None,
                         }
@@ -2010,9 +2237,10 @@ pub mod resources {
                 #[doc = "Created via [BreakpointsActions::list()](struct.BreakpointsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     debuggee_id: String,
+                    agent_id: Option<String>,
                     success_on_timeout: Option<bool>,
                     wait_token: Option<String>,
                     access_token: Option<String>,
@@ -2028,6 +2256,11 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> ListRequestBuilder<'a> {
+                    #[doc = "Identifies the agent.\nThis is the ID returned in the RegisterDebuggee response."]
+                    pub fn agent_id(mut self, value: impl Into<String>) -> Self {
+                        self.agent_id = Some(value.into());
+                        self
+                    }
                     #[doc = "If set to `true` (recommended), returns `google.rpc.Code.OK` status and\nsets the `wait_expired` response field to `true` when the server-selected\ntimeout has expired.\n\nIf set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status\nwhen the server-selected timeout has expired."]
                     pub fn success_on_timeout(mut self, value: bool) -> Self {
                         self.success_on_timeout = Some(value);
@@ -2160,8 +2393,10 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
+                        let req = req.query(&[("agentId", &self.agent_id)]);
                         let req = req.query(&[("successOnTimeout", &self.success_on_timeout)]);
                         let req = req.query(&[("waitToken", &self.wait_token)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -2186,7 +2421,7 @@ pub mod resources {
                 #[doc = "Created via [BreakpointsActions::update()](struct.BreakpointsActions.html#method.update)"]
                 #[derive(Debug, Clone)]
                 pub struct UpdateRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::UpdateActiveBreakpointRequest,
                     debuggee_id: String,
@@ -2334,7 +2569,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PUT, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -2361,7 +2597,7 @@ pub mod resources {
     pub mod debugger {
         pub mod params {}
         pub struct DebuggerActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DebuggerActions<'a> {
@@ -2379,7 +2615,7 @@ pub mod resources {
         pub mod debuggees {
             pub mod params {}
             pub struct DebuggeesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DebuggeesActions<'a> {
@@ -2421,7 +2657,7 @@ pub mod resources {
             #[doc = "Created via [DebuggeesActions::list()](struct.DebuggeesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 client_version: Option<String>,
                 include_inactive: Option<bool>,
@@ -2439,7 +2675,7 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                 pub fn client_version(mut self, value: impl Into<String>) -> Self {
                     self.client_version = Some(value.into());
                     self
@@ -2449,7 +2685,7 @@ pub mod resources {
                     self.include_inactive = Some(value);
                     self
                 }
-                #[doc = "Project number of a Google Cloud project whose debuggees to list."]
+                #[doc = "Required. Project number of a Google Cloud project whose debuggees to list."]
                 pub fn project(mut self, value: impl Into<String>) -> Self {
                     self.project = Some(value.into());
                     self
@@ -2563,7 +2799,10 @@ pub mod resources {
                     output.push_str("v2/debugger/debuggees");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("clientVersion", &self.client_version)]);
                     let req = req.query(&[("includeInactive", &self.include_inactive)]);
@@ -2661,9 +2900,103 @@ pub mod resources {
                             ::google_field_selector::FieldType::Leaf
                         }
                     }
+                    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+                    pub enum SetCanaryOption {
+                        CanaryOptionTryDisable,
+                        CanaryOptionTryEnable,
+                        CanaryOptionUnspecified,
+                    }
+                    impl SetCanaryOption {
+                        pub fn as_str(self) -> &'static str {
+                            match self {
+                                SetCanaryOption::CanaryOptionTryDisable => {
+                                    "CANARY_OPTION_TRY_DISABLE"
+                                }
+                                SetCanaryOption::CanaryOptionTryEnable => {
+                                    "CANARY_OPTION_TRY_ENABLE"
+                                }
+                                SetCanaryOption::CanaryOptionUnspecified => {
+                                    "CANARY_OPTION_UNSPECIFIED"
+                                }
+                            }
+                        }
+                    }
+                    impl ::std::convert::AsRef<str> for SetCanaryOption {
+                        fn as_ref(&self) -> &str {
+                            self.as_str()
+                        }
+                    }
+                    impl ::std::str::FromStr for SetCanaryOption {
+                        type Err = ();
+                        fn from_str(s: &str) -> ::std::result::Result<SetCanaryOption, ()> {
+                            Ok(match s {
+                                "CANARY_OPTION_TRY_DISABLE" => {
+                                    SetCanaryOption::CanaryOptionTryDisable
+                                }
+                                "CANARY_OPTION_TRY_ENABLE" => {
+                                    SetCanaryOption::CanaryOptionTryEnable
+                                }
+                                "CANARY_OPTION_UNSPECIFIED" => {
+                                    SetCanaryOption::CanaryOptionUnspecified
+                                }
+                                _ => return Err(()),
+                            })
+                        }
+                    }
+                    impl ::std::fmt::Display for SetCanaryOption {
+                        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+                            f.write_str(self.as_str())
+                        }
+                    }
+                    impl ::serde::Serialize for SetCanaryOption {
+                        fn serialize<S>(
+                            &self,
+                            serializer: S,
+                        ) -> ::std::result::Result<S::Ok, S::Error>
+                        where
+                            S: ::serde::ser::Serializer,
+                        {
+                            serializer.serialize_str(self.as_str())
+                        }
+                    }
+                    impl<'de> ::serde::Deserialize<'de> for SetCanaryOption {
+                        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+                        where
+                            D: ::serde::de::Deserializer<'de>,
+                        {
+                            let value: &'de str = <&str>::deserialize(deserializer)?;
+                            Ok(match value {
+                                "CANARY_OPTION_TRY_DISABLE" => {
+                                    SetCanaryOption::CanaryOptionTryDisable
+                                }
+                                "CANARY_OPTION_TRY_ENABLE" => {
+                                    SetCanaryOption::CanaryOptionTryEnable
+                                }
+                                "CANARY_OPTION_UNSPECIFIED" => {
+                                    SetCanaryOption::CanaryOptionUnspecified
+                                }
+                                _ => {
+                                    return Err(::serde::de::Error::custom(format!(
+                                        "invalid enum for #name: {}",
+                                        value
+                                    )))
+                                }
+                            })
+                        }
+                    }
+                    impl ::google_field_selector::FieldSelector for SetCanaryOption {
+                        fn fields() -> Vec<::google_field_selector::Field> {
+                            Vec::new()
+                        }
+                    }
+                    impl ::google_field_selector::ToFieldType for SetCanaryOption {
+                        fn field_type() -> ::google_field_selector::FieldType {
+                            ::google_field_selector::FieldType::Leaf
+                        }
+                    }
                 }
                 pub struct BreakpointsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> BreakpointsActions<'a> {
@@ -2767,6 +3100,7 @@ pub mod resources {
                             upload_type: None,
                             xgafv: None,
                             debuggee_id: debuggee_id.into(),
+                            canary_option: None,
                             client_version: None,
                         }
                     }
@@ -2774,7 +3108,7 @@ pub mod resources {
                 #[doc = "Created via [BreakpointsActions::delete()](struct.BreakpointsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     debuggee_id: String,
                     breakpoint_id: String,
@@ -2792,7 +3126,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DeleteRequestBuilder<'a> {
-                    #[doc = "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -2924,7 +3258,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("clientVersion", &self.client_version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -2949,7 +3284,7 @@ pub mod resources {
                 #[doc = "Created via [BreakpointsActions::get()](struct.BreakpointsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     debuggee_id: String,
                     breakpoint_id: String,
@@ -2967,7 +3302,7 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
-                    #[doc = "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -3101,7 +3436,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("clientVersion", &self.client_version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -3126,7 +3462,7 @@ pub mod resources {
                 #[doc = "Created via [BreakpointsActions::list()](struct.BreakpointsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     debuggee_id: String,
                     action_value: Option<
@@ -3158,7 +3494,7 @@ pub mod resources {
                         self.action_value = Some(value);
                         self
                     }
-                    #[doc = "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -3305,7 +3641,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("action.value", &self.action_value)]);
                         let req = req.query(&[("clientVersion", &self.client_version)]);
@@ -3335,10 +3672,13 @@ pub mod resources {
                 #[doc = "Created via [BreakpointsActions::set()](struct.BreakpointsActions.html#method.set)"]
                 #[derive(Debug, Clone)]
                 pub struct SetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Breakpoint,
                     debuggee_id: String,
+                    canary_option: Option<
+                        crate::resources::debugger::debuggees::breakpoints::params::SetCanaryOption,
+                    >,
                     client_version: Option<String>,
                     access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
@@ -3353,7 +3693,15 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> SetRequestBuilder<'a> {
-                    #[doc = "The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
+                    #[doc = "The canary option set by the user upon setting breakpoint."]
+                    pub fn canary_option(
+                        mut self,
+                        value : crate :: resources :: debugger :: debuggees :: breakpoints :: params :: SetCanaryOption,
+                    ) -> Self {
+                        self.canary_option = Some(value);
+                        self
+                    }
+                    #[doc = "Required. The client version making the call.\nSchema: `domain/type/version` (e.g., `google.com/intellij/v1`)."]
                     pub fn client_version(mut self, value: impl Into<String>) -> Self {
                         self.client_version = Some(value.into());
                         self
@@ -3481,8 +3829,10 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
+                        let req = req.query(&[("canaryOption", &self.canary_option)]);
                         let req = req.query(&[("clientVersion", &self.client_version)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3523,9 +3873,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3567,7 +3915,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

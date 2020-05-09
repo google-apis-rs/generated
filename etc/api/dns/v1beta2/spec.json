@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"LYADMvHWYH2ul9D6m9UT9gT77YM/gVVk6wfkBSi_uneaUeOzv7rm9HU\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/BT2KAg5ncg8uv7pxbJOLZo5zBdk\"",
   "discoveryVersion": "v1",
   "id": "dns:v1beta2",
   "name": "dns",
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta2",
-  "revision": "20190903",
+  "revision": "20191205",
   "title": "Google Cloud DNS API",
   "description": "Configures and serves authoritative DNS records.",
   "ownerDomain": "google.com",
@@ -721,6 +721,10 @@
           "description": "For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.",
           "$ref": "ManagedZonePrivateVisibilityConfig"
         },
+        "reverseLookupConfig": {
+          "description": "The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS will resolve reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.",
+          "$ref": "ManagedZoneReverseLookupConfig"
+        },
         "visibility": {
           "description": "The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.",
           "type": "string",
@@ -851,6 +855,22 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "forwardingPath": {
+          "description": "Forwarding path for this NameServerTarget, if unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "default",
+            "private"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "ipv4Address": {
           "description": "IPv4 address of a target name server.",
           "type": "string",
@@ -1045,6 +1065,28 @@
         },
         "networkUrl": {
           "description": "The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ManagedZoneReverseLookupConfig": {
+      "id": "ManagedZoneReverseLookupConfig",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "kind": {
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZoneReverseLookupConfig\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1449,6 +1491,22 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "forwardingPath": {
+          "description": "Forwarding path for this TargetNameServer, if unset or set to DEFAULT, Cloud DNS will make forwarding decision based on address ranges, i.e. RFC1918 addresses go to the VPC, Non-RFC1918 addresses go to the Internet. When set to PRIVATE, Cloud DNS will always send queries through VPC for this target",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "default",
+            "private"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "ipv4Address": {
           "description": "IPv4 address to forward to.",
           "type": "string",

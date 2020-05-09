@@ -1,4 +1,5 @@
 #![doc = "# Resources and Methods\n    * [cse](resources/cse/struct.CseActions.html)\n      * [*list*](resources/cse/struct.ListRequestBuilder.html)\n      * [siterestrict](resources/cse/siterestrict/struct.SiterestrictActions.html)\n        * [*list*](resources/cse/siterestrict/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {}
 pub mod schemas {
     #[derive(
         Debug,
@@ -12,115 +13,43 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
-    pub struct Context {
-        #[serde(
-            rename = "facets",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub facets: ::std::option::Option<Vec<Vec<crate::schemas::ContextFacetsItemsItems>>>,
-        #[serde(
-            rename = "title",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub title: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for Context {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Context {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct ContextFacetsItemsItems {
-        #[serde(
-            rename = "anchor",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub anchor: ::std::option::Option<String>,
-        #[serde(
-            rename = "label",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub label: ::std::option::Option<String>,
-        #[serde(
-            rename = "label_with_op",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub label_with_op: ::std::option::Option<String>,
-    }
-    impl ::google_field_selector::FieldSelector for ContextFacetsItemsItems {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for ContextFacetsItemsItems {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
     pub struct Promotion {
+        #[doc = "An array of block objects for this promotion. See [Google WebSearch\nProtocol\nreference](https://developers.google.com/custom-search/docs/xml_results)\nfor more information."]
         #[serde(
             rename = "bodyLines",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub body_lines: ::std::option::Option<Vec<crate::schemas::PromotionBodyLinesItems>>,
+        #[doc = "An abridged version of this search's result URL, e.g. www.example.com."]
         #[serde(
             rename = "displayLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_link: ::std::option::Option<String>,
+        #[doc = "The title of the promotion, in HTML."]
         #[serde(
             rename = "htmlTitle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub html_title: ::std::option::Option<String>,
+        #[doc = "Image belonging to a promotion."]
         #[serde(
             rename = "image",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image: ::std::option::Option<crate::schemas::PromotionImage>,
+        #[doc = "The URL of the promotion."]
         #[serde(
             rename = "link",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub link: ::std::option::Option<String>,
+        #[doc = "The title of the promotion."]
         #[serde(
             rename = "title",
             default,
@@ -151,24 +80,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PromotionBodyLinesItems {
+        #[doc = "The block object's text in HTML, if it has text."]
         #[serde(
             rename = "htmlTitle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub html_title: ::std::option::Option<String>,
+        #[doc = "The anchor text of the block object's link, if it has a link."]
         #[serde(
             rename = "link",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub link: ::std::option::Option<String>,
+        #[doc = "The block object's text, if it has text."]
         #[serde(
             rename = "title",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub title: ::std::option::Option<String>,
+        #[doc = "The URL of the block object's link, if it has one."]
         #[serde(
             rename = "url",
             default,
@@ -199,18 +132,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PromotionImage {
+        #[doc = "Image height in pixels."]
         #[serde(
             rename = "height",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub height: ::std::option::Option<i32>,
+        #[doc = "URL of the image for this promotion link."]
         #[serde(
             rename = "source",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub source: ::std::option::Option<String>,
+        #[doc = "Image width in pixels."]
         #[serde(
             rename = "width",
             default,
@@ -228,338 +164,108 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
-    #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
-    )]
-    pub struct Query {
-        #[serde(
-            rename = "count",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub count: ::std::option::Option<i32>,
-        #[serde(
-            rename = "cr",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub cr: ::std::option::Option<String>,
-        #[serde(
-            rename = "cx",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub cx: ::std::option::Option<String>,
-        #[serde(
-            rename = "dateRestrict",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub date_restrict: ::std::option::Option<String>,
-        #[serde(
-            rename = "disableCnTwTranslation",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub disable_cn_tw_translation: ::std::option::Option<String>,
-        #[serde(
-            rename = "exactTerms",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exact_terms: ::std::option::Option<String>,
-        #[serde(
-            rename = "excludeTerms",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub exclude_terms: ::std::option::Option<String>,
-        #[serde(
-            rename = "fileType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub file_type: ::std::option::Option<String>,
-        #[serde(
-            rename = "filter",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub filter: ::std::option::Option<String>,
-        #[serde(
-            rename = "gl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub gl: ::std::option::Option<String>,
-        #[serde(
-            rename = "googleHost",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub google_host: ::std::option::Option<String>,
-        #[serde(
-            rename = "highRange",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub high_range: ::std::option::Option<String>,
-        #[serde(
-            rename = "hl",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub hl: ::std::option::Option<String>,
-        #[serde(
-            rename = "hq",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub hq: ::std::option::Option<String>,
-        #[serde(
-            rename = "imgColorType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub img_color_type: ::std::option::Option<String>,
-        #[serde(
-            rename = "imgDominantColor",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub img_dominant_color: ::std::option::Option<String>,
-        #[serde(
-            rename = "imgSize",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub img_size: ::std::option::Option<String>,
-        #[serde(
-            rename = "imgType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub img_type: ::std::option::Option<String>,
-        #[serde(
-            rename = "inputEncoding",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub input_encoding: ::std::option::Option<String>,
-        #[serde(
-            rename = "language",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub language: ::std::option::Option<String>,
-        #[serde(
-            rename = "linkSite",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub link_site: ::std::option::Option<String>,
-        #[serde(
-            rename = "lowRange",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub low_range: ::std::option::Option<String>,
-        #[serde(
-            rename = "orTerms",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub or_terms: ::std::option::Option<String>,
-        #[serde(
-            rename = "outputEncoding",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub output_encoding: ::std::option::Option<String>,
-        #[serde(
-            rename = "relatedSite",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub related_site: ::std::option::Option<String>,
-        #[serde(
-            rename = "rights",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub rights: ::std::option::Option<String>,
-        #[serde(
-            rename = "safe",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub safe: ::std::option::Option<String>,
-        #[serde(
-            rename = "searchTerms",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub search_terms: ::std::option::Option<String>,
-        #[serde(
-            rename = "searchType",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub search_type: ::std::option::Option<String>,
-        #[serde(
-            rename = "siteSearch",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub site_search: ::std::option::Option<String>,
-        #[serde(
-            rename = "siteSearchFilter",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub site_search_filter: ::std::option::Option<String>,
-        #[serde(
-            rename = "sort",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub sort: ::std::option::Option<String>,
-        #[serde(
-            rename = "startIndex",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub start_index: ::std::option::Option<i32>,
-        #[serde(
-            rename = "startPage",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub start_page: ::std::option::Option<i32>,
-        #[serde(
-            rename = "title",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        pub title: ::std::option::Option<String>,
-        #[serde(
-            rename = "totalResults",
-            default,
-            skip_serializing_if = "std::option::Option::is_none"
-        )]
-        #[serde(with = "crate::parsed_string")]
-        pub total_results: ::std::option::Option<i64>,
-    }
-    impl ::google_field_selector::FieldSelector for Query {
-        fn fields() -> Vec<::google_field_selector::Field> {
-            Vec::new()
-        }
-    }
-    impl ::google_field_selector::ToFieldType for Query {
-        fn field_type() -> ::google_field_selector::FieldType {
-            ::google_field_selector::FieldType::Leaf
-        }
-    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Result {
+        #[doc = "Indicates the ID of Google's cached version of the search result."]
         #[serde(
             rename = "cacheId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cache_id: ::std::option::Option<String>,
+        #[doc = "An abridged version of this search result’s URL, e.g. www.example.com."]
         #[serde(
             rename = "displayLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_link: ::std::option::Option<String>,
+        #[doc = "The file format of the search result."]
         #[serde(
             rename = "fileFormat",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub file_format: ::std::option::Option<String>,
+        #[doc = "The URL displayed after the snippet for each search result."]
         #[serde(
             rename = "formattedUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub formatted_url: ::std::option::Option<String>,
+        #[doc = "The HTML-formatted URL displayed after the snippet for each search result."]
         #[serde(
             rename = "htmlFormattedUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub html_formatted_url: ::std::option::Option<String>,
+        #[doc = "The snippet of the search result, in HTML."]
         #[serde(
             rename = "htmlSnippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub html_snippet: ::std::option::Option<String>,
+        #[doc = "The title of the search result, in HTML."]
         #[serde(
             rename = "htmlTitle",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub html_title: ::std::option::Option<String>,
+        #[doc = "Image belonging to a custom search result."]
         #[serde(
             rename = "image",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image: ::std::option::Option<crate::schemas::ResultImage>,
+        #[doc = "A unique identifier for the type of current object. For this API, it is\n`customsearch#result.`"]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
+        #[doc = "Encapsulates all information about [refinement\nlabels](https://developers.google.com/custom-search/docs/xml_results)."]
         #[serde(
             rename = "labels",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub labels: ::std::option::Option<Vec<crate::schemas::ResultLabelsItems>>,
+        #[doc = "The full URL to which the search result is pointing, e.g.\nhttp://www.example.com/foo/bar."]
         #[serde(
             rename = "link",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub link: ::std::option::Option<String>,
+        #[doc = "The MIME type of the search result."]
         #[serde(
             rename = "mime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mime: ::std::option::Option<String>,
+        #[doc = "Contains\n[PageMap](https://developers.google.com/custom-search/docs/structured_data#pagemaps)\ninformation for this search result."]
         #[serde(
             rename = "pagemap",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub pagemap: ::std::option::Option<
-            ::std::collections::BTreeMap<
-                String,
-                Vec<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-            >,
-        >,
+        pub pagemap:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The snippet of the search result, in plain text."]
         #[serde(
             rename = "snippet",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub snippet: ::std::option::Option<String>,
+        #[doc = "The title of the search result, in plain text."]
         #[serde(
             rename = "title",
             default,
@@ -590,42 +296,49 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResultImage {
+        #[doc = "The size of the image, in pixels."]
         #[serde(
             rename = "byteSize",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub byte_size: ::std::option::Option<i32>,
+        #[doc = "A URL pointing to the webpage hosting the image."]
         #[serde(
             rename = "contextLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub context_link: ::std::option::Option<String>,
+        #[doc = "The height of the image, in pixels."]
         #[serde(
             rename = "height",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub height: ::std::option::Option<i32>,
+        #[doc = "The height of the thumbnail image, in pixels."]
         #[serde(
             rename = "thumbnailHeight",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub thumbnail_height: ::std::option::Option<i32>,
+        #[doc = "A URL to the thumbnail image."]
         #[serde(
             rename = "thumbnailLink",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub thumbnail_link: ::std::option::Option<String>,
+        #[doc = "The width of the thumbnail image, in pixels."]
         #[serde(
             rename = "thumbnailWidth",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub thumbnail_width: ::std::option::Option<i32>,
+        #[doc = "The width of the image, in pixels."]
         #[serde(
             rename = "width",
             default,
@@ -656,18 +369,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResultLabelsItems {
+        #[doc = "The display name of a refinement label. This is the name you should\ndisplay in your user interface."]
         #[serde(
             rename = "displayName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
+        #[doc = "Refinement label and the associated refinement operation."]
         #[serde(
             rename = "label_with_op",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub label_with_op: ::std::option::Option<String>,
+        #[doc = "The name of a refinement label, which you can use to refine searches.\nDon't display this in your user interface; instead, use displayName."]
         #[serde(
             rename = "name",
             default,
@@ -687,49 +403,57 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Search {
+        #[doc = "Metadata and refinements associated with the given search engine,\nincluding:\n\n* The name of the search engine that was used for the query.\n\n* A set of [facet\n  objects](https://developers.google.com/custom-search/docs/refinements#create)\n  (refinements) you can use for refining a search."]
         #[serde(
             rename = "context",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub context: ::std::option::Option<crate::schemas::Context>,
+        pub context:
+            ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
+        #[doc = "The current set of custom search results."]
         #[serde(
             rename = "items",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Result>>,
+        #[doc = "Unique identifier for the type of current object. For this API, it is\ncustomsearch#search."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
+        #[doc = "The set of\n[promotions](https://developers.google.com/custom-search/docs/promotions).\nPresent only if the custom search engine's configuration files define any\npromotions for the given query."]
         #[serde(
             rename = "promotions",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub promotions: ::std::option::Option<Vec<crate::schemas::Promotion>>,
+        #[doc = "Query metadata for the previous, current, and next pages of results."]
         #[serde(
             rename = "queries",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub queries:
-            ::std::option::Option<::std::collections::BTreeMap<String, Vec<crate::schemas::Query>>>,
+        pub queries: ::std::option::Option<crate::schemas::SearchQueries>,
+        #[doc = "Metadata about a search operation."]
         #[serde(
             rename = "searchInformation",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub search_information: ::std::option::Option<crate::schemas::SearchSearchInformation>,
+        #[doc = "Spell correction information for a query."]
         #[serde(
             rename = "spelling",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub spelling: ::std::option::Option<crate::schemas::SearchSpelling>,
+        #[doc = "OpenSearch template and URL."]
         #[serde(
             rename = "url",
             default,
@@ -748,27 +472,310 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
     )]
-    pub struct SearchSearchInformation {
+    pub struct SearchQueries {
+        #[doc = "Metadata representing the next page of results, if applicable."]
         #[serde(
-            rename = "formattedSearchTime",
+            rename = "nextPage",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub formatted_search_time: ::std::option::Option<String>,
+        pub next_page: ::std::option::Option<Vec<crate::schemas::SearchQueriesNextPageItems>>,
+        #[doc = "Metadata representing the previous page of results, if applicable."]
         #[serde(
-            rename = "formattedTotalResults",
+            rename = "previousPage",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub formatted_total_results: ::std::option::Option<String>,
+        pub previous_page:
+            ::std::option::Option<Vec<crate::schemas::SearchQueriesPreviousPageItems>>,
+        #[doc = "Metadata representing the current request."]
         #[serde(
-            rename = "searchTime",
+            rename = "request",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub search_time: ::std::option::Option<f64>,
+        pub request: ::std::option::Option<Vec<crate::schemas::SearchQueriesRequestItems>>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchQueries {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchQueries {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchQueriesNextPageItems {
+        #[doc = "Number of search results returned in this set."]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub count: ::std::option::Option<i32>,
+        #[doc = "Restricts search results to documents originating in a particular\ncountry. You may use [Boolean\noperators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)\nin the `cr` parameter's value.\n\nGoogle WebSearch determines the country of a document by analyzing the\nfollowing:\n\n* The top-level domain (TLD) of the document's URL.\n\n* The geographic location of the web server's IP address.\n\nSee [Country (cr) Parameter\nValues](https://developers.google.com/custom-search/docs/xml_results#countryCollections)\nfor a list of valid values for this parameter."]
+        #[serde(
+            rename = "cr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cr: ::std::option::Option<String>,
+        #[doc = "The identifier of a custom search engine created using the Custom Search\n[Control Panel](https://cse.google.com/). This is a custom property not\ndefined in the OpenSearch spec. This parameter is **required**."]
+        #[serde(
+            rename = "cx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cx: ::std::option::Option<String>,
+        #[doc = "Restricts results to URLs based on date. Supported values include:\n\n* `d[number]`: requests results from the specified number of past days.\n\n* `w[number]`: requests results from the specified number of past weeks.\n\n* `m[number]`: requests results from the specified number of past months.\n\n* `y[number]`: requests results from the specified number of past years."]
+        #[serde(
+            rename = "dateRestrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date_restrict: ::std::option::Option<String>,
+        #[doc = "Enables or disables the [Simplified and Traditional Chinese\nSearch](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)\nfeature.\n\nSupported values are:\n\n* `0`: enabled (default)\n\n* `1`: disabled"]
+        #[serde(
+            rename = "disableCnTwTranslation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_cn_tw_translation: ::std::option::Option<String>,
+        #[doc = "Identifies a phrase that all documents in the search results must\ncontain."]
+        #[serde(
+            rename = "exactTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exact_terms: ::std::option::Option<String>,
+        #[doc = "Identifies a word or phrase that should not appear in any documents in\nthe search results."]
+        #[serde(
+            rename = "excludeTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exclude_terms: ::std::option::Option<String>,
+        #[doc = "Restricts results to files of a specified extension. Filetypes supported\nby Google include:\n\n* Adobe Portable Document Format (`pdf`)\n\n* Adobe PostScript (`ps`)\n\n* Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)\n\n* Lotus WordPro (`lwp`)\n\n* Macwrite (`mw`)\n\n* Microsoft Excel (`xls`)\n\n* Microsoft PowerPoint (`ppt`)\n\n* Microsoft Word (`doc`)\n\n* Microsoft Works (`wks`, `wps`, `wdb`)\n\n* Microsoft Write (`wri`)\n\n* Rich Text Format (`rtf`)\n\n* Shockwave Flash (`swf`)\n\n* Text (`ans`, `txt`).\n\nAdditional filetypes may be added in the future. An up-to-date list can\nalways be found in Google's [file type\nFAQ](https://support.google.com/webmasters/answer/35287)."]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub file_type: ::std::option::Option<String>,
+        #[doc = "Activates or deactivates the automatic filtering of Google search\nresults. See [Automatic\nFiltering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)\nfor more information about Google's search results filters. Valid values\nfor this parameter are:\n\n* `0`: Disabled\n\n* `1`: Enabled (default)\n\n**Note**: By default, Google applies filtering to all search results to\nimprove the quality of those results."]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "Boosts search results whose country of origin matches the parameter\nvalue. See [Country\nCodes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)\nfor a list of valid values.\n\nSpecifying a `gl` parameter value in WebSearch requests should improve\nthe relevance of results. This is particularly true for international\ncustomers and, even more specifically, for customers in English-speaking\ncountries other than the United States."]
+        #[serde(
+            rename = "gl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gl: ::std::option::Option<String>,
+        #[doc = "Specifies the Google domain (for example, google.com, google.de, or\ngoogle.fr) to which the search should be limited."]
+        #[serde(
+            rename = "googleHost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub google_host: ::std::option::Option<String>,
+        #[doc = "Specifies the ending value for a search range. Use `cse:lowRange` and\n`cse:highrange` to append an inclusive search range of\n`lowRange...highRange` to the query."]
+        #[serde(
+            rename = "highRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub high_range: ::std::option::Option<String>,
+        #[doc = "Specifies the interface language (host language) of your user interface.\nExplicitly setting this parameter improves the performance and the\nquality of your search results.\n\nSee the [Interface\nLanguages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)\nsection of [Internationalizing Queries and Results\nPresentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)\nfor more information, and [Supported Interface\nLanguages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)\nfor a list of supported languages."]
+        #[serde(
+            rename = "hl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hl: ::std::option::Option<String>,
+        #[doc = "Appends the specified query terms to the query, as if they were combined\nwith a logical `AND` operator."]
+        #[serde(
+            rename = "hq",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hq: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified color type. Supported values\nare:\n\n* `mono` (black and white)\n\n* `gray` (grayscale)\n\n* `color` (color)"]
+        #[serde(
+            rename = "imgColorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_color_type: ::std::option::Option<String>,
+        #[doc = "Restricts results to images with a specific dominant color. Supported\nvalues are:\n\n* `red`\n\n* `orange`\n\n* `yellow`\n\n* `green`\n\n* `teal`\n\n* `blue`\n\n* `purple`\n\n* `pink`\n\n* `white`\n\n* `gray`\n\n* `black`\n\n* `brown`"]
+        #[serde(
+            rename = "imgDominantColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_dominant_color: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified size. Supported values are:\n\n* `icon` (small)\n\n* `small | medium | large | xlarge` (medium)\n\n* `xxlarge` (large)\n\n* `huge` (extra-large)"]
+        #[serde(
+            rename = "imgSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_size: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified type. Supported values are:\n\n* `clipart` (Clip art)\n\n* `face` (Face)\n\n* `lineart` (Line drawing)\n\n* `photo` (Photo)\n\n* `animated` (Animated)\n\n* `stock` (Stock)"]
+        #[serde(
+            rename = "imgType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_type: ::std::option::Option<String>,
+        #[doc = "The character encoding supported for search requests."]
+        #[serde(
+            rename = "inputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub input_encoding: ::std::option::Option<String>,
+        #[doc = "The language of the search results."]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub language: ::std::option::Option<String>,
+        #[doc = "Specifies that all results should contain a link to a specific URL."]
+        #[serde(
+            rename = "linkSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub link_site: ::std::option::Option<String>,
+        #[doc = "Specifies the starting value for a search range. Use `cse:lowRange` and\n`cse:highrange` to append an inclusive search range of\n`lowRange...highRange` to the query."]
+        #[serde(
+            rename = "lowRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub low_range: ::std::option::Option<String>,
+        #[doc = "Provides additional search terms to check for in a document, where each\ndocument in the search results must contain at least one of the\nadditional search terms. You can also use the [Boolean\nOR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)\nquery term for this type of query."]
+        #[serde(
+            rename = "orTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub or_terms: ::std::option::Option<String>,
+        #[doc = "The character encoding supported for search results."]
+        #[serde(
+            rename = "outputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_encoding: ::std::option::Option<String>,
+        #[doc = "Specifies that all search results should be pages that are related to the\nspecified URL. The parameter value should be a URL."]
+        #[serde(
+            rename = "relatedSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub related_site: ::std::option::Option<String>,
+        #[doc = "Filters based on licensing. Supported values include:\n\n* `cc_publicdomain`\n\n* `cc_attribute`\n\n* `cc_sharealike`\n\n* `cc_noncommercial`\n\n* `cc_nonderived`"]
+        #[serde(
+            rename = "rights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rights: ::std::option::Option<String>,
+        #[doc = "Specifies the [SafeSearch\nlevel](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)\nused for filtering out adult results. This is a custom property not\ndefined in the OpenSearch spec. Valid parameter values are:\n\n* `\"off\"`: Disable SafeSearch\n\n* `\"active\"`: Enable SafeSearch"]
+        #[serde(
+            rename = "safe",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub safe: ::std::option::Option<String>,
+        #[doc = "The search terms entered by the user."]
+        #[serde(
+            rename = "searchTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_terms: ::std::option::Option<String>,
+        #[doc = "Allowed values are `web` or `image`. If unspecified, results are limited\nto webpages."]
+        #[serde(
+            rename = "searchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_type: ::std::option::Option<String>,
+        #[doc = "Restricts results to URLs from a specified site."]
+        #[serde(
+            rename = "siteSearch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub site_search: ::std::option::Option<String>,
+        #[doc = "Specifies whether to include or exclude results from the site named in\nthe `sitesearch` parameter. Supported values are:\n\n* `i`: include content from site\n\n* `e`: exclude content from site"]
+        #[serde(
+            rename = "siteSearchFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub site_search_filter: ::std::option::Option<String>,
+        #[doc = "Specifies that results should be sorted according to the specified\nexpression. For example, sort by date."]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sort: ::std::option::Option<String>,
+        #[doc = "The index of the current set of search results into the total set of\nresults, where the index of the first result is 1."]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_index: ::std::option::Option<i32>,
+        #[doc = "The page number of this set of results, where the page length is set by\nthe `count` property."]
+        #[serde(
+            rename = "startPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_page: ::std::option::Option<i32>,
+        #[doc = "A description of the query."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Estimated number of total search results. May not be accurate."]
         #[serde(
             rename = "totalResults",
             default,
@@ -776,6 +783,603 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub total_results: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchQueriesNextPageItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchQueriesNextPageItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchQueriesPreviousPageItems {
+        #[doc = "Number of search results returned in this set."]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub count: ::std::option::Option<i32>,
+        #[doc = "Restricts search results to documents originating in a particular\ncountry. You may use [Boolean\noperators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)\nin the `cr` parameter's value.\n\nGoogle WebSearch determines the country of a document by analyzing the\nfollowing:\n\n* The top-level domain (TLD) of the document's URL.\n\n* The geographic location of the web server's IP address.\n\nSee [Country (cr) Parameter\nValues](https://developers.google.com/custom-search/docs/xml_results#countryCollections)\nfor a list of valid values for this parameter."]
+        #[serde(
+            rename = "cr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cr: ::std::option::Option<String>,
+        #[doc = "The identifier of a custom search engine created using the Custom Search\n[Control Panel](https://cse.google.com/). This is a custom property not\ndefined in the OpenSearch spec. This parameter is **required**."]
+        #[serde(
+            rename = "cx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cx: ::std::option::Option<String>,
+        #[doc = "Restricts results to URLs based on date. Supported values include:\n\n* `d[number]`: requests results from the specified number of past days.\n\n* `w[number]`: requests results from the specified number of past weeks.\n\n* `m[number]`: requests results from the specified number of past months.\n\n* `y[number]`: requests results from the specified number of past years."]
+        #[serde(
+            rename = "dateRestrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date_restrict: ::std::option::Option<String>,
+        #[doc = "Enables or disables the [Simplified and Traditional Chinese\nSearch](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)\nfeature.\n\nSupported values are:\n\n* `0`: enabled (default)\n\n* `1`: disabled"]
+        #[serde(
+            rename = "disableCnTwTranslation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_cn_tw_translation: ::std::option::Option<String>,
+        #[doc = "Identifies a phrase that all documents in the search results must\ncontain."]
+        #[serde(
+            rename = "exactTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exact_terms: ::std::option::Option<String>,
+        #[doc = "Identifies a word or phrase that should not appear in any documents in\nthe search results."]
+        #[serde(
+            rename = "excludeTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exclude_terms: ::std::option::Option<String>,
+        #[doc = "Restricts results to files of a specified extension. Filetypes supported\nby Google include:\n\n* Adobe Portable Document Format (`pdf`)\n\n* Adobe PostScript (`ps`)\n\n* Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)\n\n* Lotus WordPro (`lwp`)\n\n* Macwrite (`mw`)\n\n* Microsoft Excel (`xls`)\n\n* Microsoft PowerPoint (`ppt`)\n\n* Microsoft Word (`doc`)\n\n* Microsoft Works (`wks`, `wps`, `wdb`)\n\n* Microsoft Write (`wri`)\n\n* Rich Text Format (`rtf`)\n\n* Shockwave Flash (`swf`)\n\n* Text (`ans`, `txt`).\n\nAdditional filetypes may be added in the future. An up-to-date list can\nalways be found in Google's [file type\nFAQ](https://support.google.com/webmasters/answer/35287)."]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub file_type: ::std::option::Option<String>,
+        #[doc = "Activates or deactivates the automatic filtering of Google search\nresults. See [Automatic\nFiltering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)\nfor more information about Google's search results filters. Valid values\nfor this parameter are:\n\n* `0`: Disabled\n\n* `1`: Enabled (default)\n\n**Note**: By default, Google applies filtering to all search results to\nimprove the quality of those results."]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "Boosts search results whose country of origin matches the parameter\nvalue. See [Country\nCodes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)\nfor a list of valid values.\n\nSpecifying a `gl` parameter value in WebSearch requests should improve\nthe relevance of results. This is particularly true for international\ncustomers and, even more specifically, for customers in English-speaking\ncountries other than the United States."]
+        #[serde(
+            rename = "gl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gl: ::std::option::Option<String>,
+        #[doc = "Specifies the Google domain (for example, google.com, google.de, or\ngoogle.fr) to which the search should be limited."]
+        #[serde(
+            rename = "googleHost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub google_host: ::std::option::Option<String>,
+        #[doc = "Specifies the ending value for a search range. Use `cse:lowRange` and\n`cse:highrange` to append an inclusive search range of\n`lowRange...highRange` to the query."]
+        #[serde(
+            rename = "highRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub high_range: ::std::option::Option<String>,
+        #[doc = "Specifies the interface language (host language) of your user interface.\nExplicitly setting this parameter improves the performance and the\nquality of your search results.\n\nSee the [Interface\nLanguages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)\nsection of [Internationalizing Queries and Results\nPresentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)\nfor more information, and [Supported Interface\nLanguages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)\nfor a list of supported languages."]
+        #[serde(
+            rename = "hl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hl: ::std::option::Option<String>,
+        #[doc = "Appends the specified query terms to the query, as if they were combined\nwith a logical `AND` operator."]
+        #[serde(
+            rename = "hq",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hq: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified color type. Supported values\nare:\n\n* `mono` (black and white)\n\n* `gray` (grayscale)\n\n* `color` (color)"]
+        #[serde(
+            rename = "imgColorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_color_type: ::std::option::Option<String>,
+        #[doc = "Restricts results to images with a specific dominant color. Supported\nvalues are:\n\n* `red`\n\n* `orange`\n\n* `yellow`\n\n* `green`\n\n* `teal`\n\n* `blue`\n\n* `purple`\n\n* `pink`\n\n* `white`\n\n* `gray`\n\n* `black`\n\n* `brown`"]
+        #[serde(
+            rename = "imgDominantColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_dominant_color: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified size. Supported values are:\n\n* `icon` (small)\n\n* `small | medium | large | xlarge` (medium)\n\n* `xxlarge` (large)\n\n* `huge` (extra-large)"]
+        #[serde(
+            rename = "imgSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_size: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified type. Supported values are:\n\n* `clipart` (Clip art)\n\n* `face` (Face)\n\n* `lineart` (Line drawing)\n\n* `photo` (Photo)\n\n* `animated` (Animated)\n\n* `stock` (Stock)"]
+        #[serde(
+            rename = "imgType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_type: ::std::option::Option<String>,
+        #[doc = "The character encoding supported for search requests."]
+        #[serde(
+            rename = "inputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub input_encoding: ::std::option::Option<String>,
+        #[doc = "The language of the search results."]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub language: ::std::option::Option<String>,
+        #[doc = "Specifies that all results should contain a link to a specific URL."]
+        #[serde(
+            rename = "linkSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub link_site: ::std::option::Option<String>,
+        #[doc = "Specifies the starting value for a search range. Use `cse:lowRange` and\n`cse:highrange` to append an inclusive search range of\n`lowRange...highRange` to the query."]
+        #[serde(
+            rename = "lowRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub low_range: ::std::option::Option<String>,
+        #[doc = "Provides additional search terms to check for in a document, where each\ndocument in the search results must contain at least one of the\nadditional search terms. You can also use the [Boolean\nOR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)\nquery term for this type of query."]
+        #[serde(
+            rename = "orTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub or_terms: ::std::option::Option<String>,
+        #[doc = "The character encoding supported for search results."]
+        #[serde(
+            rename = "outputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_encoding: ::std::option::Option<String>,
+        #[doc = "Specifies that all search results should be pages that are related to the\nspecified URL. The parameter value should be a URL."]
+        #[serde(
+            rename = "relatedSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub related_site: ::std::option::Option<String>,
+        #[doc = "Filters based on licensing. Supported values include:\n\n* `cc_publicdomain`\n\n* `cc_attribute`\n\n* `cc_sharealike`\n\n* `cc_noncommercial`\n\n* `cc_nonderived`"]
+        #[serde(
+            rename = "rights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rights: ::std::option::Option<String>,
+        #[doc = "Specifies the [SafeSearch\nlevel](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)\nused for filtering out adult results. This is a custom property not\ndefined in the OpenSearch spec. Valid parameter values are:\n\n* `\"off\"`: Disable SafeSearch\n\n* `\"active\"`: Enable SafeSearch"]
+        #[serde(
+            rename = "safe",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub safe: ::std::option::Option<String>,
+        #[doc = "The search terms entered by the user."]
+        #[serde(
+            rename = "searchTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_terms: ::std::option::Option<String>,
+        #[doc = "Allowed values are `web` or `image`. If unspecified, results are limited\nto webpages."]
+        #[serde(
+            rename = "searchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_type: ::std::option::Option<String>,
+        #[doc = "Restricts results to URLs from a specified site."]
+        #[serde(
+            rename = "siteSearch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub site_search: ::std::option::Option<String>,
+        #[doc = "Specifies whether to include or exclude results from the site named in\nthe `sitesearch` parameter. Supported values are:\n\n* `i`: include content from site\n\n* `e`: exclude content from site"]
+        #[serde(
+            rename = "siteSearchFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub site_search_filter: ::std::option::Option<String>,
+        #[doc = "Specifies that results should be sorted according to the specified\nexpression. For example, sort by date."]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sort: ::std::option::Option<String>,
+        #[doc = "The index of the current set of search results into the total set of\nresults, where the index of the first result is 1."]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_index: ::std::option::Option<i32>,
+        #[doc = "The page number of this set of results, where the page length is set by\nthe `count` property."]
+        #[serde(
+            rename = "startPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_page: ::std::option::Option<i32>,
+        #[doc = "A description of the query."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Estimated number of total search results. May not be accurate."]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub total_results: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchQueriesPreviousPageItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchQueriesPreviousPageItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct SearchQueriesRequestItems {
+        #[doc = "Number of search results returned in this set."]
+        #[serde(
+            rename = "count",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub count: ::std::option::Option<i32>,
+        #[doc = "Restricts search results to documents originating in a particular\ncountry. You may use [Boolean\noperators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)\nin the `cr` parameter's value.\n\nGoogle WebSearch determines the country of a document by analyzing the\nfollowing:\n\n* The top-level domain (TLD) of the document's URL.\n\n* The geographic location of the web server's IP address.\n\nSee [Country (cr) Parameter\nValues](https://developers.google.com/custom-search/docs/xml_results#countryCollections)\nfor a list of valid values for this parameter."]
+        #[serde(
+            rename = "cr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cr: ::std::option::Option<String>,
+        #[doc = "The identifier of a custom search engine created using the Custom Search\n[Control Panel](https://cse.google.com/). This is a custom property not\ndefined in the OpenSearch spec. This parameter is **required**."]
+        #[serde(
+            rename = "cx",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub cx: ::std::option::Option<String>,
+        #[doc = "Restricts results to URLs based on date. Supported values include:\n\n* `d[number]`: requests results from the specified number of past days.\n\n* `w[number]`: requests results from the specified number of past weeks.\n\n* `m[number]`: requests results from the specified number of past months.\n\n* `y[number]`: requests results from the specified number of past years."]
+        #[serde(
+            rename = "dateRestrict",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub date_restrict: ::std::option::Option<String>,
+        #[doc = "Enables or disables the [Simplified and Traditional Chinese\nSearch](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)\nfeature.\n\nSupported values are:\n\n* `0`: enabled (default)\n\n* `1`: disabled"]
+        #[serde(
+            rename = "disableCnTwTranslation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub disable_cn_tw_translation: ::std::option::Option<String>,
+        #[doc = "Identifies a phrase that all documents in the search results must\ncontain."]
+        #[serde(
+            rename = "exactTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exact_terms: ::std::option::Option<String>,
+        #[doc = "Identifies a word or phrase that should not appear in any documents in\nthe search results."]
+        #[serde(
+            rename = "excludeTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub exclude_terms: ::std::option::Option<String>,
+        #[doc = "Restricts results to files of a specified extension. Filetypes supported\nby Google include:\n\n* Adobe Portable Document Format (`pdf`)\n\n* Adobe PostScript (`ps`)\n\n* Lotus 1-2-3 (`wk1`, `wk2`, `wk3`, `wk4`, `wk5`, `wki`, `wks`, `wku`)\n\n* Lotus WordPro (`lwp`)\n\n* Macwrite (`mw`)\n\n* Microsoft Excel (`xls`)\n\n* Microsoft PowerPoint (`ppt`)\n\n* Microsoft Word (`doc`)\n\n* Microsoft Works (`wks`, `wps`, `wdb`)\n\n* Microsoft Write (`wri`)\n\n* Rich Text Format (`rtf`)\n\n* Shockwave Flash (`swf`)\n\n* Text (`ans`, `txt`).\n\nAdditional filetypes may be added in the future. An up-to-date list can\nalways be found in Google's [file type\nFAQ](https://support.google.com/webmasters/answer/35287)."]
+        #[serde(
+            rename = "fileType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub file_type: ::std::option::Option<String>,
+        #[doc = "Activates or deactivates the automatic filtering of Google search\nresults. See [Automatic\nFiltering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)\nfor more information about Google's search results filters. Valid values\nfor this parameter are:\n\n* `0`: Disabled\n\n* `1`: Enabled (default)\n\n**Note**: By default, Google applies filtering to all search results to\nimprove the quality of those results."]
+        #[serde(
+            rename = "filter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<String>,
+        #[doc = "Boosts search results whose country of origin matches the parameter\nvalue. See [Country\nCodes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)\nfor a list of valid values.\n\nSpecifying a `gl` parameter value in WebSearch requests should improve\nthe relevance of results. This is particularly true for international\ncustomers and, even more specifically, for customers in English-speaking\ncountries other than the United States."]
+        #[serde(
+            rename = "gl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub gl: ::std::option::Option<String>,
+        #[doc = "Specifies the Google domain (for example, google.com, google.de, or\ngoogle.fr) to which the search should be limited."]
+        #[serde(
+            rename = "googleHost",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub google_host: ::std::option::Option<String>,
+        #[doc = "Specifies the ending value for a search range. Use `cse:lowRange` and\n`cse:highrange` to append an inclusive search range of\n`lowRange...highRange` to the query."]
+        #[serde(
+            rename = "highRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub high_range: ::std::option::Option<String>,
+        #[doc = "Specifies the interface language (host language) of your user interface.\nExplicitly setting this parameter improves the performance and the\nquality of your search results.\n\nSee the [Interface\nLanguages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)\nsection of [Internationalizing Queries and Results\nPresentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)\nfor more information, and [Supported Interface\nLanguages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)\nfor a list of supported languages."]
+        #[serde(
+            rename = "hl",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hl: ::std::option::Option<String>,
+        #[doc = "Appends the specified query terms to the query, as if they were combined\nwith a logical `AND` operator."]
+        #[serde(
+            rename = "hq",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub hq: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified color type. Supported values\nare:\n\n* `mono` (black and white)\n\n* `gray` (grayscale)\n\n* `color` (color)"]
+        #[serde(
+            rename = "imgColorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_color_type: ::std::option::Option<String>,
+        #[doc = "Restricts results to images with a specific dominant color. Supported\nvalues are:\n\n* `red`\n\n* `orange`\n\n* `yellow`\n\n* `green`\n\n* `teal`\n\n* `blue`\n\n* `purple`\n\n* `pink`\n\n* `white`\n\n* `gray`\n\n* `black`\n\n* `brown`"]
+        #[serde(
+            rename = "imgDominantColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_dominant_color: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified size. Supported values are:\n\n* `icon` (small)\n\n* `small | medium | large | xlarge` (medium)\n\n* `xxlarge` (large)\n\n* `huge` (extra-large)"]
+        #[serde(
+            rename = "imgSize",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_size: ::std::option::Option<String>,
+        #[doc = "Restricts results to images of a specified type. Supported values are:\n\n* `clipart` (Clip art)\n\n* `face` (Face)\n\n* `lineart` (Line drawing)\n\n* `photo` (Photo)\n\n* `animated` (Animated)\n\n* `stock` (Stock)"]
+        #[serde(
+            rename = "imgType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub img_type: ::std::option::Option<String>,
+        #[doc = "The character encoding supported for search requests."]
+        #[serde(
+            rename = "inputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub input_encoding: ::std::option::Option<String>,
+        #[doc = "The language of the search results."]
+        #[serde(
+            rename = "language",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub language: ::std::option::Option<String>,
+        #[doc = "Specifies that all results should contain a link to a specific URL."]
+        #[serde(
+            rename = "linkSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub link_site: ::std::option::Option<String>,
+        #[doc = "Specifies the starting value for a search range. Use `cse:lowRange` and\n`cse:highrange` to append an inclusive search range of\n`lowRange...highRange` to the query."]
+        #[serde(
+            rename = "lowRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub low_range: ::std::option::Option<String>,
+        #[doc = "Provides additional search terms to check for in a document, where each\ndocument in the search results must contain at least one of the\nadditional search terms. You can also use the [Boolean\nOR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)\nquery term for this type of query."]
+        #[serde(
+            rename = "orTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub or_terms: ::std::option::Option<String>,
+        #[doc = "The character encoding supported for search results."]
+        #[serde(
+            rename = "outputEncoding",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub output_encoding: ::std::option::Option<String>,
+        #[doc = "Specifies that all search results should be pages that are related to the\nspecified URL. The parameter value should be a URL."]
+        #[serde(
+            rename = "relatedSite",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub related_site: ::std::option::Option<String>,
+        #[doc = "Filters based on licensing. Supported values include:\n\n* `cc_publicdomain`\n\n* `cc_attribute`\n\n* `cc_sharealike`\n\n* `cc_noncommercial`\n\n* `cc_nonderived`"]
+        #[serde(
+            rename = "rights",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rights: ::std::option::Option<String>,
+        #[doc = "Specifies the [SafeSearch\nlevel](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)\nused for filtering out adult results. This is a custom property not\ndefined in the OpenSearch spec. Valid parameter values are:\n\n* `\"off\"`: Disable SafeSearch\n\n* `\"active\"`: Enable SafeSearch"]
+        #[serde(
+            rename = "safe",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub safe: ::std::option::Option<String>,
+        #[doc = "The search terms entered by the user."]
+        #[serde(
+            rename = "searchTerms",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_terms: ::std::option::Option<String>,
+        #[doc = "Allowed values are `web` or `image`. If unspecified, results are limited\nto webpages."]
+        #[serde(
+            rename = "searchType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_type: ::std::option::Option<String>,
+        #[doc = "Restricts results to URLs from a specified site."]
+        #[serde(
+            rename = "siteSearch",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub site_search: ::std::option::Option<String>,
+        #[doc = "Specifies whether to include or exclude results from the site named in\nthe `sitesearch` parameter. Supported values are:\n\n* `i`: include content from site\n\n* `e`: exclude content from site"]
+        #[serde(
+            rename = "siteSearchFilter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub site_search_filter: ::std::option::Option<String>,
+        #[doc = "Specifies that results should be sorted according to the specified\nexpression. For example, sort by date."]
+        #[serde(
+            rename = "sort",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub sort: ::std::option::Option<String>,
+        #[doc = "The index of the current set of search results into the total set of\nresults, where the index of the first result is 1."]
+        #[serde(
+            rename = "startIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_index: ::std::option::Option<i32>,
+        #[doc = "The page number of this set of results, where the page length is set by\nthe `count` property."]
+        #[serde(
+            rename = "startPage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub start_page: ::std::option::Option<i32>,
+        #[doc = "A description of the query."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Estimated number of total search results. May not be accurate."]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        #[serde(with = "crate::parsed_string")]
+        pub total_results: ::std::option::Option<i64>,
+    }
+    impl ::google_field_selector::FieldSelector for SearchQueriesRequestItems {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SearchQueriesRequestItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct SearchSearchInformation {
+        #[doc = "The time taken for the server to return search results, formatted\naccording to locale style."]
+        #[serde(
+            rename = "formattedSearchTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formatted_search_time: ::std::option::Option<String>,
+        #[doc = "The total number of search results, formatted according to locale style."]
+        #[serde(
+            rename = "formattedTotalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub formatted_total_results: ::std::option::Option<String>,
+        #[doc = "The time taken for the server to return search results."]
+        #[serde(
+            rename = "searchTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub search_time: ::std::option::Option<f64>,
+        #[doc = "The total number of search results returned by the query."]
+        #[serde(
+            rename = "totalResults",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub total_results: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for SearchSearchInformation {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -800,12 +1404,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchSpelling {
+        #[doc = "The corrected query."]
         #[serde(
             rename = "correctedQuery",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub corrected_query: ::std::option::Option<String>,
+        #[doc = "The corrected query, formatted in HTML."]
         #[serde(
             rename = "htmlCorrectedQuery",
             default,
@@ -836,12 +1442,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchUrl {
+        #[doc = "The MIME type of the OpenSearch URL template for the Custom Search API."]
         #[serde(
             rename = "type",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<String>,
+        #[doc = "The actual [OpenSearch\ntemplate](http://www.opensearch.org/specifications/opensearch/1.1#opensearch_url_template_syntax)\nfor this API."]
         #[serde(
             rename = "template",
             default,
@@ -865,11 +1473,17 @@ pub mod params {
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
+        #[doc = "Media download with context-dependent Content-Type"]
+        Media,
+        #[doc = "Responses with Content-Type of application/x-protobuf"]
+        Proto,
     }
     impl Alt {
         pub fn as_str(self) -> &'static str {
             match self {
                 Alt::Json => "json",
+                Alt::Media => "media",
+                Alt::Proto => "proto",
             }
         }
     }
@@ -883,6 +1497,8 @@ pub mod params {
         fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
             Ok(match s {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => return Err(()),
             })
         }
@@ -908,6 +1524,8 @@ pub mod params {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -927,9 +1545,80 @@ pub mod params {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum Xgafv {
+        #[doc = "v1 error format"]
+        _1,
+        #[doc = "v2 error format"]
+        _2,
+    }
+    impl Xgafv {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                Xgafv::_1 => "1",
+                Xgafv::_2 => "2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for Xgafv {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for Xgafv {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for Xgafv {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -937,8 +1626,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -957,91 +1658,21 @@ pub mod resources {
     pub mod cse {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-            pub enum ListFilter {
-                #[doc = "Turns off duplicate content filter."]
-                _0,
-                #[doc = "Turns on duplicate content filter."]
-                _1,
-            }
-            impl ListFilter {
-                pub fn as_str(self) -> &'static str {
-                    match self {
-                        ListFilter::_0 => "0",
-                        ListFilter::_1 => "1",
-                    }
-                }
-            }
-            impl ::std::convert::AsRef<str> for ListFilter {
-                fn as_ref(&self) -> &str {
-                    self.as_str()
-                }
-            }
-            impl ::std::str::FromStr for ListFilter {
-                type Err = ();
-                fn from_str(s: &str) -> ::std::result::Result<ListFilter, ()> {
-                    Ok(match s {
-                        "0" => ListFilter::_0,
-                        "1" => ListFilter::_1,
-                        _ => return Err(()),
-                    })
-                }
-            }
-            impl ::std::fmt::Display for ListFilter {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-                    f.write_str(self.as_str())
-                }
-            }
-            impl ::serde::Serialize for ListFilter {
-                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-                where
-                    S: ::serde::ser::Serializer,
-                {
-                    serializer.serialize_str(self.as_str())
-                }
-            }
-            impl<'de> ::serde::Deserialize<'de> for ListFilter {
-                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-                where
-                    D: ::serde::de::Deserializer<'de>,
-                {
-                    let value: &'de str = <&str>::deserialize(deserializer)?;
-                    Ok(match value {
-                        "0" => ListFilter::_0,
-                        "1" => ListFilter::_1,
-                        _ => {
-                            return Err(::serde::de::Error::custom(format!(
-                                "invalid enum for #name: {}",
-                                value
-                            )))
-                        }
-                    })
-                }
-            }
-            impl ::google_field_selector::FieldSelector for ListFilter {
-                fn fields() -> Vec<::google_field_selector::Field> {
-                    Vec::new()
-                }
-            }
-            impl ::google_field_selector::ToFieldType for ListFilter {
-                fn field_type() -> ::google_field_selector::FieldType {
-                    ::google_field_selector::FieldType::Leaf
-                }
-            }
-            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgColorType {
-                #[doc = "color"]
                 Color,
-                #[doc = "gray"]
                 Gray,
-                #[doc = "mono"]
+                ImgColorTypeUndefined,
                 Mono,
+                Trans,
             }
             impl ListImgColorType {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         ListImgColorType::Color => "color",
                         ListImgColorType::Gray => "gray",
+                        ListImgColorType::ImgColorTypeUndefined => "imgColorTypeUndefined",
                         ListImgColorType::Mono => "mono",
+                        ListImgColorType::Trans => "trans",
                     }
                 }
             }
@@ -1056,7 +1687,9 @@ pub mod resources {
                     Ok(match s {
                         "color" => ListImgColorType::Color,
                         "gray" => ListImgColorType::Gray,
+                        "imgColorTypeUndefined" => ListImgColorType::ImgColorTypeUndefined,
                         "mono" => ListImgColorType::Mono,
+                        "trans" => ListImgColorType::Trans,
                         _ => return Err(()),
                     })
                 }
@@ -1083,7 +1716,9 @@ pub mod resources {
                     Ok(match value {
                         "color" => ListImgColorType::Color,
                         "gray" => ListImgColorType::Gray,
+                        "imgColorTypeUndefined" => ListImgColorType::ImgColorTypeUndefined,
                         "mono" => ListImgColorType::Mono,
+                        "trans" => ListImgColorType::Trans,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1105,29 +1740,18 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgDominantColor {
-                #[doc = "black"]
                 Black,
-                #[doc = "blue"]
                 Blue,
-                #[doc = "brown"]
                 Brown,
-                #[doc = "gray"]
                 Gray,
-                #[doc = "green"]
                 Green,
-                #[doc = "orange"]
+                ImgDominantColorUndefined,
                 Orange,
-                #[doc = "pink"]
                 Pink,
-                #[doc = "purple"]
                 Purple,
-                #[doc = "red"]
                 Red,
-                #[doc = "teal"]
                 Teal,
-                #[doc = "white"]
                 White,
-                #[doc = "yellow"]
                 Yellow,
             }
             impl ListImgDominantColor {
@@ -1138,6 +1762,9 @@ pub mod resources {
                         ListImgDominantColor::Brown => "brown",
                         ListImgDominantColor::Gray => "gray",
                         ListImgDominantColor::Green => "green",
+                        ListImgDominantColor::ImgDominantColorUndefined => {
+                            "imgDominantColorUndefined"
+                        }
                         ListImgDominantColor::Orange => "orange",
                         ListImgDominantColor::Pink => "pink",
                         ListImgDominantColor::Purple => "purple",
@@ -1162,6 +1789,9 @@ pub mod resources {
                         "brown" => ListImgDominantColor::Brown,
                         "gray" => ListImgDominantColor::Gray,
                         "green" => ListImgDominantColor::Green,
+                        "imgDominantColorUndefined" => {
+                            ListImgDominantColor::ImgDominantColorUndefined
+                        }
                         "orange" => ListImgDominantColor::Orange,
                         "pink" => ListImgDominantColor::Pink,
                         "purple" => ListImgDominantColor::Purple,
@@ -1198,6 +1828,9 @@ pub mod resources {
                         "brown" => ListImgDominantColor::Brown,
                         "gray" => ListImgDominantColor::Gray,
                         "green" => ListImgDominantColor::Green,
+                        "imgDominantColorUndefined" => {
+                            ListImgDominantColor::ImgDominantColorUndefined
+                        }
                         "orange" => ListImgDominantColor::Orange,
                         "pink" => ListImgDominantColor::Pink,
                         "purple" => ListImgDominantColor::Purple,
@@ -1226,31 +1859,26 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgSize {
-                #[doc = "huge"]
                 Huge,
-                #[doc = "icon"]
                 Icon,
-                #[doc = "large"]
+                ImgSizeUndefined,
                 Large,
-                #[doc = "medium"]
                 Medium,
-                #[doc = "small"]
                 Small,
-                #[doc = "xlarge"]
                 Xlarge,
-                #[doc = "xxlarge"]
                 Xxlarge,
             }
             impl ListImgSize {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListImgSize::Huge => "huge",
-                        ListImgSize::Icon => "icon",
-                        ListImgSize::Large => "large",
-                        ListImgSize::Medium => "medium",
-                        ListImgSize::Small => "small",
-                        ListImgSize::Xlarge => "xlarge",
-                        ListImgSize::Xxlarge => "xxlarge",
+                        ListImgSize::Huge => "HUGE",
+                        ListImgSize::Icon => "ICON",
+                        ListImgSize::ImgSizeUndefined => "imgSizeUndefined",
+                        ListImgSize::Large => "LARGE",
+                        ListImgSize::Medium => "MEDIUM",
+                        ListImgSize::Small => "SMALL",
+                        ListImgSize::Xlarge => "XLARGE",
+                        ListImgSize::Xxlarge => "XXLARGE",
                     }
                 }
             }
@@ -1263,13 +1891,14 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListImgSize, ()> {
                     Ok(match s {
-                        "huge" => ListImgSize::Huge,
-                        "icon" => ListImgSize::Icon,
-                        "large" => ListImgSize::Large,
-                        "medium" => ListImgSize::Medium,
-                        "small" => ListImgSize::Small,
-                        "xlarge" => ListImgSize::Xlarge,
-                        "xxlarge" => ListImgSize::Xxlarge,
+                        "HUGE" => ListImgSize::Huge,
+                        "ICON" => ListImgSize::Icon,
+                        "imgSizeUndefined" => ListImgSize::ImgSizeUndefined,
+                        "LARGE" => ListImgSize::Large,
+                        "MEDIUM" => ListImgSize::Medium,
+                        "SMALL" => ListImgSize::Small,
+                        "XLARGE" => ListImgSize::Xlarge,
+                        "XXLARGE" => ListImgSize::Xxlarge,
                         _ => return Err(()),
                     })
                 }
@@ -1294,13 +1923,14 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "huge" => ListImgSize::Huge,
-                        "icon" => ListImgSize::Icon,
-                        "large" => ListImgSize::Large,
-                        "medium" => ListImgSize::Medium,
-                        "small" => ListImgSize::Small,
-                        "xlarge" => ListImgSize::Xlarge,
-                        "xxlarge" => ListImgSize::Xxlarge,
+                        "HUGE" => ListImgSize::Huge,
+                        "ICON" => ListImgSize::Icon,
+                        "imgSizeUndefined" => ListImgSize::ImgSizeUndefined,
+                        "LARGE" => ListImgSize::Large,
+                        "MEDIUM" => ListImgSize::Medium,
+                        "SMALL" => ListImgSize::Small,
+                        "XLARGE" => ListImgSize::Xlarge,
+                        "XXLARGE" => ListImgSize::Xxlarge,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1322,25 +1952,24 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListImgType {
-                #[doc = "clipart"]
+                Animated,
                 Clipart,
-                #[doc = "face"]
                 Face,
-                #[doc = "lineart"]
+                ImgTypeUndefined,
                 Lineart,
-                #[doc = "news"]
-                News,
-                #[doc = "photo"]
                 Photo,
+                Stock,
             }
             impl ListImgType {
                 pub fn as_str(self) -> &'static str {
                     match self {
+                        ListImgType::Animated => "animated",
                         ListImgType::Clipart => "clipart",
                         ListImgType::Face => "face",
+                        ListImgType::ImgTypeUndefined => "imgTypeUndefined",
                         ListImgType::Lineart => "lineart",
-                        ListImgType::News => "news",
                         ListImgType::Photo => "photo",
+                        ListImgType::Stock => "stock",
                     }
                 }
             }
@@ -1353,11 +1982,13 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListImgType, ()> {
                     Ok(match s {
+                        "animated" => ListImgType::Animated,
                         "clipart" => ListImgType::Clipart,
                         "face" => ListImgType::Face,
+                        "imgTypeUndefined" => ListImgType::ImgTypeUndefined,
                         "lineart" => ListImgType::Lineart,
-                        "news" => ListImgType::News,
                         "photo" => ListImgType::Photo,
+                        "stock" => ListImgType::Stock,
                         _ => return Err(()),
                     })
                 }
@@ -1382,11 +2013,13 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
+                        "animated" => ListImgType::Animated,
                         "clipart" => ListImgType::Clipart,
                         "face" => ListImgType::Face,
+                        "imgTypeUndefined" => ListImgType::ImgTypeUndefined,
                         "lineart" => ListImgType::Lineart,
-                        "news" => ListImgType::News,
                         "photo" => ListImgType::Photo,
+                        "stock" => ListImgType::Stock,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1407,251 +2040,12 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-            pub enum ListLr {
-                #[doc = "Arabic"]
-                LangAr,
-                #[doc = "Bulgarian"]
-                LangBg,
-                #[doc = "Catalan"]
-                LangCa,
-                #[doc = "Czech"]
-                LangCs,
-                #[doc = "Danish"]
-                LangDa,
-                #[doc = "German"]
-                LangDe,
-                #[doc = "Greek"]
-                LangEl,
-                #[doc = "English"]
-                LangEn,
-                #[doc = "Spanish"]
-                LangEs,
-                #[doc = "Estonian"]
-                LangEt,
-                #[doc = "Finnish"]
-                LangFi,
-                #[doc = "French"]
-                LangFr,
-                #[doc = "Croatian"]
-                LangHr,
-                #[doc = "Hungarian"]
-                LangHu,
-                #[doc = "Indonesian"]
-                LangId,
-                #[doc = "Icelandic"]
-                LangIs,
-                #[doc = "Italian"]
-                LangIt,
-                #[doc = "Hebrew"]
-                LangIw,
-                #[doc = "Japanese"]
-                LangJa,
-                #[doc = "Korean"]
-                LangKo,
-                #[doc = "Lithuanian"]
-                LangLt,
-                #[doc = "Latvian"]
-                LangLv,
-                #[doc = "Dutch"]
-                LangNl,
-                #[doc = "Norwegian"]
-                LangNo,
-                #[doc = "Polish"]
-                LangPl,
-                #[doc = "Portuguese"]
-                LangPt,
-                #[doc = "Romanian"]
-                LangRo,
-                #[doc = "Russian"]
-                LangRu,
-                #[doc = "Slovak"]
-                LangSk,
-                #[doc = "Slovenian"]
-                LangSl,
-                #[doc = "Serbian"]
-                LangSr,
-                #[doc = "Swedish"]
-                LangSv,
-                #[doc = "Turkish"]
-                LangTr,
-                #[doc = "Chinese (Simplified)"]
-                LangZhCN,
-                #[doc = "Chinese (Traditional)"]
-                LangZhTW,
-            }
-            impl ListLr {
-                pub fn as_str(self) -> &'static str {
-                    match self {
-                        ListLr::LangAr => "lang_ar",
-                        ListLr::LangBg => "lang_bg",
-                        ListLr::LangCa => "lang_ca",
-                        ListLr::LangCs => "lang_cs",
-                        ListLr::LangDa => "lang_da",
-                        ListLr::LangDe => "lang_de",
-                        ListLr::LangEl => "lang_el",
-                        ListLr::LangEn => "lang_en",
-                        ListLr::LangEs => "lang_es",
-                        ListLr::LangEt => "lang_et",
-                        ListLr::LangFi => "lang_fi",
-                        ListLr::LangFr => "lang_fr",
-                        ListLr::LangHr => "lang_hr",
-                        ListLr::LangHu => "lang_hu",
-                        ListLr::LangId => "lang_id",
-                        ListLr::LangIs => "lang_is",
-                        ListLr::LangIt => "lang_it",
-                        ListLr::LangIw => "lang_iw",
-                        ListLr::LangJa => "lang_ja",
-                        ListLr::LangKo => "lang_ko",
-                        ListLr::LangLt => "lang_lt",
-                        ListLr::LangLv => "lang_lv",
-                        ListLr::LangNl => "lang_nl",
-                        ListLr::LangNo => "lang_no",
-                        ListLr::LangPl => "lang_pl",
-                        ListLr::LangPt => "lang_pt",
-                        ListLr::LangRo => "lang_ro",
-                        ListLr::LangRu => "lang_ru",
-                        ListLr::LangSk => "lang_sk",
-                        ListLr::LangSl => "lang_sl",
-                        ListLr::LangSr => "lang_sr",
-                        ListLr::LangSv => "lang_sv",
-                        ListLr::LangTr => "lang_tr",
-                        ListLr::LangZhCN => "lang_zh-CN",
-                        ListLr::LangZhTW => "lang_zh-TW",
-                    }
-                }
-            }
-            impl ::std::convert::AsRef<str> for ListLr {
-                fn as_ref(&self) -> &str {
-                    self.as_str()
-                }
-            }
-            impl ::std::str::FromStr for ListLr {
-                type Err = ();
-                fn from_str(s: &str) -> ::std::result::Result<ListLr, ()> {
-                    Ok(match s {
-                        "lang_ar" => ListLr::LangAr,
-                        "lang_bg" => ListLr::LangBg,
-                        "lang_ca" => ListLr::LangCa,
-                        "lang_cs" => ListLr::LangCs,
-                        "lang_da" => ListLr::LangDa,
-                        "lang_de" => ListLr::LangDe,
-                        "lang_el" => ListLr::LangEl,
-                        "lang_en" => ListLr::LangEn,
-                        "lang_es" => ListLr::LangEs,
-                        "lang_et" => ListLr::LangEt,
-                        "lang_fi" => ListLr::LangFi,
-                        "lang_fr" => ListLr::LangFr,
-                        "lang_hr" => ListLr::LangHr,
-                        "lang_hu" => ListLr::LangHu,
-                        "lang_id" => ListLr::LangId,
-                        "lang_is" => ListLr::LangIs,
-                        "lang_it" => ListLr::LangIt,
-                        "lang_iw" => ListLr::LangIw,
-                        "lang_ja" => ListLr::LangJa,
-                        "lang_ko" => ListLr::LangKo,
-                        "lang_lt" => ListLr::LangLt,
-                        "lang_lv" => ListLr::LangLv,
-                        "lang_nl" => ListLr::LangNl,
-                        "lang_no" => ListLr::LangNo,
-                        "lang_pl" => ListLr::LangPl,
-                        "lang_pt" => ListLr::LangPt,
-                        "lang_ro" => ListLr::LangRo,
-                        "lang_ru" => ListLr::LangRu,
-                        "lang_sk" => ListLr::LangSk,
-                        "lang_sl" => ListLr::LangSl,
-                        "lang_sr" => ListLr::LangSr,
-                        "lang_sv" => ListLr::LangSv,
-                        "lang_tr" => ListLr::LangTr,
-                        "lang_zh-CN" => ListLr::LangZhCN,
-                        "lang_zh-TW" => ListLr::LangZhTW,
-                        _ => return Err(()),
-                    })
-                }
-            }
-            impl ::std::fmt::Display for ListLr {
-                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-                    f.write_str(self.as_str())
-                }
-            }
-            impl ::serde::Serialize for ListLr {
-                fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-                where
-                    S: ::serde::ser::Serializer,
-                {
-                    serializer.serialize_str(self.as_str())
-                }
-            }
-            impl<'de> ::serde::Deserialize<'de> for ListLr {
-                fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-                where
-                    D: ::serde::de::Deserializer<'de>,
-                {
-                    let value: &'de str = <&str>::deserialize(deserializer)?;
-                    Ok(match value {
-                        "lang_ar" => ListLr::LangAr,
-                        "lang_bg" => ListLr::LangBg,
-                        "lang_ca" => ListLr::LangCa,
-                        "lang_cs" => ListLr::LangCs,
-                        "lang_da" => ListLr::LangDa,
-                        "lang_de" => ListLr::LangDe,
-                        "lang_el" => ListLr::LangEl,
-                        "lang_en" => ListLr::LangEn,
-                        "lang_es" => ListLr::LangEs,
-                        "lang_et" => ListLr::LangEt,
-                        "lang_fi" => ListLr::LangFi,
-                        "lang_fr" => ListLr::LangFr,
-                        "lang_hr" => ListLr::LangHr,
-                        "lang_hu" => ListLr::LangHu,
-                        "lang_id" => ListLr::LangId,
-                        "lang_is" => ListLr::LangIs,
-                        "lang_it" => ListLr::LangIt,
-                        "lang_iw" => ListLr::LangIw,
-                        "lang_ja" => ListLr::LangJa,
-                        "lang_ko" => ListLr::LangKo,
-                        "lang_lt" => ListLr::LangLt,
-                        "lang_lv" => ListLr::LangLv,
-                        "lang_nl" => ListLr::LangNl,
-                        "lang_no" => ListLr::LangNo,
-                        "lang_pl" => ListLr::LangPl,
-                        "lang_pt" => ListLr::LangPt,
-                        "lang_ro" => ListLr::LangRo,
-                        "lang_ru" => ListLr::LangRu,
-                        "lang_sk" => ListLr::LangSk,
-                        "lang_sl" => ListLr::LangSl,
-                        "lang_sr" => ListLr::LangSr,
-                        "lang_sv" => ListLr::LangSv,
-                        "lang_tr" => ListLr::LangTr,
-                        "lang_zh-CN" => ListLr::LangZhCN,
-                        "lang_zh-TW" => ListLr::LangZhTW,
-                        _ => {
-                            return Err(::serde::de::Error::custom(format!(
-                                "invalid enum for #name: {}",
-                                value
-                            )))
-                        }
-                    })
-                }
-            }
-            impl ::google_field_selector::FieldSelector for ListLr {
-                fn fields() -> Vec<::google_field_selector::Field> {
-                    Vec::new()
-                }
-            }
-            impl ::google_field_selector::ToFieldType for ListLr {
-                fn field_type() -> ::google_field_selector::FieldType {
-                    ::google_field_selector::FieldType::Leaf
-                }
-            }
-            #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSafe {
-                #[doc = "Enables safe search filtering."]
                 Active,
-                #[doc = "(Deprecated) Same as active."]
                 High,
-                #[doc = "(Deprecated) Same as active."]
                 Medium,
-                #[doc = "Disables safe search filtering."]
                 Off,
+                SafeUndefined,
             }
             impl ListSafe {
                 pub fn as_str(self) -> &'static str {
@@ -1660,6 +2054,7 @@ pub mod resources {
                         ListSafe::High => "high",
                         ListSafe::Medium => "medium",
                         ListSafe::Off => "off",
+                        ListSafe::SafeUndefined => "safeUndefined",
                     }
                 }
             }
@@ -1676,6 +2071,7 @@ pub mod resources {
                         "high" => ListSafe::High,
                         "medium" => ListSafe::Medium,
                         "off" => ListSafe::Off,
+                        "safeUndefined" => ListSafe::SafeUndefined,
                         _ => return Err(()),
                     })
                 }
@@ -1704,6 +2100,7 @@ pub mod resources {
                         "high" => ListSafe::High,
                         "medium" => ListSafe::Medium,
                         "off" => ListSafe::Off,
+                        "safeUndefined" => ListSafe::SafeUndefined,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1725,13 +2122,14 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSearchType {
-                #[doc = "custom image search"]
                 Image,
+                SearchTypeUndefined,
             }
             impl ListSearchType {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         ListSearchType::Image => "image",
+                        ListSearchType::SearchTypeUndefined => "searchTypeUndefined",
                     }
                 }
             }
@@ -1745,6 +2143,7 @@ pub mod resources {
                 fn from_str(s: &str) -> ::std::result::Result<ListSearchType, ()> {
                     Ok(match s {
                         "image" => ListSearchType::Image,
+                        "searchTypeUndefined" => ListSearchType::SearchTypeUndefined,
                         _ => return Err(()),
                     })
                 }
@@ -1770,6 +2169,7 @@ pub mod resources {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
                         "image" => ListSearchType::Image,
+                        "searchTypeUndefined" => ListSearchType::SearchTypeUndefined,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1791,16 +2191,18 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListSiteSearchFilter {
-                #[doc = "exclude"]
                 E,
-                #[doc = "include"]
                 I,
+                SiteSearchFilterUndefined,
             }
             impl ListSiteSearchFilter {
                 pub fn as_str(self) -> &'static str {
                     match self {
                         ListSiteSearchFilter::E => "e",
                         ListSiteSearchFilter::I => "i",
+                        ListSiteSearchFilter::SiteSearchFilterUndefined => {
+                            "siteSearchFilterUndefined"
+                        }
                     }
                 }
             }
@@ -1815,6 +2217,9 @@ pub mod resources {
                     Ok(match s {
                         "e" => ListSiteSearchFilter::E,
                         "i" => ListSiteSearchFilter::I,
+                        "siteSearchFilterUndefined" => {
+                            ListSiteSearchFilter::SiteSearchFilterUndefined
+                        }
                         _ => return Err(()),
                     })
                 }
@@ -1841,6 +2246,9 @@ pub mod resources {
                     Ok(match value {
                         "e" => ListSiteSearchFilter::E,
                         "i" => ListSiteSearchFilter::I,
+                        "siteSearchFilterUndefined" => {
+                            ListSiteSearchFilter::SiteSearchFilterUndefined
+                        }
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -1862,26 +2270,29 @@ pub mod resources {
             }
         }
         pub struct CseActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> CseActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results."]
-            pub fn list(&self, q: impl Into<String>) -> ListRequestBuilder {
+            #[doc = "Returns metadata about the search performed, metadata about the custom\nsearch engine used for the search, and the search results."]
+            pub fn list(&self) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
-                    q: q.into(),
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     c_2coff: None,
                     cr: None,
                     cx: None,
@@ -1904,6 +2315,7 @@ pub mod resources {
                     lr: None,
                     num: None,
                     or_terms: None,
+                    q: None,
                     related_site: None,
                     rights: None,
                     safe: None,
@@ -1925,9 +2337,8 @@ pub mod resources {
         #[doc = "Created via [CseActions::list()](struct.CseActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-            q: String,
             c_2coff: Option<String>,
             cr: Option<String>,
             cx: Option<String>,
@@ -1935,7 +2346,7 @@ pub mod resources {
             exact_terms: Option<String>,
             exclude_terms: Option<String>,
             file_type: Option<String>,
-            filter: Option<crate::resources::cse::params::ListFilter>,
+            filter: Option<String>,
             gl: Option<String>,
             googlehost: Option<String>,
             high_range: Option<String>,
@@ -1947,9 +2358,10 @@ pub mod resources {
             img_type: Option<crate::resources::cse::params::ListImgType>,
             link_site: Option<String>,
             low_range: Option<String>,
-            lr: Option<crate::resources::cse::params::ListLr>,
-            num: Option<u32>,
+            lr: Option<String>,
+            num: Option<i32>,
             or_terms: Option<String>,
+            q: Option<String>,
             related_site: Option<String>,
             rights: Option<String>,
             safe: Option<crate::resources::cse::params::ListSafe>,
@@ -1958,81 +2370,85 @@ pub mod resources {
             site_search_filter: Option<crate::resources::cse::params::ListSiteSearchFilter>,
             sort: Option<String>,
             start: Option<u32>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Turns off the translation between zh-CN and zh-TW."]
+            #[doc = "Enables or disables [Simplified and Traditional Chinese\nSearch](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).\n\nThe default value for this parameter is 0 (zero), meaning that the feature\nis enabled. Supported values are:\n\n* `1`: Disabled\n\n* `0`: Enabled (default)"]
             pub fn c_2coff(mut self, value: impl Into<String>) -> Self {
                 self.c_2coff = Some(value.into());
                 self
             }
-            #[doc = "Country restrict(s)."]
+            #[doc = "Restricts search results to documents originating in a particular country.\nYou may use [Boolean\noperators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)\nin the cr parameter's value.\n\nGoogle Search determines the country of a document by analyzing:\n\n* the top-level domain (TLD) of the document's URL\n\n* the geographic location of the Web server's IP address\n\nSee the [Country Parameter\nValues](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)\npage for a list of valid values for this parameter."]
             pub fn cr(mut self, value: impl Into<String>) -> Self {
                 self.cr = Some(value.into());
                 self
             }
-            #[doc = "The custom search engine ID to scope this search query"]
+            #[doc = "The custom search engine ID to use for this request."]
             pub fn cx(mut self, value: impl Into<String>) -> Self {
                 self.cx = Some(value.into());
                 self
             }
-            #[doc = "Specifies all search results are from a time period"]
+            #[doc = "Restricts results to URLs based on date. Supported values include:\n\n* `d[number]`: requests results from the specified number of past days.\n\n* `w[number]`: requests results from the specified number of past weeks.\n\n* `m[number]`: requests results from the specified number of past months.\n\n* `y[number]`: requests results from the specified number of past years."]
             pub fn date_restrict(mut self, value: impl Into<String>) -> Self {
                 self.date_restrict = Some(value.into());
                 self
             }
-            #[doc = "Identifies a phrase that all documents in the search results must contain"]
+            #[doc = "Identifies a phrase that all documents in the search results must contain."]
             pub fn exact_terms(mut self, value: impl Into<String>) -> Self {
                 self.exact_terms = Some(value.into());
                 self
             }
-            #[doc = "Identifies a word or phrase that should not appear in any documents in the search results"]
+            #[doc = "Identifies a word or phrase that should not appear in any documents in the\nsearch results."]
             pub fn exclude_terms(mut self, value: impl Into<String>) -> Self {
                 self.exclude_terms = Some(value.into());
                 self
             }
-            #[doc = "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ..."]
+            #[doc = "Restricts results to files of a specified extension. A list of file types\nindexable by Google can be found in Search Console [Help\nCenter](https://support.google.com/webmasters/answer/35287)."]
             pub fn file_type(mut self, value: impl Into<String>) -> Self {
                 self.file_type = Some(value.into());
                 self
             }
-            #[doc = "Controls turning on or off the duplicate content filter."]
-            pub fn filter(mut self, value: crate::resources::cse::params::ListFilter) -> Self {
-                self.filter = Some(value);
+            #[doc = "Controls turning on or off the duplicate content filter.\n\n* See [Automatic\n  Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)\n  for more information about Google's search results filters. Note that host\n  crowding filtering applies only to multi-site searches.\n\n* By default, Google applies filtering to all search results to improve the\n  quality of those results.\n\nAcceptable values are:\n\n* `0`: Turns off duplicate content filter.\n\n* `1`: Turns on duplicate content filter."]
+            pub fn filter(mut self, value: impl Into<String>) -> Self {
+                self.filter = Some(value.into());
                 self
             }
-            #[doc = "Geolocation of end user."]
+            #[doc = "Geolocation of end user.\n\n* The `gl` parameter value is a two-letter country code. The `gl` parameter\n  boosts search results whose country of origin matches the parameter value.\n  See the [Country\n  Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)\n  page for a list of valid values.\n\n* Specifying a `gl` parameter value should lead to more relevant results.\n  This is particularly true for international customers and, even more\n  specifically, for customers in English- speaking countries other than the\n  United States."]
             pub fn gl(mut self, value: impl Into<String>) -> Self {
                 self.gl = Some(value.into());
                 self
             }
-            #[doc = "The local Google domain to use to perform the search."]
+            #[doc = "**Deprecated**. Use the `gl` parameter for a similar effect.\n\nThe local Google domain (for example, google.com, google.de, or\ngoogle.fr) to use to perform the search."]
             pub fn googlehost(mut self, value: impl Into<String>) -> Self {
                 self.googlehost = Some(value.into());
                 self
             }
-            #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
+            #[doc = "Specifies the ending value for a search range.\n\n* Use `lowRange` and `highRange` to append an inclusive search range of\n  `lowRange...highRange` to the query."]
             pub fn high_range(mut self, value: impl Into<String>) -> Self {
                 self.high_range = Some(value.into());
                 self
             }
-            #[doc = "Sets the user interface language."]
+            #[doc = "Sets the user interface language.\n\n* Explicitly setting this parameter improves the performance and the\n  quality of your search results.\n\n* See the [Interface\n  Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)\n  section of [Internationalizing Queries and Results\n  Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)\n  for more information, and (Supported Interface\n  Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]\n  for a list of supported languages."]
             pub fn hl(mut self, value: impl Into<String>) -> Self {
                 self.hl = Some(value.into());
                 self
             }
-            #[doc = "Appends the extra query terms to the query."]
+            #[doc = "Appends the specified query terms to the query, as if they were combined\nwith a logical AND operator."]
             pub fn hq(mut self, value: impl Into<String>) -> Self {
                 self.hq = Some(value.into());
                 self
             }
-            #[doc = "Returns black and white, grayscale, or color images: mono, gray, and color."]
+            #[doc = "Returns black and white, grayscale, transparent, or color images.\nAcceptable values are:\n\n* `\"color\"`\n\n* `\"gray\"`\n\n* `\"mono\"`: black and white\n\n* `\"trans\"`: transparent background"]
             pub fn img_color_type(
                 mut self,
                 value: crate::resources::cse::params::ListImgColorType,
@@ -2040,7 +2456,7 @@ pub mod resources {
                 self.img_color_type = Some(value);
                 self
             }
-            #[doc = "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown."]
+            #[doc = "Returns images of a specific dominant color. Acceptable values are:\n\n* `\"black\"`\n\n* `\"blue\"`\n\n* `\"brown\"`\n\n* `\"gray\"`\n\n* `\"green\"`\n\n* `\"orange\"`\n\n* `\"pink\"`\n\n* `\"purple\"`\n\n* `\"red\"`\n\n* `\"teal\"`\n\n* `\"white\"`\n\n* `\"yellow\"`"]
             pub fn img_dominant_color(
                 mut self,
                 value: crate::resources::cse::params::ListImgDominantColor,
@@ -2048,57 +2464,62 @@ pub mod resources {
                 self.img_dominant_color = Some(value);
                 self
             }
-            #[doc = "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge."]
+            #[doc = "Returns images of a specified size. Acceptable values are:\n\n* `\"huge\"`\n\n* `\"icon\"`\n\n* `\"large\"`\n\n* `\"medium\"`\n\n* `\"small\"`\n\n* `\"xlarge\"`\n\n* `\"xxlarge\"`"]
             pub fn img_size(mut self, value: crate::resources::cse::params::ListImgSize) -> Self {
                 self.img_size = Some(value);
                 self
             }
-            #[doc = "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo."]
+            #[doc = "Returns images of a type. Acceptable values are:\n\n* `\"clipart\"`\n\n* `\"face\"`\n\n* `\"lineart\"`\n\n* `\"stock\"`\n\n* `\"photo\"`\n\n* `\"animated\"`"]
             pub fn img_type(mut self, value: crate::resources::cse::params::ListImgType) -> Self {
                 self.img_type = Some(value);
                 self
             }
-            #[doc = "Specifies that all search results should contain a link to a particular URL"]
+            #[doc = "Specifies that all search results should contain a link to a particular\nURL."]
             pub fn link_site(mut self, value: impl Into<String>) -> Self {
                 self.link_site = Some(value.into());
                 self
             }
-            #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
+            #[doc = "Specifies the starting value for a search range. Use `lowRange` and\n`highRange` to append an inclusive search range of `lowRange...highRange`\nto the query."]
             pub fn low_range(mut self, value: impl Into<String>) -> Self {
                 self.low_range = Some(value.into());
                 self
             }
-            #[doc = "The language restriction for the search results"]
-            pub fn lr(mut self, value: crate::resources::cse::params::ListLr) -> Self {
-                self.lr = Some(value);
+            #[doc = "Restricts the search to documents written in a particular language (e.g.,\n`lr=lang_ja`).\n\nAcceptable values are:\n\n* `\"lang_ar\"`: Arabic\n\n* `\"lang_bg\"`: Bulgarian\n\n* `\"lang_ca\"`: Catalan\n\n* `\"lang_cs\"`: Czech\n\n* `\"lang_da\"`: Danish\n\n* `\"lang_de\"`: German\n\n* `\"lang_el\"`: Greek\n\n* `\"lang_en\"`: English\n\n* `\"lang_es\"`: Spanish\n\n* `\"lang_et\"`: Estonian\n\n* `\"lang_fi\"`: Finnish\n\n* `\"lang_fr\"`: French\n\n* `\"lang_hr\"`: Croatian\n\n* `\"lang_hu\"`: Hungarian\n\n* `\"lang_id\"`: Indonesian\n\n* `\"lang_is\"`: Icelandic\n\n* `\"lang_it\"`: Italian\n\n* `\"lang_iw\"`: Hebrew\n\n* `\"lang_ja\"`: Japanese\n\n* `\"lang_ko\"`: Korean\n\n* `\"lang_lt\"`: Lithuanian\n\n* `\"lang_lv\"`: Latvian\n\n* `\"lang_nl\"`: Dutch\n\n* `\"lang_no\"`: Norwegian\n\n* `\"lang_pl\"`: Polish\n\n* `\"lang_pt\"`: Portuguese\n\n* `\"lang_ro\"`: Romanian\n\n* `\"lang_ru\"`: Russian\n\n* `\"lang_sk\"`: Slovak\n\n* `\"lang_sl\"`: Slovenian\n\n* `\"lang_sr\"`: Serbian\n\n* `\"lang_sv\"`: Swedish\n\n* `\"lang_tr\"`: Turkish\n\n* `\"lang_zh-CN\"`: Chinese (Simplified)\n\n* `\"lang_zh-TW\"`: Chinese (Traditional)"]
+            pub fn lr(mut self, value: impl Into<String>) -> Self {
+                self.lr = Some(value.into());
                 self
             }
-            #[doc = "Number of search results to return"]
-            pub fn num(mut self, value: u32) -> Self {
+            #[doc = "Number of search results to return.\n\n* Valid values are integers between 1 and 10, inclusive."]
+            pub fn num(mut self, value: i32) -> Self {
                 self.num = Some(value);
                 self
             }
-            #[doc = "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms"]
+            #[doc = "Provides additional search terms to check for in a document, where each\ndocument in the search results must contain at least one of the additional\nsearch terms."]
             pub fn or_terms(mut self, value: impl Into<String>) -> Self {
                 self.or_terms = Some(value.into());
                 self
             }
-            #[doc = "Specifies that all search results should be pages that are related to the specified URL"]
+            #[doc = "Query"]
+            pub fn q(mut self, value: impl Into<String>) -> Self {
+                self.q = Some(value.into());
+                self
+            }
+            #[doc = "Specifies that all search results should be pages that are related to the\nspecified URL."]
             pub fn related_site(mut self, value: impl Into<String>) -> Self {
                 self.related_site = Some(value.into());
                 self
             }
-            #[doc = "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these."]
+            #[doc = "Filters based on licensing. Supported values include: `cc_publicdomain`,\n`cc_attribute`, `cc_sharealike`, `cc_noncommercial`, `cc_nonderived` and\ncombinations of these. See [typical\ncombinations](https://wiki.creativecommons.org/wiki/CC_Search_integration)."]
             pub fn rights(mut self, value: impl Into<String>) -> Self {
                 self.rights = Some(value.into());
                 self
             }
-            #[doc = "Search safety level"]
+            #[doc = "Search safety level. Acceptable values are:\n\n* `\"active\"`: Enables SafeSearch filtering.\n\n* `\"off\"`: Disables SafeSearch filtering. (default)"]
             pub fn safe(mut self, value: crate::resources::cse::params::ListSafe) -> Self {
                 self.safe = Some(value);
                 self
             }
-            #[doc = "Specifies the search type: image."]
+            #[doc = "Specifies the search type: `image`. If unspecified, results are limited to\nwebpages.\n\nAcceptable values are:\n\n* `\"image\"`: custom image search."]
             pub fn search_type(
                 mut self,
                 value: crate::resources::cse::params::ListSearchType,
@@ -2106,12 +2527,12 @@ pub mod resources {
                 self.search_type = Some(value);
                 self
             }
-            #[doc = "Specifies all search results should be pages from a given site"]
+            #[doc = "Specifies a given site which should always be included or excluded from\nresults (see `siteSearchFilter` parameter, below)."]
             pub fn site_search(mut self, value: impl Into<String>) -> Self {
                 self.site_search = Some(value.into());
                 self
             }
-            #[doc = "Controls whether to include or exclude results from the site named in the as_sitesearch parameter"]
+            #[doc = "Controls whether to include or exclude results from the site named in the\n`siteSearch` parameter.\n\nAcceptable values are:\n\n* `\"e\"`: exclude\n\n* `\"i\"`: include"]
             pub fn site_search_filter(
                 mut self,
                 value: crate::resources::cse::params::ListSiteSearchFilter,
@@ -2119,14 +2540,24 @@ pub mod resources {
                 self.site_search_filter = Some(value);
                 self
             }
-            #[doc = "The sort expression to apply to the results"]
+            #[doc = "The sort expression to apply to the results."]
             pub fn sort(mut self, value: impl Into<String>) -> Self {
                 self.sort = Some(value.into());
                 self
             }
-            #[doc = "The index of the first result to return"]
+            #[doc = "The index of the first result to return. The default number of results per\npage is 10, so `&start=11` would start at the top of the second page of\nresults. **Note**: The JSON API will never return more than 100 results,\neven if more than 100 documents match the query, so setting the sum of\n`start + num` to a number greater than 100 will produce an error. Also note\nthat the maximum value for `num` is 10."]
             pub fn start(mut self, value: u32) -> Self {
                 self.start = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2144,14 +2575,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2209,13 +2650,15 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/customsearch/".to_owned();
-                output.push_str("v1");
+                let mut output = "https://customsearch.googleapis.com/".to_owned();
+                output.push_str("customsearch/v1");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
-                let req = req.query(&[("q", &self.q)]);
                 let req = req.query(&[("c2coff", &self.c_2coff)]);
                 let req = req.query(&[("cr", &self.cr)]);
                 let req = req.query(&[("cx", &self.cx)]);
@@ -2238,6 +2681,7 @@ pub mod resources {
                 let req = req.query(&[("lr", &self.lr)]);
                 let req = req.query(&[("num", &self.num)]);
                 let req = req.query(&[("orTerms", &self.or_terms)]);
+                let req = req.query(&[("q", &self.q)]);
                 let req = req.query(&[("relatedSite", &self.related_site)]);
                 let req = req.query(&[("rights", &self.rights)]);
                 let req = req.query(&[("safe", &self.safe)]);
@@ -2246,13 +2690,17 @@ pub mod resources {
                 let req = req.query(&[("siteSearchFilter", &self.site_search_filter)]);
                 let req = req.query(&[("sort", &self.sort)]);
                 let req = req.query(&[("start", &self.start)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2264,91 +2712,21 @@ pub mod resources {
         pub mod siterestrict {
             pub mod params {
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-                pub enum ListFilter {
-                    #[doc = "Turns off duplicate content filter."]
-                    _0,
-                    #[doc = "Turns on duplicate content filter."]
-                    _1,
-                }
-                impl ListFilter {
-                    pub fn as_str(self) -> &'static str {
-                        match self {
-                            ListFilter::_0 => "0",
-                            ListFilter::_1 => "1",
-                        }
-                    }
-                }
-                impl ::std::convert::AsRef<str> for ListFilter {
-                    fn as_ref(&self) -> &str {
-                        self.as_str()
-                    }
-                }
-                impl ::std::str::FromStr for ListFilter {
-                    type Err = ();
-                    fn from_str(s: &str) -> ::std::result::Result<ListFilter, ()> {
-                        Ok(match s {
-                            "0" => ListFilter::_0,
-                            "1" => ListFilter::_1,
-                            _ => return Err(()),
-                        })
-                    }
-                }
-                impl ::std::fmt::Display for ListFilter {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-                        f.write_str(self.as_str())
-                    }
-                }
-                impl ::serde::Serialize for ListFilter {
-                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-                    where
-                        S: ::serde::ser::Serializer,
-                    {
-                        serializer.serialize_str(self.as_str())
-                    }
-                }
-                impl<'de> ::serde::Deserialize<'de> for ListFilter {
-                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-                    where
-                        D: ::serde::de::Deserializer<'de>,
-                    {
-                        let value: &'de str = <&str>::deserialize(deserializer)?;
-                        Ok(match value {
-                            "0" => ListFilter::_0,
-                            "1" => ListFilter::_1,
-                            _ => {
-                                return Err(::serde::de::Error::custom(format!(
-                                    "invalid enum for #name: {}",
-                                    value
-                                )))
-                            }
-                        })
-                    }
-                }
-                impl ::google_field_selector::FieldSelector for ListFilter {
-                    fn fields() -> Vec<::google_field_selector::Field> {
-                        Vec::new()
-                    }
-                }
-                impl ::google_field_selector::ToFieldType for ListFilter {
-                    fn field_type() -> ::google_field_selector::FieldType {
-                        ::google_field_selector::FieldType::Leaf
-                    }
-                }
-                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListImgColorType {
-                    #[doc = "color"]
                     Color,
-                    #[doc = "gray"]
                     Gray,
-                    #[doc = "mono"]
+                    ImgColorTypeUndefined,
                     Mono,
+                    Trans,
                 }
                 impl ListImgColorType {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             ListImgColorType::Color => "color",
                             ListImgColorType::Gray => "gray",
+                            ListImgColorType::ImgColorTypeUndefined => "imgColorTypeUndefined",
                             ListImgColorType::Mono => "mono",
+                            ListImgColorType::Trans => "trans",
                         }
                     }
                 }
@@ -2363,7 +2741,9 @@ pub mod resources {
                         Ok(match s {
                             "color" => ListImgColorType::Color,
                             "gray" => ListImgColorType::Gray,
+                            "imgColorTypeUndefined" => ListImgColorType::ImgColorTypeUndefined,
                             "mono" => ListImgColorType::Mono,
+                            "trans" => ListImgColorType::Trans,
                             _ => return Err(()),
                         })
                     }
@@ -2390,7 +2770,9 @@ pub mod resources {
                         Ok(match value {
                             "color" => ListImgColorType::Color,
                             "gray" => ListImgColorType::Gray,
+                            "imgColorTypeUndefined" => ListImgColorType::ImgColorTypeUndefined,
                             "mono" => ListImgColorType::Mono,
+                            "trans" => ListImgColorType::Trans,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -2412,29 +2794,18 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListImgDominantColor {
-                    #[doc = "black"]
                     Black,
-                    #[doc = "blue"]
                     Blue,
-                    #[doc = "brown"]
                     Brown,
-                    #[doc = "gray"]
                     Gray,
-                    #[doc = "green"]
                     Green,
-                    #[doc = "orange"]
+                    ImgDominantColorUndefined,
                     Orange,
-                    #[doc = "pink"]
                     Pink,
-                    #[doc = "purple"]
                     Purple,
-                    #[doc = "red"]
                     Red,
-                    #[doc = "teal"]
                     Teal,
-                    #[doc = "white"]
                     White,
-                    #[doc = "yellow"]
                     Yellow,
                 }
                 impl ListImgDominantColor {
@@ -2445,6 +2816,9 @@ pub mod resources {
                             ListImgDominantColor::Brown => "brown",
                             ListImgDominantColor::Gray => "gray",
                             ListImgDominantColor::Green => "green",
+                            ListImgDominantColor::ImgDominantColorUndefined => {
+                                "imgDominantColorUndefined"
+                            }
                             ListImgDominantColor::Orange => "orange",
                             ListImgDominantColor::Pink => "pink",
                             ListImgDominantColor::Purple => "purple",
@@ -2469,6 +2843,9 @@ pub mod resources {
                             "brown" => ListImgDominantColor::Brown,
                             "gray" => ListImgDominantColor::Gray,
                             "green" => ListImgDominantColor::Green,
+                            "imgDominantColorUndefined" => {
+                                ListImgDominantColor::ImgDominantColorUndefined
+                            }
                             "orange" => ListImgDominantColor::Orange,
                             "pink" => ListImgDominantColor::Pink,
                             "purple" => ListImgDominantColor::Purple,
@@ -2505,6 +2882,9 @@ pub mod resources {
                             "brown" => ListImgDominantColor::Brown,
                             "gray" => ListImgDominantColor::Gray,
                             "green" => ListImgDominantColor::Green,
+                            "imgDominantColorUndefined" => {
+                                ListImgDominantColor::ImgDominantColorUndefined
+                            }
                             "orange" => ListImgDominantColor::Orange,
                             "pink" => ListImgDominantColor::Pink,
                             "purple" => ListImgDominantColor::Purple,
@@ -2533,31 +2913,26 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListImgSize {
-                    #[doc = "huge"]
                     Huge,
-                    #[doc = "icon"]
                     Icon,
-                    #[doc = "large"]
+                    ImgSizeUndefined,
                     Large,
-                    #[doc = "medium"]
                     Medium,
-                    #[doc = "small"]
                     Small,
-                    #[doc = "xlarge"]
                     Xlarge,
-                    #[doc = "xxlarge"]
                     Xxlarge,
                 }
                 impl ListImgSize {
                     pub fn as_str(self) -> &'static str {
                         match self {
-                            ListImgSize::Huge => "huge",
-                            ListImgSize::Icon => "icon",
-                            ListImgSize::Large => "large",
-                            ListImgSize::Medium => "medium",
-                            ListImgSize::Small => "small",
-                            ListImgSize::Xlarge => "xlarge",
-                            ListImgSize::Xxlarge => "xxlarge",
+                            ListImgSize::Huge => "HUGE",
+                            ListImgSize::Icon => "ICON",
+                            ListImgSize::ImgSizeUndefined => "imgSizeUndefined",
+                            ListImgSize::Large => "LARGE",
+                            ListImgSize::Medium => "MEDIUM",
+                            ListImgSize::Small => "SMALL",
+                            ListImgSize::Xlarge => "XLARGE",
+                            ListImgSize::Xxlarge => "XXLARGE",
                         }
                     }
                 }
@@ -2570,13 +2945,14 @@ pub mod resources {
                     type Err = ();
                     fn from_str(s: &str) -> ::std::result::Result<ListImgSize, ()> {
                         Ok(match s {
-                            "huge" => ListImgSize::Huge,
-                            "icon" => ListImgSize::Icon,
-                            "large" => ListImgSize::Large,
-                            "medium" => ListImgSize::Medium,
-                            "small" => ListImgSize::Small,
-                            "xlarge" => ListImgSize::Xlarge,
-                            "xxlarge" => ListImgSize::Xxlarge,
+                            "HUGE" => ListImgSize::Huge,
+                            "ICON" => ListImgSize::Icon,
+                            "imgSizeUndefined" => ListImgSize::ImgSizeUndefined,
+                            "LARGE" => ListImgSize::Large,
+                            "MEDIUM" => ListImgSize::Medium,
+                            "SMALL" => ListImgSize::Small,
+                            "XLARGE" => ListImgSize::Xlarge,
+                            "XXLARGE" => ListImgSize::Xxlarge,
                             _ => return Err(()),
                         })
                     }
@@ -2601,13 +2977,14 @@ pub mod resources {
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
-                            "huge" => ListImgSize::Huge,
-                            "icon" => ListImgSize::Icon,
-                            "large" => ListImgSize::Large,
-                            "medium" => ListImgSize::Medium,
-                            "small" => ListImgSize::Small,
-                            "xlarge" => ListImgSize::Xlarge,
-                            "xxlarge" => ListImgSize::Xxlarge,
+                            "HUGE" => ListImgSize::Huge,
+                            "ICON" => ListImgSize::Icon,
+                            "imgSizeUndefined" => ListImgSize::ImgSizeUndefined,
+                            "LARGE" => ListImgSize::Large,
+                            "MEDIUM" => ListImgSize::Medium,
+                            "SMALL" => ListImgSize::Small,
+                            "XLARGE" => ListImgSize::Xlarge,
+                            "XXLARGE" => ListImgSize::Xxlarge,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -2629,25 +3006,24 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListImgType {
-                    #[doc = "clipart"]
+                    Animated,
                     Clipart,
-                    #[doc = "face"]
                     Face,
-                    #[doc = "lineart"]
+                    ImgTypeUndefined,
                     Lineart,
-                    #[doc = "news"]
-                    News,
-                    #[doc = "photo"]
                     Photo,
+                    Stock,
                 }
                 impl ListImgType {
                     pub fn as_str(self) -> &'static str {
                         match self {
+                            ListImgType::Animated => "animated",
                             ListImgType::Clipart => "clipart",
                             ListImgType::Face => "face",
+                            ListImgType::ImgTypeUndefined => "imgTypeUndefined",
                             ListImgType::Lineart => "lineart",
-                            ListImgType::News => "news",
                             ListImgType::Photo => "photo",
+                            ListImgType::Stock => "stock",
                         }
                     }
                 }
@@ -2660,11 +3036,13 @@ pub mod resources {
                     type Err = ();
                     fn from_str(s: &str) -> ::std::result::Result<ListImgType, ()> {
                         Ok(match s {
+                            "animated" => ListImgType::Animated,
                             "clipart" => ListImgType::Clipart,
                             "face" => ListImgType::Face,
+                            "imgTypeUndefined" => ListImgType::ImgTypeUndefined,
                             "lineart" => ListImgType::Lineart,
-                            "news" => ListImgType::News,
                             "photo" => ListImgType::Photo,
+                            "stock" => ListImgType::Stock,
                             _ => return Err(()),
                         })
                     }
@@ -2689,11 +3067,13 @@ pub mod resources {
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
+                            "animated" => ListImgType::Animated,
                             "clipart" => ListImgType::Clipart,
                             "face" => ListImgType::Face,
+                            "imgTypeUndefined" => ListImgType::ImgTypeUndefined,
                             "lineart" => ListImgType::Lineart,
-                            "news" => ListImgType::News,
                             "photo" => ListImgType::Photo,
+                            "stock" => ListImgType::Stock,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -2714,256 +3094,21 @@ pub mod resources {
                     }
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-                pub enum ListLr {
-                    #[doc = "Arabic"]
-                    LangAr,
-                    #[doc = "Bulgarian"]
-                    LangBg,
-                    #[doc = "Catalan"]
-                    LangCa,
-                    #[doc = "Czech"]
-                    LangCs,
-                    #[doc = "Danish"]
-                    LangDa,
-                    #[doc = "German"]
-                    LangDe,
-                    #[doc = "Greek"]
-                    LangEl,
-                    #[doc = "English"]
-                    LangEn,
-                    #[doc = "Spanish"]
-                    LangEs,
-                    #[doc = "Estonian"]
-                    LangEt,
-                    #[doc = "Finnish"]
-                    LangFi,
-                    #[doc = "French"]
-                    LangFr,
-                    #[doc = "Croatian"]
-                    LangHr,
-                    #[doc = "Hungarian"]
-                    LangHu,
-                    #[doc = "Indonesian"]
-                    LangId,
-                    #[doc = "Icelandic"]
-                    LangIs,
-                    #[doc = "Italian"]
-                    LangIt,
-                    #[doc = "Hebrew"]
-                    LangIw,
-                    #[doc = "Japanese"]
-                    LangJa,
-                    #[doc = "Korean"]
-                    LangKo,
-                    #[doc = "Lithuanian"]
-                    LangLt,
-                    #[doc = "Latvian"]
-                    LangLv,
-                    #[doc = "Dutch"]
-                    LangNl,
-                    #[doc = "Norwegian"]
-                    LangNo,
-                    #[doc = "Polish"]
-                    LangPl,
-                    #[doc = "Portuguese"]
-                    LangPt,
-                    #[doc = "Romanian"]
-                    LangRo,
-                    #[doc = "Russian"]
-                    LangRu,
-                    #[doc = "Slovak"]
-                    LangSk,
-                    #[doc = "Slovenian"]
-                    LangSl,
-                    #[doc = "Serbian"]
-                    LangSr,
-                    #[doc = "Swedish"]
-                    LangSv,
-                    #[doc = "Turkish"]
-                    LangTr,
-                    #[doc = "Chinese (Simplified)"]
-                    LangZhCN,
-                    #[doc = "Chinese (Traditional)"]
-                    LangZhTW,
-                }
-                impl ListLr {
-                    pub fn as_str(self) -> &'static str {
-                        match self {
-                            ListLr::LangAr => "lang_ar",
-                            ListLr::LangBg => "lang_bg",
-                            ListLr::LangCa => "lang_ca",
-                            ListLr::LangCs => "lang_cs",
-                            ListLr::LangDa => "lang_da",
-                            ListLr::LangDe => "lang_de",
-                            ListLr::LangEl => "lang_el",
-                            ListLr::LangEn => "lang_en",
-                            ListLr::LangEs => "lang_es",
-                            ListLr::LangEt => "lang_et",
-                            ListLr::LangFi => "lang_fi",
-                            ListLr::LangFr => "lang_fr",
-                            ListLr::LangHr => "lang_hr",
-                            ListLr::LangHu => "lang_hu",
-                            ListLr::LangId => "lang_id",
-                            ListLr::LangIs => "lang_is",
-                            ListLr::LangIt => "lang_it",
-                            ListLr::LangIw => "lang_iw",
-                            ListLr::LangJa => "lang_ja",
-                            ListLr::LangKo => "lang_ko",
-                            ListLr::LangLt => "lang_lt",
-                            ListLr::LangLv => "lang_lv",
-                            ListLr::LangNl => "lang_nl",
-                            ListLr::LangNo => "lang_no",
-                            ListLr::LangPl => "lang_pl",
-                            ListLr::LangPt => "lang_pt",
-                            ListLr::LangRo => "lang_ro",
-                            ListLr::LangRu => "lang_ru",
-                            ListLr::LangSk => "lang_sk",
-                            ListLr::LangSl => "lang_sl",
-                            ListLr::LangSr => "lang_sr",
-                            ListLr::LangSv => "lang_sv",
-                            ListLr::LangTr => "lang_tr",
-                            ListLr::LangZhCN => "lang_zh-CN",
-                            ListLr::LangZhTW => "lang_zh-TW",
-                        }
-                    }
-                }
-                impl ::std::convert::AsRef<str> for ListLr {
-                    fn as_ref(&self) -> &str {
-                        self.as_str()
-                    }
-                }
-                impl ::std::str::FromStr for ListLr {
-                    type Err = ();
-                    fn from_str(s: &str) -> ::std::result::Result<ListLr, ()> {
-                        Ok(match s {
-                            "lang_ar" => ListLr::LangAr,
-                            "lang_bg" => ListLr::LangBg,
-                            "lang_ca" => ListLr::LangCa,
-                            "lang_cs" => ListLr::LangCs,
-                            "lang_da" => ListLr::LangDa,
-                            "lang_de" => ListLr::LangDe,
-                            "lang_el" => ListLr::LangEl,
-                            "lang_en" => ListLr::LangEn,
-                            "lang_es" => ListLr::LangEs,
-                            "lang_et" => ListLr::LangEt,
-                            "lang_fi" => ListLr::LangFi,
-                            "lang_fr" => ListLr::LangFr,
-                            "lang_hr" => ListLr::LangHr,
-                            "lang_hu" => ListLr::LangHu,
-                            "lang_id" => ListLr::LangId,
-                            "lang_is" => ListLr::LangIs,
-                            "lang_it" => ListLr::LangIt,
-                            "lang_iw" => ListLr::LangIw,
-                            "lang_ja" => ListLr::LangJa,
-                            "lang_ko" => ListLr::LangKo,
-                            "lang_lt" => ListLr::LangLt,
-                            "lang_lv" => ListLr::LangLv,
-                            "lang_nl" => ListLr::LangNl,
-                            "lang_no" => ListLr::LangNo,
-                            "lang_pl" => ListLr::LangPl,
-                            "lang_pt" => ListLr::LangPt,
-                            "lang_ro" => ListLr::LangRo,
-                            "lang_ru" => ListLr::LangRu,
-                            "lang_sk" => ListLr::LangSk,
-                            "lang_sl" => ListLr::LangSl,
-                            "lang_sr" => ListLr::LangSr,
-                            "lang_sv" => ListLr::LangSv,
-                            "lang_tr" => ListLr::LangTr,
-                            "lang_zh-CN" => ListLr::LangZhCN,
-                            "lang_zh-TW" => ListLr::LangZhTW,
-                            _ => return Err(()),
-                        })
-                    }
-                }
-                impl ::std::fmt::Display for ListLr {
-                    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-                        f.write_str(self.as_str())
-                    }
-                }
-                impl ::serde::Serialize for ListLr {
-                    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
-                    where
-                        S: ::serde::ser::Serializer,
-                    {
-                        serializer.serialize_str(self.as_str())
-                    }
-                }
-                impl<'de> ::serde::Deserialize<'de> for ListLr {
-                    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
-                    where
-                        D: ::serde::de::Deserializer<'de>,
-                    {
-                        let value: &'de str = <&str>::deserialize(deserializer)?;
-                        Ok(match value {
-                            "lang_ar" => ListLr::LangAr,
-                            "lang_bg" => ListLr::LangBg,
-                            "lang_ca" => ListLr::LangCa,
-                            "lang_cs" => ListLr::LangCs,
-                            "lang_da" => ListLr::LangDa,
-                            "lang_de" => ListLr::LangDe,
-                            "lang_el" => ListLr::LangEl,
-                            "lang_en" => ListLr::LangEn,
-                            "lang_es" => ListLr::LangEs,
-                            "lang_et" => ListLr::LangEt,
-                            "lang_fi" => ListLr::LangFi,
-                            "lang_fr" => ListLr::LangFr,
-                            "lang_hr" => ListLr::LangHr,
-                            "lang_hu" => ListLr::LangHu,
-                            "lang_id" => ListLr::LangId,
-                            "lang_is" => ListLr::LangIs,
-                            "lang_it" => ListLr::LangIt,
-                            "lang_iw" => ListLr::LangIw,
-                            "lang_ja" => ListLr::LangJa,
-                            "lang_ko" => ListLr::LangKo,
-                            "lang_lt" => ListLr::LangLt,
-                            "lang_lv" => ListLr::LangLv,
-                            "lang_nl" => ListLr::LangNl,
-                            "lang_no" => ListLr::LangNo,
-                            "lang_pl" => ListLr::LangPl,
-                            "lang_pt" => ListLr::LangPt,
-                            "lang_ro" => ListLr::LangRo,
-                            "lang_ru" => ListLr::LangRu,
-                            "lang_sk" => ListLr::LangSk,
-                            "lang_sl" => ListLr::LangSl,
-                            "lang_sr" => ListLr::LangSr,
-                            "lang_sv" => ListLr::LangSv,
-                            "lang_tr" => ListLr::LangTr,
-                            "lang_zh-CN" => ListLr::LangZhCN,
-                            "lang_zh-TW" => ListLr::LangZhTW,
-                            _ => {
-                                return Err(::serde::de::Error::custom(format!(
-                                    "invalid enum for #name: {}",
-                                    value
-                                )))
-                            }
-                        })
-                    }
-                }
-                impl ::google_field_selector::FieldSelector for ListLr {
-                    fn fields() -> Vec<::google_field_selector::Field> {
-                        Vec::new()
-                    }
-                }
-                impl ::google_field_selector::ToFieldType for ListLr {
-                    fn field_type() -> ::google_field_selector::FieldType {
-                        ::google_field_selector::FieldType::Leaf
-                    }
-                }
-                #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListSafe {
-                    #[doc = "Enables highest level of safe search filtering."]
+                    Active,
                     High,
-                    #[doc = "Enables moderate safe search filtering."]
                     Medium,
-                    #[doc = "Disables safe search filtering."]
                     Off,
+                    SafeUndefined,
                 }
                 impl ListSafe {
                     pub fn as_str(self) -> &'static str {
                         match self {
+                            ListSafe::Active => "active",
                             ListSafe::High => "high",
                             ListSafe::Medium => "medium",
                             ListSafe::Off => "off",
+                            ListSafe::SafeUndefined => "safeUndefined",
                         }
                     }
                 }
@@ -2976,9 +3121,11 @@ pub mod resources {
                     type Err = ();
                     fn from_str(s: &str) -> ::std::result::Result<ListSafe, ()> {
                         Ok(match s {
+                            "active" => ListSafe::Active,
                             "high" => ListSafe::High,
                             "medium" => ListSafe::Medium,
                             "off" => ListSafe::Off,
+                            "safeUndefined" => ListSafe::SafeUndefined,
                             _ => return Err(()),
                         })
                     }
@@ -3003,9 +3150,11 @@ pub mod resources {
                     {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
+                            "active" => ListSafe::Active,
                             "high" => ListSafe::High,
                             "medium" => ListSafe::Medium,
                             "off" => ListSafe::Off,
+                            "safeUndefined" => ListSafe::SafeUndefined,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -3027,13 +3176,14 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListSearchType {
-                    #[doc = "custom image search"]
                     Image,
+                    SearchTypeUndefined,
                 }
                 impl ListSearchType {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             ListSearchType::Image => "image",
+                            ListSearchType::SearchTypeUndefined => "searchTypeUndefined",
                         }
                     }
                 }
@@ -3047,6 +3197,7 @@ pub mod resources {
                     fn from_str(s: &str) -> ::std::result::Result<ListSearchType, ()> {
                         Ok(match s {
                             "image" => ListSearchType::Image,
+                            "searchTypeUndefined" => ListSearchType::SearchTypeUndefined,
                             _ => return Err(()),
                         })
                     }
@@ -3072,6 +3223,7 @@ pub mod resources {
                         let value: &'de str = <&str>::deserialize(deserializer)?;
                         Ok(match value {
                             "image" => ListSearchType::Image,
+                            "searchTypeUndefined" => ListSearchType::SearchTypeUndefined,
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -3093,16 +3245,18 @@ pub mod resources {
                 }
                 #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
                 pub enum ListSiteSearchFilter {
-                    #[doc = "exclude"]
                     E,
-                    #[doc = "include"]
                     I,
+                    SiteSearchFilterUndefined,
                 }
                 impl ListSiteSearchFilter {
                     pub fn as_str(self) -> &'static str {
                         match self {
                             ListSiteSearchFilter::E => "e",
                             ListSiteSearchFilter::I => "i",
+                            ListSiteSearchFilter::SiteSearchFilterUndefined => {
+                                "siteSearchFilterUndefined"
+                            }
                         }
                     }
                 }
@@ -3117,6 +3271,9 @@ pub mod resources {
                         Ok(match s {
                             "e" => ListSiteSearchFilter::E,
                             "i" => ListSiteSearchFilter::I,
+                            "siteSearchFilterUndefined" => {
+                                ListSiteSearchFilter::SiteSearchFilterUndefined
+                            }
                             _ => return Err(()),
                         })
                     }
@@ -3143,6 +3300,9 @@ pub mod resources {
                         Ok(match value {
                             "e" => ListSiteSearchFilter::E,
                             "i" => ListSiteSearchFilter::I,
+                            "siteSearchFilterUndefined" => {
+                                ListSiteSearchFilter::SiteSearchFilterUndefined
+                            }
                             _ => {
                                 return Err(::serde::de::Error::custom(format!(
                                     "invalid enum for #name: {}",
@@ -3164,26 +3324,29 @@ pub mod resources {
                 }
             }
             pub struct SiterestrictActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SiterestrictActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Returns metadata about the search performed, metadata about the custom search engine used for the search, and the search results. Uses a small set of url patterns."]
-                pub fn list(&self, q: impl Into<String>) -> ListRequestBuilder {
+                #[doc = "Returns metadata about the search performed, metadata about the custom\nsearch engine used for the search, and the search results. Uses a small set\nof url patterns."]
+                pub fn list(&self) -> ListRequestBuilder {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
+                        access_token: None,
                         alt: None,
+                        callback: None,
                         fields: None,
                         key: None,
                         oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
-                        user_ip: None,
-                        q: q.into(),
+                        upload_protocol: None,
+                        upload_type: None,
+                        xgafv: None,
                         c_2coff: None,
                         cr: None,
                         cx: None,
@@ -3206,6 +3369,7 @@ pub mod resources {
                         lr: None,
                         num: None,
                         or_terms: None,
+                        q: None,
                         related_site: None,
                         rights: None,
                         safe: None,
@@ -3220,9 +3384,8 @@ pub mod resources {
             #[doc = "Created via [SiterestrictActions::list()](struct.SiterestrictActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
-                q: String,
                 c_2coff: Option<String>,
                 cr: Option<String>,
                 cx: Option<String>,
@@ -3230,7 +3393,7 @@ pub mod resources {
                 exact_terms: Option<String>,
                 exclude_terms: Option<String>,
                 file_type: Option<String>,
-                filter: Option<crate::resources::cse::siterestrict::params::ListFilter>,
+                filter: Option<String>,
                 gl: Option<String>,
                 googlehost: Option<String>,
                 high_range: Option<String>,
@@ -3244,9 +3407,10 @@ pub mod resources {
                 img_type: Option<crate::resources::cse::siterestrict::params::ListImgType>,
                 link_site: Option<String>,
                 low_range: Option<String>,
-                lr: Option<crate::resources::cse::siterestrict::params::ListLr>,
-                num: Option<u32>,
+                lr: Option<String>,
+                num: Option<i32>,
                 or_terms: Option<String>,
+                q: Option<String>,
                 related_site: Option<String>,
                 rights: Option<String>,
                 safe: Option<crate::resources::cse::siterestrict::params::ListSafe>,
@@ -3256,84 +3420,85 @@ pub mod resources {
                     Option<crate::resources::cse::siterestrict::params::ListSiteSearchFilter>,
                 sort: Option<String>,
                 start: Option<u32>,
+                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
+                callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
                 oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
-                user_ip: Option<String>,
+                upload_protocol: Option<String>,
+                upload_type: Option<String>,
+                xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> ListRequestBuilder<'a> {
-                #[doc = "Turns off the translation between zh-CN and zh-TW."]
+                #[doc = "Enables or disables [Simplified and Traditional Chinese\nSearch](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).\n\nThe default value for this parameter is 0 (zero), meaning that the feature\nis enabled. Supported values are:\n\n* `1`: Disabled\n\n* `0`: Enabled (default)"]
                 pub fn c_2coff(mut self, value: impl Into<String>) -> Self {
                     self.c_2coff = Some(value.into());
                     self
                 }
-                #[doc = "Country restrict(s)."]
+                #[doc = "Restricts search results to documents originating in a particular country.\nYou may use [Boolean\noperators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)\nin the cr parameter's value.\n\nGoogle Search determines the country of a document by analyzing:\n\n* the top-level domain (TLD) of the document's URL\n\n* the geographic location of the Web server's IP address\n\nSee the [Country Parameter\nValues](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)\npage for a list of valid values for this parameter."]
                 pub fn cr(mut self, value: impl Into<String>) -> Self {
                     self.cr = Some(value.into());
                     self
                 }
-                #[doc = "The custom search engine ID to scope this search query"]
+                #[doc = "The custom search engine ID to use for this request."]
                 pub fn cx(mut self, value: impl Into<String>) -> Self {
                     self.cx = Some(value.into());
                     self
                 }
-                #[doc = "Specifies all search results are from a time period"]
+                #[doc = "Restricts results to URLs based on date. Supported values include:\n\n* `d[number]`: requests results from the specified number of past days.\n\n* `w[number]`: requests results from the specified number of past weeks.\n\n* `m[number]`: requests results from the specified number of past months.\n\n* `y[number]`: requests results from the specified number of past years."]
                 pub fn date_restrict(mut self, value: impl Into<String>) -> Self {
                     self.date_restrict = Some(value.into());
                     self
                 }
-                #[doc = "Identifies a phrase that all documents in the search results must contain"]
+                #[doc = "Identifies a phrase that all documents in the search results must contain."]
                 pub fn exact_terms(mut self, value: impl Into<String>) -> Self {
                     self.exact_terms = Some(value.into());
                     self
                 }
-                #[doc = "Identifies a word or phrase that should not appear in any documents in the search results"]
+                #[doc = "Identifies a word or phrase that should not appear in any documents in the\nsearch results."]
                 pub fn exclude_terms(mut self, value: impl Into<String>) -> Self {
                     self.exclude_terms = Some(value.into());
                     self
                 }
-                #[doc = "Returns images of a specified type. Some of the allowed values are: bmp, gif, png, jpg, svg, pdf, ..."]
+                #[doc = "Restricts results to files of a specified extension. A list of file types\nindexable by Google can be found in Search Console [Help\nCenter](https://support.google.com/webmasters/answer/35287)."]
                 pub fn file_type(mut self, value: impl Into<String>) -> Self {
                     self.file_type = Some(value.into());
                     self
                 }
-                #[doc = "Controls turning on or off the duplicate content filter."]
-                pub fn filter(
-                    mut self,
-                    value: crate::resources::cse::siterestrict::params::ListFilter,
-                ) -> Self {
-                    self.filter = Some(value);
+                #[doc = "Controls turning on or off the duplicate content filter.\n\n* See [Automatic\n  Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)\n  for more information about Google's search results filters. Note that host\n  crowding filtering applies only to multi-site searches.\n\n* By default, Google applies filtering to all search results to improve the\n  quality of those results.\n\nAcceptable values are:\n\n* `0`: Turns off duplicate content filter.\n\n* `1`: Turns on duplicate content filter."]
+                pub fn filter(mut self, value: impl Into<String>) -> Self {
+                    self.filter = Some(value.into());
                     self
                 }
-                #[doc = "Geolocation of end user."]
+                #[doc = "Geolocation of end user.\n\n* The `gl` parameter value is a two-letter country code. The `gl` parameter\n  boosts search results whose country of origin matches the parameter value.\n  See the [Country\n  Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)\n  page for a list of valid values.\n\n* Specifying a `gl` parameter value should lead to more relevant results.\n  This is particularly true for international customers and, even more\n  specifically, for customers in English- speaking countries other than the\n  United States."]
                 pub fn gl(mut self, value: impl Into<String>) -> Self {
                     self.gl = Some(value.into());
                     self
                 }
-                #[doc = "The local Google domain to use to perform the search."]
+                #[doc = "**Deprecated**. Use the `gl` parameter for a similar effect.\n\nThe local Google domain (for example, google.com, google.de, or\ngoogle.fr) to use to perform the search."]
                 pub fn googlehost(mut self, value: impl Into<String>) -> Self {
                     self.googlehost = Some(value.into());
                     self
                 }
-                #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
+                #[doc = "Specifies the ending value for a search range.\n\n* Use `lowRange` and `highRange` to append an inclusive search range of\n  `lowRange...highRange` to the query."]
                 pub fn high_range(mut self, value: impl Into<String>) -> Self {
                     self.high_range = Some(value.into());
                     self
                 }
-                #[doc = "Sets the user interface language."]
+                #[doc = "Sets the user interface language.\n\n* Explicitly setting this parameter improves the performance and the\n  quality of your search results.\n\n* See the [Interface\n  Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)\n  section of [Internationalizing Queries and Results\n  Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)\n  for more information, and (Supported Interface\n  Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]\n  for a list of supported languages."]
                 pub fn hl(mut self, value: impl Into<String>) -> Self {
                     self.hl = Some(value.into());
                     self
                 }
-                #[doc = "Appends the extra query terms to the query."]
+                #[doc = "Appends the specified query terms to the query, as if they were combined\nwith a logical AND operator."]
                 pub fn hq(mut self, value: impl Into<String>) -> Self {
                     self.hq = Some(value.into());
                     self
                 }
-                #[doc = "Returns black and white, grayscale, or color images: mono, gray, and color."]
+                #[doc = "Returns black and white, grayscale, transparent, or color images.\nAcceptable values are:\n\n* `\"color\"`\n\n* `\"gray\"`\n\n* `\"mono\"`: black and white\n\n* `\"trans\"`: transparent background"]
                 pub fn img_color_type(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListImgColorType,
@@ -3341,7 +3506,7 @@ pub mod resources {
                     self.img_color_type = Some(value);
                     self
                 }
-                #[doc = "Returns images of a specific dominant color: red, orange, yellow, green, teal, blue, purple, pink, white, gray, black and brown."]
+                #[doc = "Returns images of a specific dominant color. Acceptable values are:\n\n* `\"black\"`\n\n* `\"blue\"`\n\n* `\"brown\"`\n\n* `\"gray\"`\n\n* `\"green\"`\n\n* `\"orange\"`\n\n* `\"pink\"`\n\n* `\"purple\"`\n\n* `\"red\"`\n\n* `\"teal\"`\n\n* `\"white\"`\n\n* `\"yellow\"`"]
                 pub fn img_dominant_color(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListImgDominantColor,
@@ -3349,7 +3514,7 @@ pub mod resources {
                     self.img_dominant_color = Some(value);
                     self
                 }
-                #[doc = "Returns images of a specified size, where size can be one of: icon, small, medium, large, xlarge, xxlarge, and huge."]
+                #[doc = "Returns images of a specified size. Acceptable values are:\n\n* `\"huge\"`\n\n* `\"icon\"`\n\n* `\"large\"`\n\n* `\"medium\"`\n\n* `\"small\"`\n\n* `\"xlarge\"`\n\n* `\"xxlarge\"`"]
                 pub fn img_size(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListImgSize,
@@ -3357,7 +3522,7 @@ pub mod resources {
                     self.img_size = Some(value);
                     self
                 }
-                #[doc = "Returns images of a type, which can be one of: clipart, face, lineart, news, and photo."]
+                #[doc = "Returns images of a type. Acceptable values are:\n\n* `\"clipart\"`\n\n* `\"face\"`\n\n* `\"lineart\"`\n\n* `\"stock\"`\n\n* `\"photo\"`\n\n* `\"animated\"`"]
                 pub fn img_type(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListImgType,
@@ -3365,45 +3530,47 @@ pub mod resources {
                     self.img_type = Some(value);
                     self
                 }
-                #[doc = "Specifies that all search results should contain a link to a particular URL"]
+                #[doc = "Specifies that all search results should contain a link to a particular\nURL."]
                 pub fn link_site(mut self, value: impl Into<String>) -> Self {
                     self.link_site = Some(value.into());
                     self
                 }
-                #[doc = "Creates a range in form as_nlo value..as_nhi value and attempts to append it to query"]
+                #[doc = "Specifies the starting value for a search range. Use `lowRange` and\n`highRange` to append an inclusive search range of `lowRange...highRange`\nto the query."]
                 pub fn low_range(mut self, value: impl Into<String>) -> Self {
                     self.low_range = Some(value.into());
                     self
                 }
-                #[doc = "The language restriction for the search results"]
-                pub fn lr(
-                    mut self,
-                    value: crate::resources::cse::siterestrict::params::ListLr,
-                ) -> Self {
-                    self.lr = Some(value);
+                #[doc = "Restricts the search to documents written in a particular language (e.g.,\n`lr=lang_ja`).\n\nAcceptable values are:\n\n* `\"lang_ar\"`: Arabic\n\n* `\"lang_bg\"`: Bulgarian\n\n* `\"lang_ca\"`: Catalan\n\n* `\"lang_cs\"`: Czech\n\n* `\"lang_da\"`: Danish\n\n* `\"lang_de\"`: German\n\n* `\"lang_el\"`: Greek\n\n* `\"lang_en\"`: English\n\n* `\"lang_es\"`: Spanish\n\n* `\"lang_et\"`: Estonian\n\n* `\"lang_fi\"`: Finnish\n\n* `\"lang_fr\"`: French\n\n* `\"lang_hr\"`: Croatian\n\n* `\"lang_hu\"`: Hungarian\n\n* `\"lang_id\"`: Indonesian\n\n* `\"lang_is\"`: Icelandic\n\n* `\"lang_it\"`: Italian\n\n* `\"lang_iw\"`: Hebrew\n\n* `\"lang_ja\"`: Japanese\n\n* `\"lang_ko\"`: Korean\n\n* `\"lang_lt\"`: Lithuanian\n\n* `\"lang_lv\"`: Latvian\n\n* `\"lang_nl\"`: Dutch\n\n* `\"lang_no\"`: Norwegian\n\n* `\"lang_pl\"`: Polish\n\n* `\"lang_pt\"`: Portuguese\n\n* `\"lang_ro\"`: Romanian\n\n* `\"lang_ru\"`: Russian\n\n* `\"lang_sk\"`: Slovak\n\n* `\"lang_sl\"`: Slovenian\n\n* `\"lang_sr\"`: Serbian\n\n* `\"lang_sv\"`: Swedish\n\n* `\"lang_tr\"`: Turkish\n\n* `\"lang_zh-CN\"`: Chinese (Simplified)\n\n* `\"lang_zh-TW\"`: Chinese (Traditional)"]
+                pub fn lr(mut self, value: impl Into<String>) -> Self {
+                    self.lr = Some(value.into());
                     self
                 }
-                #[doc = "Number of search results to return"]
-                pub fn num(mut self, value: u32) -> Self {
+                #[doc = "Number of search results to return.\n\n* Valid values are integers between 1 and 10, inclusive."]
+                pub fn num(mut self, value: i32) -> Self {
                     self.num = Some(value);
                     self
                 }
-                #[doc = "Provides additional search terms to check for in a document, where each document in the search results must contain at least one of the additional search terms"]
+                #[doc = "Provides additional search terms to check for in a document, where each\ndocument in the search results must contain at least one of the additional\nsearch terms."]
                 pub fn or_terms(mut self, value: impl Into<String>) -> Self {
                     self.or_terms = Some(value.into());
                     self
                 }
-                #[doc = "Specifies that all search results should be pages that are related to the specified URL"]
+                #[doc = "Query"]
+                pub fn q(mut self, value: impl Into<String>) -> Self {
+                    self.q = Some(value.into());
+                    self
+                }
+                #[doc = "Specifies that all search results should be pages that are related to the\nspecified URL."]
                 pub fn related_site(mut self, value: impl Into<String>) -> Self {
                     self.related_site = Some(value.into());
                     self
                 }
-                #[doc = "Filters based on licensing. Supported values include: cc_publicdomain, cc_attribute, cc_sharealike, cc_noncommercial, cc_nonderived and combinations of these."]
+                #[doc = "Filters based on licensing. Supported values include: `cc_publicdomain`,\n`cc_attribute`, `cc_sharealike`, `cc_noncommercial`, `cc_nonderived` and\ncombinations of these. See [typical\ncombinations](https://wiki.creativecommons.org/wiki/CC_Search_integration)."]
                 pub fn rights(mut self, value: impl Into<String>) -> Self {
                     self.rights = Some(value.into());
                     self
                 }
-                #[doc = "Search safety level"]
+                #[doc = "Search safety level. Acceptable values are:\n\n* `\"active\"`: Enables SafeSearch filtering.\n\n* `\"off\"`: Disables SafeSearch filtering. (default)"]
                 pub fn safe(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListSafe,
@@ -3411,7 +3578,7 @@ pub mod resources {
                     self.safe = Some(value);
                     self
                 }
-                #[doc = "Specifies the search type: image."]
+                #[doc = "Specifies the search type: `image`. If unspecified, results are limited to\nwebpages.\n\nAcceptable values are:\n\n* `\"image\"`: custom image search."]
                 pub fn search_type(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListSearchType,
@@ -3419,12 +3586,12 @@ pub mod resources {
                     self.search_type = Some(value);
                     self
                 }
-                #[doc = "Specifies all search results should be pages from a given site"]
+                #[doc = "Specifies a given site which should always be included or excluded from\nresults (see `siteSearchFilter` parameter, below)."]
                 pub fn site_search(mut self, value: impl Into<String>) -> Self {
                     self.site_search = Some(value.into());
                     self
                 }
-                #[doc = "Controls whether to include or exclude results from the site named in the as_sitesearch parameter"]
+                #[doc = "Controls whether to include or exclude results from the site named in the\n`siteSearch` parameter.\n\nAcceptable values are:\n\n* `\"e\"`: exclude\n\n* `\"i\"`: include"]
                 pub fn site_search_filter(
                     mut self,
                     value: crate::resources::cse::siterestrict::params::ListSiteSearchFilter,
@@ -3432,14 +3599,24 @@ pub mod resources {
                     self.site_search_filter = Some(value);
                     self
                 }
-                #[doc = "The sort expression to apply to the results"]
+                #[doc = "The sort expression to apply to the results."]
                 pub fn sort(mut self, value: impl Into<String>) -> Self {
                     self.sort = Some(value.into());
                     self
                 }
-                #[doc = "The index of the first result to return"]
+                #[doc = "The index of the first result to return. The default number of results per\npage is 10, so `&start=11` would start at the top of the second page of\nresults. **Note**: The JSON API will never return more than 100 results,\neven if more than 100 documents match the query, so setting the sum of\n`start + num` to a number greater than 100 will produce an error. Also note\nthat the maximum value for `num` is 10."]
                 pub fn start(mut self, value: u32) -> Self {
                     self.start = Some(value);
+                    self
+                }
+                #[doc = "OAuth access token."]
+                pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                    self.access_token = Some(value.into());
+                    self
+                }
+                #[doc = "JSONP"]
+                pub fn callback(mut self, value: impl Into<String>) -> Self {
+                    self.callback = Some(value.into());
                     self
                 }
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3457,14 +3634,24 @@ pub mod resources {
                     self.pretty_print = Some(value);
                     self
                 }
-                #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+                #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
                 pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                     self.quota_user = Some(value.into());
                     self
                 }
-                #[doc = "Deprecated. Please use quotaUser instead."]
-                pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                    self.user_ip = Some(value.into());
+                #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+                pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                    self.upload_protocol = Some(value.into());
+                    self
+                }
+                #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+                pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                    self.upload_type = Some(value.into());
+                    self
+                }
+                #[doc = "V1 error format."]
+                pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                    self.xgafv = Some(value);
                     self
                 }
                 #[doc = r" Execute the given operation. The fields requested are"]
@@ -3527,13 +3714,15 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/customsearch/".to_owned();
-                    output.push_str("v1/siterestrict");
+                    let mut output = "https://customsearch.googleapis.com/".to_owned();
+                    output.push_str("customsearch/v1/siterestrict");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("q", &self.q)]);
                     let req = req.query(&[("c2coff", &self.c_2coff)]);
                     let req = req.query(&[("cr", &self.cr)]);
                     let req = req.query(&[("cx", &self.cx)]);
@@ -3556,6 +3745,7 @@ pub mod resources {
                     let req = req.query(&[("lr", &self.lr)]);
                     let req = req.query(&[("num", &self.num)]);
                     let req = req.query(&[("orTerms", &self.or_terms)]);
+                    let req = req.query(&[("q", &self.q)]);
                     let req = req.query(&[("relatedSite", &self.related_site)]);
                     let req = req.query(&[("rights", &self.rights)]);
                     let req = req.query(&[("safe", &self.safe)]);
@@ -3564,13 +3754,17 @@ pub mod resources {
                     let req = req.query(&[("siteSearchFilter", &self.site_search_filter)]);
                     let req = req.query(&[("sort", &self.sort)]);
                     let req = req.query(&[("start", &self.start)]);
+                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
+                    let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
                     let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
-                    let req = req.query(&[("userIp", &self.user_ip)]);
+                    let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                    let req = req.query(&[("uploadType", &self.upload_type)]);
+                    let req = req.query(&[("$.xgafv", &self.xgafv)]);
                     let req = req.bearer_auth(
                         self.auth
                             .access_token()
@@ -3598,9 +3792,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -3642,7 +3834,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

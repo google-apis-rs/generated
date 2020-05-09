@@ -1,10 +1,16 @@
 #![doc = "# Resources and Methods\n    * [blog_user_infos](resources/blog_user_infos/struct.BlogUserInfosActions.html)\n      * [*get*](resources/blog_user_infos/struct.GetRequestBuilder.html)\n    * [blogs](resources/blogs/struct.BlogsActions.html)\n      * [*get*](resources/blogs/struct.GetRequestBuilder.html), [*getByUrl*](resources/blogs/struct.GetByUrlRequestBuilder.html), [*listByUser*](resources/blogs/struct.ListByUserRequestBuilder.html)\n    * [comments](resources/comments/struct.CommentsActions.html)\n      * [*approve*](resources/comments/struct.ApproveRequestBuilder.html), [*delete*](resources/comments/struct.DeleteRequestBuilder.html), [*get*](resources/comments/struct.GetRequestBuilder.html), [*list*](resources/comments/struct.ListRequestBuilder.html), [*listByBlog*](resources/comments/struct.ListByBlogRequestBuilder.html), [*markAsSpam*](resources/comments/struct.MarkAsSpamRequestBuilder.html), [*removeContent*](resources/comments/struct.RemoveContentRequestBuilder.html)\n    * [page_views](resources/page_views/struct.PageViewsActions.html)\n      * [*get*](resources/page_views/struct.GetRequestBuilder.html)\n    * [pages](resources/pages/struct.PagesActions.html)\n      * [*delete*](resources/pages/struct.DeleteRequestBuilder.html), [*get*](resources/pages/struct.GetRequestBuilder.html), [*insert*](resources/pages/struct.InsertRequestBuilder.html), [*list*](resources/pages/struct.ListRequestBuilder.html), [*patch*](resources/pages/struct.PatchRequestBuilder.html), [*publish*](resources/pages/struct.PublishRequestBuilder.html), [*revert*](resources/pages/struct.RevertRequestBuilder.html), [*update*](resources/pages/struct.UpdateRequestBuilder.html)\n    * [post_user_infos](resources/post_user_infos/struct.PostUserInfosActions.html)\n      * [*get*](resources/post_user_infos/struct.GetRequestBuilder.html), [*list*](resources/post_user_infos/struct.ListRequestBuilder.html)\n    * [posts](resources/posts/struct.PostsActions.html)\n      * [*delete*](resources/posts/struct.DeleteRequestBuilder.html), [*get*](resources/posts/struct.GetRequestBuilder.html), [*getByPath*](resources/posts/struct.GetByPathRequestBuilder.html), [*insert*](resources/posts/struct.InsertRequestBuilder.html), [*list*](resources/posts/struct.ListRequestBuilder.html), [*patch*](resources/posts/struct.PatchRequestBuilder.html), [*publish*](resources/posts/struct.PublishRequestBuilder.html), [*revert*](resources/posts/struct.RevertRequestBuilder.html), [*search*](resources/posts/struct.SearchRequestBuilder.html), [*update*](resources/posts/struct.UpdateRequestBuilder.html)\n    * [users](resources/users/struct.UsersActions.html)\n      * [*get*](resources/users/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Manage your Blogger account\n\n`https://www.googleapis.com/auth/blogger`"]
+    pub const BLOGGER: &str = "https://www.googleapis.com/auth/blogger";
+    #[doc = "View your Blogger account\n\n`https://www.googleapis.com/auth/blogger.readonly`"]
+    pub const BLOGGER_READONLY: &str = "https://www.googleapis.com/auth/blogger.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct Blog {
-        #[doc = "The JSON custom meta-data for the Blog"]
+        #[doc = "The JSON custom meta-data for the Blog."]
         #[serde(
             rename = "customMetaData",
             default,
@@ -25,7 +31,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The kind of this entry. Always blogger#blog"]
+        #[doc = "The kind of this entry. Always blogger#blog."]
         #[serde(
             rename = "kind",
             default,
@@ -66,7 +72,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<String>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(
             rename = "selfLink",
@@ -80,14 +86,14 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub status: ::std::option::Option<String>,
+        pub status: ::std::option::Option<crate::schemas::BlogStatus>,
         #[doc = "RFC 3339 date-time when this blog was last updated."]
         #[serde(
             rename = "updated",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<String>,
         #[doc = "The URL where this blog is published."]
         #[serde(
             rename = "url",
@@ -225,11 +231,80 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum BlogStatus {
+        Deleted,
+        Live,
+    }
+    impl BlogStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                BlogStatus::Deleted => "DELETED",
+                BlogStatus::Live => "LIVE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BlogStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BlogStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BlogStatus, ()> {
+            Ok(match s {
+                "DELETED" => BlogStatus::Deleted,
+                "LIVE" => BlogStatus::Live,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for BlogStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for BlogStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for BlogStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DELETED" => BlogStatus::Deleted,
+                "LIVE" => BlogStatus::Live,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for BlogStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BlogStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BlogList {
-        #[doc = "Admin level list of blog per-user information"]
+        #[doc = "Admin level list of blog per-user information."]
         #[serde(
             rename = "blogUserInfos",
             default,
@@ -243,7 +318,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Blog>>,
-        #[doc = "The kind of this entity. Always blogger#blogList"]
+        #[doc = "The kind of this entity. Always blogger#blogList."]
         #[serde(
             rename = "kind",
             default,
@@ -274,7 +349,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BlogPerUserInfo {
-        #[doc = "ID of the Blog resource"]
+        #[doc = "ID of the Blog resource."]
         #[serde(
             rename = "blogId",
             default,
@@ -288,28 +363,28 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub has_admin_access: ::std::option::Option<bool>,
-        #[doc = "The kind of this entity. Always blogger#blogPerUserInfo"]
+        #[doc = "The kind of this entity. Always blogger#blogPerUserInfo."]
         #[serde(
             rename = "kind",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The Photo Album Key for the user when adding photos to the blog"]
+        #[doc = "The Photo Album Key for the user when adding photos to the blog."]
         #[serde(
             rename = "photosAlbumKey",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub photos_album_key: ::std::option::Option<String>,
-        #[doc = "Access permissions that the user has for the blog (ADMIN, AUTHOR, or READER)."]
+        #[doc = "Access permissions that the user has for the blog (ADMIN, AUTHOR, or\nREADER)."]
         #[serde(
             rename = "role",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub role: ::std::option::Option<String>,
-        #[doc = "ID of the User"]
+        pub role: ::std::option::Option<crate::schemas::BlogPerUserInfoRole>,
+        #[doc = "ID of the User."]
         #[serde(
             rename = "userId",
             default,
@@ -323,6 +398,83 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for BlogPerUserInfo {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum BlogPerUserInfoRole {
+        Admin,
+        Author,
+        Reader,
+        ViewTypeUnspecified,
+    }
+    impl BlogPerUserInfoRole {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                BlogPerUserInfoRole::Admin => "ADMIN",
+                BlogPerUserInfoRole::Author => "AUTHOR",
+                BlogPerUserInfoRole::Reader => "READER",
+                BlogPerUserInfoRole::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BlogPerUserInfoRole {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BlogPerUserInfoRole {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BlogPerUserInfoRole, ()> {
+            Ok(match s {
+                "ADMIN" => BlogPerUserInfoRole::Admin,
+                "AUTHOR" => BlogPerUserInfoRole::Author,
+                "READER" => BlogPerUserInfoRole::Reader,
+                "VIEW_TYPE_UNSPECIFIED" => BlogPerUserInfoRole::ViewTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for BlogPerUserInfoRole {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for BlogPerUserInfoRole {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for BlogPerUserInfoRole {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ADMIN" => BlogPerUserInfoRole::Admin,
+                "AUTHOR" => BlogPerUserInfoRole::Author,
+                "READER" => BlogPerUserInfoRole::Reader,
+                "VIEW_TYPE_UNSPECIFIED" => BlogPerUserInfoRole::ViewTypeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for BlogPerUserInfoRole {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BlogPerUserInfoRole {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -345,7 +497,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub blog_user_info: ::std::option::Option<crate::schemas::BlogPerUserInfo>,
-        #[doc = "The kind of this entity. Always blogger#blogUserInfo"]
+        #[doc = "The kind of this entity. Always blogger#blogUserInfo."]
         #[serde(
             rename = "kind",
             default,
@@ -411,7 +563,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub in_reply_to: ::std::option::Option<crate::schemas::CommentInReplyTo>,
-        #[doc = "The kind of this entry. Always blogger#comment"]
+        #[doc = "The kind of this entry. Always blogger#comment."]
         #[serde(
             rename = "kind",
             default,
@@ -431,7 +583,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<String>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(
             rename = "selfLink",
@@ -439,20 +591,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "The status of the comment (only populated for admin users)"]
+        #[doc = "The status of the comment (only populated for admin users)."]
         #[serde(
             rename = "status",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub status: ::std::option::Option<String>,
+        pub status: ::std::option::Option<crate::schemas::CommentStatus>,
         #[doc = "RFC 3339 date-time when this comment was last updated."]
         #[serde(
             rename = "updated",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Comment {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -484,21 +636,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The identifier of the Comment creator."]
+        #[doc = "The identifier of the creator."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The comment creator's avatar."]
+        #[doc = "The creator's avatar."]
         #[serde(
             rename = "image",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image: ::std::option::Option<crate::schemas::CommentAuthorImage>,
-        #[doc = "The URL of the Comment creator's Profile page."]
+        #[doc = "The URL of the creator's Profile page."]
         #[serde(
             rename = "url",
             default,
@@ -529,7 +681,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct CommentAuthorImage {
-        #[doc = "The comment creator's avatar URL."]
+        #[doc = "The creator's avatar URL."]
         #[serde(
             rename = "url",
             default,
@@ -640,6 +792,83 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum CommentStatus {
+        Emptied,
+        Live,
+        Pending,
+        Spam,
+    }
+    impl CommentStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                CommentStatus::Emptied => "EMPTIED",
+                CommentStatus::Live => "LIVE",
+                CommentStatus::Pending => "PENDING",
+                CommentStatus::Spam => "SPAM",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for CommentStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for CommentStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<CommentStatus, ()> {
+            Ok(match s {
+                "EMPTIED" => CommentStatus::Emptied,
+                "LIVE" => CommentStatus::Live,
+                "PENDING" => CommentStatus::Pending,
+                "SPAM" => CommentStatus::Spam,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for CommentStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for CommentStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for CommentStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "EMPTIED" => CommentStatus::Emptied,
+                "LIVE" => CommentStatus::Live,
+                "PENDING" => CommentStatus::Pending,
+                "SPAM" => CommentStatus::Spam,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for CommentStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for CommentStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -667,7 +896,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Comment>>,
-        #[doc = "The kind of this entry. Always blogger#commentList"]
+        #[doc = "The kind of this entry. Always blogger#commentList."]
         #[serde(
             rename = "kind",
             default,
@@ -747,7 +976,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The kind of this entity. Always blogger#page"]
+        #[doc = "The kind of this entity. Always blogger#page."]
         #[serde(
             rename = "kind",
             default,
@@ -760,7 +989,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<String>,
         #[doc = "The API REST URL to fetch this resource from."]
         #[serde(
             rename = "selfLink",
@@ -774,8 +1003,8 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub status: ::std::option::Option<String>,
-        #[doc = "The title of this entity. This is the name displayed in the Admin user interface."]
+        pub status: ::std::option::Option<crate::schemas::PageStatus>,
+        #[doc = "The title of this entity. This is the name displayed in the Admin user\ninterface."]
         #[serde(
             rename = "title",
             default,
@@ -788,7 +1017,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<String>,
         #[doc = "The URL that this Page is displayed at."]
         #[serde(
             rename = "url",
@@ -827,21 +1056,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The identifier of the Page creator."]
+        #[doc = "The identifier of the creator."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The page author's avatar."]
+        #[doc = "The creator's avatar."]
         #[serde(
             rename = "image",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image: ::std::option::Option<crate::schemas::PageAuthorImage>,
-        #[doc = "The URL of the Page creator's Profile page."]
+        #[doc = "The URL of the creator's Profile page."]
         #[serde(
             rename = "url",
             default,
@@ -872,7 +1101,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PageAuthorImage {
-        #[doc = "The page author's avatar URL."]
+        #[doc = "The creator's avatar URL."]
         #[serde(
             rename = "url",
             default,
@@ -921,6 +1150,75 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PageStatus {
+        Draft,
+        Live,
+    }
+    impl PageStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PageStatus::Draft => "DRAFT",
+                PageStatus::Live => "LIVE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PageStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PageStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PageStatus, ()> {
+            Ok(match s {
+                "DRAFT" => PageStatus::Draft,
+                "LIVE" => PageStatus::Live,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PageStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PageStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PageStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DRAFT" => PageStatus::Draft,
+                "LIVE" => PageStatus::Live,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PageStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PageStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -948,7 +1246,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Page>>,
-        #[doc = "The kind of this entity. Always blogger#pageList"]
+        #[doc = "The kind of this entity. Always blogger#pageList."]
         #[serde(
             rename = "kind",
             default,
@@ -986,7 +1284,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Pageviews {
-        #[doc = "Blog Id"]
+        #[doc = "Blog Id."]
         #[serde(
             rename = "blogId",
             default,
@@ -1000,7 +1298,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub counts: ::std::option::Option<Vec<crate::schemas::PageviewsCountsItems>>,
-        #[doc = "The kind of this entry. Always blogger#page_views"]
+        #[doc = "The kind of this entry. Always blogger#page_views."]
         #[serde(
             rename = "kind",
             default,
@@ -1031,7 +1329,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PageviewsCountsItems {
-        #[doc = "Count of page views for the given time range"]
+        #[doc = "Count of page views for the given time range."]
         #[serde(
             rename = "count",
             default,
@@ -1039,13 +1337,13 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub count: ::std::option::Option<i64>,
-        #[doc = "Time range the given count applies to"]
+        #[doc = "Time range the given count applies to."]
         #[serde(
             rename = "timeRange",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub time_range: ::std::option::Option<String>,
+        pub time_range: ::std::option::Option<crate::schemas::PageviewsCountsItemsTimeRange>,
     }
     impl ::google_field_selector::FieldSelector for PageviewsCountsItems {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1053,6 +1351,79 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for PageviewsCountsItems {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PageviewsCountsItemsTimeRange {
+        AllTime,
+        SevenDays,
+        ThirtyDays,
+    }
+    impl PageviewsCountsItemsTimeRange {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PageviewsCountsItemsTimeRange::AllTime => "ALL_TIME",
+                PageviewsCountsItemsTimeRange::SevenDays => "SEVEN_DAYS",
+                PageviewsCountsItemsTimeRange::ThirtyDays => "THIRTY_DAYS",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PageviewsCountsItemsTimeRange {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PageviewsCountsItemsTimeRange {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PageviewsCountsItemsTimeRange, ()> {
+            Ok(match s {
+                "ALL_TIME" => PageviewsCountsItemsTimeRange::AllTime,
+                "SEVEN_DAYS" => PageviewsCountsItemsTimeRange::SevenDays,
+                "THIRTY_DAYS" => PageviewsCountsItemsTimeRange::ThirtyDays,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PageviewsCountsItemsTimeRange {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PageviewsCountsItemsTimeRange {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PageviewsCountsItemsTimeRange {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ALL_TIME" => PageviewsCountsItemsTimeRange::AllTime,
+                "SEVEN_DAYS" => PageviewsCountsItemsTimeRange::SevenDays,
+                "THIRTY_DAYS" => PageviewsCountsItemsTimeRange::ThirtyDays,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PageviewsCountsItemsTimeRange {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PageviewsCountsItemsTimeRange {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -1110,7 +1481,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub images: ::std::option::Option<Vec<crate::schemas::PostImagesItems>>,
-        #[doc = "The kind of this entity. Always blogger#post"]
+        #[doc = "The kind of this entity. Always blogger#post."]
         #[serde(
             rename = "kind",
             default,
@@ -1137,14 +1508,14 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub published: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub published: ::std::option::Option<String>,
         #[doc = "Comment control and display setting for readers of this post."]
         #[serde(
             rename = "readerComments",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub reader_comments: ::std::option::Option<String>,
+        pub reader_comments: ::std::option::Option<crate::schemas::PostReaderComments>,
         #[doc = "The container of comments on this Post."]
         #[serde(
             rename = "replies",
@@ -1159,13 +1530,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "Status of the post. Only set for admin-level requests"]
+        #[doc = "Status of the post. Only set for admin-level requests."]
         #[serde(
             rename = "status",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub status: ::std::option::Option<String>,
+        pub status: ::std::option::Option<crate::schemas::PostStatus>,
         #[doc = "The title of the Post."]
         #[serde(
             rename = "title",
@@ -1186,7 +1557,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub updated: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub updated: ::std::option::Option<String>,
         #[doc = "The URL where this Post is displayed."]
         #[serde(
             rename = "url",
@@ -1225,21 +1596,21 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub display_name: ::std::option::Option<String>,
-        #[doc = "The identifier of the Post creator."]
+        #[doc = "The identifier of the creator."]
         #[serde(
             rename = "id",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The Post author's avatar."]
+        #[doc = "The creator's avatar."]
         #[serde(
             rename = "image",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub image: ::std::option::Option<crate::schemas::PostAuthorImage>,
-        #[doc = "The URL of the Post creator's Profile page."]
+        #[doc = "The URL of the creator's Profile page."]
         #[serde(
             rename = "url",
             default,
@@ -1270,7 +1641,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PostAuthorImage {
-        #[doc = "The Post author's avatar URL."]
+        #[doc = "The creator's avatar URL."]
         #[serde(
             rename = "url",
             default,
@@ -1392,6 +1763,79 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PostReaderComments {
+        Allow,
+        DontAllowHideExisting,
+        DontAllowShowExisting,
+    }
+    impl PostReaderComments {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PostReaderComments::Allow => "ALLOW",
+                PostReaderComments::DontAllowHideExisting => "DONT_ALLOW_HIDE_EXISTING",
+                PostReaderComments::DontAllowShowExisting => "DONT_ALLOW_SHOW_EXISTING",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PostReaderComments {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PostReaderComments {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PostReaderComments, ()> {
+            Ok(match s {
+                "ALLOW" => PostReaderComments::Allow,
+                "DONT_ALLOW_HIDE_EXISTING" => PostReaderComments::DontAllowHideExisting,
+                "DONT_ALLOW_SHOW_EXISTING" => PostReaderComments::DontAllowShowExisting,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PostReaderComments {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PostReaderComments {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PostReaderComments {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ALLOW" => PostReaderComments::Allow,
+                "DONT_ALLOW_HIDE_EXISTING" => PostReaderComments::DontAllowHideExisting,
+                "DONT_ALLOW_SHOW_EXISTING" => PostReaderComments::DontAllowShowExisting,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PostReaderComments {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PostReaderComments {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug,
         Clone,
@@ -1438,6 +1882,79 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum PostStatus {
+        Draft,
+        Live,
+        Scheduled,
+    }
+    impl PostStatus {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                PostStatus::Draft => "DRAFT",
+                PostStatus::Live => "LIVE",
+                PostStatus::Scheduled => "SCHEDULED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for PostStatus {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for PostStatus {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<PostStatus, ()> {
+            Ok(match s {
+                "DRAFT" => PostStatus::Draft,
+                "LIVE" => PostStatus::Live,
+                "SCHEDULED" => PostStatus::Scheduled,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for PostStatus {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for PostStatus {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for PostStatus {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "DRAFT" => PostStatus::Draft,
+                "LIVE" => PostStatus::Live,
+                "SCHEDULED" => PostStatus::Scheduled,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for PostStatus {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for PostStatus {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
@@ -1456,7 +1973,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::Post>>,
-        #[doc = "The kind of this entity. Always blogger#postList"]
+        #[doc = "The kind of this entity. Always blogger#postList."]
         #[serde(
             rename = "kind",
             default,
@@ -1470,6 +1987,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub next_page_token: ::std::option::Option<String>,
+        #[doc = "Pagination token to fetch the previous page, if one exists."]
+        #[serde(
+            rename = "prevPageToken",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub prev_page_token: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for PostList {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -1508,7 +2032,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub has_edit_access: ::std::option::Option<bool>,
-        #[doc = "The kind of this entity. Always blogger#postPerUserInfo"]
+        #[doc = "The kind of this entity. Always blogger#postPerUserInfo."]
         #[serde(
             rename = "kind",
             default,
@@ -1544,7 +2068,7 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct PostUserInfo {
-        #[doc = "The kind of this entity. Always blogger#postUserInfo"]
+        #[doc = "The kind of this entity. Always blogger#postUserInfo."]
         #[serde(
             rename = "kind",
             default,
@@ -1587,7 +2111,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub items: ::std::option::Option<Vec<crate::schemas::PostUserInfo>>,
-        #[doc = "The kind of this entity. Always blogger#postList"]
+        #[doc = "The kind of this entity. Always blogger#postList."]
         #[serde(
             rename = "kind",
             default,
@@ -1645,7 +2169,7 @@ pub mod schemas {
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
-        pub created: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        pub created: ::std::option::Option<String>,
         #[doc = "The display name."]
         #[serde(
             rename = "displayName",
@@ -1660,7 +2184,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub id: ::std::option::Option<String>,
-        #[doc = "The kind of this entity. Always blogger#user"]
+        #[doc = "The kind of this entity. Always blogger#user."]
         #[serde(
             rename = "kind",
             default,
@@ -1743,21 +2267,21 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct UserLocale {
-        #[doc = "The user's country setting."]
+        #[doc = "The country this blog's locale is set to."]
         #[serde(
             rename = "country",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub country: ::std::option::Option<String>,
-        #[doc = "The user's language setting."]
+        #[doc = "The language this blog is authored in."]
         #[serde(
             rename = "language",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub language: ::std::option::Option<String>,
-        #[doc = "The user's language variant setting."]
+        #[doc = "The language variant this blog is authored in."]
         #[serde(
             rename = "variant",
             default,
@@ -1781,11 +2305,17 @@ pub mod params {
     pub enum Alt {
         #[doc = "Responses with Content-Type of application/json"]
         Json,
+        #[doc = "Media download with context-dependent Content-Type"]
+        Media,
+        #[doc = "Responses with Content-Type of application/x-protobuf"]
+        Proto,
     }
     impl Alt {
         pub fn as_str(self) -> &'static str {
             match self {
                 Alt::Json => "json",
+                Alt::Media => "media",
+                Alt::Proto => "proto",
             }
         }
     }
@@ -1799,6 +2329,8 @@ pub mod params {
         fn from_str(s: &str) -> ::std::result::Result<Alt, ()> {
             Ok(match s {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => return Err(()),
             })
         }
@@ -1824,6 +2356,8 @@ pub mod params {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
                 "json" => Alt::Json,
+                "media" => Alt::Media,
+                "proto" => Alt::Proto,
                 _ => {
                     return Err(::serde::de::Error::custom(format!(
                         "invalid enum for #name: {}",
@@ -1843,9 +2377,80 @@ pub mod params {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum Xgafv {
+        #[doc = "v1 error format"]
+        _1,
+        #[doc = "v2 error format"]
+        _2,
+    }
+    impl Xgafv {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                Xgafv::_1 => "1",
+                Xgafv::_2 => "2",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for Xgafv {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for Xgafv {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<Xgafv, ()> {
+            Ok(match s {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for Xgafv {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for Xgafv {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for Xgafv {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "1" => Xgafv::_1,
+                "2" => Xgafv::_2,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for Xgafv {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Xgafv {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1853,8 +2458,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1922,14 +2539,14 @@ pub mod resources {
     pub mod blog_user_infos {
         pub mod params {}
         pub struct BlogUserInfosActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> BlogUserInfosActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets one blog and user info pair by blogId and userId."]
+            #[doc = "Gets one blog and user info pair by blog id and user id."]
             pub fn get(
                 &self,
                 user_id: impl Into<String>,
@@ -1938,13 +2555,17 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     user_id: user_id.into(),
                     blog_id: blog_id.into(),
                     max_posts: None,
@@ -1954,23 +2575,37 @@ pub mod resources {
         #[doc = "Created via [BlogUserInfosActions::get()](struct.BlogUserInfosActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_id: String,
             blog_id: String,
             max_posts: Option<u32>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Maximum number of posts to pull back with the blog."]
+            #[doc = ""]
             pub fn max_posts(mut self, value: u32) -> Self {
                 self.max_posts = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -1988,14 +2623,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2055,8 +2700,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("users/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/users/");
                 {
                     let var_as_str = &self.user_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2074,16 +2719,23 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxPosts", &self.max_posts)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2097,12 +2749,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetView {
-                #[doc = "Admin level detail."]
                 Admin,
-                #[doc = "Author level detail."]
                 Author,
-                #[doc = "Reader level detail."]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl GetView {
                 pub fn as_str(self) -> &'static str {
@@ -2110,6 +2760,7 @@ pub mod resources {
                         GetView::Admin => "ADMIN",
                         GetView::Author => "AUTHOR",
                         GetView::Reader => "READER",
+                        GetView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -2125,6 +2776,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -2152,6 +2804,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -2173,12 +2826,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetByUrlView {
-                #[doc = "Admin level detail."]
                 Admin,
-                #[doc = "Author level detail."]
                 Author,
-                #[doc = "Reader level detail."]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl GetByUrlView {
                 pub fn as_str(self) -> &'static str {
@@ -2186,6 +2837,7 @@ pub mod resources {
                         GetByUrlView::Admin => "ADMIN",
                         GetByUrlView::Author => "AUTHOR",
                         GetByUrlView::Reader => "READER",
+                        GetByUrlView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -2201,6 +2853,7 @@ pub mod resources {
                         "ADMIN" => GetByUrlView::Admin,
                         "AUTHOR" => GetByUrlView::Author,
                         "READER" => GetByUrlView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetByUrlView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -2228,6 +2881,7 @@ pub mod resources {
                         "ADMIN" => GetByUrlView::Admin,
                         "AUTHOR" => GetByUrlView::Author,
                         "READER" => GetByUrlView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetByUrlView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -2249,12 +2903,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListByUserRoleItems {
-                #[doc = "Admin role - Blogs where the user has Admin level access."]
                 Admin,
-                #[doc = "Author role - Blogs where the user has Author level access."]
                 Author,
-                #[doc = "Reader role - Blogs where the user has Reader level access (to a private blog)."]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl ListByUserRoleItems {
                 pub fn as_str(self) -> &'static str {
@@ -2262,6 +2914,7 @@ pub mod resources {
                         ListByUserRoleItems::Admin => "ADMIN",
                         ListByUserRoleItems::Author => "AUTHOR",
                         ListByUserRoleItems::Reader => "READER",
+                        ListByUserRoleItems::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -2277,6 +2930,7 @@ pub mod resources {
                         "ADMIN" => ListByUserRoleItems::Admin,
                         "AUTHOR" => ListByUserRoleItems::Author,
                         "READER" => ListByUserRoleItems::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListByUserRoleItems::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -2304,6 +2958,7 @@ pub mod resources {
                         "ADMIN" => ListByUserRoleItems::Admin,
                         "AUTHOR" => ListByUserRoleItems::Author,
                         "READER" => ListByUserRoleItems::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListByUserRoleItems::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -2325,9 +2980,7 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListByUserStatusItems {
-                #[doc = "Blog has been deleted by an administrator."]
                 Deleted,
-                #[doc = "Blog is currently live."]
                 Live,
             }
             impl ListByUserStatusItems {
@@ -2396,12 +3049,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListByUserView {
-                #[doc = "Admin level detail."]
                 Admin,
-                #[doc = "Author level detail."]
                 Author,
-                #[doc = "Reader level detail."]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl ListByUserView {
                 pub fn as_str(self) -> &'static str {
@@ -2409,6 +3060,7 @@ pub mod resources {
                         ListByUserView::Admin => "ADMIN",
                         ListByUserView::Author => "AUTHOR",
                         ListByUserView::Reader => "READER",
+                        ListByUserView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -2424,6 +3076,7 @@ pub mod resources {
                         "ADMIN" => ListByUserView::Admin,
                         "AUTHOR" => ListByUserView::Author,
                         "READER" => ListByUserView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListByUserView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -2451,6 +3104,7 @@ pub mod resources {
                         "ADMIN" => ListByUserView::Admin,
                         "AUTHOR" => ListByUserView::Author,
                         "READER" => ListByUserView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListByUserView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -2472,58 +3126,70 @@ pub mod resources {
             }
         }
         pub struct BlogsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> BlogsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets one blog by ID."]
+            #[doc = "Gets a blog by id."]
             pub fn get(&self, blog_id: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     max_posts: None,
                     view: None,
                 }
             }
-            #[doc = "Retrieve a Blog by URL."]
+            #[doc = "Gets a blog by url."]
             pub fn get_by_url(&self, url: impl Into<String>) -> GetByUrlRequestBuilder {
                 GetByUrlRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     url: url.into(),
                     view: None,
                 }
             }
-            #[doc = "Retrieves a list of blogs, possibly filtered."]
+            #[doc = "Lists blogs by user."]
             pub fn list_by_user(&self, user_id: impl Into<String>) -> ListByUserRequestBuilder {
                 ListByUserRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     user_id: user_id.into(),
                     fetch_user_info: None,
                     role: None,
@@ -2535,28 +3201,42 @@ pub mod resources {
         #[doc = "Created via [BlogsActions::get()](struct.BlogsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             max_posts: Option<u32>,
             view: Option<crate::resources::blogs::params::GetView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Maximum number of posts to pull back with the blog."]
+            #[doc = ""]
             pub fn max_posts(mut self, value: u32) -> Self {
                 self.max_posts = Some(value);
                 self
             }
-            #[doc = "Access level with which to view the blog. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::blogs::params::GetView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2574,14 +3254,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2637,8 +3327,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2648,17 +3338,24 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxPosts", &self.max_posts)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2670,22 +3367,36 @@ pub mod resources {
         #[doc = "Created via [BlogsActions::get_by_url()](struct.BlogsActions.html#method.get_by_url)"]
         #[derive(Debug, Clone)]
         pub struct GetByUrlRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             url: String,
             view: Option<crate::resources::blogs::params::GetByUrlView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetByUrlRequestBuilder<'a> {
-            #[doc = "Access level with which to view the blog. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::blogs::params::GetByUrlView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2703,14 +3414,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2766,21 +3487,28 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/byurl");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/byurl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("url", &self.url)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2792,28 +3520,32 @@ pub mod resources {
         #[doc = "Created via [BlogsActions::list_by_user()](struct.BlogsActions.html#method.list_by_user)"]
         #[derive(Debug, Clone)]
         pub struct ListByUserRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_id: String,
             fetch_user_info: Option<bool>,
             role: Option<Vec<crate::resources::blogs::params::ListByUserRoleItems>>,
             status: Option<Vec<crate::resources::blogs::params::ListByUserStatusItems>>,
             view: Option<crate::resources::blogs::params::ListByUserView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListByUserRequestBuilder<'a> {
-            #[doc = "Whether the response is a list of blogs with per-user information instead of just blogs."]
+            #[doc = ""]
             pub fn fetch_user_info(mut self, value: bool) -> Self {
                 self.fetch_user_info = Some(value);
                 self
             }
-            #[doc = "User access types for blogs to include in the results, e.g. AUTHOR will return blogs where the user has author level access. If no roles are specified, defaults to ADMIN and AUTHOR roles."]
+            #[doc = ""]
             pub fn role(
                 mut self,
                 value: impl Into<Vec<crate::resources::blogs::params::ListByUserRoleItems>>,
@@ -2821,7 +3553,7 @@ pub mod resources {
                 self.role = Some(value.into());
                 self
             }
-            #[doc = "Blog statuses to include in the result (default: Live blogs only). Note that ADMIN access is required to view deleted blogs."]
+            #[doc = "Default value of status is LIVE."]
             pub fn status(
                 mut self,
                 value: impl Into<Vec<crate::resources::blogs::params::ListByUserStatusItems>>,
@@ -2829,9 +3561,19 @@ pub mod resources {
                 self.status = Some(value.into());
                 self
             }
-            #[doc = "Access level with which to view the blogs. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::blogs::params::ListByUserView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -2849,14 +3591,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -2914,8 +3666,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("users/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/users/");
                 {
                     let var_as_str = &self.user_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -2926,19 +3678,26 @@ pub mod resources {
                 output.push_str("/blogs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("fetchUserInfo", &self.fetch_user_info)]);
                 let req = req.query(&[("role", &self.role)]);
                 let req = req.query(&[("status", &self.status)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -2952,12 +3711,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Admin level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl GetView {
                 pub fn as_str(self) -> &'static str {
@@ -2965,6 +3722,7 @@ pub mod resources {
                         GetView::Admin => "ADMIN",
                         GetView::Author => "AUTHOR",
                         GetView::Reader => "READER",
+                        GetView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -2980,6 +3738,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -3007,6 +3766,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -3027,49 +3787,45 @@ pub mod resources {
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
-            pub enum ListStatusItems {
-                #[doc = "Comments that have had their content removed"]
+            pub enum ListStatus {
                 Emptied,
-                #[doc = "Comments that are publicly visible"]
                 Live,
-                #[doc = "Comments that are awaiting administrator approval"]
                 Pending,
-                #[doc = "Comments marked as spam by the administrator"]
                 Spam,
             }
-            impl ListStatusItems {
+            impl ListStatus {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListStatusItems::Emptied => "emptied",
-                        ListStatusItems::Live => "live",
-                        ListStatusItems::Pending => "pending",
-                        ListStatusItems::Spam => "spam",
+                        ListStatus::Emptied => "EMPTIED",
+                        ListStatus::Live => "LIVE",
+                        ListStatus::Pending => "PENDING",
+                        ListStatus::Spam => "SPAM",
                     }
                 }
             }
-            impl ::std::convert::AsRef<str> for ListStatusItems {
+            impl ::std::convert::AsRef<str> for ListStatus {
                 fn as_ref(&self) -> &str {
                     self.as_str()
                 }
             }
-            impl ::std::str::FromStr for ListStatusItems {
+            impl ::std::str::FromStr for ListStatus {
                 type Err = ();
-                fn from_str(s: &str) -> ::std::result::Result<ListStatusItems, ()> {
+                fn from_str(s: &str) -> ::std::result::Result<ListStatus, ()> {
                     Ok(match s {
-                        "emptied" => ListStatusItems::Emptied,
-                        "live" => ListStatusItems::Live,
-                        "pending" => ListStatusItems::Pending,
-                        "spam" => ListStatusItems::Spam,
+                        "EMPTIED" => ListStatus::Emptied,
+                        "LIVE" => ListStatus::Live,
+                        "PENDING" => ListStatus::Pending,
+                        "SPAM" => ListStatus::Spam,
                         _ => return Err(()),
                     })
                 }
             }
-            impl ::std::fmt::Display for ListStatusItems {
+            impl ::std::fmt::Display for ListStatus {
                 fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
                     f.write_str(self.as_str())
                 }
             }
-            impl ::serde::Serialize for ListStatusItems {
+            impl ::serde::Serialize for ListStatus {
                 fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
                 where
                     S: ::serde::ser::Serializer,
@@ -3077,17 +3833,17 @@ pub mod resources {
                     serializer.serialize_str(self.as_str())
                 }
             }
-            impl<'de> ::serde::Deserialize<'de> for ListStatusItems {
+            impl<'de> ::serde::Deserialize<'de> for ListStatus {
                 fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
                 where
                     D: ::serde::de::Deserializer<'de>,
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "emptied" => ListStatusItems::Emptied,
-                        "live" => ListStatusItems::Live,
-                        "pending" => ListStatusItems::Pending,
-                        "spam" => ListStatusItems::Spam,
+                        "EMPTIED" => ListStatus::Emptied,
+                        "LIVE" => ListStatus::Live,
+                        "PENDING" => ListStatus::Pending,
+                        "SPAM" => ListStatus::Spam,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -3097,24 +3853,22 @@ pub mod resources {
                     })
                 }
             }
-            impl ::google_field_selector::FieldSelector for ListStatusItems {
+            impl ::google_field_selector::FieldSelector for ListStatus {
                 fn fields() -> Vec<::google_field_selector::Field> {
                     Vec::new()
                 }
             }
-            impl ::google_field_selector::ToFieldType for ListStatusItems {
+            impl ::google_field_selector::ToFieldType for ListStatus {
                 fn field_type() -> ::google_field_selector::FieldType {
                     ::google_field_selector::FieldType::Leaf
                 }
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl ListView {
                 pub fn as_str(self) -> &'static str {
@@ -3122,6 +3876,7 @@ pub mod resources {
                         ListView::Admin => "ADMIN",
                         ListView::Author => "AUTHOR",
                         ListView::Reader => "READER",
+                        ListView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -3137,6 +3892,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -3164,6 +3920,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -3185,22 +3942,18 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListByBlogStatusItems {
-                #[doc = "Comments that have had their content removed"]
                 Emptied,
-                #[doc = "Comments that are publicly visible"]
                 Live,
-                #[doc = "Comments that are awaiting administrator approval"]
                 Pending,
-                #[doc = "Comments marked as spam by the administrator"]
                 Spam,
             }
             impl ListByBlogStatusItems {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListByBlogStatusItems::Emptied => "emptied",
-                        ListByBlogStatusItems::Live => "live",
-                        ListByBlogStatusItems::Pending => "pending",
-                        ListByBlogStatusItems::Spam => "spam",
+                        ListByBlogStatusItems::Emptied => "EMPTIED",
+                        ListByBlogStatusItems::Live => "LIVE",
+                        ListByBlogStatusItems::Pending => "PENDING",
+                        ListByBlogStatusItems::Spam => "SPAM",
                     }
                 }
             }
@@ -3213,10 +3966,10 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListByBlogStatusItems, ()> {
                     Ok(match s {
-                        "emptied" => ListByBlogStatusItems::Emptied,
-                        "live" => ListByBlogStatusItems::Live,
-                        "pending" => ListByBlogStatusItems::Pending,
-                        "spam" => ListByBlogStatusItems::Spam,
+                        "EMPTIED" => ListByBlogStatusItems::Emptied,
+                        "LIVE" => ListByBlogStatusItems::Live,
+                        "PENDING" => ListByBlogStatusItems::Pending,
+                        "SPAM" => ListByBlogStatusItems::Spam,
                         _ => return Err(()),
                     })
                 }
@@ -3241,10 +3994,10 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "emptied" => ListByBlogStatusItems::Emptied,
-                        "live" => ListByBlogStatusItems::Live,
-                        "pending" => ListByBlogStatusItems::Pending,
-                        "spam" => ListByBlogStatusItems::Spam,
+                        "EMPTIED" => ListByBlogStatusItems::Emptied,
+                        "LIVE" => ListByBlogStatusItems::Live,
+                        "PENDING" => ListByBlogStatusItems::Pending,
+                        "SPAM" => ListByBlogStatusItems::Spam,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -3266,14 +4019,14 @@ pub mod resources {
             }
         }
         pub struct CommentsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> CommentsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Marks a comment as not spam."]
+            #[doc = "Marks a comment as not spam by blog id, post id and comment id."]
             pub fn approve(
                 &self,
                 blog_id: impl Into<String>,
@@ -3283,19 +4036,23 @@ pub mod resources {
                 ApproveRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     comment_id: comment_id.into(),
                 }
             }
-            #[doc = "Delete a comment by ID."]
+            #[doc = "Deletes a comment by blog id, post id and comment id."]
             pub fn delete(
                 &self,
                 blog_id: impl Into<String>,
@@ -3305,19 +4062,23 @@ pub mod resources {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     comment_id: comment_id.into(),
                 }
             }
-            #[doc = "Gets one comment by ID."]
+            #[doc = "Gets a comment by id."]
             pub fn get(
                 &self,
                 blog_id: impl Into<String>,
@@ -3327,20 +4088,24 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     comment_id: comment_id.into(),
                     view: None,
                 }
             }
-            #[doc = "Retrieves the comments for a post, possibly filtered."]
+            #[doc = "Lists comments."]
             pub fn list(
                 &self,
                 blog_id: impl Into<String>,
@@ -3349,13 +4114,17 @@ pub mod resources {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     end_date: None,
@@ -3367,18 +4136,22 @@ pub mod resources {
                     view: None,
                 }
             }
-            #[doc = "Retrieves the comments for a blog, across all posts, possibly filtered."]
+            #[doc = "Lists comments by blog."]
             pub fn list_by_blog(&self, blog_id: impl Into<String>) -> ListByBlogRequestBuilder {
                 ListByBlogRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     end_date: None,
                     fetch_bodies: None,
@@ -3388,7 +4161,7 @@ pub mod resources {
                     status: None,
                 }
             }
-            #[doc = "Marks a comment as spam."]
+            #[doc = "Marks a comment as spam by blog id, post id and comment id."]
             pub fn mark_as_spam(
                 &self,
                 blog_id: impl Into<String>,
@@ -3398,19 +4171,23 @@ pub mod resources {
                 MarkAsSpamRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     comment_id: comment_id.into(),
                 }
             }
-            #[doc = "Removes the content of a comment."]
+            #[doc = "Removes the content of a comment by blog id, post id and comment id."]
             pub fn remove_content(
                 &self,
                 blog_id: impl Into<String>,
@@ -3420,13 +4197,17 @@ pub mod resources {
                 RemoveContentRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     comment_id: comment_id.into(),
@@ -3436,20 +4217,34 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::approve()](struct.CommentsActions.html#method.approve)"]
         #[derive(Debug, Clone)]
         pub struct ApproveRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
             comment_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ApproveRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -3465,14 +4260,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3530,8 +4335,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -3558,15 +4363,22 @@ pub mod resources {
                 output.push_str("/approve");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3578,20 +4390,34 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::delete()](struct.CommentsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
             comment_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -3607,14 +4433,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             pub fn execute(self) -> Result<(), crate::Error> {
@@ -3623,8 +4459,8 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -3650,15 +4486,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3670,24 +4513,38 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::get()](struct.CommentsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
             comment_id: String,
             view: Option<crate::resources::comments::params::GetView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Access level for the requested comment (default: READER). Note that some comments will require elevated permissions, for example comments where the parent posts which is in a draft state, or comments that are pending moderation."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::comments::params::GetView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3705,14 +4562,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -3770,8 +4637,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -3797,16 +4664,23 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -3818,62 +4692,73 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::list()](struct.CommentsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
-            end_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            end_date: Option<String>,
             fetch_bodies: Option<bool>,
             max_results: Option<u32>,
             page_token: Option<String>,
-            start_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
-            status: Option<Vec<crate::resources::comments::params::ListStatusItems>>,
+            start_date: Option<String>,
+            status: Option<crate::resources::comments::params::ListStatus>,
             view: Option<crate::resources::comments::params::ListView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Latest date of comment to fetch, a date-time with RFC 3339 formatting."]
-            pub fn end_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.end_date = Some(value);
+            #[doc = ""]
+            pub fn end_date(mut self, value: impl Into<String>) -> Self {
+                self.end_date = Some(value.into());
                 self
             }
-            #[doc = "Whether the body content of the comments is included."]
+            #[doc = ""]
             pub fn fetch_bodies(mut self, value: bool) -> Self {
                 self.fetch_bodies = Some(value);
                 self
             }
-            #[doc = "Maximum number of comments to include in the result."]
+            #[doc = ""]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Continuation token if request is paged."]
+            #[doc = ""]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Earliest date of comment to fetch, a date-time with RFC 3339 formatting."]
-            pub fn start_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.start_date = Some(value);
+            #[doc = ""]
+            pub fn start_date(mut self, value: impl Into<String>) -> Self {
+                self.start_date = Some(value.into());
                 self
             }
             #[doc = ""]
-            pub fn status(
-                mut self,
-                value: impl Into<Vec<crate::resources::comments::params::ListStatusItems>>,
-            ) -> Self {
-                self.status = Some(value.into());
+            pub fn status(mut self, value: crate::resources::comments::params::ListStatus) -> Self {
+                self.status = Some(value);
                 self
             }
-            #[doc = "Access level with which to view the returned result. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::comments::params::ListView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -3891,14 +4776,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -4056,8 +4951,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -4076,7 +4971,10 @@ pub mod resources {
                 output.push_str("/comments");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("endDate", &self.end_date)]);
                 let req = req.query(&[("fetchBodies", &self.fetch_bodies)]);
@@ -4085,13 +4983,17 @@ pub mod resources {
                 let req = req.query(&[("startDate", &self.start_date)]);
                 let req = req.query(&[("status", &self.status)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -4114,47 +5016,51 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::list_by_blog()](struct.CommentsActions.html#method.list_by_blog)"]
         #[derive(Debug, Clone)]
         pub struct ListByBlogRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
-            end_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            end_date: Option<String>,
             fetch_bodies: Option<bool>,
             max_results: Option<u32>,
             page_token: Option<String>,
-            start_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            start_date: Option<String>,
             status: Option<Vec<crate::resources::comments::params::ListByBlogStatusItems>>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListByBlogRequestBuilder<'a> {
-            #[doc = "Latest date of comment to fetch, a date-time with RFC 3339 formatting."]
-            pub fn end_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.end_date = Some(value);
+            #[doc = ""]
+            pub fn end_date(mut self, value: impl Into<String>) -> Self {
+                self.end_date = Some(value.into());
                 self
             }
-            #[doc = "Whether the body content of the comments is included."]
+            #[doc = ""]
             pub fn fetch_bodies(mut self, value: bool) -> Self {
                 self.fetch_bodies = Some(value);
                 self
             }
-            #[doc = "Maximum number of comments to include in the result."]
+            #[doc = ""]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Continuation token if request is paged."]
+            #[doc = ""]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Earliest date of comment to fetch, a date-time with RFC 3339 formatting."]
-            pub fn start_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.start_date = Some(value);
+            #[doc = ""]
+            pub fn start_date(mut self, value: impl Into<String>) -> Self {
+                self.start_date = Some(value.into());
                 self
             }
             #[doc = ""]
@@ -4163,6 +5069,16 @@ pub mod resources {
                 value: impl Into<Vec<crate::resources::comments::params::ListByBlogStatusItems>>,
             ) -> Self {
                 self.status = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4180,14 +5096,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -4345,8 +5271,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -4357,7 +5283,10 @@ pub mod resources {
                 output.push_str("/comments");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("endDate", &self.end_date)]);
                 let req = req.query(&[("fetchBodies", &self.fetch_bodies)]);
@@ -4365,13 +5294,17 @@ pub mod resources {
                 let req = req.query(&[("pageToken", &self.page_token)]);
                 let req = req.query(&[("startDate", &self.start_date)]);
                 let req = req.query(&[("status", &self.status)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -4394,20 +5327,34 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::mark_as_spam()](struct.CommentsActions.html#method.mark_as_spam)"]
         #[derive(Debug, Clone)]
         pub struct MarkAsSpamRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
             comment_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> MarkAsSpamRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -4423,14 +5370,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -4488,8 +5445,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -4516,15 +5473,22 @@ pub mod resources {
                 output.push_str("/spam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -4536,20 +5500,34 @@ pub mod resources {
         #[doc = "Created via [CommentsActions::remove_content()](struct.CommentsActions.html#method.remove_content)"]
         #[derive(Debug, Clone)]
         pub struct RemoveContentRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
             comment_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> RemoveContentRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -4565,14 +5543,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -4630,8 +5618,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -4658,15 +5646,22 @@ pub mod resources {
                 output.push_str("/removecontent");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -4680,11 +5675,8 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetRangeItems {
-                #[doc = "Total page view counts from all time."]
                 All,
-                #[doc = "Page view counts from the last thirty days."]
                 _30Days,
-                #[doc = "Page view counts from the last seven days."]
                 _7Days,
             }
             impl GetRangeItems {
@@ -4756,25 +5748,29 @@ pub mod resources {
             }
         }
         pub struct PageViewsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PageViewsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Retrieve pageview stats for a Blog."]
+            #[doc = "Gets page views by blog id."]
             pub fn get(&self, blog_id: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     range: None,
                 }
@@ -4783,17 +5779,21 @@ pub mod resources {
         #[doc = "Created via [PageViewsActions::get()](struct.PageViewsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             range: Option<Vec<crate::resources::page_views::params::GetRangeItems>>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
             #[doc = ""]
@@ -4802,6 +5802,16 @@ pub mod resources {
                 value: impl Into<Vec<crate::resources::page_views::params::GetRangeItems>>,
             ) -> Self {
                 self.range = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -4819,14 +5829,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -4886,8 +5906,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -4898,16 +5918,23 @@ pub mod resources {
                 output.push_str("/pageviews");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("range", &self.range)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -4921,12 +5948,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl GetView {
                 pub fn as_str(self) -> &'static str {
@@ -4934,6 +5959,7 @@ pub mod resources {
                         GetView::Admin => "ADMIN",
                         GetView::Author => "AUTHOR",
                         GetView::Reader => "READER",
+                        GetView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -4949,6 +5975,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -4976,6 +6003,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -4997,16 +6025,14 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListStatusItems {
-                #[doc = "Draft (unpublished) Pages"]
                 Draft,
-                #[doc = "Pages that are publicly visible"]
                 Live,
             }
             impl ListStatusItems {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListStatusItems::Draft => "draft",
-                        ListStatusItems::Live => "live",
+                        ListStatusItems::Draft => "DRAFT",
+                        ListStatusItems::Live => "LIVE",
                     }
                 }
             }
@@ -5019,8 +6045,8 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListStatusItems, ()> {
                     Ok(match s {
-                        "draft" => ListStatusItems::Draft,
-                        "live" => ListStatusItems::Live,
+                        "DRAFT" => ListStatusItems::Draft,
+                        "LIVE" => ListStatusItems::Live,
                         _ => return Err(()),
                     })
                 }
@@ -5045,8 +6071,8 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "draft" => ListStatusItems::Draft,
-                        "live" => ListStatusItems::Live,
+                        "DRAFT" => ListStatusItems::Draft,
+                        "LIVE" => ListStatusItems::Live,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -5068,12 +6094,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl ListView {
                 pub fn as_str(self) -> &'static str {
@@ -5081,6 +6105,7 @@ pub mod resources {
                         ListView::Admin => "ADMIN",
                         ListView::Author => "AUTHOR",
                         ListView::Reader => "READER",
+                        ListView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -5096,6 +6121,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -5123,6 +6149,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -5144,14 +6171,14 @@ pub mod resources {
             }
         }
         pub struct PagesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PagesActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Delete a page by ID."]
+            #[doc = "Deletes a page by blog id and page id."]
             pub fn delete(
                 &self,
                 blog_id: impl Into<String>,
@@ -5160,18 +6187,22 @@ pub mod resources {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     page_id: page_id.into(),
                 }
             }
-            #[doc = "Gets one blog page by ID."]
+            #[doc = "Gets a page by blog id and page id."]
             pub fn get(
                 &self,
                 blog_id: impl Into<String>,
@@ -5180,19 +6211,23 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     page_id: page_id.into(),
                     view: None,
                 }
             }
-            #[doc = "Add a page."]
+            #[doc = "Inserts a page."]
             pub fn insert(
                 &self,
                 request: crate::schemas::Page,
@@ -5202,29 +6237,37 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     is_draft: None,
                 }
             }
-            #[doc = "Retrieves the pages for a blog, optionally including non-LIVE statuses."]
+            #[doc = "Lists pages."]
             pub fn list(&self, blog_id: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     fetch_bodies: None,
                     max_results: None,
@@ -5233,7 +6276,7 @@ pub mod resources {
                     view: None,
                 }
             }
-            #[doc = "Update a page. This method supports patch semantics."]
+            #[doc = "Patches a page."]
             pub fn patch(
                 &self,
                 request: crate::schemas::Page,
@@ -5244,20 +6287,24 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     page_id: page_id.into(),
                     publish: None,
                     revert: None,
                 }
             }
-            #[doc = "Publishes a draft page."]
+            #[doc = "Publishes a page."]
             pub fn publish(
                 &self,
                 blog_id: impl Into<String>,
@@ -5266,18 +6313,22 @@ pub mod resources {
                 PublishRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     page_id: page_id.into(),
                 }
             }
-            #[doc = "Revert a published or scheduled page to draft state."]
+            #[doc = "Reverts a published or scheduled page to draft state."]
             pub fn revert(
                 &self,
                 blog_id: impl Into<String>,
@@ -5286,18 +6337,22 @@ pub mod resources {
                 RevertRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     page_id: page_id.into(),
                 }
             }
-            #[doc = "Update a page."]
+            #[doc = "Updates a page by blog id and page id."]
             pub fn update(
                 &self,
                 request: crate::schemas::Page,
@@ -5308,13 +6363,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     page_id: page_id.into(),
                     publish: None,
@@ -5325,19 +6384,33 @@ pub mod resources {
         #[doc = "Created via [PagesActions::delete()](struct.PagesActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             page_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -5353,14 +6426,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             pub fn execute(self) -> Result<(), crate::Error> {
@@ -5369,8 +6452,8 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -5388,15 +6471,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -5408,23 +6498,37 @@ pub mod resources {
         #[doc = "Created via [PagesActions::get()](struct.PagesActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             page_id: String,
             view: Option<crate::resources::pages::params::GetView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
             #[doc = ""]
             pub fn view(mut self, value: crate::resources::pages::params::GetView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5442,14 +6546,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -5505,8 +6619,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -5524,16 +6638,23 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -5545,23 +6666,37 @@ pub mod resources {
         #[doc = "Created via [PagesActions::insert()](struct.PagesActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Page,
             blog_id: String,
             is_draft: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "Whether to create the page as a draft (default: false)."]
+            #[doc = ""]
             pub fn is_draft(mut self, value: bool) -> Self {
                 self.is_draft = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5579,14 +6714,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -5643,8 +6788,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -5655,16 +6800,23 @@ pub mod resources {
                 output.push_str("/pages");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("isDraft", &self.is_draft)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -5676,7 +6828,7 @@ pub mod resources {
         #[doc = "Created via [PagesActions::list()](struct.PagesActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             fetch_bodies: Option<bool>,
@@ -5684,26 +6836,30 @@ pub mod resources {
             page_token: Option<String>,
             status: Option<Vec<crate::resources::pages::params::ListStatusItems>>,
             view: Option<crate::resources::pages::params::ListView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Whether to retrieve the Page bodies."]
+            #[doc = ""]
             pub fn fetch_bodies(mut self, value: bool) -> Self {
                 self.fetch_bodies = Some(value);
                 self
             }
-            #[doc = "Maximum number of Pages to fetch."]
+            #[doc = ""]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Continuation token if the request is paged."]
+            #[doc = ""]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
@@ -5716,9 +6872,19 @@ pub mod resources {
                 self.status = Some(value.into());
                 self
             }
-            #[doc = "Access level with which to view the returned result. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::pages::params::ListView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5736,14 +6902,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -5899,8 +7075,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -5911,20 +7087,27 @@ pub mod resources {
                 output.push_str("/pages");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("fetchBodies", &self.fetch_bodies)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
                 let req = req.query(&[("status", &self.status)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -5947,30 +7130,44 @@ pub mod resources {
         #[doc = "Created via [PagesActions::patch()](struct.PagesActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Page,
             blog_id: String,
             page_id: String,
             publish: Option<bool>,
             revert: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "Whether a publish action should be performed when the page is updated (default: false)."]
+            #[doc = ""]
             pub fn publish(mut self, value: bool) -> Self {
                 self.publish = Some(value);
                 self
             }
-            #[doc = "Whether a revert action should be performed when the page is updated (default: false)."]
+            #[doc = ""]
             pub fn revert(mut self, value: bool) -> Self {
                 self.revert = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -5988,14 +7185,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -6052,8 +7259,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -6071,17 +7278,24 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("publish", &self.publish)]);
                 let req = req.query(&[("revert", &self.revert)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -6093,19 +7307,33 @@ pub mod resources {
         #[doc = "Created via [PagesActions::publish()](struct.PagesActions.html#method.publish)"]
         #[derive(Debug, Clone)]
         pub struct PublishRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             page_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> PublishRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -6121,14 +7349,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -6184,8 +7422,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -6204,15 +7442,22 @@ pub mod resources {
                 output.push_str("/publish");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -6224,19 +7469,33 @@ pub mod resources {
         #[doc = "Created via [PagesActions::revert()](struct.PagesActions.html#method.revert)"]
         #[derive(Debug, Clone)]
         pub struct RevertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             page_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> RevertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -6252,14 +7511,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -6315,8 +7584,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -6335,15 +7604,22 @@ pub mod resources {
                 output.push_str("/revert");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -6355,30 +7631,44 @@ pub mod resources {
         #[doc = "Created via [PagesActions::update()](struct.PagesActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Page,
             blog_id: String,
             page_id: String,
             publish: Option<bool>,
             revert: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "Whether a publish action should be performed when the page is updated (default: false)."]
+            #[doc = ""]
             pub fn publish(mut self, value: bool) -> Self {
                 self.publish = Some(value);
                 self
             }
-            #[doc = "Whether a revert action should be performed when the page is updated (default: false)."]
+            #[doc = ""]
             pub fn revert(mut self, value: bool) -> Self {
                 self.revert = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6396,14 +7686,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -6460,8 +7760,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -6479,17 +7779,24 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("publish", &self.publish)]);
                 let req = req.query(&[("revert", &self.revert)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -6503,16 +7810,16 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
-                #[doc = "Order by the date the post was published"]
+                OrderByUnspecified,
                 Published,
-                #[doc = "Order by the date the post was last updated"]
                 Updated,
             }
             impl ListOrderBy {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListOrderBy::Published => "published",
-                        ListOrderBy::Updated => "updated",
+                        ListOrderBy::OrderByUnspecified => "ORDER_BY_UNSPECIFIED",
+                        ListOrderBy::Published => "PUBLISHED",
+                        ListOrderBy::Updated => "UPDATED",
                     }
                 }
             }
@@ -6525,8 +7832,9 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListOrderBy, ()> {
                     Ok(match s {
-                        "published" => ListOrderBy::Published,
-                        "updated" => ListOrderBy::Updated,
+                        "ORDER_BY_UNSPECIFIED" => ListOrderBy::OrderByUnspecified,
+                        "PUBLISHED" => ListOrderBy::Published,
+                        "UPDATED" => ListOrderBy::Updated,
                         _ => return Err(()),
                     })
                 }
@@ -6551,8 +7859,9 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "published" => ListOrderBy::Published,
-                        "updated" => ListOrderBy::Updated,
+                        "ORDER_BY_UNSPECIFIED" => ListOrderBy::OrderByUnspecified,
+                        "PUBLISHED" => ListOrderBy::Published,
+                        "UPDATED" => ListOrderBy::Updated,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -6574,19 +7883,16 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListStatusItems {
-                #[doc = "Draft posts"]
                 Draft,
-                #[doc = "Published posts"]
                 Live,
-                #[doc = "Posts that are scheduled to publish in future."]
                 Scheduled,
             }
             impl ListStatusItems {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListStatusItems::Draft => "draft",
-                        ListStatusItems::Live => "live",
-                        ListStatusItems::Scheduled => "scheduled",
+                        ListStatusItems::Draft => "DRAFT",
+                        ListStatusItems::Live => "LIVE",
+                        ListStatusItems::Scheduled => "SCHEDULED",
                     }
                 }
             }
@@ -6599,9 +7905,9 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListStatusItems, ()> {
                     Ok(match s {
-                        "draft" => ListStatusItems::Draft,
-                        "live" => ListStatusItems::Live,
-                        "scheduled" => ListStatusItems::Scheduled,
+                        "DRAFT" => ListStatusItems::Draft,
+                        "LIVE" => ListStatusItems::Live,
+                        "SCHEDULED" => ListStatusItems::Scheduled,
                         _ => return Err(()),
                     })
                 }
@@ -6626,9 +7932,9 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "draft" => ListStatusItems::Draft,
-                        "live" => ListStatusItems::Live,
-                        "scheduled" => ListStatusItems::Scheduled,
+                        "DRAFT" => ListStatusItems::Draft,
+                        "LIVE" => ListStatusItems::Live,
+                        "SCHEDULED" => ListStatusItems::Scheduled,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -6650,12 +7956,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl ListView {
                 pub fn as_str(self) -> &'static str {
@@ -6663,6 +7967,7 @@ pub mod resources {
                         ListView::Admin => "ADMIN",
                         ListView::Author => "AUTHOR",
                         ListView::Reader => "READER",
+                        ListView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -6678,6 +7983,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -6705,6 +8011,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -6726,14 +8033,14 @@ pub mod resources {
             }
         }
         pub struct PostUserInfosActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PostUserInfosActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets one post and user info pair, by post ID and user ID. The post user info contains per-user information about the post, such as access rights, specific to the user."]
+            #[doc = "Gets one post and user info pair, by post_id and user_id."]
             pub fn get(
                 &self,
                 user_id: impl Into<String>,
@@ -6743,20 +8050,24 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     user_id: user_id.into(),
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     max_comments: None,
                 }
             }
-            #[doc = "Retrieves a list of post and post user info pairs, possibly filtered. The post user info contains per-user information about the post, such as access rights, specific to the user."]
+            #[doc = "Lists post and user info pairs."]
             pub fn list(
                 &self,
                 user_id: impl Into<String>,
@@ -6765,13 +8076,17 @@ pub mod resources {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     user_id: user_id.into(),
                     blog_id: blog_id.into(),
                     end_date: None,
@@ -6789,24 +8104,38 @@ pub mod resources {
         #[doc = "Created via [PostUserInfosActions::get()](struct.PostUserInfosActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_id: String,
             blog_id: String,
             post_id: String,
             max_comments: Option<u32>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Maximum number of comments to pull back on a post."]
+            #[doc = ""]
             pub fn max_comments(mut self, value: u32) -> Self {
                 self.max_comments = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -6824,14 +8153,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -6891,8 +8230,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("users/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/users/");
                 {
                     let var_as_str = &self.user_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -6918,16 +8257,23 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxComments", &self.max_comments)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -6939,49 +8285,53 @@ pub mod resources {
         #[doc = "Created via [PostUserInfosActions::list()](struct.PostUserInfosActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_id: String,
             blog_id: String,
-            end_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            end_date: Option<String>,
             fetch_bodies: Option<bool>,
             labels: Option<String>,
             max_results: Option<u32>,
             order_by: Option<crate::resources::post_user_infos::params::ListOrderBy>,
             page_token: Option<String>,
-            start_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            start_date: Option<String>,
             status: Option<Vec<crate::resources::post_user_infos::params::ListStatusItems>>,
             view: Option<crate::resources::post_user_infos::params::ListView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Latest post date to fetch, a date-time with RFC 3339 formatting."]
-            pub fn end_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.end_date = Some(value);
+            #[doc = ""]
+            pub fn end_date(mut self, value: impl Into<String>) -> Self {
+                self.end_date = Some(value.into());
                 self
             }
-            #[doc = "Whether the body content of posts is included. Default is false."]
+            #[doc = ""]
             pub fn fetch_bodies(mut self, value: bool) -> Self {
                 self.fetch_bodies = Some(value);
                 self
             }
-            #[doc = "Comma-separated list of labels to search for."]
+            #[doc = ""]
             pub fn labels(mut self, value: impl Into<String>) -> Self {
                 self.labels = Some(value.into());
                 self
             }
-            #[doc = "Maximum number of posts to fetch."]
+            #[doc = ""]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Sort order applied to search results. Default is published."]
+            #[doc = ""]
             pub fn order_by(
                 mut self,
                 value: crate::resources::post_user_infos::params::ListOrderBy,
@@ -6989,14 +8339,14 @@ pub mod resources {
                 self.order_by = Some(value);
                 self
             }
-            #[doc = "Continuation token if the request is paged."]
+            #[doc = ""]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Earliest post date to fetch, a date-time with RFC 3339 formatting."]
-            pub fn start_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.start_date = Some(value);
+            #[doc = ""]
+            pub fn start_date(mut self, value: impl Into<String>) -> Self {
+                self.start_date = Some(value.into());
                 self
             }
             #[doc = ""]
@@ -7007,12 +8357,22 @@ pub mod resources {
                 self.status = Some(value.into());
                 self
             }
-            #[doc = "Access level with which to view the returned result. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(
                 mut self,
                 value: crate::resources::post_user_infos::params::ListView,
             ) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -7030,14 +8390,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -7195,8 +8565,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("users/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/users/");
                 {
                     let var_as_str = &self.user_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -7215,7 +8585,10 @@ pub mod resources {
                 output.push_str("/posts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("endDate", &self.end_date)]);
                 let req = req.query(&[("fetchBodies", &self.fetch_bodies)]);
@@ -7226,13 +8599,17 @@ pub mod resources {
                 let req = req.query(&[("startDate", &self.start_date)]);
                 let req = req.query(&[("status", &self.status)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -7257,12 +8634,10 @@ pub mod resources {
         pub mod params {
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl GetView {
                 pub fn as_str(self) -> &'static str {
@@ -7270,6 +8645,7 @@ pub mod resources {
                         GetView::Admin => "ADMIN",
                         GetView::Author => "AUTHOR",
                         GetView::Reader => "READER",
+                        GetView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -7285,6 +8661,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -7312,6 +8689,7 @@ pub mod resources {
                         "ADMIN" => GetView::Admin,
                         "AUTHOR" => GetView::Author,
                         "READER" => GetView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -7333,12 +8711,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum GetByPathView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl GetByPathView {
                 pub fn as_str(self) -> &'static str {
@@ -7346,6 +8722,7 @@ pub mod resources {
                         GetByPathView::Admin => "ADMIN",
                         GetByPathView::Author => "AUTHOR",
                         GetByPathView::Reader => "READER",
+                        GetByPathView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -7361,6 +8738,7 @@ pub mod resources {
                         "ADMIN" => GetByPathView::Admin,
                         "AUTHOR" => GetByPathView::Author,
                         "READER" => GetByPathView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetByPathView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -7388,6 +8766,7 @@ pub mod resources {
                         "ADMIN" => GetByPathView::Admin,
                         "AUTHOR" => GetByPathView::Author,
                         "READER" => GetByPathView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => GetByPathView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -7409,16 +8788,16 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListOrderBy {
-                #[doc = "Order by the date the post was published"]
+                OrderByUnspecified,
                 Published,
-                #[doc = "Order by the date the post was last updated"]
                 Updated,
             }
             impl ListOrderBy {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListOrderBy::Published => "published",
-                        ListOrderBy::Updated => "updated",
+                        ListOrderBy::OrderByUnspecified => "ORDER_BY_UNSPECIFIED",
+                        ListOrderBy::Published => "PUBLISHED",
+                        ListOrderBy::Updated => "UPDATED",
                     }
                 }
             }
@@ -7431,8 +8810,9 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListOrderBy, ()> {
                     Ok(match s {
-                        "published" => ListOrderBy::Published,
-                        "updated" => ListOrderBy::Updated,
+                        "ORDER_BY_UNSPECIFIED" => ListOrderBy::OrderByUnspecified,
+                        "PUBLISHED" => ListOrderBy::Published,
+                        "UPDATED" => ListOrderBy::Updated,
                         _ => return Err(()),
                     })
                 }
@@ -7457,8 +8837,9 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "published" => ListOrderBy::Published,
-                        "updated" => ListOrderBy::Updated,
+                        "ORDER_BY_UNSPECIFIED" => ListOrderBy::OrderByUnspecified,
+                        "PUBLISHED" => ListOrderBy::Published,
+                        "UPDATED" => ListOrderBy::Updated,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -7480,19 +8861,16 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListStatusItems {
-                #[doc = "Draft (non-published) posts."]
                 Draft,
-                #[doc = "Published posts"]
                 Live,
-                #[doc = "Posts that are scheduled to publish in the future."]
                 Scheduled,
             }
             impl ListStatusItems {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        ListStatusItems::Draft => "draft",
-                        ListStatusItems::Live => "live",
-                        ListStatusItems::Scheduled => "scheduled",
+                        ListStatusItems::Draft => "DRAFT",
+                        ListStatusItems::Live => "LIVE",
+                        ListStatusItems::Scheduled => "SCHEDULED",
                     }
                 }
             }
@@ -7505,9 +8883,9 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<ListStatusItems, ()> {
                     Ok(match s {
-                        "draft" => ListStatusItems::Draft,
-                        "live" => ListStatusItems::Live,
-                        "scheduled" => ListStatusItems::Scheduled,
+                        "DRAFT" => ListStatusItems::Draft,
+                        "LIVE" => ListStatusItems::Live,
+                        "SCHEDULED" => ListStatusItems::Scheduled,
                         _ => return Err(()),
                     })
                 }
@@ -7532,9 +8910,9 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "draft" => ListStatusItems::Draft,
-                        "live" => ListStatusItems::Live,
-                        "scheduled" => ListStatusItems::Scheduled,
+                        "DRAFT" => ListStatusItems::Draft,
+                        "LIVE" => ListStatusItems::Live,
+                        "SCHEDULED" => ListStatusItems::Scheduled,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -7556,12 +8934,10 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum ListView {
-                #[doc = "Admin level detail"]
                 Admin,
-                #[doc = "Author level detail"]
                 Author,
-                #[doc = "Reader level detail"]
                 Reader,
+                ViewTypeUnspecified,
             }
             impl ListView {
                 pub fn as_str(self) -> &'static str {
@@ -7569,6 +8945,7 @@ pub mod resources {
                         ListView::Admin => "ADMIN",
                         ListView::Author => "AUTHOR",
                         ListView::Reader => "READER",
+                        ListView::ViewTypeUnspecified => "VIEW_TYPE_UNSPECIFIED",
                     }
                 }
             }
@@ -7584,6 +8961,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => return Err(()),
                     })
                 }
@@ -7611,6 +8989,7 @@ pub mod resources {
                         "ADMIN" => ListView::Admin,
                         "AUTHOR" => ListView::Author,
                         "READER" => ListView::Reader,
+                        "VIEW_TYPE_UNSPECIFIED" => ListView::ViewTypeUnspecified,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -7632,16 +9011,16 @@ pub mod resources {
             }
             #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
             pub enum SearchOrderBy {
-                #[doc = "Order by the date the post was published"]
+                OrderByUnspecified,
                 Published,
-                #[doc = "Order by the date the post was last updated"]
                 Updated,
             }
             impl SearchOrderBy {
                 pub fn as_str(self) -> &'static str {
                     match self {
-                        SearchOrderBy::Published => "published",
-                        SearchOrderBy::Updated => "updated",
+                        SearchOrderBy::OrderByUnspecified => "ORDER_BY_UNSPECIFIED",
+                        SearchOrderBy::Published => "PUBLISHED",
+                        SearchOrderBy::Updated => "UPDATED",
                     }
                 }
             }
@@ -7654,8 +9033,9 @@ pub mod resources {
                 type Err = ();
                 fn from_str(s: &str) -> ::std::result::Result<SearchOrderBy, ()> {
                     Ok(match s {
-                        "published" => SearchOrderBy::Published,
-                        "updated" => SearchOrderBy::Updated,
+                        "ORDER_BY_UNSPECIFIED" => SearchOrderBy::OrderByUnspecified,
+                        "PUBLISHED" => SearchOrderBy::Published,
+                        "UPDATED" => SearchOrderBy::Updated,
                         _ => return Err(()),
                     })
                 }
@@ -7680,8 +9060,9 @@ pub mod resources {
                 {
                     let value: &'de str = <&str>::deserialize(deserializer)?;
                     Ok(match value {
-                        "published" => SearchOrderBy::Published,
-                        "updated" => SearchOrderBy::Updated,
+                        "ORDER_BY_UNSPECIFIED" => SearchOrderBy::OrderByUnspecified,
+                        "PUBLISHED" => SearchOrderBy::Published,
+                        "UPDATED" => SearchOrderBy::Updated,
                         _ => {
                             return Err(::serde::de::Error::custom(format!(
                                 "invalid enum for #name: {}",
@@ -7703,14 +9084,14 @@ pub mod resources {
             }
         }
         pub struct PostsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PostsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Delete a post by ID."]
+            #[doc = "Deletes a post by blog id and post id."]
             pub fn delete(
                 &self,
                 blog_id: impl Into<String>,
@@ -7719,18 +9100,22 @@ pub mod resources {
                 DeleteRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                 }
             }
-            #[doc = "Get a post by ID."]
+            #[doc = "Gets a post by blog id and post id"]
             pub fn get(
                 &self,
                 blog_id: impl Into<String>,
@@ -7739,13 +9124,17 @@ pub mod resources {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     fetch_body: None,
@@ -7754,7 +9143,7 @@ pub mod resources {
                     view: None,
                 }
             }
-            #[doc = "Retrieve a Post by Path."]
+            #[doc = "Gets a post by path."]
             pub fn get_by_path(
                 &self,
                 blog_id: impl Into<String>,
@@ -7763,20 +9152,24 @@ pub mod resources {
                 GetByPathRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     path: path.into(),
                     max_comments: None,
                     view: None,
                 }
             }
-            #[doc = "Add a post."]
+            #[doc = "Inserts a post."]
             pub fn insert(
                 &self,
                 request: crate::schemas::Post,
@@ -7786,31 +9179,39 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     fetch_body: None,
                     fetch_images: None,
                     is_draft: None,
                 }
             }
-            #[doc = "Retrieves a list of posts, possibly filtered."]
+            #[doc = "Lists posts."]
             pub fn list(&self, blog_id: impl Into<String>) -> ListRequestBuilder {
                 ListRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     end_date: None,
                     fetch_bodies: None,
@@ -7824,7 +9225,7 @@ pub mod resources {
                     view: None,
                 }
             }
-            #[doc = "Update a post. This method supports patch semantics."]
+            #[doc = "Patches a post."]
             pub fn patch(
                 &self,
                 request: crate::schemas::Post,
@@ -7835,13 +9236,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     fetch_body: None,
@@ -7851,7 +9256,7 @@ pub mod resources {
                     revert: None,
                 }
             }
-            #[doc = "Publishes a draft post, optionally at the specific time of the given publishDate parameter."]
+            #[doc = "Publishes a post."]
             pub fn publish(
                 &self,
                 blog_id: impl Into<String>,
@@ -7860,19 +9265,23 @@ pub mod resources {
                 PublishRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     publish_date: None,
                 }
             }
-            #[doc = "Revert a published or scheduled post to draft state."]
+            #[doc = "Reverts a published or scheduled post to draft state."]
             pub fn revert(
                 &self,
                 blog_id: impl Into<String>,
@@ -7881,18 +9290,22 @@ pub mod resources {
                 RevertRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                 }
             }
-            #[doc = "Search for a post."]
+            #[doc = "Searches for posts matching given query terms in the specified blog."]
             pub fn search(
                 &self,
                 blog_id: impl Into<String>,
@@ -7901,20 +9314,24 @@ pub mod resources {
                 SearchRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     q: q.into(),
                     fetch_bodies: None,
                     order_by: None,
                 }
             }
-            #[doc = "Update a post."]
+            #[doc = "Updates a post by blog id and post id."]
             pub fn update(
                 &self,
                 request: crate::schemas::Post,
@@ -7925,13 +9342,17 @@ pub mod resources {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
                     request,
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     blog_id: blog_id.into(),
                     post_id: post_id.into(),
                     fetch_body: None,
@@ -7945,19 +9366,33 @@ pub mod resources {
         #[doc = "Created via [PostsActions::delete()](struct.PostsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> DeleteRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -7973,14 +9408,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             pub fn execute(self) -> Result<(), crate::Error> {
@@ -7989,8 +9434,8 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -8008,15 +9453,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -8028,7 +9480,7 @@ pub mod resources {
         #[doc = "Created via [PostsActions::get()](struct.PostsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
@@ -8036,33 +9488,47 @@ pub mod resources {
             fetch_images: Option<bool>,
             max_comments: Option<u32>,
             view: Option<crate::resources::posts::params::GetView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
-            #[doc = "Whether the body content of the post is included (default: true). This should be set to false when the post bodies are not required, to help minimize traffic."]
+            #[doc = ""]
             pub fn fetch_body(mut self, value: bool) -> Self {
                 self.fetch_body = Some(value);
                 self
             }
-            #[doc = "Whether image URL metadata for each post is included (default: false)."]
+            #[doc = ""]
             pub fn fetch_images(mut self, value: bool) -> Self {
                 self.fetch_images = Some(value);
                 self
             }
-            #[doc = "Maximum number of comments to pull back on a post."]
+            #[doc = ""]
             pub fn max_comments(mut self, value: u32) -> Self {
                 self.max_comments = Some(value);
                 self
             }
-            #[doc = "Access level with which to view the returned result. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::posts::params::GetView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8080,14 +9546,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -8143,8 +9619,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -8162,19 +9638,26 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("fetchBody", &self.fetch_body)]);
                 let req = req.query(&[("fetchImages", &self.fetch_images)]);
                 let req = req.query(&[("maxComments", &self.max_comments)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -8186,29 +9669,43 @@ pub mod resources {
         #[doc = "Created via [PostsActions::get_by_path()](struct.PostsActions.html#method.get_by_path)"]
         #[derive(Debug, Clone)]
         pub struct GetByPathRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             path: String,
             max_comments: Option<u32>,
             view: Option<crate::resources::posts::params::GetByPathView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetByPathRequestBuilder<'a> {
-            #[doc = "Maximum number of comments to pull back on a post."]
+            #[doc = ""]
             pub fn max_comments(mut self, value: u32) -> Self {
                 self.max_comments = Some(value);
                 self
             }
-            #[doc = "Access level with which to view the returned result. Note that some fields require elevated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::posts::params::GetByPathView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8226,14 +9723,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -8289,8 +9796,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -8301,18 +9808,25 @@ pub mod resources {
                 output.push_str("/posts/bypath");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("path", &self.path)]);
                 let req = req.query(&[("maxComments", &self.max_comments)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -8324,35 +9838,49 @@ pub mod resources {
         #[doc = "Created via [PostsActions::insert()](struct.PostsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Post,
             blog_id: String,
             fetch_body: Option<bool>,
             fetch_images: Option<bool>,
             is_draft: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> InsertRequestBuilder<'a> {
-            #[doc = "Whether the body content of the post is included with the result (default: true)."]
+            #[doc = ""]
             pub fn fetch_body(mut self, value: bool) -> Self {
                 self.fetch_body = Some(value);
                 self
             }
-            #[doc = "Whether image URL metadata for each post is included in the returned result (default: false)."]
+            #[doc = ""]
             pub fn fetch_images(mut self, value: bool) -> Self {
                 self.fetch_images = Some(value);
                 self
             }
-            #[doc = "Whether to create the post as a draft (default: false)."]
+            #[doc = ""]
             pub fn is_draft(mut self, value: bool) -> Self {
                 self.is_draft = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8370,14 +9898,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -8434,8 +9972,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -8446,18 +9984,25 @@ pub mod resources {
                 output.push_str("/posts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("fetchBody", &self.fetch_body)]);
                 let req = req.query(&[("fetchImages", &self.fetch_images)]);
                 let req = req.query(&[("isDraft", &self.is_draft)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -8469,69 +10014,73 @@ pub mod resources {
         #[doc = "Created via [PostsActions::list()](struct.PostsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
-            end_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            end_date: Option<String>,
             fetch_bodies: Option<bool>,
             fetch_images: Option<bool>,
             labels: Option<String>,
             max_results: Option<u32>,
             order_by: Option<crate::resources::posts::params::ListOrderBy>,
             page_token: Option<String>,
-            start_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            start_date: Option<String>,
             status: Option<Vec<crate::resources::posts::params::ListStatusItems>>,
             view: Option<crate::resources::posts::params::ListView>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> ListRequestBuilder<'a> {
-            #[doc = "Latest post date to fetch, a date-time with RFC 3339 formatting."]
-            pub fn end_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.end_date = Some(value);
+            #[doc = ""]
+            pub fn end_date(mut self, value: impl Into<String>) -> Self {
+                self.end_date = Some(value.into());
                 self
             }
-            #[doc = "Whether the body content of posts is included (default: true). This should be set to false when the post bodies are not required, to help minimize traffic."]
+            #[doc = ""]
             pub fn fetch_bodies(mut self, value: bool) -> Self {
                 self.fetch_bodies = Some(value);
                 self
             }
-            #[doc = "Whether image URL metadata for each post is included."]
+            #[doc = ""]
             pub fn fetch_images(mut self, value: bool) -> Self {
                 self.fetch_images = Some(value);
                 self
             }
-            #[doc = "Comma-separated list of labels to search for."]
+            #[doc = ""]
             pub fn labels(mut self, value: impl Into<String>) -> Self {
                 self.labels = Some(value.into());
                 self
             }
-            #[doc = "Maximum number of posts to fetch."]
+            #[doc = ""]
             pub fn max_results(mut self, value: u32) -> Self {
                 self.max_results = Some(value);
                 self
             }
-            #[doc = "Sort search results"]
+            #[doc = ""]
             pub fn order_by(mut self, value: crate::resources::posts::params::ListOrderBy) -> Self {
                 self.order_by = Some(value);
                 self
             }
-            #[doc = "Continuation token if the request is paged."]
+            #[doc = ""]
             pub fn page_token(mut self, value: impl Into<String>) -> Self {
                 self.page_token = Some(value.into());
                 self
             }
-            #[doc = "Earliest post date to fetch, a date-time with RFC 3339 formatting."]
-            pub fn start_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.start_date = Some(value);
+            #[doc = ""]
+            pub fn start_date(mut self, value: impl Into<String>) -> Self {
+                self.start_date = Some(value.into());
                 self
             }
-            #[doc = "Statuses to include in the results."]
+            #[doc = ""]
             pub fn status(
                 mut self,
                 value: impl Into<Vec<crate::resources::posts::params::ListStatusItems>>,
@@ -8539,9 +10088,19 @@ pub mod resources {
                 self.status = Some(value.into());
                 self
             }
-            #[doc = "Access level with which to view the returned result. Note that some fields require escalated access."]
+            #[doc = ""]
             pub fn view(mut self, value: crate::resources::posts::params::ListView) -> Self {
                 self.view = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8559,14 +10118,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
@@ -8722,8 +10291,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -8734,7 +10303,10 @@ pub mod resources {
                 output.push_str("/posts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("endDate", &self.end_date)]);
                 let req = req.query(&[("fetchBodies", &self.fetch_bodies)]);
@@ -8746,13 +10318,17 @@ pub mod resources {
                 let req = req.query(&[("startDate", &self.start_date)]);
                 let req = req.query(&[("status", &self.status)]);
                 let req = req.query(&[("view", &self.view)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -8775,7 +10351,7 @@ pub mod resources {
         #[doc = "Created via [PostsActions::patch()](struct.PostsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Post,
             blog_id: String,
@@ -8785,38 +10361,52 @@ pub mod resources {
             max_comments: Option<u32>,
             publish: Option<bool>,
             revert: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> PatchRequestBuilder<'a> {
-            #[doc = "Whether the body content of the post is included with the result (default: true)."]
+            #[doc = ""]
             pub fn fetch_body(mut self, value: bool) -> Self {
                 self.fetch_body = Some(value);
                 self
             }
-            #[doc = "Whether image URL metadata for each post is included in the returned result (default: false)."]
+            #[doc = ""]
             pub fn fetch_images(mut self, value: bool) -> Self {
                 self.fetch_images = Some(value);
                 self
             }
-            #[doc = "Maximum number of comments to retrieve with the returned post."]
+            #[doc = ""]
             pub fn max_comments(mut self, value: u32) -> Self {
                 self.max_comments = Some(value);
                 self
             }
-            #[doc = "Whether a publish action should be performed when the post is updated (default: false)."]
+            #[doc = ""]
             pub fn publish(mut self, value: bool) -> Self {
                 self.publish = Some(value);
                 self
             }
-            #[doc = "Whether a revert action should be performed when the post is updated (default: false)."]
+            #[doc = ""]
             pub fn revert(mut self, value: bool) -> Self {
                 self.revert = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8834,14 +10424,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -8898,8 +10498,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -8917,20 +10517,27 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("fetchBody", &self.fetch_body)]);
                 let req = req.query(&[("fetchImages", &self.fetch_images)]);
                 let req = req.query(&[("maxComments", &self.max_comments)]);
                 let req = req.query(&[("publish", &self.publish)]);
                 let req = req.query(&[("revert", &self.revert)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -8942,23 +10549,37 @@ pub mod resources {
         #[doc = "Created via [PostsActions::publish()](struct.PostsActions.html#method.publish)"]
         #[derive(Debug, Clone)]
         pub struct PublishRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
-            publish_date: Option<::chrono::DateTime<chrono::offset::Utc>>,
+            publish_date: Option<String>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> PublishRequestBuilder<'a> {
-            #[doc = "Optional date and time to schedule the publishing of the Blog. If no publishDate parameter is given, the post is either published at the a previously saved schedule date (if present), or the current time. If a future date is given, the post will be scheduled to be published."]
-            pub fn publish_date(mut self, value: ::chrono::DateTime<chrono::offset::Utc>) -> Self {
-                self.publish_date = Some(value);
+            #[doc = ""]
+            pub fn publish_date(mut self, value: impl Into<String>) -> Self {
+                self.publish_date = Some(value.into());
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -8976,14 +10597,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -9039,8 +10670,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -9059,16 +10690,23 @@ pub mod resources {
                 output.push_str("/publish");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("publishDate", &self.publish_date)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -9080,19 +10718,33 @@ pub mod resources {
         #[doc = "Created via [PostsActions::revert()](struct.PostsActions.html#method.revert)"]
         #[derive(Debug, Clone)]
         pub struct RevertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             post_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> RevertRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -9108,14 +10760,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -9171,8 +10833,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -9191,15 +10853,22 @@ pub mod resources {
                 output.push_str("/revert");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -9211,32 +10880,46 @@ pub mod resources {
         #[doc = "Created via [PostsActions::search()](struct.PostsActions.html#method.search)"]
         #[derive(Debug, Clone)]
         pub struct SearchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             blog_id: String,
             q: String,
             fetch_bodies: Option<bool>,
             order_by: Option<crate::resources::posts::params::SearchOrderBy>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> SearchRequestBuilder<'a> {
-            #[doc = "Whether the body content of posts is included (default: true). This should be set to false when the post bodies are not required, to help minimize traffic."]
+            #[doc = ""]
             pub fn fetch_bodies(mut self, value: bool) -> Self {
                 self.fetch_bodies = Some(value);
                 self
             }
-            #[doc = "Sort search results"]
+            #[doc = ""]
             pub fn order_by(
                 mut self,
                 value: crate::resources::posts::params::SearchOrderBy,
             ) -> Self {
                 self.order_by = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9254,14 +10937,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -9319,8 +11012,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -9331,18 +11024,25 @@ pub mod resources {
                 output.push_str("/posts/search");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("q", &self.q)]);
                 let req = req.query(&[("fetchBodies", &self.fetch_bodies)]);
                 let req = req.query(&[("orderBy", &self.order_by)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -9354,7 +11054,7 @@ pub mod resources {
         #[doc = "Created via [PostsActions::update()](struct.PostsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Post,
             blog_id: String,
@@ -9364,38 +11064,52 @@ pub mod resources {
             max_comments: Option<u32>,
             publish: Option<bool>,
             revert: Option<bool>,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> UpdateRequestBuilder<'a> {
-            #[doc = "Whether the body content of the post is included with the result (default: true)."]
+            #[doc = ""]
             pub fn fetch_body(mut self, value: bool) -> Self {
                 self.fetch_body = Some(value);
                 self
             }
-            #[doc = "Whether image URL metadata for each post is included in the returned result (default: false)."]
+            #[doc = ""]
             pub fn fetch_images(mut self, value: bool) -> Self {
                 self.fetch_images = Some(value);
                 self
             }
-            #[doc = "Maximum number of comments to retrieve with the returned post."]
+            #[doc = ""]
             pub fn max_comments(mut self, value: u32) -> Self {
                 self.max_comments = Some(value);
                 self
             }
-            #[doc = "Whether a publish action should be performed when the post is updated (default: false)."]
+            #[doc = ""]
             pub fn publish(mut self, value: bool) -> Self {
                 self.publish = Some(value);
                 self
             }
-            #[doc = "Whether a revert action should be performed when the post is updated (default: false)."]
+            #[doc = ""]
             pub fn revert(mut self, value: bool) -> Self {
                 self.revert = Some(value);
+                self
+            }
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
                 self
             }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
@@ -9413,14 +11127,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -9477,8 +11201,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("blogs/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/blogs/");
                 {
                     let var_as_str = &self.blog_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -9496,20 +11220,27 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("fetchBody", &self.fetch_body)]);
                 let req = req.query(&[("fetchImages", &self.fetch_images)]);
                 let req = req.query(&[("maxComments", &self.max_comments)]);
                 let req = req.query(&[("publish", &self.publish)]);
                 let req = req.query(&[("revert", &self.revert)]);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -9522,25 +11253,29 @@ pub mod resources {
     pub mod users {
         pub mod params {}
         pub struct UsersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> UsersActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Gets one user by ID."]
+            #[doc = "Gets one user by user_id."]
             pub fn get(&self, user_id: impl Into<String>) -> GetRequestBuilder {
                 GetRequestBuilder {
                     reqwest: &self.reqwest,
                     auth: self.auth_ref(),
+                    access_token: None,
                     alt: None,
+                    callback: None,
                     fields: None,
                     key: None,
                     oauth_token: None,
                     pretty_print: None,
                     quota_user: None,
-                    user_ip: None,
+                    upload_protocol: None,
+                    upload_type: None,
+                    xgafv: None,
                     user_id: user_id.into(),
                 }
             }
@@ -9548,18 +11283,32 @@ pub mod resources {
         #[doc = "Created via [UsersActions::get()](struct.UsersActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             user_id: String,
+            access_token: Option<String>,
             alt: Option<crate::params::Alt>,
+            callback: Option<String>,
             fields: Option<String>,
             key: Option<String>,
             oauth_token: Option<String>,
             pretty_print: Option<bool>,
             quota_user: Option<String>,
-            user_ip: Option<String>,
+            upload_protocol: Option<String>,
+            upload_type: Option<String>,
+            xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> GetRequestBuilder<'a> {
+            #[doc = "OAuth access token."]
+            pub fn access_token(mut self, value: impl Into<String>) -> Self {
+                self.access_token = Some(value.into());
+                self
+            }
+            #[doc = "JSONP"]
+            pub fn callback(mut self, value: impl Into<String>) -> Self {
+                self.callback = Some(value.into());
+                self
+            }
             #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
             pub fn key(mut self, value: impl Into<String>) -> Self {
                 self.key = Some(value.into());
@@ -9575,14 +11324,24 @@ pub mod resources {
                 self.pretty_print = Some(value);
                 self
             }
-            #[doc = "An opaque string that represents a user for quota purposes. Must not exceed 40 characters."]
+            #[doc = "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."]
             pub fn quota_user(mut self, value: impl Into<String>) -> Self {
                 self.quota_user = Some(value.into());
                 self
             }
-            #[doc = "Deprecated. Please use quotaUser instead."]
-            pub fn user_ip(mut self, value: impl Into<String>) -> Self {
-                self.user_ip = Some(value.into());
+            #[doc = "Upload protocol for media (e.g. \"raw\", \"multipart\")."]
+            pub fn upload_protocol(mut self, value: impl Into<String>) -> Self {
+                self.upload_protocol = Some(value.into());
+                self
+            }
+            #[doc = "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."]
+            pub fn upload_type(mut self, value: impl Into<String>) -> Self {
+                self.upload_type = Some(value.into());
+                self
+            }
+            #[doc = "V1 error format."]
+            pub fn xgafv(mut self, value: crate::params::Xgafv) -> Self {
+                self.xgafv = Some(value);
                 self
             }
             #[doc = r" Execute the given operation. The fields requested are"]
@@ -9638,8 +11397,8 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/blogger/v3/".to_owned();
-                output.push_str("users/");
+                let mut output = "https://blogger.googleapis.com/".to_owned();
+                output.push_str("v3/users/");
                 {
                     let var_as_str = &self.user_id;
                     output.extend(::percent_encoding::utf8_percent_encode(
@@ -9649,15 +11408,22 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
+                let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
+                let req = req.query(&[("callback", &self.callback)]);
                 let req = req.query(&[("fields", &self.fields)]);
                 let req = req.query(&[("key", &self.key)]);
                 let req = req.query(&[("oauth_token", &self.oauth_token)]);
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
-                let req = req.query(&[("userIp", &self.user_ip)]);
+                let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
+                let req = req.query(&[("uploadType", &self.upload_type)]);
+                let req = req.query(&[("$.xgafv", &self.xgafv)]);
                 let req = req.bearer_auth(
                     self.auth
                         .access_token()
@@ -9684,9 +11450,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -9728,7 +11492,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

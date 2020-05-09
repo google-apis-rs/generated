@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [scan_configs](resources/projects/scan_configs/struct.ScanConfigsActions.html)\n        * [*create*](resources/projects/scan_configs/struct.CreateRequestBuilder.html), [*delete*](resources/projects/scan_configs/struct.DeleteRequestBuilder.html), [*get*](resources/projects/scan_configs/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/struct.ListRequestBuilder.html), [*patch*](resources/projects/scan_configs/struct.PatchRequestBuilder.html), [*start*](resources/projects/scan_configs/struct.StartRequestBuilder.html)\n        * [scan_runs](resources/projects/scan_configs/scan_runs/struct.ScanRunsActions.html)\n          * [*get*](resources/projects/scan_configs/scan_runs/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/scan_runs/struct.ListRequestBuilder.html), [*stop*](resources/projects/scan_configs/scan_runs/struct.StopRequestBuilder.html)\n          * [crawled_urls](resources/projects/scan_configs/scan_runs/crawled_urls/struct.CrawledUrlsActions.html)\n            * [*list*](resources/projects/scan_configs/scan_runs/crawled_urls/struct.ListRequestBuilder.html)\n          * [finding_type_stats](resources/projects/scan_configs/scan_runs/finding_type_stats/struct.FindingTypeStatsActions.html)\n            * [*list*](resources/projects/scan_configs/scan_runs/finding_type_stats/struct.ListRequestBuilder.html)\n          * [findings](resources/projects/scan_configs/scan_runs/findings/struct.FindingsActions.html)\n            * [*get*](resources/projects/scan_configs/scan_runs/findings/struct.GetRequestBuilder.html), [*list*](resources/projects/scan_configs/scan_runs/findings/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -165,105 +169,105 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Finding {
-        #[doc = "Output only. The body of the request that triggered the vulnerability."]
+        #[doc = "The body of the request that triggered the vulnerability."]
         #[serde(
             rename = "body",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub body: ::std::option::Option<String>,
-        #[doc = "Output only. The description of the vulnerability."]
+        #[doc = "The description of the vulnerability."]
         #[serde(
             rename = "description",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub description: ::std::option::Option<String>,
-        #[doc = "Output only. The URL where the browser lands when the vulnerability is detected."]
+        #[doc = "The URL where the browser lands when the vulnerability is detected."]
         #[serde(
             rename = "finalUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub final_url: ::std::option::Option<String>,
-        #[doc = "Output only. The type of the Finding."]
+        #[doc = "The type of the Finding."]
         #[serde(
             rename = "findingType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub finding_type: ::std::option::Option<crate::schemas::FindingFindingType>,
-        #[doc = "Output only. If the vulnerability was originated from nested IFrame, the immediate\nparent IFrame is reported."]
+        #[doc = "If the vulnerability was originated from nested IFrame, the immediate\nparent IFrame is reported."]
         #[serde(
             rename = "frameUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub frame_url: ::std::option::Option<String>,
-        #[doc = "Output only. The URL produced by the server-side fuzzer and used in the request that\ntriggered the vulnerability."]
+        #[doc = "The URL produced by the server-side fuzzer and used in the request that\ntriggered the vulnerability."]
         #[serde(
             rename = "fuzzedUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub fuzzed_url: ::std::option::Option<String>,
-        #[doc = "Output only. The http method of the request that triggered the vulnerability, in\nuppercase."]
+        #[doc = "The http method of the request that triggered the vulnerability, in\nuppercase."]
         #[serde(
             rename = "httpMethod",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub http_method: ::std::option::Option<String>,
-        #[doc = "Output only. The resource name of the Finding. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'.\nThe finding IDs are generated by the system."]
+        #[doc = "The resource name of the Finding. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanruns/{scanRunId}/findings/{findingId}'.\nThe finding IDs are generated by the system."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Output only. An addon containing information about outdated libraries."]
+        #[doc = "An addon containing information about outdated libraries."]
         #[serde(
             rename = "outdatedLibrary",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub outdated_library: ::std::option::Option<crate::schemas::OutdatedLibrary>,
-        #[doc = "Output only. The URL containing human-readable payload that user can leverage to\nreproduce the vulnerability."]
+        #[doc = "The URL containing human-readable payload that user can leverage to\nreproduce the vulnerability."]
         #[serde(
             rename = "reproductionUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reproduction_url: ::std::option::Option<String>,
-        #[doc = "Output only. The tracking ID uniquely identifies a vulnerability instance across\nmultiple ScanRuns."]
+        #[doc = "The tracking ID uniquely identifies a vulnerability instance across\nmultiple ScanRuns."]
         #[serde(
             rename = "trackingId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tracking_id: ::std::option::Option<String>,
-        #[doc = "Output only. An addon containing detailed information regarding any resource causing the\nvulnerability such as JavaScript sources, image, audio files, etc."]
+        #[doc = "An addon containing detailed information regarding any resource causing the\nvulnerability such as JavaScript sources, image, audio files, etc."]
         #[serde(
             rename = "violatingResource",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub violating_resource: ::std::option::Option<crate::schemas::ViolatingResource>,
-        #[doc = "Output only. An addon containing information about vulnerable or missing HTTP headers."]
+        #[doc = "An addon containing information about vulnerable or missing HTTP headers."]
         #[serde(
             rename = "vulnerableHeaders",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub vulnerable_headers: ::std::option::Option<crate::schemas::VulnerableHeaders>,
-        #[doc = "Output only. An addon containing information about request parameters which were found\nto be vulnerable."]
+        #[doc = "An addon containing information about request parameters which were found\nto be vulnerable."]
         #[serde(
             rename = "vulnerableParameters",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub vulnerable_parameters: ::std::option::Option<crate::schemas::VulnerableParameters>,
-        #[doc = "Output only. An addon containing information reported for an XSS, if any."]
+        #[doc = "An addon containing information reported for an XSS, if any."]
         #[serde(
             rename = "xss",
             default,
@@ -427,14 +431,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct FindingTypeStats {
-        #[doc = "Output only. The count of findings belonging to this finding type."]
+        #[doc = "The count of findings belonging to this finding type."]
         #[serde(
             rename = "findingCount",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub finding_count: ::std::option::Option<i32>,
-        #[doc = "Output only. The finding type associated with the stats."]
+        #[doc = "The finding type associated with the stats."]
         #[serde(
             rename = "findingType",
             default,
@@ -1157,56 +1161,56 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ScanRun {
-        #[doc = "Output only. The time at which the ScanRun reached termination state - that the ScanRun\nis either finished or stopped by user."]
+        #[doc = "The time at which the ScanRun reached termination state - that the ScanRun\nis either finished or stopped by user."]
         #[serde(
             rename = "endTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub end_time: ::std::option::Option<String>,
-        #[doc = "Output only. The execution state of the ScanRun."]
+        #[doc = "The execution state of the ScanRun."]
         #[serde(
             rename = "executionState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub execution_state: ::std::option::Option<crate::schemas::ScanRunExecutionState>,
-        #[doc = "Output only. Whether the scan run has found any vulnerabilities."]
+        #[doc = "Whether the scan run has found any vulnerabilities."]
         #[serde(
             rename = "hasVulnerabilities",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub has_vulnerabilities: ::std::option::Option<bool>,
-        #[doc = "Output only. The resource name of the ScanRun. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.\nThe ScanRun IDs are generated by the system."]
+        #[doc = "The resource name of the ScanRun. The name follows the format of\n'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.\nThe ScanRun IDs are generated by the system."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Output only. The percentage of total completion ranging from 0 to 100.\nIf the scan is in queue, the value is 0.\nIf the scan is running, the value ranges from 0 to 100.\nIf the scan is finished, the value is 100."]
+        #[doc = "The percentage of total completion ranging from 0 to 100.\nIf the scan is in queue, the value is 0.\nIf the scan is running, the value ranges from 0 to 100.\nIf the scan is finished, the value is 100."]
         #[serde(
             rename = "progressPercent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub progress_percent: ::std::option::Option<i32>,
-        #[doc = "Output only. The result state of the ScanRun. This field is only available after the\nexecution state reaches \"FINISHED\"."]
+        #[doc = "The result state of the ScanRun. This field is only available after the\nexecution state reaches \"FINISHED\"."]
         #[serde(
             rename = "resultState",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub result_state: ::std::option::Option<crate::schemas::ScanRunResultState>,
-        #[doc = "Output only. The time at which the ScanRun started."]
+        #[doc = "The time at which the ScanRun started."]
         #[serde(
             rename = "startTime",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub start_time: ::std::option::Option<String>,
-        #[doc = "Output only. The number of URLs crawled during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs crawled up to now."]
+        #[doc = "The number of URLs crawled during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs crawled up to now."]
         #[serde(
             rename = "urlsCrawledCount",
             default,
@@ -1214,7 +1218,7 @@ pub mod schemas {
         )]
         #[serde(with = "crate::parsed_string")]
         pub urls_crawled_count: ::std::option::Option<i64>,
-        #[doc = "Output only. The number of URLs tested during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs tested up to now. The number of\nURLs tested is usually larger than the number URLS crawled because\ntypically a crawled URL is tested with multiple test payloads."]
+        #[doc = "The number of URLs tested during this ScanRun. If the scan is in progress,\nthe value represents the number of URLs tested up to now. The number of\nURLs tested is usually larger than the number URLS crawled because\ntypically a crawled URL is tested with multiple test payloads."]
         #[serde(
             rename = "urlsTestedCount",
             default,
@@ -1777,7 +1781,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1785,8 +1789,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1805,7 +1821,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1825,7 +1841,7 @@ pub mod resources {
         pub mod scan_configs {
             pub mod params {}
             pub struct ScanConfigsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ScanConfigsActions<'a> {
@@ -1978,7 +1994,7 @@ pub mod resources {
             #[doc = "Created via [ScanConfigsActions::create()](struct.ScanConfigsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ScanConfig,
                 parent: String,
@@ -2113,7 +2129,10 @@ pub mod resources {
                     output.push_str("/scanConfigs");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2137,7 +2156,7 @@ pub mod resources {
             #[doc = "Created via [ScanConfigsActions::delete()](struct.ScanConfigsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2269,7 +2288,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2293,7 +2315,7 @@ pub mod resources {
             #[doc = "Created via [ScanConfigsActions::get()](struct.ScanConfigsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2425,7 +2447,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2449,7 +2474,7 @@ pub mod resources {
             #[doc = "Created via [ScanConfigsActions::list()](struct.ScanConfigsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -2694,7 +2719,10 @@ pub mod resources {
                     output.push_str("/scanConfigs");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2731,7 +2759,7 @@ pub mod resources {
             #[doc = "Created via [ScanConfigsActions::patch()](struct.ScanConfigsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ScanConfig,
                 name: String,
@@ -2871,7 +2899,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -2896,7 +2927,7 @@ pub mod resources {
             #[doc = "Created via [ScanConfigsActions::start()](struct.ScanConfigsActions.html#method.start)"]
             #[derive(Debug, Clone)]
             pub struct StartRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::StartScanRunRequest,
                 name: String,
@@ -3031,7 +3062,10 @@ pub mod resources {
                     output.push_str(":start");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3055,7 +3089,7 @@ pub mod resources {
             pub mod scan_runs {
                 pub mod params {}
                 pub struct ScanRunsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> ScanRunsActions<'a> {
@@ -3139,7 +3173,7 @@ pub mod resources {
                 #[doc = "Created via [ScanRunsActions::get()](struct.ScanRunsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3274,7 +3308,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3298,7 +3333,7 @@ pub mod resources {
                 #[doc = "Created via [ScanRunsActions::list()](struct.ScanRunsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -3551,7 +3586,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3588,7 +3624,7 @@ pub mod resources {
                 #[doc = "Created via [ScanRunsActions::stop()](struct.ScanRunsActions.html#method.stop)"]
                 #[derive(Debug, Clone)]
                 pub struct StopRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::StopScanRunRequest,
                     name: String,
@@ -3726,7 +3762,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3750,7 +3787,7 @@ pub mod resources {
                 pub mod crawled_urls {
                     pub mod params {}
                     pub struct CrawledUrlsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> CrawledUrlsActions<'a> {
@@ -3782,7 +3819,7 @@ pub mod resources {
                     #[doc = "Created via [CrawledUrlsActions::list()](struct.CrawledUrlsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         page_size: Option<i32>,
@@ -4041,7 +4078,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("pageSize", &self.page_size)]);
@@ -4080,7 +4117,7 @@ pub mod resources {
                 pub mod finding_type_stats {
                     pub mod params {}
                     pub struct FindingTypeStatsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> FindingTypeStatsActions<'a> {
@@ -4110,7 +4147,7 @@ pub mod resources {
                     #[doc = "Created via [FindingTypeStatsActions::list()](struct.FindingTypeStatsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         access_token: Option<String>,
@@ -4250,7 +4287,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -4276,7 +4313,7 @@ pub mod resources {
                 pub mod findings {
                     pub mod params {}
                     pub struct FindingsActions<'a> {
-                        pub(crate) reqwest: &'a reqwest::Client,
+                        pub(crate) reqwest: &'a reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     }
                     impl<'a> FindingsActions<'a> {
@@ -4328,7 +4365,7 @@ pub mod resources {
                     #[doc = "Created via [FindingsActions::get()](struct.FindingsActions.html#method.get)"]
                     #[derive(Debug, Clone)]
                     pub struct GetRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         name: String,
                         access_token: Option<String>,
@@ -4465,7 +4502,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("access_token", &self.access_token)]);
@@ -4490,7 +4527,7 @@ pub mod resources {
                     #[doc = "Created via [FindingsActions::list()](struct.FindingsActions.html#method.list)"]
                     #[derive(Debug, Clone)]
                     pub struct ListRequestBuilder<'a> {
-                        pub(crate) reqwest: &'a ::reqwest::Client,
+                        pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                         pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                         parent: String,
                         filter: Option<String>,
@@ -4509,7 +4546,7 @@ pub mod resources {
                         xgafv: Option<crate::params::Xgafv>,
                     }
                     impl<'a> ListRequestBuilder<'a> {
-                        #[doc = "The filter expression. The expression must be in the format: <field>\n<operator> <value>.\nSupported field: 'finding_type'.\nSupported operator: '='."]
+                        #[doc = "Required. The filter expression. The expression must be in the format: <field>\n<operator> <value>.\nSupported field: 'finding_type'.\nSupported operator: '='."]
                         pub fn filter(mut self, value: impl Into<String>) -> Self {
                             self.filter = Some(value.into());
                             self
@@ -4754,7 +4791,7 @@ pub mod resources {
                         fn _request(
                             &self,
                             path: &str,
-                        ) -> Result<::reqwest::RequestBuilder, crate::Error>
+                        ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
                         {
                             let req = self.reqwest.request(::reqwest::Method::GET, path);
                             let req = req.query(&[("filter", &self.filter)]);
@@ -4811,9 +4848,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4855,7 +4890,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

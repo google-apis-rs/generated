@@ -1,4 +1,16 @@
 #![doc = "# Resources and Methods\n    * [spreadsheets](resources/spreadsheets/struct.SpreadsheetsActions.html)\n      * [*batchUpdate*](resources/spreadsheets/struct.BatchUpdateRequestBuilder.html), [*create*](resources/spreadsheets/struct.CreateRequestBuilder.html), [*get*](resources/spreadsheets/struct.GetRequestBuilder.html), [*getByDataFilter*](resources/spreadsheets/struct.GetByDataFilterRequestBuilder.html)\n      * [developer_metadata](resources/spreadsheets/developer_metadata/struct.DeveloperMetadataActions.html)\n        * [*get*](resources/spreadsheets/developer_metadata/struct.GetRequestBuilder.html), [*search*](resources/spreadsheets/developer_metadata/struct.SearchRequestBuilder.html)\n      * [sheets](resources/spreadsheets/sheets/struct.SheetsActions.html)\n        * [*copyTo*](resources/spreadsheets/sheets/struct.CopyToRequestBuilder.html)\n      * [values](resources/spreadsheets/values/struct.ValuesActions.html)\n        * [*append*](resources/spreadsheets/values/struct.AppendRequestBuilder.html), [*batchClear*](resources/spreadsheets/values/struct.BatchClearRequestBuilder.html), [*batchClearByDataFilter*](resources/spreadsheets/values/struct.BatchClearByDataFilterRequestBuilder.html), [*batchGet*](resources/spreadsheets/values/struct.BatchGetRequestBuilder.html), [*batchGetByDataFilter*](resources/spreadsheets/values/struct.BatchGetByDataFilterRequestBuilder.html), [*batchUpdate*](resources/spreadsheets/values/struct.BatchUpdateRequestBuilder.html), [*batchUpdateByDataFilter*](resources/spreadsheets/values/struct.BatchUpdateByDataFilterRequestBuilder.html), [*clear*](resources/spreadsheets/values/struct.ClearRequestBuilder.html), [*get*](resources/spreadsheets/values/struct.GetRequestBuilder.html), [*update*](resources/spreadsheets/values/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "See, edit, create, and delete all of your Google Drive files\n\n`https://www.googleapis.com/auth/drive`"]
+    pub const DRIVE: &str = "https://www.googleapis.com/auth/drive";
+    #[doc = "View and manage Google Drive files and folders that you have opened or created with this app\n\n`https://www.googleapis.com/auth/drive.file`"]
+    pub const DRIVE_FILE: &str = "https://www.googleapis.com/auth/drive.file";
+    #[doc = "See and download all your Google Drive files\n\n`https://www.googleapis.com/auth/drive.readonly`"]
+    pub const DRIVE_READONLY: &str = "https://www.googleapis.com/auth/drive.readonly";
+    #[doc = "See, edit, create, and delete your spreadsheets in Google Drive\n\n`https://www.googleapis.com/auth/spreadsheets`"]
+    pub const SPREADSHEETS: &str = "https://www.googleapis.com/auth/spreadsheets";
+    #[doc = "View your Google Spreadsheets\n\n`https://www.googleapis.com/auth/spreadsheets.readonly`"]
+    pub const SPREADSHEETS_READONLY: &str = "https://www.googleapis.com/auth/spreadsheets.readonly";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -180,16 +192,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddFilterViewRequest {
         #[doc = "The filter to add. The filterViewId\nfield is optional; if one is not set, an id will be randomly generated. (It\nis an error to specify the ID of a filter that already exists.)"]
@@ -211,16 +214,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct AddFilterViewResponse {
         #[doc = "The newly added filter view."]
@@ -405,6 +399,50 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for AddSheetResponse {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct AddSlicerRequest {
+        #[doc = "The slicer that should be added to the spreadsheet, including\nthe position where it should be placed. The slicerId field is optional; if one is not set, an id\nwill be randomly generated. (It is an error to specify the ID\nof a slicer that already exists.)"]
+        #[serde(
+            rename = "slicer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub slicer: ::std::option::Option<crate::schemas::Slicer>,
+    }
+    impl ::google_field_selector::FieldSelector for AddSlicerRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddSlicerRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct AddSlicerResponse {
+        #[doc = "The newly added slicer."]
+        #[serde(
+            rename = "slicer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub slicer: ::std::option::Option<crate::schemas::Slicer>,
+    }
+    impl ::google_field_selector::FieldSelector for AddSlicerResponse {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for AddSlicerResponse {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -730,20 +768,41 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub first_band_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the last row or column. If this field is not set, the last\nrow or column will be filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn."]
+        #[doc = "The first color that is alternating. (Required)\nIf first_band_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "firstBandColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub first_band_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "The color of the last row or column. If this field is not set, the last\nrow or column is filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn."]
         #[serde(
             rename = "footerColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub footer_color: ::std::option::Option<crate::schemas::Color>,
-        #[doc = "The color of the first row or column. If this field is set, the first\nrow or column will be filled with this color and the colors will\nalternate between first_band_color and second_band_color starting\nfrom the second row or column. Otherwise, the first row or column will be\nfilled with first_band_color and the colors will proceed to alternate\nas they normally would."]
+        #[doc = "The color of the last row or column. If this field is not set, the last\nrow or column is filled with either first_band_color or\nsecond_band_color, depending on the color of the previous row or\ncolumn.\nIf footer_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "footerColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub footer_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "The color of the first row or column. If this field is set, the first row\nor column is filled with this color and the colors alternate between\nfirst_band_color and second_band_color starting from the second\nrow or column. Otherwise, the first row or column is filled with\nfirst_band_color and the colors proceed to alternate as they normally\nwould."]
         #[serde(
             rename = "headerColor",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub header_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the first row or column. If this field is set, the first row\nor column is filled with this color and the colors alternate between\nfirst_band_color and second_band_color starting from the second\nrow or column. Otherwise, the first row or column is filled with\nfirst_band_color and the colors proceed to alternate as they normally\nwould. If header_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "headerColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The second color that is alternating. (Required)"]
         #[serde(
             rename = "secondBandColor",
@@ -751,6 +810,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub second_band_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The second color that is alternating. (Required)\nIf second_band_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "secondBandColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub second_band_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
     }
     impl ::google_field_selector::FieldSelector for BandingProperties {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -758,6 +824,160 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for BandingProperties {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct BaselineValueFormat {
+        #[doc = "The comparison type of key value with baseline value."]
+        #[serde(
+            rename = "comparisonType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub comparison_type:
+            ::std::option::Option<crate::schemas::BaselineValueFormatComparisonType>,
+        #[doc = "Description which is appended after the baseline value.\nThis field is optional."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Color to be used, in case baseline value represents a negative change for\nkey value. This field is optional."]
+        #[serde(
+            rename = "negativeColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub negative_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "Color to be used, in case baseline value represents a negative change for\nkey value. This field is optional.\nIf negative_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "negativeColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub negative_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "Specifies the horizontal text positioning of baseline value.\nThis field is optional. If not specified, default positioning is used."]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub position: ::std::option::Option<crate::schemas::TextPosition>,
+        #[doc = "Color to be used, in case baseline value represents a positive change for\nkey value. This field is optional."]
+        #[serde(
+            rename = "positiveColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub positive_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "Color to be used, in case baseline value represents a positive change for\nkey value. This field is optional.\nIf positive_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "positiveColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub positive_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "Text formatting options for baseline value."]
+        #[serde(
+            rename = "textFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text_format: ::std::option::Option<crate::schemas::TextFormat>,
+    }
+    impl ::google_field_selector::FieldSelector for BaselineValueFormat {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BaselineValueFormat {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum BaselineValueFormatComparisonType {
+        #[doc = "Use absolute difference between key and baseline value."]
+        AbsoluteDifference,
+        #[doc = "Default value, do not use."]
+        ComparisonTypeUndefined,
+        #[doc = "Use percentage difference between key and baseline value."]
+        PercentageDifference,
+    }
+    impl BaselineValueFormatComparisonType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                BaselineValueFormatComparisonType::AbsoluteDifference => "ABSOLUTE_DIFFERENCE",
+                BaselineValueFormatComparisonType::ComparisonTypeUndefined => {
+                    "COMPARISON_TYPE_UNDEFINED"
+                }
+                BaselineValueFormatComparisonType::PercentageDifference => "PERCENTAGE_DIFFERENCE",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for BaselineValueFormatComparisonType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for BaselineValueFormatComparisonType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<BaselineValueFormatComparisonType, ()> {
+            Ok(match s {
+                "ABSOLUTE_DIFFERENCE" => BaselineValueFormatComparisonType::AbsoluteDifference,
+                "COMPARISON_TYPE_UNDEFINED" => {
+                    BaselineValueFormatComparisonType::ComparisonTypeUndefined
+                }
+                "PERCENTAGE_DIFFERENCE" => BaselineValueFormatComparisonType::PercentageDifference,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for BaselineValueFormatComparisonType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for BaselineValueFormatComparisonType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for BaselineValueFormatComparisonType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ABSOLUTE_DIFFERENCE" => BaselineValueFormatComparisonType::AbsoluteDifference,
+                "COMPARISON_TYPE_UNDEFINED" => {
+                    BaselineValueFormatComparisonType::ComparisonTypeUndefined
+                }
+                "PERCENTAGE_DIFFERENCE" => BaselineValueFormatComparisonType::PercentageDifference,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for BaselineValueFormatComparisonType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for BaselineValueFormatComparisonType {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -941,13 +1161,20 @@ pub mod schemas {
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BasicChartSeries {
-        #[doc = "The color for elements (i.e. bars, lines, points) associated with this\nseries.  If empty, a default color is used."]
+        #[doc = "The color for elements (such as bars, lines, and points) associated with\nthis series.  If empty, a default color is used."]
         #[serde(
             rename = "color",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color for elements (such as bars, lines, and points) associated with\nthis series.  If empty, a default color is used.\nIf color is also set, this field takes precedence."]
+        #[serde(
+            rename = "colorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The line style of this series. Valid only if the\nchartType is AREA,\nLINE, or SCATTER.\nCOMBO charts are also supported if the\nseries chart type is\nAREA or LINE."]
         #[serde(
             rename = "lineStyle",
@@ -1641,16 +1868,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct BasicFilter {
         #[doc = "The criteria for showing/hiding values per column.\nThe map's key is the column index, and the value is the criteria for\nthat column."]
@@ -1731,7 +1949,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchClearValuesByDataFilterResponse {
-        #[doc = "The ranges that were cleared, in A1 notation.\n(If the requests were for an unbounded range or a ranger larger\nthan the bounds of the sheet, this will be the actual ranges\nthat were cleared, bounded to the sheet's limits.)"]
+        #[doc = "The ranges that were cleared, in A1 notation. If the requests are for an\nunbounded range or a ranger larger than the bounds of the sheet, this is\nthe actual ranges that were cleared, bounded to the sheet's limits."]
         #[serde(
             rename = "clearedRanges",
             default,
@@ -1800,7 +2018,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchClearValuesResponse {
-        #[doc = "The ranges that were cleared, in A1 notation.\n(If the requests were for an unbounded range or a ranger larger\nthan the bounds of the sheet, this will be the actual ranges\nthat were cleared, bounded to the sheet's limits.)"]
+        #[doc = "The ranges that were cleared, in A1 notation. If the requests are for an\nunbounded range or a ranger larger than the bounds of the sheet, this is\nthe actual ranges that were cleared, bounded to the sheet's limits."]
         #[serde(
             rename = "clearedRanges",
             default,
@@ -1838,7 +2056,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BatchGetValuesByDataFilterRequest {
-        #[doc = "The data filters used to match the ranges of values to retrieve.  Ranges\nthat match any of the specified data filters will be included in the\nresponse."]
+        #[doc = "The data filters used to match the ranges of values to retrieve. Ranges\nthat match any of the specified data filters are included in the response."]
         #[serde(
             rename = "dataFilters",
             default,
@@ -1854,7 +2072,7 @@ pub mod schemas {
         pub date_time_render_option: ::std::option::Option<
             crate::schemas::BatchGetValuesByDataFilterRequestDateTimeRenderOption,
         >,
-        #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen a request that selects that range and sets `majorDimension=ROWS` will\nreturn `[[1,2],[3,4]]`,\nwhereas a request that sets `majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`."]
+        #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen a request that selects that range and sets `majorDimension=ROWS`\nreturns `[[1,2],[3,4]]`, whereas a request that sets\n`majorDimension=COLUMNS` returns `[[1,3],[2,4]]`."]
         #[serde(
             rename = "majorDimension",
             default,
@@ -2218,14 +2436,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub requests: ::std::option::Option<Vec<crate::schemas::Request>>,
-        #[doc = "True if grid data should be returned. Meaningful only if\nif include_spreadsheet_in_response is 'true'.\nThis parameter is ignored if a field mask was set in the request."]
+        #[doc = "True if grid data should be returned. Meaningful only if\ninclude_spreadsheet_in_response is 'true'.\nThis parameter is ignored if a field mask was set in the request."]
         #[serde(
             rename = "responseIncludeGridData",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub response_include_grid_data: ::std::option::Option<bool>,
-        #[doc = "Limits the ranges included in the response spreadsheet.\nMeaningful only if include_spreadsheet_response is 'true'."]
+        #[doc = "Limits the ranges included in the response spreadsheet.\nMeaningful only if include_spreadsheet_in_response is 'true'."]
         #[serde(
             rename = "responseRanges",
             default,
@@ -2281,14 +2499,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct BatchUpdateValuesByDataFilterRequest {
-        #[doc = "The new values to apply to the spreadsheet.  If more than one range is\nmatched by the specified DataFilter the specified values will be\napplied to all of those ranges."]
+        #[doc = "The new values to apply to the spreadsheet.  If more than one range is\nmatched by the specified DataFilter the specified values are applied to\nall of those ranges."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<Vec<crate::schemas::DataFilterValueRange>>,
-        #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses will contain\nthe updated values. If the range to write was larger than than the range\nactually written, the response will include all values in the requested\nrange (excluding trailing empty rows and columns)."]
+        #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses contains the updated\nvalues. If the range to write was larger than the range actually written,\nthe response includes all values in the requested range (excluding trailing\nempty rows and columns)."]
         #[serde(
             rename = "includeValuesInResponse",
             default,
@@ -2624,7 +2842,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<Vec<crate::schemas::ValueRange>>,
-        #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses will contain\nthe updated values. If the range to write was larger than than the range\nactually written, the response will include all values in the requested\nrange (excluding trailing empty rows and columns)."]
+        #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values. The `updatedData` field within\neach of the BatchUpdateValuesResponse.responses contains the updated\nvalues. If the range to write was larger than the range actually written,\nthe response includes all values in the requested range (excluding trailing\nempty rows and columns)."]
         #[serde(
             rename = "includeValuesInResponse",
             default,
@@ -3274,6 +3492,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the border.\nIf color is also set, this field takes precedence."]
+        #[serde(
+            rename = "colorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The style of the border."]
         #[serde(
             rename = "style",
@@ -3454,6 +3679,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bubble_border_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The bubble border color.\nIf bubble_border_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "bubbleBorderColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bubble_border_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The data containing the bubble labels.  These do not need to be unique."]
         #[serde(
             rename = "bubbleLabels",
@@ -3892,6 +4124,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color of the cell.\nIf background_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "backgroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The borders of the cell."]
         #[serde(
             rename = "borders",
@@ -4537,6 +4776,44 @@ pub mod schemas {
         :: serde :: Deserialize,
         :: serde :: Serialize,
     )]
+    pub struct ChartCustomNumberFormatOptions {
+        #[doc = "Custom prefix to be prepended to the chart attribute.\nThis field is optional."]
+        #[serde(
+            rename = "prefix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub prefix: ::std::option::Option<String>,
+        #[doc = "Custom suffix to be appended to the chart attribute.\nThis field is optional."]
+        #[serde(
+            rename = "suffix",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub suffix: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for ChartCustomNumberFormatOptions {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ChartCustomNumberFormatOptions {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
     pub struct ChartData {
         #[doc = "The source ranges of the data."]
         #[serde(
@@ -4605,6 +4882,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub background_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color of the entire chart.\nNot applicable to Org charts.\nIf background_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "backgroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "A basic chart specification, can be one of many kinds of charts.\nSee BasicChartType for the list of all\ncharts this supports."]
         #[serde(
             rename = "basicChart",
@@ -4669,6 +4953,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub pie_chart: ::std::option::Option<crate::schemas::PieChartSpec>,
+        #[doc = "A scorecard chart specification."]
+        #[serde(
+            rename = "scorecardChart",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub scorecard_chart: ::std::option::Option<crate::schemas::ScorecardChartSpec>,
         #[doc = "The subtitle of the chart."]
         #[serde(
             rename = "subtitle",
@@ -4966,6 +5257,146 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Color {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ColorStyle {
+        #[doc = "RGB color."]
+        #[serde(
+            rename = "rgbColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub rgb_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "Theme color."]
+        #[serde(
+            rename = "themeColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub theme_color: ::std::option::Option<crate::schemas::ColorStyleThemeColor>,
+    }
+    impl ::google_field_selector::FieldSelector for ColorStyle {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ColorStyle {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ColorStyleThemeColor {
+        #[doc = "Represents the first accent color"]
+        Accent1,
+        #[doc = "Represents the second accent color"]
+        Accent2,
+        #[doc = "Represents the third accent color"]
+        Accent3,
+        #[doc = "Represents the fourth accent color"]
+        Accent4,
+        #[doc = "Represents the fifth accent color"]
+        Accent5,
+        #[doc = "Represents the sixth accent color"]
+        Accent6,
+        #[doc = "Represents the primary background color"]
+        Background,
+        #[doc = "Represents the color to use for hyperlinks"]
+        Link,
+        #[doc = "Represents the primary text color"]
+        Text,
+        #[doc = "Unspecified theme color"]
+        ThemeColorTypeUnspecified,
+    }
+    impl ColorStyleThemeColor {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ColorStyleThemeColor::Accent1 => "ACCENT1",
+                ColorStyleThemeColor::Accent2 => "ACCENT2",
+                ColorStyleThemeColor::Accent3 => "ACCENT3",
+                ColorStyleThemeColor::Accent4 => "ACCENT4",
+                ColorStyleThemeColor::Accent5 => "ACCENT5",
+                ColorStyleThemeColor::Accent6 => "ACCENT6",
+                ColorStyleThemeColor::Background => "BACKGROUND",
+                ColorStyleThemeColor::Link => "LINK",
+                ColorStyleThemeColor::Text => "TEXT",
+                ColorStyleThemeColor::ThemeColorTypeUnspecified => "THEME_COLOR_TYPE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ColorStyleThemeColor {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ColorStyleThemeColor {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ColorStyleThemeColor, ()> {
+            Ok(match s {
+                "ACCENT1" => ColorStyleThemeColor::Accent1,
+                "ACCENT2" => ColorStyleThemeColor::Accent2,
+                "ACCENT3" => ColorStyleThemeColor::Accent3,
+                "ACCENT4" => ColorStyleThemeColor::Accent4,
+                "ACCENT5" => ColorStyleThemeColor::Accent5,
+                "ACCENT6" => ColorStyleThemeColor::Accent6,
+                "BACKGROUND" => ColorStyleThemeColor::Background,
+                "LINK" => ColorStyleThemeColor::Link,
+                "TEXT" => ColorStyleThemeColor::Text,
+                "THEME_COLOR_TYPE_UNSPECIFIED" => ColorStyleThemeColor::ThemeColorTypeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ColorStyleThemeColor {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ColorStyleThemeColor {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ColorStyleThemeColor {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACCENT1" => ColorStyleThemeColor::Accent1,
+                "ACCENT2" => ColorStyleThemeColor::Accent2,
+                "ACCENT3" => ColorStyleThemeColor::Accent3,
+                "ACCENT4" => ColorStyleThemeColor::Accent4,
+                "ACCENT5" => ColorStyleThemeColor::Accent5,
+                "ACCENT6" => ColorStyleThemeColor::Accent6,
+                "BACKGROUND" => ColorStyleThemeColor::Background,
+                "LINK" => ColorStyleThemeColor::Link,
+                "TEXT" => ColorStyleThemeColor::Text,
+                "THEME_COLOR_TYPE_UNSPECIFIED" => ColorStyleThemeColor::ThemeColorTypeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ColorStyleThemeColor {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ColorStyleThemeColor {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -5669,7 +6100,7 @@ pub mod schemas {
         )]
         pub major_dimension:
             ::std::option::Option<crate::schemas::DataFilterValueRangeMajorDimension>,
-        #[doc = "The data to be written.  If the provided values exceed any of the ranges\nmatched by the data filter then the request will fail.  If the provided\nvalues are less than the matched ranges only the specified values will be\nwritten, existing values in the matched ranges will remain unaffected."]
+        #[doc = "The data to be written.  If the provided values exceed any of the ranges\nmatched by the data filter then the request fails.  If the provided values\nare less than the matched ranges only the specified values are written,\nexisting values in the matched ranges remain unaffected."]
         #[serde(
             rename = "values",
             default,
@@ -7424,16 +7855,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct DuplicateFilterViewResponse {
         #[doc = "The newly created filter."]
@@ -7854,19 +8276,10 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct FilterCriteria {
-        #[doc = "A condition that must be true for values to be shown.\n(This does not override hiddenValues -- if a value is listed there,\nit will still be hidden.)"]
+        #[doc = "A condition that must be true for values to be shown.\n(This does not override hidden_values -- if a value is listed there,\nit will still be hidden.)"]
         #[serde(
             rename = "condition",
             default,
@@ -7880,6 +8293,34 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub hidden_values: ::std::option::Option<Vec<String>>,
+        #[doc = "The background fill color to filter by; only cells with this fill color are\nshown. Mutually exclusive with visible_foreground_color."]
+        #[serde(
+            rename = "visibleBackgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub visible_background_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background fill color to filter by; only cells with this fill color are\nshown. This field is mutually exclusive with visible_foreground_color,\nand must be set to an RGB-type color. If visible_background_color is\nalso set, this field takes precedence."]
+        #[serde(
+            rename = "visibleBackgroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub visible_background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "The foreground color to filter by; only cells with this foreground color\nare shown. Mutually exclusive with visible_background_color."]
+        #[serde(
+            rename = "visibleForegroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub visible_foreground_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The foreground color to filter by; only cells with this foreground color\nare shown. This field is mutually exclusive with\nvisible_background_color, and must be set to an RGB-type color. If\nvisible_foreground_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "visibleForegroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub visible_foreground_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
     }
     impl ::google_field_selector::FieldSelector for FilterCriteria {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -7892,16 +8333,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct FilterView {
         #[doc = "The criteria for showing/hiding values per column.\nThe map's key is the column index, and the value is the criteria for\nthat column."]
@@ -8606,6 +9038,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub bar_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the column representing this series in each bucket.\nThis field is optional.\nIf bar_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "barColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub bar_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The data for this histogram series."]
         #[serde(
             rename = "data",
@@ -8788,6 +9227,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color this interpolation point should use.\nIf color is also set, this field takes precedence."]
+        #[serde(
+            rename = "colorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "How the value should be interpreted."]
         #[serde(
             rename = "type",
@@ -8935,6 +9381,35 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for IterativeCalculationSettings {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct KeyValueFormat {
+        #[doc = "Specifies the horizontal text positioning of key value.\nThis field is optional. If not specified, default positioning is used."]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub position: ::std::option::Option<crate::schemas::TextPosition>,
+        #[doc = "Text formatting options for key value."]
+        #[serde(
+            rename = "textFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text_format: ::std::option::Option<crate::schemas::TextFormat>,
+    }
+    impl ::google_field_selector::FieldSelector for KeyValueFormat {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for KeyValueFormat {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -9558,6 +10033,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub node_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the org chart nodes.\nIf node_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "nodeColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub node_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The size of the org chart nodes."]
         #[serde(
             rename = "nodeSize",
@@ -9579,6 +10061,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub selected_node_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the selected org chart nodes.\nIf selected_node_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "selectedNodeColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub selected_node_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The data containing the tooltip for the corresponding node.  A blank value\nresults in no tooltip being displayed for the node.\nThis field is optional."]
         #[serde(
             rename = "tooltips",
@@ -10172,7 +10661,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub sort_order: ::std::option::Option<crate::schemas::PivotGroupSortOrder>,
-        #[doc = "The column offset of the source range that this grouping is based on.\n\nFor example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`\nmeans this group refers to column `C`, whereas the offset `1` would refer\nto column `D`."]
+        #[doc = "The column offset of the source range that this grouping is based on.\n\nFor example, if the source was `C10:E15`, a `sourceColumnOffset` of `0`\nmeans this group refers to column `C`, whereas the offset `1` would\nrefer to column `D`."]
         #[serde(
             rename = "sourceColumnOffset",
             default,
@@ -11001,6 +11490,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub add_sheet: ::std::option::Option<crate::schemas::AddSheetRequest>,
+        #[doc = "Adds a slicer."]
+        #[serde(
+            rename = "addSlicer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub add_slicer: ::std::option::Option<crate::schemas::AddSlicerRequest>,
         #[doc = "Appends cells after the last row with data in a sheet."]
         #[serde(
             rename = "appendCells",
@@ -11359,6 +11855,13 @@ pub mod schemas {
         )]
         pub update_sheet_properties:
             ::std::option::Option<crate::schemas::UpdateSheetPropertiesRequest>,
+        #[doc = "Updates a slicer's specifications."]
+        #[serde(
+            rename = "updateSlicerSpec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_slicer_spec: ::std::option::Option<crate::schemas::UpdateSlicerSpecRequest>,
         #[doc = "Updates the spreadsheet's properties."]
         #[serde(
             rename = "updateSpreadsheetProperties",
@@ -11431,6 +11934,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub add_sheet: ::std::option::Option<crate::schemas::AddSheetResponse>,
+        #[doc = "A reply from adding a slicer."]
+        #[serde(
+            rename = "addSlicer",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub add_slicer: ::std::option::Option<crate::schemas::AddSlicerResponse>,
         #[doc = "A reply from creating a developer metadata entry."]
         #[serde(
             rename = "createDeveloperMetadata",
@@ -11557,6 +12067,263 @@ pub mod schemas {
         }
     }
     #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct ScorecardChartSpec {
+        #[doc = "The aggregation type for key and baseline chart data in scorecard chart.\nThis field is optional."]
+        #[serde(
+            rename = "aggregateType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub aggregate_type: ::std::option::Option<crate::schemas::ScorecardChartSpecAggregateType>,
+        #[doc = "The data for scorecard baseline value.\nThis field is optional."]
+        #[serde(
+            rename = "baselineValueData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub baseline_value_data: ::std::option::Option<crate::schemas::ChartData>,
+        #[doc = "Formatting options for baseline value.\nThis field is needed only if baseline_value_data is specified."]
+        #[serde(
+            rename = "baselineValueFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub baseline_value_format: ::std::option::Option<crate::schemas::BaselineValueFormat>,
+        #[doc = "Custom formatting options for numeric key/baseline values in scorecard\nchart. This field is used only when number_format_source is set to\nCUSTOM. This field is optional."]
+        #[serde(
+            rename = "customFormatOptions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_format_options:
+            ::std::option::Option<crate::schemas::ChartCustomNumberFormatOptions>,
+        #[doc = "The data for scorecard key value."]
+        #[serde(
+            rename = "keyValueData",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub key_value_data: ::std::option::Option<crate::schemas::ChartData>,
+        #[doc = "Formatting options for key value."]
+        #[serde(
+            rename = "keyValueFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub key_value_format: ::std::option::Option<crate::schemas::KeyValueFormat>,
+        #[doc = "The number format source used in the scorecard chart.\nThis field is optional."]
+        #[serde(
+            rename = "numberFormatSource",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub number_format_source:
+            ::std::option::Option<crate::schemas::ScorecardChartSpecNumberFormatSource>,
+        #[doc = "Value to scale scorecard key and baseline value. For example, a factor of\n10 can be used to divide all values in the chart by 10.\nThis field is optional."]
+        #[serde(
+            rename = "scaleFactor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub scale_factor: ::std::option::Option<f64>,
+    }
+    impl ::google_field_selector::FieldSelector for ScorecardChartSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ScorecardChartSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ScorecardChartSpecAggregateType {
+        #[doc = "Average aggregate function."]
+        Average,
+        #[doc = "Default value, do not use."]
+        ChartAggregateTypeUnspecified,
+        #[doc = "Count aggregate function."]
+        Count,
+        #[doc = "Maximum aggregate function."]
+        Max,
+        #[doc = "Median aggregate function."]
+        Median,
+        #[doc = "Minimum aggregate function."]
+        Min,
+        #[doc = "Sum aggregate function."]
+        Sum,
+    }
+    impl ScorecardChartSpecAggregateType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ScorecardChartSpecAggregateType::Average => "AVERAGE",
+                ScorecardChartSpecAggregateType::ChartAggregateTypeUnspecified => {
+                    "CHART_AGGREGATE_TYPE_UNSPECIFIED"
+                }
+                ScorecardChartSpecAggregateType::Count => "COUNT",
+                ScorecardChartSpecAggregateType::Max => "MAX",
+                ScorecardChartSpecAggregateType::Median => "MEDIAN",
+                ScorecardChartSpecAggregateType::Min => "MIN",
+                ScorecardChartSpecAggregateType::Sum => "SUM",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ScorecardChartSpecAggregateType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScorecardChartSpecAggregateType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScorecardChartSpecAggregateType, ()> {
+            Ok(match s {
+                "AVERAGE" => ScorecardChartSpecAggregateType::Average,
+                "CHART_AGGREGATE_TYPE_UNSPECIFIED" => {
+                    ScorecardChartSpecAggregateType::ChartAggregateTypeUnspecified
+                }
+                "COUNT" => ScorecardChartSpecAggregateType::Count,
+                "MAX" => ScorecardChartSpecAggregateType::Max,
+                "MEDIAN" => ScorecardChartSpecAggregateType::Median,
+                "MIN" => ScorecardChartSpecAggregateType::Min,
+                "SUM" => ScorecardChartSpecAggregateType::Sum,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ScorecardChartSpecAggregateType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ScorecardChartSpecAggregateType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ScorecardChartSpecAggregateType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AVERAGE" => ScorecardChartSpecAggregateType::Average,
+                "CHART_AGGREGATE_TYPE_UNSPECIFIED" => {
+                    ScorecardChartSpecAggregateType::ChartAggregateTypeUnspecified
+                }
+                "COUNT" => ScorecardChartSpecAggregateType::Count,
+                "MAX" => ScorecardChartSpecAggregateType::Max,
+                "MEDIAN" => ScorecardChartSpecAggregateType::Median,
+                "MIN" => ScorecardChartSpecAggregateType::Min,
+                "SUM" => ScorecardChartSpecAggregateType::Sum,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ScorecardChartSpecAggregateType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ScorecardChartSpecAggregateType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ScorecardChartSpecNumberFormatSource {
+        #[doc = "Default value, do not use."]
+        ChartNumberFormatSourceUndefined,
+        #[doc = "Apply custom formatting as specified by ChartCustomNumberFormatOptions."]
+        Custom,
+        #[doc = "Inherit number formatting from data."]
+        FromData,
+    }
+    impl ScorecardChartSpecNumberFormatSource {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ScorecardChartSpecNumberFormatSource::ChartNumberFormatSourceUndefined => {
+                    "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED"
+                }
+                ScorecardChartSpecNumberFormatSource::Custom => "CUSTOM",
+                ScorecardChartSpecNumberFormatSource::FromData => "FROM_DATA",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ScorecardChartSpecNumberFormatSource {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ScorecardChartSpecNumberFormatSource {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ScorecardChartSpecNumberFormatSource, ()> {
+            Ok(match s {
+                "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED" => {
+                    ScorecardChartSpecNumberFormatSource::ChartNumberFormatSourceUndefined
+                }
+                "CUSTOM" => ScorecardChartSpecNumberFormatSource::Custom,
+                "FROM_DATA" => ScorecardChartSpecNumberFormatSource::FromData,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ScorecardChartSpecNumberFormatSource {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ScorecardChartSpecNumberFormatSource {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ScorecardChartSpecNumberFormatSource {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CHART_NUMBER_FORMAT_SOURCE_UNDEFINED" => {
+                    ScorecardChartSpecNumberFormatSource::ChartNumberFormatSourceUndefined
+                }
+                "CUSTOM" => ScorecardChartSpecNumberFormatSource::Custom,
+                "FROM_DATA" => ScorecardChartSpecNumberFormatSource::FromData,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ScorecardChartSpecNumberFormatSource {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ScorecardChartSpecNumberFormatSource {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
         Debug,
         Clone,
         PartialEq,
@@ -11569,7 +12336,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct SearchDeveloperMetadataRequest {
-        #[doc = "The data filters describing the criteria used to determine which\nDeveloperMetadata entries to return.  DeveloperMetadata matching any of the\nspecified filters will be included in the response."]
+        #[doc = "The data filters describing the criteria used to determine which\nDeveloperMetadata entries to return.  DeveloperMetadata matching any of the\nspecified filters are included in the response."]
         #[serde(
             rename = "dataFilters",
             default,
@@ -11620,16 +12387,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SetBasicFilterRequest {
         #[doc = "The filter to set."]
@@ -11727,7 +12485,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub conditional_formats: ::std::option::Option<Vec<crate::schemas::ConditionalFormatRule>>,
-        #[doc = "Data in the grid, if this is a grid sheet.\nThe number of GridData objects returned is dependent on the number of\nranges requested on this sheet. For example, if this is representing\n`Sheet1`, and the spreadsheet was requested with ranges\n`Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a\nstartRow/startColumn of `0`,\nwhile the second one will have `startRow 14` (zero-based row 15),\nand `startColumn 3` (zero-based column D)."]
+        #[doc = "Data in the grid, if this is a grid sheet.\n\nThe number of GridData objects returned is dependent on the number of\nranges requested on this sheet. For example, if this is representing\n`Sheet1`, and the spreadsheet was requested with ranges\n`Sheet1!A1:C10` and `Sheet1!D15:E20`, then the first GridData will have a\nstartRow/startColumn of `0`,\nwhile the second one will have `startRow 14` (zero-based row 15),\nand `startColumn 3` (zero-based column D)."]
         #[serde(
             rename = "data",
             default,
@@ -11776,6 +12534,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub row_groups: ::std::option::Option<Vec<crate::schemas::DimensionGroup>>,
+        #[doc = "The slicers on this sheet."]
+        #[serde(
+            rename = "slicers",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub slicers: ::std::option::Option<Vec<crate::schemas::Slicer>>,
     }
     impl ::google_field_selector::FieldSelector for Sheet {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -11840,6 +12605,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub tab_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the tab in the UI.\nIf tab_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "tabColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub tab_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The name of the sheet."]
         #[serde(
             rename = "title",
@@ -11935,16 +12707,209 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct Slicer {
+        #[doc = "The position of the slicer. Note that slicer can be positioned only on\nexisting sheet. Also, width and height of slicer can be automatically\nadjusted to keep it within permitted limits."]
+        #[serde(
+            rename = "position",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub position: ::std::option::Option<crate::schemas::EmbeddedObjectPosition>,
+        #[doc = "The ID of the slicer."]
+        #[serde(
+            rename = "slicerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub slicer_id: ::std::option::Option<i32>,
+        #[doc = "The specification of the slicer."]
+        #[serde(
+            rename = "spec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spec: ::std::option::Option<crate::schemas::SlicerSpec>,
+    }
+    impl ::google_field_selector::FieldSelector for Slicer {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for Slicer {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct SlicerSpec {
+        #[doc = "True if the filter should apply to pivot tables.\nIf not set, default to `True`."]
+        #[serde(
+            rename = "applyToPivotTables",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub apply_to_pivot_tables: ::std::option::Option<bool>,
+        #[doc = "The background color of the slicer."]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub background_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color of the slicer.\nIf background_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "backgroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "The column index in the data table on which the filter is applied to."]
+        #[serde(
+            rename = "columnIndex",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub column_index: ::std::option::Option<i32>,
+        #[doc = "The data range of the slicer."]
+        #[serde(
+            rename = "dataRange",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub data_range: ::std::option::Option<crate::schemas::GridRange>,
+        #[doc = "The filtering criteria of the slicer."]
+        #[serde(
+            rename = "filterCriteria",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub filter_criteria: ::std::option::Option<crate::schemas::FilterCriteria>,
+        #[doc = "The horizontal alignment of title in the slicer.\nIf unspecified, defaults to `LEFT`"]
+        #[serde(
+            rename = "horizontalAlignment",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub horizontal_alignment:
+            ::std::option::Option<crate::schemas::SlicerSpecHorizontalAlignment>,
+        #[doc = "The text format of title in the slicer."]
+        #[serde(
+            rename = "textFormat",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub text_format: ::std::option::Option<crate::schemas::TextFormat>,
+        #[doc = "The title of the slicer."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for SlicerSpec {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SlicerSpec {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum SlicerSpecHorizontalAlignment {
+        #[doc = "The text is explicitly aligned to the center of the cell."]
+        Center,
+        #[doc = "The horizontal alignment is not specified. Do not use this."]
+        HorizontalAlignUnspecified,
+        #[doc = "The text is explicitly aligned to the left of the cell."]
+        Left,
+        #[doc = "The text is explicitly aligned to the right of the cell."]
+        Right,
+    }
+    impl SlicerSpecHorizontalAlignment {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                SlicerSpecHorizontalAlignment::Center => "CENTER",
+                SlicerSpecHorizontalAlignment::HorizontalAlignUnspecified => {
+                    "HORIZONTAL_ALIGN_UNSPECIFIED"
+                }
+                SlicerSpecHorizontalAlignment::Left => "LEFT",
+                SlicerSpecHorizontalAlignment::Right => "RIGHT",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for SlicerSpecHorizontalAlignment {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for SlicerSpecHorizontalAlignment {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<SlicerSpecHorizontalAlignment, ()> {
+            Ok(match s {
+                "CENTER" => SlicerSpecHorizontalAlignment::Center,
+                "HORIZONTAL_ALIGN_UNSPECIFIED" => {
+                    SlicerSpecHorizontalAlignment::HorizontalAlignUnspecified
+                }
+                "LEFT" => SlicerSpecHorizontalAlignment::Left,
+                "RIGHT" => SlicerSpecHorizontalAlignment::Right,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for SlicerSpecHorizontalAlignment {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for SlicerSpecHorizontalAlignment {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for SlicerSpecHorizontalAlignment {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "CENTER" => SlicerSpecHorizontalAlignment::Center,
+                "HORIZONTAL_ALIGN_UNSPECIFIED" => {
+                    SlicerSpecHorizontalAlignment::HorizontalAlignUnspecified
+                }
+                "LEFT" => SlicerSpecHorizontalAlignment::Left,
+                "RIGHT" => SlicerSpecHorizontalAlignment::Right,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for SlicerSpecHorizontalAlignment {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SlicerSpecHorizontalAlignment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SortRangeRequest {
         #[doc = "The range to sort."]
@@ -11973,18 +12938,23 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct SortSpec {
+        #[doc = "The background fill color to sort by; cells with this fill color are sorted\nto the top. Mutually exclusive with foreground_color."]
+        #[serde(
+            rename = "backgroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub background_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background fill color to sort by; cells with this fill color are sorted\nto the top. Mutually exclusive with foreground_color, and must be an\nRGB-type color. If background_color is also set, this field takes\nprecedence."]
+        #[serde(
+            rename = "backgroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub background_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The dimension the sort should be applied to."]
         #[serde(
             rename = "dimensionIndex",
@@ -11992,6 +12962,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub dimension_index: ::std::option::Option<i32>,
+        #[doc = "The foreground color to sort by; cells with this foreground color are\nsorted to the top. Mutually exclusive with background_color."]
+        #[serde(
+            rename = "foregroundColor",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub foreground_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The foreground color to sort by; cells with this foreground color are\nsorted to the top. Mutually exclusive with background_color, and must\nbe an RGB-type color. If foreground_color is also set, this field takes\nprecedence."]
+        #[serde(
+            rename = "foregroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub foreground_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The order data should be sorted."]
         #[serde(
             rename = "sortOrder",
@@ -12282,7 +13266,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub default_format: ::std::option::Option<crate::schemas::CellFormat>,
-        #[doc = "Determines whether and how circular references are resolved with iterative\ncalculation.  Absence of this field means that circular references will\nresult in calculation errors."]
+        #[doc = "Determines whether and how circular references are resolved with iterative\ncalculation.  Absence of this field means that circular references result\nin calculation errors."]
         #[serde(
             rename = "iterativeCalculationSettings",
             default,
@@ -12297,6 +13281,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub locale: ::std::option::Option<String>,
+        #[doc = "Theme applied to the spreadsheet."]
+        #[serde(
+            rename = "spreadsheetTheme",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spreadsheet_theme: ::std::option::Option<crate::schemas::SpreadsheetTheme>,
         #[doc = "The time zone of the spreadsheet, in CLDR format such as\n`America/New_York`. If the time zone isn't recognized, this may\nbe a custom time zone such as `GMT-07:00`."]
         #[serde(
             rename = "timeZone",
@@ -12412,6 +13403,35 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct SpreadsheetTheme {
+        #[doc = "/ Name of the primary font family."]
+        #[serde(
+            rename = "primaryFontFamily",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub primary_font_family: ::std::option::Option<String>,
+        #[doc = "The spreadsheet theme color pairs. To update you must provide all theme\ncolor pairs."]
+        #[serde(
+            rename = "themeColors",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub theme_colors: ::std::option::Option<Vec<crate::schemas::ThemeColorPair>>,
+    }
+    impl ::google_field_selector::FieldSelector for SpreadsheetTheme {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for SpreadsheetTheme {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct TextFormat {
         #[doc = "True if the text is bold."]
         #[serde(
@@ -12441,6 +13461,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub foreground_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The foreground color of the text.\nIf foreground_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "foregroundColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub foreground_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "True if the text is italicized."]
         #[serde(
             rename = "italic",
@@ -12810,6 +13837,152 @@ pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
+    pub struct ThemeColorPair {
+        #[doc = "The concrete color corresponding to the theme color type."]
+        #[serde(
+            rename = "color",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color: ::std::option::Option<crate::schemas::ColorStyle>,
+        #[doc = "The type of the spreadsheet theme color."]
+        #[serde(
+            rename = "colorType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_type: ::std::option::Option<crate::schemas::ThemeColorPairColorType>,
+    }
+    impl ::google_field_selector::FieldSelector for ThemeColorPair {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThemeColorPair {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum ThemeColorPairColorType {
+        #[doc = "Represents the first accent color"]
+        Accent1,
+        #[doc = "Represents the second accent color"]
+        Accent2,
+        #[doc = "Represents the third accent color"]
+        Accent3,
+        #[doc = "Represents the fourth accent color"]
+        Accent4,
+        #[doc = "Represents the fifth accent color"]
+        Accent5,
+        #[doc = "Represents the sixth accent color"]
+        Accent6,
+        #[doc = "Represents the primary background color"]
+        Background,
+        #[doc = "Represents the color to use for hyperlinks"]
+        Link,
+        #[doc = "Represents the primary text color"]
+        Text,
+        #[doc = "Unspecified theme color"]
+        ThemeColorTypeUnspecified,
+    }
+    impl ThemeColorPairColorType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                ThemeColorPairColorType::Accent1 => "ACCENT1",
+                ThemeColorPairColorType::Accent2 => "ACCENT2",
+                ThemeColorPairColorType::Accent3 => "ACCENT3",
+                ThemeColorPairColorType::Accent4 => "ACCENT4",
+                ThemeColorPairColorType::Accent5 => "ACCENT5",
+                ThemeColorPairColorType::Accent6 => "ACCENT6",
+                ThemeColorPairColorType::Background => "BACKGROUND",
+                ThemeColorPairColorType::Link => "LINK",
+                ThemeColorPairColorType::Text => "TEXT",
+                ThemeColorPairColorType::ThemeColorTypeUnspecified => {
+                    "THEME_COLOR_TYPE_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for ThemeColorPairColorType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for ThemeColorPairColorType {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<ThemeColorPairColorType, ()> {
+            Ok(match s {
+                "ACCENT1" => ThemeColorPairColorType::Accent1,
+                "ACCENT2" => ThemeColorPairColorType::Accent2,
+                "ACCENT3" => ThemeColorPairColorType::Accent3,
+                "ACCENT4" => ThemeColorPairColorType::Accent4,
+                "ACCENT5" => ThemeColorPairColorType::Accent5,
+                "ACCENT6" => ThemeColorPairColorType::Accent6,
+                "BACKGROUND" => ThemeColorPairColorType::Background,
+                "LINK" => ThemeColorPairColorType::Link,
+                "TEXT" => ThemeColorPairColorType::Text,
+                "THEME_COLOR_TYPE_UNSPECIFIED" => {
+                    ThemeColorPairColorType::ThemeColorTypeUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for ThemeColorPairColorType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for ThemeColorPairColorType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for ThemeColorPairColorType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ACCENT1" => ThemeColorPairColorType::Accent1,
+                "ACCENT2" => ThemeColorPairColorType::Accent2,
+                "ACCENT3" => ThemeColorPairColorType::Accent3,
+                "ACCENT4" => ThemeColorPairColorType::Accent4,
+                "ACCENT5" => ThemeColorPairColorType::Accent5,
+                "ACCENT6" => ThemeColorPairColorType::Accent6,
+                "BACKGROUND" => ThemeColorPairColorType::Background,
+                "LINK" => ThemeColorPairColorType::Link,
+                "TEXT" => ThemeColorPairColorType::Text,
+                "THEME_COLOR_TYPE_UNSPECIFIED" => {
+                    ThemeColorPairColorType::ThemeColorTypeUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for ThemeColorPairColorType {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for ThemeColorPairColorType {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
     pub struct TreemapChartColorScale {
         #[doc = "The background color for cells with a color value greater than or equal\nto maxValue. Defaults to #109618 if not\nspecified."]
         #[serde(
@@ -12818,6 +13991,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub max_value_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color for cells with a color value greater than or equal\nto maxValue. Defaults to #109618 if not\nspecified.\nIf max_value_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "maxValueColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub max_value_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The background color for cells with a color value at the midpoint between\nminValue and\nmaxValue. Defaults to #efe6dc if not\nspecified."]
         #[serde(
             rename = "midValueColor",
@@ -12825,6 +14005,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub mid_value_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color for cells with a color value at the midpoint between\nminValue and\nmaxValue. Defaults to #efe6dc if not\nspecified.\nIf mid_value_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "midValueColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub mid_value_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The background color for cells with a color value less than or equal to\nminValue. Defaults to #dc3912 if not\nspecified."]
         #[serde(
             rename = "minValueColor",
@@ -12832,6 +14019,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub min_value_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color for cells with a color value less than or equal to\nminValue. Defaults to #dc3912 if not\nspecified.\nIf min_value_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "minValueColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub min_value_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The background color for cells that have no color data associated with\nthem. Defaults to #000000 if not specified."]
         #[serde(
             rename = "noDataColor",
@@ -12839,6 +14033,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub no_data_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color for cells that have no color data associated with\nthem. Defaults to #000000 if not specified.\nIf no_data_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "noDataColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub no_data_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
     }
     impl ::google_field_selector::FieldSelector for TreemapChartColorScale {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -12875,6 +14076,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub header_color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The background color for header cells.\nIf header_color is also set, this field takes precedence."]
+        #[serde(
+            rename = "headerColorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub header_color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "True to hide tooltips."]
         #[serde(
             rename = "hideTooltips",
@@ -13529,16 +14737,7 @@ pub mod schemas {
         }
     }
     #[derive(
-        Debug,
-        Clone,
-        PartialEq,
-        Hash,
-        PartialOrd,
-        Ord,
-        Eq,
-        Default,
-        :: serde :: Deserialize,
-        :: serde :: Serialize,
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
     )]
     pub struct UpdateFilterViewRequest {
         #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `filter` is implied and should not be specified.\nA single `\"*\"` can be used as short-hand for listing every field."]
@@ -13667,6 +14866,42 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for UpdateSheetPropertiesRequest {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
+    )]
+    pub struct UpdateSlicerSpecRequest {
+        #[doc = "The fields that should be updated.  At least one field must be specified.\nThe root `SlicerSpec` is implied and should not be specified. A single \"*\"`\ncan be used as short-hand for listing every field."]
+        #[serde(
+            rename = "fields",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub fields: ::std::option::Option<String>,
+        #[doc = "The id of the slicer to update."]
+        #[serde(
+            rename = "slicerId",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub slicer_id: ::std::option::Option<i32>,
+        #[doc = "The specification to apply to the slicer."]
+        #[serde(
+            rename = "spec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spec: ::std::option::Option<crate::schemas::SlicerSpec>,
+    }
+    impl ::google_field_selector::FieldSelector for UpdateSlicerSpecRequest {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for UpdateSlicerSpecRequest {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -13931,6 +15166,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub color: ::std::option::Option<crate::schemas::Color>,
+        #[doc = "The color of the column.\nIf color is also set, this field takes precedence."]
+        #[serde(
+            rename = "colorStyle",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub color_style: ::std::option::Option<crate::schemas::ColorStyle>,
         #[doc = "The label of the column's legend."]
         #[serde(
             rename = "label",
@@ -14383,7 +15625,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -14391,8 +15633,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -14411,7 +15665,7 @@ pub mod resources {
     pub mod spreadsheets {
         pub mod params {}
         pub struct SpreadsheetsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> SpreadsheetsActions<'a> {
@@ -14534,7 +15788,7 @@ pub mod resources {
         #[doc = "Created via [SpreadsheetsActions::batch_update()](struct.SpreadsheetsActions.html#method.batch_update)"]
         #[derive(Debug, Clone)]
         pub struct BatchUpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BatchUpdateSpreadsheetRequest,
             spreadsheet_id: String,
@@ -14666,7 +15920,10 @@ pub mod resources {
                 output.push_str(":batchUpdate");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -14690,7 +15947,7 @@ pub mod resources {
         #[doc = "Created via [SpreadsheetsActions::create()](struct.SpreadsheetsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Spreadsheet,
             access_token: Option<String>,
@@ -14813,7 +16070,10 @@ pub mod resources {
                 output.push_str("v4/spreadsheets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -14837,7 +16097,7 @@ pub mod resources {
         #[doc = "Created via [SpreadsheetsActions::get()](struct.SpreadsheetsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             spreadsheet_id: String,
             include_grid_data: Option<bool>,
@@ -14978,7 +16238,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("includeGridData", &self.include_grid_data)]);
                 let req = req.query(&[("ranges", &self.ranges)]);
@@ -15004,7 +16267,7 @@ pub mod resources {
         #[doc = "Created via [SpreadsheetsActions::get_by_data_filter()](struct.SpreadsheetsActions.html#method.get_by_data_filter)"]
         #[derive(Debug, Clone)]
         pub struct GetByDataFilterRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::GetSpreadsheetByDataFilterRequest,
             spreadsheet_id: String,
@@ -15136,7 +16399,10 @@ pub mod resources {
                 output.push_str(":getByDataFilter");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -15160,7 +16426,7 @@ pub mod resources {
         pub mod developer_metadata {
             pub mod params {}
             pub struct DeveloperMetadataActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DeveloperMetadataActions<'a> {
@@ -15219,7 +16485,7 @@ pub mod resources {
             #[doc = "Created via [DeveloperMetadataActions::get()](struct.DeveloperMetadataActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 spreadsheet_id: String,
                 metadata_id: i32,
@@ -15361,7 +16627,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -15385,7 +16654,7 @@ pub mod resources {
             #[doc = "Created via [DeveloperMetadataActions::search()](struct.DeveloperMetadataActions.html#method.search)"]
             #[derive(Debug, Clone)]
             pub struct SearchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SearchDeveloperMetadataRequest,
                 spreadsheet_id: String,
@@ -15522,7 +16791,10 @@ pub mod resources {
                     output.push_str("/developerMetadata:search");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -15547,7 +16819,7 @@ pub mod resources {
         pub mod sheets {
             pub mod params {}
             pub struct SheetsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SheetsActions<'a> {
@@ -15584,7 +16856,7 @@ pub mod resources {
             #[doc = "Created via [SheetsActions::copy_to()](struct.SheetsActions.html#method.copy_to)"]
             #[derive(Debug, Clone)]
             pub struct CopyToRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::CopySheetToAnotherSpreadsheetRequest,
                 spreadsheet_id: String,
@@ -15729,7 +17001,10 @@ pub mod resources {
                     output.push_str(":copyTo");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -16735,7 +18010,7 @@ pub mod resources {
                 }
             }
             pub struct ValuesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ValuesActions<'a> {
@@ -17005,7 +18280,7 @@ pub mod resources {
             }
             #[doc = "Created via [ValuesActions::append()](struct.ValuesActions.html#method.append)"]
             #[derive(Debug, Clone)]
-            pub struct AppendRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , insert_data_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendInsertDataOption > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct AppendRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , insert_data_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendInsertDataOption > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: AppendValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> AppendRequestBuilder<'a> {
                 #[doc = "Determines if the update response should include the values\nof the cells that were appended. By default, responses\ndo not include the updated values."]
                 pub fn include_values_in_response(mut self, value: bool) -> Self {
@@ -17170,7 +18445,10 @@ pub mod resources {
                     output.push_str(":append");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req =
                         req.query(&[("includeValuesInResponse", &self.include_values_in_response)]);
@@ -17206,7 +18484,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::batch_clear()](struct.ValuesActions.html#method.batch_clear)"]
             #[derive(Debug, Clone)]
             pub struct BatchClearRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchClearValuesRequest,
                 spreadsheet_id: String,
@@ -17343,7 +18621,10 @@ pub mod resources {
                     output.push_str("/values:batchClear");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17367,7 +18648,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::batch_clear_by_data_filter()](struct.ValuesActions.html#method.batch_clear_by_data_filter)"]
             #[derive(Debug, Clone)]
             pub struct BatchClearByDataFilterRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchClearValuesByDataFilterRequest,
                 spreadsheet_id: String,
@@ -17504,7 +18785,10 @@ pub mod resources {
                     output.push_str("/values:batchClearByDataFilter");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17528,7 +18812,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::batch_get()](struct.ValuesActions.html#method.batch_get)"]
             #[derive(Debug, Clone)]
             pub struct BatchGetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 spreadsheet_id: String,
                 date_time_render_option: Option<
@@ -17561,7 +18845,7 @@ pub mod resources {
                     self.date_time_render_option = Some(value);
                     self
                 }
-                #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` will return\n`[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`."]
+                #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` returns\n`[[1,3],[2,4]]`."]
                 pub fn major_dimension(
                     mut self,
                     value: crate::resources::spreadsheets::values::params::BatchGetMajorDimension,
@@ -17699,7 +18983,10 @@ pub mod resources {
                     output.push_str("/values:batchGet");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("dateTimeRenderOption", &self.date_time_render_option)]);
                     let req = req.query(&[("majorDimension", &self.major_dimension)]);
@@ -17727,7 +19014,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::batch_get_by_data_filter()](struct.ValuesActions.html#method.batch_get_by_data_filter)"]
             #[derive(Debug, Clone)]
             pub struct BatchGetByDataFilterRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchGetValuesByDataFilterRequest,
                 spreadsheet_id: String,
@@ -17864,7 +19151,10 @@ pub mod resources {
                     output.push_str("/values:batchGetByDataFilter");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -17888,7 +19178,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::batch_update()](struct.ValuesActions.html#method.batch_update)"]
             #[derive(Debug, Clone)]
             pub struct BatchUpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchUpdateValuesRequest,
                 spreadsheet_id: String,
@@ -18025,7 +19315,10 @@ pub mod resources {
                     output.push_str("/values:batchUpdate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -18049,7 +19342,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::batch_update_by_data_filter()](struct.ValuesActions.html#method.batch_update_by_data_filter)"]
             #[derive(Debug, Clone)]
             pub struct BatchUpdateByDataFilterRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::BatchUpdateValuesByDataFilterRequest,
                 spreadsheet_id: String,
@@ -18186,7 +19479,10 @@ pub mod resources {
                     output.push_str("/values:batchUpdateByDataFilter");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -18210,7 +19506,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::clear()](struct.ValuesActions.html#method.clear)"]
             #[derive(Debug, Clone)]
             pub struct ClearRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::ClearValuesRequest,
                 spreadsheet_id: String,
@@ -18354,7 +19650,10 @@ pub mod resources {
                     output.push_str(":clear");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -18378,7 +19677,7 @@ pub mod resources {
             #[doc = "Created via [ValuesActions::get()](struct.ValuesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 spreadsheet_id: String,
                 range: String,
@@ -18409,7 +19708,7 @@ pub mod resources {
                     self.date_time_render_option = Some(value);
                     self
                 }
-                #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`,\nthen requesting `range=A1:B2,majorDimension=ROWS` will return\n`[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` will return\n`[[1,3],[2,4]]`."]
+                #[doc = "The major dimension that results should use.\n\nFor example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then\nrequesting `range=A1:B2,majorDimension=ROWS` returns `[[1,2],[3,4]]`,\nwhereas requesting `range=A1:B2,majorDimension=COLUMNS` returns\n`[[1,3],[2,4]]`."]
                 pub fn major_dimension(
                     mut self,
                     value: crate::resources::spreadsheets::values::params::GetMajorDimension,
@@ -18549,7 +19848,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("dateTimeRenderOption", &self.date_time_render_option)]);
                     let req = req.query(&[("majorDimension", &self.major_dimension)]);
@@ -18575,9 +19877,9 @@ pub mod resources {
             }
             #[doc = "Created via [ValuesActions::update()](struct.ValuesActions.html#method.update)"]
             #[derive(Debug, Clone)]
-            pub struct UpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct UpdateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: ValueRange , spreadsheet_id : String , range : String , include_values_in_response : Option < bool > , response_date_time_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseDateTimeRenderOption > , response_value_render_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateResponseValueRenderOption > , value_input_option : Option < crate :: resources :: spreadsheets :: values :: params :: UpdateValueInputOption > , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> UpdateRequestBuilder<'a> {
-                #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values.\nIf the range to write was larger than than the range actually written,\nthe response will include all values in the requested range (excluding\ntrailing empty rows and columns)."]
+                #[doc = "Determines if the update response should include the values\nof the cells that were updated. By default, responses\ndo not include the updated values.\nIf the range to write was larger than the range actually written, the\nresponse includes all values in the requested range (excluding trailing\nempty rows and columns)."]
                 pub fn include_values_in_response(mut self, value: bool) -> Self {
                     self.include_values_in_response = Some(value);
                     self
@@ -18731,7 +20033,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req =
                         req.query(&[("includeValuesInResponse", &self.include_values_in_response)]);
@@ -18782,9 +20087,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -18826,7 +20129,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

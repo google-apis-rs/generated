@@ -1,4 +1,56 @@
 #![doc = "# Resources and Methods\n    * [users](resources/users/struct.UsersActions.html)\n      * [data_sources](resources/users/data_sources/struct.DataSourcesActions.html)\n        * [*create*](resources/users/data_sources/struct.CreateRequestBuilder.html), [*delete*](resources/users/data_sources/struct.DeleteRequestBuilder.html), [*get*](resources/users/data_sources/struct.GetRequestBuilder.html), [*list*](resources/users/data_sources/struct.ListRequestBuilder.html), [*update*](resources/users/data_sources/struct.UpdateRequestBuilder.html)\n        * [data_point_changes](resources/users/data_sources/data_point_changes/struct.DataPointChangesActions.html)\n          * [*list*](resources/users/data_sources/data_point_changes/struct.ListRequestBuilder.html)\n        * [datasets](resources/users/data_sources/datasets/struct.DatasetsActions.html)\n          * [*delete*](resources/users/data_sources/datasets/struct.DeleteRequestBuilder.html), [*get*](resources/users/data_sources/datasets/struct.GetRequestBuilder.html), [*patch*](resources/users/data_sources/datasets/struct.PatchRequestBuilder.html)\n      * [dataset](resources/users/dataset/struct.DatasetActions.html)\n        * [*aggregate*](resources/users/dataset/struct.AggregateRequestBuilder.html)\n      * [sessions](resources/users/sessions/struct.SessionsActions.html)\n        * [*delete*](resources/users/sessions/struct.DeleteRequestBuilder.html), [*list*](resources/users/sessions/struct.ListRequestBuilder.html), [*update*](resources/users/sessions/struct.UpdateRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "Use Google Fit to see and store your physical activity data\n\n`https://www.googleapis.com/auth/fitness.activity.read`"]
+    pub const FITNESS_ACTIVITY_READ: &str = "https://www.googleapis.com/auth/fitness.activity.read";
+    #[doc = "See and add to your Google Fit physical activity data\n\n`https://www.googleapis.com/auth/fitness.activity.write`"]
+    pub const FITNESS_ACTIVITY_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.activity.write";
+    #[doc = "See info about your blood glucose in Google Fit. I consent to Google sharing my blood glucose information with this app.\n\n`https://www.googleapis.com/auth/fitness.blood_glucose.read`"]
+    pub const FITNESS_BLOOD_GLUCOSE_READ: &str =
+        "https://www.googleapis.com/auth/fitness.blood_glucose.read";
+    #[doc = "See and add info about your blood glucose to Google Fit. I consent to Google sharing my blood glucose information with this app.\n\n`https://www.googleapis.com/auth/fitness.blood_glucose.write`"]
+    pub const FITNESS_BLOOD_GLUCOSE_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.blood_glucose.write";
+    #[doc = "See info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure information with this app.\n\n`https://www.googleapis.com/auth/fitness.blood_pressure.read`"]
+    pub const FITNESS_BLOOD_PRESSURE_READ: &str =
+        "https://www.googleapis.com/auth/fitness.blood_pressure.read";
+    #[doc = "See and add info about your blood pressure in Google Fit. I consent to Google sharing my blood pressure information with this app.\n\n`https://www.googleapis.com/auth/fitness.blood_pressure.write`"]
+    pub const FITNESS_BLOOD_PRESSURE_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.blood_pressure.write";
+    #[doc = "See info about your body measurements and heart rate in Google Fit\n\n`https://www.googleapis.com/auth/fitness.body.read`"]
+    pub const FITNESS_BODY_READ: &str = "https://www.googleapis.com/auth/fitness.body.read";
+    #[doc = "See and add info about your body measurements and heart rate to Google Fit\n\n`https://www.googleapis.com/auth/fitness.body.write`"]
+    pub const FITNESS_BODY_WRITE: &str = "https://www.googleapis.com/auth/fitness.body.write";
+    #[doc = "See info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app.\n\n`https://www.googleapis.com/auth/fitness.body_temperature.read`"]
+    pub const FITNESS_BODY_TEMPERATURE_READ: &str =
+        "https://www.googleapis.com/auth/fitness.body_temperature.read";
+    #[doc = "See and add to info about your body temperature in Google Fit. I consent to Google sharing my body temperature information with this app.\n\n`https://www.googleapis.com/auth/fitness.body_temperature.write`"]
+    pub const FITNESS_BODY_TEMPERATURE_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.body_temperature.write";
+    #[doc = "See your Google Fit speed and distance data\n\n`https://www.googleapis.com/auth/fitness.location.read`"]
+    pub const FITNESS_LOCATION_READ: &str = "https://www.googleapis.com/auth/fitness.location.read";
+    #[doc = "See and add to your Google Fit location data\n\n`https://www.googleapis.com/auth/fitness.location.write`"]
+    pub const FITNESS_LOCATION_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.location.write";
+    #[doc = "See info about your nutrition in Google Fit\n\n`https://www.googleapis.com/auth/fitness.nutrition.read`"]
+    pub const FITNESS_NUTRITION_READ: &str =
+        "https://www.googleapis.com/auth/fitness.nutrition.read";
+    #[doc = "See and add to info about your nutrition in Google Fit\n\n`https://www.googleapis.com/auth/fitness.nutrition.write`"]
+    pub const FITNESS_NUTRITION_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.nutrition.write";
+    #[doc = "See info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app.\n\n`https://www.googleapis.com/auth/fitness.oxygen_saturation.read`"]
+    pub const FITNESS_OXYGEN_SATURATION_READ: &str =
+        "https://www.googleapis.com/auth/fitness.oxygen_saturation.read";
+    #[doc = "See and add info about your oxygen saturation in Google Fit. I consent to Google sharing my oxygen saturation information with this app.\n\n`https://www.googleapis.com/auth/fitness.oxygen_saturation.write`"]
+    pub const FITNESS_OXYGEN_SATURATION_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.oxygen_saturation.write";
+    #[doc = "See info about your reproductive health in Google Fit. I consent to Google sharing my reporductive health information with this app.\n\n`https://www.googleapis.com/auth/fitness.reproductive_health.read`"]
+    pub const FITNESS_REPRODUCTIVE_HEALTH_READ: &str =
+        "https://www.googleapis.com/auth/fitness.reproductive_health.read";
+    #[doc = "See and add info about your reproductive health in Google Fit. I consent to Google sharing my reporductive health information with this app.\n\n`https://www.googleapis.com/auth/fitness.reproductive_health.write`"]
+    pub const FITNESS_REPRODUCTIVE_HEALTH_WRITE: &str =
+        "https://www.googleapis.com/auth/fitness.reproductive_health.write";
+}
 pub mod schemas {
     #[derive(
         Debug, Clone, PartialEq, PartialOrd, Default, :: serde :: Deserialize, :: serde :: Serialize,
@@ -153,14 +205,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct AggregateBy {
-        #[doc = "A data source ID to aggregate. Mutually exclusive of dataTypeName. Only data from the specified data source ID will be included in the aggregation. The dataset in the response will have the same data source ID."]
+        #[doc = "A data source ID to aggregate. Only data from the specified data source ID will be included in the aggregation. If specified, this data source must exist; the OAuth scopes in the supplied credentials must grant read access to this data type. The dataset in the response will have the same data source ID. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both."]
         #[serde(
             rename = "dataSourceId",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data_source_id: ::std::option::Option<String>,
-        #[doc = "The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived:com.google.:com.google.android.gms:aggregated"]
+        #[doc = "The data type to aggregate. All data sources providing this data type will contribute data to the aggregation. The response will contain a single dataset for this data type name. The dataset will have a data source ID of derived::com.google.android.gms:aggregated. If the user has no data for this data type, an empty data set will be returned. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both."]
         #[serde(
             rename = "dataTypeName",
             default,
@@ -728,7 +780,7 @@ pub mod schemas {
         )]
         pub data_quality_standard:
             ::std::option::Option<Vec<crate::schemas::DataSourceDataQualityStandardItems>>,
-        #[doc = "A unique identifier for the data stream produced by this data source. The identifier includes:\n\n* The physical device's manufacturer, model, and serial number (UID). \n* The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. \n* The data source's type. \n* The data source's stream name.  Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal.\n\nThe exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName \n\nThe exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName \n\nWhen any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number\n\nFinally, the developer project number is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form."]
+        #[doc = "A unique identifier for the data stream produced by this data source. The identifier includes:\n\n* The physical device's manufacturer, model, and serial number (UID). \n* The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. \n* The data source's type. \n* The data source's stream name.  Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal.\n\nThe exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName \n\nThe exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName \n\nWhen any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number\n\nFinally, the developer project number and device UID are obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form. This means a client will see a different set of data_stream_ids than another client with different credentials."]
         #[serde(
             rename = "dataStreamId",
             default,
@@ -1262,7 +1314,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub r#type: ::std::option::Option<crate::schemas::DeviceType>,
-        #[doc = "The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form."]
+        #[doc = "The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form.\n\nThe obfuscation preserves equality; that is, given two IDs, if id1 == id2, obfuscated(id1) == obfuscated(id2)."]
         #[serde(
             rename = "uid",
             default,
@@ -1755,7 +1807,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -1763,8 +1815,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -1783,7 +1847,7 @@ pub mod resources {
     pub mod users {
         pub mod params {}
         pub struct UsersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> UsersActions<'a> {
@@ -1817,14 +1881,14 @@ pub mod resources {
         pub mod data_sources {
             pub mod params {}
             pub struct DataSourcesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DataSourcesActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Creates a new data source that is unique across all data sources belonging to this user. The data stream ID field can be omitted and will be generated by the server with the correct format. The data stream ID is an ordered combination of some fields from the data source. In addition to the data source fields reflected into the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types."]
+                #[doc = "Creates a new data source that is unique across all data sources belonging to this user.\n\nA data source is a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point in every dataset inserted into or read from the Fitness API has an associated data source.\n\nEach data source produces a unique stream of dataset updates, with a unique data source identifier. Not all changes to data source affect the data stream ID, so that data collected by updated versions of the same application/device can still be considered to belong to the same data source.\n\nData sources are identified using a string generated by the server, based on the contents of the source being created. The dataStreamId field should not be set when invoking this method. It will be automatically generated by the server with the correct format. If a dataStreamId is set, it must match the format that the server would generate. This format is a combination of some fields from the data source, and has a specific order. If it doesn't match, the request will fail with an error.\n\nSpecifying a DataType which is not a known type (beginning with \"com.google.\") will create a DataSource with a custom data type. Custom data types are only readable by the application that created them. Custom data types are deprecated; use standard data types instead.\n\nIn addition to the data source fields included in the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types."]
                 pub fn create(
                     &self,
                     request: crate::schemas::DataSource,
@@ -1939,7 +2003,7 @@ pub mod resources {
             #[doc = "Created via [DataSourcesActions::create()](struct.DataSourcesActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::DataSource,
                 user_id: String,
@@ -2049,7 +2113,10 @@ pub mod resources {
                     output.push_str("/dataSources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("fields", &self.fields)]);
@@ -2069,7 +2136,7 @@ pub mod resources {
             #[doc = "Created via [DataSourcesActions::delete()](struct.DataSourcesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 user_id: String,
                 data_source_id: String,
@@ -2185,7 +2252,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("fields", &self.fields)]);
@@ -2205,7 +2275,7 @@ pub mod resources {
             #[doc = "Created via [DataSourcesActions::get()](struct.DataSourcesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 user_id: String,
                 data_source_id: String,
@@ -2321,7 +2391,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("fields", &self.fields)]);
@@ -2341,7 +2414,7 @@ pub mod resources {
             #[doc = "Created via [DataSourcesActions::list()](struct.DataSourcesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 user_id: String,
                 data_type_name: Option<Vec<String>>,
@@ -2455,7 +2528,10 @@ pub mod resources {
                     output.push_str("/dataSources");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("dataTypeName", &self.data_type_name)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2476,7 +2552,7 @@ pub mod resources {
             #[doc = "Created via [DataSourcesActions::update()](struct.DataSourcesActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::DataSource,
                 user_id: String,
@@ -2594,7 +2670,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("fields", &self.fields)]);
@@ -2614,7 +2693,7 @@ pub mod resources {
             pub mod data_point_changes {
                 pub mod params {}
                 pub struct DataPointChangesActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> DataPointChangesActions<'a> {
@@ -2647,7 +2726,7 @@ pub mod resources {
                 #[doc = "Created via [DataPointChangesActions::list()](struct.DataPointChangesActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     user_id: String,
                     data_source_id: String,
@@ -2945,7 +3024,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("limit", &self.limit)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -2979,7 +3059,7 @@ pub mod resources {
             pub mod datasets {
                 pub mod params {}
                 pub struct DatasetsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> DatasetsActions<'a> {
@@ -3063,7 +3143,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::delete()](struct.DatasetsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     user_id: String,
                     data_source_id: String,
@@ -3149,7 +3229,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("currentTimeMillis", &self.current_time_millis)]);
                         let req = req.query(&[("modifiedTimeMillis", &self.modified_time_millis)]);
@@ -3171,7 +3252,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::get()](struct.DatasetsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     user_id: String,
                     data_source_id: String,
@@ -3412,7 +3493,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("limit", &self.limit)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3445,7 +3527,7 @@ pub mod resources {
                 #[doc = "Created via [DatasetsActions::patch()](struct.DatasetsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
                 pub struct PatchRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::Dataset,
                     user_id: String,
@@ -3581,7 +3663,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("currentTimeMillis", &self.current_time_millis)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3604,14 +3687,14 @@ pub mod resources {
         pub mod dataset {
             pub mod params {}
             pub struct DatasetActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> DatasetActions<'a> {
                 fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                     self.auth
                 }
-                #[doc = "Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggreated into exactly one bucket type per request."]
+                #[doc = "Aggregates data of a certain type or stream into buckets divided by a given type of boundary. Multiple data sets of multiple types and from multiple sources can be aggregated into exactly one bucket type per request."]
                 pub fn aggregate(
                     &self,
                     request: crate::schemas::AggregateRequest,
@@ -3635,7 +3718,7 @@ pub mod resources {
             #[doc = "Created via [DatasetActions::aggregate()](struct.DatasetActions.html#method.aggregate)"]
             #[derive(Debug, Clone)]
             pub struct AggregateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AggregateRequest,
                 user_id: String,
@@ -3745,7 +3828,10 @@ pub mod resources {
                     output.push_str("/dataset:aggregate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("fields", &self.fields)]);
@@ -3766,7 +3852,7 @@ pub mod resources {
         pub mod sessions {
             pub mod params {}
             pub struct SessionsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SessionsActions<'a> {
@@ -3807,6 +3893,7 @@ pub mod resources {
                         quota_user: None,
                         user_ip: None,
                         user_id: user_id.into(),
+                        activity_type: None,
                         end_time: None,
                         include_deleted: None,
                         page_token: None,
@@ -3840,7 +3927,7 @@ pub mod resources {
             #[doc = "Created via [SessionsActions::delete()](struct.SessionsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 user_id: String,
                 session_id: String,
@@ -3908,7 +3995,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("currentTimeMillis", &self.current_time_millis)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3929,9 +4019,10 @@ pub mod resources {
             #[doc = "Created via [SessionsActions::list()](struct.SessionsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 user_id: String,
+                activity_type: Option<Vec<i32>>,
                 end_time: Option<String>,
                 include_deleted: Option<bool>,
                 page_token: Option<String>,
@@ -3945,6 +4036,11 @@ pub mod resources {
                 user_ip: Option<String>,
             }
             impl<'a> ListRequestBuilder<'a> {
+                #[doc = "If non-empty, only sessions with these activity types should be returned."]
+                pub fn activity_type(mut self, value: impl Into<Vec<i32>>) -> Self {
+                    self.activity_type = Some(value.into());
+                    self
+                }
                 #[doc = "An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the response."]
                 pub fn end_time(mut self, value: impl Into<String>) -> Self {
                     self.end_time = Some(value.into());
@@ -4218,8 +4314,12 @@ pub mod resources {
                     output.push_str("/sessions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
+                    let req = req.query(&[("activityType", &self.activity_type)]);
                     let req = req.query(&[("endTime", &self.end_time)]);
                     let req = req.query(&[("includeDeleted", &self.include_deleted)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4253,7 +4353,7 @@ pub mod resources {
             #[doc = "Created via [SessionsActions::update()](struct.SessionsActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Session,
                 user_id: String,
@@ -4377,7 +4477,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("currentTimeMillis", &self.current_time_millis)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4414,9 +4517,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -4458,7 +4559,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

@@ -1,4 +1,10 @@
 #![doc = "# Resources and Methods\n    * [relyingparty](resources/relyingparty/struct.RelyingpartyActions.html)\n      * [*createAuthUri*](resources/relyingparty/struct.CreateAuthUriRequestBuilder.html), [*deleteAccount*](resources/relyingparty/struct.DeleteAccountRequestBuilder.html), [*downloadAccount*](resources/relyingparty/struct.DownloadAccountRequestBuilder.html), [*emailLinkSignin*](resources/relyingparty/struct.EmailLinkSigninRequestBuilder.html), [*getAccountInfo*](resources/relyingparty/struct.GetAccountInfoRequestBuilder.html), [*getOobConfirmationCode*](resources/relyingparty/struct.GetOobConfirmationCodeRequestBuilder.html), [*getProjectConfig*](resources/relyingparty/struct.GetProjectConfigRequestBuilder.html), [*getPublicKeys*](resources/relyingparty/struct.GetPublicKeysRequestBuilder.html), [*getRecaptchaParam*](resources/relyingparty/struct.GetRecaptchaParamRequestBuilder.html), [*resetPassword*](resources/relyingparty/struct.ResetPasswordRequestBuilder.html), [*sendVerificationCode*](resources/relyingparty/struct.SendVerificationCodeRequestBuilder.html), [*setAccountInfo*](resources/relyingparty/struct.SetAccountInfoRequestBuilder.html), [*setProjectConfig*](resources/relyingparty/struct.SetProjectConfigRequestBuilder.html), [*signOutUser*](resources/relyingparty/struct.SignOutUserRequestBuilder.html), [*signupNewUser*](resources/relyingparty/struct.SignupNewUserRequestBuilder.html), [*uploadAccount*](resources/relyingparty/struct.UploadAccountRequestBuilder.html), [*verifyAssertion*](resources/relyingparty/struct.VerifyAssertionRequestBuilder.html), [*verifyCustomToken*](resources/relyingparty/struct.VerifyCustomTokenRequestBuilder.html), [*verifyPassword*](resources/relyingparty/struct.VerifyPasswordRequestBuilder.html), [*verifyPhoneNumber*](resources/relyingparty/struct.VerifyPhoneNumberRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View and administer all your Firebase data and settings\n\n`https://www.googleapis.com/auth/firebase`"]
+    pub const FIREBASE: &str = "https://www.googleapis.com/auth/firebase";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -3396,7 +3402,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -3404,8 +3410,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -3424,7 +3442,7 @@ pub mod resources {
     pub mod relyingparty {
         pub mod params {}
         pub struct RelyingpartyActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RelyingpartyActions<'a> {
@@ -3785,7 +3803,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::create_auth_uri()](struct.RelyingpartyActions.html#method.create_auth_uri)"]
         #[derive(Debug, Clone)]
         pub struct CreateAuthUriRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyCreateAuthUriRequest,
             alt: Option<crate::params::Alt>,
@@ -3885,7 +3903,10 @@ pub mod resources {
                 output.push_str("createAuthUri");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3905,7 +3926,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::delete_account()](struct.RelyingpartyActions.html#method.delete_account)"]
         #[derive(Debug, Clone)]
         pub struct DeleteAccountRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyDeleteAccountRequest,
             alt: Option<crate::params::Alt>,
@@ -4005,7 +4026,10 @@ pub mod resources {
                 output.push_str("deleteAccount");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4025,7 +4049,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::download_account()](struct.RelyingpartyActions.html#method.download_account)"]
         #[derive(Debug, Clone)]
         pub struct DownloadAccountRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyDownloadAccountRequest,
             alt: Option<crate::params::Alt>,
@@ -4125,7 +4149,10 @@ pub mod resources {
                 output.push_str("downloadAccount");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4145,7 +4172,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::email_link_signin()](struct.RelyingpartyActions.html#method.email_link_signin)"]
         #[derive(Debug, Clone)]
         pub struct EmailLinkSigninRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyEmailLinkSigninRequest,
             alt: Option<crate::params::Alt>,
@@ -4245,7 +4272,10 @@ pub mod resources {
                 output.push_str("emailLinkSignin");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4265,7 +4295,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::get_account_info()](struct.RelyingpartyActions.html#method.get_account_info)"]
         #[derive(Debug, Clone)]
         pub struct GetAccountInfoRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyGetAccountInfoRequest,
             alt: Option<crate::params::Alt>,
@@ -4365,7 +4395,10 @@ pub mod resources {
                 output.push_str("getAccountInfo");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4385,7 +4418,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::get_oob_confirmation_code()](struct.RelyingpartyActions.html#method.get_oob_confirmation_code)"]
         #[derive(Debug, Clone)]
         pub struct GetOobConfirmationCodeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Relyingparty,
             alt: Option<crate::params::Alt>,
@@ -4485,7 +4518,10 @@ pub mod resources {
                 output.push_str("getOobConfirmationCode");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4505,7 +4541,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::get_project_config()](struct.RelyingpartyActions.html#method.get_project_config)"]
         #[derive(Debug, Clone)]
         pub struct GetProjectConfigRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             delegated_project_number: Option<String>,
             project_number: Option<String>,
@@ -4621,7 +4657,10 @@ pub mod resources {
                 output.push_str("getProjectConfig");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("delegatedProjectNumber", &self.delegated_project_number)]);
                 let req = req.query(&[("projectNumber", &self.project_number)]);
@@ -4643,7 +4682,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::get_public_keys()](struct.RelyingpartyActions.html#method.get_public_keys)"]
         #[derive(Debug, Clone)]
         pub struct GetPublicKeysRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -4747,7 +4786,10 @@ pub mod resources {
                 output.push_str("publicKeys");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4767,7 +4809,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::get_recaptcha_param()](struct.RelyingpartyActions.html#method.get_recaptcha_param)"]
         #[derive(Debug, Clone)]
         pub struct GetRecaptchaParamRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -4865,7 +4907,10 @@ pub mod resources {
                 output.push_str("getRecaptchaParam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -4885,7 +4930,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::reset_password()](struct.RelyingpartyActions.html#method.reset_password)"]
         #[derive(Debug, Clone)]
         pub struct ResetPasswordRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyResetPasswordRequest,
             alt: Option<crate::params::Alt>,
@@ -4985,7 +5030,10 @@ pub mod resources {
                 output.push_str("resetPassword");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5005,7 +5053,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::send_verification_code()](struct.RelyingpartyActions.html#method.send_verification_code)"]
         #[derive(Debug, Clone)]
         pub struct SendVerificationCodeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartySendVerificationCodeRequest,
             alt: Option<crate::params::Alt>,
@@ -5111,7 +5159,10 @@ pub mod resources {
                 output.push_str("sendVerificationCode");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5131,7 +5182,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::set_account_info()](struct.RelyingpartyActions.html#method.set_account_info)"]
         #[derive(Debug, Clone)]
         pub struct SetAccountInfoRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartySetAccountInfoRequest,
             alt: Option<crate::params::Alt>,
@@ -5231,7 +5282,10 @@ pub mod resources {
                 output.push_str("setAccountInfo");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5251,7 +5305,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::set_project_config()](struct.RelyingpartyActions.html#method.set_project_config)"]
         #[derive(Debug, Clone)]
         pub struct SetProjectConfigRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartySetProjectConfigRequest,
             alt: Option<crate::params::Alt>,
@@ -5357,7 +5411,10 @@ pub mod resources {
                 output.push_str("setProjectConfig");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5377,7 +5434,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::sign_out_user()](struct.RelyingpartyActions.html#method.sign_out_user)"]
         #[derive(Debug, Clone)]
         pub struct SignOutUserRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartySignOutUserRequest,
             alt: Option<crate::params::Alt>,
@@ -5479,7 +5536,10 @@ pub mod resources {
                 output.push_str("signOutUser");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5499,7 +5559,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::signup_new_user()](struct.RelyingpartyActions.html#method.signup_new_user)"]
         #[derive(Debug, Clone)]
         pub struct SignupNewUserRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartySignupNewUserRequest,
             alt: Option<crate::params::Alt>,
@@ -5599,7 +5659,10 @@ pub mod resources {
                 output.push_str("signupNewUser");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5619,7 +5682,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::upload_account()](struct.RelyingpartyActions.html#method.upload_account)"]
         #[derive(Debug, Clone)]
         pub struct UploadAccountRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyUploadAccountRequest,
             alt: Option<crate::params::Alt>,
@@ -5719,7 +5782,10 @@ pub mod resources {
                 output.push_str("uploadAccount");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5739,7 +5805,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::verify_assertion()](struct.RelyingpartyActions.html#method.verify_assertion)"]
         #[derive(Debug, Clone)]
         pub struct VerifyAssertionRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyVerifyAssertionRequest,
             alt: Option<crate::params::Alt>,
@@ -5839,7 +5905,10 @@ pub mod resources {
                 output.push_str("verifyAssertion");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5859,7 +5928,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::verify_custom_token()](struct.RelyingpartyActions.html#method.verify_custom_token)"]
         #[derive(Debug, Clone)]
         pub struct VerifyCustomTokenRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyVerifyCustomTokenRequest,
             alt: Option<crate::params::Alt>,
@@ -5959,7 +6028,10 @@ pub mod resources {
                 output.push_str("verifyCustomToken");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -5979,7 +6051,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::verify_password()](struct.RelyingpartyActions.html#method.verify_password)"]
         #[derive(Debug, Clone)]
         pub struct VerifyPasswordRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyVerifyPasswordRequest,
             alt: Option<crate::params::Alt>,
@@ -6079,7 +6151,10 @@ pub mod resources {
                 output.push_str("verifyPassword");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6099,7 +6174,7 @@ pub mod resources {
         #[doc = "Created via [RelyingpartyActions::verify_phone_number()](struct.RelyingpartyActions.html#method.verify_phone_number)"]
         #[derive(Debug, Clone)]
         pub struct VerifyPhoneNumberRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest,
             alt: Option<crate::params::Alt>,
@@ -6205,7 +6280,10 @@ pub mod resources {
                 output.push_str("verifyPhoneNumber");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6240,9 +6318,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -6284,7 +6360,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

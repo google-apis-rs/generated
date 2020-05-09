@@ -1,4 +1,8 @@
 #![doc = "# Resources and Methods\n    * [operations](resources/operations/struct.OperationsActions.html)\n      * [*cancel*](resources/operations/struct.CancelRequestBuilder.html), [*delete*](resources/operations/struct.DeleteRequestBuilder.html), [*get*](resources/operations/struct.GetRequestBuilder.html), [*list*](resources/operations/struct.ListRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -68,7 +72,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub docker_image: ::std::option::Option<String>,
-        #[doc = "Output only. The environment's identifier, which is always \"default\"."]
+        #[doc = "Output only. The environment's identifier, unique among the user's\nenvironments."]
         #[serde(
             rename = "id",
             default,
@@ -89,6 +93,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub public_keys: ::std::option::Option<Vec<crate::schemas::PublicKey>>,
+        #[doc = "Indicates the size of the backing VM running the environment.  If set to\nsomething other than DEFAULT, it will be reverted to the default VM size\nafter vm_size_expire_time."]
+        #[serde(
+            rename = "size",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub size: ::std::option::Option<crate::schemas::EnvironmentSize>,
         #[doc = "Output only. Host to which clients can connect to initiate SSH sessions\nwith the environment."]
         #[serde(
             rename = "sshHost",
@@ -117,6 +128,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub state: ::std::option::Option<crate::schemas::EnvironmentState>,
+        #[doc = "Output only. The time when the Environment will expire back to the default\nVM size."]
+        #[serde(
+            rename = "vmSizeExpireTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub vm_size_expire_time: ::std::option::Option<String>,
         #[doc = "Output only. Host to which clients can connect to initiate HTTPS or WSS\nconnections with the environment."]
         #[serde(
             rename = "webHost",
@@ -124,6 +142,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub web_host: ::std::option::Option<String>,
+        #[doc = "Output only. Ports to which clients can connect to initiate HTTPS or WSS\nconnections with the environment."]
+        #[serde(
+            rename = "webPorts",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub web_ports: ::std::option::Option<Vec<i32>>,
     }
     impl ::google_field_selector::FieldSelector for Environment {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -131,6 +156,82 @@ pub mod schemas {
         }
     }
     impl ::google_field_selector::ToFieldType for Environment {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum EnvironmentSize {
+        #[doc = "The boosted VM size."]
+        Boosted,
+        #[doc = "The default VM size."]
+        Default,
+        #[doc = "The VM size is unknown."]
+        VmSizeUnspecified,
+    }
+    impl EnvironmentSize {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                EnvironmentSize::Boosted => "BOOSTED",
+                EnvironmentSize::Default => "DEFAULT",
+                EnvironmentSize::VmSizeUnspecified => "VM_SIZE_UNSPECIFIED",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for EnvironmentSize {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for EnvironmentSize {
+        type Err = ();
+        fn from_str(s: &str) -> ::std::result::Result<EnvironmentSize, ()> {
+            Ok(match s {
+                "BOOSTED" => EnvironmentSize::Boosted,
+                "DEFAULT" => EnvironmentSize::Default,
+                "VM_SIZE_UNSPECIFIED" => EnvironmentSize::VmSizeUnspecified,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for EnvironmentSize {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for EnvironmentSize {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for EnvironmentSize {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "BOOSTED" => EnvironmentSize::Boosted,
+                "DEFAULT" => EnvironmentSize::Default,
+                "VM_SIZE_UNSPECIFIED" => EnvironmentSize::VmSizeUnspecified,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for EnvironmentSize {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for EnvironmentSize {
         fn field_type() -> ::google_field_selector::FieldType {
             ::google_field_selector::FieldType::Leaf
         }
@@ -462,7 +563,11 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
     pub enum StartEnvironmentMetadataState {
-        #[doc = "Startup is complete and the user should be able to establish an SSH\nconnection to their environment."]
+        #[doc = "Startup is waiting for compute resources to be assigned to the\nenvironment. This should normally happen very quickly, but an environment\nmight stay in this state for an extended period of time if the system is\nexperiencing heavy load."]
+        AwaitingComputeResources,
+        #[doc = "Startup is waiting for a VM to be assigned to the environment. This\nshould normally happen very quickly, but an environment might stay in\nthis state for an extended period of time if the system is experiencing\nheavy load."]
+        AwaitingVm,
+        #[doc = "Startup has completed. If the start operation was successful, the user\nshould be able to establish an SSH connection to their environment.\nOtherwise, the operation will contain details of the failure."]
         Finished,
         #[doc = "The environment is in the process of being started, but no additional\ndetails are available."]
         Starting,
@@ -474,6 +579,10 @@ pub mod schemas {
     impl StartEnvironmentMetadataState {
         pub fn as_str(self) -> &'static str {
             match self {
+                StartEnvironmentMetadataState::AwaitingComputeResources => {
+                    "AWAITING_COMPUTE_RESOURCES"
+                }
+                StartEnvironmentMetadataState::AwaitingVm => "AWAITING_VM",
                 StartEnvironmentMetadataState::Finished => "FINISHED",
                 StartEnvironmentMetadataState::Starting => "STARTING",
                 StartEnvironmentMetadataState::StateUnspecified => "STATE_UNSPECIFIED",
@@ -490,6 +599,10 @@ pub mod schemas {
         type Err = ();
         fn from_str(s: &str) -> ::std::result::Result<StartEnvironmentMetadataState, ()> {
             Ok(match s {
+                "AWAITING_COMPUTE_RESOURCES" => {
+                    StartEnvironmentMetadataState::AwaitingComputeResources
+                }
+                "AWAITING_VM" => StartEnvironmentMetadataState::AwaitingVm,
                 "FINISHED" => StartEnvironmentMetadataState::Finished,
                 "STARTING" => StartEnvironmentMetadataState::Starting,
                 "STATE_UNSPECIFIED" => StartEnvironmentMetadataState::StateUnspecified,
@@ -518,6 +631,10 @@ pub mod schemas {
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
             Ok(match value {
+                "AWAITING_COMPUTE_RESOURCES" => {
+                    StartEnvironmentMetadataState::AwaitingComputeResources
+                }
+                "AWAITING_VM" => StartEnvironmentMetadataState::AwaitingVm,
                 "FINISHED" => StartEnvironmentMetadataState::Finished,
                 "STARTING" => StartEnvironmentMetadataState::Starting,
                 "STATE_UNSPECIFIED" => StartEnvironmentMetadataState::StateUnspecified,
@@ -758,7 +875,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -766,8 +883,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -786,7 +915,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -881,7 +1010,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::cancel()](struct.OperationsActions.html#method.cancel)"]
         #[derive(Debug, Clone)]
         pub struct CancelRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CancelOperationRequest,
             name: String,
@@ -1011,7 +1140,10 @@ pub mod resources {
                 output.push_str(":cancel");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1035,7 +1167,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::delete()](struct.OperationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1162,7 +1294,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1186,7 +1321,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -1315,7 +1450,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1339,7 +1477,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::list()](struct.OperationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             filter: Option<String>,
@@ -1584,7 +1722,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("filter", &self.filter)]);
                 let req = req.query(&[("pageSize", &self.page_size)]);
@@ -1637,9 +1778,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -1681,7 +1820,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();

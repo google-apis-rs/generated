@@ -1,4 +1,18 @@
 #![doc = "# Resources and Methods\n    * [bucket_access_controls](resources/bucket_access_controls/struct.BucketAccessControlsActions.html)\n      * [*delete*](resources/bucket_access_controls/struct.DeleteRequestBuilder.html), [*get*](resources/bucket_access_controls/struct.GetRequestBuilder.html), [*insert*](resources/bucket_access_controls/struct.InsertRequestBuilder.html), [*list*](resources/bucket_access_controls/struct.ListRequestBuilder.html), [*patch*](resources/bucket_access_controls/struct.PatchRequestBuilder.html), [*update*](resources/bucket_access_controls/struct.UpdateRequestBuilder.html)\n    * [buckets](resources/buckets/struct.BucketsActions.html)\n      * [*delete*](resources/buckets/struct.DeleteRequestBuilder.html), [*get*](resources/buckets/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/buckets/struct.GetIamPolicyRequestBuilder.html), [*insert*](resources/buckets/struct.InsertRequestBuilder.html), [*list*](resources/buckets/struct.ListRequestBuilder.html), [*lockRetentionPolicy*](resources/buckets/struct.LockRetentionPolicyRequestBuilder.html), [*patch*](resources/buckets/struct.PatchRequestBuilder.html), [*setIamPolicy*](resources/buckets/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/buckets/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/buckets/struct.UpdateRequestBuilder.html)\n    * [channels](resources/channels/struct.ChannelsActions.html)\n      * [*stop*](resources/channels/struct.StopRequestBuilder.html)\n    * [default_object_access_controls](resources/default_object_access_controls/struct.DefaultObjectAccessControlsActions.html)\n      * [*delete*](resources/default_object_access_controls/struct.DeleteRequestBuilder.html), [*get*](resources/default_object_access_controls/struct.GetRequestBuilder.html), [*insert*](resources/default_object_access_controls/struct.InsertRequestBuilder.html), [*list*](resources/default_object_access_controls/struct.ListRequestBuilder.html), [*patch*](resources/default_object_access_controls/struct.PatchRequestBuilder.html), [*update*](resources/default_object_access_controls/struct.UpdateRequestBuilder.html)\n    * [notifications](resources/notifications/struct.NotificationsActions.html)\n      * [*delete*](resources/notifications/struct.DeleteRequestBuilder.html), [*get*](resources/notifications/struct.GetRequestBuilder.html), [*insert*](resources/notifications/struct.InsertRequestBuilder.html), [*list*](resources/notifications/struct.ListRequestBuilder.html)\n    * [object_access_controls](resources/object_access_controls/struct.ObjectAccessControlsActions.html)\n      * [*delete*](resources/object_access_controls/struct.DeleteRequestBuilder.html), [*get*](resources/object_access_controls/struct.GetRequestBuilder.html), [*insert*](resources/object_access_controls/struct.InsertRequestBuilder.html), [*list*](resources/object_access_controls/struct.ListRequestBuilder.html), [*patch*](resources/object_access_controls/struct.PatchRequestBuilder.html), [*update*](resources/object_access_controls/struct.UpdateRequestBuilder.html)\n    * [objects](resources/objects/struct.ObjectsActions.html)\n      * [*compose*](resources/objects/struct.ComposeRequestBuilder.html), [*copy*](resources/objects/struct.CopyRequestBuilder.html), [*delete*](resources/objects/struct.DeleteRequestBuilder.html), [*get*](resources/objects/struct.GetRequestBuilder.html), [*getIamPolicy*](resources/objects/struct.GetIamPolicyRequestBuilder.html), [*insert*](resources/objects/struct.InsertRequestBuilder.html), [*list*](resources/objects/struct.ListRequestBuilder.html), [*patch*](resources/objects/struct.PatchRequestBuilder.html), [*rewrite*](resources/objects/struct.RewriteRequestBuilder.html), [*setIamPolicy*](resources/objects/struct.SetIamPolicyRequestBuilder.html), [*testIamPermissions*](resources/objects/struct.TestIamPermissionsRequestBuilder.html), [*update*](resources/objects/struct.UpdateRequestBuilder.html), [*watchAll*](resources/objects/struct.WatchAllRequestBuilder.html)\n    * [projects](resources/projects/struct.ProjectsActions.html)\n      * [hmac_keys](resources/projects/hmac_keys/struct.HmacKeysActions.html)\n        * [*create*](resources/projects/hmac_keys/struct.CreateRequestBuilder.html), [*delete*](resources/projects/hmac_keys/struct.DeleteRequestBuilder.html), [*get*](resources/projects/hmac_keys/struct.GetRequestBuilder.html), [*list*](resources/projects/hmac_keys/struct.ListRequestBuilder.html), [*update*](resources/projects/hmac_keys/struct.UpdateRequestBuilder.html)\n      * [service_account](resources/projects/service_account/struct.ServiceAccountActions.html)\n        * [*get*](resources/projects/service_account/struct.GetRequestBuilder.html)\n"]
+pub mod scopes {
+    #[doc = "View and manage your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform`"]
+    pub const CLOUD_PLATFORM: &str = "https://www.googleapis.com/auth/cloud-platform";
+    #[doc = "View your data across Google Cloud Platform services\n\n`https://www.googleapis.com/auth/cloud-platform.read-only`"]
+    pub const CLOUD_PLATFORM_READ_ONLY: &str =
+        "https://www.googleapis.com/auth/cloud-platform.read-only";
+    #[doc = "Manage your data and permissions in Google Cloud Storage\n\n`https://www.googleapis.com/auth/devstorage.full_control`"]
+    pub const DEVSTORAGE_FULL_CONTROL: &str =
+        "https://www.googleapis.com/auth/devstorage.full_control";
+    #[doc = "View your data in Google Cloud Storage\n\n`https://www.googleapis.com/auth/devstorage.read_only`"]
+    pub const DEVSTORAGE_READ_ONLY: &str = "https://www.googleapis.com/auth/devstorage.read_only";
+    #[doc = "Manage your data in Google Cloud Storage\n\n`https://www.googleapis.com/auth/devstorage.read_write`"]
+    pub const DEVSTORAGE_READ_WRITE: &str = "https://www.googleapis.com/auth/devstorage.read_write";
+}
 pub mod schemas {
     #[derive(
         Debug,
@@ -162,7 +176,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub self_link: ::std::option::Option<String>,
-        #[doc = "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes."]
+        #[doc = "The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes."]
         #[serde(
             rename = "storageClass",
             default,
@@ -197,6 +211,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub website: ::std::option::Option<crate::schemas::BucketWebsite>,
+        #[doc = "The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response."]
+        #[serde(
+            rename = "zoneAffinity",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub zone_affinity: ::std::option::Option<Vec<String>>,
+        #[doc = "If set, objects placed in this bucket are required to be separated by disaster domain."]
+        #[serde(
+            rename = "zoneSeparation",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub zone_separation: ::std::option::Option<bool>,
     }
     impl ::google_field_selector::FieldSelector for Bucket {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -335,7 +363,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct BucketIamConfiguration {
-        #[doc = "The bucket's Bucket Policy Only configuration."]
+        #[doc = "The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature."]
         #[serde(
             rename = "bucketPolicyOnly",
             default,
@@ -572,6 +600,20 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub created_before: ::std::option::Option<::chrono::NaiveDate>,
+        #[doc = "A timestamp in RFC 3339 format. This condition is satisfied when the custom time on an object is before this timestamp."]
+        #[serde(
+            rename = "customTimeBefore",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_time_before: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
+        #[doc = "Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply."]
+        #[serde(
+            rename = "daysSinceCustomTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub days_since_custom_time: ::std::option::Option<i32>,
         #[doc = "Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects."]
         #[serde(
             rename = "isLive",
@@ -586,7 +628,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub matches_pattern: ::std::option::Option<String>,
-        #[doc = "Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, STANDARD, and DURABLE_REDUCED_AVAILABILITY."]
+        #[doc = "Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY."]
         #[serde(
             rename = "matchesStorageClass",
             default,
@@ -1684,6 +1726,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub crc_3_2c: ::std::option::Option<String>,
+        #[doc = "A timestamp in RFC 3339 format specified by the user for an object."]
+        #[serde(
+            rename = "customTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom_time: ::std::option::Option<::chrono::DateTime<chrono::offset::Utc>>,
         #[doc = "Metadata of customer-supplied encryption key, if the object is encrypted by such a key."]
         #[serde(
             rename = "customerEncryption",
@@ -2253,14 +2302,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:\n\n* allUsers \u{2014} A special identifier that represents anyone on the internet; with or without a Google account.\n* allAuthenticatedUsers \u{2014} A special identifier that represents anyone who is authenticated with a Google account or a service account.\n* user:emailid \u{2014} An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.\n* serviceAccount:emailid \u{2014} An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .\n* group:emailid \u{2014} An email address that represents a Google group. For example, group:admins@example.com.\n* domain:domain \u{2014} A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.\n* projectOwner:projectid \u{2014} Owners of the given project. For example, projectOwner:my-example-project\n* projectEditor:projectid \u{2014} Editors of the given project. For example, projectEditor:my-example-project\n* projectViewer:projectid \u{2014} Viewers of the given project. For example, projectViewer:my-example-project"]
+        #[doc = "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:\n\n* allUsers — A special identifier that represents anyone on the internet; with or without a Google account.\n* allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.\n* user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.\n* serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .\n* group:emailid — An email address that represents a Google group. For example, group:admins@example.com.\n* domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.\n* projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project\n* projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project\n* projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project"]
         #[serde(
             rename = "members",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:\n\n* roles/storage.admin \u{2014} Full control of Google Cloud Storage resources.\n* roles/storage.objectViewer \u{2014} Read-Only access to Google Cloud Storage objects.\n* roles/storage.objectCreator \u{2014} Access to create objects in Google Cloud Storage.\n* roles/storage.objectAdmin \u{2014} Full control of Google Cloud Storage objects.   The legacy IAM roles are:\n* roles/storage.legacyObjectReader \u{2014} Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.\n* roles/storage.legacyObjectOwner \u{2014} Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.\n* roles/storage.legacyBucketReader \u{2014} Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.\n* roles/storage.legacyBucketWriter \u{2014} Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.\n* roles/storage.legacyBucketOwner \u{2014} Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role."]
+        #[doc = "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:\n\n* roles/storage.admin — Full control of Google Cloud Storage resources.\n* roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.\n* roles/storage.objectCreator — Access to create objects in Google Cloud Storage.\n* roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:\n* roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.\n* roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.\n* roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.\n* roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.\n* roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role."]
         #[serde(
             rename = "role",
             default,
@@ -2404,7 +2453,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:\n\n* storage.buckets.delete \u{2014} Delete bucket.\n* storage.buckets.get \u{2014} Read bucket metadata.\n* storage.buckets.getIamPolicy \u{2014} Read bucket IAM policy.\n* storage.buckets.create \u{2014} Create bucket.\n* storage.buckets.list \u{2014} List buckets.\n* storage.buckets.setIamPolicy \u{2014} Update bucket IAM policy.\n* storage.buckets.update \u{2014} Update bucket metadata.\n* storage.objects.delete \u{2014} Delete object.\n* storage.objects.get \u{2014} Read object data and metadata.\n* storage.objects.getIamPolicy \u{2014} Read object IAM policy.\n* storage.objects.create \u{2014} Create object.\n* storage.objects.list \u{2014} List objects.\n* storage.objects.setIamPolicy \u{2014} Update object IAM policy.\n* storage.objects.update \u{2014} Update object metadata."]
+        #[doc = "The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:\n\n* storage.buckets.delete — Delete bucket.\n* storage.buckets.get — Read bucket metadata.\n* storage.buckets.getIamPolicy — Read bucket IAM policy.\n* storage.buckets.create — Create bucket.\n* storage.buckets.list — List buckets.\n* storage.buckets.setIamPolicy — Update bucket IAM policy.\n* storage.buckets.update — Update bucket metadata.\n* storage.objects.delete — Delete object.\n* storage.objects.get — Read object data and metadata.\n* storage.objects.getIamPolicy — Read object IAM policy.\n* storage.objects.create — Create object.\n* storage.objects.list — List objects.\n* storage.objects.setIamPolicy — Update object IAM policy.\n* storage.objects.update — Update object metadata."]
         #[serde(
             rename = "permissions",
             default,
@@ -2497,7 +2546,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -2505,8 +2554,20 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
+    }
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    where
+        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+    {
         Client {
-            reqwest: ::reqwest::Client::builder().timeout(None).build().unwrap(),
+            reqwest,
             auth: auth.into(),
         }
     }
@@ -2580,7 +2641,7 @@ pub mod resources {
     pub mod bucket_access_controls {
         pub mod params {}
         pub struct BucketAccessControlsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> BucketAccessControlsActions<'a> {
@@ -2722,7 +2783,7 @@ pub mod resources {
         #[doc = "Created via [BucketAccessControlsActions::delete()](struct.BucketAccessControlsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             entity: String,
@@ -2778,7 +2839,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -2797,7 +2858,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -2819,7 +2883,7 @@ pub mod resources {
         #[doc = "Created via [BucketAccessControlsActions::get()](struct.BucketAccessControlsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             entity: String,
@@ -2926,7 +2990,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -2945,7 +3009,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -2967,7 +3034,7 @@ pub mod resources {
         #[doc = "Created via [BucketAccessControlsActions::insert()](struct.BucketAccessControlsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BucketAccessControl,
             bucket: String,
@@ -3075,7 +3142,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3087,7 +3154,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3109,7 +3179,7 @@ pub mod resources {
         #[doc = "Created via [BucketAccessControlsActions::list()](struct.BucketAccessControlsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             provisional_user_project: Option<String>,
@@ -3215,7 +3285,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3227,7 +3297,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3249,7 +3322,7 @@ pub mod resources {
         #[doc = "Created via [BucketAccessControlsActions::patch()](struct.BucketAccessControlsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BucketAccessControl,
             bucket: String,
@@ -3358,7 +3431,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3377,7 +3450,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3399,7 +3475,7 @@ pub mod resources {
         #[doc = "Created via [BucketAccessControlsActions::update()](struct.BucketAccessControlsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::BucketAccessControl,
             bucket: String,
@@ -3508,7 +3584,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -3527,7 +3603,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -4459,7 +4538,7 @@ pub mod resources {
             }
         }
         pub struct BucketsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> BucketsActions<'a> {
@@ -4693,7 +4772,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::delete()](struct.BucketsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             if_metageneration_match: Option<i64>,
@@ -4760,7 +4839,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4771,7 +4850,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -4798,7 +4880,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::get()](struct.BucketsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             if_metageneration_match: Option<i64>,
@@ -4923,7 +5005,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -4934,7 +5016,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -4962,7 +5047,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::get_iam_policy()](struct.BucketsActions.html#method.get_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct GetIamPolicyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             options_requested_policy_version: Option<i32>,
@@ -5072,7 +5157,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5084,7 +5169,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[(
                     "optionsRequestedPolicyVersion",
@@ -5110,7 +5198,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::insert()](struct.BucketsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Bucket,
             project: String,
@@ -5244,11 +5332,14 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("project", &self.project)]);
                 let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
@@ -5277,7 +5368,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::list()](struct.BucketsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             project: String,
             max_results: Option<u32>,
@@ -5506,11 +5597,14 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("project", &self.project)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -5548,7 +5642,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::lock_retention_policy()](struct.BucketsActions.html#method.lock_retention_policy)"]
         #[derive(Debug, Clone)]
         pub struct LockRetentionPolicyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             if_metageneration_match: i64,
@@ -5653,7 +5747,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5665,7 +5759,10 @@ pub mod resources {
                 output.push_str("/lockRetentionPolicy");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -5688,7 +5785,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::patch()](struct.BucketsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Bucket,
             bucket: String,
@@ -5834,7 +5931,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5845,7 +5942,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -5878,7 +5978,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::set_iam_policy()](struct.BucketsActions.html#method.set_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct SetIamPolicyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Policy,
             bucket: String,
@@ -5984,7 +6084,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -5996,7 +6096,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6018,7 +6121,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::test_iam_permissions()](struct.BucketsActions.html#method.test_iam_permissions)"]
         #[derive(Debug, Clone)]
         pub struct TestIamPermissionsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             permissions: Vec<String>,
@@ -6125,7 +6228,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -6137,7 +6240,10 @@ pub mod resources {
                 output.push_str("/iam/testPermissions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("permissions", &self.permissions)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -6160,7 +6266,7 @@ pub mod resources {
         #[doc = "Created via [BucketsActions::update()](struct.BucketsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Bucket,
             bucket: String,
@@ -6306,7 +6412,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -6317,7 +6423,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -6351,7 +6460,7 @@ pub mod resources {
     pub mod channels {
         pub mod params {}
         pub struct ChannelsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ChannelsActions<'a> {
@@ -6377,7 +6486,7 @@ pub mod resources {
         #[doc = "Created via [ChannelsActions::stop()](struct.ChannelsActions.html#method.stop)"]
         #[derive(Debug, Clone)]
         pub struct StopRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             alt: Option<crate::params::Alt>,
@@ -6421,11 +6530,14 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("channels/stop");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6446,7 +6558,7 @@ pub mod resources {
     pub mod default_object_access_controls {
         pub mod params {}
         pub struct DefaultObjectAccessControlsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> DefaultObjectAccessControlsActions<'a> {
@@ -6590,7 +6702,7 @@ pub mod resources {
         #[doc = "Created via [DefaultObjectAccessControlsActions::delete()](struct.DefaultObjectAccessControlsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             entity: String,
@@ -6646,7 +6758,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -6665,7 +6777,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6687,7 +6802,7 @@ pub mod resources {
         #[doc = "Created via [DefaultObjectAccessControlsActions::get()](struct.DefaultObjectAccessControlsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             entity: String,
@@ -6794,7 +6909,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -6813,7 +6928,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6835,7 +6953,7 @@ pub mod resources {
         #[doc = "Created via [DefaultObjectAccessControlsActions::insert()](struct.DefaultObjectAccessControlsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ObjectAccessControl,
             bucket: String,
@@ -6943,7 +7061,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -6955,7 +7073,10 @@ pub mod resources {
                 output.push_str("/defaultObjectAcl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6977,7 +7098,7 @@ pub mod resources {
         #[doc = "Created via [DefaultObjectAccessControlsActions::list()](struct.DefaultObjectAccessControlsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             if_metageneration_match: Option<i64>,
@@ -7095,7 +7216,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7107,7 +7228,10 @@ pub mod resources {
                 output.push_str("/defaultObjectAcl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -7134,7 +7258,7 @@ pub mod resources {
         #[doc = "Created via [DefaultObjectAccessControlsActions::patch()](struct.DefaultObjectAccessControlsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ObjectAccessControl,
             bucket: String,
@@ -7243,7 +7367,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7262,7 +7386,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7284,7 +7411,7 @@ pub mod resources {
         #[doc = "Created via [DefaultObjectAccessControlsActions::update()](struct.DefaultObjectAccessControlsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ObjectAccessControl,
             bucket: String,
@@ -7393,7 +7520,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7412,7 +7539,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7435,7 +7565,7 @@ pub mod resources {
     pub mod notifications {
         pub mod params {}
         pub struct NotificationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> NotificationsActions<'a> {
@@ -7529,7 +7659,7 @@ pub mod resources {
         #[doc = "Created via [NotificationsActions::delete()](struct.NotificationsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             notification: String,
@@ -7585,7 +7715,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7604,7 +7734,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7626,7 +7759,7 @@ pub mod resources {
         #[doc = "Created via [NotificationsActions::get()](struct.NotificationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             notification: String,
@@ -7733,7 +7866,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7752,7 +7885,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7774,7 +7910,7 @@ pub mod resources {
         #[doc = "Created via [NotificationsActions::insert()](struct.NotificationsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Notification,
             bucket: String,
@@ -7882,7 +8018,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -7894,7 +8030,10 @@ pub mod resources {
                 output.push_str("/notificationConfigs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7916,7 +8055,7 @@ pub mod resources {
         #[doc = "Created via [NotificationsActions::list()](struct.NotificationsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             provisional_user_project: Option<String>,
@@ -8022,7 +8161,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8034,7 +8173,10 @@ pub mod resources {
                 output.push_str("/notificationConfigs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -8057,7 +8199,7 @@ pub mod resources {
     pub mod object_access_controls {
         pub mod params {}
         pub struct ObjectAccessControlsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ObjectAccessControlsActions<'a> {
@@ -8220,7 +8362,7 @@ pub mod resources {
         #[doc = "Created via [ObjectAccessControlsActions::delete()](struct.ObjectAccessControlsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -8283,7 +8425,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8310,7 +8452,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8333,7 +8478,7 @@ pub mod resources {
         #[doc = "Created via [ObjectAccessControlsActions::get()](struct.ObjectAccessControlsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -8447,7 +8592,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8474,7 +8619,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8497,7 +8645,7 @@ pub mod resources {
         #[doc = "Created via [ObjectAccessControlsActions::insert()](struct.ObjectAccessControlsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ObjectAccessControl,
             bucket: String,
@@ -8612,7 +8760,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8632,7 +8780,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8655,7 +8806,7 @@ pub mod resources {
         #[doc = "Created via [ObjectAccessControlsActions::list()](struct.ObjectAccessControlsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -8768,7 +8919,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8788,7 +8939,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8811,7 +8965,7 @@ pub mod resources {
         #[doc = "Created via [ObjectAccessControlsActions::patch()](struct.ObjectAccessControlsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ObjectAccessControl,
             bucket: String,
@@ -8927,7 +9081,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -8954,7 +9108,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8977,7 +9134,7 @@ pub mod resources {
         #[doc = "Created via [ObjectAccessControlsActions::update()](struct.ObjectAccessControlsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ObjectAccessControl,
             bucket: String,
@@ -9093,7 +9250,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -9120,7 +9277,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -10277,7 +10437,7 @@ pub mod resources {
             }
         }
         pub struct ObjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ObjectsActions<'a> {
@@ -10336,6 +10496,7 @@ pub mod resources {
                     source_object: source_object.into(),
                     destination_bucket: destination_bucket.into(),
                     destination_object: destination_object.into(),
+                    destination_kms_key_name: None,
                     destination_predefined_acl: None,
                     if_generation_match: None,
                     if_generation_not_match: None,
@@ -10474,12 +10635,14 @@ pub mod resources {
                     user_ip: None,
                     bucket: bucket.into(),
                     delimiter: None,
+                    end_offset: None,
                     include_trailing_delimiter: None,
                     max_results: None,
                     page_token: None,
                     prefix: None,
                     projection: None,
                     provisional_user_project: None,
+                    start_offset: None,
                     user_project: None,
                     versions: None,
                 }
@@ -10657,12 +10820,14 @@ pub mod resources {
                     user_ip: None,
                     bucket: bucket.into(),
                     delimiter: None,
+                    end_offset: None,
                     include_trailing_delimiter: None,
                     max_results: None,
                     page_token: None,
                     prefix: None,
                     projection: None,
                     provisional_user_project: None,
+                    start_offset: None,
                     user_project: None,
                     versions: None,
                 }
@@ -10671,7 +10836,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::compose()](struct.ObjectsActions.html#method.compose)"]
         #[derive(Debug, Clone)]
         pub struct ComposeRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ComposeRequest,
             destination_bucket: String,
@@ -10806,7 +10971,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.destination_bucket;
@@ -10826,7 +10991,10 @@ pub mod resources {
                 output.push_str("/compose");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req =
                     req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
@@ -10853,13 +11021,14 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::copy()](struct.ObjectsActions.html#method.copy)"]
         #[derive(Debug, Clone)]
         pub struct CopyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Object,
             source_bucket: String,
             source_object: String,
             destination_bucket: String,
             destination_object: String,
+            destination_kms_key_name: Option<String>,
             destination_predefined_acl:
                 Option<crate::resources::objects::params::CopyDestinationPredefinedAcl>,
             if_generation_match: Option<i64>,
@@ -10883,6 +11052,11 @@ pub mod resources {
             user_ip: Option<String>,
         }
         impl<'a> CopyRequestBuilder<'a> {
+            #[doc = "Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any."]
+            pub fn destination_kms_key_name(mut self, value: impl Into<String>) -> Self {
+                self.destination_kms_key_name = Some(value.into());
+                self
+            }
             #[doc = "Apply a predefined set of access controls to the destination object."]
             pub fn destination_predefined_acl(
                 mut self,
@@ -11035,7 +11209,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.source_bucket;
@@ -11070,8 +11244,12 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
+                let req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
                 let req =
                     req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -11117,7 +11295,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::delete()](struct.ObjectsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -11203,7 +11381,7 @@ pub mod resources {
                 Ok(())
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11222,7 +11400,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -11252,7 +11433,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::get()](struct.ObjectsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -11342,7 +11523,7 @@ pub mod resources {
                 self
             }
             fn _download_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/download/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/download/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11426,7 +11607,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11445,7 +11626,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -11476,7 +11660,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::get_iam_policy()](struct.ObjectsActions.html#method.get_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct GetIamPolicyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -11587,7 +11771,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11607,7 +11791,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -11630,7 +11817,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::insert()](struct.ObjectsActions.html#method.insert)"]
         #[derive(Debug, Clone)]
         pub struct InsertRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Object,
             bucket: String,
@@ -11741,7 +11928,7 @@ pub mod resources {
                 self
             }
             fn _simple_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://storage.googleapis.com/".to_owned();
                 output.push_str("upload/storage/v1/b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11782,11 +11969,11 @@ pub mod resources {
                     ::reqwest::header::CONTENT_TYPE,
                     format!("multipart/related; boundary={}", multipart.boundary()),
                 );
-                let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                let req = req.body(reqwest::blocking::Body::new(multipart.into_reader()));
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _resumable_upload_path(&self) -> String {
-                let mut output = "https://www.googleapis.com/".to_owned();
+                let mut output = "https://storage.googleapis.com/".to_owned();
                 output.push_str("resumable/upload/storage/v1/b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11887,7 +12074,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -11899,7 +12086,10 @@ pub mod resources {
                 output.push_str("/o");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("contentEncoding", &self.content_encoding)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -11933,16 +12123,18 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::list()](struct.ObjectsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             delimiter: Option<String>,
+            end_offset: Option<String>,
             include_trailing_delimiter: Option<bool>,
             max_results: Option<u32>,
             page_token: Option<String>,
             prefix: Option<String>,
             projection: Option<crate::resources::objects::params::ListProjection>,
             provisional_user_project: Option<String>,
+            start_offset: Option<String>,
             user_project: Option<String>,
             versions: Option<bool>,
             alt: Option<crate::params::Alt>,
@@ -11957,6 +12149,11 @@ pub mod resources {
             #[doc = "Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted."]
             pub fn delimiter(mut self, value: impl Into<String>) -> Self {
                 self.delimiter = Some(value.into());
+                self
+            }
+            #[doc = "Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive)."]
+            pub fn end_offset(mut self, value: impl Into<String>) -> Self {
+                self.end_offset = Some(value.into());
                 self
             }
             #[doc = "If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes."]
@@ -11990,6 +12187,11 @@ pub mod resources {
             #[doc = "The project to be billed for this request if the target bucket is requester-pays bucket."]
             pub fn provisional_user_project(mut self, value: impl Into<String>) -> Self {
                 self.provisional_user_project = Some(value.into());
+                self
+            }
+            #[doc = "Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive)."]
+            pub fn start_offset(mut self, value: impl Into<String>) -> Self {
+                self.start_offset = Some(value.into());
                 self
             }
             #[doc = "The project to be billed for this request. Required for Requester Pays buckets."]
@@ -12235,7 +12437,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -12247,9 +12449,13 @@ pub mod resources {
                 output.push_str("/o");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("delimiter", &self.delimiter)]);
+                let req = req.query(&[("endOffset", &self.end_offset)]);
                 let req =
                     req.query(&[("includeTrailingDelimiter", &self.include_trailing_delimiter)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -12257,6 +12463,7 @@ pub mod resources {
                 let req = req.query(&[("prefix", &self.prefix)]);
                 let req = req.query(&[("projection", &self.projection)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                let req = req.query(&[("startOffset", &self.start_offset)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
                 let req = req.query(&[("versions", &self.versions)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12288,7 +12495,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::patch()](struct.ObjectsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Object,
             bucket: String,
@@ -12443,7 +12650,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -12462,7 +12669,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -12494,7 +12704,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::rewrite()](struct.ObjectsActions.html#method.rewrite)"]
         #[derive(Debug, Clone)]
         pub struct RewriteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Object,
             source_bucket: String,
@@ -12696,7 +12906,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.source_bucket;
@@ -12731,7 +12941,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
                 let req =
@@ -12784,7 +12997,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::set_iam_policy()](struct.ObjectsActions.html#method.set_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct SetIamPolicyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Policy,
             bucket: String,
@@ -12897,7 +13110,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -12917,7 +13130,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -12940,7 +13156,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::test_iam_permissions()](struct.ObjectsActions.html#method.test_iam_permissions)"]
         #[derive(Debug, Clone)]
         pub struct TestIamPermissionsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             bucket: String,
             object: String,
@@ -13054,7 +13270,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -13074,7 +13290,10 @@ pub mod resources {
                 output.push_str("/iam/testPermissions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("permissions", &self.permissions)]);
                 let req = req.query(&[("generation", &self.generation)]);
@@ -13098,7 +13317,7 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::update()](struct.ObjectsActions.html#method.update)"]
         #[derive(Debug, Clone)]
         pub struct UpdateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Object,
             bucket: String,
@@ -13253,7 +13472,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -13272,7 +13491,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -13304,17 +13526,19 @@ pub mod resources {
         #[doc = "Created via [ObjectsActions::watch_all()](struct.ObjectsActions.html#method.watch_all)"]
         #[derive(Debug, Clone)]
         pub struct WatchAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::Channel,
             bucket: String,
             delimiter: Option<String>,
+            end_offset: Option<String>,
             include_trailing_delimiter: Option<bool>,
             max_results: Option<u32>,
             page_token: Option<String>,
             prefix: Option<String>,
             projection: Option<crate::resources::objects::params::WatchAllProjection>,
             provisional_user_project: Option<String>,
+            start_offset: Option<String>,
             user_project: Option<String>,
             versions: Option<bool>,
             alt: Option<crate::params::Alt>,
@@ -13329,6 +13553,11 @@ pub mod resources {
             #[doc = "Returns results in a directory-like mode. items will contain only objects whose names, aside from the prefix, do not contain delimiter. Objects whose names, aside from the prefix, contain delimiter will have their name, truncated after the delimiter, returned in prefixes. Duplicate prefixes are omitted."]
             pub fn delimiter(mut self, value: impl Into<String>) -> Self {
                 self.delimiter = Some(value.into());
+                self
+            }
+            #[doc = "Filter results to objects whose names are lexicographically before endOffset. If startOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive)."]
+            pub fn end_offset(mut self, value: impl Into<String>) -> Self {
+                self.end_offset = Some(value.into());
                 self
             }
             #[doc = "If true, objects that end in exactly one instance of delimiter will have their metadata included in items in addition to prefixes."]
@@ -13362,6 +13591,11 @@ pub mod resources {
             #[doc = "The project to be billed for this request if the target bucket is requester-pays bucket."]
             pub fn provisional_user_project(mut self, value: impl Into<String>) -> Self {
                 self.provisional_user_project = Some(value.into());
+                self
+            }
+            #[doc = "Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive)."]
+            pub fn start_offset(mut self, value: impl Into<String>) -> Self {
+                self.start_offset = Some(value.into());
                 self
             }
             #[doc = "The project to be billed for this request. Required for Requester Pays buckets."]
@@ -13455,7 +13689,7 @@ pub mod resources {
                 Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
-                let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                 output.push_str("b/");
                 {
                     let var_as_str = &self.bucket;
@@ -13467,9 +13701,13 @@ pub mod resources {
                 output.push_str("/o/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("delimiter", &self.delimiter)]);
+                let req = req.query(&[("endOffset", &self.end_offset)]);
                 let req =
                     req.query(&[("includeTrailingDelimiter", &self.include_trailing_delimiter)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -13477,6 +13715,7 @@ pub mod resources {
                 let req = req.query(&[("prefix", &self.prefix)]);
                 let req = req.query(&[("projection", &self.projection)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
+                let req = req.query(&[("startOffset", &self.start_offset)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
                 let req = req.query(&[("versions", &self.versions)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -13498,7 +13737,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -13525,7 +13764,7 @@ pub mod resources {
         pub mod hmac_keys {
             pub mod params {}
             pub struct HmacKeysActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> HmacKeysActions<'a> {
@@ -13642,7 +13881,7 @@ pub mod resources {
             #[doc = "Created via [HmacKeysActions::create()](struct.HmacKeysActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 service_account_email: String,
@@ -13746,7 +13985,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                    let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                     output.push_str("projects/");
                     {
                         let var_as_str = &self.project_id;
@@ -13758,7 +13997,10 @@ pub mod resources {
                     output.push_str("/hmacKeys");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("serviceAccountEmail", &self.service_account_email)]);
                     let req = req.query(&[("userProject", &self.user_project)]);
@@ -13780,7 +14022,7 @@ pub mod resources {
             #[doc = "Created via [HmacKeysActions::delete()](struct.HmacKeysActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 access_id: String,
@@ -13830,7 +14072,7 @@ pub mod resources {
                     Ok(())
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                    let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                     output.push_str("projects/");
                     {
                         let var_as_str = &self.project_id;
@@ -13849,7 +14091,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("userProject", &self.user_project)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -13870,7 +14115,7 @@ pub mod resources {
             #[doc = "Created via [HmacKeysActions::get()](struct.HmacKeysActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 access_id: String,
@@ -13974,7 +14219,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                    let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                     output.push_str("projects/");
                     {
                         let var_as_str = &self.project_id;
@@ -13993,7 +14238,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("userProject", &self.user_project)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14014,7 +14262,7 @@ pub mod resources {
             #[doc = "Created via [HmacKeysActions::list()](struct.HmacKeysActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 max_results: Option<u32>,
@@ -14241,7 +14489,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                    let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                     output.push_str("projects/");
                     {
                         let var_as_str = &self.project_id;
@@ -14253,7 +14501,10 @@ pub mod resources {
                     output.push_str("/hmacKeys");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("maxResults", &self.max_results)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -14289,7 +14540,7 @@ pub mod resources {
             #[doc = "Created via [HmacKeysActions::update()](struct.HmacKeysActions.html#method.update)"]
             #[derive(Debug, Clone)]
             pub struct UpdateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::HmacKeyMetadata,
                 project_id: String,
@@ -14395,7 +14646,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                    let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                     output.push_str("projects/");
                     {
                         let var_as_str = &self.project_id;
@@ -14414,7 +14665,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("userProject", &self.user_project)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14436,7 +14690,7 @@ pub mod resources {
         pub mod service_account {
             pub mod params {}
             pub struct ServiceAccountActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> ServiceAccountActions<'a> {
@@ -14464,7 +14718,7 @@ pub mod resources {
             #[doc = "Created via [ServiceAccountActions::get()](struct.ServiceAccountActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 project_id: String,
                 provisional_user_project: Option<String>,
@@ -14573,7 +14827,7 @@ pub mod resources {
                     Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
-                    let mut output = "https://www.googleapis.com/storage/v1/".to_owned();
+                    let mut output = "https://storage.googleapis.com/storage/v1/".to_owned();
                     output.push_str("projects/");
                     {
                         let var_as_str = &self.project_id;
@@ -14585,7 +14839,10 @@ pub mod resources {
                     output.push_str("/serviceAccount");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req =
                         req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -14624,9 +14881,7 @@ impl Error {
         match self {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
-            Error::Reqwest { reqwest_err, .. } => reqwest_err
-                .get_ref()
-                .and_then(|err| err.downcast_ref::<::serde_json::Error>()),
+            Error::Reqwest { .. } => None,
             Error::Other(_) => None,
         }
     }
@@ -14668,7 +14923,9 @@ impl From<::reqwest::Error> for Error {
 
 /// Check the response to see if the status code represents an error. If so
 /// convert it into the Reqwest variant of Error.
-fn error_from_response(mut response: ::reqwest::Response) -> Result<::reqwest::Response, Error> {
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
     match response.error_for_status_ref() {
         Err(reqwest_err) => {
             let body = response.text().ok();
@@ -14883,13 +15140,13 @@ mod parsed_string {
     }
 }
 pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     url: String,
     progress: Option<i64>,
 }
 
 impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
+    pub fn new(reqwest: ::reqwest::blocking::Client, url: String) -> Self {
         ResumableUpload {
             reqwest,
             url,
@@ -14937,7 +15194,7 @@ impl ResumableUpload {
         let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
         let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
         let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
+        let req = req.body(::reqwest::blocking::Body::sized(reader, content_length));
         req.send()?.error_for_status()?;
         Ok(())
     }

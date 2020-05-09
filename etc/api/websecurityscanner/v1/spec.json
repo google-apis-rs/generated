@@ -7,7 +7,7 @@
   "canonicalName": "WebSecurityScanner",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20190903",
+  "revision": "20200411",
   "title": "Web Security Scanner API",
   "description": "Scans your Compute and App Engine apps for common web vulnerabilities.",
   "ownerDomain": "google.com",
@@ -222,6 +222,10 @@
         "googleAccount": {
           "description": "Authentication using a Google account.",
           "$ref": "GoogleAccount"
+        },
+        "iapCredential": {
+          "description": "Authentication using Identity-Aware-Proxy (IAP).",
+          "$ref": "IapCredential"
         }
       },
       "additionalProperties": null,
@@ -428,6 +432,28 @@
           "additionalProperties": null,
           "items": null
         },
+        "severity": {
+          "description": "Output only. The severity level of the reported vulnerability.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "SEVERITY_UNSPECIFIED",
+            "CRITICAL",
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ],
+          "enumDescriptions": [
+            "No severity specified. The default value.",
+            "Critical severity.",
+            "High severity.",
+            "Medium severity.",
+            "Low severity."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "trackingId": {
           "description": "Output only. The tracking ID uniquely identifies a vulnerability instance across\nmultiple ScanRuns.",
           "type": "string",
@@ -582,6 +608,44 @@
         },
         "value": {
           "description": "Header value.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IapCredential": {
+      "id": "IapCredential",
+      "description": "Describes authentication configuration for Identity-Aware-Proxy (IAP).",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "iapTestServiceAccountInfo": {
+          "description": "Authentication configuration when Web-Security-Scanner service\naccount is added in Identity-Aware-Proxy (IAP) access policies.",
+          "$ref": "IapTestServiceAccountInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IapTestServiceAccountInfo": {
+      "id": "IapTestServiceAccountInfo",
+      "description": "Describes authentication configuration when Web-Security-Scanner\nservice account is added in Identity-Aware-Proxy (IAP) access policies.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "targetAudienceClientId": {
+          "description": "Required. Describes OAuth2 client id of resources protected by\nIdentity-Aware-Proxy (IAP).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -862,6 +926,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "managedScan": {
+          "description": "Whether the scan config is managed by Cloud Web Security Scanner, output\nonly.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "maxQps": {
           "description": "The maximum QPS during scanning. A valid value ranges from 5 to 20\ninclusively. If the field is unspecified or its value is set 0, server will\ndefault to 15. Other values outside of [5, 20] range will be rejected with\nINVALID_ARGUMENT error.",
           "type": "integer",
@@ -922,6 +996,16 @@
             "items": null
           }
         },
+        "staticIpScan": {
+          "description": "Whether the scan configuration has enabled static IP address scan feature.\nIf enabled, the scanner will access applications from static IP addresses.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "userAgent": {
           "description": "The user agent used during scanning.",
           "type": "string",
@@ -980,6 +1064,7 @@
             "FAILED_TO_AUTHENTICATE_TO_TARGET",
             "FINDING_TYPE_UNSPECIFIED",
             "FORBIDDEN_TO_SCAN_COMPUTE",
+            "FORBIDDEN_UPDATE_TO_MANAGED_SCAN",
             "MALFORMED_FILTER",
             "MALFORMED_RESOURCE_NAME",
             "PROJECT_INACTIVE",
@@ -1023,6 +1108,7 @@
             "There was an error trying to authenticate to the scan target.",
             "Finding type value is not specified in the list findings request.",
             "Scan targets Compute Engine, yet current project was not whitelisted for\nGoogle Compute Engine Scanning Alpha access.",
+            "User tries to update managed scan",
             "The supplied filter is malformed. For example, it can not be parsed, does\nnot have a filter type in expression, or the same filter type appears\nmore than once.",
             "The supplied resource name is malformed (can not be parsed).",
             "The current project is not in an active state.",

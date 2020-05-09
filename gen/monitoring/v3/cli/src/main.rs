@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("monitoring3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20190915")
-            .about("Manages your Stackdriver Monitoring data and configurations. Most projects must be associated with a Stackdriver account, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Stackdriver Monitoring documentation.")
+            .version("0.1.0-20200502")
+            .about("Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Cloud Monitoring documentation.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -36,6 +36,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut projects0 = SubCommand::with_name("projects")
                         .setting(AppSettings::ColoredHelp)
                         .about("sub-resources: alert_policies, collectd_time_series, groups, metric_descriptors, monitored_resource_descriptors, notification_channel_descriptors, notification_channels, time_series and uptime_check_configs");
+        let mut services0 = SubCommand::with_name("services")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Create a Service.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Soft delete this Service.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Get the named Service.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("List Services for this workspace.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Update this Service.");
+            services0 = services0.subcommand(mcmd);
+        }
         let mut uptime_check_ips0 = SubCommand::with_name("uptime_check_ips")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
@@ -61,7 +84,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists the existing alerting policies for the project.");
+                .about("Lists the existing alerting policies for the workspace.");
             alert_policies1 = alert_policies1.subcommand(mcmd);
         }
         {
@@ -104,21 +127,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new metric descriptor. User-created metric descriptors define custom metrics.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).");
             metric_descriptors1 = metric_descriptors1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about(
-                "Deletes a metric descriptor. Only user-created custom metrics can be deleted.",
+            let mcmd = SubCommand::with_name("delete").about("Deletes a metric descriptor. Only user-created custom metrics (https://cloud.google.com/monitoring/custom-metrics) can be deleted.");
+            metric_descriptors1 = metric_descriptors1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about(
+                "Gets a single metric descriptor. This method does not require a Workspace.",
             );
             metric_descriptors1 = metric_descriptors1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a single metric descriptor. This method does not require a Stackdriver account.");
-            metric_descriptors1 = metric_descriptors1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about("Lists metric descriptors that match a filter. This method does not require a Stackdriver account.");
+            let mcmd = SubCommand::with_name("list").about("Lists metric descriptors that match a filter. This method does not require a Workspace.");
             metric_descriptors1 = metric_descriptors1.subcommand(mcmd);
         }
         let mut monitored_resource_descriptors1 =
@@ -126,11 +149,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .setting(AppSettings::ColoredHelp)
                 .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get").about("Gets a single monitored resource descriptor. This method does not require a Stackdriver account.");
+            let mcmd = SubCommand::with_name("get").about("Gets a single monitored resource descriptor. This method does not require a Workspace.");
             monitored_resource_descriptors1 = monitored_resource_descriptors1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists monitored resource descriptors that match a filter. This method does not require a Stackdriver account.");
+            let mcmd = SubCommand::with_name("list").about("Lists monitored resource descriptors that match a filter. This method does not require a Workspace.");
             monitored_resource_descriptors1 = monitored_resource_descriptors1.subcommand(mcmd);
         }
         let mut notification_channel_descriptors1 =
@@ -183,13 +206,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut time_series1 = SubCommand::with_name("time_series")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create and list");
+            .about("methods: create, list and query");
         {
             let mcmd = SubCommand::with_name("create").about("Creates or adds data to one or more time series. The response is empty if all time series in the request were written. If any time series could not be written, a corresponding failure message is included in the error response.");
             time_series1 = time_series1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists time series that match a filter. This method does not require a Stackdriver account.");
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists time series that match a filter. This method does not require a Workspace.",
+            );
+            time_series1 = time_series1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("query").about("Queries time series using the time series query language. This method does not require a Workspace.");
             time_series1 = time_series1.subcommand(mcmd);
         }
         let mut uptime_check_configs1 = SubCommand::with_name("uptime_check_configs")
@@ -217,6 +246,33 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("patch").about("Updates an Uptime check configuration. You can either replace the entire configuration with a new one or replace only certain fields in the current configuration by specifying the fields to be updated via updateMask. Returns the updated configuration.");
             uptime_check_configs1 = uptime_check_configs1.subcommand(mcmd);
         }
+        let mut service_level_objectives1 = SubCommand::with_name("service_level_objectives")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Create a ServiceLevelObjective for the given Service.");
+            service_level_objectives1 = service_level_objectives1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("delete").about("Delete the given ServiceLevelObjective.");
+            service_level_objectives1 = service_level_objectives1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Get a ServiceLevelObjective by name.");
+            service_level_objectives1 = service_level_objectives1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("List the ServiceLevelObjectives for the given Service.");
+            service_level_objectives1 = service_level_objectives1.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("patch").about("Update the given ServiceLevelObjective.");
+            service_level_objectives1 = service_level_objectives1.subcommand(mcmd);
+        }
         let mut members2 = SubCommand::with_name("members")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
@@ -226,6 +282,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             members2 = members2.subcommand(mcmd);
         }
         groups1 = groups1.subcommand(members2);
+        services0 = services0.subcommand(service_level_objectives1);
         projects0 = projects0.subcommand(uptime_check_configs1);
         projects0 = projects0.subcommand(time_series1);
         projects0 = projects0.subcommand(notification_channels1);
@@ -236,6 +293,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         projects0 = projects0.subcommand(collectd_time_series1);
         projects0 = projects0.subcommand(alert_policies1);
         app = app.subcommand(uptime_check_ips0);
+        app = app.subcommand(services0);
         app = app.subcommand(projects0);
 
         Self { app }
