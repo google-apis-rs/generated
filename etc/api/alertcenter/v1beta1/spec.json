@@ -7,7 +7,7 @@
   "canonicalName": "AlertCenter",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200504",
+  "revision": "20200509",
   "title": "G Suite Alert Center API",
   "description": "Manages alerts on issues affecting your domain.",
   "ownerDomain": "google.com",

@@ -7,7 +7,7 @@
   "canonicalName": "CloudBillingBudget",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200502",
+  "revision": "20200509",
   "title": "Cloud Billing Budget API",
   "description": "The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.",
   "ownerDomain": "google.com",

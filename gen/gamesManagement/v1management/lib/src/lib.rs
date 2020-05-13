@@ -783,7 +783,7 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::blocking::Client,
+    reqwest: ::reqwest::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
@@ -791,15 +791,9 @@ impl Client {
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
-        Client::with_reqwest_client(
-            auth,
-            ::reqwest::blocking::Client::builder()
-                .timeout(None)
-                .build()
-                .unwrap(),
-        )
+        Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
     }
-    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
     where
         A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
     {
@@ -867,7 +861,7 @@ pub mod resources {
     pub mod achievements {
         pub mod params {}
         pub struct AchievementsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> AchievementsActions<'a> {
@@ -957,7 +951,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset()](struct.AchievementsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             alt: Option<crate::params::Alt>,
@@ -1001,7 +995,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1011,44 +1005,47 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields)
+                self.execute_with_fields(fields).await
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
+            pub async fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::AchievementResetResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
+                self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
+            pub async fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::AchievementResetResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
+                self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute()
+                self._execute().await
             }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
+                Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
@@ -1063,10 +1060,7 @@ pub mod resources {
                 output.push_str("/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1086,7 +1080,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_all()](struct.AchievementsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1129,7 +1123,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1139,54 +1133,54 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields)
+                self.execute_with_fields(fields).await
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
+            pub async fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::AchievementResetAllResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
+                self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
+            pub async fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::AchievementResetAllResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
+                self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute()
+                self._execute().await
             }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
+                Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
                 output.push_str("achievements/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1206,7 +1200,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_all_for_all_players()](struct.AchievementsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1242,9 +1236,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -1252,10 +1246,7 @@ pub mod resources {
                 output.push_str("achievements/resetAllForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1275,7 +1266,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_for_all_players()](struct.AchievementsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             achievement_id: String,
             alt: Option<crate::params::Alt>,
@@ -1312,9 +1303,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -1330,10 +1321,7 @@ pub mod resources {
                 output.push_str("/resetForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1353,7 +1341,7 @@ pub mod resources {
         #[doc = "Created via [AchievementsActions::reset_multiple_for_all_players()](struct.AchievementsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::AchievementResetMultipleForAllRequest,
             alt: Option<crate::params::Alt>,
@@ -1390,10 +1378,10 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -1401,10 +1389,7 @@ pub mod resources {
                 output.push_str("achievements/resetMultipleForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1425,7 +1410,7 @@ pub mod resources {
     pub mod applications {
         pub mod params {}
         pub struct ApplicationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ApplicationsActions<'a> {
@@ -1456,7 +1441,7 @@ pub mod resources {
         #[doc = "Created via [ApplicationsActions::list_hidden()](struct.ApplicationsActions.html#method.list_hidden)"]
         #[derive(Debug, Clone)]
         pub struct ListHiddenRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             max_results: Option<i32>,
@@ -1610,7 +1595,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1620,44 +1605,47 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields)
+                self.execute_with_fields(fields).await
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
+            pub async fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::HiddenPlayerList, crate::Error> {
-                self.execute_with_fields(None::<&str>)
+                self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
+            pub async fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::HiddenPlayerList, crate::Error> {
-                self.execute_with_fields(Some("*"))
+                self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute()
+                self._execute().await
             }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
+                Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
@@ -1672,10 +1660,7 @@ pub mod resources {
                 output.push_str("/players/hidden");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("maxResults", &self.max_results)]);
                 let req = req.query(&[("pageToken", &self.page_token)]);
@@ -1702,14 +1687,14 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                self._execute()
+                todo!("implement async `execute` method for `IterableMethod` trait")
             }
         }
     }
     pub mod events {
         pub mod params {}
         pub struct EventsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> EventsActions<'a> {
@@ -1799,7 +1784,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset()](struct.EventsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             event_id: String,
             alt: Option<crate::params::Alt>,
@@ -1836,9 +1821,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -1854,10 +1839,7 @@ pub mod resources {
                 output.push_str("/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1877,7 +1859,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_all()](struct.EventsActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1913,9 +1895,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -1923,10 +1905,7 @@ pub mod resources {
                 output.push_str("events/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -1946,7 +1925,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_all_for_all_players()](struct.EventsActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -1982,9 +1961,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -1992,10 +1971,7 @@ pub mod resources {
                 output.push_str("events/resetAllForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2015,7 +1991,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_for_all_players()](struct.EventsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             event_id: String,
             alt: Option<crate::params::Alt>,
@@ -2052,9 +2028,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2070,10 +2046,7 @@ pub mod resources {
                 output.push_str("/resetForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2093,7 +2066,7 @@ pub mod resources {
         #[doc = "Created via [EventsActions::reset_multiple_for_all_players()](struct.EventsActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::EventsResetMultipleForAllRequest,
             alt: Option<crate::params::Alt>,
@@ -2130,10 +2103,10 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2141,10 +2114,7 @@ pub mod resources {
                 output.push_str("events/resetMultipleForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2165,7 +2135,7 @@ pub mod resources {
     pub mod players {
         pub mod params {}
         pub struct PlayersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> PlayersActions<'a> {
@@ -2216,7 +2186,7 @@ pub mod resources {
         #[doc = "Created via [PlayersActions::hide()](struct.PlayersActions.html#method.hide)"]
         #[derive(Debug, Clone)]
         pub struct HideRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             player_id: String,
@@ -2254,9 +2224,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2279,10 +2249,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2302,7 +2269,7 @@ pub mod resources {
         #[doc = "Created via [PlayersActions::unhide()](struct.PlayersActions.html#method.unhide)"]
         #[derive(Debug, Clone)]
         pub struct UnhideRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             application_id: String,
             player_id: String,
@@ -2340,9 +2307,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2365,10 +2332,7 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2389,7 +2353,7 @@ pub mod resources {
     pub mod rooms {
         pub mod params {}
         pub struct RoomsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> RoomsActions<'a> {
@@ -2428,7 +2392,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::reset()](struct.RoomsActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -2464,9 +2428,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2474,10 +2438,7 @@ pub mod resources {
                 output.push_str("rooms/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2497,7 +2458,7 @@ pub mod resources {
         #[doc = "Created via [RoomsActions::reset_for_all_players()](struct.RoomsActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -2533,9 +2494,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2543,10 +2504,7 @@ pub mod resources {
                 output.push_str("rooms/resetForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2567,7 +2525,7 @@ pub mod resources {
     pub mod scores {
         pub mod params {}
         pub struct ScoresActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ScoresActions<'a> {
@@ -2657,7 +2615,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset()](struct.ScoresActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             alt: Option<crate::params::Alt>,
@@ -2701,7 +2659,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2711,44 +2669,47 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields)
+                self.execute_with_fields(fields).await
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
+            pub async fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::PlayerScoreResetResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
+                self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
+            pub async fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::PlayerScoreResetResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
+                self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute()
+                self._execute().await
             }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
+                Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
@@ -2763,10 +2724,7 @@ pub mod resources {
                 output.push_str("/scores/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2786,7 +2744,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_all()](struct.ScoresActions.html#method.reset_all)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -2829,7 +2787,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub fn execute<T>(self) -> Result<T, crate::Error>
+            pub async fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2839,54 +2797,54 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields)
+                self.execute_with_fields(fields).await
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub fn execute_with_default_fields(
+            pub async fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::PlayerScoreResetAllResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>)
+                self.execute_with_fields(None::<&str>).await
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub fn execute_with_all_fields(
+            pub async fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::PlayerScoreResetAllResponse, crate::Error> {
-                self.execute_with_fields(Some("*"))
+                self.execute_with_fields(Some("*")).await
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
+            pub async fn execute_with_fields<T, F>(
+                mut self,
+                fields: Option<F>,
+            ) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute()
+                self._execute().await
             }
-            fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(crate::error_from_response(req.send()?)?.json()?)
+                Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://www.googleapis.com/games/v1management/".to_owned();
                 output.push_str("scores/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2906,7 +2864,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_all_for_all_players()](struct.ScoresActions.html#method.reset_all_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetAllForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -2942,9 +2900,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -2952,10 +2910,7 @@ pub mod resources {
                 output.push_str("scores/resetAllForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -2975,7 +2930,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_for_all_players()](struct.ScoresActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             leaderboard_id: String,
             alt: Option<crate::params::Alt>,
@@ -3012,9 +2967,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -3030,10 +2985,7 @@ pub mod resources {
                 output.push_str("/scores/resetForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3053,7 +3005,7 @@ pub mod resources {
         #[doc = "Created via [ScoresActions::reset_multiple_for_all_players()](struct.ScoresActions.html#method.reset_multiple_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetMultipleForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ScoresResetMultipleForAllRequest,
             alt: Option<crate::params::Alt>,
@@ -3090,10 +3042,10 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -3101,10 +3053,7 @@ pub mod resources {
                 output.push_str("scores/resetMultipleForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3125,7 +3074,7 @@ pub mod resources {
     pub mod turn_based_matches {
         pub mod params {}
         pub struct TurnBasedMatchesActions<'a> {
-            pub(crate) reqwest: &'a reqwest::blocking::Client,
+            pub(crate) reqwest: &'a reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> TurnBasedMatchesActions<'a> {
@@ -3164,7 +3113,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::reset()](struct.TurnBasedMatchesActions.html#method.reset)"]
         #[derive(Debug, Clone)]
         pub struct ResetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3200,9 +3149,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -3210,10 +3159,7 @@ pub mod resources {
                 output.push_str("turnbasedmatches/reset");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3233,7 +3179,7 @@ pub mod resources {
         #[doc = "Created via [TurnBasedMatchesActions::reset_for_all_players()](struct.TurnBasedMatchesActions.html#method.reset_for_all_players)"]
         #[derive(Debug, Clone)]
         pub struct ResetForAllPlayersRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
+            pub(crate) reqwest: &'a ::reqwest::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             alt: Option<crate::params::Alt>,
             fields: Option<String>,
@@ -3269,9 +3215,9 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            pub fn execute(self) -> Result<(), crate::Error> {
+            pub async fn execute(self) -> Result<(), crate::Error> {
                 let req = self._request(&self._path())?;
-                crate::error_from_response(req.send()?)?;
+                req.send().await?.error_for_status()?;
                 Ok(())
             }
             fn _path(&self) -> String {
@@ -3279,10 +3225,7 @@ pub mod resources {
                 output.push_str("turnbasedmatches/resetForAllPlayers");
                 output
             }
-            fn _request(
-                &self,
-                path: &str,
-            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
+            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -3354,20 +3297,6 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
-    }
-}
-
-/// Check the response to see if the status code represents an error. If so
-/// convert it into the Reqwest variant of Error.
-fn error_from_response(
-    response: ::reqwest::blocking::Response,
-) -> Result<::reqwest::blocking::Response, Error> {
-    match response.error_for_status_ref() {
-        Err(reqwest_err) => {
-            let body = response.text().ok();
-            Err(Error::Reqwest { reqwest_err, body })
-        }
-        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

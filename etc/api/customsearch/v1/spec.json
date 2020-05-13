@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200507",
+  "revision": "20200513",
   "title": "Custom Search API",
   "description": "Searches over a website or collection of websites",
   "ownerDomain": "google.com",

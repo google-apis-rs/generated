@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("monitoring3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200502")
+            .version("0.1.0-20200509")
             .about("Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Cloud Monitoring documentation.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -218,7 +218,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             time_series1 = time_series1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("query").about("Queries time series using the time series query language. This method does not require a Workspace.");
+            let mcmd = SubCommand::with_name("query").about("Queries time series using Monitoring Query Language. This method does not require a Workspace.");
             time_series1 = time_series1.subcommand(mcmd);
         }
         let mut uptime_check_configs1 = SubCommand::with_name("uptime_check_configs")

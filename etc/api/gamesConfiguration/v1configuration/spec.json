@@ -7,7 +7,7 @@
   "canonicalName": "Games Configuration",
   "fullyEncodeReservedExpansion": null,
   "version": "v1configuration",
-  "revision": "20200416",
+  "revision": "20200504",
   "title": "Google Play Game Services Publishing API",
   "description": "The Google Play Game Services Publishing API allows developers to configure their games in Game Services.",
   "ownerDomain": "google.com",

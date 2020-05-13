@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("healthcare1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200424")
+            .version("0.1.0-20200501")
             .about("Manage, store, and access healthcare data in Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -47,7 +47,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             datasets2 = datasets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("deidentify").about("Creates a new dataset containing de-identified data from the source\ndataset. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifySummary.\nIf errors occur, error is set.\nThe LRO result may still be successful if de-identification fails for some\nDICOM instances. The new de-identified dataset will not contain these\nfailed resources. Failed resource totals are tracked in\nOperation.metadata.\nError details are also logged to Stackdriver Logging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging).");
+            let mcmd = SubCommand::with_name("deidentify").about("Creates a new dataset containing de-identified data from the source\ndataset. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifySummary.\nIf errors occur, error is set.\nThe LRO result may still be successful if de-identification fails for some\nDICOM instances. The new de-identified dataset will not contain these\nfailed resources. Failed resource totals are tracked in\nOperation.metadata.\nError details are also logged to Cloud Logging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/logging).");
             datasets2 = datasets2.subcommand(mcmd);
         }
         {
@@ -73,11 +73,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             datasets2 = datasets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             datasets2 = datasets2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             datasets2 = datasets2.subcommand(mcmd);
         }
         let mut dicom_stores3 = SubCommand::with_name("dicom_stores")
@@ -89,7 +89,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("deidentify").about("De-identifies data from the source store and writes it to the destination\nstore. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifyDicomStoreSummary. If errors occur,\nerror is set.\nThe LRO result may still be successful if de-identification fails for some\nDICOM instances. The output DICOM store will not contain\nthese failed resources. Failed resource totals are tracked in\nOperation.metadata.\nError details are also logged to Stackdriver\n(see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).");
+            let mcmd = SubCommand::with_name("deidentify").about("De-identifies data from the source store and writes it to the destination\nstore. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifyDicomStoreSummary. If errors occur,\nerror is set.\nThe LRO result may still be successful if de-identification fails for some\nDICOM instances. The output DICOM store will not contain\nthese failed resources. Failed resource totals are tracked in\nOperation.metadata.\nError details are also logged to Cloud Logging\n(see [Viewing logs](/healthcare/docs/how-tos/logging)).");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
@@ -97,7 +97,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("export").about("Exports data to the specified destination by copying it from the DICOM\nstore.\nErrors are also logged to Stackdriver Logging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging).\nThe metadata field type is\nOperationMetadata.");
+            let mcmd = SubCommand::with_name("export").about("Exports data to the specified destination by copying it from the DICOM\nstore.\nErrors are also logged to Cloud Logging. For more information,\nsee [Viewing logs](/healthcare/docs/how-tos/logging).\nThe metadata field type is\nOperationMetadata.");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
@@ -109,7 +109,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import").about("Imports data into the DICOM store by copying it from the specified source.\nErrors are logged to Stackdriver Logging. For more information, see\n[Viewing logs](/healthcare/docs/how-tos/stackdriver-logging). The\nmetadata field type is\nOperationMetadata.");
+            let mcmd = SubCommand::with_name("import").about("Imports data into the DICOM store by copying it from the specified source.\nErrors are logged to Cloud Logging. For more information, see\n[Viewing logs](/healthcare/docs/how-tos/logging). The\nmetadata field type is\nOperationMetadata.");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
@@ -134,7 +134,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
@@ -142,19 +142,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         let mut fhir_stores3 = SubCommand::with_name("fhir_stores")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create, deidentify, delete, export, get, get_iam_policy, import, list, patch, search, set_iam_policy and test_iam_permissions");
+                        .about("methods: create, deidentify, delete, export, get, get_iam_policy, import, list, patch, set_iam_policy and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("create")
                 .about("Creates a new FHIR store within the parent dataset.");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("deidentify").about("De-identifies data from the source store and writes it to the destination\nstore. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifyFhirStoreSummary. If errors occur,\nerror is set.\nError details are also logged to Stackdriver\n(see [Viewing logs](/healthcare/docs/how-tos/stackdriver-logging)).");
+            let mcmd = SubCommand::with_name("deidentify").about("De-identifies data from the source store and writes it to the destination\nstore. The metadata field type\nis OperationMetadata.\nIf the request is successful, the\nresponse field type is\nDeidentifyFhirStoreSummary. If errors occur,\nerror is set.\nError details are also logged to Cloud Logging\n(see [Viewing logs](/healthcare/docs/how-tos/logging)).");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
@@ -163,7 +163,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("export").about("Export resources from the FHIR store to the specified destination.\n\nThis method returns an Operation that can\nbe used to track the status of the export by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Stackdriver (see [Viewing\nlogs](/healthcare/docs/how-tos/stackdriver-logging)).\nOtherwise, when the operation finishes, a detailed response of type\nExportResourcesResponse is returned in the\nresponse field.\nThe metadata field type for this\noperation is OperationMetadata.");
+            let mcmd = SubCommand::with_name("export").about("Export resources from the FHIR store to the specified destination.\n\nThis method returns an Operation that can\nbe used to track the status of the export by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Cloud Logging (see [Viewing\nlogs](/healthcare/docs/how-tos/logging)).\nOtherwise, when the operation finishes, a detailed response of type\nExportResourcesResponse is returned in the\nresponse field.\nThe metadata field type for this\noperation is OperationMetadata.");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
@@ -176,7 +176,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import").about("Import resources to the FHIR store by loading data from the specified\nsources. This method is optimized to load large quantities of data using\nimport semantics that ignore some FHIR store configuration options and are\nnot suitable for all use cases. It is primarily intended to load data into\nan empty FHIR store that is not being used by other clients. In cases\nwhere this method is not appropriate, consider using ExecuteBundle to\nload data.\n\nEvery resource in the input must contain a client-supplied ID, and will be\nstored using that ID regardless of the\nenable_update_create setting on the FHIR\nstore.\n\nThe import process does not enforce referential integrity, regardless of\nthe\ndisable_referential_integrity\nsetting on the FHIR store. This allows the import of resources with\narbitrary interdependencies without considering grouping or ordering, but\nif the input data contains invalid references or if some resources fail to\nbe imported, the FHIR store might be left in a state that violates\nreferential integrity.\n\nThe import process does not trigger PubSub notification or BigQuery\nstreaming update, regardless of how those are configured on the FHIR store.\n\nIf a resource with the specified ID already exists, the most recent\nversion of the resource is overwritten without creating a new historical\nversion, regardless of the\ndisable_resource_versioning\nsetting on the FHIR store. If transient failures occur during the import,\nit is possible that successfully imported resources will be overwritten\nmore than once.\n\nThe import operation is idempotent unless the input data contains multiple\nvalid resources with the same ID but different contents. In that case,\nafter the import completes, the store will contain exactly one resource\nwith that ID but there is no ordering guarantee on which version of the\ncontents it will have. The operation result counters do not count\nduplicate IDs as an error and will count one success for each resource in\nthe input, which might result in a success count larger than the number\nof resources in the FHIR store. This often occurs when importing data\norganized in bundles produced by Patient-everything\nwhere each bundle contains its own copy of a resource such as Practitioner\nthat might be referred to by many patients.\n\nIf some resources fail to import, for example due to parsing errors,\nsuccessfully imported resources are not rolled back.\n\nThe location and format of the input data is specified by the parameters\nbelow. Note that if no format is specified, this method assumes the\n`BUNDLE` format. When using the `BUNDLE` format this method ignores the\n`Bundle.type` field, except that `history` bundles are rejected, and does\nnot apply any of the bundle processing semantics for batch or transaction\nbundles. Unlike in ExecuteBundle, transaction bundles are not executed\nas a single transaction and bundle-internal references are not rewritten.\nThe bundle is treated as a collection of resources to be written as\nprovided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As\nan example, this allows the import of `searchset` bundles produced by a\nFHIR search or\nPatient-everything operation.\n\nThis method returns an Operation that can\nbe used to track the status of the import by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Stackdriver (see [Viewing\nlogs](/healthcare/docs/how-tos/stackdriver-logging)). Otherwise, when the\noperation finishes, a detailed response of type ImportResourcesResponse\nis returned in the response field.\nThe metadata field type for this\noperation is OperationMetadata.");
+            let mcmd = SubCommand::with_name("import").about("Import resources to the FHIR store by loading data from the specified\nsources. This method is optimized to load large quantities of data using\nimport semantics that ignore some FHIR store configuration options and are\nnot suitable for all use cases. It is primarily intended to load data into\nan empty FHIR store that is not being used by other clients. In cases\nwhere this method is not appropriate, consider using ExecuteBundle to\nload data.\n\nEvery resource in the input must contain a client-supplied ID, and will be\nstored using that ID regardless of the\nenable_update_create setting on the FHIR\nstore.\n\nThe import process does not enforce referential integrity, regardless of\nthe\ndisable_referential_integrity\nsetting on the FHIR store. This allows the import of resources with\narbitrary interdependencies without considering grouping or ordering, but\nif the input data contains invalid references or if some resources fail to\nbe imported, the FHIR store might be left in a state that violates\nreferential integrity.\n\nThe import process does not trigger Pub/Sub notification or BigQuery\nstreaming update, regardless of how those are configured on the FHIR store.\n\nIf a resource with the specified ID already exists, the most recent\nversion of the resource is overwritten without creating a new historical\nversion, regardless of the\ndisable_resource_versioning\nsetting on the FHIR store. If transient failures occur during the import,\nit is possible that successfully imported resources will be overwritten\nmore than once.\n\nThe import operation is idempotent unless the input data contains multiple\nvalid resources with the same ID but different contents. In that case,\nafter the import completes, the store will contain exactly one resource\nwith that ID but there is no ordering guarantee on which version of the\ncontents it will have. The operation result counters do not count\nduplicate IDs as an error and will count one success for each resource in\nthe input, which might result in a success count larger than the number\nof resources in the FHIR store. This often occurs when importing data\norganized in bundles produced by Patient-everything\nwhere each bundle contains its own copy of a resource such as Practitioner\nthat might be referred to by many patients.\n\nIf some resources fail to import, for example due to parsing errors,\nsuccessfully imported resources are not rolled back.\n\nThe location and format of the input data is specified by the parameters\nbelow. Note that if no format is specified, this method assumes the\n`BUNDLE` format. When using the `BUNDLE` format this method ignores the\n`Bundle.type` field, except that `history` bundles are rejected, and does\nnot apply any of the bundle processing semantics for batch or transaction\nbundles. Unlike in ExecuteBundle, transaction bundles are not executed\nas a single transaction and bundle-internal references are not rewritten.\nThe bundle is treated as a collection of resources to be written as\nprovided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As\nan example, this allows the import of `searchset` bundles produced by a\nFHIR search or\nPatient-everything operation.\n\nThis method returns an Operation that can\nbe used to track the status of the import by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Cloud Logging (see [Viewing\nlogs](/healthcare/docs/how-tos/logging)). Otherwise, when the\noperation finishes, a detailed response of type ImportResourcesResponse\nis returned in the response field.\nThe metadata field type for this\noperation is OperationMetadata.");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
@@ -190,15 +190,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search").about("Searches for resources in the given FHIR store according to criteria\nspecified as query parameters.\n\nImplements the FHIR standard search interaction\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),\n[R4](http://hl7.org/implement/standards/fhir/R4/http.html#search))\nusing the search semantics described in the FHIR Search specification\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/search.html)).\n\nSupports three methods of search defined by the specification:\n\n*  `GET [base]?[parameters]` to search across all resources.\n*  `GET [base]/[type]?[parameters]` to search resources of a specified\ntype.\n*  `POST [base]/[type]/_search?[parameters]` as an alternate form having\nthe same semantics as the `GET` method.\n\nThe `GET` methods do not support compartment searches. The `POST` method\ndoes not support `application/x-www-form-urlencoded` search parameters.\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\nsearch.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead.\n\nThe server\'s capability statement, retrieved through\ncapabilities, indicates what search parameters\nare supported on each FHIR resource. A list of all search parameters\ndefined by the specification can be found in the FHIR Search Parameter\nRegistry\n([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),\n[R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)).\nFHIR search parameters for DSTU2 can be found on each resource\'s definition\npage.\n\nSupported search modifiers: `:missing`, `:exact`, `:contains`, `:text`,\n`:in`, `:not-in`, `:above`, `:below`, `:[type]`, `:not`, and `:recurse`.\n\nSupported search result parameters: `_sort`, `_count`, `_include`,\n`_revinclude`, `_summary=text`, `_summary=data`, and `_elements`.\n\nThe maximum number of search results returned defaults to 100, which can\nbe overridden by the `_count` parameter up to a maximum limit of 1000. If\nthere are additional results, the returned `Bundle` will contain\npagination links.\n\nResources with a total size larger than 5MB or a field count larger than\n50,000 might not be fully searchable as the server might trim its generated\nsearch index in those cases.\n\nNote: FHIR resources are indexed asynchronously, so there might be a slight\ndelay between the time a resource is created or changes and when the change\nis reflected in search results.");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
-            fhir_stores3 = fhir_stores3.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         let mut hl_7v2_stores3 = SubCommand::with_name("hl_7v2_stores")
@@ -231,11 +227,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             hl_7v2_stores3 = hl_7v2_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED");
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any\nexisting policy.\n\nCan return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.");
             hl_7v2_stores3 = hl_7v2_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
+            let mcmd = SubCommand::with_name("test_iam_permissions").about("Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a `NOT_FOUND` error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.");
             hl_7v2_stores3 = hl_7v2_stores3.subcommand(mcmd);
         }
         let mut operations3 = SubCommand::with_name("operations")
@@ -284,7 +280,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: patient_everything, resource_purge, capabilities, create, delete, execute_bundle, history, patch, read, search, update and vread");
         {
-            let mcmd = SubCommand::with_name("patient_everything").about("Retrieves all the resources directly referenced by a patient, as well as\nall of the resources in the patient compartment.\n\nImplements the FHIR extended operation Patient-everything\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#everything),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#everything),\n[R4](http://hl7.org/implement/standards/fhir/R4/patient-operations.html#everything)).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\noperation.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead.");
+            let mcmd = SubCommand::with_name("patient_everything").about("Retrieves a Patient resource and resources related to that patient.\n\nImplements the FHIR extended operation Patient-everything\n([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/patient-operations.html#everything),\n[STU3](http://hl7.org/implement/standards/fhir/STU3/patient-operations.html#everything),\n[R4](http://hl7.org/implement/standards/fhir/R4/patient-operations.html#everything)).\n\nOn success, the response body will contain a JSON-encoded representation\nof a `Bundle` resource of type `searchset`, containing the results of the\noperation.\nErrors generated by the FHIR store will contain a JSON-encoded\n`OperationOutcome` resource describing the reason for the error. If the\nrequest cannot be mapped to a valid API method on a FHIR store, a generic\nGCP error might be returned instead.\n\nThe resources in scope for the response are:\n\n* The patient resource itself.\n* All the resources directly referenced by the patient resource.\n* Resources directly referencing the patient resource that meet the\n  inclusion criteria. The inclusion criteria are based on the membership\n  rules in the patient compartment definition\n  ([DSTU2](http://hl7.org/fhir/DSTU2/compartment-patient.html),\n  [STU3](http://www.hl7.org/fhir/stu3/compartmentdefinition-patient.html),\n  [R4](http://hl7.org/fhir/R4/compartmentdefinition-patient.html)), which\n  details the eligible resource types and referencing search parameters.");
             fhir4 = fhir4.subcommand(mcmd);
         }
         {

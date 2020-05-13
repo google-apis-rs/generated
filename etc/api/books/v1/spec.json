@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200506",
+  "revision": "20200508",
   "title": "Books API",
   "description": "The Google Books API allows clients to access the Google Books repository.",
   "ownerDomain": "google.com",

@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200506",
+  "revision": "20200507",
   "title": "Cloud Testing API",
   "description": "Allows developers to run automated tests for their mobile applications on Google infrastructure.",
   "ownerDomain": "google.com",
@@ -711,7 +711,7 @@
           }
         },
         "thumbnailUrl": {
-          "description": "URL of a thumbnail image of the device.",
+          "description": "URL of a thumbnail image (photo) of the device.\ne.g. https://lh3.googleusercontent.com/90WcauuJiCYABEl8U0lcZeuS5STUbf2yW...",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1665,7 +1665,7 @@
     },
     "IosModel": {
       "id": "IosModel",
-      "description": "A description of an iOS device tests may be run on.\nNext tag: 12",
+      "description": "A description of an iOS device tests may be run on.\nNext tag: 13",
       "type": "object",
       "format": null,
       "enum": [],

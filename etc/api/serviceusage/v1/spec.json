@@ -7,7 +7,7 @@
   "canonicalName": "Service Usage",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200508",
+  "revision": "20200509",
   "title": "Service Usage API",
   "description": "Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.",
   "ownerDomain": "google.com",

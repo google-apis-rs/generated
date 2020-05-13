@@ -7,7 +7,7 @@
   "canonicalName": "Blogger",
   "fullyEncodeReservedExpansion": true,
   "version": "v3",
-  "revision": "20200507",
+  "revision": "20200512",
   "title": "Blogger API v3",
   "description": "The Blogger API provides access to posts, comments and pages of a\n    Blogger blog.",
   "ownerDomain": "google.com",

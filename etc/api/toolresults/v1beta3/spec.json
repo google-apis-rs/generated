@@ -7,7 +7,7 @@
   "canonicalName": "Tool Results",
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta3",
-  "revision": "20200507",
+  "revision": "20200513",
   "title": "Cloud Tool Results API",
   "description": "API to publish and access results from developer tools.",
   "ownerDomain": "google.com",
@@ -431,7 +431,7 @@
     },
     "AndroidTestLoop": {
       "id": "AndroidTestLoop",
-      "description": "Test Loops are tests that can be launched by the app itself, determining\nwhen to run by listening for an intent. go/ftl-games-dd",
+      "description": "Test Loops are tests that can be launched by the app itself, determining\nwhen to run by listening for an intent.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1373,6 +1373,24 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "testPlatform": {
+          "description": "The platform of the test history.\n\n- In response: always set. Returns the platform of the last execution if\nunknown.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "UNKNOWN_PLATFORM",
+            "ANDROID",
+            "IOS"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            ""
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -1568,6 +1586,125 @@
         "stackTrace": {
           "description": "The stack trace, if one is available.\nOptional.",
           "$ref": "StackTrace"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IosAppInfo": {
+      "id": "IosAppInfo",
+      "description": "iOS app information",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "The name of the app.\nRequired",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IosRoboTest": {
+      "id": "IosRoboTest",
+      "description": "A Robo test for an iOS application.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
+    "IosTest": {
+      "id": "IosTest",
+      "description": "A iOS mobile test specification",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "iosAppInfo": {
+          "description": "Information about the application under test.",
+          "$ref": "IosAppInfo"
+        },
+        "iosRoboTest": {
+          "description": "An iOS Robo test.",
+          "$ref": "IosRoboTest"
+        },
+        "iosTestLoop": {
+          "description": "An iOS test loop.",
+          "$ref": "IosTestLoop"
+        },
+        "iosXcTest": {
+          "description": "An iOS XCTest.",
+          "$ref": "IosXcTest"
+        },
+        "testTimeout": {
+          "description": "Max time a test is allowed to run before it is\nautomatically cancelled.",
+          "$ref": "Duration"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IosTestLoop": {
+      "id": "IosTestLoop",
+      "description": "A game loop test of an iOS application.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bundleId": {
+          "description": "Bundle ID of the app.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "IosXcTest": {
+      "id": "IosXcTest",
+      "description": "A test of an iOS application that uses the XCTest framework.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "bundleId": {
+          "description": "Bundle ID of the app.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "xcodeVersion": {
+          "description": "Xcode version that the test was run with.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -3071,6 +3208,10 @@
         "androidTest": {
           "description": "An Android mobile test execution specification.",
           "$ref": "AndroidTest"
+        },
+        "iosTest": {
+          "description": "An iOS mobile test execution specification.",
+          "$ref": "IosTest"
         }
       },
       "additionalProperties": null,

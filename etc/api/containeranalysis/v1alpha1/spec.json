@@ -7,7 +7,7 @@
   "canonicalName": "Container Analysis",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20200501",
+  "revision": "20200508",
   "title": "Container Analysis API",
   "description": "An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.",
   "ownerDomain": "google.com",

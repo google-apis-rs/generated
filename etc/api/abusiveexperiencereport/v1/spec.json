@@ -7,7 +7,7 @@
   "canonicalName": "Abusive Experience Report",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200504",
+  "revision": "20200509",
   "title": "Abusive Experience Report API",
   "description": "Views Abusive Experience Report data, and gets a list of sites that have a significant number of abusive experiences.",
   "ownerDomain": "google.com",

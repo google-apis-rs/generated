@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Shell",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20200507",
+  "revision": "20200512",
   "title": "Cloud Shell API",
   "description": "Allows users to start, configure, and connect to interactive shell sessions running in the cloud.\n",
   "ownerDomain": "google.com",
@@ -382,13 +382,15 @@
             "STATE_UNSPECIFIED",
             "DISABLED",
             "STARTING",
-            "RUNNING"
+            "RUNNING",
+            "DELETING"
           ],
           "enumDescriptions": [
             "The environment's states is unknown.",
             "The environment is not running and can't be connected to. Starting the\nenvironment will transition it to the STARTING state.",
             "The environment is being started but is not yet ready to accept\nconnections.",
-            "The environment is running and ready to accept connections. It will\nautomatically transition back to DISABLED after a period of inactivity or\nif another environment is started."
+            "The environment is running and ready to accept connections. It will\nautomatically transition back to DISABLED after a period of inactivity or\nif another environment is started.",
+            "The environment is being deleted and can't be connected to."
           ],
           "properties": {},
           "additionalProperties": null,

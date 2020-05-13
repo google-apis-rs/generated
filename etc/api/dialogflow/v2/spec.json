@@ -7,7 +7,7 @@
   "canonicalName": "Dialogflow",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200503",
+  "revision": "20200512",
   "title": "Dialogflow API",
   "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
   "ownerDomain": "google.com",

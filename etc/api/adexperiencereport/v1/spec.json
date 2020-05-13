@@ -7,7 +7,7 @@
   "canonicalName": "Ad Experience Report",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200504",
+  "revision": "20200511",
   "title": "Ad Experience Report API",
   "description": "Views Ad Experience Report data, and gets a list of sites that have a significant number of annoying ads.",
   "ownerDomain": "google.com",

@@ -7,7 +7,7 @@
   "canonicalName": "Data Catalog",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200422",
+  "revision": "20200430",
   "title": "Google Cloud Data Catalog API",
   "description": "A fully managed and highly scalable data discovery and metadata management service.\n",
   "ownerDomain": "google.com",
@@ -869,7 +869,7 @@
       "enumDescriptions": [],
       "properties": {
         "inlineSource": {
-          "description": "Inline source used for taxonomies import",
+          "description": "Inline source used for taxonomies to be imported.",
           "$ref": "GoogleCloudDatacatalogV1beta1InlineSource"
         }
       },
@@ -1319,6 +1319,24 @@
             "additionalProperties": null,
             "items": null
           }
+        },
+        "restrictedLocations": {
+          "description": "Optional. The list of locations to search within.\n1. If empty, search will be performed in all locations;\n2. If any of the locations are NOT in the valid locations list, error\nwill be returned;\n3. Otherwise, search only the given locations for matching results.\nTypical usage is to leave this field empty. When a location is\nunreachable as returned in the `SearchCatalogResponse.unreachable` field,\nusers can repeat the search request with this parameter set to get\nadditional information on the error.\n\nValid locations:\n * asia-east1\n * asia-east2\n * asia-northeast1\n * asia-northeast2\n * asia-northeast3\n * asia-south1\n * asia-southeast1\n * australia-southeast1\n * eu\n * europe-north1\n * europe-west1\n * europe-west2\n * europe-west3\n * europe-west4\n * europe-west6\n * global\n * northamerica-northeast1\n * southamerica-east1\n * us\n * us-central1\n * us-east1\n * us-east4\n * us-west1\n * us-west2",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -1352,6 +1370,24 @@
           "additionalProperties": null,
           "items": {
             "$ref": "GoogleCloudDatacatalogV1beta1SearchCatalogResult"
+          }
+        },
+        "unreachable": {
+          "description": "Unreachable locations. Search result does not include data from those\nlocations. Users can get additional information on the error by repeating\nthe search request with a more restrictive parameter -- setting the value\nfor `SearchDataCatalogRequest.scope.include_locations`.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
           }
         }
       },
@@ -1452,6 +1488,16 @@
         },
         "displayName": {
           "description": "Required. Display name of the policy tag. Max 200 bytes when encoded in UTF-8.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "policyTag": {
+          "description": "Resource name of the policy tag.\n\nThis field will be ignored when calling ImportTaxonomies.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4367,7 +4413,7 @@
                   "description": "Imports all taxonomies and their policy tags to a project as new\ntaxonomies.\n\nThis method provides a bulk taxonomy / policy tag creation using nested\nproto structure.",
                   "parameters": {
                     "parent": {
-                      "description": "Required. Resource name of project that the newly created taxonomies will\nbelong to.",
+                      "description": "Required. Resource name of project that the imported taxonomies will belong to.",
                       "default": null,
                       "location": "path",
                       "required": true,

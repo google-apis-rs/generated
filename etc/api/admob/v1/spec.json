@@ -7,7 +7,7 @@
   "canonicalName": "AdMob",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200507",
+  "revision": "20200513",
   "title": "AdMob API",
   "description": "The Google AdMob API lets you programmatically get reports on earnings.\n",
   "ownerDomain": "google.com",

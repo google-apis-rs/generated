@@ -7,7 +7,7 @@
   "canonicalName": "Policy Troubleshooter",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200504",
+  "revision": "20200509",
   "title": "Policy Troubleshooter API",
   "description": "",
   "ownerDomain": "google.com",

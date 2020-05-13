@@ -7,7 +7,7 @@
   "canonicalName": "Spanner",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200409",
+  "revision": "20200508",
   "title": "Cloud Spanner API",
   "description": "Cloud Spanner is a managed, mission-critical, globally consistent and scalable relational database service.",
   "ownerDomain": "google.com",
@@ -1147,7 +1147,7 @@
       "enumDescriptions": [],
       "properties": {
         "options": {
-          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`. This field is only used by Cloud IAM.",
+          "description": "OPTIONAL: A `GetPolicyOptions` object for specifying options to\n`GetIamPolicy`.",
           "$ref": "GetPolicyOptions"
         }
       },

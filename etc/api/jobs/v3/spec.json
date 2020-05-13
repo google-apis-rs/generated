@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Talent Solution",
   "fullyEncodeReservedExpansion": true,
   "version": "v3",
-  "revision": "20200506",
+  "revision": "20200505",
   "title": "Cloud Talent Solution API",
   "description": "Cloud Talent Solution provides the capability to create, read, update, and delete job postings, as well as search jobs based on keywords and filters.\n",
   "ownerDomain": "google.com",
@@ -1146,7 +1146,7 @@
       "enumDescriptions": [],
       "properties": {
         "filterable": {
-          "description": "Optional. If the `filterable` flag is true, custom field values are searchable.\nIf false, values are not searchable.\n\nDefault is false.",
+          "description": "Optional. If the `filterable` flag is true, the custom field values may be used for\ncustom attribute filters JobQuery.custom_attribute_filter.\nIf false, these values may not be used for custom attribute filters.\n\nDefault is false.",
           "type": "boolean",
           "format": null,
           "enum": [],

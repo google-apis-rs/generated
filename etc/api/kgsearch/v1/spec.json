@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200405",
+  "revision": "20200509",
   "title": "Knowledge Graph Search API",
   "description": "Searches the Google Knowledge Graph for entities.",
   "ownerDomain": "google.com",

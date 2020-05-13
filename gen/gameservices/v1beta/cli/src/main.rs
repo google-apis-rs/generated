@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("gameservices1_beta")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200423")
+            .version("0.1.0-20200507")
             .about("Deploy and manage infrastructure for global multiplayer gaming experiences.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -53,21 +53,21 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .about("methods: create, delete, fetch_deployment_state, get, get_iam_policy, get_rollout, list, patch, preview_rollout, set_iam_policy, test_iam_permissions and update_rollout");
         {
             let mcmd = SubCommand::with_name("create")
-                .about("Creates a new Game Server Deployment in a given project and Location.");
+                .about("Creates a new game server deployment in a given project and location.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
             let mcmd =
-                SubCommand::with_name("delete").about("Deletes a single Game Server Deployment.");
+                SubCommand::with_name("delete").about("Deletes a single game server deployment.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("fetch_deployment_state").about("Retrieves information about the current state of the Game Server\nDdeployment. Gathers all the Agones fleets and Agones autoscalers,\nincluding fleets running an older version of the Game Server Deployment.");
+            let mcmd = SubCommand::with_name("fetch_deployment_state").about("Retrieves information about the current state of the game server\ndeployment. Gathers all the Agones fleets and Agones autoscalers,\nincluding fleets running an older version of the game server deployment.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("get")
-                .about("Gets details of a single Game Server Deployment.");
+                .about("Gets details of a single game server deployment.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
@@ -76,20 +76,20 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get_rollout")
-                .about("Gets details a single Game Server Deployment Rollout.");
+                .about("Gets details a single game server deployment rollout.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists Game Server Deployments in a given project and Location.");
+                .about("Lists game server deployments in a given project and location.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Patches a Game Server Deployment.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a game server deployment.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("preview_rollout").about("Previews the Game Server Deployment Rollout. This API does not mutate the\nRollout resource.");
+            let mcmd = SubCommand::with_name("preview_rollout").about("Previews the game server deployment rollout. This API does not mutate the\nrollout resource.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
@@ -101,7 +101,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update_rollout").about("Patches a single Game Server Deployment Rollout.\nThe method will not return an error if the update does not affect any\nexisting realms. For example - if the default_game_server_config is changed\nbut all existing realms use the override, that is valid. Similarly, if a\nnon existing realm is explicitly called out in game_server_config_overrides\nfield, that will also not result in an error.");
+            let mcmd = SubCommand::with_name("update_rollout").about("Patches a single game server deployment rollout.\nThe method will not return an error if the update does not affect any\nexisting realms. For example - if the default_game_server_config is changed\nbut all existing realms use the override, that is valid. Similarly, if a\nnon existing realm is explicitly called out in game_server_config_overrides\nfield, that will also not result in an error.");
             game_server_deployments2 = game_server_deployments2.subcommand(mcmd);
         }
         let mut operations2 = SubCommand::with_name("operations")
@@ -128,49 +128,49 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: create, delete, get, list, patch and preview_update");
         {
             let mcmd = SubCommand::with_name("create")
-                .about("Creates a new Realm in a given project and Location.");
+                .about("Creates a new realm in a given project and location.");
             realms2 = realms2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a single Realm.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a single realm.");
             realms2 = realms2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get").about("Gets details of a single Realm.");
+            let mcmd = SubCommand::with_name("get").about("Gets details of a single realm.");
             realms2 = realms2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists Realms in a given project and Location.");
+                .about("Lists realms in a given project and location.");
             realms2 = realms2.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Patches a single Realm.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a single realm.");
             realms2 = realms2.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("preview_update")
-                .about("Previews patches to a single Realm.");
+                .about("Previews patches to a single realm.");
             realms2 = realms2.subcommand(mcmd);
         }
         let mut configs3 = SubCommand::with_name("configs")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a new Game Server Config in a given project, Location, and Game\nServer Deployment. Game Server Configs are immutable, and are not applied\nuntil referenced in the Game Server Deployment Rollout resource.");
+            let mcmd = SubCommand::with_name("create").about("Creates a new game server config in a given project, location, and game\nserver deployment. Game server configs are immutable, and are not applied\nuntil referenced in the game server deployment rollout resource.");
             configs3 = configs3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a single Game Server Config. The deletion will fail if the Game\nServer Config is referenced in a Game Server Deployment Rollout.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a single game server config. The deletion will fail if the game\nserver config is referenced in a game server deployment rollout.");
             configs3 = configs3.subcommand(mcmd);
         }
         {
             let mcmd =
-                SubCommand::with_name("get").about("Gets details of a single Game Server Config.");
+                SubCommand::with_name("get").about("Gets details of a single game server config.");
             configs3 = configs3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists Game Server Configs in a given project, Location, and Game Server\nDeployment.");
+            let mcmd = SubCommand::with_name("list").about("Lists game server configs in a given project, location, and game server\ndeployment.");
             configs3 = configs3.subcommand(mcmd);
         }
         let mut game_server_clusters3 = SubCommand::with_name("game_server_clusters")
@@ -193,7 +193,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists Game Server Clusters in a given project and location.");
+                .about("Lists game server clusters in a given project and location.");
             game_server_clusters3 = game_server_clusters3.subcommand(mcmd);
         }
         {

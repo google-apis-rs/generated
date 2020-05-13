@@ -7,7 +7,7 @@
   "canonicalName": "Cloudbilling",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200503",
+  "revision": "20200509",
   "title": "Cloud Billing API",
   "description": "Allows developers to manage billing for their Google Cloud Platform projects\n    programmatically.",
   "ownerDomain": "google.com",

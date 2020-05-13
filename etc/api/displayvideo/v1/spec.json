@@ -7,7 +7,7 @@
   "canonicalName": "Display Video",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200505",
+  "revision": "20200512",
   "title": "Display & Video 360 API",
   "description": "Display & Video 360 API allows users to manage and create campaigns and reports.",
   "ownerDomain": "google.com",
