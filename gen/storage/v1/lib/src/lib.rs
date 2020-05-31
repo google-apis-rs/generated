@@ -2316,14 +2316,14 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub condition: ::std::option::Option<crate::schemas::Expr>,
-        #[doc = "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:\n\n* allUsers \u{2014} A special identifier that represents anyone on the internet; with or without a Google account.\n* allAuthenticatedUsers \u{2014} A special identifier that represents anyone who is authenticated with a Google account or a service account.\n* user:emailid \u{2014} An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.\n* serviceAccount:emailid \u{2014} An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .\n* group:emailid \u{2014} An email address that represents a Google group. For example, group:admins@example.com.\n* domain:domain \u{2014} A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.\n* projectOwner:projectid \u{2014} Owners of the given project. For example, projectOwner:my-example-project\n* projectEditor:projectid \u{2014} Editors of the given project. For example, projectEditor:my-example-project\n* projectViewer:projectid \u{2014} Viewers of the given project. For example, projectViewer:my-example-project"]
+        #[doc = "A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:\n\n* allUsers — A special identifier that represents anyone on the internet; with or without a Google account.\n* allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.\n* user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.\n* serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .\n* group:emailid — An email address that represents a Google group. For example, group:admins@example.com.\n* domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.\n* projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project\n* projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project\n* projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project"]
         #[serde(
             rename = "members",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub members: ::std::option::Option<Vec<String>>,
-        #[doc = "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:\n\n* roles/storage.admin \u{2014} Full control of Google Cloud Storage resources.\n* roles/storage.objectViewer \u{2014} Read-Only access to Google Cloud Storage objects.\n* roles/storage.objectCreator \u{2014} Access to create objects in Google Cloud Storage.\n* roles/storage.objectAdmin \u{2014} Full control of Google Cloud Storage objects.   The legacy IAM roles are:\n* roles/storage.legacyObjectReader \u{2014} Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.\n* roles/storage.legacyObjectOwner \u{2014} Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.\n* roles/storage.legacyBucketReader \u{2014} Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.\n* roles/storage.legacyBucketWriter \u{2014} Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.\n* roles/storage.legacyBucketOwner \u{2014} Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role."]
+        #[doc = "The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.\nThe new IAM roles are:\n\n* roles/storage.admin — Full control of Google Cloud Storage resources.\n* roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.\n* roles/storage.objectCreator — Access to create objects in Google Cloud Storage.\n* roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:\n* roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.\n* roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.\n* roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.\n* roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.\n* roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role."]
         #[serde(
             rename = "role",
             default,
@@ -2467,7 +2467,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub kind: ::std::option::Option<String>,
-        #[doc = "The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:\n\n* storage.buckets.delete \u{2014} Delete bucket.\n* storage.buckets.get \u{2014} Read bucket metadata.\n* storage.buckets.getIamPolicy \u{2014} Read bucket IAM policy.\n* storage.buckets.create \u{2014} Create bucket.\n* storage.buckets.list \u{2014} List buckets.\n* storage.buckets.setIamPolicy \u{2014} Update bucket IAM policy.\n* storage.buckets.update \u{2014} Update bucket metadata.\n* storage.objects.delete \u{2014} Delete object.\n* storage.objects.get \u{2014} Read object data and metadata.\n* storage.objects.getIamPolicy \u{2014} Read object IAM policy.\n* storage.objects.create \u{2014} Create object.\n* storage.objects.list \u{2014} List objects.\n* storage.objects.setIamPolicy \u{2014} Update object IAM policy.\n* storage.objects.update \u{2014} Update object metadata."]
+        #[doc = "The permissions held by the caller. Permissions are always of the format storage.resource.capability, where resource is one of buckets or objects. The supported permissions are as follows:\n\n* storage.buckets.delete — Delete bucket.\n* storage.buckets.get — Read bucket metadata.\n* storage.buckets.getIamPolicy — Read bucket IAM policy.\n* storage.buckets.create — Create bucket.\n* storage.buckets.list — List buckets.\n* storage.buckets.setIamPolicy — Update bucket IAM policy.\n* storage.buckets.update — Update bucket metadata.\n* storage.objects.delete — Delete object.\n* storage.objects.get — Read object data and metadata.\n* storage.objects.getIamPolicy — Read object IAM policy.\n* storage.objects.create — Create object.\n* storage.objects.list — List objects.\n* storage.objects.setIamPolicy — Update object IAM policy.\n* storage.objects.update — Update object metadata."]
         #[serde(
             rename = "permissions",
             default,
@@ -2842,7 +2842,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 req.send().await?.error_for_status()?;
                 Ok(())
             }
@@ -2866,7 +2866,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -2877,11 +2880,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -2994,7 +2998,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -3017,7 +3021,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3028,11 +3035,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3145,7 +3153,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -3162,7 +3170,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3173,11 +3184,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3289,7 +3301,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -3305,7 +3317,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3316,11 +3331,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3434,7 +3450,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -3458,7 +3474,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3469,11 +3488,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -3587,7 +3607,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -3611,7 +3631,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -3622,11 +3645,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -4839,7 +4863,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 req.send().await?.error_for_status()?;
                 Ok(())
             }
@@ -4855,7 +4879,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -4871,11 +4898,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5008,7 +5036,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5023,7 +5051,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -5040,11 +5071,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5162,7 +5194,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5178,7 +5210,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[(
                     "optionsRequestedPolicyVersion",
@@ -5193,11 +5228,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5338,7 +5374,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5347,7 +5383,10 @@ pub mod resources {
                 output.push_str("b");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("project", &self.project)]);
                 let req = req.query(&[("predefinedAcl", &self.predefined_acl)]);
@@ -5365,11 +5404,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5452,104 +5492,6 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_items<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_items_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_items_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Bucket> {
-                self.iter_items_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_items_with_all_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Bucket> {
-                self.iter_items_with_fields(Some("*"))
-            }
-            pub fn iter_items_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "items").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "items")
-            }
-            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_with_fields(fields)
-            }
-            pub fn iter_with_default_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::Buckets> {
-                self.iter_with_fields(None::<&str>)
-            }
-            pub fn iter_with_all_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::Buckets> {
-                self.iter_with_fields(Some("*"))
-            }
-            pub fn iter_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                if !fields.is_empty() {
-                    match fields.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => fields.push_str(","),
-                    }
-                    fields.push_str("nextPageToken");
-                    self.fields = Some(fields);
-                }
-                crate::iter::PageIter::new(self)
-            }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
             #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -5606,7 +5548,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5614,7 +5556,10 @@ pub mod resources {
                 output.push_str("b");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("project", &self.project)]);
                 let req = req.query(&[("maxResults", &self.max_results)]);
@@ -5630,23 +5575,13 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
-            }
-        }
-        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                todo!("implement async `execute` method for `IterableMethod` trait")
             }
         }
         #[doc = "Created via [BucketsActions::lock_retention_policy()](struct.BucketsActions.html#method.lock_retention_policy)"]
@@ -5758,7 +5693,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -5774,7 +5709,10 @@ pub mod resources {
                 output.push_str("/lockRetentionPolicy");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -5786,11 +5724,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5943,7 +5882,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5959,7 +5898,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -5981,11 +5923,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6098,7 +6041,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6115,7 +6058,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6126,11 +6072,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6243,7 +6190,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -6259,7 +6206,10 @@ pub mod resources {
                 output.push_str("/iam/testPermissions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("permissions", &self.permissions)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -6271,11 +6221,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6428,7 +6379,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6444,7 +6395,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -6466,11 +6420,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6542,7 +6497,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 req.send().await?.error_for_status()?;
                 Ok(())
@@ -6552,7 +6507,10 @@ pub mod resources {
                 output.push_str("channels/stop");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("alt", &self.alt)]);
                 let req = req.query(&[("fields", &self.fields)]);
@@ -6561,11 +6519,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6768,7 +6727,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 req.send().await?.error_for_status()?;
                 Ok(())
             }
@@ -6792,7 +6751,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6803,11 +6765,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6920,7 +6883,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -6943,7 +6906,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -6954,11 +6920,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7071,7 +7038,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7088,7 +7055,10 @@ pub mod resources {
                 output.push_str("/defaultObjectAcl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7099,11 +7069,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7227,7 +7198,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -7243,7 +7214,10 @@ pub mod resources {
                 output.push_str("/defaultObjectAcl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("ifMetagenerationMatch", &self.if_metageneration_match)]);
                 let req = req.query(&[(
@@ -7259,11 +7233,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7377,7 +7352,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7401,7 +7376,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7412,11 +7390,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7530,7 +7509,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7554,7 +7533,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7565,11 +7547,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7722,7 +7705,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 req.send().await?.error_for_status()?;
                 Ok(())
             }
@@ -7746,7 +7729,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7757,11 +7743,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7874,7 +7861,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -7897,7 +7884,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -7908,11 +7898,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8025,7 +8016,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -8042,7 +8033,10 @@ pub mod resources {
                 output.push_str("/notificationConfigs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -8053,11 +8047,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8169,7 +8164,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -8185,7 +8180,10 @@ pub mod resources {
                 output.push_str("/notificationConfigs");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
                 let req = req.query(&[("userProject", &self.user_project)]);
@@ -8196,11 +8194,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8429,7 +8428,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 req.send().await?.error_for_status()?;
                 Ok(())
             }
@@ -8461,7 +8460,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8473,11 +8475,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8597,7 +8600,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -8628,7 +8631,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8640,11 +8646,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8764,7 +8771,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -8789,7 +8796,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8801,11 +8811,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8924,7 +8935,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -8948,7 +8959,10 @@ pub mod resources {
                 output.push_str("/acl");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -8960,11 +8974,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -9085,7 +9100,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -9117,7 +9132,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -9129,11 +9147,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -9254,7 +9273,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -9286,7 +9305,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -9298,11 +9320,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -10977,7 +11000,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -11002,7 +11025,10 @@ pub mod resources {
                 output.push_str("/compose");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req =
                     req.query(&[("destinationPredefinedAcl", &self.destination_predefined_acl)]);
@@ -11018,11 +11044,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11217,7 +11244,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -11257,7 +11284,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
                 let req =
@@ -11294,11 +11324,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11386,7 +11417,7 @@ pub mod resources {
                 self
             }
             pub async fn execute(self) -> Result<(), crate::Error> {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 req.send().await?.error_for_status()?;
                 Ok(())
             }
@@ -11410,7 +11441,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -11429,11 +11463,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11551,15 +11586,18 @@ pub mod resources {
             }
             pub async fn download<W>(mut self, output: &mut W) -> Result<u64, crate::Error>
             where
-                W: futures::io::AsyncWriteExt + std::marker::Unpin + ?Sized,
+                W: futures::io::AsyncWrite + std::marker::Unpin + ?Sized,
             {
+                use futures::io::AsyncWriteExt;
                 self.alt = Some(crate::params::Alt::Media);
-                let response = self
-                    ._request(&self._path())?
-                    .send()
-                    .await?
-                    .error_for_status()?;
-                Ok(futures::io::copy(response.bytes_stream(), output).await?)
+                let request = self._request(&self._path()).await?;
+                let mut response = request.send().await?.error_for_status()?;
+                let mut num_bytes_written: usize = 0;
+                while let Some(chunk) = response.chunk().await? {
+                    output.write(&chunk).await?;
+                    num_bytes_written += chunk.len();
+                }
+                Ok(num_bytes_written as u64)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -11617,7 +11655,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -11640,7 +11678,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -11660,11 +11701,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11783,7 +11825,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -11807,7 +11849,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -11819,11 +11864,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -11960,77 +12006,35 @@ pub mod resources {
             ) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                R: ::std::io::Read + ::std::io::Seek + Send + 'static,
+                R: futures::io::AsyncRead + std::marker::Unpin + Send + 'static,
             {
+                use crate::multipart::{Part, RelatedMultiPart};
+                use futures::io::AsyncReadExt;
                 let fields = ::google_field_selector::to_string::<T>();
                 self.fields = if fields.is_empty() {
                     None
                 } else {
                     Some(fields)
                 };
-                let req = self._request(&self._simple_upload_path())?;
+                let req = self._request(&self._simple_upload_path()).await?;
                 let req = req.query(&[("uploadType", "multipart")]);
-                use crate::multipart::{Part, RelatedMultiPart};
                 let mut multipart = RelatedMultiPart::new();
                 let request_json = ::serde_json::to_vec(&self.request)?;
                 multipart.new_part(Part::new(
                     ::mime::APPLICATION_JSON,
-                    Box::new(::std::io::Cursor::new(request_json)),
+                    Box::new(futures::io::Cursor::new(request_json)),
                 ));
                 multipart.new_part(Part::new(mime_type, Box::new(content)));
                 let req = req.header(
                     ::reqwest::header::CONTENT_TYPE,
                     format!("multipart/related; boundary={}", multipart.boundary()),
                 );
-                let req = req.body(reqwest::Body::new(multipart.into_reader()));
+                let mut body: Vec<u8> = vec![];
+                let mut reader = multipart.into_reader();
+                let _num_bytes = reader.read_to_end(&mut body).await?;
+                let req = req.body(body);
                 let response = req.send().await?.error_for_status()?;
-                Ok(response)
-            }
-            fn _resumable_upload_path(&self) -> String {
-                let mut output = "https://storage.googleapis.com/".to_owned();
-                output.push_str("resumable/upload/storage/v1/b/");
-                {
-                    let var_as_str = &self.bucket;
-                    output.extend(::percent_encoding::utf8_percent_encode(
-                        &var_as_str,
-                        crate::SIMPLE,
-                    ));
-                }
-                output.push_str("/o");
-                output
-            }
-            pub async fn start_resumable_upload(
-                self,
-                mime_type: ::mime::Mime,
-            ) -> Result<crate::ResumableUpload, crate::Error> {
-                let req = self._request(&self._resumable_upload_path())?;
-                let req = req.query(&[("uploadType", "resumable")]);
-                let req = req.header(
-                    ::reqwest::header::HeaderName::from_static("x-upload-content-type"),
-                    mime_type.to_string(),
-                );
-                let req = req.json(&self.request);
-                let resp = req.send().await?.error_for_status()?;
-                let location_header =
-                    resp.headers()
-                        .get(::reqwest::header::LOCATION)
-                        .ok_or_else(|| {
-                            crate::Error::Other(
-                                format!(
-                                    "No LOCATION header returned when initiating resumable upload"
-                                )
-                                .into(),
-                            )
-                        })?;
-                let upload_url = ::std::str::from_utf8(location_header.as_bytes())
-                    .map_err(|_| {
-                        crate::Error::Other(format!("Non UTF8 LOCATION header returned").into())
-                    })?
-                    .to_owned();
-                Ok(crate::ResumableUpload::new(
-                    self.reqwest.clone(),
-                    upload_url,
-                ))
+                Ok(response.json().await?)
             }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
@@ -12088,7 +12092,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -12105,7 +12109,10 @@ pub mod resources {
                 output.push_str("/o");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("contentEncoding", &self.content_encoding)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -12128,11 +12135,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12245,159 +12253,6 @@ pub mod resources {
                 self.user_ip = Some(value.into());
                 self
             }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_items<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_items_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_items_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Object> {
-                self.iter_items_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_items_with_all_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, crate::schemas::Object> {
-                self.iter_items_with_fields(Some("*"))
-            }
-            pub fn iter_items_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "items").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "items")
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-            #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-            #[doc = r" populated fields in the yielded items will be determined by the"]
-            #[doc = r" `FieldSelector` implementation."]
-            pub fn iter_prefixes<T>(self) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_prefixes_with_fields(fields)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be the default fields populated by"]
-            #[doc = r" the server."]
-            pub fn iter_prefixes_with_default_fields(
-                self,
-            ) -> crate::iter::PageItemIter<Self, String> {
-                self.iter_prefixes_with_fields(None::<String>)
-            }
-            #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-            #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-            #[doc = r" fields in `#items_type` will be all fields available. This should"]
-            #[doc = r" primarily be used during developement and debugging as fetching"]
-            #[doc = r" all fields can be expensive both in bandwidth and server"]
-            #[doc = r" resources."]
-            pub fn iter_prefixes_with_all_fields(self) -> crate::iter::PageItemIter<Self, String> {
-                self.iter_prefixes_with_fields(Some("*"))
-            }
-            pub fn iter_prefixes_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageItemIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                self.fields = Some({
-                    let mut selector = concat!("nextPageToken,", "prefixes").to_owned();
-                    let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                    if !items_fields.is_empty() {
-                        selector.push_str("(");
-                        selector.push_str(items_fields);
-                        selector.push_str(")");
-                    }
-                    selector
-                });
-                crate::iter::PageItemIter::new(self, "prefixes")
-            }
-            pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-            {
-                let fields = ::google_field_selector::to_string::<T>();
-                let fields: Option<String> = if fields.is_empty() {
-                    None
-                } else {
-                    Some(fields)
-                };
-                self.iter_with_fields(fields)
-            }
-            pub fn iter_with_default_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::Objects> {
-                self.iter_with_fields(None::<&str>)
-            }
-            pub fn iter_with_all_fields(
-                self,
-            ) -> crate::iter::PageIter<Self, crate::schemas::Objects> {
-                self.iter_with_fields(Some("*"))
-            }
-            pub fn iter_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> crate::iter::PageIter<Self, T>
-            where
-                T: ::serde::de::DeserializeOwned,
-                F: AsRef<str>,
-            {
-                let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                if !fields.is_empty() {
-                    match fields.chars().rev().nth(0) {
-                        Some(',') | None => {}
-                        _ => fields.push_str(","),
-                    }
-                    fields.push_str("nextPageToken");
-                    self.fields = Some(fields);
-                }
-                crate::iter::PageIter::new(self)
-            }
             #[doc = r" Execute the given operation. The fields requested are"]
             #[doc = r" determined by the FieldSelector attribute of the return type."]
             #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -12454,7 +12309,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -12470,7 +12325,10 @@ pub mod resources {
                 output.push_str("/o");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("delimiter", &self.delimiter)]);
                 let req = req.query(&[("endOffset", &self.end_offset)]);
@@ -12491,23 +12349,13 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
-            }
-        }
-        impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-            fn set_page_token(&mut self, value: String) {
-                self.page_token = value.into();
-            }
-            fn execute<T>(&mut self) -> Result<T, crate::Error>
-            where
-                T: ::serde::de::DeserializeOwned,
-            {
-                todo!("implement async `execute` method for `IterableMethod` trait")
             }
         }
         #[doc = "Created via [ObjectsActions::patch()](struct.ObjectsActions.html#method.patch)"]
@@ -12668,7 +12516,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -12692,7 +12540,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -12713,11 +12564,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12924,7 +12776,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -12964,7 +12816,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("destinationKmsKeyName", &self.destination_kms_key_name)]);
                 let req =
@@ -13006,11 +12861,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13130,7 +12986,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -13155,7 +13011,10 @@ pub mod resources {
                 output.push_str("/iam");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -13167,11 +13026,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13291,7 +13151,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -13315,7 +13175,10 @@ pub mod resources {
                 output.push_str("/iam/testPermissions");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("permissions", &self.permissions)]);
                 let req = req.query(&[("generation", &self.generation)]);
@@ -13328,11 +13191,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13494,7 +13358,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -13518,7 +13382,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PUT, path);
                 let req = req.query(&[("generation", &self.generation)]);
                 let req = req.query(&[("ifGenerationMatch", &self.if_generation_match)]);
@@ -13539,11 +13406,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -13713,7 +13581,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -13730,7 +13598,10 @@ pub mod resources {
                 output.push_str("/o/watch");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("delimiter", &self.delimiter)]);
                 let req = req.query(&[("endOffset", &self.end_offset)]);
@@ -13751,11 +13622,12 @@ pub mod resources {
                 let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                 let req = req.query(&[("quotaUser", &self.quota_user)]);
                 let req = req.query(&[("userIp", &self.user_ip)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -14007,7 +13879,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -14023,7 +13895,10 @@ pub mod resources {
                     output.push_str("/hmacKeys");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("serviceAccountEmail", &self.service_account_email)]);
                     let req = req.query(&[("userProject", &self.user_project)]);
@@ -14034,11 +13909,12 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14090,7 +13966,7 @@ pub mod resources {
                     self
                 }
                 pub async fn execute(self) -> Result<(), crate::Error> {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     req.send().await?.error_for_status()?;
                     Ok(())
                 }
@@ -14114,7 +13990,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("userProject", &self.user_project)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14124,11 +14003,12 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14235,7 +14115,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -14258,7 +14138,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("userProject", &self.user_project)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14268,11 +14151,12 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14346,106 +14230,6 @@ pub mod resources {
                     self.user_ip = Some(value.into());
                     self
                 }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are chosen by the caller of this"]
-                #[doc = r" method and must implement `Deserialize` and `FieldSelector`. The"]
-                #[doc = r" populated fields in the yielded items will be determined by the"]
-                #[doc = r" `FieldSelector` implementation."]
-                pub fn iter_items<T>(self) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_items_with_fields(fields)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be the default fields populated by"]
-                #[doc = r" the server."]
-                pub fn iter_items_with_default_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::HmacKeyMetadata>
-                {
-                    self.iter_items_with_fields(None::<String>)
-                }
-                #[doc = r" Return an iterator that iterates over all `#prop_ident`. The"]
-                #[doc = r" items yielded by the iterator are `#items_type`. The populated"]
-                #[doc = r" fields in `#items_type` will be all fields available. This should"]
-                #[doc = r" primarily be used during developement and debugging as fetching"]
-                #[doc = r" all fields can be expensive both in bandwidth and server"]
-                #[doc = r" resources."]
-                pub fn iter_items_with_all_fields(
-                    self,
-                ) -> crate::iter::PageItemIter<Self, crate::schemas::HmacKeyMetadata>
-                {
-                    self.iter_items_with_fields(Some("*"))
-                }
-                pub fn iter_items_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageItemIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    self.fields = Some({
-                        let mut selector = concat!("nextPageToken,", "items").to_owned();
-                        let items_fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("");
-                        if !items_fields.is_empty() {
-                            selector.push_str("(");
-                            selector.push_str(items_fields);
-                            selector.push_str(")");
-                        }
-                        selector
-                    });
-                    crate::iter::PageItemIter::new(self, "items")
-                }
-                pub fn iter<T>(self) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
-                {
-                    let fields = ::google_field_selector::to_string::<T>();
-                    let fields: Option<String> = if fields.is_empty() {
-                        None
-                    } else {
-                        Some(fields)
-                    };
-                    self.iter_with_fields(fields)
-                }
-                pub fn iter_with_default_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::HmacKeysMetadata> {
-                    self.iter_with_fields(None::<&str>)
-                }
-                pub fn iter_with_all_fields(
-                    self,
-                ) -> crate::iter::PageIter<Self, crate::schemas::HmacKeysMetadata> {
-                    self.iter_with_fields(Some("*"))
-                }
-                pub fn iter_with_fields<T, F>(
-                    mut self,
-                    fields: Option<F>,
-                ) -> crate::iter::PageIter<Self, T>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                    F: AsRef<str>,
-                {
-                    let mut fields = fields.as_ref().map(|x| x.as_ref()).unwrap_or("").to_owned();
-                    if !fields.is_empty() {
-                        match fields.chars().rev().nth(0) {
-                            Some(',') | None => {}
-                            _ => fields.push_str(","),
-                        }
-                        fields.push_str("nextPageToken");
-                        self.fields = Some(fields);
-                    }
-                    crate::iter::PageIter::new(self)
-                }
                 #[doc = r" Execute the given operation. The fields requested are"]
                 #[doc = r" determined by the FieldSelector attribute of the return type."]
                 #[doc = r" This allows for flexible and ergonomic partial responses. See"]
@@ -14502,7 +14286,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -14518,7 +14302,10 @@ pub mod resources {
                     output.push_str("/hmacKeys");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("maxResults", &self.max_results)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -14532,23 +14319,13 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
-                }
-            }
-            impl<'a> crate::iter::IterableMethod for ListRequestBuilder<'a> {
-                fn set_page_token(&mut self, value: String) {
-                    self.page_token = value.into();
-                }
-                fn execute<T>(&mut self) -> Result<T, crate::Error>
-                where
-                    T: ::serde::de::DeserializeOwned,
-                {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
                 }
             }
             #[doc = "Created via [HmacKeysActions::update()](struct.HmacKeysActions.html#method.update)"]
@@ -14655,7 +14432,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -14679,7 +14456,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PUT, path);
                     let req = req.query(&[("userProject", &self.user_project)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -14689,11 +14469,12 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14834,7 +14615,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -14850,7 +14631,10 @@ pub mod resources {
                     output.push_str("/serviceAccount");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req =
                         req.query(&[("provisionalUserProject", &self.provisional_user_project)]);
@@ -14862,11 +14646,12 @@ pub mod resources {
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("userIp", &self.user_ip)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -14881,6 +14666,7 @@ pub enum Error {
         reqwest_err: ::reqwest::Error,
         body: Option<String>,
     },
+    IO(std::io::Error),
     Other(Box<dyn ::std::error::Error + Send + Sync>),
 }
 
@@ -14890,6 +14676,7 @@ impl Error {
             Error::OAuth2(_) => None,
             Error::JSON(err) => Some(err),
             Error::Reqwest { .. } => None,
+            Error::IO(_) => None,
             Error::Other(_) => None,
         }
     }
@@ -14907,6 +14694,7 @@ impl ::std::fmt::Display for Error {
                 }
                 Ok(())
             }
+            Error::IO(err) => write!(f, "IO Error: {}", err),
             Error::Other(err) => write!(f, "Uknown Error: {}", err),
         }
     }
@@ -14926,6 +14714,12 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+impl From<std::io::Error> for Error {
+    fn from(err: std::io::Error) -> Error {
+        Error::IO(err)
     }
 }
 #[allow(dead_code)]
@@ -14995,13 +14789,13 @@ mod multipart {
 
     pub(crate) struct Part {
         content_type: ::mime::Mime,
-        body: Box<dyn ::std::io::Read + Send>,
+        body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
     }
 
     impl Part {
         pub(crate) fn new(
             content_type: ::mime::Mime,
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         ) -> Part {
             Part { content_type, body }
         }
@@ -15010,7 +14804,7 @@ mod multipart {
     pub(crate) struct RelatedMultiPartReader {
         state: RelatedMultiPartReaderState,
         boundary: String,
-        next_body: Option<Box<dyn ::std::io::Read + Send>>,
+        next_body: Option<Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>>,
         parts: std::vec::IntoIter<Part>,
     }
 
@@ -15024,13 +14818,18 @@ mod multipart {
             content_type: Vec<u8>,
         },
         WriteBody {
-            body: Box<dyn ::std::io::Read + Send>,
+            body: Box<dyn futures::io::AsyncRead + std::marker::Unpin + Send>,
         },
     }
 
-    impl ::std::io::Read for RelatedMultiPartReader {
-        fn read(&mut self, buf: &mut [u8]) -> ::std::io::Result<usize> {
+    impl futures::io::AsyncRead for RelatedMultiPartReader {
+        fn poll_read(
+            mut self: std::pin::Pin<&mut Self>,
+            ctx: &mut futures::task::Context,
+            buf: &mut [u8],
+        ) -> futures::task::Poll<Result<usize, futures::io::Error>> {
             use RelatedMultiPartReaderState::*;
+
             let mut bytes_written: usize = 0;
             loop {
                 let rem_buf = &mut buf[bytes_written..];
@@ -15078,7 +14877,14 @@ mod multipart {
                         }
                     }
                     WriteBody { body } => {
-                        let written = body.read(rem_buf)?;
+                        let body = std::pin::Pin::new(body);
+                        let written = match futures::io::AsyncRead::poll_read(body, ctx, rem_buf) {
+                            futures::task::Poll::Ready(Ok(n)) => n,
+                            futures::task::Poll::Ready(Err(err)) => {
+                                return futures::task::Poll::Ready(Err(err));
+                            }
+                            futures::task::Poll::Pending => return futures::task::Poll::Pending,
+                        };
                         bytes_written += written;
                         if written == 0 {
                             self.state = WriteBoundary {
@@ -15091,7 +14897,8 @@ mod multipart {
                     }
                 }
             }
-            Ok(bytes_written)
+
+            futures::task::Poll::Ready(Ok(bytes_written))
         }
     }
 
@@ -15130,206 +14937,6 @@ mod parsed_string {
         match Option::<String>::deserialize(deserializer)? {
             Some(x) => Ok(Some(x.parse().map_err(::serde::de::Error::custom)?)),
             None => Ok(None),
-        }
-    }
-}
-pub struct ResumableUpload {
-    reqwest: ::reqwest::Client,
-    url: String,
-    progress: Option<i64>,
-}
-
-impl ResumableUpload {
-    pub fn new(reqwest: ::reqwest::Client, url: String) -> Self {
-        ResumableUpload {
-            reqwest,
-            url,
-            progress: None,
-        }
-    }
-
-    pub fn url(&self) -> &str {
-        &self.url
-    }
-
-    pub async fn upload<R>(&mut self, mut reader: R) -> Result<(), Box<dyn ::std::error::Error>>
-    where
-        R: ::std::io::Read + ::std::io::Seek + Send + 'static,
-    {
-        let reader_len = {
-            let start = reader.seek(::std::io::SeekFrom::Current(0))?;
-            let end = reader.seek(::std::io::SeekFrom::End(0))?;
-            reader.seek(::std::io::SeekFrom::Start(start))?;
-            end
-        };
-        let progress = match self.progress {
-            Some(progress) => progress,
-            None => {
-                let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-                let req = req.header(::reqwest::header::CONTENT_LENGTH, 0);
-                let req = req.header(
-                    ::reqwest::header::CONTENT_RANGE,
-                    format!("bytes */{}", reader_len),
-                );
-                let response = req.send().await?.error_for_status()?;
-                match response.headers().get(::reqwest::header::RANGE) {
-                    Some(range_header) => {
-                        let (_, progress) = parse_range_header(range_header)
-                            .map_err(|e| format!("invalid RANGE header: {}", e))?;
-                        progress + 1
-                    }
-                    None => 0,
-                }
-            }
-        };
-
-        reader.seek(::std::io::SeekFrom::Start(progress as u64))?;
-        let content_length = reader_len - progress as u64;
-        let content_range = format!("bytes {}-{}/{}", progress, reader_len - 1, reader_len);
-        let req = self.reqwest.request(::reqwest::Method::PUT, &self.url);
-        let req = req.header(::reqwest::header::CONTENT_RANGE, content_range);
-        let req = req.body(::reqwest::Body::sized(reader, content_length));
-        req.send().await?.error_for_status()?;
-        Ok(())
-    }
-}
-
-fn parse_range_header(
-    range: &::reqwest::header::HeaderValue,
-) -> Result<(i64, i64), Box<dyn ::std::error::Error>> {
-    let range = range.to_str()?;
-    if !range.starts_with("bytes ") {
-        return Err(r#"does not begin with "bytes""#.to_owned().into());
-    }
-    let range = &range[6..];
-    let slash_idx = range
-        .find('/')
-        .ok_or_else(|| r#"does not contain"#.to_owned())?;
-    let (begin, end) = range.split_at(slash_idx);
-    let end = &end[1..]; // remove '/'
-    let begin: i64 = begin.parse()?;
-    let end: i64 = end.parse()?;
-    Ok((begin, end))
-}
-pub mod iter {
-    pub trait IterableMethod {
-        fn set_page_token(&mut self, value: String);
-        fn execute<T>(&mut self) -> Result<T, crate::Error>
-        where
-            T: ::serde::de::DeserializeOwned;
-    }
-
-    pub struct PageIter<M, T> {
-        pub method: M,
-        pub finished: bool,
-        pub _phantom: ::std::marker::PhantomData<T>,
-    }
-
-    impl<M, T> PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M) -> Self {
-            PageIter {
-                method,
-                finished: false,
-                _phantom: ::std::marker::PhantomData,
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            if self.finished {
-                return None;
-            }
-            let paginated_result: ::serde_json::Map<String, ::serde_json::Value> =
-                match self.method.execute() {
-                    Ok(r) => r,
-                    Err(err) => return Some(Err(err)),
-                };
-            if let Some(next_page_token) = paginated_result
-                .get("nextPageToken")
-                .and_then(|t| t.as_str())
-            {
-                self.method.set_page_token(next_page_token.to_owned());
-            } else {
-                self.finished = true;
-            }
-
-            Some(
-                match ::serde_json::from_value(::serde_json::Value::Object(paginated_result)) {
-                    Ok(resp) => Ok(resp),
-                    Err(err) => Err(err.into()),
-                },
-            )
-        }
-    }
-
-    pub struct PageItemIter<M, T> {
-        items_field: &'static str,
-        page_iter: PageIter<M, ::serde_json::Map<String, ::serde_json::Value>>,
-        items: ::std::vec::IntoIter<T>,
-    }
-
-    impl<M, T> PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        pub(crate) fn new(method: M, items_field: &'static str) -> Self {
-            PageItemIter {
-                items_field,
-                page_iter: PageIter::new(method),
-                items: Vec::new().into_iter(),
-            }
-        }
-    }
-
-    impl<M, T> Iterator for PageItemIter<M, T>
-    where
-        M: IterableMethod,
-        T: ::serde::de::DeserializeOwned,
-    {
-        type Item = Result<T, crate::Error>;
-
-        fn next(&mut self) -> Option<Result<T, crate::Error>> {
-            loop {
-                if let Some(v) = self.items.next() {
-                    return Some(Ok(v));
-                }
-
-                let next_page = self.page_iter.next();
-                match next_page {
-                    None => return None,
-                    Some(Err(err)) => return Some(Err(err)),
-                    Some(Ok(next_page)) => {
-                        let mut next_page: ::serde_json::Map<String, ::serde_json::Value> =
-                            next_page;
-                        let items_array = match next_page.remove(self.items_field) {
-                            Some(items) => items,
-                            None => {
-                                return Some(Err(crate::Error::Other(
-                                    format!("no {} field found in iter response", self.items_field)
-                                        .into(),
-                                )))
-                            }
-                        };
-                        let items_vec: Result<Vec<T>, _> = ::serde_json::from_value(items_array);
-                        match items_vec {
-                            Ok(items) => self.items = items.into_iter(),
-                            Err(err) => return Some(Err(err.into())),
-                        }
-                    }
-                }
-            }
         }
     }
 }

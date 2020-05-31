@@ -614,7 +614,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub from_local_part: ::std::option::Option<String>,
-        #[doc = "Value is in III language code format (e.g. \"zh-CN\", \"es\"). Both \u{2018}-\u{2019}  and\n\u{2018}_\u{2019} separators are accepted."]
+        #[doc = "Value is in III language code format (e.g. \"zh-CN\", \"es\"). Both ‘-’  and\n‘_’ separators are accepted."]
         #[serde(
             rename = "locale",
             default,
@@ -5569,7 +5569,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5578,7 +5578,10 @@ pub mod resources {
                 output.push_str("v1/accounts:createAuthUri");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5591,11 +5594,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5725,7 +5729,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5734,7 +5738,10 @@ pub mod resources {
                 output.push_str("v1/accounts:delete");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5747,11 +5754,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -5881,7 +5889,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -5890,7 +5898,10 @@ pub mod resources {
                 output.push_str("v1/accounts:issueSamlResponse");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -5903,11 +5914,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6037,7 +6049,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6046,7 +6058,10 @@ pub mod resources {
                 output.push_str("v1/accounts:lookup");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6059,11 +6074,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6193,7 +6209,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6202,7 +6218,10 @@ pub mod resources {
                 output.push_str("v1/accounts:resetPassword");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6215,11 +6234,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6345,7 +6365,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6354,7 +6374,10 @@ pub mod resources {
                 output.push_str("v1/accounts:sendOobCode");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6367,11 +6390,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6501,7 +6525,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6510,7 +6534,10 @@ pub mod resources {
                 output.push_str("v1/accounts:sendVerificationCode");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6523,11 +6550,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6657,7 +6685,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6666,7 +6694,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signInWithCustomToken");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6679,11 +6710,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6813,7 +6845,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6822,7 +6854,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signInWithEmailLink");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6835,11 +6870,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -6969,7 +7005,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -6978,7 +7014,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signInWithGameCenter");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -6991,11 +7030,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7125,7 +7165,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7134,7 +7174,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signInWithIdp");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7147,11 +7190,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7281,7 +7325,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7290,7 +7334,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signInWithPassword");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7303,11 +7350,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7437,7 +7485,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7446,7 +7494,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signInWithPhoneNumber");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7459,11 +7510,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7589,7 +7641,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7598,7 +7650,10 @@ pub mod resources {
                 output.push_str("v1/accounts:signUp");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7611,11 +7666,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7745,7 +7801,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7754,7 +7810,10 @@ pub mod resources {
                 output.push_str("v1/accounts:update");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7767,11 +7826,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -7901,7 +7961,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -7910,7 +7970,10 @@ pub mod resources {
                 output.push_str("v1/accounts:verifyIosClient");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -7923,11 +7986,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8152,7 +8216,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -8169,7 +8233,10 @@ pub mod resources {
                 output.push_str("/accounts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -8182,11 +8249,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8317,7 +8385,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -8334,7 +8402,10 @@ pub mod resources {
                 output.push_str(":createSessionCookie");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -8347,11 +8418,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8482,7 +8554,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 let req = req.json(&self.request);
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
@@ -8499,7 +8571,10 @@ pub mod resources {
                 output.push_str(":queryAccounts");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -8512,11 +8587,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -8852,7 +8928,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -8869,7 +8945,10 @@ pub mod resources {
                     output.push_str("/accounts:batchCreate");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -8882,11 +8961,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -9017,7 +9097,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -9034,7 +9114,10 @@ pub mod resources {
                     output.push_str("/accounts:batchDelete");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9047,11 +9130,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -9205,7 +9289,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
                 fn _path(&self) -> String {
@@ -9221,7 +9305,10 @@ pub mod resources {
                     output.push_str("/accounts:batchGet");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req =
                         req.query(&[("delegatedProjectNumber", &self.delegated_project_number)]);
@@ -9239,11 +9326,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -9374,7 +9462,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -9391,7 +9479,10 @@ pub mod resources {
                     output.push_str("/accounts:delete");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9404,11 +9495,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -9539,7 +9631,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -9556,7 +9648,10 @@ pub mod resources {
                     output.push_str("/accounts:lookup");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9569,11 +9664,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -9704,7 +9800,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -9721,7 +9817,10 @@ pub mod resources {
                     output.push_str("/accounts:query");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9734,11 +9833,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -9869,7 +9969,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -9886,7 +9986,10 @@ pub mod resources {
                     output.push_str("/accounts:sendOobCode");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -9899,11 +10002,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -10034,7 +10138,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -10051,7 +10155,10 @@ pub mod resources {
                     output.push_str("/accounts:update");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10064,11 +10171,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -10270,7 +10378,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -10295,7 +10403,10 @@ pub mod resources {
                     output.push_str("/accounts");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10308,11 +10419,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -10444,7 +10556,7 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    let req = self._request(&self._path())?;
+                    let req = self._request(&self._path()).await?;
                     let req = req.json(&self.request);
                     Ok(req.send().await?.error_for_status()?.json().await?)
                 }
@@ -10469,7 +10581,10 @@ pub mod resources {
                     output.push_str(":createSessionCookie");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                async fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -10482,11 +10597,12 @@ pub mod resources {
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                     let req = req.query(&[("uploadType", &self.upload_type)]);
                     let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                    let req = req.bearer_auth(
-                        self.auth
-                            .access_token()
-                            .map_err(|err| crate::Error::OAuth2(err))?,
-                    );
+                    let access_token = self
+                        .auth
+                        .access_token()
+                        .await
+                        .map_err(|err| crate::Error::OAuth2(err))?;
+                    let req = req.bearer_auth(access_token);
                     Ok(req)
                 }
             }
@@ -10838,7 +10954,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -10863,7 +10979,7 @@ pub mod resources {
                         output.push_str("/accounts:batchCreate");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -10879,11 +10995,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11015,7 +11132,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -11040,7 +11157,7 @@ pub mod resources {
                         output.push_str("/accounts:batchDelete");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -11056,11 +11173,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11209,7 +11327,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
                     fn _path(&self) -> String {
@@ -11233,7 +11351,7 @@ pub mod resources {
                         output.push_str("/accounts:batchGet");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -11253,11 +11371,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11389,7 +11508,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -11414,7 +11533,7 @@ pub mod resources {
                         output.push_str("/accounts:delete");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -11430,11 +11549,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11566,7 +11686,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -11591,7 +11711,7 @@ pub mod resources {
                         output.push_str("/accounts:lookup");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -11607,11 +11727,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11743,7 +11864,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -11768,7 +11889,7 @@ pub mod resources {
                         output.push_str("/accounts:query");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -11784,11 +11905,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -11920,7 +12042,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -11945,7 +12067,7 @@ pub mod resources {
                         output.push_str("/accounts:sendOobCode");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -11961,11 +12083,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -12097,7 +12220,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        let req = self._request(&self._path())?;
+                        let req = self._request(&self._path()).await?;
                         let req = req.json(&self.request);
                         Ok(req.send().await?.error_for_status()?.json().await?)
                     }
@@ -12122,7 +12245,7 @@ pub mod resources {
                         output.push_str("/accounts:update");
                         output
                     }
-                    fn _request(
+                    async fn _request(
                         &self,
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
@@ -12138,11 +12261,12 @@ pub mod resources {
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                         let req = req.query(&[("uploadType", &self.upload_type)]);
                         let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                        let req = req.bearer_auth(
-                            self.auth
-                                .access_token()
-                                .map_err(|err| crate::Error::OAuth2(err))?,
-                        );
+                        let access_token = self
+                            .auth
+                            .access_token()
+                            .await
+                            .map_err(|err| crate::Error::OAuth2(err))?;
+                        let req = req.bearer_auth(access_token);
                         Ok(req)
                     }
                 }
@@ -12408,7 +12532,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -12416,7 +12540,10 @@ pub mod resources {
                 output.push_str("v1/projects");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("androidPackageName", &self.android_package_name)]);
                 let req = req.query(&[("clientId", &self.client_id)]);
@@ -12436,11 +12563,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12565,7 +12693,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -12573,7 +12701,10 @@ pub mod resources {
                 output.push_str("v1/publicKeys");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12586,11 +12717,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12719,7 +12851,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -12727,7 +12859,10 @@ pub mod resources {
                 output.push_str("v1/recaptchaParams");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12740,11 +12875,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
@@ -12873,7 +13009,7 @@ pub mod resources {
             where
                 T: ::serde::de::DeserializeOwned,
             {
-                let req = self._request(&self._path())?;
+                let req = self._request(&self._path()).await?;
                 Ok(req.send().await?.error_for_status()?.json().await?)
             }
             fn _path(&self) -> String {
@@ -12881,7 +13017,10 @@ pub mod resources {
                 output.push_str("v1/sessionCookiePublicKeys");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            async fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -12894,11 +13033,12 @@ pub mod resources {
                 let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
                 let req = req.query(&[("uploadType", &self.upload_type)]);
                 let req = req.query(&[("$.xgafv", &self.xgafv)]);
-                let req = req.bearer_auth(
-                    self.auth
-                        .access_token()
-                        .map_err(|err| crate::Error::OAuth2(err))?,
-                );
+                let access_token = self
+                    .auth
+                    .access_token()
+                    .await
+                    .map_err(|err| crate::Error::OAuth2(err))?;
+                let req = req.bearer_auth(access_token);
                 Ok(req)
             }
         }
