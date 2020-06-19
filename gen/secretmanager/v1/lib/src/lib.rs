@@ -1303,12 +1303,10 @@ pub mod resources {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1322,12 +1320,10 @@ pub mod resources {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1346,12 +1342,10 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -1359,11 +1353,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -1372,11 +1361,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -1480,12 +1464,10 @@ pub mod resources {
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -1509,12 +1491,10 @@ pub mod resources {
                 filter: Option<String>,
                 page_size: Option<i32>,
                 page_token: Option<String>,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -1537,11 +1517,6 @@ pub mod resources {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -1550,11 +1525,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -1662,12 +1632,10 @@ pub mod resources {
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -1703,12 +1671,10 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1727,12 +1693,10 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1747,12 +1711,10 @@ pub mod resources {
                     DeleteRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1766,12 +1728,10 @@ pub mod resources {
                     GetRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1788,12 +1748,10 @@ pub mod resources {
                     GetIamPolicyRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1808,12 +1766,10 @@ pub mod resources {
                     ListRequestBuilder {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1834,12 +1790,10 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1859,12 +1813,10 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1883,12 +1835,10 @@ pub mod resources {
                         reqwest: &self.reqwest,
                         auth: self.auth_ref(),
                         request,
-                        access_token: None,
                         alt: None,
                         callback: None,
                         fields: None,
                         key: None,
-                        oauth_token: None,
                         pretty_print: None,
                         quota_user: None,
                         upload_protocol: None,
@@ -1915,12 +1865,10 @@ pub mod resources {
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AddSecretVersionRequest,
                 parent: String,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -1928,11 +1876,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> AddVersionRequestBuilder<'a> {
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -1941,11 +1884,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -2051,12 +1989,10 @@ pub mod resources {
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -2079,12 +2015,10 @@ pub mod resources {
                 request: crate::schemas::Secret,
                 parent: String,
                 secret_id: Option<String>,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -2097,11 +2031,6 @@ pub mod resources {
                     self.secret_id = Some(value.into());
                     self
                 }
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -2110,11 +2039,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -2221,12 +2145,10 @@ pub mod resources {
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("secretId", &self.secret_id)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -2247,12 +2169,10 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -2260,11 +2180,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> DeleteRequestBuilder<'a> {
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -2273,11 +2188,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -2381,12 +2291,10 @@ pub mod resources {
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -2407,12 +2315,10 @@ pub mod resources {
                 pub(crate) reqwest: &'a ::reqwest::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -2420,11 +2326,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> GetRequestBuilder<'a> {
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -2433,11 +2334,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -2541,12 +2437,10 @@ pub mod resources {
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -2568,12 +2462,10 @@ pub mod resources {
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 resource: String,
                 options_requested_policy_version: Option<i32>,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -2586,11 +2478,6 @@ pub mod resources {
                     self.options_requested_policy_version = Some(value);
                     self
                 }
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -2599,11 +2486,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -2712,12 +2594,10 @@ pub mod resources {
                         "options.requestedPolicyVersion",
                         &self.options_requested_policy_version,
                     )]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -2740,12 +2620,10 @@ pub mod resources {
                 parent: String,
                 page_size: Option<i32>,
                 page_token: Option<String>,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -2763,11 +2641,6 @@ pub mod resources {
                     self.page_token = Some(value.into());
                     self
                 }
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -2776,11 +2649,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -2887,12 +2755,10 @@ pub mod resources {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -2915,12 +2781,10 @@ pub mod resources {
                 request: crate::schemas::Secret,
                 name: String,
                 update_mask: Option<String>,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -2933,11 +2797,6 @@ pub mod resources {
                     self.update_mask = Some(value.into());
                     self
                 }
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -2946,11 +2805,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -3056,12 +2910,10 @@ pub mod resources {
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -3083,12 +2935,10 @@ pub mod resources {
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -3096,11 +2946,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> SetIamPolicyRequestBuilder<'a> {
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -3109,11 +2954,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -3219,12 +3059,10 @@ pub mod resources {
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -3246,12 +3084,10 @@ pub mod resources {
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
-                access_token: Option<String>,
                 alt: Option<crate::params::Alt>,
                 callback: Option<String>,
                 fields: Option<String>,
                 key: Option<String>,
-                oauth_token: Option<String>,
                 pretty_print: Option<bool>,
                 quota_user: Option<String>,
                 upload_protocol: Option<String>,
@@ -3259,11 +3095,6 @@ pub mod resources {
                 xgafv: Option<crate::params::Xgafv>,
             }
             impl<'a> TestIamPermissionsRequestBuilder<'a> {
-                #[doc = "OAuth access token."]
-                pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                    self.access_token = Some(value.into());
-                    self
-                }
                 #[doc = "JSONP"]
                 pub fn callback(mut self, value: impl Into<String>) -> Self {
                     self.callback = Some(value.into());
@@ -3272,11 +3103,6 @@ pub mod resources {
                 #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                 pub fn key(mut self, value: impl Into<String>) -> Self {
                     self.key = Some(value.into());
-                    self
-                }
-                #[doc = "OAuth 2.0 token for the current user."]
-                pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                    self.oauth_token = Some(value.into());
                     self
                 }
                 #[doc = "Returns response with indentations and line breaks."]
@@ -3384,12 +3210,10 @@ pub mod resources {
                     path: &str,
                 ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
-                    let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
                     let req = req.query(&[("callback", &self.callback)]);
                     let req = req.query(&[("fields", &self.fields)]);
                     let req = req.query(&[("key", &self.key)]);
-                    let req = req.query(&[("oauth_token", &self.oauth_token)]);
                     let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                     let req = req.query(&[("quotaUser", &self.quota_user)]);
                     let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -3419,12 +3243,10 @@ pub mod resources {
                         AccessRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
-                            access_token: None,
                             alt: None,
                             callback: None,
                             fields: None,
                             key: None,
-                            oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
                             upload_protocol: None,
@@ -3443,12 +3265,10 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
-                            access_token: None,
                             alt: None,
                             callback: None,
                             fields: None,
                             key: None,
-                            oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
                             upload_protocol: None,
@@ -3467,12 +3287,10 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
-                            access_token: None,
                             alt: None,
                             callback: None,
                             fields: None,
                             key: None,
-                            oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
                             upload_protocol: None,
@@ -3491,12 +3309,10 @@ pub mod resources {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
                             request,
-                            access_token: None,
                             alt: None,
                             callback: None,
                             fields: None,
                             key: None,
-                            oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
                             upload_protocol: None,
@@ -3510,12 +3326,10 @@ pub mod resources {
                         GetRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
-                            access_token: None,
                             alt: None,
                             callback: None,
                             fields: None,
                             key: None,
-                            oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
                             upload_protocol: None,
@@ -3529,12 +3343,10 @@ pub mod resources {
                         ListRequestBuilder {
                             reqwest: &self.reqwest,
                             auth: self.auth_ref(),
-                            access_token: None,
                             alt: None,
                             callback: None,
                             fields: None,
                             key: None,
-                            oauth_token: None,
                             pretty_print: None,
                             quota_user: None,
                             upload_protocol: None,
@@ -3552,12 +3364,10 @@ pub mod resources {
                     pub(crate) reqwest: &'a ::reqwest::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
-                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
-                    oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
                     upload_protocol: Option<String>,
@@ -3565,11 +3375,6 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> AccessRequestBuilder<'a> {
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
@@ -3578,11 +3383,6 @@ pub mod resources {
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
@@ -3689,12 +3489,10 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -3716,12 +3514,10 @@ pub mod resources {
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DestroySecretVersionRequest,
                     name: String,
-                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
-                    oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
                     upload_protocol: Option<String>,
@@ -3729,11 +3525,6 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DestroyRequestBuilder<'a> {
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
@@ -3742,11 +3533,6 @@ pub mod resources {
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
@@ -3852,12 +3638,10 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -3879,12 +3663,10 @@ pub mod resources {
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DisableSecretVersionRequest,
                     name: String,
-                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
-                    oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
                     upload_protocol: Option<String>,
@@ -3892,11 +3674,6 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> DisableRequestBuilder<'a> {
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
@@ -3905,11 +3682,6 @@ pub mod resources {
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
@@ -4015,12 +3787,10 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -4042,12 +3812,10 @@ pub mod resources {
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::EnableSecretVersionRequest,
                     name: String,
-                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
-                    oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
                     upload_protocol: Option<String>,
@@ -4055,11 +3823,6 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> EnableRequestBuilder<'a> {
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
@@ -4068,11 +3831,6 @@ pub mod resources {
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
@@ -4178,12 +3936,10 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -4204,12 +3960,10 @@ pub mod resources {
                     pub(crate) reqwest: &'a ::reqwest::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
-                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
-                    oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
                     upload_protocol: Option<String>,
@@ -4217,11 +3971,6 @@ pub mod resources {
                     xgafv: Option<crate::params::Xgafv>,
                 }
                 impl<'a> GetRequestBuilder<'a> {
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
@@ -4230,11 +3979,6 @@ pub mod resources {
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
@@ -4338,12 +4082,10 @@ pub mod resources {
                         path: &str,
                     ) -> Result<::reqwest::RequestBuilder, crate::Error> {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
-                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
@@ -4366,12 +4108,10 @@ pub mod resources {
                     parent: String,
                     page_size: Option<i32>,
                     page_token: Option<String>,
-                    access_token: Option<String>,
                     alt: Option<crate::params::Alt>,
                     callback: Option<String>,
                     fields: Option<String>,
                     key: Option<String>,
-                    oauth_token: Option<String>,
                     pretty_print: Option<bool>,
                     quota_user: Option<String>,
                     upload_protocol: Option<String>,
@@ -4389,11 +4129,6 @@ pub mod resources {
                         self.page_token = Some(value.into());
                         self
                     }
-                    #[doc = "OAuth access token."]
-                    pub fn access_token(mut self, value: impl Into<String>) -> Self {
-                        self.access_token = Some(value.into());
-                        self
-                    }
                     #[doc = "JSONP"]
                     pub fn callback(mut self, value: impl Into<String>) -> Self {
                         self.callback = Some(value.into());
@@ -4402,11 +4137,6 @@ pub mod resources {
                     #[doc = "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."]
                     pub fn key(mut self, value: impl Into<String>) -> Self {
                         self.key = Some(value.into());
-                        self
-                    }
-                    #[doc = "OAuth 2.0 token for the current user."]
-                    pub fn oauth_token(mut self, value: impl Into<String>) -> Self {
-                        self.oauth_token = Some(value.into());
                         self
                     }
                     #[doc = "Returns response with indentations and line breaks."]
@@ -4515,12 +4245,10 @@ pub mod resources {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
-                        let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
                         let req = req.query(&[("callback", &self.callback)]);
                         let req = req.query(&[("fields", &self.fields)]);
                         let req = req.query(&[("key", &self.key)]);
-                        let req = req.query(&[("oauth_token", &self.oauth_token)]);
                         let req = req.query(&[("prettyPrint", &self.pretty_print)]);
                         let req = req.query(&[("quotaUser", &self.quota_user)]);
                         let req = req.query(&[("upload_protocol", &self.upload_protocol)]);
