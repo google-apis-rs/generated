@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/Q_N7e9cs3A1-s8__TCCHlsbCI_c\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/6ejmeqs8pIMfxzC9gWby_uKyvCk\"",
   "discoveryVersion": "v1",
   "id": "admin:directory_v1",
   "name": "admin",
   "canonicalName": "directory",
   "fullyEncodeReservedExpansion": null,
   "version": "directory_v1",
-  "revision": "20200204",
+  "revision": "20200605",
   "title": "Admin Directory API",
   "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
   "ownerDomain": "google.com",
@@ -1450,6 +1450,45 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "lastKnownNetwork": {
+          "description": "Contains last used network (Read-only)",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {
+              "ipAddress": {
+                "description": "The IP address",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              },
+              "wanIpAddress": {
+                "description": "The WAN IP address",
+                "type": "string",
+                "format": null,
+                "enum": [],
+                "enumDescriptions": [],
+                "properties": {},
+                "additionalProperties": null,
+                "items": null
+              }
+            },
+            "additionalProperties": null,
+            "items": null
+          }
         },
         "lastSync": {
           "description": "Date and time the device was last synchronized with the policy settings in the G Suite administrator control panel (Read-only)",
@@ -6748,7 +6787,7 @@
               "repeated": false
             },
             "query": {
-              "description": "Search string in the format given at http://support.google.com/chromeos/a/bin/answer.py?answer=1698333",
+              "description": "Search string in the format provided by this Help Center article.",
               "default": null,
               "location": "query",
               "required": false,
@@ -8574,14 +8613,14 @@
               "repeated": false
             },
             "maxResults": {
-              "description": "Maximum number of results to return. Max allowed value is 100.",
+              "description": "Maximum number of results to return.",
               "default": "100",
               "location": "query",
               "required": false,
               "type": "integer",
               "format": "int32",
               "minimum": "1",
-              "maximum": null,
+              "maximum": "100",
               "pattern": null,
               "enum": [],
               "enumDescriptions": [],
@@ -8654,7 +8693,7 @@
               "repeated": false
             },
             "query": {
-              "description": "Search string in the format given at http://support.google.com/a/bin/answer.py?answer=1408863#search",
+              "description": "Search string in the format provided by this Help Center article.",
               "default": null,
               "location": "query",
               "required": false,

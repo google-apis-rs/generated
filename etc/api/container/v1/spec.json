@@ -7,7 +7,7 @@
   "canonicalName": "Container",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200425",
+  "revision": "20200603",
   "title": "Kubernetes Engine API",
   "description": "Builds and manages container-based applications, powered by the open source Kubernetes technology.",
   "ownerDomain": "google.com",
@@ -251,6 +251,10 @@
           "description": "Configuration for the Cloud Run addon, which allows the user to use a\nmanaged Knative service.",
           "$ref": "CloudRunConfig"
         },
+        "dnsCacheConfig": {
+          "description": "Configuration for NodeLocalDNS, a dns cache running on cluster nodes",
+          "$ref": "DnsCacheConfig"
+        },
         "horizontalPodAutoscaling": {
           "description": "Configuration for the horizontal pod autoscaling feature, which\nincreases or decreases the number of replica pods a replication controller\nhas based on the resource usage of the existing pods.",
           "$ref": "HorizontalPodAutoscaling"
@@ -348,7 +352,7 @@
           "$ref": "NodeManagement"
         },
         "oauthScopes": {
-          "description": "Scopes that are used by NAP when creating node pools. If oauth_scopes are\nspecified, service_account should be empty.",
+          "description": "Scopes that are used by NAP when creating node pools.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -366,7 +370,7 @@
           }
         },
         "serviceAccount": {
-          "description": "The Google Cloud Platform Service Account to be used by the node VMs. If\nservice_account is specified, scopes should be empty.",
+          "description": "The Google Cloud Platform Service Account to be used by the node VMs.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -632,7 +636,7 @@
           "items": null
         },
         "currentNodeVersion": {
-          "description": "[Output only] Deprecated, use\n[NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.zones.clusters.nodePools)\ninstead. The current version of the node software components. If they are\ncurrently at multiple versions because they're in the process of being\nupgraded, this reflects the minimum version of all nodes.",
+          "description": "[Output only] Deprecated, use\n[NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools)\ninstead. The current version of the node software components. If they are\ncurrently at multiple versions because they're in the process of being\nupgraded, this reflects the minimum version of all nodes.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1271,7 +1275,7 @@
       "enumDescriptions": [],
       "properties": {
         "cluster": {
-          "description": "Required. A [cluster\nresource](https://cloud.google.com/container-engine/reference/rest/v1/projects.zones.clusters)",
+          "description": "Required. A [cluster\nresource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)",
           "$ref": "Cluster"
         },
         "parent": {
@@ -1428,6 +1432,28 @@
             "Secrets in etcd are encrypted.",
             "Secrets in etcd are stored in plain text (at etcd level) - this is\nunrelated to Compute Engine level full disk encryption."
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "DnsCacheConfig": {
+      "id": "DnsCacheConfig",
+      "description": "Configuration for NodeLocal DNSCache",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enabled": {
+          "description": "Whether NodeLocal DNSCache is enabled for this cluster.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -2926,7 +2952,7 @@
     },
     "NodeTaint": {
       "id": "NodeTaint",
-      "description": "Kubernetes taint is comprised of three fields: key, value, and effect. Effect\ncan only be one of three types:  NoSchedule, PreferNoSchedule or NoExecute.\n\nFor more information, including usage and the valid values, see:\nhttps://kubernetes.io/docs/concepts/configuration/taint-and-toleration/",
+      "description": "Kubernetes taint is comprised of three fields: key, value, and effect. Effect\ncan only be one of three types:  NoSchedule, PreferNoSchedule or NoExecute.\n\nSee\n[here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration)\nfor more information, including usage and the valid values.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -3609,7 +3635,7 @@
           }
         },
         "validMasterVersions": {
-          "description": "List of valid master versions.",
+          "description": "List of valid master versions, in descending order.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3627,7 +3653,7 @@
           }
         },
         "validNodeVersions": {
-          "description": "List of valid node upgrade target versions.",
+          "description": "List of valid node upgrade target versions, in descending order.",
           "type": "array",
           "format": null,
           "enum": [],

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("videointelligence1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200423")
+            .version("0.1.0-20200615")
             .about("Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text. Supports both asynchronous API and streaming API.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -51,8 +51,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("sub-resources: locations");
         let mut locations1 = SubCommand::with_name("locations")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: operations");
+            .about("sub-resources: corpura and operations");
         let mut locations2 = SubCommand::with_name("locations")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: operations");
+        let mut corpura2 = SubCommand::with_name("corpura")
             .setting(AppSettings::ColoredHelp)
             .about("sub-resources: operations");
         let mut operations2 = SubCommand::with_name("operations")
@@ -89,8 +92,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
             operations3 = operations3.subcommand(mcmd);
         }
+        let mut operations3 = SubCommand::with_name("operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: get");
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            operations3 = operations3.subcommand(mcmd);
+        }
+        corpura2 = corpura2.subcommand(operations3);
         locations2 = locations2.subcommand(operations3);
         locations1 = locations1.subcommand(operations2);
+        locations1 = locations1.subcommand(corpura2);
         projects1 = projects1.subcommand(locations2);
         projects0 = projects0.subcommand(locations1);
         operations0 = operations0.subcommand(projects1);

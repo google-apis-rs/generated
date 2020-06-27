@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/7c3KYKLrlwx3Kl7VS3SQ1eP9osM\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/mM9QQ9Q-yi6Xw-ieynL_CsfCUJ8\"",
   "discoveryVersion": "v1",
   "id": "content:v2.1",
   "name": "content",
   "canonicalName": "Shopping Content",
   "fullyEncodeReservedExpansion": null,
   "version": "v2.1",
-  "revision": "20200508",
+  "revision": "20200617",
   "title": "Content API for Shopping",
   "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
   "ownerDomain": "google.com",
@@ -5061,6 +5061,18 @@
           "additionalProperties": null,
           "items": null
         },
+        "annotations": {
+          "description": "List of key-value pairs that are attached to a given order.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "OrderOrderAnnotation"
+          }
+        },
         "billingAddress": {
           "description": "The billing address.",
           "$ref": "OrderAddress"
@@ -6017,6 +6029,16 @@
           "description": "Required. Details of the shipping method.",
           "$ref": "OrderLineItemShippingDetailsMethod"
         },
+        "pickupPromiseInMinutes": {
+          "description": "The promised time in minutes in which the order will be ready for pickup. This only applies to buy-online-pickup-in-store same-day order.",
+          "type": "integer",
+          "format": "uint32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "shipByDate": {
           "description": "Required. The ship by date, in ISO 8601 format.",
           "type": "string",
@@ -6125,6 +6147,38 @@
       "additionalProperties": null,
       "items": null
     },
+    "OrderOrderAnnotation": {
+      "id": "OrderOrderAnnotation",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "key": {
+          "description": "Key for additional google provided (as key-value pairs) annotation.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "value": {
+          "description": "Value for additional google provided (as key-value pairs) annotation.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "OrderPickupDetails": {
       "id": "OrderPickupDetails",
       "description": null,
@@ -6151,6 +6205,16 @@
         },
         "locationId": {
           "description": "ID of the pickup location.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pickupType": {
+          "description": "The pickup type of this order.\n\nAcceptable values are:  \n- \"`merchantStore`\" \n- \"`merchantStoreCurbside`\" \n- \"`merchantStoreLocker`\" \n- \"`thirdPartyPickupPoint`\" \n- \"`thirdPartyLocker`\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6204,7 +6268,7 @@
       "enumDescriptions": [],
       "properties": {
         "applicableItems": {
-          "description": "Items which this promotion may be applied to. If empty, there are no restrictions on applicable items and quantity.",
+          "description": "Items that this promotion may be applied to. If empty, there are no restrictions on applicable items and quantity. This field will also be empty for shipping promotions because shipping is not tied to any specific item.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -6216,7 +6280,7 @@
           }
         },
         "appliedItems": {
-          "description": "Items which this promotion have been applied to. Do not provide for `orders.createtestorder`.",
+          "description": "Items that this promotion have been applied to. Do not provide for `orders.createtestorder`. This field will be empty for shipping promotions because shipping is not tied to any specific item.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -6695,6 +6759,10 @@
             "$ref": "OrderShipmentLineItemShipment"
           }
         },
+        "scheduledDeliveryDetails": {
+          "description": "Delivery details of the shipment if scheduling is needed.",
+          "$ref": "OrderShipmentScheduledDeliveryDetails"
+        },
         "shipmentGroupId": {
           "description": "The shipment group ID of the shipment. This is set in shiplineitems request.",
           "type": "string",
@@ -6761,6 +6829,38 @@
           "description": "The quantity that is shipped.",
           "type": "integer",
           "format": "uint32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrderShipmentScheduledDeliveryDetails": {
+      "id": "OrderShipmentScheduledDeliveryDetails",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "carrierPhoneNumber": {
+          "description": "The phone number of the carrier fulfilling the delivery.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "scheduledDate": {
+          "description": "The date a shipment is scheduled for delivery, in ISO 8601 format.",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -7857,6 +7957,88 @@
       "additionalProperties": null,
       "items": null
     },
+    "OrdersCustomBatchRequestEntryRefundItemItem": {
+      "id": "OrdersCustomBatchRequestEntryRefundItemItem",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "amount": {
+          "description": "The total amount that is refunded. (e.g. refunding $5 each for 2 products should be done by setting quantity to 2 and amount to 10$) In case of multiple refunds, this should be the amount you currently want to refund to the customer.",
+          "$ref": "MonetaryAmount"
+        },
+        "fullRefund": {
+          "description": "If true, the full item will be refunded. If this is true, amount should not be provided and will be ignored.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "lineItemId": {
+          "description": "The ID of the line item. Either lineItemId or productId is required.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "productId": {
+          "description": "The ID of the product. This is the REST ID used in the products service. Either lineItemId or productId is required.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "quantity": {
+          "description": "The number of products that are refunded.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrdersCustomBatchRequestEntryRefundItemShipping": {
+      "id": "OrdersCustomBatchRequestEntryRefundItemShipping",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "amount": {
+          "description": "The amount that is refunded. If this is not the first refund for the shipment, this should be the newly refunded amount.",
+          "$ref": "Price"
+        },
+        "fullRefund": {
+          "description": "If set to true, all shipping costs for the order will be refunded. If this is true, amount should not be provided and will be ignored.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo": {
       "id": "OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo",
       "description": null,
@@ -8102,6 +8284,184 @@
           "items": {
             "$ref": "Order"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrdersRefundItemRequest": {
+      "id": "OrdersRefundItemRequest",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "items": {
+          "description": "The items that are refunded. Either Item or Shipping must be provided in the request.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "OrdersCustomBatchRequestEntryRefundItemItem"
+          }
+        },
+        "operationId": {
+          "description": "The ID of the operation. Unique across all operations for a given order.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "reason": {
+          "description": "The reason for the refund.\n\nAcceptable values are:  \n- \"`shippingCostAdjustment`\" \n- \"`priceAdjustment`\" \n- \"`taxAdjustment`\" \n- \"`feeAdjustment`\" \n- \"`courtesyAdjustment`\" \n- \"`adjustment`\" \n- \"`customerCancelled`\" \n- \"`noInventory`\" \n- \"`productNotAsDescribed`\" \n- \"`undeliverableShippingAddress`\" \n- \"`wrongProductShipped`\" \n- \"`lateShipmentCredit`\" \n- \"`deliveredLateByCarrier`\" \n- \"`productArrivedDamaged`\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "reasonText": {
+          "description": "The explanation of the reason.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "shipping": {
+          "description": "The refund on shipping. Optional, but either Item or Shipping must be provided in the request.",
+          "$ref": "OrdersCustomBatchRequestEntryRefundItemShipping"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrdersRefundItemResponse": {
+      "id": "OrdersRefundItemResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "executionStatus": {
+          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersRefundItemResponse\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrdersRefundOrderRequest": {
+      "id": "OrdersRefundOrderRequest",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "amount": {
+          "description": "The amount that is refunded. If this is not the first refund for the order, this should be the newly refunded amount.",
+          "$ref": "MonetaryAmount"
+        },
+        "fullRefund": {
+          "description": "If true, the full order will be refunded, including shipping. If this is true, amount should not be provided and will be ignored.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "operationId": {
+          "description": "The ID of the operation. Unique across all operations for a given order.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "reason": {
+          "description": "The reason for the refund.\n\nAcceptable values are:  \n- \"`courtesyAdjustment`\" \n- \"`other`\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "reasonText": {
+          "description": "The explanation of the reason.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "OrdersRefundOrderResponse": {
+      "id": "OrdersRefundOrderResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "executionStatus": {
+          "description": "The status of the execution.\n\nAcceptable values are:  \n- \"`duplicate`\" \n- \"`executed`\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "kind": {
+          "description": "Identifies what kind of resource this is. Value: the fixed string \"content#ordersRefundOrderResponse\".",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -8683,8 +9043,28 @@
           "additionalProperties": null,
           "items": null
         },
+        "lastPickupDate": {
+          "description": "Date after which the pickup will expire, in ISO 8601 format. Required only when order is buy-online-pickup-in-store(BOPIS) and `status` is `ready for pickup`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "operationId": {
           "description": "The ID of the operation. Unique across all operations for a given order.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "readyPickupDate": {
+          "description": "Date on which the shipment has been ready for pickup, in ISO 8601 format. Optional and can be provided only if `status` is `ready for pickup`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8704,7 +9084,7 @@
           "items": null
         },
         "status": {
-          "description": "New status for the shipment. Not updated if missing.\n\nAcceptable values are:  \n- \"`delivered`\" \n- \"`undeliverable`\"",
+          "description": "New status for the shipment. Not updated if missing.\n\nAcceptable values are:  \n- \"`delivered`\" \n- \"`undeliverable`\" \n- \"`readyForPickup`\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -8715,6 +9095,16 @@
         },
         "trackingId": {
           "description": "The tracking ID for the shipment. Not updated if missing.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "undeliveredDate": {
+          "description": "Date on which the shipment has been undeliverable, in ISO 8601 format. Optional and can be provided only if `status` is `undeliverable`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -9973,6 +10363,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "canonicalLink": {
+          "description": "Link to the canonical version of the landing page.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "channel": {
           "description": "Required. The item's channel (online or local).\n\nAcceptable values are:  \n- \"`local`\" \n- \"`online`\"",
           "type": "string",
@@ -10264,7 +10664,7 @@
           }
         },
         "installment": {
-          "description": "Number and amount of installments to pay for an item. Brazil only.",
+          "description": "Number and amount of installments to pay for an item.",
           "$ref": "Installment"
         },
         "isBundle": {
@@ -10415,6 +10815,36 @@
           "description": "Price of the item.",
           "$ref": "Price"
         },
+        "productDetails": {
+          "description": "Technical specification or additional product details",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "ProductProductDetail"
+          }
+        },
+        "productHighlights": {
+          "description": "List of important bullet points describing the product",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
         "productTypes": {
           "description": "Categories of the item (formatted as in products data specification).",
           "type": "array",
@@ -10561,6 +10991,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "subscriptionCost": {
+          "description": "Number of periods (months or years) and amount of payment per period for an item with an associated subscription contract.",
+          "$ref": "ProductSubscriptionCost"
+        },
         "targetCountry": {
           "description": "Required. The CLDR territory code for the item.",
           "type": "string",
@@ -10644,6 +11078,48 @@
         "taxAmount": {
           "description": "Tax value.",
           "$ref": "Price"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ProductProductDetail": {
+      "id": "ProductProductDetail",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "attributeName": {
+          "description": "The name of the product detail.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "attributeValue": {
+          "description": "The value of the product detail.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sectionName": {
+          "description": "The section header used to group a set of product details.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -10914,7 +11390,7 @@
           "items": null
         },
         "status": {
-          "description": null,
+          "description": "Destination approval status in `targetCountry` of the offer.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -11009,6 +11485,42 @@
           "description": "How this issue affects serving of the offer.",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ProductSubscriptionCost": {
+      "id": "ProductSubscriptionCost",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "amount": {
+          "description": "The amount the buyer has to pay per subscription period.",
+          "$ref": "Price"
+        },
+        "period": {
+          "description": "The type of subscription period.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "periodLength": {
+          "description": "The number of subscription periods the buyer has to pay.",
+          "type": "string",
+          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -12404,7 +12916,7 @@
           "items": null
         },
         "state": {
-          "description": "State of the shipment.\n\nAcceptable values are:  \n- \"`completed`\" \n- \"`new`\" \n- \"`shipped`\" \n- \"`undeliverable`\"",
+          "description": "State of the shipment.\n\nAcceptable values are:  \n- \"`completed`\" \n- \"`new`\" \n- \"`shipped`\" \n- \"`undeliverable`\" \n- \"`pending`\"",
           "type": "string",
           "format": null,
           "enum": [],
@@ -13149,6 +13661,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "orderItemId": {
+          "description": "The identifier of the item.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "settlementEntryId": {
           "description": "The unique ID of the settlement transaction entry.",
           "type": "string",
@@ -13831,6 +14353,10 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "deliveryDetails": {
+          "description": "Overrides the predefined delivery details if provided.",
+          "$ref": "TestOrderDeliveryDetails"
+        },
         "enableOrderinvoices": {
           "description": "Whether the orderinvoices service should support this order.",
           "type": "boolean",
@@ -13872,6 +14398,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "pickupDetails": {
+          "description": "Overrides the predefined pickup details if provided.",
+          "$ref": "TestOrderPickupDetails"
         },
         "predefinedBillingAddress": {
           "description": "Required. The billing address.\n\nAcceptable values are:  \n- \"`dwight`\" \n- \"`jim`\" \n- \"`pam`\"",
@@ -13931,6 +14461,140 @@
         },
         "shippingOption": {
           "description": "Required. The requested shipping option.\n\nAcceptable values are:  \n- \"`economy`\" \n- \"`expedited`\" \n- \"`oneDay`\" \n- \"`sameDay`\" \n- \"`standard`\" \n- \"`twoDay`\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TestOrderAddress": {
+      "id": "TestOrderAddress",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "country": {
+          "description": "CLDR country code (e.g. \"US\").",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "fullAddress": {
+          "description": "Strings representing the lines of the printed label for mailing the order, for example:\nJohn Smith\n1600 Amphitheatre Parkway\nMountain View, CA, 94043\nUnited States",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "isPostOfficeBox": {
+          "description": "Whether the address is a post office box.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "locality": {
+          "description": "City, town or commune. May also include dependent localities or sublocalities (e.g. neighborhoods or suburbs).",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "postalCode": {
+          "description": "Postal Code or ZIP (e.g. \"94043\").",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "recipientName": {
+          "description": "Name of the recipient.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "region": {
+          "description": "Top-level administrative subdivision of the country. For example, a state like California (\"CA\") or a province like Quebec (\"QC\").",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "streetAddress": {
+          "description": "Street-level part of the address.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TestOrderDeliveryDetails": {
+      "id": "TestOrderDeliveryDetails",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "address": {
+          "description": "The delivery address",
+          "$ref": "TestOrderAddress"
+        },
+        "phoneNumber": {
+          "description": "The phone number of the person receiving the delivery.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -14112,6 +14776,86 @@
           "items": {
             "$ref": "OrderLineItemProductVariantAttribute"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TestOrderPickupDetails": {
+      "id": "TestOrderPickupDetails",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "locationCode": {
+          "description": "Required. Code of the location defined by provider or merchant.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pickupLocationAddress": {
+          "description": "Required. Pickup location address.",
+          "$ref": "TestOrderAddress"
+        },
+        "pickupLocationType": {
+          "description": "Pickup location type.\n\nAcceptable values are:  \n- \"`locker`\" \n- \"`store`\" \n- \"`curbside`\"",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "pickupPersons": {
+          "description": "Required. all pickup persons set by users.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "TestOrderPickupDetailsPickupPerson"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "TestOrderPickupDetailsPickupPerson": {
+      "id": "TestOrderPickupDetailsPickupPerson",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "Required. Full name of the pickup person.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "phoneNumber": {
+          "description": "Required. The phone number of the person picking up the items.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -14894,7 +15638,7 @@
           "id": "content.accounts.update",
           "path": "{merchantId}/accounts/{accountId}",
           "httpMethod": "PUT",
-          "description": "Updates a Merchant Center account.",
+          "description": "Updates a Merchant Center account. Any fields that are not provided are deleted from the resource.",
           "parameters": {
             "accountId": {
               "description": "The ID of the account.",
@@ -15264,7 +16008,7 @@
           "id": "content.accounttax.update",
           "path": "{merchantId}/accounttax/{accountId}",
           "httpMethod": "PUT",
-          "description": "Updates the tax settings of the account.",
+          "description": "Updates the tax settings of the account. Any fields that are not provided are deleted from the resource.",
           "parameters": {
             "accountId": {
               "description": "The ID of the account for which to get/update account tax settings.",
@@ -15603,7 +16347,7 @@
           "id": "content.datafeeds.update",
           "path": "{merchantId}/datafeeds/{datafeedId}",
           "httpMethod": "PUT",
-          "description": "Updates a datafeed configuration of your Merchant Center account.",
+          "description": "Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided are deleted from the resource.",
           "parameters": {
             "datafeedId": {
               "description": "The ID of the datafeed.",
@@ -16386,7 +17130,7 @@
           "id": "content.liasettings.update",
           "path": "{merchantId}/liasettings/{accountId}",
           "httpMethod": "PUT",
-          "description": "Updates the LIA settings of the account.",
+          "description": "Updates the LIA settings of the account. Any fields that are not provided are deleted from the resource.",
           "parameters": {
             "accountId": {
               "description": "The ID of the account for which to get or update LIA settings.",
@@ -17745,9 +18489,11 @@
                 "template1a",
                 "template1b",
                 "template2",
-                "template3"
+                "template3",
+                "template4"
               ],
               "enumDescriptions": [
+                "",
                 "",
                 "",
                 "",
@@ -17987,6 +18733,114 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
+        "refunditem": {
+          "id": "content.orders.refunditem",
+          "path": "{merchantId}/orders/{orderId}/refunditem",
+          "httpMethod": "POST",
+          "description": "Issues a partial or total refund for items and shipment.",
+          "parameters": {
+            "merchantId": {
+              "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "uint64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "orderId": {
+              "description": "The ID of the order to refund.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "merchantId",
+            "orderId"
+          ],
+          "request": {
+            "$ref": "OrdersRefundItemRequest"
+          },
+          "response": {
+            "$ref": "OrdersRefundItemResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/content"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "refundorder": {
+          "id": "content.orders.refundorder",
+          "path": "{merchantId}/orders/{orderId}/refundorder",
+          "httpMethod": "POST",
+          "description": "Issues a partial or total refund for an order.",
+          "parameters": {
+            "merchantId": {
+              "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "uint64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "orderId": {
+              "description": "The ID of the order to refund.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "merchantId",
+            "orderId"
+          ],
+          "request": {
+            "$ref": "OrdersRefundOrderRequest"
+          },
+          "response": {
+            "$ref": "OrdersRefundOrderResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/content"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "rejectreturnlineitem": {
           "id": "content.orders.rejectreturnlineitem",
           "path": "{merchantId}/orders/{orderId}/rejectReturnLineItem",
@@ -18045,7 +18899,7 @@
           "id": "content.orders.returnrefundlineitem",
           "path": "{merchantId}/orders/{orderId}/returnRefundLineItem",
           "httpMethod": "POST",
-          "description": "Returns and refunds a line item. Note that this method can only be called on fully shipped orders.",
+          "description": "Returns and refunds a line item. Note that this method can only be called on fully shipped orders. Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this API to issue a refund.",
           "parameters": {
             "merchantId": {
               "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
@@ -20293,7 +21147,7 @@
           "id": "content.shippingsettings.update",
           "path": "{merchantId}/shippingsettings/{accountId}",
           "httpMethod": "PUT",
-          "description": "Updates the shipping settings of the account.",
+          "description": "Updates the shipping settings of the account. Any fields that are not provided are deleted from the resource.",
           "parameters": {
             "accountId": {
               "description": "The ID of the account for which to get/update shipping settings.",

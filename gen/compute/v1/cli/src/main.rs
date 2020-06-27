@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("compute1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200331")
+            .version("0.1.0-20200606")
             .about("Creates and runs virtual machines on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -47,8 +47,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accelerator_types0 = accelerator_types0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves a list of accelerator types available to the specified project.");
+            let mcmd = SubCommand::with_name("list").about("Retrieves a list of accelerator types that are available to the specified project.");
             accelerator_types0 = accelerator_types0.subcommand(mcmd);
         }
         let mut addresses0 = SubCommand::with_name("addresses")
@@ -832,7 +831,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves the list of referrers to instances contained within the specified zone. For more information, read Viewing Referrers to VM Instances.");
+            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed instance group, the referrers list includes the managed instance group. For more information, read Viewing Referrers to VM Instances.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -881,8 +880,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_scheduling")
-                .about("Sets an instance\'s scheduling options.");
+            let mcmd = SubCommand::with_name("set_scheduling").about("Sets an instance\'s scheduling options. You can only call this method on a stopped instance, that is, a VM instance that is in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -1483,7 +1481,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut region_disks0 = SubCommand::with_name("region_disks")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: add_resource_policies, create_snapshot, delete, get, insert, list, remove_resource_policies, resize, set_labels and test_iam_permissions");
+                        .about("methods: add_resource_policies, create_snapshot, delete, get, get_iam_policy, insert, list, remove_resource_policies, resize, set_iam_policy, set_labels and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("add_resource_policies").about("Adds existing resource policies to a regional disk. You can only add one policy which will be applied to this disk for scheduling snapshot creation.");
             region_disks0 = region_disks0.subcommand(mcmd);
@@ -1500,6 +1498,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd =
                 SubCommand::with_name("get").about("Returns a specified regional persistent disk.");
+            region_disks0 = region_disks0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. May be empty if no such policy or resource exists.");
             region_disks0 = region_disks0.subcommand(mcmd);
         }
         {
@@ -1523,6 +1525,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             region_disks0 = region_disks0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            region_disks0 = region_disks0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("set_labels")
                 .about("Sets the labels on the target regional disk.");
             region_disks0 = region_disks0.subcommand(mcmd);
@@ -1531,6 +1537,32 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("test_iam_permissions")
                 .about("Returns permissions that a caller has on the specified resource.");
             region_disks0 = region_disks0.subcommand(mcmd);
+        }
+        let mut region_health_check_services0 =
+            SubCommand::with_name("region_health_check_services")
+                .setting(AppSettings::ColoredHelp)
+                .about("methods: delete, get, insert, list and patch");
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the specified regional HealthCheckService.");
+            region_health_check_services0 = region_health_check_services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified regional HealthCheckService resource.");
+            region_health_check_services0 = region_health_check_services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a regional HealthCheckService resource in the specified project and region using the data included in the request.");
+            region_health_check_services0 = region_health_check_services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists all the HealthCheckService resources that have been configured for the specified project in the given region.");
+            region_health_check_services0 = region_health_check_services0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates the specified regional HealthCheckService resource with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.");
+            region_health_check_services0 = region_health_check_services0.subcommand(mcmd);
         }
         let mut region_health_checks0 = SubCommand::with_name("region_health_checks")
             .setting(AppSettings::ColoredHelp)
@@ -1647,6 +1679,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("set_named_ports")
                 .about("Sets the named ports for the specified regional instance group.");
             region_instance_groups0 = region_instance_groups0.subcommand(mcmd);
+        }
+        let mut region_notification_endpoints0 =
+            SubCommand::with_name("region_notification_endpoints")
+                .setting(AppSettings::ColoredHelp)
+                .about("methods: delete, get, insert and list");
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the specified NotificationEndpoint in the given region");
+            region_notification_endpoints0 = region_notification_endpoints0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified NotificationEndpoint resource in the given region.");
+            region_notification_endpoints0 = region_notification_endpoints0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Create a NotificationEndpoint in the specified project in the given region using the parameters that are included in the request.");
+            region_notification_endpoints0 = region_notification_endpoints0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the NotificationEndpoints for a project in the given region.");
+            region_notification_endpoints0 = region_notification_endpoints0.subcommand(mcmd);
         }
         let mut region_operations0 = SubCommand::with_name("region_operations")
             .setting(AppSettings::ColoredHelp)
@@ -2557,9 +2612,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(region_target_http_proxies0);
         app = app.subcommand(region_ssl_certificates0);
         app = app.subcommand(region_operations0);
+        app = app.subcommand(region_notification_endpoints0);
         app = app.subcommand(region_instance_groups0);
         app = app.subcommand(region_instance_group_managers0);
         app = app.subcommand(region_health_checks0);
+        app = app.subcommand(region_health_check_services0);
         app = app.subcommand(region_disks0);
         app = app.subcommand(region_disk_types0);
         app = app.subcommand(region_commitments0);

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Build",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200506",
+  "revision": "20200619",
   "title": "Cloud Build API",
   "description": "Creates and manages builds on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -557,7 +557,7 @@
           }
         },
         "timeout": {
-          "description": "Amount of time that this build should be allowed to run, to second\ngranularity. If this amount of time elapses, work on the build will cease\nand the build status will be `TIMEOUT`.\n\nDefault time is ten minutes.",
+          "description": "Amount of time that this build should be allowed to run, to second\ngranularity. If this amount of time elapses, work on the build will cease\nand the build status will be `TIMEOUT`.\n\n`timeout` starts ticking from `startTime`.\n\nDefault time is ten minutes.",
           "type": "string",
           "format": "google-duration",
           "enum": [],
@@ -617,6 +617,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "dynamicSubstitutions": {
+          "description": "Option to specify whether or not to apply bash style string\noperations to the substitutions.\n\nNOTE: this is always enabled for triggered builds and cannot be\noverridden in the build configuration file.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "env": {
           "description": "A list of global environment variable definitions that will exist for all\nbuild steps in this build. If a variable is defined in both globally and in\na build step, the variable will use the build step value.\n\nThe elements are of the form \"KEY=VALUE\" for the environment variable \"KEY\"\nbeing given the value \"VALUE\".",
           "type": "array",
@@ -654,18 +664,22 @@
           "items": null
         },
         "logging": {
-          "description": "Option to specify the logging mode, which determines where the logs are\nstored.",
+          "description": "Option to specify the logging mode, which determines if and where build\nlogs are stored.",
           "type": "string",
           "format": null,
           "enum": [
             "LOGGING_UNSPECIFIED",
             "LEGACY",
-            "GCS_ONLY"
+            "GCS_ONLY",
+            "STACKDRIVER_ONLY",
+            "NONE"
           ],
           "enumDescriptions": [
             "The service determines the logging mode. The default is `LEGACY`. Do not\nrely on the default logging behavior as it may change in the future.",
-            "Stackdriver logging and Cloud Storage logging are enabled.",
-            "Only Cloud Storage logging is enabled."
+            "Cloud Logging (Stackdriver) and Cloud Storage logging are enabled.",
+            "Only Cloud Storage logging is enabled.",
+            "Only Cloud Logging (Stackdriver) is enabled. Note that logs for both the\nCloud Console UI and Cloud SDK are based on Cloud Storage logs, so\nneither will provide logs if this option is chosen.",
+            "Turn off all logging. No build logs will be captured."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -750,7 +764,7 @@
           }
         },
         "substitutionOption": {
-          "description": "Option to specify behavior when there is an error in the substitution\nchecks.",
+          "description": "Option to specify behavior when there is an error in the substitution\nchecks.\n\nNOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot\nbe overridden in the build configuration file.",
           "type": "string",
           "format": null,
           "enum": [
@@ -1510,7 +1524,7 @@
           "items": null
         },
         "commentControl": {
-          "description": "Configure builds to run only when a repository owner or collaborator\ncomments `/gcbrun`.",
+          "description": "Configure builds to run whether a repository owner or collaborator need to\ncomment `/gcbrun`.",
           "type": "string",
           "format": null,
           "enum": [
@@ -2482,6 +2496,171 @@
               "mediaUpload": null
             }
           }
+        },
+        "locations": {
+          "resources": {
+            "operations": {
+              "resources": {},
+              "methods": {
+                "cancel": {
+                  "id": "cloudbuild.projects.locations.operations.cancel",
+                  "path": "v1/{+name}:cancel",
+                  "httpMethod": "POST",
+                  "description": "Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn't support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource to be cancelled.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": {
+                    "$ref": "CancelOperationRequest"
+                  },
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "get": {
+                  "id": "cloudbuild.projects.locations.operations.get",
+                  "path": "v1/{+name}",
+                  "httpMethod": "GET",
+                  "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the operation resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "cloudbuild.projects.locations.operations.list",
+                  "path": "v1/{+name}/operations",
+                  "httpMethod": "GET",
+                  "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+                  "parameters": {
+                    "filter": {
+                      "description": "The standard list filter.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "name": {
+                      "description": "The name of the operation's parent resource.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "The standard list page size.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "The standard list page token.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "ListOperationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
         },
         "triggers": {
           "resources": {},

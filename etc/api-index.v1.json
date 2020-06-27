@@ -413,13 +413,12 @@
       "id": "androidpublisher:v3",
       "name": "androidpublisher",
       "version": "v3",
-      "title": "Google Play Developer API",
-      "description": "Accesses Android application developers' Google Play accounts.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v3/rest",
-      "discoveryLink": "./apis/androidpublisher/v3/rest",
+      "title": "Google Play Android Developer API",
+      "description": "Lets Android application developers access their Google Play accounts.",
+      "discoveryRestUrl": "https://www.googleapis.com/$discovery/rest?version=v3",
       "icons": {
-        "x16": "https://www.google.com/images/icons/product/android-16.png",
-        "x32": "https://www.google.com/images/icons/product/android-32.png"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://developers.google.com/android-publisher",
       "preferred": true
@@ -430,7 +429,7 @@
       "name": "apigee",
       "version": "v1",
       "title": "Apigee API",
-      "description": "The Apigee API lets you programmatically manage Apigee hybrid with a set of RESTful operations, including: - Create, edit, and delete API proxies - Manage users - Deploy and undeploy proxy revisions - Configure environments For information on using the APIs described in this section, see Get started using the APIs \u003c/hybrid/api-get-started\u003e. *Note:* This product is available as a free trial for a time period of 60 days.",
+      "description": "The Apigee API lets you programmatically manage Apigee hybrid with a set of RESTful operations, including: - Create, edit, and delete API proxies - Manage users - Deploy and undeploy proxy revisions - Configure environments For information on using the APIs described in this section, see Get started using the APIs \u003cdocs.apigee.com/hybrid/latest/api-get-started\u003e. *Note:* This product is available as a free trial for a time period of 60 days.",
       "discoveryRestUrl": "https://apigee.googleapis.com/$discovery/rest?version=v1",
       "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
@@ -528,6 +527,21 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://developers.google.com/google-apps/activity/",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
+      "id": "artifactregistry:v1beta1",
+      "name": "artifactregistry",
+      "version": "v1beta1",
+      "title": "Artifact Registry API",
+      "description": "Store and manage build artifacts in a scalable and integrated service built on Google infrastructure.",
+      "discoveryRestUrl": "https://artifactregistry.googleapis.com/$discovery/rest?version=v1beta1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://cloud.google.com/artifacts/docs/",
       "preferred": true
     },
     {
@@ -701,18 +715,14 @@
       "id": "blogger:v2",
       "name": "blogger",
       "version": "v2",
-      "title": "Blogger API",
-      "description": "API for access to the data within Blogger.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/blogger/v2/rest",
-      "discoveryLink": "./apis/blogger/v2/rest",
+      "title": "Blogger API v3",
+      "description": "The Blogger API provides access to posts, comments and pages of a Blogger blog.",
+      "discoveryRestUrl": "https://blogger.googleapis.com/$discovery/rest?version=v2",
       "icons": {
-        "x16": "https://www.google.com/images/icons/product/blogger-16.png",
-        "x32": "https://www.google.com/images/icons/product/blogger-32.png"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
-      "documentationLink": "https://developers.google.com/blogger/docs/2.0/json/getting_started",
-      "labels": [
-        "limited_availability"
-      ],
+      "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
       "preferred": false
     },
     {
@@ -720,18 +730,14 @@
       "id": "blogger:v3",
       "name": "blogger",
       "version": "v3",
-      "title": "Blogger API",
-      "description": "API for access to the data within Blogger.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/blogger/v3/rest",
-      "discoveryLink": "./apis/blogger/v3/rest",
+      "title": "Blogger API v3",
+      "description": "The Blogger API provides access to posts, comments and pages of a Blogger blog.",
+      "discoveryRestUrl": "https://blogger.googleapis.com/$discovery/rest?version=v3",
       "icons": {
-        "x16": "https://www.google.com/images/icons/product/blogger-16.png",
-        "x32": "https://www.google.com/images/icons/product/blogger-32.png"
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://developers.google.com/blogger/docs/3.0/getting_started",
-      "labels": [
-        "limited_availability"
-      ],
       "preferred": true
     },
     {
@@ -783,18 +789,32 @@
     },
     {
       "kind": "discovery#directoryItem",
+      "id": "chromeuxreport:v1",
+      "name": "chromeuxreport",
+      "version": "v1",
+      "title": "Chrome UX Report API",
+      "description": "The Chrome UX Report API lets you view real user experience data for millions of websites.",
+      "discoveryRestUrl": "https://chromeuxreport.googleapis.com/$discovery/rest?version=v1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://developers.google.com/web/tools/chrome-user-experience-report/api/reference",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
       "id": "civicinfo:v2",
       "name": "civicinfo",
       "version": "v2",
       "title": "Google Civic Information API",
       "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/civicinfo/v2/rest",
-      "discoveryLink": "./apis/civicinfo/v2/rest",
+      "discoveryRestUrl": "https://civicinfo.googleapis.com/$discovery/rest?version=v2",
       "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
-      "documentationLink": "https://developers.google.com/civic-information",
+      "documentationLink": "https://developers.google.com/civic-information/",
       "preferred": true
     },
     {
@@ -1479,22 +1499,6 @@
     },
     {
       "kind": "discovery#directoryItem",
-      "id": "customsearch:v1",
-      "name": "customsearch",
-      "version": "v1",
-      "title": "CustomSearch API",
-      "description": "Searches over a website or collection of websites",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/customsearch/v1/rest",
-      "discoveryLink": "./apis/customsearch/v1/rest",
-      "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
-      },
-      "documentationLink": "https://developers.google.com/custom-search/v1/using_rest",
-      "preferred": true
-    },
-    {
-      "kind": "discovery#directoryItem",
       "id": "datacatalog:v1beta1",
       "name": "datacatalog",
       "version": "v1beta1",
@@ -2085,6 +2089,21 @@
     },
     {
       "kind": "discovery#directoryItem",
+      "id": "firebaseml:v1",
+      "name": "firebaseml",
+      "version": "v1",
+      "title": "Firebase ML API",
+      "description": "Access custom machine learning models hosted via Firebase ML.",
+      "discoveryRestUrl": "https://firebaseml.googleapis.com/$discovery/rest?version=v1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://firebase.google.com",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
       "id": "firebaseml:v1beta2",
       "name": "firebaseml",
       "version": "v1beta2",
@@ -2096,7 +2115,7 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://firebase.google.com",
-      "preferred": true
+      "preferred": false
     },
     {
       "kind": "discovery#directoryItem",
@@ -2396,7 +2415,7 @@
       "name": "iamcredentials",
       "version": "v1",
       "title": "IAM Service Account Credentials API",
-      "description": "Creates short-lived, limited-privilege credentials for IAM service accounts.",
+      "description": "Creates short-lived credentials for impersonating IAM service accounts.",
       "discoveryRestUrl": "https://iamcredentials.googleapis.com/$discovery/rest?version=v1",
       "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
@@ -2798,6 +2817,21 @@
     },
     {
       "kind": "discovery#directoryItem",
+      "id": "networkmanagement:v1",
+      "name": "networkmanagement",
+      "version": "v1",
+      "title": "Network Management API",
+      "description": "The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.",
+      "discoveryRestUrl": "https://networkmanagement.googleapis.com/$discovery/rest?version=v1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://cloud.google.com/",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
       "id": "networkmanagement:v1beta1",
       "name": "networkmanagement",
       "version": "v1beta1",
@@ -2809,7 +2843,7 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://cloud.google.com/",
-      "preferred": true
+      "preferred": false
     },
     {
       "kind": "discovery#directoryItem",
@@ -2919,54 +2953,6 @@
     },
     {
       "kind": "discovery#directoryItem",
-      "id": "pagespeedonline:v1",
-      "name": "pagespeedonline",
-      "version": "v1",
-      "title": "PageSpeed Insights API",
-      "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v1/rest",
-      "discoveryLink": "./apis/pagespeedonline/v1/rest",
-      "icons": {
-        "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
-        "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
-      },
-      "documentationLink": "https://developers.google.com/speed/docs/insights/v1/getting_started",
-      "preferred": false
-    },
-    {
-      "kind": "discovery#directoryItem",
-      "id": "pagespeedonline:v2",
-      "name": "pagespeedonline",
-      "version": "v2",
-      "title": "PageSpeed Insights API",
-      "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v2/rest",
-      "discoveryLink": "./apis/pagespeedonline/v2/rest",
-      "icons": {
-        "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
-        "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
-      },
-      "documentationLink": "https://developers.google.com/speed/docs/insights/v2/getting-started",
-      "preferred": false
-    },
-    {
-      "kind": "discovery#directoryItem",
-      "id": "pagespeedonline:v4",
-      "name": "pagespeedonline",
-      "version": "v4",
-      "title": "PageSpeed Insights API",
-      "description": "Analyzes the performance of a web page and provides tailored suggestions to make that page faster.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v4/rest",
-      "discoveryLink": "./apis/pagespeedonline/v4/rest",
-      "icons": {
-        "x16": "https://www.google.com/images/icons/product/pagespeed-16.png",
-        "x32": "https://www.google.com/images/icons/product/pagespeed-32.png"
-      },
-      "documentationLink": "https://developers.google.com/speed/docs/insights/v4/getting-started",
-      "preferred": false
-    },
-    {
-      "kind": "discovery#directoryItem",
       "id": "pagespeedonline:v5",
       "name": "pagespeedonline",
       "version": "v5",
@@ -2994,6 +2980,21 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://developers.google.com/people/",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
+      "id": "playablelocations:v3",
+      "name": "playablelocations",
+      "version": "v3",
+      "title": "Playable Locations API",
+      "description": "",
+      "discoveryRestUrl": "https://playablelocations.googleapis.com/$discovery/rest?version=v3",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://developers.google.com/maps/contact-sales/",
       "preferred": true
     },
     {
@@ -3135,6 +3136,36 @@
     },
     {
       "kind": "discovery#directoryItem",
+      "id": "realtimebidding:v1",
+      "name": "realtimebidding",
+      "version": "v1",
+      "title": "Real-time Bidding API",
+      "description": "Allows external bidders to manage their RTB integration with Google. This includes managing bidder endpoints, QPS quotas, configuring what ad inventory to receive via pretargeting, submitting creatives for verification, and accessing creative metadata such as approval status.",
+      "discoveryRestUrl": "https://realtimebidding.googleapis.com/$discovery/rest?version=v1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://developers.google.com/authorized-buyers/apis/realtimebidding/reference/rest/",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
+      "id": "recommender:v1",
+      "name": "recommender",
+      "version": "v1",
+      "title": "Recommender API",
+      "description": "",
+      "discoveryRestUrl": "https://recommender.googleapis.com/$discovery/rest?version=v1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://cloud.google.com/recommender/docs/",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
       "id": "recommender:v1beta1",
       "name": "recommender",
       "version": "v1beta1",
@@ -3146,7 +3177,7 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://cloud.google.com/recommender/docs/",
-      "preferred": true
+      "preferred": false
     },
     {
       "kind": "discovery#directoryItem",
@@ -3247,7 +3278,7 @@
       "id": "run:v1alpha1",
       "name": "run",
       "version": "v1alpha1",
-      "title": "Cloud Run API",
+      "title": "Cloud Run Admin API",
       "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
       "discoveryRestUrl": "https://run.googleapis.com/$discovery/rest?version=v1alpha1",
       "icons": {
@@ -3262,7 +3293,7 @@
       "id": "run:v1",
       "name": "run",
       "version": "v1",
-      "title": "Cloud Run API",
+      "title": "Cloud Run Admin API",
       "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
       "discoveryRestUrl": "https://run.googleapis.com/$discovery/rest?version=v1",
       "icons": {
@@ -3277,7 +3308,7 @@
       "id": "run:v1beta1",
       "name": "run",
       "version": "v1beta1",
-      "title": "Cloud Run API",
+      "title": "Cloud Run Admin API",
       "description": "Deploy and manage user provided container images that scale automatically based on HTTP traffic.",
       "discoveryRestUrl": "https://run.googleapis.com/$discovery/rest?version=v1beta1",
       "icons": {
@@ -3323,7 +3354,7 @@
       "name": "safebrowsing",
       "version": "v4",
       "title": "Safe Browsing API",
-      "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources.",
+      "description": "Enables client applications to check web resources (most commonly URLs) against Google-generated lists of unsafe web resources. The Safe Browsing APIs are for non-commercial use only. If you need to use APIs to detect malicious URLs for commercial purposes – meaning “for sale or revenue-generating purposes” – please refer to the Web Risk API.",
       "discoveryRestUrl": "https://safebrowsing.googleapis.com/$discovery/rest?version=v4",
       "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
@@ -3740,22 +3771,6 @@
     },
     {
       "kind": "discovery#directoryItem",
-      "id": "sqladmin:v1beta4",
-      "name": "sqladmin",
-      "version": "v1beta4",
-      "title": "Cloud SQL Admin API",
-      "description": "Creates and manages Cloud SQL instances, which provide fully managed MySQL or PostgreSQL databases.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/sqladmin/v1beta4/rest",
-      "discoveryLink": "./apis/sqladmin/v1beta4/rest",
-      "icons": {
-        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
-      },
-      "documentationLink": "https://cloud.google.com/sql/docs/reference/latest",
-      "preferred": true
-    },
-    {
-      "kind": "discovery#directoryItem",
       "id": "storage:v1",
       "name": "storage",
       "version": "v1",
@@ -3921,9 +3936,8 @@
       "name": "toolresults",
       "version": "v1beta3",
       "title": "Cloud Tool Results API",
-      "description": "Reads and publishes results from Firebase Test Lab.",
-      "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/toolresults/v1beta3/rest",
-      "discoveryLink": "./apis/toolresults/v1beta3/rest",
+      "description": "API to publish and access results from developer tools.",
+      "discoveryRestUrl": "https://www.googleapis.com/$discovery/rest?version=v1beta3",
       "icons": {
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
@@ -3959,6 +3973,21 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://cloud.google.com/tpu/",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
+      "id": "trafficdirector:v2",
+      "name": "trafficdirector",
+      "version": "v2",
+      "title": "Traffic Director API",
+      "description": "",
+      "discoveryRestUrl": "https://trafficdirector.googleapis.com/$discovery/rest?version=v2",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://www.envoyproxy.io/docs/envoy/latest/configuration/overview/v2_overview#management-server",
       "preferred": true
     },
     {
@@ -4019,6 +4048,21 @@
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
       "documentationLink": "https://developers.google.com/vault",
+      "preferred": true
+    },
+    {
+      "kind": "discovery#directoryItem",
+      "id": "vectortile:v1",
+      "name": "vectortile",
+      "version": "v1",
+      "title": "Semantic Tile API",
+      "description": "Serves vector tiles containing geospatial data.",
+      "discoveryRestUrl": "https://vectortile.googleapis.com/$discovery/rest?version=v1",
+      "icons": {
+        "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+        "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+      },
+      "documentationLink": "https://developers.google.com/maps/contact-sales/",
       "preferred": true
     },
     {
@@ -4200,7 +4244,7 @@
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
-      "documentationLink": "https://cloud.google.com/security-scanner/",
+      "documentationLink": "https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/",
       "preferred": false
     },
     {
@@ -4215,7 +4259,7 @@
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
-      "documentationLink": "https://cloud.google.com/security-scanner/",
+      "documentationLink": "https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/",
       "preferred": false
     },
     {
@@ -4230,7 +4274,7 @@
         "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
         "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
       },
-      "documentationLink": "https://cloud.google.com/security-scanner/",
+      "documentationLink": "https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/",
       "preferred": true
     },
     {

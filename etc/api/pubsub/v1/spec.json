@@ -7,7 +7,7 @@
   "canonicalName": "Pubsub",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200505",
+  "revision": "20200616",
   "title": "Cloud Pub/Sub API",
   "description": "Provides reliable, many-to-many, asynchronous messaging between applications.\n",
   "ownerDomain": "google.com",
@@ -357,6 +357,17 @@
       "additionalProperties": null,
       "items": null
     },
+    "DetachSubscriptionResponse": {
+      "id": "DetachSubscriptionResponse",
+      "description": "Response for the DetachSubscription method.\nReserved for future use.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
     "Empty": {
       "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
@@ -569,7 +580,7 @@
           "items": null
         },
         "subscriptions": {
-          "description": "The names of the subscriptions that match the request.",
+          "description": "The names of subscriptions attached to the topic specified in the request.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -626,7 +637,7 @@
     },
     "MessageStoragePolicy": {
       "id": "MessageStoragePolicy",
-      "description": null,
+      "description": "A policy constraining the storage of messages published to the topic.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -849,7 +860,7 @@
       "enumDescriptions": [],
       "properties": {
         "attributes": {
-          "description": "Attributes for this message. If this field is empty, the message must\ncontain non-empty data.",
+          "description": "Attributes for this message. If this field is empty, the message must\ncontain non-empty data. This can be used to filter messages on the\nsubscription.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1038,6 +1049,38 @@
       "additionalProperties": null,
       "items": null
     },
+    "RetryPolicy": {
+      "id": "RetryPolicy",
+      "description": "A policy that specifies how Cloud Pub/Sub retries message delivery.\n\nRetry delay will be exponential based on provided minimum and maximum\nbackoffs. https://en.wikipedia.org/wiki/Exponential_backoff.\n\nRetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded\nevents for a given message.\n\nRetry Policy is implemented on a best effort basis. At times, the delay\nbetween consecutive deliveries may not match the configuration. That is,\ndelay can be more or less than configured backoff.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "maximumBackoff": {
+          "description": "The maximum delay between consecutive deliveries of a given message.\nValue should be between 0 and 600 seconds. Defaults to 600 seconds.",
+          "type": "string",
+          "format": "google-duration",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "minimumBackoff": {
+          "description": "The minimum delay between consecutive deliveries of a given message.\nValue should be between 0 and 600 seconds. Defaults to 10 seconds.",
+          "type": "string",
+          "format": "google-duration",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "SeekRequest": {
       "id": "SeekRequest",
       "description": "Request for the `Seek` method.",
@@ -1185,7 +1228,7 @@
           "$ref": "ExpirationPolicy"
         },
         "filter": {
-          "description": "An expression written in the Cloud Pub/Sub filter language. If non-empty,\nthen only `PubsubMessage`s whose `attributes` field matches the filter are\ndelivered on this subscription. If empty, then no messages are filtered\nout.\n<b>EXPERIMENTAL:</b> This feature is part of a closed alpha release. This\nAPI might be changed in backward-incompatible ways and is not recommended\nfor production use. It is not subject to any SLA or deprecation policy.",
+          "description": "An expression written in the Pub/Sub [filter\nlanguage](https://cloud.google.com/pubsub/docs/filtering). If non-empty,\nthen only `PubsubMessage`s whose `attributes` field matches the filter are\ndelivered on this subscription. If empty, then no messages are filtered\nout.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1246,6 +1289,10 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "retryPolicy": {
+          "description": "A policy that specifies how Pub/Sub retries message delivery for this\nsubscription.\n\nIf not set, the default retry policy is applied. This generally implies\nthat messages will be retried as soon as possible for healthy subscribers.\nRetryPolicy will be triggered on NACKs or acknowledgement deadline\nexceeded events for a given message.",
+          "$ref": "RetryPolicy"
         },
         "topic": {
           "description": "Required. The name of the topic from which this subscription is receiving messages.\nFormat is `projects/{project}/topics/{topic}`.\nThe value of this field will be `_deleted-topic_` if the topic has been\ndeleted.",
@@ -1938,6 +1985,44 @@
               "supportsMediaUpload": false,
               "mediaUpload": null
             },
+            "detach": {
+              "id": "pubsub.projects.subscriptions.detach",
+              "path": "v1/{+subscription}:detach",
+              "httpMethod": "POST",
+              "description": "Detaches a subscription from this topic. All messages retained in the\nsubscription are dropped. Subsequent `Pull` and `StreamingPull` requests\nwill return FAILED_PRECONDITION. If the subscription is a push\nsubscription, pushes to the endpoint will stop.",
+              "parameters": {
+                "subscription": {
+                  "description": "Required. The subscription to detach.\nFormat is `projects/{project}/subscriptions/{subscription}`.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^projects/[^/]+/subscriptions/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "subscription"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "DetachSubscriptionResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/pubsub"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
             "get": {
               "id": "pubsub.projects.subscriptions.get",
               "path": "v1/{+subscription}",
@@ -2456,7 +2541,7 @@
                   "id": "pubsub.projects.topics.subscriptions.list",
                   "path": "v1/{+topic}/subscriptions",
                   "httpMethod": "GET",
-                  "description": "Lists the names of the subscriptions on this topic.",
+                  "description": "Lists the names of the attached subscriptions on this topic.",
                   "parameters": {
                     "pageSize": {
                       "description": "Maximum number of subscription names to return.",

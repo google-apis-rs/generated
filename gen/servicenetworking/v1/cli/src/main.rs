@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("servicenetworking1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200509")
+            .version("0.1.0-20200624")
             .about("Provides automatic management of network configurations necessary for certain services.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -93,6 +93,32 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Updates the allocated ranges that are assigned to a connection.");
             connections1 = connections1.subcommand(mcmd);
         }
+        let mut dns_record_sets1 = SubCommand::with_name("dns_record_sets")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: add, remove and update");
+        {
+            let mcmd = SubCommand::with_name("add").about("Service producers can use this method to add DNS record sets to private DNS\nzones in the shared producer host project.");
+            dns_record_sets1 = dns_record_sets1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("remove").about("Service producers can use this method to remove DNS record sets from\nprivate DNS zones in the shared producer host project.");
+            dns_record_sets1 = dns_record_sets1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("update").about("Service producers can use this method to update DNS record sets from\nprivate DNS zones in the shared producer host project.");
+            dns_record_sets1 = dns_record_sets1.subcommand(mcmd);
+        }
+        let mut dns_zones1 = SubCommand::with_name("dns_zones")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: add and remove");
+        {
+            let mcmd = SubCommand::with_name("add").about("Service producers can use this method to add private DNS zones in the\nshared producer host project and matching peering zones in the consumer\nproject.");
+            dns_zones1 = dns_zones1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("remove").about("Service producers can use this method to remove private DNS zones in the\nshared producer host project and matching peering zones in the consumer\nproject.");
+            dns_zones1 = dns_zones1.subcommand(mcmd);
+        }
         let mut roles1 = SubCommand::with_name("roles")
             .setting(AppSettings::ColoredHelp)
             .about("methods: add");
@@ -101,6 +127,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             roles1 = roles1.subcommand(mcmd);
         }
         services0 = services0.subcommand(roles1);
+        services0 = services0.subcommand(dns_zones1);
+        services0 = services0.subcommand(dns_record_sets1);
         services0 = services0.subcommand(connections1);
         app = app.subcommand(services0);
         app = app.subcommand(operations0);

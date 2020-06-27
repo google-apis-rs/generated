@@ -7,7 +7,7 @@
   "canonicalName": "Display Video",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200512",
+  "revision": "20200623",
   "title": "Display & Video 360 API",
   "description": "Display & Video 360 API allows users to manage and create campaigns and reports.",
   "ownerDomain": "google.com",
@@ -494,6 +494,10 @@
           "additionalProperties": null,
           "items": null
         },
+        "servingConfig": {
+          "description": "Targeting settings related to ad serving of the advertiser.",
+          "$ref": "AdvertiserTargetingConfig"
+        },
         "updateTime": {
           "description": "Output only. The timestamp when the advertiser was last updated. Assigned by the system.",
           "type": "string",
@@ -659,6 +663,28 @@
         "sdfConfig": {
           "description": "The SDF configuration for the advertiser.\n\n* Required when\noverridePartnerSdfConfig\nis `true`.\n* Output only when\noverridePartnerSdfConfig\nis `false`.",
           "$ref": "SdfConfig"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AdvertiserTargetingConfig": {
+      "id": "AdvertiserTargetingConfig",
+      "description": "Targeting settings related to ad serving of an advertiser.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "exemptTvFromViewabilityTargeting": {
+          "description": "Whether or not connected TV devices are exempt from viewability targeting\nfor all video line items under the advertiser.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -954,9 +980,93 @@
       "additionalProperties": null,
       "items": null
     },
+    "AssignedInventorySource": {
+      "id": "AssignedInventorySource",
+      "description": "An assignment between a targetable inventory source and an inventory source\ngroup.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedInventorySourceId": {
+          "description": "Output only. The unique ID of the assigned inventory source. The ID is only\nunique within a given inventory source group. It may be reused in other\ncontexts.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "inventorySourceId": {
+          "description": "Required. The ID of the inventory source entity being targeted.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Output only. The resource name of the assigned inventory source.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "AssignedLocation": {
+      "id": "AssignedLocation",
+      "description": "An assignment between a location list and a relevant targeting option.\nCurrently, geo region targeting options are the only supported option for\nassignment.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedLocationId": {
+          "description": "Output only. The unique ID of the assigned location. The ID is only unique within a\nlocation list. It may be reused in other contexts.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Output only. The resource name of the assigned location.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "targetingOptionId": {
+          "description": "Required. The ID of the targeting option assigned to the location list. Must be of\ntype TARGETING_TYPE_GEO_REGION.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "AssignedTargetingOption": {
       "id": "AssignedTargetingOption",
-      "description": "A single assigned targeting option, which defines the state of a targeting\noption for an entity with targeting settings, such as a Line Item or\nInsertion Order.",
+      "description": "A single assigned targeting option, which defines the state of a targeting\noption for an entity with targeting settings.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1171,7 +1281,6 @@
             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
             "TARGETING_TYPE_GEO_REGION",
             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-            "TARGETING_TYPE_PROXIMITY_LOCATION",
             "TARGETING_TYPE_EXCHANGE",
             "TARGETING_TYPE_SUB_EXCHANGE"
           ],
@@ -1212,7 +1321,6 @@
             "Target ads to ads.txt authorized sellers.",
             "Target ads to a specific regional location (for example, a city or state).",
             "Purchase impressions from a group of deals and auction packages.",
-            "Target ads to business chains, individual points of interests (POIs),\nstreet addresses, and latitude/longitude coordinates.",
             "Purchase impressions from specific exchanges.",
             "Purchase impressions from specific sub-exchanges."
           ],
@@ -1478,6 +1586,218 @@
       "additionalProperties": null,
       "items": null
     },
+    "BulkEditAdvertiserAssignedTargetingOptionsRequest": {
+      "id": "BulkEditAdvertiserAssignedTargetingOptionsRequest",
+      "description": "Request message for\nBulkEditAdvertiserAssignedTargetingOptions.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "createRequests": {
+          "description": "The assigned targeting options to create in batch, specified as a list of\n`CreateAssignedTargetingOptionsRequest`.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "CreateAssignedTargetingOptionsRequest"
+          }
+        },
+        "deleteRequests": {
+          "description": "The assigned targeting options to delete in batch, specified as a list of\n`DeleteAssignedTargetingOptionsRequest`.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "DeleteAssignedTargetingOptionsRequest"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditAdvertiserAssignedTargetingOptionsResponse": {
+      "id": "BulkEditAdvertiserAssignedTargetingOptionsResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "createdAssignedTargetingOptions": {
+          "description": "The list of assigned targeting options that have been successfully created.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedTargetingOption"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditAssignedInventorySourcesRequest": {
+      "id": "BulkEditAssignedInventorySourcesRequest",
+      "description": "Request message for AssignedInventorySourceService.BulkEdit.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "advertiserId": {
+          "description": "The ID of the advertiser that owns the parent inventory source group.\n\nThe parent partner does not have access to these assigned inventory\nsources.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "createdAssignedInventorySources": {
+          "description": "The assigned inventory sources to create in bulk, specified as a list of\nAssignedInventorySources.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedInventorySource"
+          }
+        },
+        "deletedAssignedInventorySources": {
+          "description": "The IDs of the assigned inventory sources to delete in bulk, specified as a\nlist of\nassigned_inventory_source_ids.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "partnerId": {
+          "description": "The ID of the partner that owns the inventory source group.\n\nOnly this partner has write access to these assigned inventory sources.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditAssignedInventorySourcesResponse": {
+      "id": "BulkEditAssignedInventorySourcesResponse",
+      "description": "Response message for AssignedInventorySourceService.BulkEdit.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedInventorySources": {
+          "description": "The list of assigned inventory sources that have been successfully created.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedInventorySource"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditAssignedLocationsRequest": {
+      "id": "BulkEditAssignedLocationsRequest",
+      "description": "Request message for AssignedLocationService.BulkEditAssignedLocations.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "createdAssignedLocations": {
+          "description": "The assigned locations to create in bulk, specified as a list of\nAssignedLocations.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedLocation"
+          }
+        },
+        "deletedAssignedLocations": {
+          "description": "The IDs of the assigned locations to delete in bulk, specified as a list of\nassigned_location_ids.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditAssignedLocationsResponse": {
+      "id": "BulkEditAssignedLocationsResponse",
+      "description": "Response message for AssignedLocationService.BulkEditAssignedLocations.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedLocations": {
+          "description": "The list of assigned locations that have been successfully created.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedLocation"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "BulkEditLineItemAssignedTargetingOptionsRequest": {
       "id": "BulkEditLineItemAssignedTargetingOptionsRequest",
       "description": "Request message for\nBulkEditLineItemAssignedTargetingOptions.",
@@ -1533,6 +1853,192 @@
           "items": {
             "$ref": "AssignedTargetingOption"
           }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditNegativeKeywordsRequest": {
+      "id": "BulkEditNegativeKeywordsRequest",
+      "description": "Request message for NegativeKeywordService.BulkEditNegativeKeywords.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "createdNegativeKeywords": {
+          "description": "The negative keywords to create in batch, specified as a list of\nNegativeKeywords.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "NegativeKeyword"
+          }
+        },
+        "deletedNegativeKeywords": {
+          "description": "The negative keywords to delete in batch, specified as a list of\nkeyword_values.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditNegativeKeywordsResponse": {
+      "id": "BulkEditNegativeKeywordsResponse",
+      "description": "Response message for NegativeKeywordService.BulkEditNegativeKeywords.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "negativeKeywords": {
+          "description": "The list of negative keywords that have been successfully created.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "NegativeKeyword"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditSitesRequest": {
+      "id": "BulkEditSitesRequest",
+      "description": "Request message for SiteService.BulkEditSites.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "advertiserId": {
+          "description": "The ID of the advertiser that owns the parent channel.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "createdSites": {
+          "description": "The sites to create in batch, specified as a list of Sites.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Site"
+          }
+        },
+        "deletedSites": {
+          "description": "The sites to delete in batch, specified as a list of site\nurl_or_app_ids.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "partnerId": {
+          "description": "The ID of the partner that owns the parent channel.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkEditSitesResponse": {
+      "id": "BulkEditSitesResponse",
+      "description": "Response message for SiteService.BulkEditSites.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "sites": {
+          "description": "The list of sites that have been successfully created.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Site"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "BulkListAdvertiserAssignedTargetingOptionsResponse": {
+      "id": "BulkListAdvertiserAssignedTargetingOptionsResponse",
+      "description": null,
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedTargetingOptions": {
+          "description": "The list of assigned targeting options.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedTargetingOption"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token identifying the next page of results. This value should be\nspecified as the\npageToken\nin a subsequent BulkListAdvertiserAssignedTargetingOptionsRequest to\nfetch the next page of results. This token will be absent if there are no\nmore\nassigned_targeting_options\nto return.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -2505,7 +3011,6 @@
             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
             "TARGETING_TYPE_GEO_REGION",
             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-            "TARGETING_TYPE_PROXIMITY_LOCATION",
             "TARGETING_TYPE_EXCHANGE",
             "TARGETING_TYPE_SUB_EXCHANGE"
           ],
@@ -2546,7 +3051,6 @@
             "Target ads to ads.txt authorized sellers.",
             "Target ads to a specific regional location (for example, a city or state).",
             "Purchase impressions from a group of deals and auction packages.",
-            "Target ads to business chains, individual points of interests (POIs),\nstreet addresses, and latitude/longitude coordinates.",
             "Purchase impressions from specific exchanges.",
             "Purchase impressions from specific sub-exchanges."
           ],
@@ -2983,6 +3487,24 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "lineItemIds": {
+          "description": "Output only. The IDs of the line items this creative is associated with.\n\nTo associate a creative to a line item, use\nLineItem.creative_ids instead.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": "int64",
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         },
         "mediaDuration": {
           "description": "Output only. Media duration of the creative.\nApplicable when creative_type\nis one of:\n\n* `CREATIVE_TYPE_VIDEO`\n* `CREATIVE_TYPE_AUDIO`\n* `CREATIVE_TYPE_NATIVE_VIDEO`\n* `CREATIVE_TYPE_PUBLISHER_HOSTED`",
@@ -3529,7 +4051,6 @@
             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
             "TARGETING_TYPE_GEO_REGION",
             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-            "TARGETING_TYPE_PROXIMITY_LOCATION",
             "TARGETING_TYPE_EXCHANGE",
             "TARGETING_TYPE_SUB_EXCHANGE"
           ],
@@ -3570,7 +4091,6 @@
             "Target ads to ads.txt authorized sellers.",
             "Target ads to a specific regional location (for example, a city or state).",
             "Purchase impressions from a group of deals and auction packages.",
-            "Target ads to business chains, individual points of interests (POIs),\nstreet addresses, and latitude/longitude coordinates.",
             "Purchase impressions from specific exchanges.",
             "Purchase impressions from specific sub-exchanges."
           ],
@@ -4452,6 +4972,9 @@
             "EXCHANGE_UNITED",
             "EXCHANGE_YIELDLAB",
             "EXCHANGE_YIELDMO",
+            "EXCHANGE_UNRULYX",
+            "EXCHANGE_OPEN8",
+            "EXCHANGE_TRITON",
             "EXCHANGE_TRIPLELIFT",
             "EXCHANGE_TABOOLA",
             "EXCHANGE_INMOBI",
@@ -4511,6 +5034,9 @@
             "United.",
             "Yieldlab.",
             "Yieldmo.",
+            "UnrulyX",
+            "Open8",
+            "Triton.",
             "TripleLift",
             "Taboola",
             "InMobi.",
@@ -4610,6 +5136,9 @@
             "EXCHANGE_UNITED",
             "EXCHANGE_YIELDLAB",
             "EXCHANGE_YIELDMO",
+            "EXCHANGE_UNRULYX",
+            "EXCHANGE_OPEN8",
+            "EXCHANGE_TRITON",
             "EXCHANGE_TRIPLELIFT",
             "EXCHANGE_TABOOLA",
             "EXCHANGE_INMOBI",
@@ -4669,6 +5198,9 @@
             "United.",
             "Yieldlab.",
             "Yieldmo.",
+            "UnrulyX",
+            "Open8",
+            "Triton.",
             "TripleLift",
             "Taboola",
             "InMobi.",
@@ -4753,6 +5285,122 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "activeDisplayAudienceSize": {
+          "description": "Output only. The estimated audience size for the Display network in the past month.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "audienceSource": {
+          "description": "Output only. The source of the audience.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "AUDIENCE_SOURCE_UNSPECIFIED",
+            "DISPLAY_VIDEO_360",
+            "CAMPAIGN_MANAGER",
+            "AD_MANAGER",
+            "SEARCH_ADS_360",
+            "YOUTUBE",
+            "ADS_DATA_HUB"
+          ],
+          "enumDescriptions": [
+            "Default value when audience source is not specified or is unknown.",
+            "Originated from Display & Video 360.",
+            "Originated from Campaign Manager.",
+            "Originated from Google Ad Manager.",
+            "Originated from Search Ads 360.",
+            "Originated from Youtube.",
+            "Originated from Ads Data Hub."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "audienceType": {
+          "description": "Output only. The type of the audience.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "AUDIENCE_TYPE_UNSPECIFIED",
+            "CUSTOMER_MATCH_CONTACT_INFO",
+            "CUSTOMER_MATCH_DEVICE_ID",
+            "CUSTOMER_MATCH_USER_ID",
+            "ACTIVITY_BASED",
+            "FREQUENCY_CAP",
+            "TAG_BASED",
+            "YOUTUBE_USERS",
+            "LICENSED"
+          ],
+          "enumDescriptions": [
+            "Default value when type is not specified or is unknown.",
+            "Audience was generated through matching customers to known contact\ninformation.",
+            "Audience was generated through matching customers to known Mobile device\nIDs.",
+            "Audience was generated through matching customers to known User IDs.",
+            "Audience was created based on campaign activity.",
+            "Audience was created based on excluding the number of impressions they\nwere served.",
+            "Audience was created based on custom variables attached to pixel.",
+            "Audience was created based on past interactions with videos, TrueView\nads, or YouTube channel.",
+            "Subtype of third party audience type."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "description": {
+          "description": "Output only. The description of the first and third party audience.\n\nOnly applicable to first party audiences.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayAudienceSize": {
+          "description": "Output only. The estimated audience size for the Display network.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayDesktopAudienceSize": {
+          "description": "Output only. The estimated desktop audience size in Display network.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly applicable to first party audiences.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayMobileAppAudienceSize": {
+          "description": "Output only. The estimated mobile app audience size in Display network.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly applicable to first party audiences.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "displayMobileWebAudienceSize": {
+          "description": "Output only. The estimated mobile web audience size in Display network.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly applicable to first party audiences.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "displayName": {
           "description": "Output only. The display name of the first and third party audience.\n.",
           "type": "string",
@@ -4791,10 +5439,40 @@
           "additionalProperties": null,
           "items": null
         },
+        "gmailAudienceSize": {
+          "description": "Output only. The estimated audience size for Gmail network.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly applicable to first party audiences.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "membershipDurationDays": {
+          "description": "Output only. The duration in days that an entry remains in the audience after the\nqualifying event.\n\nOnly applicable to first party audiences.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "name": {
           "description": "Output only. The resource name of the first and third party audience.",
           "type": "string",
           "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "youtubeAudienceSize": {
+          "description": "Output only. The estimated audience size for YouTube network.\n\nIf the size is less than 1000, the number will be hidden and 0 will be\nreturned due to privacy reasons. Otherwise, the number will be rounded off\nto two significant digits.\n\nOnly applicable to first party audiences.\n\nOnly returned in GET request.",
+          "type": "string",
+          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -6379,6 +7057,9 @@
             "EXCHANGE_UNITED",
             "EXCHANGE_YIELDLAB",
             "EXCHANGE_YIELDMO",
+            "EXCHANGE_UNRULYX",
+            "EXCHANGE_OPEN8",
+            "EXCHANGE_TRITON",
             "EXCHANGE_TRIPLELIFT",
             "EXCHANGE_TABOOLA",
             "EXCHANGE_INMOBI",
@@ -6438,6 +7119,9 @@
             "United.",
             "Yieldlab.",
             "Yieldmo.",
+            "UnrulyX",
+            "Open8",
+            "Triton.",
             "TripleLift",
             "Taboola",
             "InMobi.",
@@ -7178,6 +7862,40 @@
       "additionalProperties": null,
       "items": null
     },
+    "ListAdvertiserAssignedTargetingOptionsResponse": {
+      "id": "ListAdvertiserAssignedTargetingOptionsResponse",
+      "description": "Response message for\nListAdvertiserAssignedTargetingOptions.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedTargetingOptions": {
+          "description": "The list of assigned targeting options.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedTargetingOption"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token identifying the next page of results. This value should be\nspecified as the\npageToken in a\nsubsequent ListAdvertiserAssignedTargetingOptionsRequest to fetch the\nnext page of results. This token will be absent if there are no more\nassigned_targeting_options\nto return.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ListAdvertisersResponse": {
       "id": "ListAdvertisersResponse",
       "description": null,
@@ -7200,6 +7918,74 @@
         },
         "nextPageToken": {
           "description": "A token to retrieve the next page of results.\nPass this value in the\npage_token\nfield in the subsequent call to `ListAdvertisers` method to retrieve the\nnext page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ListAssignedInventorySourcesResponse": {
+      "id": "ListAssignedInventorySourcesResponse",
+      "description": "Response message for\nAssignedInventorySourceService.ListAssignedInventorySources.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedInventorySources": {
+          "description": "The list of assigned inventory sources.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedInventorySource"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results.\n\nPass this value in the\npage_token field\nin the subsequent call to `ListAssignedInventorySources` method to\nretrieve the next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ListAssignedLocationsResponse": {
+      "id": "ListAssignedLocationsResponse",
+      "description": "Response message for\nAssignedLocationService.ListAssignedLocations.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "assignedLocations": {
+          "description": "The list of assigned locations.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "AssignedLocation"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results.\n\nPass this value in the\npage_token field\nin the subsequent call to `ListAssignedLocations` method to\nretrieve the next page of results.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7688,6 +8474,74 @@
       "additionalProperties": null,
       "items": null
     },
+    "ListNegativeKeywordsResponse": {
+      "id": "ListNegativeKeywordsResponse",
+      "description": "Response message for NegativeKeywordService.ListNegativeKeywords.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "negativeKeywords": {
+          "description": "The list of negative keywords.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "NegativeKeyword"
+          }
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results.\n\nPass this value in the page_token\nfield in the subsequent call to `ListNegativeKeywords` method to retrieve\nthe next page of results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ListSitesResponse": {
+      "id": "ListSitesResponse",
+      "description": "Response message for SiteService.ListSites.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "A token to retrieve the next page of results.\n\nPass this value in the page_token field\nin the subsequent call to `ListSites` method to retrieve the next page\nof results.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sites": {
+          "description": "The list of sites.\n\nThis list will be absent if empty.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Site"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ListTargetingOptionsResponse": {
       "id": "ListTargetingOptionsResponse",
       "description": "Response message for\nListTargetingOptions.",
@@ -7904,6 +8758,38 @@
           "description": "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
           "type": "string",
           "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NegativeKeyword": {
+      "id": "NegativeKeyword",
+      "description": "A negatively targeted keyword that belongs to a negative keyword list.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "keywordValue": {
+          "description": "Required. Immutable. The negatively targeted keyword, for example `car insurance`.\n\nMust be UTF-8 encoded with a maximum size of 255 bytes. Maximum number\nof characters is 80. Maximum number of words is 10.\n\nValid characters are restricted to ASCII characters only. The only\nURL-escaping permitted is for representing whitespace between words.\nLeading or trailing whitespace is ignored.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "name": {
+          "description": "Output only. The resource name of the negative keyword.",
+          "type": "string",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -9366,6 +10252,38 @@
       "additionalProperties": null,
       "items": null
     },
+    "Site": {
+      "id": "Site",
+      "description": "A single site. Sites are apps or websites belonging to a channel.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "Output only. The resource name of the site.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "urlOrAppId": {
+          "description": "Required. The URL or app ID of the site.\nMust be UTF-8 encoded with a maximum length of 240 bytes.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Status": {
       "id": "Status",
       "description": "The `Status` type defines a logical error model that is suitable for\ndifferent programming environments, including REST APIs and RPC APIs. It is\nused by [gRPC](https://github.com/grpc). Each `Status` message contains\nthree pieces of data: error code, error message, and error details.\n\nYou can find out more about this error model and how to work with it in the\n[API Design Guide](https://cloud.google.com/apis/design/errors).",
@@ -9626,7 +10544,6 @@
             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
             "TARGETING_TYPE_GEO_REGION",
             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-            "TARGETING_TYPE_PROXIMITY_LOCATION",
             "TARGETING_TYPE_EXCHANGE",
             "TARGETING_TYPE_SUB_EXCHANGE"
           ],
@@ -9667,7 +10584,6 @@
             "Target ads to ads.txt authorized sellers.",
             "Target ads to a specific regional location (for example, a city or state).",
             "Purchase impressions from a group of deals and auction packages.",
-            "Target ads to business chains, individual points of interests (POIs),\nstreet addresses, and latitude/longitude coordinates.",
             "Purchase impressions from specific exchanges.",
             "Purchase impressions from specific sub-exchanges."
           ],
@@ -10699,13 +11615,397 @@
           }
         },
         "channels": {
-          "resources": {},
+          "resources": {
+            "sites": {
+              "resources": {},
+              "methods": {
+                "bulkEdit": {
+                  "id": "displayvideo.advertisers.channels.sites.bulkEdit",
+                  "path": "v1/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit",
+                  "httpMethod": "POST",
+                  "description": "Bulk edits sites under a single channel.\n\nThe operation will delete the sites provided in\nBulkEditSitesRequest.deleted_sites and then create the sites\nprovided in BulkEditSitesRequest.created_sites.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel to which the sites belong.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "channelId"
+                  ],
+                  "request": {
+                    "$ref": "BulkEditSitesRequest"
+                  },
+                  "response": {
+                    "$ref": "BulkEditSitesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "create": {
+                  "id": "displayvideo.advertisers.channels.sites.create",
+                  "path": "v1/advertisers/{advertiserId}/channels/{+channelId}/sites",
+                  "httpMethod": "POST",
+                  "description": "Creates a site in a channel.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel in which the site will be created.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "channelId"
+                  ],
+                  "request": {
+                    "$ref": "Site"
+                  },
+                  "response": {
+                    "$ref": "Site"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "displayvideo.advertisers.channels.sites.delete",
+                  "path": "v1/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a site from a channel.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel to which the site belongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "urlOrAppId": {
+                      "description": "Required. The URL or app ID of the site to delete.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "channelId",
+                    "urlOrAppId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "displayvideo.advertisers.channels.sites.list",
+                  "path": "v1/advertisers/{+advertiserId}/channels/{+channelId}/sites",
+                  "httpMethod": "GET",
+                  "description": "Lists sites in a channel.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel to which the requested sites belong.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "filter": {
+                      "description": "Allows filtering by site fields.\n\nSupported syntax:\n\n* Filter expressions for site currently can only contain at most one\n* restriction.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `CONTAINS (:)`.\n* Supported fields:\n    - `urlOrAppId`\n\nExamples:\n\n* All sites for which the URL or app ID contains \"google\":\n`urlOrAppId : \"google\"`",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "orderBy": {
+                      "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `urlOrAppId` (default)\n\nThe default sorting order is ascending. To specify descending order for a\nfield, a suffix \" desc\" should be added to the field name. Example:\n`urlOrAppId desc`.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "Requested page size. Must be between `1` and `100`. If unspecified will\ndefault to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value\nis specified.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A token identifying a page of results the server should return.\n\nTypically, this is the value of\nnext_page_token returned from the\nprevious call to `ListSites` method. If not specified, the first page\nof results will be returned.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "channelId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "ListSitesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
           "methods": {
+            "create": {
+              "id": "displayvideo.advertisers.channels.create",
+              "path": "v1/advertisers/{+advertiserId}/channels",
+              "httpMethod": "POST",
+              "description": "Creates a new channel. Returns the newly created channel if successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that owns the created channel.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that owns the created channel.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId"
+              ],
+              "request": {
+                "$ref": "Channel"
+              },
+              "response": {
+                "$ref": "Channel"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
             "get": {
               "id": "displayvideo.advertisers.channels.get",
               "path": "v1/advertisers/{+advertiserId}/channels/{+channelId}",
               "httpMethod": "GET",
-              "description": "Gets a channel for a partner or advertiser.",
+              "description": "Updates an existing inventory source.\nReturns the updated inventory source if successful.\nGets a channel for a partner or advertiser.",
               "parameters": {
                 "advertiserId": {
                   "description": "The ID of the advertiser that owns the fetched channel.",
@@ -10864,6 +12164,88 @@
               "request": null,
               "response": {
                 "$ref": "ListChannelsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "displayvideo.advertisers.channels.patch",
+              "path": "v1/advertisers/{+advertiserId}/channels/{channelId}",
+              "httpMethod": "PATCH",
+              "description": "Updates a channel. Returns the updated channel if successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that owns the created channel.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "channelId": {
+                  "description": "Output only. The unique ID of the channel. Assigned by the system.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that owns the created channel.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Required. The mask to control which fields to update.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId",
+                "channelId"
+              ],
+              "request": {
+                "$ref": "Channel"
+              },
+              "response": {
+                "$ref": "Channel"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/display-video"
@@ -11043,7 +12425,7 @@
                   "repeated": false
                 },
                 "filter": {
-                  "description": "Allows filtering by creative properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restriction for the same field must be combined by `OR`.\n* Restriction for different fields must be combined by `AND`.\n* Between `(` and `)` there can only be restrictions combined by `OR`\nfor the same field.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `entityStatus`\n    - `creativeType`.\n    - `dimensions`\n    - `minDuration`\n    - `maxDuration`\n    - `approvalStatus`\n    - `exchangeReviewStatus`\n    - `dynamic`\n* For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may\nbe at most one restriction.\n* For `dimensions`, the value is in the form of `\"{width}x{height}\"`.\n* For `exchangeReviewStatus`, the value is in the form of\n`{exchange}-{reviewStatus}`.\n* For `minDuration` and `maxDuration`, the value is in the form of\n`\"{duration}s\"`. Only seconds are supported with millisecond granularity.\n\nExamples:\n\n* All native creatives: `creativeType=\"CREATIVE_TYPE_NATIVE\"`\n* All active creatives with 300x400 or 50x100 dimensions:\n`entityStatus=\"ENTITY_STATUS_ACTIVE\" AND (dimensions=\"300x400\"\nOR dimensions=\"50x100\")`\n* All dynamic creatives that are approved by AdX or\nAppNexus, with a minimum duration of 5 seconds and 200ms.\n`dynamic=\"true\" AND minDuration=\"5.2s\" AND\n(exchangeReviewStatus=\"EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED\"\nOR exchangeReviewStatus=\"EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED\")`\n\nThe length of this field should be no more than 500 characters.",
+                  "description": "Allows filtering by creative properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restriction for the same field must be combined by `OR`.\n* Restriction for different fields must be combined by `AND`.\n* Between `(` and `)` there can only be restrictions combined by `OR`\nfor the same field.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)` for the following fields:\n    - `entityStatus`\n    - `creativeType`.\n    - `dimensions`\n    - `minDuration`\n    - `maxDuration`\n    - `approvalStatus`\n    - `exchangeReviewStatus`\n    - `dynamic`\n    - `creativeId`\n* The operator must be `HAS (:)` for the following fields:\n    - `lineItemIds`\n* For `entityStatus`, `minDuration`, `maxDuration`, and `dynamic` there may\nbe at most one restriction.\n* For `dimensions`, the value is in the form of `\"{width}x{height}\"`.\n* For `exchangeReviewStatus`, the value is in the form of\n`{exchange}-{reviewStatus}`.\n* For `minDuration` and `maxDuration`, the value is in the form of\n`\"{duration}s\"`. Only seconds are supported with millisecond granularity.\n* There may be multiple `lineItemIds` restrictions in order to search\nagainst multiple possible line item IDs.\n* There may be multiple `creativeId` restrictions in order to search\nagainst multiple possible creative IDs.\n\nExamples:\n\n* All native creatives: `creativeType=\"CREATIVE_TYPE_NATIVE\"`\n* All active creatives with 300x400 or 50x100 dimensions:\n`entityStatus=\"ENTITY_STATUS_ACTIVE\" AND (dimensions=\"300x400\"\nOR dimensions=\"50x100\")`\n* All dynamic creatives that are approved by AdX or\nAppNexus, with a minimum duration of 5 seconds and 200ms.\n`dynamic=\"true\" AND minDuration=\"5.2s\" AND\n(exchangeReviewStatus=\"EXCHANGE_GOOGLE_AD_MANAGER-REVIEW_STATUS_APPROVED\"\nOR exchangeReviewStatus=\"EXCHANGE_APPNEXUS-REVIEW_STATUS_APPROVED\")`\n* All video creatives that are associated with line item ID 1 or 2:\n`creativeType=\"CREATIVE_TYPE_VIDEO\" AND (lineItemIds:1 OR lineItemIds:2)`\n* Find creatives by multiple creative IDs:\n`creativeId=1 OR creativeId=2`\n\nThe length of this field should be no more than 500 characters.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -11582,7 +12964,6 @@
                             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
                             "TARGETING_TYPE_GEO_REGION",
                             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-                            "TARGETING_TYPE_PROXIMITY_LOCATION",
                             "TARGETING_TYPE_EXCHANGE",
                             "TARGETING_TYPE_SUB_EXCHANGE"
                           ],
@@ -11705,7 +13086,6 @@
                             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
                             "TARGETING_TYPE_GEO_REGION",
                             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-                            "TARGETING_TYPE_PROXIMITY_LOCATION",
                             "TARGETING_TYPE_EXCHANGE",
                             "TARGETING_TYPE_SUB_EXCHANGE"
                           ],
@@ -11827,7 +13207,6 @@
                             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
                             "TARGETING_TYPE_GEO_REGION",
                             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-                            "TARGETING_TYPE_PROXIMITY_LOCATION",
                             "TARGETING_TYPE_EXCHANGE",
                             "TARGETING_TYPE_SUB_EXCHANGE"
                           ],
@@ -11991,7 +13370,6 @@
                             "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
                             "TARGETING_TYPE_GEO_REGION",
                             "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-                            "TARGETING_TYPE_PROXIMITY_LOCATION",
                             "TARGETING_TYPE_EXCHANGE",
                             "TARGETING_TYPE_SUB_EXCHANGE"
                           ],
@@ -12493,8 +13871,336 @@
           }
         },
         "locationLists": {
-          "resources": {},
+          "resources": {
+            "assignedLocations": {
+              "resources": {},
+              "methods": {
+                "bulkEdit": {
+                  "id": "displayvideo.advertisers.locationLists.assignedLocations.bulkEdit",
+                  "path": "v1/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit",
+                  "httpMethod": "POST",
+                  "description": "Bulk edits multiple assignments between locations and a single location\nlist.\n\nThe operation will delete the assigned locations provided in\nBulkEditAssignedLocationsRequest.deleted_assigned_locations and then\ncreate the assigned locations provided in\nBulkEditAssignedLocationsRequest.created_assigned_locations.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the location list belongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "locationListId": {
+                      "description": "Required. The ID of the location list to which these assignments are assigned.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "locationListId"
+                  ],
+                  "request": {
+                    "$ref": "BulkEditAssignedLocationsRequest"
+                  },
+                  "response": {
+                    "$ref": "BulkEditAssignedLocationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "create": {
+                  "id": "displayvideo.advertisers.locationLists.assignedLocations.create",
+                  "path": "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
+                  "httpMethod": "POST",
+                  "description": "Creates an assignment between a location and a location list.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the location list belongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "locationListId": {
+                      "description": "Required. The ID of the location list for which the assignment will be created.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "locationListId"
+                  ],
+                  "request": {
+                    "$ref": "AssignedLocation"
+                  },
+                  "response": {
+                    "$ref": "AssignedLocation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "displayvideo.advertisers.locationLists.assignedLocations.delete",
+                  "path": "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes the assignment between a location and a location list.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the location list belongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "assignedLocationId": {
+                      "description": "Required. The ID of the assigned location to delete.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "locationListId": {
+                      "description": "Required. The ID of the location list to which this assignment is assigned.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "locationListId",
+                    "assignedLocationId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "displayvideo.advertisers.locationLists.assignedLocations.list",
+                  "path": "v1/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations",
+                  "httpMethod": "GET",
+                  "description": "Lists locations assigned to a location list.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the location list belongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "filter": {
+                      "description": "Allows filtering by location list assignment fields.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by the logical operator `OR`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `assignedLocationId`\n\nThe length of this field should be no more than 500 characters.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "locationListId": {
+                      "description": "Required. The ID of the location list to which these assignments are assigned.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "orderBy": {
+                      "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `assignedLocationId` (default)\n\nThe default sorting order is ascending. To specify descending order for a\nfield, a suffix \" desc\" should be added to the field name. Example:\n`assignedLocationId desc`.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "Requested page size. Must be between `1` and `100`. If unspecified will\ndefault to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value\nis specified.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A token identifying a page of results the server should return.\n\nTypically, this is the value of\nnext_page_token\nreturned from the previous call to `ListAssignedLocations`\nmethod. If not specified, the first page of results will be returned.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "locationListId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "ListAssignedLocationsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
           "methods": {
+            "create": {
+              "id": "displayvideo.advertisers.locationLists.create",
+              "path": "v1/advertisers/{+advertiserId}/locationLists",
+              "httpMethod": "POST",
+              "description": "Creates a new location list. Returns the newly created location list if\nsuccessful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "Required. The ID of the DV360 advertiser to which the location list belongs.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId"
+              ],
+              "request": {
+                "$ref": "LocationList"
+              },
+              "response": {
+                "$ref": "LocationList"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
             "get": {
               "id": "displayvideo.advertisers.locationLists.get",
               "path": "v1/advertisers/{+advertiserId}/locationLists/{+locationListId}",
@@ -12639,12 +14345,460 @@
               "supportsSubscription": false,
               "supportsMediaUpload": false,
               "mediaUpload": null
+            },
+            "patch": {
+              "id": "displayvideo.advertisers.locationLists.patch",
+              "path": "v1/advertisers/{+advertiserId}/locationLists/{locationListId}",
+              "httpMethod": "PATCH",
+              "description": "Updates a location list. Returns the updated location list if successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "Required. The ID of the DV360 advertiser to which the location lists belongs.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "locationListId": {
+                  "description": "Output only. The unique ID of the location list. Assigned by the system.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Required. The mask to control which fields to update.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId",
+                "locationListId"
+              ],
+              "request": {
+                "$ref": "LocationList"
+              },
+              "response": {
+                "$ref": "LocationList"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
             }
           }
         },
         "negativeKeywordLists": {
-          "resources": {},
+          "resources": {
+            "negativeKeywords": {
+              "resources": {},
+              "methods": {
+                "bulkEdit": {
+                  "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.bulkEdit",
+                  "path": "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit",
+                  "httpMethod": "POST",
+                  "description": "Bulk edits negative keywords in a single negative keyword list.\n\nThe operation will delete the negative keywords provided in\nBulkEditNegativeKeywordsRequest.deleted_negative_keywords and then\ncreate the negative keywords provided in\nBulkEditNegativeKeywordsRequest.created_negative_keywords.\n\nThis operation is guaranteed to be atomic and will never result in a\npartial success or partial failure.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the parent negative keyword list\nbelongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "negativeKeywordListId": {
+                      "description": "Required. The ID of the parent negative keyword list to which the negative keywords\nbelong.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "negativeKeywordListId"
+                  ],
+                  "request": {
+                    "$ref": "BulkEditNegativeKeywordsRequest"
+                  },
+                  "response": {
+                    "$ref": "BulkEditNegativeKeywordsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "create": {
+                  "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.create",
+                  "path": "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
+                  "httpMethod": "POST",
+                  "description": "Creates a negative keyword in a negative keyword list.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the parent negative keyword list\nbelongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "negativeKeywordListId": {
+                      "description": "Required. The ID of the parent negative keyword list in which the negative keyword\nwill be created.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "negativeKeywordListId"
+                  ],
+                  "request": {
+                    "$ref": "NegativeKeyword"
+                  },
+                  "response": {
+                    "$ref": "NegativeKeyword"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.delete",
+                  "path": "v1/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a negative keyword from a negative keyword list.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the parent negative keyword list\nbelongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "keywordValue": {
+                      "description": "Required. The keyword value of the negative keyword to delete.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "negativeKeywordListId": {
+                      "description": "Required. The ID of the parent negative keyword list to which the negative keyword\nbelongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "negativeKeywordListId",
+                    "keywordValue"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "displayvideo.advertisers.negativeKeywordLists.negativeKeywords.list",
+                  "path": "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords",
+                  "httpMethod": "GET",
+                  "description": "Lists negative keywords in a negative keyword list.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the DV360 advertiser to which the parent negative keyword list\nbelongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "filter": {
+                      "description": "Allows filtering by negative keyword fields.\n\nSupported syntax:\n\n* Filter expressions for negative keyword currently can only contain at\nmost one\n* restriction.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `CONTAINS (:)`.\n* Supported fields:\n    - `keywordValue`\n\nExamples:\n\n* All negative keywords for which the keyword value contains \"google\":\n`keywordValue : \"google\"`",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "negativeKeywordListId": {
+                      "description": "Required. The ID of the parent negative keyword list to which the requested negative\nkeywords belong.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "orderBy": {
+                      "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `keywordValue` (default)\n\nThe default sorting order is ascending. To specify descending order for a\nfield, a suffix \" desc\" should be added to the field name. Example:\n`keywordValue desc`.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "Requested page size. Must be between `1` and `100`. If unspecified will\ndefault to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value\nis specified.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A token identifying a page of results the server should return.\n\nTypically, this is the value of\nnext_page_token returned\nfrom the previous call to `ListNegativeKeywords` method. If not specified,\nthe first page of results will be returned.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "negativeKeywordListId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "ListNegativeKeywordsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
           "methods": {
+            "create": {
+              "id": "displayvideo.advertisers.negativeKeywordLists.create",
+              "path": "v1/advertisers/{+advertiserId}/negativeKeywordLists",
+              "httpMethod": "POST",
+              "description": "Creates a new negative keyword list. Returns the newly created negative\nkeyword list if successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "Required. The ID of the DV360 advertiser to which the negative keyword list will\nbelong.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId"
+              ],
+              "request": {
+                "$ref": "NegativeKeywordList"
+              },
+              "response": {
+                "$ref": "NegativeKeywordList"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "displayvideo.advertisers.negativeKeywordLists.delete",
+              "path": "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
+              "httpMethod": "DELETE",
+              "description": "Deletes a negative keyword list given an advertiser ID and a negative\nkeyword list ID.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "Required. The ID of the DV360 advertiser to which the negative keyword list belongs.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "negativeKeywordListId": {
+                  "description": "Required. The ID of the negative keyword list to delete.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId",
+                "negativeKeywordListId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "Empty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
             "get": {
               "id": "displayvideo.advertisers.negativeKeywordLists.get",
               "path": "v1/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}",
@@ -12761,11 +14915,673 @@
               "supportsSubscription": false,
               "supportsMediaUpload": false,
               "mediaUpload": null
+            },
+            "patch": {
+              "id": "displayvideo.advertisers.negativeKeywordLists.patch",
+              "path": "v1/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}",
+              "httpMethod": "PATCH",
+              "description": "Updates a negative keyword list. Returns the updated negative keyword list\nif successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "Required. The ID of the DV360 advertiser to which the negative keyword list belongs.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "negativeKeywordListId": {
+                  "description": "Output only. The unique ID of the negative keyword list. Assigned by the system.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Required. The mask to control which fields to update.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "advertiserId",
+                "negativeKeywordListId"
+              ],
+              "request": {
+                "$ref": "NegativeKeywordList"
+              },
+              "response": {
+                "$ref": "NegativeKeywordList"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
             }
           }
+        },
+        "targetingTypes": {
+          "resources": {
+            "assignedTargetingOptions": {
+              "resources": {},
+              "methods": {
+                "create": {
+                  "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.create",
+                  "path": "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                  "httpMethod": "POST",
+                  "description": "Assigns a targeting option to an advertiser.\nReturns the assigned targeting option if successful.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the advertiser.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "targetingType": {
+                      "description": "Required. Identifies the type of this assigned targeting option.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [
+                        "TARGETING_TYPE_UNSPECIFIED",
+                        "TARGETING_TYPE_CHANNEL",
+                        "TARGETING_TYPE_APP_CATEGORY",
+                        "TARGETING_TYPE_APP",
+                        "TARGETING_TYPE_URL",
+                        "TARGETING_TYPE_DAY_AND_TIME",
+                        "TARGETING_TYPE_AGE_RANGE",
+                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                        "TARGETING_TYPE_GENDER",
+                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                        "TARGETING_TYPE_PARENTAL_STATUS",
+                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                        "TARGETING_TYPE_DEVICE_TYPE",
+                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                        "TARGETING_TYPE_BROWSER",
+                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                        "TARGETING_TYPE_ENVIRONMENT",
+                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                        "TARGETING_TYPE_KEYWORD",
+                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                        "TARGETING_TYPE_VIEWABILITY",
+                        "TARGETING_TYPE_CATEGORY",
+                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                        "TARGETING_TYPE_LANGUAGE",
+                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                        "TARGETING_TYPE_GEO_REGION",
+                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                        "TARGETING_TYPE_EXCHANGE",
+                        "TARGETING_TYPE_SUB_EXCHANGE"
+                      ],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "targetingType"
+                  ],
+                  "request": {
+                    "$ref": "AssignedTargetingOption"
+                  },
+                  "response": {
+                    "$ref": "AssignedTargetingOption"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.delete",
+                  "path": "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes an assigned targeting option from an advertiser.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the advertiser.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "assignedTargetingOptionId": {
+                      "description": "Required. The ID of the assigned targeting option to delete.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "targetingType": {
+                      "description": "Required. Identifies the type of this assigned targeting option.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [
+                        "TARGETING_TYPE_UNSPECIFIED",
+                        "TARGETING_TYPE_CHANNEL",
+                        "TARGETING_TYPE_APP_CATEGORY",
+                        "TARGETING_TYPE_APP",
+                        "TARGETING_TYPE_URL",
+                        "TARGETING_TYPE_DAY_AND_TIME",
+                        "TARGETING_TYPE_AGE_RANGE",
+                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                        "TARGETING_TYPE_GENDER",
+                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                        "TARGETING_TYPE_PARENTAL_STATUS",
+                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                        "TARGETING_TYPE_DEVICE_TYPE",
+                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                        "TARGETING_TYPE_BROWSER",
+                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                        "TARGETING_TYPE_ENVIRONMENT",
+                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                        "TARGETING_TYPE_KEYWORD",
+                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                        "TARGETING_TYPE_VIEWABILITY",
+                        "TARGETING_TYPE_CATEGORY",
+                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                        "TARGETING_TYPE_LANGUAGE",
+                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                        "TARGETING_TYPE_GEO_REGION",
+                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                        "TARGETING_TYPE_EXCHANGE",
+                        "TARGETING_TYPE_SUB_EXCHANGE"
+                      ],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "targetingType",
+                    "assignedTargetingOptionId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "get": {
+                  "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.get",
+                  "path": "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}",
+                  "httpMethod": "GET",
+                  "description": "Gets a single targeting option assigned to an advertiser.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the advertiser.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "assignedTargetingOptionId": {
+                      "description": "Required. An identifier unique to the targeting type in this advertiser that\nidentifies the assigned targeting option being requested.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "targetingType": {
+                      "description": "Required. Identifies the type of this assigned targeting option.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [
+                        "TARGETING_TYPE_UNSPECIFIED",
+                        "TARGETING_TYPE_CHANNEL",
+                        "TARGETING_TYPE_APP_CATEGORY",
+                        "TARGETING_TYPE_APP",
+                        "TARGETING_TYPE_URL",
+                        "TARGETING_TYPE_DAY_AND_TIME",
+                        "TARGETING_TYPE_AGE_RANGE",
+                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                        "TARGETING_TYPE_GENDER",
+                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                        "TARGETING_TYPE_PARENTAL_STATUS",
+                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                        "TARGETING_TYPE_DEVICE_TYPE",
+                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                        "TARGETING_TYPE_BROWSER",
+                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                        "TARGETING_TYPE_ENVIRONMENT",
+                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                        "TARGETING_TYPE_KEYWORD",
+                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                        "TARGETING_TYPE_VIEWABILITY",
+                        "TARGETING_TYPE_CATEGORY",
+                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                        "TARGETING_TYPE_LANGUAGE",
+                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                        "TARGETING_TYPE_GEO_REGION",
+                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                        "TARGETING_TYPE_EXCHANGE",
+                        "TARGETING_TYPE_SUB_EXCHANGE"
+                      ],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "targetingType",
+                    "assignedTargetingOptionId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "AssignedTargetingOption"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "displayvideo.advertisers.targetingTypes.assignedTargetingOptions.list",
+                  "path": "v1/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions",
+                  "httpMethod": "GET",
+                  "description": "Lists the targeting options assigned to an advertiser.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "Required. The ID of the advertiser.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "filter": {
+                      "description": "Allows filtering by assigned targeting option properties.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by the logical operator `OR`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `assignedTargetingOptionId`\n\nExamples:\n\n* AssignedTargetingOption with ID 123456\n`assignedTargetingOptionId=\"123456\"`\n\nThe length of this field should be no more than 500 characters.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "orderBy": {
+                      "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `assignedTargetingOptionId` (default)\n\nThe default sorting order is ascending. To specify descending order for\na field, a suffix \"desc\" should be added to the field name. Example:\n`assignedTargetingOptionId desc`.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "Requested page size. Must be between `1` and `100`. If unspecified will\ndefault to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value\nis specified.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A token identifying a page of results the server should return.\nTypically, this is the value of\nnext_page_token\nreturned from the previous call to `ListAdvertiserAssignedTargetingOptions`\nmethod. If not specified, the first page of results will be returned.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "targetingType": {
+                      "description": "Required. Identifies the type of assigned targeting options to list.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [
+                        "TARGETING_TYPE_UNSPECIFIED",
+                        "TARGETING_TYPE_CHANNEL",
+                        "TARGETING_TYPE_APP_CATEGORY",
+                        "TARGETING_TYPE_APP",
+                        "TARGETING_TYPE_URL",
+                        "TARGETING_TYPE_DAY_AND_TIME",
+                        "TARGETING_TYPE_AGE_RANGE",
+                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                        "TARGETING_TYPE_GENDER",
+                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                        "TARGETING_TYPE_PARENTAL_STATUS",
+                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                        "TARGETING_TYPE_DEVICE_TYPE",
+                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                        "TARGETING_TYPE_BROWSER",
+                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                        "TARGETING_TYPE_ENVIRONMENT",
+                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                        "TARGETING_TYPE_KEYWORD",
+                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                        "TARGETING_TYPE_VIEWABILITY",
+                        "TARGETING_TYPE_CATEGORY",
+                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                        "TARGETING_TYPE_LANGUAGE",
+                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                        "TARGETING_TYPE_GEO_REGION",
+                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                        "TARGETING_TYPE_EXCHANGE",
+                        "TARGETING_TYPE_SUB_EXCHANGE"
+                      ],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "advertiserId",
+                    "targetingType"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "ListAdvertiserAssignedTargetingOptionsResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
         }
       },
       "methods": {
+        "bulkEditAdvertiserAssignedTargetingOptions": {
+          "id": "displayvideo.advertisers.bulkEditAdvertiserAssignedTargetingOptions",
+          "path": "v1/advertisers/{+advertiserId}:bulkEditAdvertiserAssignedTargetingOptions",
+          "httpMethod": "POST",
+          "description": "Bulk edits targeting options under a single advertiser.\nThe operation will delete the assigned targeting options provided in\nBulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and\nthen create the assigned targeting options provided in\nBulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .",
+          "parameters": {
+            "advertiserId": {
+              "description": "Required. The ID of the advertiser.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "advertiserId"
+          ],
+          "request": {
+            "$ref": "BulkEditAdvertiserAssignedTargetingOptionsRequest"
+          },
+          "response": {
+            "$ref": "BulkEditAdvertiserAssignedTargetingOptionsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/display-video"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "bulkListAdvertiserAssignedTargetingOptions": {
+          "id": "displayvideo.advertisers.bulkListAdvertiserAssignedTargetingOptions",
+          "path": "v1/advertisers/{+advertiserId}:bulkListAdvertiserAssignedTargetingOptions",
+          "httpMethod": "GET",
+          "description": "Lists assigned targeting options of an advertiser across targeting types.",
+          "parameters": {
+            "advertiserId": {
+              "description": "Required. The ID of the advertiser the line item belongs to.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "filter": {
+              "description": "Allows filtering by assigned targeting option properties.\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by the logical operator `OR`..\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `targetingType`\n\nExamples:\n\n* targetingType with value TARGETING_TYPE_CHANNEL\n`targetingType=\"TARGETING_TYPE_CHANNEL\"`\n\nThe length of this field should be no more than 500 characters.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "orderBy": {
+              "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `targetingType` (default)\n\nThe default sorting order is ascending. To specify descending order for\na field, a suffix \"desc\" should be added to the field name. Example:\n`targetingType desc`.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageSize": {
+              "description": "Requested page size.\nThe size must be an integer between `1` and `5000`. If unspecified,\nthe default is '5000'. Returns error code `INVALID_ARGUMENT` if an invalid\nvalue is specified.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "A token that lets the client fetch the next page of results.\nTypically, this is the value of\nnext_page_token\nreturned from the previous call to\n`BulkListAdvertiserAssignedTargetingOptions` method.\nIf not specified, the first page of results will be returned.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "advertiserId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "BulkListAdvertiserAssignedTargetingOptionsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/display-video"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "create": {
           "id": "displayvideo.advertisers.create",
           "path": "v1/advertisers",
@@ -13804,8 +16620,437 @@
       }
     },
     "inventorySourceGroups": {
-      "resources": {},
+      "resources": {
+        "assignedInventorySources": {
+          "resources": {},
+          "methods": {
+            "bulkEdit": {
+              "id": "displayvideo.inventorySourceGroups.assignedInventorySources.bulkEdit",
+              "path": "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit",
+              "httpMethod": "POST",
+              "description": "Bulk edits multiple assignments between inventory sources and a single\ninventory source group.\n\nThe operation will delete the assigned inventory sources provided in\nBulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources\nand then create the assigned inventory sources provided in\nBulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.",
+              "parameters": {
+                "inventorySourceGroupId": {
+                  "description": "Required. The ID of the inventory source group to which the assignments are\nassigned.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "inventorySourceGroupId"
+              ],
+              "request": {
+                "$ref": "BulkEditAssignedInventorySourcesRequest"
+              },
+              "response": {
+                "$ref": "BulkEditAssignedInventorySourcesResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "create": {
+              "id": "displayvideo.inventorySourceGroups.assignedInventorySources.create",
+              "path": "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
+              "httpMethod": "POST",
+              "description": "Creates an assignment between an inventory source and an inventory source\ngroup.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that owns the parent inventory source group.\n\nThe parent partner will not have access to this assigned inventory\nsource.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "inventorySourceGroupId": {
+                  "description": "Required. The ID of the inventory source group to which the assignment will be\nassigned.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that owns the parent inventory source group.\n\nOnly this partner will have write access to this assigned inventory\nsource.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "inventorySourceGroupId"
+              ],
+              "request": {
+                "$ref": "AssignedInventorySource"
+              },
+              "response": {
+                "$ref": "AssignedInventorySource"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "delete": {
+              "id": "displayvideo.inventorySourceGroups.assignedInventorySources.delete",
+              "path": "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}",
+              "httpMethod": "DELETE",
+              "description": "Deletes the assignment between an inventory source and an inventory source\ngroup.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that owns the parent inventory source group.\n\nThe parent partner does not have access to this assigned inventory\nsource.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "assignedInventorySourceId": {
+                  "description": "Required. The ID of the assigned inventory source to delete.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "inventorySourceGroupId": {
+                  "description": "Required. The ID of the inventory source group to which this assignment is assigned.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that owns the parent inventory source group.\n\nOnly this partner has write access to this assigned inventory source.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "inventorySourceGroupId",
+                "assignedInventorySourceId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "Empty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "list": {
+              "id": "displayvideo.inventorySourceGroups.assignedInventorySources.list",
+              "path": "v1/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources",
+              "httpMethod": "GET",
+              "description": "Lists inventory sources assigned to an inventory source group.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that has access to the assignment.\n\nIf the parent inventory source group is partner-owned, only advertisers\nto which the parent group is explicitly shared can access the assigned\ninventory source.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "filter": {
+                  "description": "Allows filtering by assigned inventory source fields.\n\nSupported syntax:\n\n* Filter expressions are made up of one or more restrictions.\n* Restrictions can be combined by the logical operator `OR`.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `EQUALS (=)`.\n* Supported fields:\n    - `assignedInventorySourceId`\n\nThe length of this field should be no more than 500 characters.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "inventorySourceGroupId": {
+                  "description": "Required. The ID of the inventory source group to which these assignments are\nassigned.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "orderBy": {
+                  "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `assignedInventorySourceId` (default)\n\nThe default sorting order is ascending. To specify descending order for a\nfield, a suffix \" desc\" should be added to the field name. Example:\n`assignedInventorySourceId desc`.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageSize": {
+                  "description": "Requested page size. Must be between `1` and `100`. If unspecified will\ndefault to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value\nis specified.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "integer",
+                  "format": "int32",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "pageToken": {
+                  "description": "A token identifying a page of results the server should return.\n\nTypically, this is the value of\nnext_page_token\nreturned from the previous call to `ListAssignedInventorySources`\nmethod. If not specified, the first page of results will be returned.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that has access to the assignment.\n\nIf the parent inventory source group is advertiser-owned, the assignment\ncannot be accessed via a partner.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "inventorySourceGroupId"
+              ],
+              "request": null,
+              "response": {
+                "$ref": "ListAssignedInventorySourcesResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            }
+          }
+        }
+      },
       "methods": {
+        "create": {
+          "id": "displayvideo.inventorySourceGroups.create",
+          "path": "v1/inventorySourceGroups",
+          "httpMethod": "POST",
+          "description": "Creates a new inventory source group. Returns the newly created inventory\nsource group if successful.",
+          "parameters": {
+            "advertiserId": {
+              "description": "The ID of the advertiser that owns the inventory source group.\n\nThe parent partner will not have access to this group.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "partnerId": {
+              "description": "The ID of the partner that owns the inventory source group.\n\nOnly this partner will have write access to this group. Only advertisers\nto which this group is explicitly shared will have read access to this\ngroup.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": {
+            "$ref": "InventorySourceGroup"
+          },
+          "response": {
+            "$ref": "InventorySourceGroup"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/display-video"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "delete": {
+          "id": "displayvideo.inventorySourceGroups.delete",
+          "path": "v1/inventorySourceGroups/{+inventorySourceGroupId}",
+          "httpMethod": "DELETE",
+          "description": "Deletes an inventory source group.",
+          "parameters": {
+            "advertiserId": {
+              "description": "The ID of the advertiser that owns the inventory source group.\n\nThe parent partner does not have access to this group.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "inventorySourceGroupId": {
+              "description": "Required. The ID of the inventory source group to delete.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "partnerId": {
+              "description": "The ID of the partner that owns the inventory source group.\n\nOnly this partner has write access to this group.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "inventorySourceGroupId"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "Empty"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/display-video"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "get": {
           "id": "displayvideo.inventorySourceGroups.get",
           "path": "v1/inventorySourceGroups/{+inventorySourceGroupId}",
@@ -13966,6 +17211,87 @@
           "request": null,
           "response": {
             "$ref": "ListInventorySourceGroupsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/display-video"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "patch": {
+          "id": "displayvideo.inventorySourceGroups.patch",
+          "path": "v1/inventorySourceGroups/{inventorySourceGroupId}",
+          "httpMethod": "PATCH",
+          "description": "Updates an inventory source group. Returns the updated inventory source\ngroup if successful.",
+          "parameters": {
+            "advertiserId": {
+              "description": "The ID of the advertiser that owns the inventory source group.\n\nThe parent partner does not have access to this group.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "inventorySourceGroupId": {
+              "description": "Output only. The unique ID of the inventory source group. Assigned by the system.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "partnerId": {
+              "description": "The ID of the partner that owns the inventory source group.\n\nOnly this partner has write access to this group.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "int64",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "updateMask": {
+              "description": "Required. The mask to control which fields to update.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "google-fieldmask",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "inventorySourceGroupId"
+          ],
+          "request": {
+            "$ref": "InventorySourceGroup"
+          },
+          "response": {
+            "$ref": "InventorySourceGroup"
           },
           "scopes": [
             "https://www.googleapis.com/auth/display-video"
@@ -14185,13 +17511,397 @@
     "partners": {
       "resources": {
         "channels": {
-          "resources": {},
+          "resources": {
+            "sites": {
+              "resources": {},
+              "methods": {
+                "bulkEdit": {
+                  "id": "displayvideo.partners.channels.sites.bulkEdit",
+                  "path": "v1/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit",
+                  "httpMethod": "POST",
+                  "description": "Bulk edits sites under a single channel.\n\nThe operation will delete the sites provided in\nBulkEditSitesRequest.deleted_sites and then create the sites\nprovided in BulkEditSitesRequest.created_sites.",
+                  "parameters": {
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel to which the sites belong.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "partnerId",
+                    "channelId"
+                  ],
+                  "request": {
+                    "$ref": "BulkEditSitesRequest"
+                  },
+                  "response": {
+                    "$ref": "BulkEditSitesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "create": {
+                  "id": "displayvideo.partners.channels.sites.create",
+                  "path": "v1/partners/{partnerId}/channels/{+channelId}/sites",
+                  "httpMethod": "POST",
+                  "description": "Creates a site in a channel.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel in which the site will be created.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "partnerId",
+                    "channelId"
+                  ],
+                  "request": {
+                    "$ref": "Site"
+                  },
+                  "response": {
+                    "$ref": "Site"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "delete": {
+                  "id": "displayvideo.partners.channels.sites.delete",
+                  "path": "v1/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}",
+                  "httpMethod": "DELETE",
+                  "description": "Deletes a site from a channel.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel to which the site belongs.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "urlOrAppId": {
+                      "description": "Required. The URL or app ID of the site to delete.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "partnerId",
+                    "channelId",
+                    "urlOrAppId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                },
+                "list": {
+                  "id": "displayvideo.partners.channels.sites.list",
+                  "path": "v1/partners/{+partnerId}/channels/{+channelId}/sites",
+                  "httpMethod": "GET",
+                  "description": "Lists sites in a channel.",
+                  "parameters": {
+                    "advertiserId": {
+                      "description": "The ID of the advertiser that owns the parent channel.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "channelId": {
+                      "description": "Required. The ID of the parent channel to which the requested sites belong.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "filter": {
+                      "description": "Allows filtering by site fields.\n\nSupported syntax:\n\n* Filter expressions for site currently can only contain at most one\n* restriction.\n* A restriction has the form of `{field} {operator} {value}`.\n* The operator must be `CONTAINS (:)`.\n* Supported fields:\n    - `urlOrAppId`\n\nExamples:\n\n* All sites for which the URL or app ID contains \"google\":\n`urlOrAppId : \"google\"`",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "orderBy": {
+                      "description": "Field by which to sort the list.\nAcceptable values are:\n\n* `urlOrAppId` (default)\n\nThe default sorting order is ascending. To specify descending order for a\nfield, a suffix \" desc\" should be added to the field name. Example:\n`urlOrAppId desc`.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageSize": {
+                      "description": "Requested page size. Must be between `1` and `100`. If unspecified will\ndefault to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value\nis specified.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "integer",
+                      "format": "int32",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "pageToken": {
+                      "description": "A token identifying a page of results the server should return.\n\nTypically, this is the value of\nnext_page_token returned from the\nprevious call to `ListSites` method. If not specified, the first page\nof results will be returned.",
+                      "default": null,
+                      "location": "query",
+                      "required": false,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": null,
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    },
+                    "partnerId": {
+                      "description": "The ID of the partner that owns the parent channel.",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": "int64",
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "partnerId",
+                    "channelId"
+                  ],
+                  "request": null,
+                  "response": {
+                    "$ref": "ListSitesResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/display-video"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
           "methods": {
+            "create": {
+              "id": "displayvideo.partners.channels.create",
+              "path": "v1/partners/{+partnerId}/channels",
+              "httpMethod": "POST",
+              "description": "Creates a new channel. Returns the newly created channel if successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that owns the created channel.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that owns the created channel.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "partnerId"
+              ],
+              "request": {
+                "$ref": "Channel"
+              },
+              "response": {
+                "$ref": "Channel"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
             "get": {
               "id": "displayvideo.partners.channels.get",
               "path": "v1/partners/{+partnerId}/channels/{+channelId}",
               "httpMethod": "GET",
-              "description": "Gets a channel for a partner or advertiser.",
+              "description": "Updates an existing inventory source.\nReturns the updated inventory source if successful.\nGets a channel for a partner or advertiser.",
               "parameters": {
                 "advertiserId": {
                   "description": "The ID of the advertiser that owns the fetched channel.",
@@ -14350,6 +18060,88 @@
               "request": null,
               "response": {
                 "$ref": "ListChannelsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/display-video"
+              ],
+              "supportsMediaDownload": false,
+              "useMediaDownloadService": false,
+              "supportsSubscription": false,
+              "supportsMediaUpload": false,
+              "mediaUpload": null
+            },
+            "patch": {
+              "id": "displayvideo.partners.channels.patch",
+              "path": "v1/partners/{+partnerId}/channels/{channelId}",
+              "httpMethod": "PATCH",
+              "description": "Updates a channel. Returns the updated channel if successful.",
+              "parameters": {
+                "advertiserId": {
+                  "description": "The ID of the advertiser that owns the created channel.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "channelId": {
+                  "description": "Output only. The unique ID of the channel. Assigned by the system.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "partnerId": {
+                  "description": "The ID of the partner that owns the created channel.",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": "int64",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                },
+                "updateMask": {
+                  "description": "Required. The mask to control which fields to update.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": "google-fieldmask",
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
+                }
+              },
+              "parameterOrder": [
+                "partnerId",
+                "channelId"
+              ],
+              "request": {
+                "$ref": "Channel"
+              },
+              "response": {
+                "$ref": "Channel"
               },
               "scopes": [
                 "https://www.googleapis.com/auth/display-video"
@@ -14522,7 +18314,6 @@
                     "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
                     "TARGETING_TYPE_GEO_REGION",
                     "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-                    "TARGETING_TYPE_PROXIMITY_LOCATION",
                     "TARGETING_TYPE_EXCHANGE",
                     "TARGETING_TYPE_SUB_EXCHANGE"
                   ],
@@ -14670,7 +18461,6 @@
                     "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
                     "TARGETING_TYPE_GEO_REGION",
                     "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
-                    "TARGETING_TYPE_PROXIMITY_LOCATION",
                     "TARGETING_TYPE_EXCHANGE",
                     "TARGETING_TYPE_SUB_EXCHANGE"
                   ],

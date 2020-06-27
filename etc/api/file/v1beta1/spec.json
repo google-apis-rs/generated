@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Filestore",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200413",
+  "revision": "20200613",
   "title": "Cloud Filestore API",
   "description": "The Cloud Filestore API is used for creating and managing cloud file servers.",
   "ownerDomain": "google.com",
@@ -46,20 +46,6 @@
         "v1 error format",
         "v2 error format"
       ],
-      "repeated": false
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
       "repeated": false
     },
     "alt": {
@@ -114,20 +100,6 @@
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "repeated": false
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "default": null,
       "location": "query",
       "required": false,
@@ -256,6 +228,18 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "nfsExportOptions": {
+          "description": "Nfs Export Options.\nThere is a limit of 10 export options per file share.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "NfsExportOptions"
+          }
         }
       },
       "additionalProperties": null,
@@ -339,6 +323,10 @@
             "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule"
           },
           "items": null
+        },
+        "maintenanceSettings": {
+          "description": "Optional. The MaintenanceSettings associated with instance.",
+          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings"
         },
         "name": {
           "description": "Unique name of the resource. It uses the form:\n `projects/{project_id}/locations/{location_id}/instances/{instance_id}`",
@@ -506,6 +494,28 @@
           "description": "The scheduled start time for the maintenance.",
           "type": "string",
           "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings": {
+      "id": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings",
+      "description": "Maintenance settings associated with instance. Allows service producers and\nend users to assign settings that controls maintenance on this instance.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "exclude": {
+          "description": "Optional. Exclude instance from maintenance. When true, rollout service will not\nattempt maintenance on the instance. Rollout service will include the\ninstance in reported rollout progress as not attempted.",
+          "type": "boolean",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -1147,6 +1157,92 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "NfsExportOptions": {
+      "id": "NfsExportOptions",
+      "description": "NFS export options specifications.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "accessMode": {
+          "description": "Either READ_ONLY, for allowing only read requests on the exported\ndirectory, or READ_WRITE, for allowing both read and write requests.\nThe default is READ_WRITE.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "ACCESS_MODE_UNSPECIFIED",
+            "READ_ONLY",
+            "READ_WRITE"
+          ],
+          "enumDescriptions": [
+            "AccessMode not set.",
+            "The client can only read the file share.",
+            "The client can read and write the file share (default)."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "anonGid": {
+          "description": "An integer representing the anonymous group id with a default value of\n65534.\nAnon_gid may only be set with squash_mode of ROOT_SQUASH.  An error will be\nreturned if this field is specified for other squash_mode settings.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "anonUid": {
+          "description": "An integer representing the anonymous user id with a default value of\n65534.\nAnon_uid may only be set with squash_mode of ROOT_SQUASH.  An error will be\nreturned if this field is specified for other squash_mode settings.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "ipRanges": {
+          "description": "List of either an IPv4 addresses in the format\n{octet 1}.{octet 2}.{octet 3}.{octet 4} or CIDR ranges in the format\n{octet 1}.{octet 2}.{octet 3}.{octet 4}/{mask size} which may mount the\nfile share.\nOverlapping IP ranges are not allowed, both within and across\nNfsExportOptions. An error will be returned.\nThe limit is 64 IP ranges/addresses for each FileShareConfig among all\nNfsExportOptions.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "squashMode": {
+          "description": "Either NO_ROOT_SQUASH, for allowing root access on the exported directory,\nor ROOT_SQUASH, for not allowing root access. The default is\nNO_ROOT_SQUASH.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "SQUASH_MODE_UNSPECIFIED",
+            "NO_ROOT_SQUASH",
+            "ROOT_SQUASH"
+          ],
+          "enumDescriptions": [
+            "SquashMode not set.",
+            "The Root user has root access to the file share (default).",
+            "The Root user has squashed access to the anonymous uid/gid."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null

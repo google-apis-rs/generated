@@ -7,7 +7,7 @@
   "canonicalName": "CloudBillingBudget",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200509",
+  "revision": "20200619",
   "title": "Cloud Billing Budget API",
   "description": "The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.",
   "ownerDomain": "google.com",
@@ -367,6 +367,33 @@
           "additionalProperties": null,
           "items": null
         },
+        "labels": {
+          "description": "Optional. A single label and value pair specifying that usage from only this set of\nlabeled resources should be included in the budget. Currently, multiple\nentries or multiple values per entry are not allowed. If omitted, the\nreport will include all labeled and unlabeled usage.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "array",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": {
+              "type": "any",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            }
+          },
+          "items": null
+        },
         "projects": {
           "description": "Optional. A set of projects of the form `projects/{project}`,\nspecifying that usage from only this set of projects should be\nincluded in the budget. If omitted, the report will include all usage for\nthe billing account, regardless of which project the usage occurred on.\nOnly zero or one project can be specified currently.",
           "type": "array",
@@ -387,6 +414,24 @@
         },
         "services": {
           "description": "Optional. A set of services of the form `services/{service_id}`,\nspecifying that usage from only this set of services should be\nincluded in the budget. If omitted, the report will include usage for\nall the services.\nThe service names are available through the Catalog API:\nhttps://cloud.google.com/billing/v1/how-tos/catalog-api.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        },
+        "subaccounts": {
+          "description": "Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying\nthat usage from only this set of subaccounts should be included in the\nbudget. If a subaccount is set to the name of the master account, usage\nfrom the master account will be included. If omitted, the report will\ninclude usage from the master account and all subaccounts, if they exist.",
           "type": "array",
           "format": null,
           "enum": [],

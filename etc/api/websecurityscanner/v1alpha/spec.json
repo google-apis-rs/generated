@@ -7,7 +7,7 @@
   "canonicalName": "WebSecurityScanner",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha",
-  "revision": "20200411",
+  "revision": "20200613",
   "title": "Web Security Scanner API",
   "description": "Scans your Compute and App Engine apps for common web vulnerabilities.",
   "ownerDomain": "google.com",
@@ -16,7 +16,7 @@
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "documentationLink": "https://cloud.google.com/security-scanner/",
+  "documentationLink": "https://cloud.google.com/security-command-center/docs/concepts-web-security-scanner-overview/",
   "protocol": "rest",
   "baseUrl": "https://websecurityscanner.googleapis.com/",
   "basePath": "",
@@ -825,7 +825,7 @@
           "$ref": "Authentication"
         },
         "blacklistPatterns": {
-          "description": "The blacklist URL patterns as described in\nhttps://cloud.google.com/security-scanner/docs/excluded-urls",
+          "description": "The excluded URL patterns as described in\nhttps://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls",
           "type": "array",
           "format": null,
           "enum": [],
@@ -899,7 +899,7 @@
           }
         },
         "targetPlatforms": {
-          "description": "Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be\nused as a default.",
+          "description": "Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE\nwill be used as a default.",
           "type": "array",
           "format": null,
           "enum": [],

@@ -1,35 +1,55 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/WcR8RMCcVAmjGjEh84HY6FwWT8A\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "doubleclicksearch:v2",
   "name": "doubleclicksearch",
-  "canonicalName": null,
+  "canonicalName": "Doubleclicksearch",
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20200505",
+  "revision": "20200616",
   "title": "Search Ads 360 API",
-  "description": "Reports and modifies your advertising data in DoubleClick Search (for example, campaigns, ad groups, keywords, and conversions).",
+  "description": "The Search Ads 360 API allows developers to automate uploading conversions and downloading reports from Search Ads 360.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "documentationLink": "https://developers.google.com/doubleclick-search/",
+  "documentationLink": "https://developers.google.com/search-ads",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/doubleclicksearch/v2/",
-  "basePath": "/doubleclicksearch/v2/",
+  "baseUrl": "https://www.googleapis.com/",
+  "basePath": "",
   "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "doubleclicksearch/v2/",
+  "servicePath": "",
   "batchPath": "batch/doubleclicksearch/v2",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +59,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -74,20 +112,6 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "repeated": false
-    },
     "prettyPrint": {
       "description": "Returns response with indentations and line breaks.",
       "default": "true",
@@ -103,7 +127,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +140,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -172,7 +210,7 @@
         "availabilityTimestamp": {
           "description": "The time by which all conversions have been uploaded, in epoch millis UTC.",
           "type": "string",
-          "format": "uint64",
+          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -180,7 +218,7 @@
           "items": null
         },
         "segmentationId": {
-          "description": "The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID).",
+          "description": "The numeric segmentation identifier (for example, DoubleClick Search\nFloodlight activity ID).",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -190,7 +228,7 @@
           "items": null
         },
         "segmentationName": {
-          "description": "The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name).",
+          "description": "The friendly segmentation identifier (for example, DoubleClick Search\nFloodlight activity name).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -200,7 +238,7 @@
           "items": null
         },
         "segmentationType": {
-          "description": "The segmentation type that this availability is for (its default value is FLOODLIGHT).",
+          "description": "The segmentation type that this availability is for (its default value is\n`FLOODLIGHT`).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -262,7 +300,7 @@
           "items": null
         },
         "attributionModel": {
-          "description": "Available to advertisers only after contacting DoubleClick Search customer support.",
+          "description": "Available to advertisers only after contacting DoubleClick Search customer\nsupport.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -282,7 +320,7 @@
           "items": null
         },
         "channel": {
-          "description": "Sales channel for the product. Acceptable values are:  \n- \"local\": a physical store \n- \"online\": an online store",
+          "description": "Sales channel for the product. Acceptable values are: <ul>\n<li>\"`local`\": a physical store</li> <li>\"`online`\":\nan online store</li> </ul>",
           "type": "string",
           "format": null,
           "enum": [],
@@ -302,7 +340,7 @@
           "items": null
         },
         "conversionId": {
-          "description": "For offline conversions, advertisers provide this ID. Advertisers can specify any ID that is meaningful to them. Each conversion in a request must specify a unique ID, and the combination of ID and timestamp must be unique amongst all conversions within the advertiser.\nFor online conversions, DS copies the dsConversionId or floodlightOrderId into this property depending on the advertiser's Floodlight instructions.",
+          "description": "For offline conversions, advertisers provide this ID. Advertisers can\nspecify any ID that is meaningful to them. Each conversion in a request\nmust specify a unique ID, and the combination of ID and timestamp must be\nunique amongst all conversions within the advertiser.<br> For online\nconversions, DS copies the `dsConversionId` or\n`floodlightOrderId` into this property depending on the\nadvertiser's Floodlight instructions.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -314,7 +352,7 @@
         "conversionModifiedTimestamp": {
           "description": "The time at which the conversion was last modified, in epoch millis UTC.",
           "type": "string",
-          "format": "uint64",
+          "format": "int64",
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -324,7 +362,7 @@
         "conversionTimestamp": {
           "description": "The time at which the conversion took place, in epoch millis UTC.",
           "type": "string",
-          "format": "uint64",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -332,7 +370,7 @@
           "items": null
         },
         "countMillis": {
-          "description": "Available to advertisers only after contacting DoubleClick Search customer support.",
+          "description": "Available to advertisers only after contacting DoubleClick Search customer\nsupport.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -352,7 +390,7 @@
           "items": null
         },
         "currencyCode": {
-          "description": "The currency code for the conversion's revenue. Should be in ISO 4217 alphabetic (3-char) format.",
+          "description": "The currency code for the conversion's revenue. Should be in ISO 4217\nalphabetic (3-char) format.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -362,7 +400,7 @@
           "items": null
         },
         "customDimension": {
-          "description": "Custom dimensions for the conversion, which can be used to filter data in a report.",
+          "description": "Custom dimensions for the conversion, which can be used to filter data in a\nreport.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -426,7 +464,7 @@
           "items": null
         },
         "inventoryAccountId": {
-          "description": "ID that DS generates and uses to uniquely identify the inventory account that contains the product.",
+          "description": "ID that DS generates and uses to uniquely identify the inventory account\nthat contains the product.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -436,7 +474,7 @@
           "items": null
         },
         "productCountry": {
-          "description": "The country registered for the Merchant Center feed that contains the product. Use an ISO 3166 code to specify a country.",
+          "description": "The country registered for the Merchant Center feed that contains the\nproduct. Use an ISO 3166 code to specify a country.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -466,7 +504,7 @@
           "items": null
         },
         "productLanguage": {
-          "description": "The language registered for the Merchant Center feed that contains the product. Use an ISO 639 code to specify a language.",
+          "description": "The language registered for the Merchant Center feed that contains the\nproduct. Use an ISO 639 code to specify a language.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -486,9 +524,9 @@
           "items": null
         },
         "revenueMicros": {
-          "description": "The revenue amount of this TRANSACTION conversion, in micros (value multiplied by 1000000, no decimal). For example, to specify a revenue value of \"10\" enter \"10000000\" (10 million) in your request.",
+          "description": "The revenue amount of this `TRANSACTION` conversion, in micros\n(value multiplied by 1000000, no decimal). For example, to specify a\nrevenue value of \"10\"  enter \"10000000\" (10 million) in your request.",
           "type": "string",
-          "format": "int64",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -496,7 +534,7 @@
           "items": null
         },
         "segmentationId": {
-          "description": "The numeric segmentation identifier (for example, DoubleClick Search Floodlight activity ID).",
+          "description": "The numeric segmentation identifier (for example, DoubleClick Search\nFloodlight activity ID).",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -506,7 +544,7 @@
           "items": null
         },
         "segmentationName": {
-          "description": "The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name).",
+          "description": "The friendly segmentation identifier (for example, DoubleClick Search\nFloodlight activity name).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -516,7 +554,7 @@
           "items": null
         },
         "segmentationType": {
-          "description": "The segmentation type of this conversion (for example, FLOODLIGHT).",
+          "description": "The segmentation type of this conversion (for example,\n`FLOODLIGHT`).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -526,7 +564,7 @@
           "items": null
         },
         "state": {
-          "description": "The state of the conversion, that is, either ACTIVE or REMOVED. Note: state DELETED is deprecated.",
+          "description": "The state of the conversion, that is, either `ACTIVE` or\n`REMOVED`. Note: state DELETED is deprecated.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -536,7 +574,7 @@
           "items": null
         },
         "storeId": {
-          "description": "The ID of the local store for which the product was advertised. Applicable only when the channel is \"local\".",
+          "description": "The ID of the local store for which the product was advertised. Applicable\nonly when the channel is \"`local`\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -546,7 +584,7 @@
           "items": null
         },
         "type": {
-          "description": "The type of the conversion, that is, either ACTION or TRANSACTION. An ACTION conversion is an action by the user that has no monetarily quantifiable value, while a TRANSACTION conversion is an action that does have a monetarily quantifiable value. Examples are email list signups (ACTION) versus ecommerce purchases (TRANSACTION).",
+          "description": "The type of the conversion, that is, either `ACTION` or\n`TRANSACTION`. An `ACTION` conversion is an action by\nthe user that has no monetarily quantifiable value, while a\n`TRANSACTION` conversion is an action that does have a\nmonetarily quantifiable value. Examples are email list signups\n(`ACTION`) versus ecommerce purchases\n(`TRANSACTION`).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -580,7 +618,7 @@
           }
         },
         "kind": {
-          "description": "Identifies this as a ConversionList resource. Value: the fixed string doubleclicksearch#conversionList.",
+          "description": "Identifies this as a ConversionList resource. Value: the fixed string\n<code>doubleclicksearch#conversionList</code>.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -595,7 +633,7 @@
     },
     "CustomDimension": {
       "id": "CustomDimension",
-      "description": "A message containing the custome dimension.",
+      "description": "A message containing the custom dimension.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -627,7 +665,7 @@
     },
     "CustomMetric": {
       "id": "CustomMetric",
-      "description": "A message containing the custome metric.",
+      "description": "A message containing the custom metric.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -659,14 +697,14 @@
     },
     "Report": {
       "id": "Report",
-      "description": "A DoubleClick Search report. This object contains the report request, some report metadata such as currency code, and the generated report rows or report files.",
+      "description": "A DoubleClick Search report. This object contains the report request, some\nreport metadata such as currency code, and the generated report rows or\nreport files.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "files": {
-          "description": "Asynchronous report only. Contains a list of generated report files once the report has successfully completed.",
+          "description": "Asynchronous report only. Contains a list of generated report files once\nthe report has successfully completed.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -715,7 +753,7 @@
           "items": null
         },
         "isReportReady": {
-          "description": "Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded.",
+          "description": "Asynchronous report only. True if and only if the report has completed\nsuccessfully and the report files are ready to be downloaded.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -725,7 +763,7 @@
           "items": null
         },
         "kind": {
-          "description": "Identifies this as a Report resource. Value: the fixed string doubleclicksearch#report.",
+          "description": "Identifies this as a Report resource. Value: the fixed string\n`doubleclicksearch#report`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -735,7 +773,7 @@
           "items": null
         },
         "request": {
-          "description": "The request that created the report. Optional fields not specified in the original request are filled with default values.",
+          "description": "The request that created the report. Optional fields not specified in the\noriginal request are filled with default values.",
           "$ref": "ReportRequest"
         },
         "rowCount": {
@@ -761,7 +799,7 @@
           }
         },
         "statisticsCurrencyCode": {
-          "description": "The currency code of all monetary values produced in the report, including values that are set by users (e.g., keyword bid settings) and metrics (e.g., cost and revenue). The currency code of a report is determined by the statisticsCurrency field of the report request.",
+          "description": "The currency code of all monetary values produced in the report, including\nvalues that are set by users (e.g., keyword bid settings) and metrics\n(e.g., cost and revenue). The currency code of a report is determined by\nthe `statisticsCurrency` field of the report request.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -771,7 +809,7 @@
           "items": null
         },
         "statisticsTimeZone": {
-          "description": "If all statistics of the report are sourced from the same time zone, this would be it. Otherwise the field is unset.",
+          "description": "If all statistics of the report are sourced from the same time zone, this\nwould be it. Otherwise the field is unset.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -803,7 +841,7 @@
           "items": null
         },
         "customDimensionName": {
-          "description": "Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears in DoubleClick Search, is case sensitive.\nIf used in a conversion report, returns the value of the specified custom dimension for the given conversion, if set. This column does not segment the conversion report.",
+          "description": "Segments a report by a custom dimension. The report must be scoped to an\nadvertiser or lower, and the custom dimension must already be set up in\nDoubleClick Search. The custom dimension name, which appears in DoubleClick\nSearch, is case sensitive.\\\nIf used in a conversion report, returns the\nvalue of the specified custom dimension for the given conversion, if set.\nThis column does not segment the conversion report.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -813,7 +851,7 @@
           "items": null
         },
         "customMetricName": {
-          "description": "Name of a custom metric to include in the report. The report must be scoped to an advertiser or lower, and the custom metric must already be set up in DoubleClick Search. The custom metric name, which appears in DoubleClick Search, is case sensitive.",
+          "description": "Name of a custom metric to include in the report. The report must be scoped\nto an advertiser or lower, and the custom metric must already be set up in\nDoubleClick Search. The custom metric name, which appears in DoubleClick\nSearch, is case sensitive.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -823,7 +861,7 @@
           "items": null
         },
         "endDate": {
-          "description": "Inclusive day in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with startDate.",
+          "description": "Inclusive day in YYYY-MM-DD format. When provided, this overrides the\noverall time range of the report for this column only. Must be provided\ntogether with `startDate`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -833,7 +871,7 @@
           "items": null
         },
         "groupByColumn": {
-          "description": "Synchronous report only. Set to true to group by this column. Defaults to false.",
+          "description": "Synchronous report only. Set to `true` to group by this column.\nDefaults to `false`.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -843,7 +881,7 @@
           "items": null
         },
         "headerText": {
-          "description": "Text used to identify this column in the report output; defaults to columnName or savedColumnName when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name.",
+          "description": "Text used to identify this column in the report output; defaults to\n`columnName` or `savedColumnName` when not specified.\nThis can be used to prevent collisions between DoubleClick Search columns\nand saved columns with the same name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -853,7 +891,7 @@
           "items": null
         },
         "platformSource": {
-          "description": "The platform that is used to provide data for the custom dimension. Acceptable values are \"floodlight\".",
+          "description": "The platform that is used to provide data for the custom dimension.\nAcceptable values are \"floodlight\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -863,7 +901,7 @@
           "items": null
         },
         "productReportPerspective": {
-          "description": "Returns metrics only for a specific type of product activity. Accepted values are:  \n- \"sold\": returns metrics only for products that were sold \n- \"advertised\": returns metrics only for products that were advertised in a Shopping campaign, and that might or might not have been sold",
+          "description": "Returns metrics only for a specific type of product activity. Accepted\nvalues are: <ul> <li>\"`sold`\": returns metrics only for products\nthat were sold</li> <li>\"`advertised`\": returns metrics only for\nproducts that were advertised in a Shopping campaign, and that might or\nmight not have been sold</li> </ul>",
           "type": "string",
           "format": null,
           "enum": [],
@@ -873,7 +911,7 @@
           "items": null
         },
         "savedColumnName": {
-          "description": "Name of a saved column to include in the report. The report must be scoped at advertiser or lower, and this saved column must already be created in the DoubleClick Search UI.",
+          "description": "Name of a saved column to include in the report. The report must be scoped\nat advertiser or lower, and this saved column must already be created in\nthe DoubleClick Search UI.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -883,7 +921,7 @@
           "items": null
         },
         "startDate": {
-          "description": "Inclusive date in YYYY-MM-DD format. When provided, this overrides the overall time range of the report for this column only. Must be provided together with endDate.",
+          "description": "Inclusive date in YYYY-MM-DD format. When provided, this overrides the\noverall time range of the report for this column only. Must be provided\ntogether with `endDate`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -905,7 +943,7 @@
       "enumDescriptions": [],
       "properties": {
         "columns": {
-          "description": "The columns to include in the report. This includes both DoubleClick Search columns and saved columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same stanza.\nThe maximum number of columns per request is 300.",
+          "description": "The columns to include in the report. This includes both DoubleClick Search\ncolumns and saved columns. For DoubleClick Search columns, only the\n`columnName` parameter is required. For saved columns only the\n`savedColumnName` parameter is required. Both\n`columnName` and `savedColumnName` cannot be set in\nthe same stanza.\\\nThe maximum number of columns per request is 300.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -917,7 +955,7 @@
           }
         },
         "downloadFormat": {
-          "description": "Format that the report should be returned in. Currently csv or tsv is supported.",
+          "description": "Format that the report should be returned in. Currently `csv` or\n`tsv` is supported.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -927,7 +965,7 @@
           "items": null
         },
         "filters": {
-          "description": "A list of filters to be applied to the report.\nThe maximum number of filters per request is 300.",
+          "description": "A list of filters to be applied to the report.\\\nThe maximum number of filters per request is 300.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -941,11 +979,11 @@
             "enumDescriptions": [],
             "properties": {
               "column": {
-                "description": "Column to perform the filter on. This can be a DoubleClick Search column or a saved column.",
+                "description": "Column to perform the filter on. This can be a DoubleClick Search column\nor a saved column.",
                 "$ref": "ReportApiColumnSpec"
               },
               "operator": {
-                "description": "Operator to use in the filter. See the filter reference for a list of available operators.",
+                "description": "Operator to use in the filter. See the filter reference for a list of\navailable operators.",
                 "type": "string",
                 "format": null,
                 "enum": [],
@@ -955,7 +993,7 @@
                 "items": null
               },
               "values": {
-                "description": "A list of values to filter the column value against.\nThe maximum number of filter values per request is 300.",
+                "description": "A list of values to filter the column value against.\\\nThe maximum number of filter values per request is 300.",
                 "type": "array",
                 "format": null,
                 "enum": [],
@@ -978,7 +1016,7 @@
           }
         },
         "includeDeletedEntities": {
-          "description": "Determines if removed entities should be included in the report. Defaults to false. Deprecated, please use includeRemovedEntities instead.",
+          "description": "Determines if removed entities should be included in the report. Defaults\nto `false`. Deprecated, please use\n`includeRemovedEntities` instead.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -988,7 +1026,7 @@
           "items": null
         },
         "includeRemovedEntities": {
-          "description": "Determines if removed entities should be included in the report. Defaults to false.",
+          "description": "Determines if removed entities should be included in the report. Defaults\nto `false`.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -998,7 +1036,7 @@
           "items": null
         },
         "maxRowsPerFile": {
-          "description": "Asynchronous report only. The maximum number of rows per report file. A large report is split into many files based on this field. Acceptable values are 1000000 to 100000000, inclusive.",
+          "description": "Asynchronous report only. The maximum number of rows per report file. A\nlarge report is split into many files based on this field. Acceptable\nvalues are `1000000` to `100000000`, inclusive.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1008,7 +1046,7 @@
           "items": null
         },
         "orderBy": {
-          "description": "Synchronous report only. A list of columns and directions defining sorting to be performed on the report rows.\nThe maximum number of orderings per request is 300.",
+          "description": "Synchronous report only. A list of columns and directions defining sorting\nto be performed on the report rows.\\\nThe maximum number of orderings per request is 300.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1022,11 +1060,11 @@
             "enumDescriptions": [],
             "properties": {
               "column": {
-                "description": "Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column.",
+                "description": "Column to perform the sort on. This can be a DoubleClick Search-defined\ncolumn or a saved column.",
                 "$ref": "ReportApiColumnSpec"
               },
               "sortOrder": {
-                "description": "The sort direction, which is either ascending or descending.",
+                "description": "The sort direction, which is either `ascending` or\n`descending`.",
                 "type": "string",
                 "format": null,
                 "enum": [],
@@ -1041,7 +1079,7 @@
           }
         },
         "reportScope": {
-          "description": "The reportScope is a set of IDs that are used to determine which subset of entities will be returned in the report. The full lineage of IDs from the lowest scoped level desired up through agency is required.",
+          "description": "The reportScope is a set of IDs that are used to determine which subset of\nentities will be returned in the report. The full lineage of IDs from the\nlowest scoped level desired up through agency is required.",
           "type": "object",
           "format": null,
           "enum": [],
@@ -1122,7 +1160,7 @@
           "items": null
         },
         "reportType": {
-          "description": "Determines the type of rows that are returned in the report. For example, if you specify reportType: keyword, each row in the report will contain data about a keyword. See the Types of Reports reference for the columns that are available for each type.",
+          "description": "Determines the type of rows that are returned in the report. For example,\nif you specify `reportType: keyword`, each row in the report\nwill contain data about a keyword. See the [Types of\nReports](/search-ads/v2/report-types/) reference for the columns that are\navailable for each type.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1132,7 +1170,7 @@
           "items": null
         },
         "rowCount": {
-          "description": "Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are 0 to 10000, inclusive. Defaults to 10000.",
+          "description": "Synchronous report only. The maximum number of rows to return; additional\nrows are dropped. Acceptable values are `0` to\n`10000`, inclusive. Defaults to `10000`.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1142,7 +1180,7 @@
           "items": null
         },
         "startRow": {
-          "description": "Synchronous report only. Zero-based index of the first row to return. Acceptable values are 0 to 50000, inclusive. Defaults to 0.",
+          "description": "Synchronous report only. Zero-based index of the first row to return.\nAcceptable values are `0` to `50000`, inclusive.\nDefaults to `0`.",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -1152,7 +1190,7 @@
           "items": null
         },
         "statisticsCurrency": {
-          "description": "Specifies the currency in which monetary will be returned. Possible values are: usd, agency (valid if the report is scoped to agency or lower), advertiser (valid if the report is scoped to * advertiser or lower), or account (valid if the report is scoped to engine account or lower).",
+          "description": "Specifies the currency in which monetary will be returned. Possible values\nare: `usd`, `agency` (valid if the report is scoped\nto agency or lower), `advertiser` (valid if the report is scoped\nto * advertiser or lower), or `account` (valid if the report is\nscoped to engine account or lower).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1162,16 +1200,16 @@
           "items": null
         },
         "timeRange": {
-          "description": "If metrics are requested in a report, this argument will be used to restrict the metrics to a specific time range.",
+          "description": "If metrics are requested in a report, this argument will be used to\nrestrict the metrics to a specific time range.",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {
             "changedAttributesSinceTimestamp": {
-              "description": "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed attribute reports work.",
+              "description": "Inclusive UTC timestamp in RFC format, e.g.,\n`2013-07-16T10:16:23.555Z`. See additional references on how\nchanged attribute reports work.",
               "type": "string",
-              "format": "date-time",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -1179,9 +1217,9 @@
               "items": null
             },
             "changedMetricsSinceTimestamp": {
-              "description": "Inclusive UTC timestamp in RFC format, e.g., 2013-07-16T10:16:23.555Z. See additional references on how changed metrics reports work.",
+              "description": "Inclusive UTC timestamp in RFC format, e.g.,\n`2013-07-16T10:16:23.555Z`. See additional references on how\nchanged metrics reports work.",
               "type": "string",
-              "format": "date-time",
+              "format": null,
               "enum": [],
               "enumDescriptions": [],
               "properties": {},
@@ -1213,7 +1251,7 @@
           "items": null
         },
         "verifySingleTimeZone": {
-          "description": "If true, the report would only be created if all the requested stat data are sourced from a single timezone. Defaults to false.",
+          "description": "If `true`, the report would only be created if all the requested\nstat data are sourced from a single timezone. Defaults to\n`false`.",
           "type": "boolean",
           "format": null,
           "enum": [],
@@ -1255,7 +1293,7 @@
       "enumDescriptions": [],
       "properties": {
         "kind": {
-          "description": "Identifies this as a SavedColumn resource. Value: the fixed string doubleclicksearch#savedColumn.",
+          "description": "Identifies this as a SavedColumn resource. Value: the fixed string\n<code>doubleclicksearch#savedColumn</code>.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1290,7 +1328,7 @@
     },
     "SavedColumnList": {
       "id": "SavedColumnList",
-      "description": "A list of saved columns. Advertisers create saved columns to report on Floodlight activities, Google Analytics goals, or custom KPIs. To request reports with saved columns, you'll need the saved column names that are available from this list.",
+      "description": "A list of saved columns. Advertisers create saved columns to report on\nFloodlight activities, Google Analytics goals, or custom KPIs. To request\nreports with saved columns,\nyou'll need the saved column names that are available from this list.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1309,7 +1347,7 @@
           }
         },
         "kind": {
-          "description": "Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList.",
+          "description": "Identifies this as a SavedColumnList resource. Value: the fixed string\n<code>doubleclicksearch#savedColumnList</code>.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1377,7 +1415,7 @@
       "methods": {
         "get": {
           "id": "doubleclicksearch.conversion.get",
-          "path": "agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
+          "path": "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion",
           "httpMethod": "GET",
           "description": "Retrieves a list of conversions from a DoubleClick Search engine account.",
           "parameters": {
@@ -1508,7 +1546,7 @@
               "repeated": false
             },
             "startDate": {
-              "description": "First date (inclusive) on which to retrieve conversions. Format is yyyymmdd.",
+              "description": "First date (inclusive) on which to retrieve conversions. Format is\nyyyymmdd.",
               "default": null,
               "location": "query",
               "required": true,
@@ -1560,7 +1598,7 @@
         },
         "insert": {
           "id": "doubleclicksearch.conversion.insert",
-          "path": "conversion",
+          "path": "doubleclicksearch/v2/conversion",
           "httpMethod": "POST",
           "description": "Inserts a batch of new conversions into DoubleClick Search.",
           "parameters": {},
@@ -1582,7 +1620,7 @@
         },
         "update": {
           "id": "doubleclicksearch.conversion.update",
-          "path": "conversion",
+          "path": "doubleclicksearch/v2/conversion",
           "httpMethod": "PUT",
           "description": "Updates a batch of conversions in DoubleClick Search.",
           "parameters": {},
@@ -1604,9 +1642,9 @@
         },
         "updateAvailability": {
           "id": "doubleclicksearch.conversion.updateAvailability",
-          "path": "conversion/updateAvailability",
+          "path": "doubleclicksearch/v2/conversion/updateAvailability",
           "httpMethod": "POST",
-          "description": "Updates the availabilities of a batch of floodlight activities in DoubleClick Search.",
+          "description": "Updates the availabilities of a batch of floodlight activities in\nDoubleClick Search.",
           "parameters": {},
           "parameterOrder": [],
           "request": {
@@ -1631,7 +1669,7 @@
       "methods": {
         "generate": {
           "id": "doubleclicksearch.reports.generate",
-          "path": "reports/generate",
+          "path": "doubleclicksearch/v2/reports/generate",
           "httpMethod": "POST",
           "description": "Generates and returns a report immediately.",
           "parameters": {},
@@ -1653,7 +1691,7 @@
         },
         "get": {
           "id": "doubleclicksearch.reports.get",
-          "path": "reports/{reportId}",
+          "path": "doubleclicksearch/v2/reports/{reportId}",
           "httpMethod": "GET",
           "description": "Polls for the status of a report request.",
           "parameters": {
@@ -1690,7 +1728,7 @@
         },
         "getFile": {
           "id": "doubleclicksearch.reports.getFile",
-          "path": "reports/{reportId}/files/{reportFragment}",
+          "path": "doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}",
           "httpMethod": "GET",
           "description": "Downloads a report file encoded in UTF-8.",
           "parameters": {
@@ -1740,7 +1778,7 @@
         },
         "request": {
           "id": "doubleclicksearch.reports.request",
-          "path": "reports",
+          "path": "doubleclicksearch/v2/reports",
           "httpMethod": "POST",
           "description": "Inserts a report request into the reporting system.",
           "parameters": {},
@@ -1767,7 +1805,7 @@
       "methods": {
         "list": {
           "id": "doubleclicksearch.savedColumns.list",
-          "path": "agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
+          "path": "doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns",
           "httpMethod": "GET",
           "description": "Retrieve the list of saved columns for a specified advertiser.",
           "parameters": {

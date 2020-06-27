@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("displayvideo1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20200623")
             .about("Display & Video 360 API allows users to manage and create campaigns and reports.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -34,8 +34,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .multiple(false)
                 .takes_value(false));
         let mut advertisers0 = SubCommand::with_name("advertisers")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and patch");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: bulk_edit_advertiser_assigned_targeting_options, bulk_list_advertiser_assigned_targeting_options, create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("bulk_edit_advertiser_assigned_targeting_options").about("Bulk edits targeting options under a single advertiser.\nThe operation will delete the assigned targeting options provided in\nBulkEditAdvertiserAssignedTargetingOptionsRequest.delete_requests and\nthen create the assigned targeting options provided in\nBulkEditAdvertiserAssignedTargetingOptionsRequest.create_requests .");
+            advertisers0 = advertisers0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("bulk_list_advertiser_assigned_targeting_options")
+                .about("Lists assigned targeting options of an advertiser across targeting types.");
+            advertisers0 = advertisers0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("create").about("Creates a new advertiser.\nReturns the newly created advertiser if successful.\nThis method can take up to 180 seconds to complete.");
             advertisers0 = advertisers0.subcommand(mcmd);
@@ -121,13 +130,25 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut inventory_source_groups0 = SubCommand::with_name("inventory_source_groups")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new inventory source group. Returns the newly created inventory\nsource group if successful.");
+            inventory_source_groups0 = inventory_source_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes an inventory source group.");
+            inventory_source_groups0 = inventory_source_groups0.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get").about("Gets an inventory source group.");
             inventory_source_groups0 = inventory_source_groups0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list").about("Lists inventory source groups that are accessible to the current user.\n\nThe order is defined by the\norder_by parameter.");
+            inventory_source_groups0 = inventory_source_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates an inventory source group. Returns the updated inventory source\ngroup if successful.");
             inventory_source_groups0 = inventory_source_groups0.subcommand(mcmd);
         }
         let mut inventory_sources0 = SubCommand::with_name("inventory_sources")
@@ -197,15 +218,24 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut channels1 = SubCommand::with_name("channels")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: create, get, list and patch");
         {
-            let mcmd =
-                SubCommand::with_name("get").about("Gets a channel for a partner or advertiser.");
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new channel. Returns the newly created channel if successful.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Updates an existing inventory source.\nReturns the updated inventory source if successful.\nGets a channel for a partner or advertiser.");
             channels1 = channels1.subcommand(mcmd);
         }
         {
             let mcmd =
                 SubCommand::with_name("list").about("Lists channels for a partner or advertiser.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates a channel. Returns the updated channel if successful.");
             channels1 = channels1.subcommand(mcmd);
         }
         let mut creatives1 = SubCommand::with_name("creatives")
@@ -296,7 +326,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut location_lists1 = SubCommand::with_name("location_lists")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: create, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new location list. Returns the newly created location list if\nsuccessful.");
+            location_lists1 = location_lists1.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get").about("Gets a location list.");
             location_lists1 = location_lists1.subcommand(mcmd);
@@ -306,9 +340,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Lists location lists based on a given advertiser id.");
             location_lists1 = location_lists1.subcommand(mcmd);
         }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates a location list. Returns the updated location list if successful.");
+            location_lists1 = location_lists1.subcommand(mcmd);
+        }
         let mut negative_keyword_lists1 = SubCommand::with_name("negative_keyword_lists")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: create, delete, get, list and patch");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new negative keyword list. Returns the newly created negative\nkeyword list if successful.");
+            negative_keyword_lists1 = negative_keyword_lists1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a negative keyword list given an advertiser ID and a negative\nkeyword list ID.");
+            negative_keyword_lists1 = negative_keyword_lists1.subcommand(mcmd);
+        }
         {
             let mcmd = SubCommand::with_name("get").about("Gets a negative keyword list given an advertiser ID and a negative keyword\nlist ID.");
             negative_keyword_lists1 = negative_keyword_lists1.subcommand(mcmd);
@@ -318,17 +365,55 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Lists negative keyword lists based on a given advertiser id.");
             negative_keyword_lists1 = negative_keyword_lists1.subcommand(mcmd);
         }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Updates a negative keyword list. Returns the updated negative keyword list\nif successful.");
+            negative_keyword_lists1 = negative_keyword_lists1.subcommand(mcmd);
+        }
+        let mut targeting_types1 = SubCommand::with_name("targeting_types")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: assigned_targeting_options");
+        let mut assigned_inventory_sources1 = SubCommand::with_name("assigned_inventory_sources")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: bulk_edit, create, delete and list");
+        {
+            let mcmd = SubCommand::with_name("bulk_edit").about("Bulk edits multiple assignments between inventory sources and a single\ninventory source group.\n\nThe operation will delete the assigned inventory sources provided in\nBulkEditAssignedInventorySourcesRequest.deleted_assigned_inventory_sources\nand then create the assigned inventory sources provided in\nBulkEditAssignedInventorySourcesRequest.created_assigned_inventory_sources.");
+            assigned_inventory_sources1 = assigned_inventory_sources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create").about(
+                "Creates an assignment between an inventory source and an inventory source\ngroup.",
+            );
+            assigned_inventory_sources1 = assigned_inventory_sources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the assignment between an inventory source and an inventory source\ngroup.");
+            assigned_inventory_sources1 = assigned_inventory_sources1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists inventory sources assigned to an inventory source group.");
+            assigned_inventory_sources1 = assigned_inventory_sources1.subcommand(mcmd);
+        }
         let mut channels1 = SubCommand::with_name("channels")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: create, get, list and patch");
         {
-            let mcmd =
-                SubCommand::with_name("get").about("Gets a channel for a partner or advertiser.");
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a new channel. Returns the newly created channel if successful.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Updates an existing inventory source.\nReturns the updated inventory source if successful.\nGets a channel for a partner or advertiser.");
             channels1 = channels1.subcommand(mcmd);
         }
         {
             let mcmd =
                 SubCommand::with_name("list").about("Lists channels for a partner or advertiser.");
+            channels1 = channels1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Updates a channel. Returns the updated channel if successful.");
             channels1 = channels1.subcommand(mcmd);
         }
         let mut operations1 = SubCommand::with_name("operations")
@@ -350,9 +435,113 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 SubCommand::with_name("list").about("Lists targeting options of a given type.");
             targeting_options1 = targeting_options1.subcommand(mcmd);
         }
+        let mut sites2 = SubCommand::with_name("sites")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: bulk_edit, create, delete and list");
+        {
+            let mcmd = SubCommand::with_name("bulk_edit").about("Bulk edits sites under a single channel.\n\nThe operation will delete the sites provided in\nBulkEditSitesRequest.deleted_sites and then create the sites\nprovided in BulkEditSitesRequest.created_sites.");
+            sites2 = sites2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a site in a channel.");
+            sites2 = sites2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a site from a channel.");
+            sites2 = sites2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists sites in a channel.");
+            sites2 = sites2.subcommand(mcmd);
+        }
         let mut targeting_types2 = SubCommand::with_name("targeting_types")
             .setting(AppSettings::ColoredHelp)
             .about("sub-resources: assigned_targeting_options");
+        let mut assigned_locations2 = SubCommand::with_name("assigned_locations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: bulk_edit, create, delete and list");
+        {
+            let mcmd = SubCommand::with_name("bulk_edit").about("Bulk edits multiple assignments between locations and a single location\nlist.\n\nThe operation will delete the assigned locations provided in\nBulkEditAssignedLocationsRequest.deleted_assigned_locations and then\ncreate the assigned locations provided in\nBulkEditAssignedLocationsRequest.created_assigned_locations.");
+            assigned_locations2 = assigned_locations2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates an assignment between a location and a location list.");
+            assigned_locations2 = assigned_locations2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes the assignment between a location and a location list.");
+            assigned_locations2 = assigned_locations2.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("list").about("Lists locations assigned to a location list.");
+            assigned_locations2 = assigned_locations2.subcommand(mcmd);
+        }
+        let mut negative_keywords2 = SubCommand::with_name("negative_keywords")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: bulk_edit, create, delete and list");
+        {
+            let mcmd = SubCommand::with_name("bulk_edit").about("Bulk edits negative keywords in a single negative keyword list.\n\nThe operation will delete the negative keywords provided in\nBulkEditNegativeKeywordsRequest.deleted_negative_keywords and then\ncreate the negative keywords provided in\nBulkEditNegativeKeywordsRequest.created_negative_keywords.\n\nThis operation is guaranteed to be atomic and will never result in a\npartial success or partial failure.");
+            negative_keywords2 = negative_keywords2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create")
+                .about("Creates a negative keyword in a negative keyword list.");
+            negative_keywords2 = negative_keywords2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes a negative keyword from a negative keyword list.");
+            negative_keywords2 = negative_keywords2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists negative keywords in a negative keyword list.");
+            negative_keywords2 = negative_keywords2.subcommand(mcmd);
+        }
+        let mut assigned_targeting_options2 = SubCommand::with_name("assigned_targeting_options")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create, delete, get and list");
+        {
+            let mcmd = SubCommand::with_name("create").about("Assigns a targeting option to an advertiser.\nReturns the assigned targeting option if successful.");
+            assigned_targeting_options2 = assigned_targeting_options2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes an assigned targeting option from an advertiser.");
+            assigned_targeting_options2 = assigned_targeting_options2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Gets a single targeting option assigned to an advertiser.");
+            assigned_targeting_options2 = assigned_targeting_options2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list")
+                .about("Lists the targeting options assigned to an advertiser.");
+            assigned_targeting_options2 = assigned_targeting_options2.subcommand(mcmd);
+        }
+        let mut sites2 = SubCommand::with_name("sites")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: bulk_edit, create, delete and list");
+        {
+            let mcmd = SubCommand::with_name("bulk_edit").about("Bulk edits sites under a single channel.\n\nThe operation will delete the sites provided in\nBulkEditSitesRequest.deleted_sites and then create the sites\nprovided in BulkEditSitesRequest.created_sites.");
+            sites2 = sites2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a site in a channel.");
+            sites2 = sites2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes a site from a channel.");
+            sites2 = sites2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists sites in a channel.");
+            sites2 = sites2.subcommand(mcmd);
+        }
         let mut assigned_targeting_options3 = SubCommand::with_name("assigned_targeting_options")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get and list");
@@ -376,10 +565,17 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             assigned_targeting_options3 = assigned_targeting_options3.subcommand(mcmd);
         }
         targeting_types2 = targeting_types2.subcommand(assigned_targeting_options3);
+        channels1 = channels1.subcommand(sites2);
+        targeting_types1 = targeting_types1.subcommand(assigned_targeting_options2);
+        negative_keyword_lists1 = negative_keyword_lists1.subcommand(negative_keywords2);
+        location_lists1 = location_lists1.subcommand(assigned_locations2);
         line_items1 = line_items1.subcommand(targeting_types2);
+        channels1 = channels1.subcommand(sites2);
         targeting_types0 = targeting_types0.subcommand(targeting_options1);
         sdfdownloadtasks0 = sdfdownloadtasks0.subcommand(operations1);
         partners0 = partners0.subcommand(channels1);
+        inventory_source_groups0 = inventory_source_groups0.subcommand(assigned_inventory_sources1);
+        advertisers0 = advertisers0.subcommand(targeting_types1);
         advertisers0 = advertisers0.subcommand(negative_keyword_lists1);
         advertisers0 = advertisers0.subcommand(location_lists1);
         advertisers0 = advertisers0.subcommand(line_items1);

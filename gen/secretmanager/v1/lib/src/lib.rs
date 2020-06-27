@@ -1232,23 +1232,29 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
-        Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
     }
-    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -1266,7 +1272,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -1291,7 +1297,7 @@ pub mod resources {
         pub mod locations {
             pub mod params {}
             pub struct LocationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> LocationsActions<'a> {
@@ -1343,7 +1349,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::get()](struct.LocationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1411,7 +1417,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -1421,31 +1427,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Location, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Location, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -1454,14 +1460,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -1475,7 +1481,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1499,7 +1508,7 @@ pub mod resources {
             #[doc = "Created via [LocationsActions::list()](struct.LocationsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 filter: Option<String>,
@@ -1685,7 +1694,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -1695,31 +1704,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ListLocationsResponse, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ListLocationsResponse, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -1728,14 +1737,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -1750,7 +1759,10 @@ pub mod resources {
                     output.push_str("/locations");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("filter", &self.filter)]);
                     let req = req.query(&[("pageSize", &self.page_size)]);
@@ -1782,14 +1794,14 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
+                    self._execute()
                 }
             }
         }
         pub mod secrets {
             pub mod params {}
             pub struct SecretsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> SecretsActions<'a> {
@@ -2014,7 +2026,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::add_version()](struct.SecretsActions.html#method.add_version)"]
             #[derive(Debug, Clone)]
             pub struct AddVersionRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::AddSecretVersionRequest,
                 parent: String,
@@ -2083,7 +2095,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -2093,31 +2105,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2126,15 +2138,15 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -2149,7 +2161,10 @@ pub mod resources {
                     output.push_str(":addVersion");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2173,7 +2188,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::create()](struct.SecretsActions.html#method.create)"]
             #[derive(Debug, Clone)]
             pub struct CreateRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Secret,
                 parent: String,
@@ -2248,7 +2263,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -2258,31 +2273,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Secret, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Secret, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2291,15 +2306,15 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -2314,7 +2329,10 @@ pub mod resources {
                     output.push_str("/secrets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("secretId", &self.secret_id)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -2339,7 +2357,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::delete()](struct.SecretsActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2407,7 +2425,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -2417,31 +2435,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Empty, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Empty, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2450,14 +2468,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -2471,7 +2489,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2495,7 +2516,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::get()](struct.SecretsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2563,7 +2584,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -2573,31 +2594,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Secret, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Secret, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2606,14 +2627,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -2627,7 +2648,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2651,7 +2675,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::get_iam_policy()](struct.SecretsActions.html#method.get_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct GetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 resource: String,
                 options_requested_policy_version: Option<i32>,
@@ -2725,7 +2749,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -2735,31 +2759,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Policy, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Policy, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2768,14 +2792,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -2790,7 +2814,10 @@ pub mod resources {
                     output.push_str(":getIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[(
                         "options.requestedPolicyVersion",
@@ -2818,7 +2845,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::list()](struct.SecretsActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 page_size: Option<i32>,
@@ -2998,7 +3025,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -3008,31 +3035,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::ListSecretsResponse, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::ListSecretsResponse, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -3041,14 +3068,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -3063,7 +3090,10 @@ pub mod resources {
                     output.push_str("/secrets");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("pageSize", &self.page_size)]);
                     let req = req.query(&[("pageToken", &self.page_token)]);
@@ -3094,13 +3124,13 @@ pub mod resources {
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
-                    todo!("implement async `execute` method for `IterableMethod` trait")
+                    self._execute()
                 }
             }
             #[doc = "Created via [SecretsActions::patch()](struct.SecretsActions.html#method.patch)"]
             #[derive(Debug, Clone)]
             pub struct PatchRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::Secret,
                 name: String,
@@ -3175,7 +3205,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -3185,31 +3215,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Secret, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Secret, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -3218,15 +3248,15 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -3240,7 +3270,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                     let req = req.query(&[("updateMask", &self.update_mask)]);
                     let req = req.query(&[("access_token", &self.access_token)]);
@@ -3265,7 +3298,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::set_iam_policy()](struct.SecretsActions.html#method.set_iam_policy)"]
             #[derive(Debug, Clone)]
             pub struct SetIamPolicyRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::SetIamPolicyRequest,
                 resource: String,
@@ -3334,7 +3367,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -3344,31 +3377,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Policy, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Policy, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -3377,15 +3410,15 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -3400,7 +3433,10 @@ pub mod resources {
                     output.push_str(":setIamPolicy");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3424,7 +3460,7 @@ pub mod resources {
             #[doc = "Created via [SecretsActions::test_iam_permissions()](struct.SecretsActions.html#method.test_iam_permissions)"]
             #[derive(Debug, Clone)]
             pub struct TestIamPermissionsRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 request: crate::schemas::TestIamPermissionsRequest,
                 resource: String,
@@ -3493,7 +3529,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -3503,33 +3539,33 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error>
                 {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::TestIamPermissionsResponse, crate::Error>
                 {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -3538,15 +3574,15 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -3561,7 +3597,10 @@ pub mod resources {
                     output.push_str(":testIamPermissions");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3585,7 +3624,7 @@ pub mod resources {
             pub mod versions {
                 pub mod params {}
                 pub struct VersionsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> VersionsActions<'a> {
@@ -3727,7 +3766,7 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::access()](struct.VersionsActions.html#method.access)"]
                 #[derive(Debug, Clone)]
                 pub struct AccessRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -3795,7 +3834,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -3805,33 +3844,33 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::AccessSecretVersionResponse, crate::Error>
                     {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::AccessSecretVersionResponse, crate::Error>
                     {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -3840,14 +3879,14 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -3865,7 +3904,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -3889,7 +3929,7 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::destroy()](struct.VersionsActions.html#method.destroy)"]
                 #[derive(Debug, Clone)]
                 pub struct DestroyRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DestroySecretVersionRequest,
                     name: String,
@@ -3958,7 +3998,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -3968,31 +4008,31 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4001,15 +4041,15 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
                         let req = req.json(&self.request);
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -4027,7 +4067,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4051,7 +4092,7 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::disable()](struct.VersionsActions.html#method.disable)"]
                 #[derive(Debug, Clone)]
                 pub struct DisableRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::DisableSecretVersionRequest,
                     name: String,
@@ -4120,7 +4161,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4130,31 +4171,31 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4163,15 +4204,15 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
                         let req = req.json(&self.request);
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -4189,7 +4230,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4213,7 +4255,7 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::enable()](struct.VersionsActions.html#method.enable)"]
                 #[derive(Debug, Clone)]
                 pub struct EnableRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     request: crate::schemas::EnableSecretVersionRequest,
                     name: String,
@@ -4282,7 +4324,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4292,31 +4334,31 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4325,15 +4367,15 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
                         let req = req.json(&self.request);
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -4351,7 +4393,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4375,7 +4418,7 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::get()](struct.VersionsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4443,7 +4486,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4453,31 +4496,31 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::SecretVersion, crate::Error> {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4486,14 +4529,14 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -4510,7 +4553,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4534,7 +4578,7 @@ pub mod resources {
                 #[doc = "Created via [VersionsActions::list()](struct.VersionsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     page_size: Option<i32>,
@@ -4717,7 +4761,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4727,33 +4771,33 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::ListSecretVersionsResponse, crate::Error>
                     {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::ListSecretVersionsResponse, crate::Error>
                     {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4762,14 +4806,14 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output = "https://secretmanager.googleapis.com/".to_owned();
@@ -4787,7 +4831,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("pageSize", &self.page_size)]);
                         let req = req.query(&[("pageToken", &self.page_token)]);
@@ -4818,7 +4863,7 @@ pub mod resources {
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
-                        todo!("implement async `execute` method for `IterableMethod` trait")
+                        self._execute()
                     }
                 }
             }
@@ -4878,6 +4923,20 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+/// Check the response to see if the status code represents an error. If so
+/// convert it into the Reqwest variant of Error.
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
+    match response.error_for_status_ref() {
+        Err(reqwest_err) => {
+            let body = response.text().ok();
+            Err(Error::Reqwest { reqwest_err, body })
+        }
+        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

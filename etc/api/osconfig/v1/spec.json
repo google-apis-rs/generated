@@ -7,7 +7,7 @@
   "canonicalName": "Systems Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200504",
+  "revision": "20200615",
   "title": "Cloud OS Config API",
   "description": "OS management tools that can be used for patch management, patch compliance, and configuration management on VM instances.",
   "ownerDomain": "google.com",
@@ -909,7 +909,7 @@
     },
     "PatchJob": {
       "id": "PatchJob",
-      "description": "A high level representation of a patch job that is either in progress\nor has completed.\n\nInstances details are not included in the job. To paginate through instance\ndetails, use ListPatchJobInstanceDetails.\n\nFor more information about patch jobs, see\n[Creating patch\njobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).",
+      "description": "A high level representation of a patch job that is either in progress\nor has completed.\n\nInstance details are not included in the job. To paginate through instance\ndetails, use ListPatchJobInstanceDetails.\n\nFor more information about patch jobs, see\n[Creating patch\njobs](https://cloud.google.com/compute/docs/os-patch-management/create-patch-job).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1018,7 +1018,7 @@
           "items": null
         },
         "state": {
-          "description": "The current state of the PatchJob .",
+          "description": "The current state of the PatchJob.",
           "type": "string",
           "format": null,
           "enum": [

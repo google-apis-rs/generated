@@ -1,13 +1,13 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/iv04XhP_bk4sRTNmL3Bs6um31tY\"",
+  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/ZQpzpB0q3wakDFF0L26pOWCu3vk\"",
   "discoveryVersion": "v1",
   "id": "games:v1",
   "name": "games",
   "canonicalName": "Games",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200416",
+  "revision": "20200619",
   "title": "Google Play Game Services API",
   "description": "The API for Google Play Game Services.",
   "ownerDomain": "google.com",
@@ -7177,9 +7177,9 @@
                 "SOCIAL"
               ],
               "enumDescriptions": [
-                "Retrieve public and social ranks.",
+                "Retrieve all supported ranks.",
                 "Retrieve public ranks, if the player is sharing their gameplay activity publicly.",
-                "Retrieve the social rank."
+                "(Obsolete) Legacy G+ social leaderboards rank, always 1."
               ],
               "repeated": false
             },
@@ -7313,12 +7313,14 @@
               "maximum": null,
               "pattern": null,
               "enum": [
+                "FRIENDS",
                 "PUBLIC",
                 "SOCIAL"
               ],
               "enumDescriptions": [
+                "List only scores of friends.",
                 "List all scores in the public leaderboard.",
-                "List only social scores."
+                "(Obsolete) Legacy G+ social scores. Use the FRIENDS collection instead."
               ],
               "repeated": false
             },
@@ -7436,12 +7438,14 @@
               "maximum": null,
               "pattern": null,
               "enum": [
+                "FRIENDS",
                 "PUBLIC",
                 "SOCIAL"
               ],
               "enumDescriptions": [
+                "List only scores of friends.",
                 "List all scores in the public leaderboard.",
-                "List only social scores."
+                "(Obsolete) Legacy G+ social scores. Use the FRIENDS collection instead."
               ],
               "repeated": false
             },

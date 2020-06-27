@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("people1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20200625")
             .about("Provides access to information about profiles and contacts.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -63,9 +63,22 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             );
             contact_groups0 = contact_groups0.subcommand(mcmd);
         }
+        let mut other_contacts0 = SubCommand::with_name("other_contacts")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: copy_other_contact_to_my_contacts_group and list");
+        {
+            let mcmd = SubCommand::with_name("copy_other_contact_to_my_contacts_group").about(
+                "Copies an \"Other contact\" to a new contact in the user\'s \"myContacts\" group",
+            );
+            other_contacts0 = other_contacts0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("List all \"Other contacts\", that is contacts that are not in a contact\ngroup. \"Other contacts\" are typically auto created contacts from\ninteractions.");
+            other_contacts0 = other_contacts0.subcommand(mcmd);
+        }
         let mut people0 = SubCommand::with_name("people")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create_contact, delete_contact, delete_contact_photo, get, get_batch_get, update_contact and update_contact_photo");
+                        .about("methods: create_contact, delete_contact, delete_contact_photo, get, get_batch_get, list_directory_people, search_directory_people, update_contact and update_contact_photo");
         {
             let mcmd = SubCommand::with_name("create_contact")
                 .about("Create a new contact and return the person resource for that contact.");
@@ -90,6 +103,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             people0 = people0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("list_directory_people").about("Provides a list of domain profiles and domain contacts in the authenticated\nuser\'s domain directory.");
+            people0 = people0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("search_directory_people").about("Provides a list of domain profiles and domain contacts in the authenticated\nuser\'s domain directory that match the search query.");
+            people0 = people0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("update_contact").about("Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n\nThe request throws a 400 error with an error with reason\n`\"failedPrecondition\"` if `person.metadata.sources.etag` is different than\nthe contact\'s etag, which indicates the contact has changed since its data\nwas read. Clients should get the latest person and re-apply their updates\nto the latest person.");
             people0 = people0.subcommand(mcmd);
         }
@@ -109,12 +130,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Provides a list of the authenticated user\'s contacts merged with any\nconnected profiles.\n\nThe request throws a 400 error if \'personFields\' is not specified.");
+            let mcmd = SubCommand::with_name("list").about("Provides a list of the authenticated user\'s contacts.\n\nThe request throws a 400 error if \'personFields\' is not specified.");
             connections1 = connections1.subcommand(mcmd);
         }
         people0 = people0.subcommand(connections1);
         contact_groups0 = contact_groups0.subcommand(members1);
         app = app.subcommand(people0);
+        app = app.subcommand(other_contacts0);
         app = app.subcommand(contact_groups0);
 
         Self { app }

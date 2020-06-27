@@ -1440,6 +1440,8 @@ pub mod schemas {
         DockerCreateComputeSystemError,
         #[doc = "The bot couldn't start the container."]
         DockerCreateContainerError,
+        #[doc = "Docker failed to create process because of file not found."]
+        DockerCreateProcessFileNotFound,
         #[doc = "Docker failed to create OCI runtime because of file not found."]
         DockerCreateRuntimeFileNotFound,
         #[doc = "Docker failed to create OCI runtime because of permission denied."]
@@ -1503,7 +1505,7 @@ pub mod schemas {
     }
     impl GoogleDevtoolsRemotebuildbotCommandStatusCode {
         pub fn as_str(self) -> &'static str {
-            match self { GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted => "ABORTED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError => "CLEANUP_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded => "DEADLINE_EXCEEDED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError => "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError => "DOCKER_CREATE_CONTAINER_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound => "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied => "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError => "DOCKER_IMAGE_EXIST_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound => "DOCKER_IMAGE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied => "DOCKER_IMAGE_PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError => "DOCKER_IMAGE_PULL_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError => "DOCKER_INCOMPATIBLE_OS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit => "DOCKER_INVALID_ULIMIT" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError => "DOCKER_LOGIN_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError => "DOCKER_PREPARELAYER_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable => "DOCKER_UNAVAILABLE" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability => "DOCKER_UNKNOWN_CAPABILITY" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError => "DOCKER_UNKNOWN_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime => "DOCKER_UNKNOWN_RUNTIME" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError => "DOWNLOAD_INPUTS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs => "DUPLICATE_INPUTS" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition => "FAILED_PRECONDITION" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal => "INTERNAL" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument => "INVALID_ARGUMENT" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning => "LOCAL_CASPROXY_NOT_RUNNING" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice => "NO_CUDA_CAPABLE_DEVICE" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound => "NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok => "OK" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied => "PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError => "REMOTE_CAS_DOWNLOAD_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError => "REMOTE_CAS_UPLOAD_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown => "UNKNOWN" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError => "UPLOAD_OUTPUTS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound => "WORKING_DIR_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir => "WORKING_DIR_NOT_IN_BASE_DIR" , }
+            match self { GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted => "ABORTED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError => "CLEANUP_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded => "DEADLINE_EXCEEDED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError => "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError => "DOCKER_CREATE_CONTAINER_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateProcessFileNotFound => "DOCKER_CREATE_PROCESS_FILE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound => "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied => "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError => "DOCKER_IMAGE_EXIST_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound => "DOCKER_IMAGE_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied => "DOCKER_IMAGE_PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError => "DOCKER_IMAGE_PULL_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError => "DOCKER_INCOMPATIBLE_OS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit => "DOCKER_INVALID_ULIMIT" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError => "DOCKER_LOGIN_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError => "DOCKER_PREPARELAYER_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable => "DOCKER_UNAVAILABLE" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability => "DOCKER_UNKNOWN_CAPABILITY" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError => "DOCKER_UNKNOWN_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime => "DOCKER_UNKNOWN_RUNTIME" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError => "DOWNLOAD_INPUTS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs => "DUPLICATE_INPUTS" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition => "FAILED_PRECONDITION" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal => "INTERNAL" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument => "INVALID_ARGUMENT" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning => "LOCAL_CASPROXY_NOT_RUNNING" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice => "NO_CUDA_CAPABLE_DEVICE" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound => "NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok => "OK" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied => "PERMISSION_DENIED" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError => "REMOTE_CAS_DOWNLOAD_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError => "REMOTE_CAS_UPLOAD_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown => "UNKNOWN" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError => "UPLOAD_OUTPUTS_ERROR" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound => "WORKING_DIR_NOT_FOUND" , GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir => "WORKING_DIR_NOT_IN_BASE_DIR" , }
         }
     }
     impl ::std::convert::AsRef<str> for GoogleDevtoolsRemotebuildbotCommandStatusCode {
@@ -1516,7 +1518,7 @@ pub mod schemas {
         fn from_str(
             s: &str,
         ) -> ::std::result::Result<GoogleDevtoolsRemotebuildbotCommandStatusCode, ()> {
-            Ok ( match s { "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted , "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError , "DEADLINE_EXCEEDED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded , "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError , "DOCKER_CREATE_CONTAINER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError , "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound , "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied , "DOCKER_IMAGE_EXIST_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError , "DOCKER_IMAGE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound , "DOCKER_IMAGE_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied , "DOCKER_IMAGE_PULL_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError , "DOCKER_INCOMPATIBLE_OS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError , "DOCKER_INVALID_ULIMIT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit , "DOCKER_LOGIN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError , "DOCKER_PREPARELAYER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError , "DOCKER_UNAVAILABLE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable , "DOCKER_UNKNOWN_CAPABILITY" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability , "DOCKER_UNKNOWN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError , "DOCKER_UNKNOWN_RUNTIME" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime , "DOWNLOAD_INPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError , "DUPLICATE_INPUTS" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs , "FAILED_PRECONDITION" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition , "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal , "INVALID_ARGUMENT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument , "LOCAL_CASPROXY_NOT_RUNNING" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning , "NO_CUDA_CAPABLE_DEVICE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice , "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound , "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok , "PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied , "REMOTE_CAS_DOWNLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError , "REMOTE_CAS_UPLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError , "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown , "UPLOAD_OUTPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError , "WORKING_DIR_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound , "WORKING_DIR_NOT_IN_BASE_DIR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir , _ => return Err ( ( ) ) , } )
+            Ok ( match s { "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted , "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError , "DEADLINE_EXCEEDED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded , "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError , "DOCKER_CREATE_CONTAINER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError , "DOCKER_CREATE_PROCESS_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateProcessFileNotFound , "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound , "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied , "DOCKER_IMAGE_EXIST_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError , "DOCKER_IMAGE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound , "DOCKER_IMAGE_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied , "DOCKER_IMAGE_PULL_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError , "DOCKER_INCOMPATIBLE_OS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError , "DOCKER_INVALID_ULIMIT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit , "DOCKER_LOGIN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError , "DOCKER_PREPARELAYER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError , "DOCKER_UNAVAILABLE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable , "DOCKER_UNKNOWN_CAPABILITY" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability , "DOCKER_UNKNOWN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError , "DOCKER_UNKNOWN_RUNTIME" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime , "DOWNLOAD_INPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError , "DUPLICATE_INPUTS" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs , "FAILED_PRECONDITION" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition , "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal , "INVALID_ARGUMENT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument , "LOCAL_CASPROXY_NOT_RUNNING" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning , "NO_CUDA_CAPABLE_DEVICE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice , "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound , "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok , "PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied , "REMOTE_CAS_DOWNLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError , "REMOTE_CAS_UPLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError , "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown , "UPLOAD_OUTPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError , "WORKING_DIR_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound , "WORKING_DIR_NOT_IN_BASE_DIR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir , _ => return Err ( ( ) ) , } )
         }
     }
     impl ::std::fmt::Display for GoogleDevtoolsRemotebuildbotCommandStatusCode {
@@ -1538,7 +1540,7 @@ pub mod schemas {
             D: ::serde::de::Deserializer<'de>,
         {
             let value: &'de str = <&str>::deserialize(deserializer)?;
-            Ok ( match value { "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted , "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError , "DEADLINE_EXCEEDED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded , "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError , "DOCKER_CREATE_CONTAINER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError , "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound , "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied , "DOCKER_IMAGE_EXIST_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError , "DOCKER_IMAGE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound , "DOCKER_IMAGE_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied , "DOCKER_IMAGE_PULL_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError , "DOCKER_INCOMPATIBLE_OS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError , "DOCKER_INVALID_ULIMIT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit , "DOCKER_LOGIN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError , "DOCKER_PREPARELAYER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError , "DOCKER_UNAVAILABLE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable , "DOCKER_UNKNOWN_CAPABILITY" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability , "DOCKER_UNKNOWN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError , "DOCKER_UNKNOWN_RUNTIME" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime , "DOWNLOAD_INPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError , "DUPLICATE_INPUTS" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs , "FAILED_PRECONDITION" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition , "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal , "INVALID_ARGUMENT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument , "LOCAL_CASPROXY_NOT_RUNNING" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning , "NO_CUDA_CAPABLE_DEVICE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice , "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound , "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok , "PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied , "REMOTE_CAS_DOWNLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError , "REMOTE_CAS_UPLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError , "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown , "UPLOAD_OUTPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError , "WORKING_DIR_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound , "WORKING_DIR_NOT_IN_BASE_DIR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+            Ok ( match value { "ABORTED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Aborted , "CLEANUP_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: CleanupError , "DEADLINE_EXCEEDED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DeadlineExceeded , "DOCKER_CREATE_COMPUTE_SYSTEM_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateComputeSystemError , "DOCKER_CREATE_CONTAINER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateContainerError , "DOCKER_CREATE_PROCESS_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateProcessFileNotFound , "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimeFileNotFound , "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerCreateRuntimePermissionDenied , "DOCKER_IMAGE_EXIST_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageExistError , "DOCKER_IMAGE_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImageNotFound , "DOCKER_IMAGE_PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePermissionDenied , "DOCKER_IMAGE_PULL_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerImagePullError , "DOCKER_INCOMPATIBLE_OS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerIncompatibleOsError , "DOCKER_INVALID_ULIMIT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerInvalidUlimit , "DOCKER_LOGIN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerLoginError , "DOCKER_PREPARELAYER_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerPreparelayerError , "DOCKER_UNAVAILABLE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnavailable , "DOCKER_UNKNOWN_CAPABILITY" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownCapability , "DOCKER_UNKNOWN_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownError , "DOCKER_UNKNOWN_RUNTIME" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DockerUnknownRuntime , "DOWNLOAD_INPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DownloadInputsError , "DUPLICATE_INPUTS" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: DuplicateInputs , "FAILED_PRECONDITION" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: FailedPrecondition , "INTERNAL" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Internal , "INVALID_ARGUMENT" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: InvalidArgument , "LOCAL_CASPROXY_NOT_RUNNING" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: LocalCasproxyNotRunning , "NO_CUDA_CAPABLE_DEVICE" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NoCudaCapableDevice , "NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: NotFound , "OK" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Ok , "PERMISSION_DENIED" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: PermissionDenied , "REMOTE_CAS_DOWNLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasDownloadError , "REMOTE_CAS_UPLOAD_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: RemoteCasUploadError , "UNKNOWN" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: Unknown , "UPLOAD_OUTPUTS_ERROR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: UploadOutputsError , "WORKING_DIR_NOT_FOUND" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotFound , "WORKING_DIR_NOT_IN_BASE_DIR" => GoogleDevtoolsRemotebuildbotCommandStatusCode :: WorkingDirNotInBaseDir , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
         }
     }
     impl ::google_field_selector::FieldSelector for GoogleDevtoolsRemotebuildbotCommandStatusCode {
@@ -2440,6 +2442,13 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub reserved: ::std::option::Option<bool>,
+        #[doc = "The name of the image used by each VM."]
+        #[serde(
+            rename = "vmImage",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub vm_image: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector
         for GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerConfig
@@ -3592,23 +3601,29 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
-        Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
     }
-    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -3626,7 +3641,7 @@ pub mod resources {
     pub mod projects {
         pub mod params {}
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
@@ -3651,7 +3666,7 @@ pub mod resources {
         pub mod instances {
             pub mod params {}
             pub struct InstancesActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> InstancesActions<'a> {
@@ -3752,7 +3767,7 @@ pub mod resources {
             }
             #[doc = "Created via [InstancesActions::create()](struct.InstancesActions.html#method.create)"]
             #[derive(Debug, Clone)]
-            pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateInstanceRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+            pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateInstanceRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
             impl<'a> CreateRequestBuilder<'a> {
                 #[doc = "OAuth access token."]
                 pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -3806,7 +3821,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -3816,33 +3831,33 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                 {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                 {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -3851,15 +3866,15 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
                     let req = req.json(&self.request);
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output =
@@ -3875,7 +3890,10 @@ pub mod resources {
                     output.push_str("/instances");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::POST, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -3899,7 +3917,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::delete()](struct.InstancesActions.html#method.delete)"]
             #[derive(Debug, Clone)]
             pub struct DeleteRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -3967,7 +3985,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -3977,33 +3995,33 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                 {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                 {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -4012,14 +4030,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output =
@@ -4034,7 +4052,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4058,7 +4079,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::get()](struct.InstancesActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -4126,7 +4147,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -4136,37 +4157,37 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance,
                     crate::Error,
                 > {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<
                     crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaInstance,
                     crate::Error,
                 > {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -4175,14 +4196,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output =
@@ -4197,7 +4218,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4221,7 +4245,7 @@ pub mod resources {
             #[doc = "Created via [InstancesActions::list()](struct.InstancesActions.html#method.list)"]
             #[derive(Debug, Clone)]
             pub struct ListRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 parent: String,
                 access_token: Option<String>,
@@ -4289,7 +4313,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -4299,25 +4323,25 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
-                #[doc = r" the response resource."]pub async fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListInstancesResponse , crate :: Error >{
-                    self.execute_with_fields(None::<&str>).await
+                #[doc = r" the response resource."]pub fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListInstancesResponse , crate :: Error >{
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
-                #[doc = r" development or debugging."]pub async fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListInstancesResponse , crate :: Error >{
-                    self.execute_with_fields(Some("*")).await
+                #[doc = r" development or debugging."]pub fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListInstancesResponse , crate :: Error >{
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -4326,14 +4350,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output =
@@ -4349,7 +4373,10 @@ pub mod resources {
                     output.push_str("/instances");
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -4373,7 +4400,7 @@ pub mod resources {
             pub mod workerpools {
                 pub mod params {}
                 pub struct WorkerpoolsActions<'a> {
-                    pub(crate) reqwest: &'a reqwest::Client,
+                    pub(crate) reqwest: &'a reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 }
                 impl<'a> WorkerpoolsActions<'a> {
@@ -4489,7 +4516,7 @@ pub mod resources {
                 }
                 #[doc = "Created via [WorkerpoolsActions::create()](struct.WorkerpoolsActions.html#method.create)"]
                 #[derive(Debug, Clone)]
-                pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateWorkerPoolRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                pub struct CreateRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaCreateWorkerPoolRequest , parent : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> CreateRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -4543,7 +4570,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4553,33 +4580,33 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                     {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                     {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4588,15 +4615,15 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
                         let req = req.json(&self.request);
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output =
@@ -4615,7 +4642,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::POST, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4639,7 +4667,7 @@ pub mod resources {
                 #[doc = "Created via [WorkerpoolsActions::delete()](struct.WorkerpoolsActions.html#method.delete)"]
                 #[derive(Debug, Clone)]
                 pub struct DeleteRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4707,7 +4735,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4717,33 +4745,33 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                     {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                     {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4752,14 +4780,14 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output =
@@ -4777,7 +4805,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4801,7 +4830,7 @@ pub mod resources {
                 #[doc = "Created via [WorkerpoolsActions::get()](struct.WorkerpoolsActions.html#method.get)"]
                 #[derive(Debug, Clone)]
                 pub struct GetRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     name: String,
                     access_token: Option<String>,
@@ -4869,7 +4898,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -4879,37 +4908,37 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<
                         crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool,
                         crate::Error,
                     > {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<
                         crate::schemas::GoogleDevtoolsRemotebuildexecutionAdminV1AlphaWorkerPool,
                         crate::Error,
                     > {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -4918,14 +4947,14 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output =
@@ -4943,7 +4972,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -4967,7 +4997,7 @@ pub mod resources {
                 #[doc = "Created via [WorkerpoolsActions::list()](struct.WorkerpoolsActions.html#method.list)"]
                 #[derive(Debug, Clone)]
                 pub struct ListRequestBuilder<'a> {
-                    pub(crate) reqwest: &'a ::reqwest::Client,
+                    pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                     pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                     parent: String,
                     filter: Option<String>,
@@ -5041,7 +5071,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -5051,25 +5081,25 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
-                    #[doc = r" the response resource."]pub async fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListWorkerPoolsResponse , crate :: Error >{
-                        self.execute_with_fields(None::<&str>).await
+                    #[doc = r" the response resource."]pub fn execute_with_default_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListWorkerPoolsResponse , crate :: Error >{
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
-                    #[doc = r" development or debugging."]pub async fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListWorkerPoolsResponse , crate :: Error >{
-                        self.execute_with_fields(Some("*")).await
+                    #[doc = r" development or debugging."]pub fn execute_with_all_fields ( self ) -> Result < crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaListWorkerPoolsResponse , crate :: Error >{
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -5078,14 +5108,14 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output =
@@ -5104,7 +5134,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::GET, path);
                         let req = req.query(&[("filter", &self.filter)]);
                         let req = req.query(&[("access_token", &self.access_token)]);
@@ -5128,7 +5159,7 @@ pub mod resources {
                 }
                 #[doc = "Created via [WorkerpoolsActions::patch()](struct.WorkerpoolsActions.html#method.patch)"]
                 #[derive(Debug, Clone)]
-                pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateWorkerPoolRequest , name : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
+                pub struct PatchRequestBuilder < 'a > { pub ( crate ) reqwest : & 'a :: reqwest :: blocking :: Client , pub ( crate ) auth : & 'a dyn :: google_api_auth :: GetAccessToken , request : crate :: schemas :: GoogleDevtoolsRemotebuildexecutionAdminV1AlphaUpdateWorkerPoolRequest , name : String , access_token : Option < String > , alt : Option < crate :: params :: Alt > , callback : Option < String > , fields : Option < String > , key : Option < String > , oauth_token : Option < String > , pretty_print : Option < bool > , quota_user : Option < String > , upload_protocol : Option < String > , upload_type : Option < String > , xgafv : Option < crate :: params :: Xgafv > , }
                 impl<'a> PatchRequestBuilder<'a> {
                     #[doc = "OAuth access token."]
                     pub fn access_token(mut self, value: impl Into<String>) -> Self {
@@ -5182,7 +5213,7 @@ pub mod resources {
                     #[doc = r" are not generic over the return type and deserialize the"]
                     #[doc = r" response into an auto-generated struct will all possible"]
                     #[doc = r" fields."]
-                    pub async fn execute<T>(self) -> Result<T, crate::Error>
+                    pub fn execute<T>(self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                     {
@@ -5192,33 +5223,33 @@ pub mod resources {
                         } else {
                             Some(fields)
                         };
-                        self.execute_with_fields(fields).await
+                        self.execute_with_fields(fields)
                     }
                     #[doc = r" Execute the given operation. This will not provide any"]
                     #[doc = r" `fields` selector indicating that the server will determine"]
                     #[doc = r" the fields returned. This typically includes the most common"]
                     #[doc = r" fields, but it will not include every possible attribute of"]
                     #[doc = r" the response resource."]
-                    pub async fn execute_with_default_fields(
+                    pub fn execute_with_default_fields(
                         self,
                     ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                     {
-                        self.execute_with_fields(None::<&str>).await
+                        self.execute_with_fields(None::<&str>)
                     }
                     #[doc = r" Execute the given operation. This will provide a `fields`"]
                     #[doc = r" selector of `*`. This will include every attribute of the"]
                     #[doc = r" response resource and should be limited to use during"]
                     #[doc = r" development or debugging."]
-                    pub async fn execute_with_all_fields(
+                    pub fn execute_with_all_fields(
                         self,
                     ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                     {
-                        self.execute_with_fields(Some("*")).await
+                        self.execute_with_fields(Some("*"))
                     }
                     #[doc = r" Execute the given operation. This will use the `fields`"]
                     #[doc = r" selector provided and will deserialize the response into"]
                     #[doc = r" whatever return value is provided."]
-                    pub async fn execute_with_fields<T, F>(
+                    pub fn execute_with_fields<T, F>(
                         mut self,
                         fields: Option<F>,
                     ) -> Result<T, crate::Error>
@@ -5227,15 +5258,15 @@ pub mod resources {
                         F: Into<String>,
                     {
                         self.fields = fields.map(Into::into);
-                        self._execute().await
+                        self._execute()
                     }
-                    async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                    fn _execute<T>(&mut self) -> Result<T, crate::Error>
                     where
                         T: ::serde::de::DeserializeOwned,
                     {
                         let req = self._request(&self._path())?;
                         let req = req.json(&self.request);
-                        Ok(req.send().await?.error_for_status()?.json().await?)
+                        Ok(crate::error_from_response(req.send()?)?.json()?)
                     }
                     fn _path(&self) -> String {
                         let mut output =
@@ -5253,7 +5284,8 @@ pub mod resources {
                     fn _request(
                         &self,
                         path: &str,
-                    ) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                    ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error>
+                    {
                         let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                         let req = req.query(&[("access_token", &self.access_token)]);
                         let req = req.query(&[("alt", &self.alt)]);
@@ -5279,7 +5311,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -5309,7 +5341,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -5377,7 +5409,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -5387,33 +5419,33 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                 {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::GoogleLongrunningOperation, crate::Error>
                 {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -5422,14 +5454,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output =
@@ -5444,7 +5476,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -5521,6 +5556,20 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+/// Check the response to see if the status code represents an error. If so
+/// convert it into the Reqwest variant of Error.
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
+    match response.error_for_status_ref() {
+        Err(reqwest_err) => {
+            let body = response.text().ok();
+            Err(Error::Reqwest { reqwest_err, body })
+        }
+        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

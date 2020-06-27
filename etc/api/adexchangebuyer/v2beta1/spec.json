@@ -7,7 +7,7 @@
   "canonicalName": "AdExchangeBuyerII",
   "fullyEncodeReservedExpansion": null,
   "version": "v2beta1",
-  "revision": "20200509",
+  "revision": "20200625",
   "title": "Ad Exchange Buyer API II",
   "description": "Accesses the latest features for managing Authorized Buyers accounts, Real-Time Bidding configurations and auction metrics, and Marketplace programmatic deals.",
   "ownerDomain": "google.com",
@@ -623,7 +623,7 @@
           "items": null
         },
         "entityId": {
-          "description": "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile.",
+          "description": "Numerical identifier of the client entity.\nThe entity can be an advertiser, a brand, or an agency.\nThis identifier is unique among all the entities with the same type.\nThe value of this field is ignored if the entity type is not provided.\n\nA list of all known advertisers with their identifiers is available in the\n[advertisers.txt](https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt)\nfile.\n\nA list of all known brands with their identifiers is available in the\n[brands.txt](https://storage.googleapis.com/adx-rtb-dictionaries/brands.txt)\nfile.\n\nA list of all known agencies with their identifiers is available in the\n[agencies.txt](https://storage.googleapis.com/adx-rtb-dictionaries/agencies.txt)\nfile.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -643,7 +643,7 @@
           "items": null
         },
         "entityType": {
-          "description": "The type of the client entity: `ADVERTISER`, `BRAND`, or `AGENCY`.",
+          "description": "An optional field for specifying the type of the client entity:\n`ADVERTISER`, `BRAND`, or `AGENCY`.",
           "type": "string",
           "format": null,
           "enum": [

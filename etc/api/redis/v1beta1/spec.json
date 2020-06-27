@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Redis",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200402",
+  "revision": "20200623",
   "title": "Google Cloud Memorystore for Redis API",
   "description": "Creates and manages Redis instances on the Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -46,20 +46,6 @@
         "v1 error format",
         "v2 error format"
       ],
-      "repeated": false
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
       "repeated": false
     },
     "alt": {
@@ -114,20 +100,6 @@
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "repeated": false
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "default": null,
       "location": "query",
       "required": false,
@@ -477,7 +449,7 @@
           "items": null
         },
         "authorizedNetwork": {
-          "description": "Optional. The full name of the Google Compute Engine\n[network](/compute/docs/networks-and-firewalls#networks) to which the\ninstance is connected. If left unspecified, the `default` network\nwill be used.",
+          "description": "Optional. The full name of the Google Compute Engine\n[network](https://cloud.google.com/vpc/docs/vpc) to which the\ninstance is connected. If left unspecified, the `default` network\nwill be used.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1098,7 +1070,7 @@
                   "id": "redis.projects.locations.instances.create",
                   "path": "v1beta1/{+parent}/instances",
                   "httpMethod": "POST",
-                  "description": "Creates a Redis instance based on the specified tier and memory size.\n\nBy default, the instance is accessible from the project's\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nThe creation is executed asynchronously and callers may check the returned\noperation to track its progress. Once the operation is completed the Redis\ninstance will be fully functional. Completed longrunning.Operation will\ncontain the new instance object in the response field.\n\nThe returned operation is automatically deleted after a few hours, so there\nis no need to call DeleteOperation.",
+                  "description": "Creates a Redis instance based on the specified tier and memory size.\n\nBy default, the instance is accessible from the project's\n[default network](https://cloud.google.com/vpc/docs/vpc).\n\nThe creation is executed asynchronously and callers may check the returned\noperation to track its progress. Once the operation is completed the Redis\ninstance will be fully functional. Completed longrunning.Operation will\ncontain the new instance object in the response field.\n\nThe returned operation is automatically deleted after a few hours, so there\nis no need to call DeleteOperation.",
                   "parameters": {
                     "instanceId": {
                       "description": "Required. The logical name of the Redis instance in the customer project\nwith the following restrictions:\n\n* Must contain only lowercase letters, numbers, and hyphens.\n* Must start with a letter.\n* Must be between 1-40 characters.\n* Must end with a number or a letter.\n* Must be unique within the customer project / location",

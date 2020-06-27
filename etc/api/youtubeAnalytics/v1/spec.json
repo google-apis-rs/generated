@@ -7,7 +7,7 @@
   "canonicalName": "YouTube Analytics",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200512",
+  "revision": "20200624",
   "title": "YouTube Analytics API",
   "description": "Retrieves your YouTube Analytics data.",
   "ownerDomain": "google.com",

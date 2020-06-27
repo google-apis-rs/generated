@@ -6,6 +6,7 @@ pub mod scopes {
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
+        #[doc = "Please also refer to the [access level user\nguide](https://cloud.google.com/access-context-manager/docs/overview#access-levels)."]
         #[serde(
             rename = "accessLevel",
             default,
@@ -13,6 +14,7 @@ pub mod schemas {
         )]
         pub access_level:
             ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessLevel>,
+        #[doc = "Please also refer to the [access policy user\nguide](https://cloud.google.com/access-context-manager/docs/overview#access-policies)."]
         #[serde(
             rename = "accessPolicy",
             default,
@@ -20,14 +22,14 @@ pub mod schemas {
         )]
         pub access_policy:
             ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessPolicy>,
-        #[doc = "The ancestry path of an asset in Google Cloud [resource\nhierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),\nrepresented as a list of relative resource names. An ancestry path starts\nwith the closest ancestor in the hierarchy and ends at root. If the asset\nis a project, folder, or organization, the ancestry path starts from the\nasset itself.\n\nFor example: `[\"projects/123456789\", \"folders/5432\", \"organizations/1234\"]`"]
+        #[doc = "The ancestry path of an asset in Google Cloud [resource\nhierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),\nrepresented as a list of relative resource names. An ancestry path starts\nwith the closest ancestor in the hierarchy and ends at root. If the asset\nis a project, folder, or organization, the ancestry path starts from the\nasset itself.\n\nExample: `[\"projects/123456789\", \"folders/5432\", \"organizations/1234\"]`"]
         #[serde(
             rename = "ancestors",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub ancestors: ::std::option::Option<Vec<String>>,
-        #[doc = "The type of the asset. For example: \"compute.googleapis.com/Disk\"\n\nSee [Supported asset\ntypes](https://cloud.google.com/asset-inventory/docs/supported-asset-types)\nfor more information."]
+        #[doc = "The type of the asset. Example: `compute.googleapis.com/Disk`\n\nSee [Supported asset\ntypes](https://cloud.google.com/asset-inventory/docs/supported-asset-types)\nfor more information."]
         #[serde(
             rename = "assetType",
             default,
@@ -41,7 +43,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub iam_policy: ::std::option::Option<crate::schemas::Policy>,
-        #[doc = "The full name of the asset. For example:\n\"//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1\"\n\nSee [Resource\nnames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information."]
+        #[doc = "The full name of the asset. Example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`\n\nSee [Resource\nnames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information."]
         #[serde(
             rename = "name",
             default,
@@ -62,6 +64,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource: ::std::option::Option<crate::schemas::Resource>,
+        #[doc = "Please also refer to the [service perimeter user\nguide](https://cloud.google.com/vpc-service-controls/docs/overview)."]
         #[serde(
             rename = "servicePerimeter",
             default,
@@ -70,6 +73,13 @@ pub mod schemas {
         pub service_perimeter: ::std::option::Option<
             crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeter,
         >,
+        #[doc = "The last update timestamp of an asset. update_time is updated when\ncreate/update/delete operation is performed."]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_time: ::std::option::Option<String>,
     }
     impl ::google_field_selector::FieldSelector for Asset {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -316,7 +326,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
+        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
@@ -423,7 +433,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ExportAssetsRequest {
-        #[doc = "A list of asset types of which to take a snapshot for. For example:\n\"compute.googleapis.com/Disk\". If specified, only matching assets will be\nreturned. See [Introduction to Cloud Asset\nInventory](https://cloud.google.com/asset-inventory/docs/overview)\nfor all supported asset types."]
+        #[doc = "A list of asset types of which to take a snapshot for. Example:\n\"compute.googleapis.com/Disk\". If specified, only matching assets will be\nreturned. See [Introduction to Cloud Asset\nInventory](https://cloud.google.com/asset-inventory/docs/overview)\nfor all supported asset types."]
         #[serde(
             rename = "assetTypes",
             default,
@@ -437,7 +447,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub content_type: ::std::option::Option<crate::schemas::ExportAssetsRequestContentType>,
-        #[doc = "Required. Output configuration indicating where the results will be output\nto. All results will be in newline delimited JSON format."]
+        #[doc = "Required. Output configuration indicating where the results will be output to."]
         #[serde(
             rename = "outputConfig",
             default,
@@ -619,14 +629,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Feed {
-        #[doc = "A list of the full names of the assets to receive updates. You must specify\neither or both of asset_names and asset_types. Only asset updates matching\nspecified asset_names and asset_types are exported to the feed. For\nexample:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more info."]
+        #[doc = "A list of the full names of the assets to receive updates. You must specify\neither or both of asset_names and asset_types. Only asset updates matching\nspecified asset_names or asset_types are exported to the feed.\nExample:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more info."]
         #[serde(
             rename = "assetNames",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub asset_names: ::std::option::Option<Vec<String>>,
-        #[doc = "A list of types of the assets to receive updates. You must specify either\nor both of asset_names and asset_types. Only asset updates matching\nspecified asset_names and asset_types are exported to the feed.\nFor example: `\"compute.googleapis.com/Disk\"`\n\nSee [this\ntopic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)\nfor a list of all supported asset types."]
+        #[doc = "A list of types of the assets to receive updates. You must specify either\nor both of asset_names and asset_types. Only asset updates matching\nspecified asset_names or asset_types are exported to the feed.\nExample: `\"compute.googleapis.com/Disk\"`\n\nSee [this\ntopic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)\nfor a list of all supported asset types."]
         #[serde(
             rename = "assetTypes",
             default,
@@ -795,14 +805,14 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GcsDestination {
-        #[doc = "The uri of the Cloud Storage object. It's the same uri that is used by\ngsutil. For example: \"gs://bucket_name/object_name\". See [Viewing and\nEditing Object\nMetadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)\nfor more information."]
+        #[doc = "The uri of the Cloud Storage object. It's the same uri that is used by\ngsutil. Example: \"gs://bucket_name/object_name\". See [Viewing and\nEditing Object\nMetadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)\nfor more information."]
         #[serde(
             rename = "uri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub uri: ::std::option::Option<String>,
-        #[doc = "The uri prefix of all generated Cloud Storage objects. For example:\n\"gs://bucket_name/object_name_prefix\". Each object uri is in format:\n\"gs://bucket_name/object_name_prefix/<asset type>/<shard number> and only\ncontains assets for that type. <shard number> starts from 0. For example:\n\"gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0\" is\nthe first shard of output objects containing all\ncompute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be\nreturned if file with the same name \"gs://bucket_name/object_name_prefix\"\nalready exists."]
+        #[doc = "The uri prefix of all generated Cloud Storage objects. Example:\n\"gs://bucket_name/object_name_prefix\". Each object uri is in format:\n\"gs://bucket_name/object_name_prefix/<asset type>/<shard number> and only\ncontains assets for that type. <shard number> starts from 0. Example:\n\"gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0\" is\nthe first shard of output objects containing all\ncompute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be\nreturned if file with the same name \"gs://bucket_name/object_name_prefix\"\nalready exists."]
         #[serde(
             rename = "uriPrefix",
             default,
@@ -886,7 +896,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub denied_values: ::std::option::Option<Vec<String>>,
-        #[doc = "Determines the inheritance behavior for this `Policy`.\n\nBy default, a `ListPolicy` set at a resource supercedes any `Policy` set\nanywhere up the resource hierarchy. However, if `inherit_from_parent` is\nset to `true`, then the values from the effective `Policy` of the parent\nresource are inherited, meaning the values set in this `Policy` are\nadded to the values inherited up the hierarchy.\n\nSetting `Policy` hierarchies that inherit both allowed values and denied\nvalues isn't recommended in most circumstances to keep the configuration\nsimple and understandable. However, it is possible to set a `Policy` with\n`allowed_values` set that inherits a `Policy` with `denied_values` set.\nIn this case, the values that are allowed must be in `allowed_values` and\nnot present in `denied_values`.\n\nFor example, suppose you have a `Constraint`\n`constraints/serviceuser.services`, which has a `constraint_type` of\n`list_constraint`, and with `constraint_default` set to `ALLOW`.\nSuppose that at the Organization level, a `Policy` is applied that\nrestricts the allowed API activations to {`E1`, `E2`}. Then, if a\n`Policy` is applied to a project below the Organization that has\n`inherit_from_parent` set to `false` and field all_values set to DENY,\nthen an attempt to activate any API will be denied.\n\nThe following examples demonstrate different possible layerings for\n`projects/bar` parented by `organizations/foo`:\n\nExample 1 (no inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has `inherit_from_parent` `false` and values:\n{allowed_values: \"E3\" allowed_values: \"E4\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E3`, and `E4`.\n\nExample 2 (inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has a `Policy` with values:\n{value: \"E3\" value: \"E4\" inherit_from_parent: true}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.\n\nExample 3 (inheriting both allowed and denied values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{denied_values: \"E1\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe value accepted at `projects/bar` is `E2`.\n\nExample 4 (RestoreDefault):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has a `Policy` with values:\n{RestoreDefault: {}}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 5 (no policy inherits parent policy):\n`organizations/foo` has no `Policy` set.\n`projects/bar` has no `Policy` set.\nThe accepted values at both levels are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 6 (ListConstraint allowing all):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{all: ALLOW}\nThe accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.\n\nExample 7 (ListConstraint allowing none):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{all: DENY}\nThe accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.\n\nExample 10 (allowed and denied subtrees of Resource Manager hierarchy):\nGiven the following resource hierarchy\nO1->{F1, F2}; F1->{P1}; F2->{P2, P3},\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"under:organizations/O1\"}\n`projects/bar` has a `Policy` with:\n{allowed_values: \"under:projects/P3\"}\n{denied_values: \"under:folders/F2\"}\nThe accepted values at `organizations/foo` are `organizations/O1`,\n`folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,\n`projects/P3`.\nThe accepted values at `projects/bar` are `organizations/O1`,\n`folders/F1`, `projects/P1`."]
+        #[doc = "Determines the inheritance behavior for this `Policy`.\n\nBy default, a `ListPolicy` set at a resource supersedes any `Policy` set\nanywhere up the resource hierarchy. However, if `inherit_from_parent` is\nset to `true`, then the values from the effective `Policy` of the parent\nresource are inherited, meaning the values set in this `Policy` are\nadded to the values inherited up the hierarchy.\n\nSetting `Policy` hierarchies that inherit both allowed values and denied\nvalues isn't recommended in most circumstances to keep the configuration\nsimple and understandable. However, it is possible to set a `Policy` with\n`allowed_values` set that inherits a `Policy` with `denied_values` set.\nIn this case, the values that are allowed must be in `allowed_values` and\nnot present in `denied_values`.\n\nFor example, suppose you have a `Constraint`\n`constraints/serviceuser.services`, which has a `constraint_type` of\n`list_constraint`, and with `constraint_default` set to `ALLOW`.\nSuppose that at the Organization level, a `Policy` is applied that\nrestricts the allowed API activations to {`E1`, `E2`}. Then, if a\n`Policy` is applied to a project below the Organization that has\n`inherit_from_parent` set to `false` and field all_values set to DENY,\nthen an attempt to activate any API will be denied.\n\nThe following examples demonstrate different possible layerings for\n`projects/bar` parented by `organizations/foo`:\n\nExample 1 (no inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has `inherit_from_parent` `false` and values:\n{allowed_values: \"E3\" allowed_values: \"E4\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E3`, and `E4`.\n\nExample 2 (inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has a `Policy` with values:\n{value: \"E3\" value: \"E4\" inherit_from_parent: true}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.\n\nExample 3 (inheriting both allowed and denied values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{denied_values: \"E1\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe value accepted at `projects/bar` is `E2`.\n\nExample 4 (RestoreDefault):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has a `Policy` with values:\n{RestoreDefault: {}}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 5 (no policy inherits parent policy):\n`organizations/foo` has no `Policy` set.\n`projects/bar` has no `Policy` set.\nThe accepted values at both levels are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 6 (ListConstraint allowing all):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{all: ALLOW}\nThe accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.\n\nExample 7 (ListConstraint allowing none):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{all: DENY}\nThe accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.\n\nExample 10 (allowed and denied subtrees of Resource Manager hierarchy):\nGiven the following resource hierarchy\nO1->{F1, F2}; F1->{P1}; F2->{P2, P3},\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"under:organizations/O1\"}\n`projects/bar` has a `Policy` with:\n{allowed_values: \"under:projects/P3\"}\n{denied_values: \"under:folders/F2\"}\nThe accepted values at `organizations/foo` are `organizations/O1`,\n`folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,\n`projects/P3`.\nThe accepted values at `projects/bar` are `organizations/O1`,\n`folders/F1`, `projects/P1`."]
         #[serde(
             rename = "inheritFromParent",
             default,
@@ -1016,7 +1026,7 @@ pub mod schemas {
         )]
         pub boolean_policy:
             ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1BooleanPolicy>,
-        #[doc = "The name of the `Constraint` the `Policy` is configuring, for example,\n`constraints/serviceuser.services`.\n\nImmutable after creation."]
+        #[doc = "The name of the `Constraint` the `Policy` is configuring, for example,\n`constraints/serviceuser.services`.\n\nA [list of available\nconstraints](/resource-manager/docs/organization-policy/org-policy-constraints)\nis available.\n\nImmutable after creation."]
         #[serde(
             rename = "constraint",
             default,
@@ -2119,7 +2129,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct OutputConfig {
-        #[doc = "Destination on BigQuery. The output table stores the fields in asset\nproto as columns in BigQuery. The resource/iam_policy field is converted\nto a record with each field to a column, except metadata to a single JSON\nstring."]
+        #[doc = "Destination on BigQuery. The output table stores the fields in asset\nproto as columns in BigQuery."]
         #[serde(
             rename = "bigqueryDestination",
             default,
@@ -2178,7 +2188,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "version",
             default,
@@ -2209,7 +2219,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct PubsubDestination {
-        #[doc = "The name of the Pub/Sub topic to publish to.\nFor example: `projects/PROJECT_ID/topics/TOPIC_ID`."]
+        #[doc = "The name of the Pub/Sub topic to publish to.\nExample: `projects/PROJECT_ID/topics/TOPIC_ID`."]
         #[serde(
             rename = "topic",
             default,
@@ -2236,35 +2246,42 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The URL of the discovery document containing the resource's JSON schema.\nFor example:\n\"https://www.googleapis.com/discovery/v1/apis/compute/v1/rest\"\n\nThis value is unspecified for resources that do not have an API based on a\ndiscovery document, such as Cloud Bigtable."]
+        #[doc = "The URL of the discovery document containing the resource's JSON schema.\nExample:\n`https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`\n\nThis value is unspecified for resources that do not have an API based on a\ndiscovery document, such as Cloud Bigtable."]
         #[serde(
             rename = "discoveryDocumentUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub discovery_document_uri: ::std::option::Option<String>,
-        #[doc = "The JSON schema name listed in the discovery document. For example:\n\"Project\"\n\nThis value is unspecified for resources that do not have an API based on a\ndiscovery document, such as Cloud Bigtable."]
+        #[doc = "The JSON schema name listed in the discovery document. Example:\n`Project`\n\nThis value is unspecified for resources that do not have an API based on a\ndiscovery document, such as Cloud Bigtable."]
         #[serde(
             rename = "discoveryName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub discovery_name: ::std::option::Option<String>,
-        #[doc = "The full name of the immediate parent of this resource. See\n[Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information.\n\nFor Google Cloud assets, this value is the parent resource defined in the\n[Cloud IAM policy\nhierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).\nFor example:\n\"//cloudresourcemanager.googleapis.com/projects/my_project_123\"\n\nFor third-party assets, this field may be set differently."]
+        #[doc = "The location of the resource in Google Cloud, such as its zone and region.\nFor more information, see https://cloud.google.com/about/locations/."]
+        #[serde(
+            rename = "location",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub location: ::std::option::Option<String>,
+        #[doc = "The full name of the immediate parent of this resource. See\n[Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information.\n\nFor Google Cloud assets, this value is the parent resource defined in the\n[Cloud IAM policy\nhierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).\nExample:\n`//cloudresourcemanager.googleapis.com/projects/my_project_123`\n\nFor third-party assets, this field may be set differently."]
         #[serde(
             rename = "parent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent: ::std::option::Option<String>,
-        #[doc = "The REST URL for accessing the resource. An HTTP `GET` request using this\nURL returns the resource itself. For example:\n\"https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123\"\n\nThis value is unspecified for resources without a REST API."]
+        #[doc = "The REST URL for accessing the resource. An HTTP `GET` request using this\nURL returns the resource itself. Example:\n`https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`\n\nThis value is unspecified for resources without a REST API."]
         #[serde(
             rename = "resourceUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_url: ::std::option::Option<String>,
-        #[doc = "The API version. For example: \"v1\""]
+        #[doc = "The API version. Example: `v1`"]
         #[serde(
             rename = "version",
             default,
@@ -2578,23 +2595,29 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
-        Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
     }
-    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -2626,7 +2649,7 @@ pub mod resources {
     pub mod feeds {
         pub mod params {}
         pub struct FeedsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> FeedsActions<'a> {
@@ -2742,7 +2765,7 @@ pub mod resources {
         #[doc = "Created via [FeedsActions::create()](struct.FeedsActions.html#method.create)"]
         #[derive(Debug, Clone)]
         pub struct CreateRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::CreateFeedRequest,
             parent: String,
@@ -2811,7 +2834,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2821,48 +2844,41 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::Feed, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+            pub fn execute_with_default_fields(self) -> Result<crate::schemas::Feed, crate::Error> {
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Feed, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Feed, crate::Error> {
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -2877,7 +2893,10 @@ pub mod resources {
                 output.push_str("/feeds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2901,7 +2920,7 @@ pub mod resources {
         #[doc = "Created via [FeedsActions::delete()](struct.FeedsActions.html#method.delete)"]
         #[derive(Debug, Clone)]
         pub struct DeleteRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -2969,7 +2988,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2979,47 +2998,42 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Empty, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Empty, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Empty, crate::Error> {
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -3033,7 +3047,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::DELETE, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3057,7 +3074,7 @@ pub mod resources {
         #[doc = "Created via [FeedsActions::get()](struct.FeedsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3125,7 +3142,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3135,47 +3152,40 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::Feed, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+            pub fn execute_with_default_fields(self) -> Result<crate::schemas::Feed, crate::Error> {
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Feed, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Feed, crate::Error> {
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -3189,7 +3199,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3213,7 +3226,7 @@ pub mod resources {
         #[doc = "Created via [FeedsActions::list()](struct.FeedsActions.html#method.list)"]
         #[derive(Debug, Clone)]
         pub struct ListRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             access_token: Option<String>,
@@ -3281,7 +3294,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3291,47 +3304,44 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::ListFeedsResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::ListFeedsResponse, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -3346,7 +3356,10 @@ pub mod resources {
                 output.push_str("/feeds");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3370,7 +3383,7 @@ pub mod resources {
         #[doc = "Created via [FeedsActions::patch()](struct.FeedsActions.html#method.patch)"]
         #[derive(Debug, Clone)]
         pub struct PatchRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::UpdateFeedRequest,
             name: String,
@@ -3439,7 +3452,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3449,48 +3462,41 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
-                self,
-            ) -> Result<crate::schemas::Feed, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+            pub fn execute_with_default_fields(self) -> Result<crate::schemas::Feed, crate::Error> {
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
-                self,
-            ) -> Result<crate::schemas::Feed, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+            pub fn execute_with_all_fields(self) -> Result<crate::schemas::Feed, crate::Error> {
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -3504,7 +3510,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::PATCH, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3529,7 +3538,7 @@ pub mod resources {
     pub mod operations {
         pub mod params {}
         pub struct OperationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OperationsActions<'a> {
@@ -3559,7 +3568,7 @@ pub mod resources {
         #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
         #[derive(Debug, Clone)]
         pub struct GetRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             name: String,
             access_token: Option<String>,
@@ -3627,7 +3636,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3637,47 +3646,44 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -3691,7 +3697,10 @@ pub mod resources {
                 }
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -3806,14 +3815,14 @@ pub mod resources {
             }
         }
         pub struct V1Actions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> V1Actions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.\nIf a specified asset does not exist, this API returns an INVALID_ARGUMENT\nerror."]
+            #[doc = "Batch gets the update history of assets that overlap a time window.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.\nOtherwise, this API outputs history with asset in both non-delete or\ndeleted status.\nIf a specified asset does not exist, this API returns an INVALID_ARGUMENT\nerror."]
             pub fn batch_get_assets_history(
                 &self,
                 parent: impl Into<String>,
@@ -3839,7 +3848,7 @@ pub mod resources {
                     read_time_window_start_time: None,
                 }
             }
-            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export."]
+            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation/BigQuery table. For Cloud Storage location destinations, the\noutput format is newline-delimited JSON. Each line represents a\ngoogle.cloud.asset.v1.Asset in the JSON format; for BigQuery table\ndestinations, the output table stores the fields in asset proto as columns.\nThis API implements the google.longrunning.Operation API\n, which allows you to keep track of the export. We recommend intervals of\nat least 2 seconds with exponential retry to poll the export operation\nresult. For regular-size resource parent, the export operation usually\nfinishes within 5 minutes."]
             pub fn export_assets(
                 &self,
                 request: crate::schemas::ExportAssetsRequest,
@@ -3867,7 +3876,7 @@ pub mod resources {
         #[doc = "Created via [V1Actions::batch_get_assets_history()](struct.V1Actions.html#method.batch_get_assets_history)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetAssetsHistoryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             asset_names: Option<Vec<String>>,
@@ -3887,7 +3896,7 @@ pub mod resources {
             xgafv: Option<crate::params::Xgafv>,
         }
         impl<'a> BatchGetAssetsHistoryRequestBuilder<'a> {
-            #[doc = "A list of the full names of the assets. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nand [Resource Name\nFormat](https://cloud.google.com/asset-inventory/docs/resource-name-format)\nfor more info.\n\nThe request becomes a no-op if the asset name list is empty, and the max\nsize of the asset name list is 100 in one request."]
+            #[doc = "A list of the full names of the assets.\nSee: https://cloud.google.com/asset-inventory/docs/resource-name-format\nExample:\n\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\n\nThe request becomes a no-op if the asset name list is empty, and the max\nsize of the asset name list is 100 in one request."]
             pub fn asset_names(mut self, value: impl Into<Vec<String>>) -> Self {
                 self.asset_names = Some(value.into());
                 self
@@ -3962,7 +3971,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -3972,47 +3981,44 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::BatchGetAssetsHistoryResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::BatchGetAssetsHistoryResponse, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -4027,7 +4033,10 @@ pub mod resources {
                 output.push_str(":batchGetAssetsHistory");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("assetNames", &self.asset_names)]);
                 let req = req.query(&[("contentType", &self.content_type)]);
@@ -4058,7 +4067,7 @@ pub mod resources {
         #[doc = "Created via [V1Actions::export_assets()](struct.V1Actions.html#method.export_assets)"]
         #[derive(Debug, Clone)]
         pub struct ExportAssetsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ExportAssetsRequest,
             parent: String,
@@ -4127,7 +4136,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -4137,48 +4146,45 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -4193,7 +4199,10 @@ pub mod resources {
                 output.push_str(":exportAssets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -4269,6 +4278,20 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+/// Check the response to see if the status code represents an error. If so
+/// convert it into the Reqwest variant of Error.
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
+    match response.error_for_status_ref() {
+        Err(reqwest_err) => {
+            let body = response.text().ok();
+            Err(Error::Reqwest { reqwest_err, body })
+        }
+        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

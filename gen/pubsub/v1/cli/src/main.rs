@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("pubsub1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200505")
+            .version("0.1.0-20200616")
             .about("Provides reliable, many-to-many, asynchronous messaging between applications.\n")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -73,7 +73,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut subscriptions1 = SubCommand::with_name("subscriptions")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: acknowledge, create, delete, get, get_iam_policy, list, modify_ack_deadline, modify_push_config, patch, pull, seek, set_iam_policy and test_iam_permissions");
+                        .about("methods: acknowledge, create, delete, detach, get, get_iam_policy, list, modify_ack_deadline, modify_push_config, patch, pull, seek, set_iam_policy and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("acknowledge").about("Acknowledges the messages associated with the `ack_ids` in the\n`AcknowledgeRequest`. The Pub/Sub system can remove the relevant messages\nfrom the subscription.\n\nAcknowledging a message whose ack deadline has expired may succeed,\nbut such a message may be redelivered later. Acknowledging a message more\nthan once will not result in an error.");
             subscriptions1 = subscriptions1.subcommand(mcmd);
@@ -84,6 +84,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("delete").about("Deletes an existing subscription. All messages retained in the subscription\nare immediately dropped. Calls to `Pull` after deletion will return\n`NOT_FOUND`. After a subscription is deleted, a new one may be created with\nthe same name, but the new one has no association with the old\nsubscription or its topic unless the same topic is specified.");
+            subscriptions1 = subscriptions1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("detach").about("Detaches a subscription from this topic. All messages retained in the\nsubscription are dropped. Subsequent `Pull` and `StreamingPull` requests\nwill return FAILED_PRECONDITION. If the subscription is a push\nsubscription, pushes to the endpoint will stop.");
             subscriptions1 = subscriptions1.subcommand(mcmd);
         }
         {
@@ -178,7 +182,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: list");
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists the names of the subscriptions on this topic.");
+                .about("Lists the names of the attached subscriptions on this topic.");
             subscriptions2 = subscriptions2.subcommand(mcmd);
         }
         topics1 = topics1.subcommand(subscriptions2);

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Life Sciences",
   "fullyEncodeReservedExpansion": true,
   "version": "v2beta",
-  "revision": "20200507",
+  "revision": "20200612",
   "title": "Cloud Life Sciences API",
   "description": "Cloud Life Sciences is a suite of services and tools for managing, processing, and transforming life sciences data.",
   "ownerDomain": "google.com",
@@ -1636,6 +1636,24 @@
           "additionalProperties": null,
           "items": {
             "$ref": "Disk"
+          }
+        },
+        "dockerCacheImages": {
+          "description": "The Compute Engine Disk Images to use as a Docker cache. The disks will be\nmounted into the Docker folder in a way that the images present in the\ncache will not need to be pulled. The digests of the cached images must\nmatch those of the tags used or the latest version will still be pulled.\nOnly a single image is supported.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
           }
         },
         "enableStackdriverMonitoring": {

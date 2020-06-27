@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("redis1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200402")
+            .version("0.1.0-20200623")
             .about("Creates and manages Redis instances on the Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -54,7 +54,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 "methods: create, delete, export, failover, get, import, list, patch and upgrade",
             );
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a Redis instance based on the specified tier and memory size.\n\nBy default, the instance is accessible from the project\'s\n[default network](/compute/docs/networks-and-firewalls#networks).\n\nThe creation is executed asynchronously and callers may check the returned\noperation to track its progress. Once the operation is completed the Redis\ninstance will be fully functional. Completed longrunning.Operation will\ncontain the new instance object in the response field.\n\nThe returned operation is automatically deleted after a few hours, so there\nis no need to call DeleteOperation.");
+            let mcmd = SubCommand::with_name("create").about("Creates a Redis instance based on the specified tier and memory size.\n\nBy default, the instance is accessible from the project\'s\n[default network](https://cloud.google.com/vpc/docs/vpc).\n\nThe creation is executed asynchronously and callers may check the returned\noperation to track its progress. Once the operation is completed the Redis\ninstance will be fully functional. Completed longrunning.Operation will\ncontain the new instance object in the response field.\n\nThe returned operation is automatically deleted after a few hours, so there\nis no need to call DeleteOperation.");
             instances2 = instances2.subcommand(mcmd);
         }
         {

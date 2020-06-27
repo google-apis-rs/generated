@@ -109,7 +109,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
+        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
@@ -282,7 +282,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudAssetV1P4Beta1Access {
-        #[doc = "The analysis state of this access node."]
+        #[doc = "The analysis state of this access."]
         #[serde(
             rename = "analysisState",
             default,
@@ -382,7 +382,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub cause: ::std::option::Option<String>,
-        #[doc = "The Google standard error code that best describes the state.\nFor example:\n\n* OK means the node has been successfully explored;\n* PERMISSION_DENIED means an access denied error is encountered;\n* DEADLINE_EXCEEDED means the node hasn't been explored in time;"]
+        #[doc = "The Google standard error code that best describes the state.\nFor example:\n\n* OK means the analysis on this entity has been successfully finished;\n* PERMISSION_DENIED means an access denied error is encountered;\n* DEADLINE_EXCEEDED means the analysis on this entity hasn't been started\n  in time;"]
         #[serde(
             rename = "code",
             default,
@@ -611,7 +611,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudAssetV1P4Beta1Identity {
-        #[doc = "The analysis state of this identity node."]
+        #[doc = "The analysis state of this identity."]
         #[serde(
             rename = "analysisState",
             default,
@@ -689,7 +689,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct GoogleCloudAssetV1P4Beta1Resource {
-        #[doc = "The analysis state of this resource node."]
+        #[doc = "The analysis state of this resource."]
         #[serde(
             rename = "analysisState",
             default,
@@ -697,7 +697,7 @@ pub mod schemas {
         )]
         pub analysis_state:
             ::std::option::Option<crate::schemas::GoogleCloudAssetV1P4Beta1AnalysisState>,
-        #[doc = "The [full resource name](https://aip.dev/122#full-resource-names)."]
+        #[doc = "The [full resource\nname](https://cloud.google.com/asset-inventory/docs/resource-name-format)"]
         #[serde(
             rename = "fullResourceName",
             default,
@@ -804,28 +804,28 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IamPolicyAnalysisQuery {
-        #[doc = "Optional. Specifies roles or permissions for analysis. Leaving it empty\nmeans ANY."]
+        #[doc = "Optional. Specifies roles or permissions for analysis. This is optional."]
         #[serde(
             rename = "accessSelector",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub access_selector: ::std::option::Option<crate::schemas::AccessSelector>,
-        #[doc = "Optional. Specifies an identity for analysis. Leaving it empty means ANY."]
+        #[doc = "Optional. Specifies an identity for analysis. Either ResourceSelector or\nIdentitySelector must be specified."]
         #[serde(
             rename = "identitySelector",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub identity_selector: ::std::option::Option<crate::schemas::IdentitySelector>,
-        #[doc = "Required. The relative name of the root asset. Only resources and IAM policies within\nthe parent will be analyzed. This can only be an organization number (such\nas \"organizations/123\") or a folder number (such as \"folders/123\")."]
+        #[doc = "Required. The relative name of the root asset. Only resources and IAM policies within\nthe parent will be analyzed. This can only be an organization number (such\nas \"organizations/123\") or a folder number (such as \"folders/123\").\n\nTo know how to get organization id, visit [here\n](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).\n\nTo know how to get folder id, visit [here\n](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects)."]
         #[serde(
             rename = "parent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent: ::std::option::Option<String>,
-        #[doc = "Optional. Specifies a resource for analysis. Leaving it empty means ANY."]
+        #[doc = "Optional. Specifies a resource for analysis. Either ResourceSelector or\nIdentitySelector must be specified."]
         #[serde(
             rename = "resourceSelector",
             default,
@@ -864,14 +864,14 @@ pub mod schemas {
         )]
         pub access_control_lists:
             ::std::option::Option<Vec<crate::schemas::GoogleCloudAssetV1P4Beta1AccessControlList>>,
-        #[doc = "The full name of the resource to which the iam_binding policy attaches."]
+        #[doc = "The [full resource\nname](https://cloud.google.com/asset-inventory/docs/resource-name-format)\nof the resource to which the iam_binding policy attaches."]
         #[serde(
             rename = "attachedResourceFullName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub attached_resource_full_name: ::std::option::Option<String>,
-        #[doc = "Represents whether all nodes in the transitive closure of the\niam_binding node have been explored."]
+        #[doc = "Represents whether all analyses on the iam_binding have successfully\nfinished."]
         #[serde(
             rename = "fullyExplored",
             default,
@@ -917,7 +917,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct IdentitySelector {
-        #[doc = "Required. The identity appear in the form of members in\n[IAM policy\nbinding](https://cloud.google.com/iam/reference/rest/v1/Binding)."]
+        #[doc = "Required. The identity appear in the form of members in\n[IAM policy\nbinding](https://cloud.google.com/iam/reference/rest/v1/Binding).\n\nThe examples of supported forms are:\n\"user:mike@example.com\",\n\"group:admins@example.com\",\n\"domain:google.com\",\n\"serviceAccount:my-project-id@appspot.gserviceaccount.com\".\n\nNotice that wildcard characters (such as * and ?) are not supported.\nYou must give a specific identity."]
         #[serde(
             rename = "identity",
             default,
@@ -1064,7 +1064,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct ResourceSelector {
-        #[doc = "Required. The [full resource\nname](https://cloud.google.com/apis/design/resource_names#full_resource_name)\n."]
+        #[doc = "Required. The [full resource\nname](https://cloud.google.com/asset-inventory/docs/resource-name-format)\nof a resource of [supported resource\ntypes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types)."]
         #[serde(
             rename = "fullResourceName",
             default,
@@ -1268,23 +1268,29 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
-        Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
     }
-    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -1302,14 +1308,14 @@ pub mod resources {
     pub mod v_1p_4beta_1 {
         pub mod params {}
         pub struct V1P4Beta1Actions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> V1P4Beta1Actions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Analyzes IAM policies based on the specified request. Returns\na list of IamPolicyAnalysisResult matching the request."]
+            #[doc = "Analyzes IAM policies to answer which identities have what accesses on\nwhich resources."]
             pub fn analyze_iam_policy(
                 &self,
                 parent: impl Into<String>,
@@ -1342,7 +1348,7 @@ pub mod resources {
                     options_output_resource_edges: None,
                 }
             }
-            #[doc = "Exports IAM policy analysis based on the specified request. This API\nimplements the google.longrunning.Operation API allowing you to keep\ntrack of the export. The metadata contains the request to help callers to\nmap responses to requests."]
+            #[doc = "Exports the answers of which identities have what accesses on which\nresources to a Google Cloud Storage destination. The output format is\nthe JSON format that represents a AnalyzeIamPolicyResponse\nin the JSON format.\nThis method implements the google.longrunning.Operation, which allows\nyou to keep track of the export. We recommend intervals of at least 2\nseconds with exponential retry to poll the export operation result. The\nmetadata contains the request to help callers to map responses to requests."]
             pub fn export_iam_policy_analysis(
                 &self,
                 request: crate::schemas::ExportIamPolicyAnalysisRequest,
@@ -1370,7 +1376,7 @@ pub mod resources {
         #[doc = "Created via [V1P4Beta1Actions::analyze_iam_policy()](struct.V1P4Beta1Actions.html#method.analyze_iam_policy)"]
         #[derive(Debug, Clone)]
         pub struct AnalyzeIamPolicyRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             analysis_query_access_selector_permissions: Option<Vec<String>>,
@@ -1413,7 +1419,7 @@ pub mod resources {
                 self.analysis_query_access_selector_roles = Some(value.into());
                 self
             }
-            #[doc = "Required. The identity appear in the form of members in\n[IAM policy\nbinding](https://cloud.google.com/iam/reference/rest/v1/Binding)."]
+            #[doc = "Required. The identity appear in the form of members in\n[IAM policy\nbinding](https://cloud.google.com/iam/reference/rest/v1/Binding).\n\nThe examples of supported forms are:\n\"user:mike@example.com\",\n\"group:admins@example.com\",\n\"domain:google.com\",\n\"serviceAccount:my-project-id@appspot.gserviceaccount.com\".\n\nNotice that wildcard characters (such as * and ?) are not supported.\nYou must give a specific identity."]
             pub fn analysis_query_identity_selector_identity(
                 mut self,
                 value: impl Into<String>,
@@ -1421,7 +1427,7 @@ pub mod resources {
                 self.analysis_query_identity_selector_identity = Some(value.into());
                 self
             }
-            #[doc = "Required. The [full resource\nname](https://cloud.google.com/apis/design/resource_names#full_resource_name)\n."]
+            #[doc = "Required. The [full resource\nname](https://cloud.google.com/asset-inventory/docs/resource-name-format)\nof a resource of [supported resource\ntypes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types)."]
             pub fn analysis_query_resource_selector_full_resource_name(
                 mut self,
                 value: impl Into<String>,
@@ -1429,7 +1435,7 @@ pub mod resources {
                 self.analysis_query_resource_selector_full_resource_name = Some(value.into());
                 self
             }
-            #[doc = "Optional. If true, the response will include access analysis from identities to\nresources via service account impersonation. This is a very expensive\noperation, because many derived queries will be executed. We highly\nrecommend you use ExportIamPolicyAnalysis rpc instead.\n\nFor example, if the request analyzes for which resources user A has\npermission P, and there's an IAM policy states user A has\niam.serviceAccounts.getAccessToken permission to a service account SA,\nand there's another IAM policy states service account SA has permission P\nto a GCP folder F, then user A potentially has access to the GCP folder\nF. And those advanced analysis results will be included in\nAnalyzeIamPolicyResponse.service_account_impersonation_analysis.\n\nAnother example, if the request analyzes for who has\npermission P to a GCP folder F, and there's an IAM policy states user A\nhas iam.serviceAccounts.actAs permission to a service account SA, and\nthere's another IAM policy states service account SA has permission P to\nthe GCP folder F, then user A potentially has access to the GCP folder\nF. And those advanced analysis results will be included in\nAnalyzeIamPolicyResponse.service_account_impersonation_analysis.\n\nDefault is false."]
+            #[doc = "Optional. If true, the response will include access analysis from identities to\nresources via service account impersonation. This is a very expensive\noperation, because many derived queries will be executed. We highly\nrecommend you use AssetService.ExportIamPolicyAnalysis rpc instead.\n\nFor example, if the request analyzes for which resources user A has\npermission P, and there's an IAM policy states user A has\niam.serviceAccounts.getAccessToken permission to a service account SA,\nand there's another IAM policy states service account SA has permission P\nto a GCP folder F, then user A potentially has access to the GCP folder\nF. And those advanced analysis results will be included in\nAnalyzeIamPolicyResponse.service_account_impersonation_analysis.\n\nAnother example, if the request analyzes for who has\npermission P to a GCP folder F, and there's an IAM policy states user A\nhas iam.serviceAccounts.actAs permission to a service account SA, and\nthere's another IAM policy states service account SA has permission P to\nthe GCP folder F, then user A potentially has access to the GCP folder\nF. And those advanced analysis results will be included in\nAnalyzeIamPolicyResponse.service_account_impersonation_analysis.\n\nDefault is false."]
             pub fn options_analyze_service_account_impersonation(mut self, value: bool) -> Self {
                 self.options_analyze_service_account_impersonation = Some(value);
                 self
@@ -1516,7 +1522,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1526,47 +1532,44 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::AnalyzeIamPolicyResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::AnalyzeIamPolicyResponse, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -1581,7 +1584,10 @@ pub mod resources {
                 output.push_str(":analyzeIamPolicy");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[(
                     "analysisQuery.accessSelector.permissions",
@@ -1636,7 +1642,7 @@ pub mod resources {
         #[doc = "Created via [V1P4Beta1Actions::export_iam_policy_analysis()](struct.V1P4Beta1Actions.html#method.export_iam_policy_analysis)"]
         #[derive(Debug, Clone)]
         pub struct ExportIamPolicyAnalysisRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ExportIamPolicyAnalysisRequest,
             parent: String,
@@ -1705,7 +1711,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1715,48 +1721,45 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -1771,7 +1774,10 @@ pub mod resources {
                 output.push_str(":exportIamPolicyAnalysis");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1847,6 +1853,20 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+/// Check the response to see if the status code represents an error. If so
+/// convert it into the Reqwest variant of Error.
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
+    match response.error_for_status_ref() {
+        Err(reqwest_err) => {
+            let body = response.text().ok();
+            Err(Error::Reqwest { reqwest_err, body })
+        }
+        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

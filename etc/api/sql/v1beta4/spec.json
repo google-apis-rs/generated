@@ -7,7 +7,7 @@
   "canonicalName": "SQL Admin",
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta4",
-  "revision": "20200331",
+  "revision": "20200610",
   "title": "Cloud SQL Admin API",
   "description": "API for Cloud SQL database instance management",
   "ownerDomain": "google.com",
@@ -891,7 +891,8 @@
             "SQLSERVER_2017_EXPRESS",
             "SQLSERVER_2017_WEB",
             "POSTGRES_10",
-            "POSTGRES_12"
+            "POSTGRES_12",
+            "MYSQL_8_0"
           ],
           "enumDescriptions": [
             "This is an unknown database version.",
@@ -906,7 +907,8 @@
             "The database version is SQL Server 2017 Express.",
             "The database version is SQL Server 2017 Web.",
             "The database version is PostgreSQL 10.",
-            "The database version is PostgreSQL 12."
+            "The database version is PostgreSQL 12.",
+            "The database version is MySQL 8."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1520,6 +1522,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "offload": {
+          "description": "Option for export offload.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "sqlExportOptions": {
           "description": "Options for exporting data as SQL statements.",
           "type": "object",
@@ -1688,7 +1700,8 @@
             "The database version is SQL Server 2017 Express.",
             "The database version is SQL Server 2017 Web.",
             "The database version is PostgreSQL 10.",
-            "The database version is PostgreSQL 12."
+            "The database version is PostgreSQL 12.",
+            "The database version is MySQL 8."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1708,7 +1721,8 @@
               "SQLSERVER_2017_EXPRESS",
               "SQLSERVER_2017_WEB",
               "POSTGRES_10",
-              "POSTGRES_12"
+              "POSTGRES_12",
+              "MYSQL_8_0"
             ],
             "enumDescriptions": [],
             "properties": {},

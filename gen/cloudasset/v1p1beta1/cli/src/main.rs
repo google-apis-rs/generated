@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudasset1_p1beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200508")
+            .version("0.1.0-20200613")
             .about("The cloud asset API manages the history and inventory of cloud resources.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,14 +37,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: search_all");
         {
-            let mcmd = SubCommand::with_name("search_all").about("Searches all the IAM policies under a given accessible CRM scope\n(project/folder/organization). This RPC gives callers\nespecially admins the ability to search all the IAM policies under a scope,\neven if they don\'t have .getIamPolicy permission of all the IAM policies.\nCallers should have cloud.assets.SearchAllIamPolicies permission on the\nrequested scope, otherwise it will be rejected.");
+            let mcmd = SubCommand::with_name("search_all").about("Searches all the IAM policies within a given accessible CRM scope\n(project/folder/organization). This RPC gives callers especially\nadministrators the ability to search all the IAM policies within a scope,\neven if they don\'t have `.getIamPolicy` permission of all the IAM policies.\nCallers should have `cloud.assets.SearchAllIamPolicies` permission on the\nrequested scope, otherwise the request will be rejected.");
             iam_policies0 = iam_policies0.subcommand(mcmd);
         }
         let mut resources0 = SubCommand::with_name("resources")
             .setting(AppSettings::ColoredHelp)
             .about("methods: search_all");
         {
-            let mcmd = SubCommand::with_name("search_all").about("Searches all the resources under a given accessible CRM scope\n(project/folder/organization). This RPC gives callers\nespecially admins the ability to search all the resources under a scope,\neven if they don\'t have .get permission of all the resources. Callers\nshould have cloud.assets.SearchAllResources permission on the requested\nscope, otherwise it will be rejected.");
+            let mcmd = SubCommand::with_name("search_all").about("Searches all the resources within a given accessible CRM scope\n(project/folder/organization). This RPC gives callers especially\nadministrators the ability to search all the resources within a scope, even\nif they don\'t have `.get` permission of all the resources. Callers should\nhave `cloud.assets.SearchAllResources` permission on the requested scope,\notherwise the request will be rejected.");
             resources0 = resources0.subcommand(mcmd);
         }
         app = app.subcommand(resources0);

@@ -7,7 +7,7 @@
   "canonicalName": "SAS Portal Testing",
   "fullyEncodeReservedExpansion": true,
   "version": "v1alpha1",
-  "revision": "20200512",
+  "revision": "20200625",
   "title": "SAS Portal API (Testing)",
   "description": "",
   "ownerDomain": "google.com",
@@ -387,6 +387,10 @@
           "description": "Output only. Current configuration of the device as registered to the SAS.",
           "$ref": "SasPortalDeviceConfig"
         },
+        "deviceMetadata": {
+          "description": "Device parameters that can be overridden by both SAS Portal and SAS\nregistration requests.",
+          "$ref": "SasPortalDeviceMetadata"
+        },
         "displayName": {
           "description": "Device display name.",
           "type": "string",
@@ -750,6 +754,17 @@
           }
         }
       },
+      "additionalProperties": null,
+      "items": null
+    },
+    "SasPortalDeviceMetadata": {
+      "id": "SasPortalDeviceMetadata",
+      "description": "Device data overridable by both SAS Portal and registration requests.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
       "additionalProperties": null,
       "items": null
     },
@@ -3719,7 +3734,45 @@
           }
         }
       },
-      "methods": {}
+      "methods": {
+        "get": {
+          "id": "prod_tt_sasportal.nodes.get",
+          "path": "v1alpha1/{+name}",
+          "httpMethod": "GET",
+          "description": "Returns a requested node.",
+          "parameters": {
+            "name": {
+              "description": "Required. The name of the node.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^nodes/[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "name"
+          ],
+          "request": null,
+          "response": {
+            "$ref": "SasPortalNode"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/userinfo.email"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
     },
     "policies": {
       "resources": {},

@@ -7,7 +7,7 @@
   "canonicalName": "Network Management",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200505",
+  "revision": "20200520",
   "title": "Network Management API",
   "description": "The Network Management API provides a collection of network performance monitoring and diagnostic capabilities.",
   "ownerDomain": "google.com",

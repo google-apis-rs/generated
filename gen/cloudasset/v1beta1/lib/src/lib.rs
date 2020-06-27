@@ -6,34 +6,66 @@ pub mod scopes {
 pub mod schemas {
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Asset {
-        #[doc = "Type of the asset. Example: \"google.compute.Disk\"."]
+        #[doc = "Please also refer to the [access level user\nguide](https://cloud.google.com/access-context-manager/docs/overview#access-levels)."]
+        #[serde(
+            rename = "accessLevel",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub access_level:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessLevel>,
+        #[doc = "Please also refer to the [access policy user\nguide](https://cloud.google.com/access-context-manager/docs/overview#access-policies)."]
+        #[serde(
+            rename = "accessPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub access_policy:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1AccessPolicy>,
+        #[doc = "The type of the asset. Example: `compute.googleapis.com/Disk`\n\nSee [Supported asset\ntypes](https://cloud.google.com/asset-inventory/docs/supported-asset-types)\nfor more information."]
         #[serde(
             rename = "assetType",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub asset_type: ::std::option::Option<String>,
-        #[doc = "Representation of the actual Cloud IAM policy set on a cloud resource. For\neach resource, there must be at most one Cloud IAM policy set on it."]
+        #[doc = "A representation of the Cloud IAM policy set on a Google Cloud resource.\nThere can be a maximum of one Cloud IAM policy set on any given resource.\nIn addition, Cloud IAM policies inherit their granted access scope from any\npolicies set on parent resources in the resource hierarchy. Therefore, the\neffectively policy is the union of both the policy set on this resource\nand each policy set on all of the resource's ancestry resource levels in\nthe hierarchy. See\n[this topic](https://cloud.google.com/iam/docs/policies#inheritance) for\nmore information."]
         #[serde(
             rename = "iamPolicy",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub iam_policy: ::std::option::Option<crate::schemas::Policy>,
-        #[doc = "The full name of the asset. For example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.\nSee [Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information."]
+        #[doc = "The full name of the asset. Example:\n`//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`\n\nSee [Resource\nnames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information."]
         #[serde(
             rename = "name",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub name: ::std::option::Option<String>,
-        #[doc = "Representation of the resource."]
+        #[doc = "A representation of an [organization\npolicy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).\nThere can be more than one organization policy with different constraints\nset on a given resource."]
+        #[serde(
+            rename = "orgPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub org_policy: ::std::option::Option<Vec<crate::schemas::GoogleCloudOrgpolicyV1Policy>>,
+        #[doc = "A representation of the resource."]
         #[serde(
             rename = "resource",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource: ::std::option::Option<crate::schemas::Resource>,
+        #[doc = "Please also refer to the [service perimeter user\nguide](https://cloud.google.com/vpc-service-controls/docs/overview)."]
+        #[serde(
+            rename = "servicePerimeter",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub service_perimeter: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeter,
+        >,
     }
     impl ::google_field_selector::FieldSelector for Asset {
         fn fields() -> Vec<::google_field_selector::Field> {
@@ -235,7 +267,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct Binding {
-        #[doc = "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently."]
+        #[doc = "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "condition",
             default,
@@ -491,6 +523,1211 @@ pub mod schemas {
             ::google_field_selector::FieldType::Leaf
         }
     }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudOrgpolicyV1BooleanPolicy {
+        #[doc = "If `true`, then the `Policy` is enforced. If `false`, then any\nconfiguration is acceptable.\n\nSuppose you have a `Constraint`\n`constraints/compute.disableSerialPortAccess` with `constraint_default`\nset to `ALLOW`. A `Policy` for that `Constraint` exhibits the following\nbehavior:\n\n* If the `Policy` at this resource has enforced set to `false`, serial\n  port connection attempts will be allowed.\n* If the `Policy` at this resource has enforced set to `true`, serial\n  port connection attempts will be refused.\n* If the `Policy` at this resource is `RestoreDefault`, serial port\n  connection attempts will be allowed.\n* If no `Policy` is set at this resource or anywhere higher in the\n  resource hierarchy, serial port connection attempts will be allowed.\n* If no `Policy` is set at this resource, but one exists higher in the\n  resource hierarchy, the behavior is as if the`Policy` were set at\n  this resource.\n\nThe following examples demonstrate the different possible layerings:\n\nExample 1 (nearest `Constraint` wins):\n`organizations/foo` has a `Policy` with:\n{enforced: false}\n`projects/bar` has no `Policy` set.\nThe constraint at `projects/bar` and `organizations/foo` will not be\nenforced.\n\nExample 2 (enforcement gets replaced):\n`organizations/foo` has a `Policy` with:\n{enforced: false}\n`projects/bar` has a `Policy` with:\n{enforced: true}\nThe constraint at `organizations/foo` is not enforced.\nThe constraint at `projects/bar` is enforced.\n\nExample 3 (RestoreDefault):\n`organizations/foo` has a `Policy` with:\n{enforced: true}\n`projects/bar` has a `Policy` with:\n{RestoreDefault: {}}\nThe constraint at `organizations/foo` is enforced.\nThe constraint at `projects/bar` is not enforced, because\n`constraint_default` for the `Constraint` is `ALLOW`."]
+        #[serde(
+            rename = "enforced",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enforced: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1BooleanPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudOrgpolicyV1BooleanPolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudOrgpolicyV1ListPolicy {
+        #[doc = "The policy all_values state."]
+        #[serde(
+            rename = "allValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub all_values:
+            ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1ListPolicyAllValues>,
+        #[doc = "List of values allowed  at this resource. Can only be set if `all_values`\nis set to `ALL_VALUES_UNSPECIFIED`."]
+        #[serde(
+            rename = "allowedValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub allowed_values: ::std::option::Option<Vec<String>>,
+        #[doc = "List of values denied at this resource. Can only be set if `all_values`\nis set to `ALL_VALUES_UNSPECIFIED`."]
+        #[serde(
+            rename = "deniedValues",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub denied_values: ::std::option::Option<Vec<String>>,
+        #[doc = "Determines the inheritance behavior for this `Policy`.\n\nBy default, a `ListPolicy` set at a resource supersedes any `Policy` set\nanywhere up the resource hierarchy. However, if `inherit_from_parent` is\nset to `true`, then the values from the effective `Policy` of the parent\nresource are inherited, meaning the values set in this `Policy` are\nadded to the values inherited up the hierarchy.\n\nSetting `Policy` hierarchies that inherit both allowed values and denied\nvalues isn't recommended in most circumstances to keep the configuration\nsimple and understandable. However, it is possible to set a `Policy` with\n`allowed_values` set that inherits a `Policy` with `denied_values` set.\nIn this case, the values that are allowed must be in `allowed_values` and\nnot present in `denied_values`.\n\nFor example, suppose you have a `Constraint`\n`constraints/serviceuser.services`, which has a `constraint_type` of\n`list_constraint`, and with `constraint_default` set to `ALLOW`.\nSuppose that at the Organization level, a `Policy` is applied that\nrestricts the allowed API activations to {`E1`, `E2`}. Then, if a\n`Policy` is applied to a project below the Organization that has\n`inherit_from_parent` set to `false` and field all_values set to DENY,\nthen an attempt to activate any API will be denied.\n\nThe following examples demonstrate different possible layerings for\n`projects/bar` parented by `organizations/foo`:\n\nExample 1 (no inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has `inherit_from_parent` `false` and values:\n{allowed_values: \"E3\" allowed_values: \"E4\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E3`, and `E4`.\n\nExample 2 (inherited values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has a `Policy` with values:\n{value: \"E3\" value: \"E4\" inherit_from_parent: true}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are `E1`, `E2`, `E3`, and `E4`.\n\nExample 3 (inheriting both allowed and denied values):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{denied_values: \"E1\"}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe value accepted at `projects/bar` is `E2`.\n\nExample 4 (RestoreDefault):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values:\"E2\"}\n`projects/bar` has a `Policy` with values:\n{RestoreDefault: {}}\nThe accepted values at `organizations/foo` are `E1`, `E2`.\nThe accepted values at `projects/bar` are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 5 (no policy inherits parent policy):\n`organizations/foo` has no `Policy` set.\n`projects/bar` has no `Policy` set.\nThe accepted values at both levels are either all or none depending on\nthe value of `constraint_default` (if `ALLOW`, all; if\n`DENY`, none).\n\nExample 6 (ListConstraint allowing all):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{all: ALLOW}\nThe accepted values at `organizations/foo` are `E1`, E2`. Any value is accepted at `projects/bar`.\n\nExample 7 (ListConstraint allowing none):\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"E1\" allowed_values: \"E2\"}\n`projects/bar` has a `Policy` with:\n{all: DENY}\nThe accepted values at `organizations/foo` are `E1`, E2`. No value is accepted at `projects/bar`.\n\nExample 10 (allowed and denied subtrees of Resource Manager hierarchy):\nGiven the following resource hierarchy\nO1->{F1, F2}; F1->{P1}; F2->{P2, P3},\n`organizations/foo` has a `Policy` with values:\n{allowed_values: \"under:organizations/O1\"}\n`projects/bar` has a `Policy` with:\n{allowed_values: \"under:projects/P3\"}\n{denied_values: \"under:folders/F2\"}\nThe accepted values at `organizations/foo` are `organizations/O1`,\n`folders/F1`, `folders/F2`, `projects/P1`, `projects/P2`,\n`projects/P3`.\nThe accepted values at `projects/bar` are `organizations/O1`,\n`folders/F1`, `projects/P1`."]
+        #[serde(
+            rename = "inheritFromParent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub inherit_from_parent: ::std::option::Option<bool>,
+        #[doc = "Optional. The Google Cloud Console will try to default to a configuration\nthat matches the value specified in this `Policy`. If `suggested_value`\nis not set, it will inherit the value specified higher in the hierarchy,\nunless `inherit_from_parent` is `false`."]
+        #[serde(
+            rename = "suggestedValue",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub suggested_value: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1ListPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudOrgpolicyV1ListPolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        #[doc = "Indicates that allowed_values or denied_values must be set."]
+        AllValuesUnspecified,
+        #[doc = "A policy with this set allows all values."]
+        Allow,
+        #[doc = "A policy with this set denies all values."]
+        Deny,
+    }
+    impl GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleCloudOrgpolicyV1ListPolicyAllValues::AllValuesUnspecified => {
+                    "ALL_VALUES_UNSPECIFIED"
+                }
+                GoogleCloudOrgpolicyV1ListPolicyAllValues::Allow => "ALLOW",
+                GoogleCloudOrgpolicyV1ListPolicyAllValues::Deny => "DENY",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleCloudOrgpolicyV1ListPolicyAllValues, ()> {
+            Ok(match s {
+                "ALL_VALUES_UNSPECIFIED" => {
+                    GoogleCloudOrgpolicyV1ListPolicyAllValues::AllValuesUnspecified
+                }
+                "ALLOW" => GoogleCloudOrgpolicyV1ListPolicyAllValues::Allow,
+                "DENY" => GoogleCloudOrgpolicyV1ListPolicyAllValues::Deny,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ALL_VALUES_UNSPECIFIED" => {
+                    GoogleCloudOrgpolicyV1ListPolicyAllValues::AllValuesUnspecified
+                }
+                "ALLOW" => GoogleCloudOrgpolicyV1ListPolicyAllValues::Allow,
+                "DENY" => GoogleCloudOrgpolicyV1ListPolicyAllValues::Deny,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudOrgpolicyV1ListPolicyAllValues {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudOrgpolicyV1Policy {
+        #[doc = "For boolean `Constraints`, whether to enforce the `Constraint` or not."]
+        #[serde(
+            rename = "booleanPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub boolean_policy:
+            ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1BooleanPolicy>,
+        #[doc = "The name of the `Constraint` the `Policy` is configuring, for example,\n`constraints/serviceuser.services`.\n\nA [list of available\nconstraints](/resource-manager/docs/organization-policy/org-policy-constraints)\nis available.\n\nImmutable after creation."]
+        #[serde(
+            rename = "constraint",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub constraint: ::std::option::Option<String>,
+        #[doc = "An opaque tag indicating the current version of the `Policy`, used for\nconcurrency control.\n\nWhen the `Policy` is returned from either a `GetPolicy` or a\n`ListOrgPolicy` request, this `etag` indicates the version of the current\n`Policy` to use when executing a read-modify-write loop.\n\nWhen the `Policy` is returned from a `GetEffectivePolicy` request, the\n`etag` will be unset.\n\nWhen the `Policy` is used in a `SetOrgPolicy` method, use the `etag` value\nthat was returned from a `GetOrgPolicy` request as part of a\nread-modify-write loop for concurrency control. Not setting the `etag`in a\n`SetOrgPolicy` request will result in an unconditional write of the\n`Policy`."]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
+        #[doc = "List of values either allowed or disallowed."]
+        #[serde(
+            rename = "listPolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub list_policy: ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1ListPolicy>,
+        #[doc = "Restores the default behavior of the constraint; independent of\n`Constraint` type."]
+        #[serde(
+            rename = "restoreDefault",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub restore_default:
+            ::std::option::Option<crate::schemas::GoogleCloudOrgpolicyV1RestoreDefault>,
+        #[doc = "The time stamp the `Policy` was previously updated. This is set by the\nserver, not specified by the caller, and represents the last time a call to\n`SetOrgPolicy` was made for that `Policy`. Any value set by the client will\nbe ignored."]
+        #[serde(
+            rename = "updateTime",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub update_time: ::std::option::Option<String>,
+        #[doc = "Version of the `Policy`. Default version is 0;"]
+        #[serde(
+            rename = "version",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub version: ::std::option::Option<i32>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1Policy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudOrgpolicyV1Policy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Copy,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleCloudOrgpolicyV1RestoreDefault {}
+    impl ::google_field_selector::FieldSelector for GoogleCloudOrgpolicyV1RestoreDefault {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleCloudOrgpolicyV1RestoreDefault {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1AccessLevel {
+        #[doc = "A `BasicLevel` composed of `Conditions`."]
+        #[serde(
+            rename = "basic",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub basic:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1BasicLevel>,
+        #[doc = "A `CustomLevel` written in the Common Expression Language."]
+        #[serde(
+            rename = "custom",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub custom:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1CustomLevel>,
+        #[doc = "Description of the `AccessLevel` and its use. Does not affect behavior."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Required. Resource name for the Access Level. The `short_name` component\nmust begin with a letter and only include alphanumeric and '_'. Format:\n`accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length\nof the `short_name` component is 50 characters."]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Human readable title. Must be unique within the Policy."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1AccessLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1AccessLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+        #[doc = "Output only. An opaque identifier for the current version of the\n`AccessPolicy`. This will always be a strongly validated etag, meaning that\ntwo Access Polices will be identical if and only if their etags are\nidentical. Clients should not expect this to be in any specific format."]
+        #[serde(
+            rename = "etag",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub etag: ::std::option::Option<String>,
+        #[doc = "Output only. Resource name of the `AccessPolicy`. Format:\n`accessPolicies/{policy_id}`"]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Required. The parent of this `AccessPolicy` in the Cloud Resource\nHierarchy. Currently immutable once created. Format:\n`organizations/{organization_id}`"]
+        #[serde(
+            rename = "parent",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub parent: ::std::option::Option<String>,
+        #[doc = "Required. Human readable title. Does not affect behavior."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1AccessPolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1BasicLevel {
+        #[doc = "How the `conditions` list should be combined to determine if a request is\ngranted this `AccessLevel`. If AND is used, each `Condition` in\n`conditions` must be satisfied for the `AccessLevel` to be applied. If OR\nis used, at least one `Condition` in `conditions` must be satisfied for the\n`AccessLevel` to be applied. Default behavior is AND."]
+        #[serde(
+            rename = "combiningFunction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub combining_function: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction,
+        >,
+        #[doc = "Required. A list of requirements for the `AccessLevel` to be granted."]
+        #[serde(
+            rename = "conditions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub conditions: ::std::option::Option<
+            Vec<crate::schemas::GoogleIdentityAccesscontextmanagerV1Condition>,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1BasicLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1BasicLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        #[doc = "All `Conditions` must be true for the `BasicLevel` to be true."]
+        And,
+        #[doc = "If at least one `Condition` is true, then the `BasicLevel` is true."]
+        Or,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And => "AND",
+                GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or => "OR",
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction,
+            (),
+        > {
+            Ok(match s {
+                "AND" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And,
+                "OR" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or,
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "AND" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::And,
+                "OR" => GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction::Or,
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1BasicLevelCombiningFunction
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1Condition {
+        #[doc = "Device specific restrictions, all restrictions must hold for the\nCondition to be true. If not specified, all devices are allowed."]
+        #[serde(
+            rename = "devicePolicy",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub device_policy:
+            ::std::option::Option<crate::schemas::GoogleIdentityAccesscontextmanagerV1DevicePolicy>,
+        #[doc = "CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for\na CIDR IP address block, the specified IP address portion must be properly\ntruncated (i.e. all the host bits must be zero) or the input is considered\nmalformed. For example, \"192.0.2.0/24\" is accepted but \"192.0.2.1/24\" is\nnot. Similarly, for IPv6, \"2001:db8::/32\" is accepted whereas\n\"2001:db8::1/32\" is not. The originating IP of a request must be in one of\nthe listed subnets in order for this Condition to be true. If empty, all IP\naddresses are allowed."]
+        #[serde(
+            rename = "ipSubnetworks",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub ip_subnetworks: ::std::option::Option<Vec<String>>,
+        #[doc = "The request must be made by one of the provided user or service\naccounts. Groups are not supported.\nSyntax:\n`user:{emailid}`\n`serviceAccount:{emailid}`\nIf not specified, a request may come from any user."]
+        #[serde(
+            rename = "members",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub members: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether to negate the Condition. If true, the Condition becomes a NAND over\nits non-empty fields, each field must be false for the Condition overall to\nbe satisfied. Defaults to false."]
+        #[serde(
+            rename = "negate",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub negate: ::std::option::Option<bool>,
+        #[doc = "The request must originate from one of the provided countries/regions.\nMust be valid ISO 3166-1 alpha-2 codes."]
+        #[serde(
+            rename = "regions",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub regions: ::std::option::Option<Vec<String>>,
+        #[doc = "A list of other access levels defined in the same `Policy`, referenced by\nresource name. Referencing an `AccessLevel` which does not exist is an\nerror. All access levels listed must be granted for the Condition\nto be true. Example:\n\"`accessPolicies/MY_POLICY/accessLevels/LEVEL_NAME\"`"]
+        #[serde(
+            rename = "requiredAccessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub required_access_levels: ::std::option::Option<Vec<String>>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1Condition {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1Condition {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1CustomLevel {
+        #[doc = "Required. A Cloud CEL expression evaluating to a boolean."]
+        #[serde(
+            rename = "expr",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub expr: ::std::option::Option<crate::schemas::Expr>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1CustomLevel {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1CustomLevel {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1DevicePolicy { # [ doc = "Allowed device management levels, an empty list allows all management\nlevels." ] # [ serde ( rename = "allowedDeviceManagementLevels" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub allowed_device_management_levels : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems > > , # [ doc = "Allowed encryptions statuses, an empty list allows all statuses." ] # [ serde ( rename = "allowedEncryptionStatuses" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub allowed_encryption_statuses : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems > > , # [ doc = "Allowed OS versions, an empty list allows all types and all versions." ] # [ serde ( rename = "osConstraints" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub os_constraints : :: std :: option :: Option < Vec < crate :: schemas :: GoogleIdentityAccesscontextmanagerV1OsConstraint > > , # [ doc = "Whether the device needs to be approved by the customer admin." ] # [ serde ( rename = "requireAdminApproval" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub require_admin_approval : :: std :: option :: Option < bool > , # [ doc = "Whether the device needs to be corp owned." ] # [ serde ( rename = "requireCorpOwned" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub require_corp_owned : :: std :: option :: Option < bool > , # [ doc = "Whether or not screenlock is required for the DevicePolicy to be true.\nDefaults to `false`." ] # [ serde ( rename = "requireScreenlock" , default , skip_serializing_if = "std::option::Option::is_none" ) ] pub require_screenlock : :: std :: option :: Option < bool > , }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1DevicePolicy {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1DevicePolicy {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems {
+        Basic,
+        Complete,
+        ManagementUnspecified,
+        None,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic => "BASIC" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete => "COMPLETE" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified => "MANAGEMENT_UNSPECIFIED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None => "NONE" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems,
+            (),
+        > {
+            Ok ( match s { "BASIC" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic , "COMPLETE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete , "MANAGEMENT_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified , "NONE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "BASIC" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Basic , "COMPLETE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: Complete , "MANAGEMENT_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: ManagementUnspecified , "NONE" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems :: None , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedDeviceManagementLevelsItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems {
+        Encrypted,
+        EncryptionUnspecified,
+        EncryptionUnsupported,
+        Unencrypted,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted => "ENCRYPTED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified => "ENCRYPTION_UNSPECIFIED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported => "ENCRYPTION_UNSUPPORTED" , GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted => "UNENCRYPTED" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems,
+            (),
+        > {
+            Ok ( match s { "ENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted , "ENCRYPTION_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified , "ENCRYPTION_UNSUPPORTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported , "UNENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "ENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Encrypted , "ENCRYPTION_UNSPECIFIED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnspecified , "ENCRYPTION_UNSUPPORTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: EncryptionUnsupported , "UNENCRYPTED" => GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems :: Unencrypted , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItems
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1OsConstraint {
+        #[doc = "The minimum allowed OS version. If not set, any version of this OS\nsatisfies the constraint. Format: `\"major.minor.patch\"`.\nExamples: `\"10.5.301\"`, `\"9.2.1\"`."]
+        #[serde(
+            rename = "minimumVersion",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub minimum_version: ::std::option::Option<String>,
+        #[doc = "Required. The allowed OS type."]
+        #[serde(
+            rename = "osType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub os_type: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1OsConstraintOsType,
+        >,
+        #[doc = "Only allows requests from devices with a verified Chrome OS.\nVerifications includes requirements that the device is enterprise-managed,\nconformant to domain policies, and the caller has permission to call\nthe API targeted by the request."]
+        #[serde(
+            rename = "requireVerifiedChromeOs",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub require_verified_chrome_os: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector for GoogleIdentityAccesscontextmanagerV1OsConstraint {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1OsConstraint {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        #[doc = "An Android operating system."]
+        Android,
+        #[doc = "A desktop ChromeOS operating system."]
+        DesktopChromeOs,
+        #[doc = "A desktop Linux operating system."]
+        DesktopLinux,
+        #[doc = "A desktop Mac operating system."]
+        DesktopMac,
+        #[doc = "A desktop Windows operating system."]
+        DesktopWindows,
+        #[doc = "An iOS operating system."]
+        Ios,
+        #[doc = "The operating system of the device is not specified or not known."]
+        OsUnspecified,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        pub fn as_str(self) -> &'static str {
+            match self {
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::Android => "ANDROID",
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopChromeOs => {
+                    "DESKTOP_CHROME_OS"
+                }
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopLinux => {
+                    "DESKTOP_LINUX"
+                }
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopMac => "DESKTOP_MAC",
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopWindows => {
+                    "DESKTOP_WINDOWS"
+                }
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::Ios => "IOS",
+                GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::OsUnspecified => {
+                    "OS_UNSPECIFIED"
+                }
+            }
+        }
+    }
+    impl ::std::convert::AsRef<str> for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<GoogleIdentityAccesscontextmanagerV1OsConstraintOsType, ()>
+        {
+            Ok(match s {
+                "ANDROID" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::Android,
+                "DESKTOP_CHROME_OS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopChromeOs
+                }
+                "DESKTOP_LINUX" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopLinux
+                }
+                "DESKTOP_MAC" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopMac,
+                "DESKTOP_WINDOWS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopWindows
+                }
+                "IOS" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::Ios,
+                "OS_UNSPECIFIED" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::OsUnspecified
+                }
+                _ => return Err(()),
+            })
+        }
+    }
+    impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de> for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok(match value {
+                "ANDROID" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::Android,
+                "DESKTOP_CHROME_OS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopChromeOs
+                }
+                "DESKTOP_LINUX" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopLinux
+                }
+                "DESKTOP_MAC" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopMac,
+                "DESKTOP_WINDOWS" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::DesktopWindows
+                }
+                "IOS" => GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::Ios,
+                "OS_UNSPECIFIED" => {
+                    GoogleIdentityAccesscontextmanagerV1OsConstraintOsType::OsUnspecified
+                }
+                _ => {
+                    return Err(::serde::de::Error::custom(format!(
+                        "invalid enum for #name: {}",
+                        value
+                    )))
+                }
+            })
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1OsConstraintOsType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
+        #[doc = "Description of the `ServicePerimeter` and its use. Does not affect\nbehavior."]
+        #[serde(
+            rename = "description",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub description: ::std::option::Option<String>,
+        #[doc = "Required. Resource name for the ServicePerimeter.  The `short_name`\ncomponent must begin with a letter and only include alphanumeric and '_'.\nFormat: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`"]
+        #[serde(
+            rename = "name",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub name: ::std::option::Option<String>,
+        #[doc = "Perimeter type indicator. A single project is\nallowed to be a member of single regular perimeter, but multiple service\nperimeter bridges. A project cannot be a included in a perimeter bridge\nwithout being included in regular perimeter. For perimeter bridges,\nthe restricted service list as well as access level lists must be\nempty."]
+        #[serde(
+            rename = "perimeterType",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub perimeter_type: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType,
+        >,
+        #[doc = "Proposed (or dry run) ServicePerimeter configuration. This configuration\nallows to specify and test ServicePerimeter configuration without enforcing\nactual access restrictions. Only allowed to be set when the\n\"use_explicit_dry_run_spec\" flag is set."]
+        #[serde(
+            rename = "spec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub spec: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig,
+        >,
+        #[doc = "Current ServicePerimeter configuration. Specifies sets of resources,\nrestricted services and access levels that determine perimeter\ncontent and boundaries."]
+        #[serde(
+            rename = "status",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub status: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig,
+        >,
+        #[doc = "Human readable title. Must be unique within the Policy."]
+        #[serde(
+            rename = "title",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub title: ::std::option::Option<String>,
+        #[doc = "Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly\nexists  for all Service Perimeters, and that spec is identical to the\nstatus for those Service Perimeters. When this flag is set, it inhibits the\ngeneration of the implicit spec, thereby allowing the user to explicitly\nprovide a configuration (\"spec\") to use in a dry-run version of the Service\nPerimeter. This allows the user to test changes to the enforced config\n(\"status\") without actually enforcing them. This testing is done through\nanalyzing the differences between currently enforced and suggested\nrestrictions. use_explicit_dry_run_spec must bet set to True if any of the\nfields in the spec are set to non-default values."]
+        #[serde(
+            rename = "useExplicitDryRunSpec",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub use_explicit_dry_run_spec: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeter
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType for GoogleIdentityAccesscontextmanagerV1ServicePerimeter {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(Debug, Clone, PartialEq, Hash, PartialOrd, Ord, Eq, Copy)]
+    pub enum GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        #[doc = "Perimeter Bridge."]
+        PerimeterTypeBridge,
+        #[doc = "Regular Perimeter."]
+        PerimeterTypeRegular,
+    }
+    impl GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        pub fn as_str(self) -> &'static str {
+            match self { GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge => "PERIMETER_TYPE_BRIDGE" , GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular => "PERIMETER_TYPE_REGULAR" , }
+        }
+    }
+    impl ::std::convert::AsRef<str>
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn as_ref(&self) -> &str {
+            self.as_str()
+        }
+    }
+    impl ::std::str::FromStr for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        type Err = ();
+        fn from_str(
+            s: &str,
+        ) -> ::std::result::Result<
+            GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType,
+            (),
+        > {
+            Ok ( match s { "PERIMETER_TYPE_BRIDGE" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge , "PERIMETER_TYPE_REGULAR" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular , _ => return Err ( ( ) ) , } )
+        }
+    }
+    impl ::std::fmt::Display for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            f.write_str(self.as_str())
+        }
+    }
+    impl ::serde::Serialize for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType {
+        fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+        where
+            S: ::serde::ser::Serializer,
+        {
+            serializer.serialize_str(self.as_str())
+        }
+    }
+    impl<'de> ::serde::Deserialize<'de>
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+        where
+            D: ::serde::de::Deserializer<'de>,
+        {
+            let value: &'de str = <&str>::deserialize(deserializer)?;
+            Ok ( match value { "PERIMETER_TYPE_BRIDGE" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeBridge , "PERIMETER_TYPE_REGULAR" => GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType :: PerimeterTypeRegular , _ => return Err ( :: serde :: de :: Error :: custom ( format ! ( "invalid enum for #name: {}" , value ) ) ) , } )
+        }
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterPerimeterType
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
+        #[doc = "A list of `AccessLevel` resource names that allow resources within the\n`ServicePerimeter` to be accessed from the internet. `AccessLevels` listed\nmust be in the same policy as this `ServicePerimeter`. Referencing a\nnonexistent `AccessLevel` is a syntax error. If no `AccessLevel` names are\nlisted, resources within the perimeter can only be accessed via Google\nCloud calls with request origins within the perimeter. Example:\n`\"accessPolicies/MY_POLICY/accessLevels/MY_LEVEL\"`.\nFor Service Perimeter Bridge, must be empty."]
+        #[serde(
+            rename = "accessLevels",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub access_levels: ::std::option::Option<Vec<String>>,
+        #[doc = "A list of Google Cloud resources that are inside of the service perimeter.\nCurrently only projects are allowed. Format: `projects/{project_number}`"]
+        #[serde(
+            rename = "resources",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub resources: ::std::option::Option<Vec<String>>,
+        #[doc = "Google Cloud services that are subject to the Service Perimeter\nrestrictions. For example, if `storage.googleapis.com` is specified, access\nto the storage buckets inside the perimeter must meet the perimeter's\naccess restrictions."]
+        #[serde(
+            rename = "restrictedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub restricted_services: ::std::option::Option<Vec<String>>,
+        #[doc = "Configuration for APIs allowed within Perimeter."]
+        #[serde(
+            rename = "vpcAccessibleServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub vpc_accessible_services: ::std::option::Option<
+            crate::schemas::GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices,
+        >,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
+    #[derive(
+        Debug,
+        Clone,
+        PartialEq,
+        Hash,
+        PartialOrd,
+        Ord,
+        Eq,
+        Default,
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+    )]
+    pub struct GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
+        #[doc = "The list of APIs usable within the Service Perimeter. Must be empty\nunless 'enable_restriction' is True."]
+        #[serde(
+            rename = "allowedServices",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub allowed_services: ::std::option::Option<Vec<String>>,
+        #[doc = "Whether to restrict API calls within the Service Perimeter to the list of\nAPIs specified in 'allowed_services'."]
+        #[serde(
+            rename = "enableRestriction",
+            default,
+            skip_serializing_if = "std::option::Option::is_none"
+        )]
+        pub enable_restriction: ::std::option::Option<bool>,
+    }
+    impl ::google_field_selector::FieldSelector
+        for GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+    {
+        fn fields() -> Vec<::google_field_selector::Field> {
+            Vec::new()
+        }
+    }
+    impl ::google_field_selector::ToFieldType
+        for GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
+    {
+        fn field_type() -> ::google_field_selector::FieldType {
+            ::google_field_selector::FieldType::Leaf
+        }
+    }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Operation {
         #[doc = "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable."]
@@ -606,7 +1843,7 @@ pub mod schemas {
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub etag: ::std::option::Option<::google_api_bytes::Bytes>,
-        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset."]
+        #[doc = "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."]
         #[serde(
             rename = "version",
             default,
@@ -626,42 +1863,42 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct Resource {
-        #[doc = "The content of the resource, in which some sensitive fields are scrubbed\naway and may not be present."]
+        #[doc = "The content of the resource, in which some sensitive fields are removed\nand may not be present."]
         #[serde(
             rename = "data",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub data: ::std::option::Option<::std::collections::BTreeMap<String, ::serde_json::Value>>,
-        #[doc = "The URL of the discovery document containing the resource's JSON schema.\nFor example:\n`\"https://www.googleapis.com/discovery/v1/apis/compute/v1/rest\"`.\nIt will be left unspecified for resources without a discovery-based API,\nsuch as Cloud Bigtable."]
+        #[doc = "The URL of the discovery document containing the resource's JSON schema.\nExample:\n`https://www.googleapis.com/discovery/v1/apis/compute/v1/rest`\n\nThis value is unspecified for resources that do not have an API based on a\ndiscovery document, such as Cloud Bigtable."]
         #[serde(
             rename = "discoveryDocumentUri",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub discovery_document_uri: ::std::option::Option<String>,
-        #[doc = "The JSON schema name listed in the discovery document.\nExample: \"Project\". It will be left unspecified for resources (such as\nCloud Bigtable) without a discovery-based API."]
+        #[doc = "The JSON schema name listed in the discovery document. Example:\n`Project`\n\nThis value is unspecified for resources that do not have an API based on a\ndiscovery document, such as Cloud Bigtable."]
         #[serde(
             rename = "discoveryName",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub discovery_name: ::std::option::Option<String>,
-        #[doc = "The full name of the immediate parent of this resource. See\n[Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information.\n\nFor GCP assets, it is the parent resource defined in the [Cloud IAM policy\nhierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).\nFor example:\n`\"//cloudresourcemanager.googleapis.com/projects/my_project_123\"`.\n\nFor third-party assets, it is up to the users to define."]
+        #[doc = "The full name of the immediate parent of this resource. See\n[Resource\nNames](https://cloud.google.com/apis/design/resource_names#full_resource_name)\nfor more information.\n\nFor Google Cloud assets, this value is the parent resource defined in the\n[Cloud IAM policy\nhierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).\nExample:\n`//cloudresourcemanager.googleapis.com/projects/my_project_123`\n\nFor third-party assets, this field may be set differently."]
         #[serde(
             rename = "parent",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub parent: ::std::option::Option<String>,
-        #[doc = "The REST URL for accessing the resource. An HTTP GET operation using this\nURL returns the resource itself.\nExample:\n`https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`.\nIt will be left unspecified for resources without a REST API."]
+        #[doc = "The REST URL for accessing the resource. An HTTP `GET` request using this\nURL returns the resource itself. Example:\n`https://cloudresourcemanager.googleapis.com/v1/projects/my-project-123`\n\nThis value is unspecified for resources without a REST API."]
         #[serde(
             rename = "resourceUrl",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub resource_url: ::std::option::Option<String>,
-        #[doc = "The API version. Example: \"v1\"."]
+        #[doc = "The API version. Example: `v1`"]
         #[serde(
             rename = "version",
             default,
@@ -716,14 +1953,14 @@ pub mod schemas {
     }
     #[derive(Debug, Clone, PartialEq, Default, :: serde :: Deserialize, :: serde :: Serialize)]
     pub struct TemporalAsset {
-        #[doc = "Asset."]
+        #[doc = "An asset in Google Cloud."]
         #[serde(
             rename = "asset",
             default,
             skip_serializing_if = "std::option::Option::is_none"
         )]
         pub asset: ::std::option::Option<crate::schemas::Asset>,
-        #[doc = "If the asset is deleted or not."]
+        #[doc = "Whether the asset has been deleted or not."]
         #[serde(
             rename = "deleted",
             default,
@@ -761,7 +1998,7 @@ pub mod schemas {
         :: serde :: Serialize,
     )]
     pub struct TimeWindow {
-        #[doc = "End time of the time window (inclusive).\nCurrent timestamp if not specified."]
+        #[doc = "End time of the time window (inclusive). If not specified, the current\ntimestamp is used instead."]
         #[serde(
             rename = "endTime",
             default,
@@ -937,23 +2174,29 @@ pub mod params {
     }
 }
 pub struct Client {
-    reqwest: ::reqwest::Client,
+    reqwest: ::reqwest::blocking::Client,
     auth: Box<dyn ::google_api_auth::GetAccessToken>,
 }
 impl Client {
     pub fn new<A>(auth: A) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
-        Client::with_reqwest_client(auth, ::reqwest::Client::builder().build().unwrap())
+        Client::with_reqwest_client(
+            auth,
+            ::reqwest::blocking::Client::builder()
+                .timeout(None)
+                .build()
+                .unwrap(),
+        )
     }
-    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::Client) -> Self
+    pub fn with_reqwest_client<A>(auth: A, reqwest: ::reqwest::blocking::Client) -> Self
     where
-        A: Into<Box<dyn ::google_api_auth::GetAccessToken>>,
+        A: ::google_api_auth::GetAccessToken + 'static,
     {
         Client {
             reqwest,
-            auth: auth.into(),
+            auth: Box::new(auth),
         }
     }
     fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
@@ -985,14 +2228,14 @@ pub mod resources {
     pub mod folders {
         pub mod params {}
         pub struct FoldersActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> FoldersActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export."]
+            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export. We recommend intervals of at least 2 seconds\nwith exponential retry to poll the export operation result. For\nregular-size resource parent, the export operation usually finishes within\n5 minutes."]
             pub fn export_assets(
                 &self,
                 request: crate::schemas::ExportAssetsRequest,
@@ -1027,7 +2270,7 @@ pub mod resources {
         #[doc = "Created via [FoldersActions::export_assets()](struct.FoldersActions.html#method.export_assets)"]
         #[derive(Debug, Clone)]
         pub struct ExportAssetsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ExportAssetsRequest,
             parent: String,
@@ -1096,7 +2339,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1106,48 +2349,45 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -1162,7 +2402,10 @@ pub mod resources {
                 output.push_str(":exportAssets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1186,7 +2429,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -1216,7 +2459,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1284,7 +2527,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -1294,31 +2537,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Operation, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Operation, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -1327,14 +2570,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -1348,7 +2591,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -1456,14 +2702,14 @@ pub mod resources {
             }
         }
         pub struct OrganizationsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> OrganizationsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.\nIf a specified asset does not exist, this API returns an INVALID_ARGUMENT\nerror."]
+            #[doc = "Batch gets the update history of assets that overlap a time window.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.\nOtherwise, this API outputs history with asset in both non-delete or\ndeleted status.\nIf a specified asset does not exist, this API returns an INVALID_ARGUMENT\nerror."]
             pub fn batch_get_assets_history(
                 &self,
                 parent: impl Into<String>,
@@ -1489,7 +2735,7 @@ pub mod resources {
                     read_time_window_start_time: None,
                 }
             }
-            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export."]
+            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export. We recommend intervals of at least 2 seconds\nwith exponential retry to poll the export operation result. For\nregular-size resource parent, the export operation usually finishes within\n5 minutes."]
             pub fn export_assets(
                 &self,
                 request: crate::schemas::ExportAssetsRequest,
@@ -1526,7 +2772,7 @@ pub mod resources {
         #[doc = "Created via [OrganizationsActions::batch_get_assets_history()](struct.OrganizationsActions.html#method.batch_get_assets_history)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetAssetsHistoryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             asset_names: Option<Vec<String>>,
@@ -1560,7 +2806,7 @@ pub mod resources {
                 self.content_type = Some(value);
                 self
             }
-            #[doc = "End time of the time window (inclusive).\nCurrent timestamp if not specified."]
+            #[doc = "End time of the time window (inclusive). If not specified, the current\ntimestamp is used instead."]
             pub fn read_time_window_end_time(mut self, value: impl Into<String>) -> Self {
                 self.read_time_window_end_time = Some(value.into());
                 self
@@ -1622,7 +2868,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1632,47 +2878,44 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::BatchGetAssetsHistoryResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::BatchGetAssetsHistoryResponse, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -1687,7 +2930,10 @@ pub mod resources {
                 output.push_str(":batchGetAssetsHistory");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("assetNames", &self.asset_names)]);
                 let req = req.query(&[("contentType", &self.content_type)]);
@@ -1718,7 +2964,7 @@ pub mod resources {
         #[doc = "Created via [OrganizationsActions::export_assets()](struct.OrganizationsActions.html#method.export_assets)"]
         #[derive(Debug, Clone)]
         pub struct ExportAssetsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ExportAssetsRequest,
             parent: String,
@@ -1787,7 +3033,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -1797,48 +3043,45 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -1853,7 +3096,10 @@ pub mod resources {
                 output.push_str(":exportAssets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -1877,7 +3123,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -1907,7 +3153,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -1975,7 +3221,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -1985,31 +3231,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Operation, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Operation, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2018,14 +3264,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -2039,7 +3285,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2147,14 +3396,14 @@ pub mod resources {
             }
         }
         pub struct ProjectsActions<'a> {
-            pub(crate) reqwest: &'a reqwest::Client,
+            pub(crate) reqwest: &'a reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
         }
         impl<'a> ProjectsActions<'a> {
             fn auth_ref(&self) -> &dyn ::google_api_auth::GetAccessToken {
                 self.auth
             }
-            #[doc = "Batch gets the update history of assets that overlap a time window.\nFor RESOURCE content, this API outputs history with asset in both\nnon-delete or deleted status.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.\nIf a specified asset does not exist, this API returns an INVALID_ARGUMENT\nerror."]
+            #[doc = "Batch gets the update history of assets that overlap a time window.\nFor IAM_POLICY content, this API outputs history when the asset and its\nattached IAM POLICY both exist. This can create gaps in the output history.\nOtherwise, this API outputs history with asset in both non-delete or\ndeleted status.\nIf a specified asset does not exist, this API returns an INVALID_ARGUMENT\nerror."]
             pub fn batch_get_assets_history(
                 &self,
                 parent: impl Into<String>,
@@ -2180,7 +3429,7 @@ pub mod resources {
                     read_time_window_start_time: None,
                 }
             }
-            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export."]
+            #[doc = "Exports assets with time and resource types to a given Cloud Storage\nlocation. The output format is newline-delimited JSON.\nThis API implements the google.longrunning.Operation API allowing you\nto keep track of the export. We recommend intervals of at least 2 seconds\nwith exponential retry to poll the export operation result. For\nregular-size resource parent, the export operation usually finishes within\n5 minutes."]
             pub fn export_assets(
                 &self,
                 request: crate::schemas::ExportAssetsRequest,
@@ -2215,7 +3464,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::batch_get_assets_history()](struct.ProjectsActions.html#method.batch_get_assets_history)"]
         #[derive(Debug, Clone)]
         pub struct BatchGetAssetsHistoryRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             parent: String,
             asset_names: Option<Vec<String>>,
@@ -2249,7 +3498,7 @@ pub mod resources {
                 self.content_type = Some(value);
                 self
             }
-            #[doc = "End time of the time window (inclusive).\nCurrent timestamp if not specified."]
+            #[doc = "End time of the time window (inclusive). If not specified, the current\ntimestamp is used instead."]
             pub fn read_time_window_end_time(mut self, value: impl Into<String>) -> Self {
                 self.read_time_window_end_time = Some(value.into());
                 self
@@ -2311,7 +3560,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2321,47 +3570,44 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::BatchGetAssetsHistoryResponse, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::BatchGetAssetsHistoryResponse, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -2376,7 +3622,10 @@ pub mod resources {
                 output.push_str(":batchGetAssetsHistory");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::GET, path);
                 let req = req.query(&[("assetNames", &self.asset_names)]);
                 let req = req.query(&[("contentType", &self.content_type)]);
@@ -2407,7 +3656,7 @@ pub mod resources {
         #[doc = "Created via [ProjectsActions::export_assets()](struct.ProjectsActions.html#method.export_assets)"]
         #[derive(Debug, Clone)]
         pub struct ExportAssetsRequestBuilder<'a> {
-            pub(crate) reqwest: &'a ::reqwest::Client,
+            pub(crate) reqwest: &'a ::reqwest::blocking::Client,
             pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             request: crate::schemas::ExportAssetsRequest,
             parent: String,
@@ -2476,7 +3725,7 @@ pub mod resources {
             #[doc = r" are not generic over the return type and deserialize the"]
             #[doc = r" response into an auto-generated struct will all possible"]
             #[doc = r" fields."]
-            pub async fn execute<T>(self) -> Result<T, crate::Error>
+            pub fn execute<T>(self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
             {
@@ -2486,48 +3735,45 @@ pub mod resources {
                 } else {
                     Some(fields)
                 };
-                self.execute_with_fields(fields).await
+                self.execute_with_fields(fields)
             }
             #[doc = r" Execute the given operation. This will not provide any"]
             #[doc = r" `fields` selector indicating that the server will determine"]
             #[doc = r" the fields returned. This typically includes the most common"]
             #[doc = r" fields, but it will not include every possible attribute of"]
             #[doc = r" the response resource."]
-            pub async fn execute_with_default_fields(
+            pub fn execute_with_default_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(None::<&str>).await
+                self.execute_with_fields(None::<&str>)
             }
             #[doc = r" Execute the given operation. This will provide a `fields`"]
             #[doc = r" selector of `*`. This will include every attribute of the"]
             #[doc = r" response resource and should be limited to use during"]
             #[doc = r" development or debugging."]
-            pub async fn execute_with_all_fields(
+            pub fn execute_with_all_fields(
                 self,
             ) -> Result<crate::schemas::Operation, crate::Error> {
-                self.execute_with_fields(Some("*")).await
+                self.execute_with_fields(Some("*"))
             }
             #[doc = r" Execute the given operation. This will use the `fields`"]
             #[doc = r" selector provided and will deserialize the response into"]
             #[doc = r" whatever return value is provided."]
-            pub async fn execute_with_fields<T, F>(
-                mut self,
-                fields: Option<F>,
-            ) -> Result<T, crate::Error>
+            pub fn execute_with_fields<T, F>(mut self, fields: Option<F>) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
                 F: Into<String>,
             {
                 self.fields = fields.map(Into::into);
-                self._execute().await
+                self._execute()
             }
-            async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+            fn _execute<T>(&mut self) -> Result<T, crate::Error>
             where
                 T: ::serde::de::DeserializeOwned,
             {
                 let req = self._request(&self._path())?;
                 let req = req.json(&self.request);
-                Ok(req.send().await?.error_for_status()?.json().await?)
+                Ok(crate::error_from_response(req.send()?)?.json()?)
             }
             fn _path(&self) -> String {
                 let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -2542,7 +3788,10 @@ pub mod resources {
                 output.push_str(":exportAssets");
                 output
             }
-            fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+            fn _request(
+                &self,
+                path: &str,
+            ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                 let req = self.reqwest.request(::reqwest::Method::POST, path);
                 let req = req.query(&[("access_token", &self.access_token)]);
                 let req = req.query(&[("alt", &self.alt)]);
@@ -2566,7 +3815,7 @@ pub mod resources {
         pub mod operations {
             pub mod params {}
             pub struct OperationsActions<'a> {
-                pub(crate) reqwest: &'a reqwest::Client,
+                pub(crate) reqwest: &'a reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
             }
             impl<'a> OperationsActions<'a> {
@@ -2596,7 +3845,7 @@ pub mod resources {
             #[doc = "Created via [OperationsActions::get()](struct.OperationsActions.html#method.get)"]
             #[derive(Debug, Clone)]
             pub struct GetRequestBuilder<'a> {
-                pub(crate) reqwest: &'a ::reqwest::Client,
+                pub(crate) reqwest: &'a ::reqwest::blocking::Client,
                 pub(crate) auth: &'a dyn ::google_api_auth::GetAccessToken,
                 name: String,
                 access_token: Option<String>,
@@ -2664,7 +3913,7 @@ pub mod resources {
                 #[doc = r" are not generic over the return type and deserialize the"]
                 #[doc = r" response into an auto-generated struct will all possible"]
                 #[doc = r" fields."]
-                pub async fn execute<T>(self) -> Result<T, crate::Error>
+                pub fn execute<T>(self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned + ::google_field_selector::FieldSelector,
                 {
@@ -2674,31 +3923,31 @@ pub mod resources {
                     } else {
                         Some(fields)
                     };
-                    self.execute_with_fields(fields).await
+                    self.execute_with_fields(fields)
                 }
                 #[doc = r" Execute the given operation. This will not provide any"]
                 #[doc = r" `fields` selector indicating that the server will determine"]
                 #[doc = r" the fields returned. This typically includes the most common"]
                 #[doc = r" fields, but it will not include every possible attribute of"]
                 #[doc = r" the response resource."]
-                pub async fn execute_with_default_fields(
+                pub fn execute_with_default_fields(
                     self,
                 ) -> Result<crate::schemas::Operation, crate::Error> {
-                    self.execute_with_fields(None::<&str>).await
+                    self.execute_with_fields(None::<&str>)
                 }
                 #[doc = r" Execute the given operation. This will provide a `fields`"]
                 #[doc = r" selector of `*`. This will include every attribute of the"]
                 #[doc = r" response resource and should be limited to use during"]
                 #[doc = r" development or debugging."]
-                pub async fn execute_with_all_fields(
+                pub fn execute_with_all_fields(
                     self,
                 ) -> Result<crate::schemas::Operation, crate::Error> {
-                    self.execute_with_fields(Some("*")).await
+                    self.execute_with_fields(Some("*"))
                 }
                 #[doc = r" Execute the given operation. This will use the `fields`"]
                 #[doc = r" selector provided and will deserialize the response into"]
                 #[doc = r" whatever return value is provided."]
-                pub async fn execute_with_fields<T, F>(
+                pub fn execute_with_fields<T, F>(
                     mut self,
                     fields: Option<F>,
                 ) -> Result<T, crate::Error>
@@ -2707,14 +3956,14 @@ pub mod resources {
                     F: Into<String>,
                 {
                     self.fields = fields.map(Into::into);
-                    self._execute().await
+                    self._execute()
                 }
-                async fn _execute<T>(&mut self) -> Result<T, crate::Error>
+                fn _execute<T>(&mut self) -> Result<T, crate::Error>
                 where
                     T: ::serde::de::DeserializeOwned,
                 {
                     let req = self._request(&self._path())?;
-                    Ok(req.send().await?.error_for_status()?.json().await?)
+                    Ok(crate::error_from_response(req.send()?)?.json()?)
                 }
                 fn _path(&self) -> String {
                     let mut output = "https://cloudasset.googleapis.com/".to_owned();
@@ -2728,7 +3977,10 @@ pub mod resources {
                     }
                     output
                 }
-                fn _request(&self, path: &str) -> Result<::reqwest::RequestBuilder, crate::Error> {
+                fn _request(
+                    &self,
+                    path: &str,
+                ) -> Result<::reqwest::blocking::RequestBuilder, crate::Error> {
                     let req = self.reqwest.request(::reqwest::Method::GET, path);
                     let req = req.query(&[("access_token", &self.access_token)]);
                     let req = req.query(&[("alt", &self.alt)]);
@@ -2805,6 +4057,20 @@ impl From<::reqwest::Error> for Error {
             reqwest_err,
             body: None,
         }
+    }
+}
+
+/// Check the response to see if the status code represents an error. If so
+/// convert it into the Reqwest variant of Error.
+fn error_from_response(
+    response: ::reqwest::blocking::Response,
+) -> Result<::reqwest::blocking::Response, Error> {
+    match response.error_for_status_ref() {
+        Err(reqwest_err) => {
+            let body = response.text().ok();
+            Err(Error::Reqwest { reqwest_err, body })
+        }
+        Ok(_) => Ok(response),
     }
 }
 #[allow(dead_code)]

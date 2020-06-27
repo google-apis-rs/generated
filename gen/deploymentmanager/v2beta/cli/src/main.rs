@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("deploymentmanager2_beta")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20181207")
+            .version("0.1.0-20200512")
             .about("The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -55,8 +55,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             composite_types0 = composite_types0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a composite type. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a composite type.");
             composite_types0 = composite_types0.subcommand(mcmd);
         }
         {
@@ -95,7 +94,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             deployments0 = deployments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a deployment and all of the resources described by the deployment manifest. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a deployment and all of the resources described by the deployment manifest.");
             deployments0 = deployments0.subcommand(mcmd);
         }
         {
@@ -185,8 +184,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             type_providers0 = type_providers0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Updates a type provider. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a type provider.");
             type_providers0 = type_providers0.subcommand(mcmd);
         }
         {

@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1beta",
-  "revision": "20200410",
+  "revision": "20200608",
   "title": "App Engine Admin API",
   "description": "Provisions and manages developers' App Engine applications.",
   "ownerDomain": "google.com",
@@ -351,6 +351,26 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "databaseType": {
+          "description": "The type of the Cloud Firestore or Cloud Datastore database associated with this application.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "DATABASE_TYPE_UNSPECIFIED",
+            "CLOUD_DATASTORE",
+            "CLOUD_FIRESTORE",
+            "CLOUD_DATASTORE_COMPATIBILITY"
+          ],
+          "enumDescriptions": [
+            "Database type is unspecified.",
+            "Cloud Datastore",
+            "Cloud Firestore Native",
+            "Cloud Firestore in Datastore Mode"
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null

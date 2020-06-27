@@ -7,7 +7,7 @@
   "canonicalName": "Apigee",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200502",
+  "revision": "20200618",
   "title": "Apigee API",
   "description": "The Apigee API lets you programmatically manage Apigee hybrid with a set of RESTful operations, including:<ul>  <li>Create, edit, and delete API proxies</li>  <li>Manage users</li>  <li>Deploy and undeploy proxy revisions</li>  <li>Configure environments</li></ul><p>For information on using the APIs described in this section, see <a href=\"docs.apigee.com/hybrid/latest/api-get-started\">Get started using the APIs</a>.</p><p><strong>Note:</strong> This product is available as a free trial for a time period of 60 days.",
   "ownerDomain": "google.com",
@@ -1236,7 +1236,7 @@
       "enumDescriptions": [],
       "properties": {
         "created": {
-          "description": "Creation time of the query",
+          "description": "Creation time of the query.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1246,7 +1246,7 @@
           "items": null
         },
         "error": {
-          "description": "Error is set when query fails",
+          "description": "Error is set when query fails.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1256,7 +1256,7 @@
           "items": null
         },
         "executionTime": {
-          "description": "ExecutionTime is available only after the query is completed",
+          "description": "ExecutionTime is available only after the query is completed.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1276,7 +1276,7 @@
           "items": null
         },
         "queryParams": {
-          "description": "Contains information like metrics, dimenstions etc\nof the AsyncQuery",
+          "description": "Contains information like metrics, dimenstions etc of the AsyncQuery.",
           "$ref": "GoogleCloudApigeeV1QueryMetadata"
         },
         "reportDefinitionId": {
@@ -1290,11 +1290,11 @@
           "items": null
         },
         "result": {
-          "description": "Result is available only after the query is completed",
+          "description": "Result is available only after the query is completed.",
           "$ref": "GoogleCloudApigeeV1AsyncQueryResult"
         },
         "resultFileSize": {
-          "description": "ResultFileSize is available only after the query is completed",
+          "description": "ResultFileSize is available only after the query is completed.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1304,7 +1304,7 @@
           "items": null
         },
         "resultRows": {
-          "description": "ResultRows is available only after the query is completed",
+          "description": "ResultRows is available only after the query is completed.",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -1314,7 +1314,7 @@
           "items": null
         },
         "self": {
-          "description": "Self link of the query\n\nExample:\n`/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`",
+          "description": "Self link of the query.\n\nExample:\n`/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1324,7 +1324,7 @@
           "items": null
         },
         "state": {
-          "description": "Query state could be \"enqueued\", \"running\", \"completed\",\n\"failed\"",
+          "description": "Query state could be \"enqueued\", \"running\", \"completed\", \"failed\".",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1334,7 +1334,7 @@
           "items": null
         },
         "updated": {
-          "description": "Last updated timestamp for the query",
+          "description": "Last updated timestamp for the query.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1366,71 +1366,7 @@
           "items": null
         },
         "self": {
-          "description": "Self link of the query results\n\nExample:\n`/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudApigeeV1AsyncQueryResultView": {
-      "id": "GoogleCloudApigeeV1AsyncQueryResultView",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "code": {
-          "description": "Error code when there is a failure.",
-          "type": "integer",
-          "format": "int32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "error": {
-          "description": "Error message when there is a failure.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "metadata": {
-          "description": "Metadata contains information like metrics, dimenstions etc\nof the AsyncQuery",
-          "$ref": "GoogleCloudApigeeV1QueryMetadata"
-        },
-        "rows": {
-          "description": "Rows of query result. Each row is a JSON object.\n\nExample: {sum(message_count): 1, developer_app: \"(not set)\",…}",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "any",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "state": {
-          "description": "State of retrieving ResultView.",
+          "description": "Self link of the query results.\n\nExample:\n`/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1673,380 +1609,6 @@
         },
         "name": {
           "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudApigeeV1Company": {
-      "id": "GoogleCloudApigeeV1Company",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "apps": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "attributes": {
-          "description": "A list of attributes",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudApigeeV1Attribute"
-          }
-        },
-        "createdAt": {
-          "description": "Output only. Created time as milliseconds since epoch.\njson key: createdAt",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "displayName": {
-          "description": "company name displayed in the UI",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "lastModifiedAt": {
-          "description": "Output only. Modified time as milliseconds since epoch.\njson key: lastModifiedAt",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "name": {
-          "description": "Name of the company. Characters you can use in the name are restricted to:\nA-Z0-9._\\-$ %.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "organization": {
-          "description": "the org that the company is created",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "status": {
-          "description": "The status of the company",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudApigeeV1CompanyApp": {
-      "id": "GoogleCloudApigeeV1CompanyApp",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "apiProducts": {
-          "description": "Any API Products the app consumes",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "appFamily": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "appId": {
-          "description": "The id of the app.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "attributes": {
-          "description": "A list of attributes.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudApigeeV1Attribute"
-          }
-        },
-        "callbackUrl": {
-          "description": "The callbackUrl is used by OAuth 2.0 authorization servers to communicate\nauthorization codes back to apps.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "companyName": {
-          "description": "The name of the company owns the app",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "createdAt": {
-          "description": "Output only. created time of this environment as milliseconds since epoch.\nJSON key: createdAt",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "credentials": {
-          "description": "Output only. A set of credentials for the app\ncredentials are key/secret pairs",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudApigeeV1Credential"
-          }
-        },
-        "keyExpiresIn": {
-          "description": "A setting, in milliseconds, for the lifetime of the consumer key that will\nbe generated for the developer app. The default value, -1, indicates an\ninfinite validity period. Once set, the expiration can't be updated.\njson key: keyExpiresIn",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "lastModifiedAt": {
-          "description": "Output only. Modified time as milliseconds since epoch.\njson key: lastModifiedAt",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "name": {
-          "description": "The resoure id of the app.\nJSON key: name",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "scopes": {
-          "description": "The scopes to apply to the app. The specified scope names must already\nexist on the API product that you associate with the app.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "status": {
-          "description": "The status of the credential.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudApigeeV1CompanyAppKey": {
-      "id": "GoogleCloudApigeeV1CompanyAppKey",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "apiProducts": {
-          "description": "A list of api products this credential can be used for.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "any",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "attributes": {
-          "description": "A list of attributes tied to the credential.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudApigeeV1Attribute"
-          }
-        },
-        "consumerKey": {
-          "description": "The consumer key.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "consumerSecret": {
-          "description": "The secret key.",
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "expiresAt": {
-          "description": "Unix time when the app was created\njson key: expiresAt",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "issuedAt": {
-          "description": "Unix time when the app was issued\njson key: issuedAt",
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "scopes": {
-          "description": "The scopes to apply to the app. The specified scope names must already\nexist on the API product that you associate with the app.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "status": {
-          "description": "The status of the credential.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2495,20 +2057,44 @@
       "additionalProperties": null,
       "items": null
     },
-    "GoogleCloudApigeeV1DataLocation": {
-      "id": "GoogleCloudApigeeV1DataLocation",
-      "description": null,
+    "GoogleCloudApigeeV1DataCollectorConfig": {
+      "id": "GoogleCloudApigeeV1DataCollectorConfig",
+      "description": "A DataCollector and its configuration.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
-        "url": {
-          "description": "GCS signed url. Signed URLs provide a way to give time-limited\nread or write access to anyone in possession of the URL, regardless of\nwhether they have a Google account.",
+        "name": {
+          "description": "The name of the data collector. Must be of the form\n'organizations/{org}/datacollectors/{dc}'.",
           "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "type": {
+          "description": "The data type this DataCollector accepts.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "INTEGER",
+            "FLOAT",
+            "STRING",
+            "BOOLEAN",
+            "DATETIME"
+          ],
+          "enumDescriptions": [
+            "For future compatibility.",
+            "For integer values.",
+            "For float values.",
+            "For string values.",
+            "For boolean values.",
+            "For datetime values."
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
@@ -2942,6 +2528,26 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "proxyUid": {
+          "description": "The uid of the proxy revision.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "uid": {
+          "description": "A unique id that will only change if the deployment is deleted and\nrecreated.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -3288,7 +2894,7 @@
       "enumDescriptions": [],
       "properties": {
         "apiProducts": {
-          "description": "List of API products for which the credential can be used.",
+          "description": "List of API products for which the credential can be used.\n\n**Note**: Do not specify the list of API products when creating a consumer\nkey and secret for a developer app. Instead, use the\nUpdateDeveloperAppKey API to\nmake the association after the consumer key and secret are created.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3391,14 +2997,14 @@
     },
     "GoogleCloudApigeeV1DimensionMetric": {
       "id": "GoogleCloudApigeeV1DimensionMetric",
-      "description": "This message type encapsulates a metric grouped by dimension",
+      "description": "This message type encapsulates a metric grouped by dimension.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "metrics": {
-          "description": "This field contains a list of metrics",
+          "description": "This field contains a list of metrics.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3410,7 +3016,7 @@
           }
         },
         "name": {
-          "description": "This field contains the name of the dimension",
+          "description": "This field contains the name of the dimension.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3549,6 +3155,18 @@
           "additionalProperties": null,
           "items": null
         },
+        "dataCollectors": {
+          "description": "The list of Data Collectors used by deployments in the environment.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudApigeeV1DataCollectorConfig"
+          }
+        },
         "debugMask": {
           "description": "Debug mask that applies to all deployments in the environment.",
           "$ref": "GoogleCloudApigeeV1DebugMask"
@@ -3662,8 +3280,18 @@
             "$ref": "GoogleCloudApigeeV1ResourceConfig"
           }
         },
+        "revisionId": {
+          "description": "Revision id that defines the ordering on the environment config.\nThe higher the revision, the more recently the configuration\nwas deployed.",
+          "type": "string",
+          "format": "int64",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "sequenceNumber": {
-          "description": "A sequence number that defines an ordering on environment configs. No two\nconfigs under an environment will ever have the same sequence number.\nA higher sequence number means that the config was deployed more\nrecently than one with a lower sequence number.",
+          "description": "DEPRECATED: use revision_id",
           "type": "string",
           "format": "int64",
           "enum": [],
@@ -3683,6 +3311,16 @@
           "items": {
             "$ref": "GoogleCloudApigeeV1TargetServerConfig"
           }
+        },
+        "uid": {
+          "description": "A unique id for the environment config that will only change if the\nenvironment is deleted and recreated.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -3759,7 +3397,7 @@
           "items": null
         },
         "name": {
-          "description": "The name of the flow hook. Must be of the form\n'organizations/{org}/environments/{env}/flowhooks/{point}''.\nKnown points are PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook,\nand PostTargetFlowHook",
+          "description": "The name of the flow hook. Must be of the form\n'organizations/{org}/environments/{env}/flowhooks/{point}'.\nKnown points are PreProxyFlowHook, PostProxyFlowHook, PreTargetFlowHook,\nand PostTargetFlowHook",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4005,14 +3643,14 @@
     },
     "GoogleCloudApigeeV1ListAsyncQueriesResponse": {
       "id": "GoogleCloudApigeeV1ListAsyncQueriesResponse",
-      "description": "The response for ListAsyncQueries",
+      "description": "The response for ListAsyncQueries.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "queries": {
-          "description": "The asynchronous queries belong to requested organization and environment",
+          "description": "The asynchronous queries belong to requested resource name.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4021,54 +3659,6 @@
           "additionalProperties": null,
           "items": {
             "$ref": "GoogleCloudApigeeV1AsyncQuery"
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudApigeeV1ListCompaniesResponse": {
-      "id": "GoogleCloudApigeeV1ListCompaniesResponse",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "company": {
-          "description": "A list of company.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudApigeeV1Company"
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "GoogleCloudApigeeV1ListCompanyAppsResponse": {
-      "id": "GoogleCloudApigeeV1ListCompanyAppsResponse",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "app": {
-          "description": "A list of apps for a company.",
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "GoogleCloudApigeeV1CompanyApp"
           }
         }
       },
@@ -4107,6 +3697,16 @@
       "enum": [],
       "enumDescriptions": [],
       "properties": {
+        "nextPageToken": {
+          "description": "Page token that you can include in a ListDebugSessionsRequest to\nretrieve the next page. If omitted, no subsequent pages exist.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "sessions": {
           "description": "Session info that includes debug session ID and the first transaction\ncreation timestamp.",
           "type": "array",
@@ -4293,14 +3893,14 @@
     },
     "GoogleCloudApigeeV1Metadata": {
       "id": "GoogleCloudApigeeV1Metadata",
-      "description": "This message type encapsulates additional information about query execution",
+      "description": "This message type encapsulates additional information about query execution.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "errors": {
-          "description": "List of error messages as strings",
+          "description": "List of error messages as strings.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4341,14 +3941,14 @@
     },
     "GoogleCloudApigeeV1Metric": {
       "id": "GoogleCloudApigeeV1Metric",
-      "description": "This message type encapsulates the metric data point\nExample\n{\n   \"name\": \"sum(message_count)\",\n   \"values\" : [ {\n                  \"timestamp\": 1549004400000,\n                  \"value\": \"39.0\"\n                },\n                {\n                  \"timestamp\" : 1548997200000,\n                  \"value\" : \"0.0\"\n                } ]\n}\nor\n{\n    \"name\": \"sum(message_count)\",\n    \"values\" : [\"39.0\"]\n}",
+      "description": "This message type encapsulates the metric data point.\nExample:\n{\n   \"name\": \"sum(message_count)\",\n   \"values\" : [ {\n                  \"timestamp\": 1549004400000,\n                  \"value\": \"39.0\"\n                },\n                {\n                  \"timestamp\" : 1548997200000,\n                  \"value\" : \"0.0\"\n                } ]\n}\nor\n{\n    \"name\": \"sum(message_count)\",\n    \"values\" : [\"39.0\"]\n}",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "name": {
-          "description": "This field contains the metric name",
+          "description": "This field contains the metric name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4358,7 +3958,7 @@
           "items": null
         },
         "values": {
-          "description": "List of metric values\nPossible value format\n\"values\":[\"39.0\"] or\n\"values\":[ { \"value\": \"39.0\", \"timestamp\": 1232434354} ]",
+          "description": "List of metric values.\nPossible value format:\n\"values\":[\"39.0\"] or\n\"values\":[ { \"value\": \"39.0\", \"timestamp\": 1232434354} ]",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4394,9 +3994,11 @@
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "INSERT",
-            "DELETE"
+            "DELETE",
+            "UPDATE"
           ],
           "enumDescriptions": [
+            "",
             "",
             "",
             ""
@@ -4457,7 +4059,7 @@
     },
     "GoogleCloudApigeeV1OptimizedStatsNode": {
       "id": "GoogleCloudApigeeV1OptimizedStatsNode",
-      "description": null,
+      "description": "This message type encapsulates a data node as represented below:\n       {\n           \"identifier\": {\n               \"names\": [\n                   \"apiproxy\"\n               ],\n               \"values\": [\n                   \"sirjee\"\n               ]\n           },\n           \"metric\": [\n               {\n                   \"env\": \"prod\",\n                   \"name\": \"sum(message_count)\",\n                   \"values\": [\n                       36.0\n                   ]\n               }\n           ]\n       }\n\n       OR\n       {\n         \"env\": \"prod\",\n         \"name\": \"sum(message_count)\",\n         \"values\": [\n                       36.0\n                   ]\n       }\nDepending on whether a dimension is present in the query or not\nthe data node type can be a simple metric value or dimension identifier\nwith list of metrics.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -4487,7 +4089,7 @@
     },
     "GoogleCloudApigeeV1OptimizedStatsResponse": {
       "id": "GoogleCloudApigeeV1OptimizedStatsResponse",
-      "description": "This message type encapsulates a response format for Js Optimized Scenario",
+      "description": "This message type encapsulates a response format for Js Optimized Scenario.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -4526,7 +4128,7 @@
           "items": null
         },
         "stats": {
-          "description": "This field contains a stats results",
+          "description": "This field contains a stats results.",
           "$ref": "GoogleCloudApigeeV1OptimizedStatsNode"
         }
       },
@@ -4638,7 +4240,17 @@
           "items": null
         },
         "name": {
-          "description": "Required. Name of the Apigee organization.",
+          "description": "Output only. Name of the Apigee organization.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "projectId": {
+          "description": "The project ID associated with the Apigee organization.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -4962,7 +4574,7 @@
           "items": null
         },
         "dimensions": {
-          "description": "A list of dimensions\nhttps://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions",
+          "description": "A list of dimensions.\nhttps://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5010,7 +4622,7 @@
           "items": null
         },
         "metrics": {
-          "description": "A list of Metrics",
+          "description": "A list of Metrics.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5172,7 +4784,7 @@
           "items": null
         },
         "function": {
-          "description": "Aggregation function: avg, min, max, or sum",
+          "description": "Aggregation function: avg, min, max, or sum.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5182,7 +4794,7 @@
           "items": null
         },
         "name": {
-          "description": "Required. Metric name",
+          "description": "Required. Metric name.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5192,7 +4804,7 @@
           "items": null
         },
         "operator": {
-          "description": "One of `+`, `-`, `/`, `%`, `*`",
+          "description": "One of `+`, `-`, `/`, `%`, `*`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5811,6 +5423,16 @@
           "additionalProperties": null,
           "items": null
         },
+        "description": {
+          "description": "Description of the shared flow revision.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
         "displayName": {
           "description": "The human readable name of this shared flow.",
           "type": "string",
@@ -5944,14 +5566,14 @@
     },
     "GoogleCloudApigeeV1Stats": {
       "id": "GoogleCloudApigeeV1Stats",
-      "description": "This message type encapsulates a stats response",
+      "description": "This message type encapsulates a stats response.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "environments": {
-          "description": null,
+          "description": "This field contains a list of query results on environment level.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5963,7 +5585,7 @@
           }
         },
         "metaData": {
-          "description": "This field contains the metadata information",
+          "description": "This field contains the metadata information.",
           "$ref": "GoogleCloudApigeeV1Metadata"
         }
       },
@@ -5972,14 +5594,14 @@
     },
     "GoogleCloudApigeeV1StatsEnvironmentStats": {
       "id": "GoogleCloudApigeeV1StatsEnvironmentStats",
-      "description": "This message type encapsulates the environment wrapper\n    \"environments\": [\n     {\n         \"metrics\": [\n             {\n                 \"name\": \"sum(message_count)\",\n                 \"values\": [\n                     \"2.52056245E8\"\n                 ]\n             }\n         ],\n         \"name\": \"prod\"\n     }\n ]",
+      "description": "This message type encapsulates the environment wrapper:\n    \"environments\": [\n     {\n         \"metrics\": [\n             {\n                 \"name\": \"sum(message_count)\",\n                 \"values\": [\n                     \"2.52056245E8\"\n                 ]\n             }\n         ],\n         \"name\": \"prod\"\n     }\n ]",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "dimensions": {
-          "description": "This field contains the list of metrics grouped under dimensions",
+          "description": "This field contains the list of metrics grouped under dimensions.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -5991,7 +5613,7 @@
           }
         },
         "metrics": {
-          "description": "In the final response, only one of the following fields will be present\nbased on the dimensions provided. If no dimensions are provided, then\nonly a top level metrics is provided. If dimensions are included, then\nthere will be a top level dimensions field under environments which will\ncontain metrics values and the dimension name.\nExample:\n     \"environments\": [\n      {\n         \"dimensions\": [\n             {\n                 \"metrics\": [\n                     {\n                         \"name\": \"sum(message_count)\",\n                         \"values\": [\n                             \"2.14049521E8\"\n                         ]\n                     }\n                 ],\n                 \"name\": \"nit_proxy\"\n             }\n           ],\n           \"name\": \"prod\"\n       }\n    ]\n\n    OR\n    \"environments\": [\n           {\n               \"metrics\": [\n                   {\n                       \"name\": \"sum(message_count)\",\n                        \"values\": [\n                           \"2.19026331E8\"\n                       ]\n                   }\n               ],\n               \"name\": \"prod\"\n           }\n       ]\nThis field contains the list of metric values",
+          "description": "In the final response, only one of the following fields will be present\nbased on the dimensions provided. If no dimensions are provided, then\nonly a top level metrics is provided. If dimensions are included, then\nthere will be a top level dimensions field under environments which will\ncontain metrics values and the dimension name.\nExample:\n     \"environments\": [\n      {\n         \"dimensions\": [\n             {\n                 \"metrics\": [\n                     {\n                         \"name\": \"sum(message_count)\",\n                         \"values\": [\n                             \"2.14049521E8\"\n                         ]\n                     }\n                 ],\n                 \"name\": \"nit_proxy\"\n             }\n           ],\n           \"name\": \"prod\"\n       }\n    ]\n\n    OR\n    \"environments\": [\n           {\n               \"metrics\": [\n                   {\n                       \"name\": \"sum(message_count)\",\n                        \"values\": [\n                           \"2.19026331E8\"\n                       ]\n                   }\n               ],\n               \"name\": \"prod\"\n           }\n       ]\nThis field contains the list of metric values.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -6442,7 +6064,7 @@
     },
     "GoogleIamV1AuditConfig": {
       "id": "GoogleIamV1AuditConfig",
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditLogConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\",\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:jose@example.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\"\n            },\n            {\n              \"log_type\": \"ADMIN_READ\"\n            }\n          ]\n        },\n        {\n          \"service\": \"sampleservice.googleapis.com\",\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\"\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:aliya@example.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts jose@example.com from DATA_READ logging, and\naliya@example.com from DATA_WRITE logging.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6476,7 +6098,7 @@
     },
     "GoogleIamV1AuditLogConfig": {
       "id": "GoogleIamV1AuditLogConfig",
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:jose@example.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\"\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\njose@example.com from DATA_READ logging.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6533,7 +6155,7 @@
       "enumDescriptions": [],
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding.\nNOTE: An unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.",
+          "description": "The condition that is associated with this binding.\n\nIf the condition evaluates to `true`, then this binding applies to the\ncurrent request.\n\nIf the condition evaluates to `false`, then this binding does not apply to\nthe current request. However, a different role binding might grant the same\nrole to one or more of the members in this binding.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "$ref": "GoogleTypeExpr"
         },
         "members": {
@@ -6570,7 +6192,7 @@
     },
     "GoogleIamV1Policy": {
       "id": "GoogleIamV1Policy",
-      "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nOptionally, a `binding` can specify a `condition`, which is a logical\nexpression that allows access to a resource only if the expression evaluates\nto `true`. A condition can add constraints based on attributes of the\nrequest, the resource, or both.\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\"user:eve@example.com\"],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access\ncontrols for Google Cloud resources.\n\n\nA `Policy` is a collection of `bindings`. A `binding` binds one or more\n`members` to a single `role`. Members can be user accounts, service accounts,\nGoogle groups, and domains (such as G Suite). A `role` is a named list of\npermissions; each `role` can be an IAM predefined role or a user-created\ncustom role.\n\nFor some types of Google Cloud resources, a `binding` can also specify a\n`condition`, which is a logical expression that allows access to a resource\nonly if the expression evaluates to `true`. A condition can add constraints\nbased on attributes of the request, the resource, or both. To learn which\nresources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).\n\n**JSON example:**\n\n    {\n      \"bindings\": [\n        {\n          \"role\": \"roles/resourcemanager.organizationAdmin\",\n          \"members\": [\n            \"user:mike@example.com\",\n            \"group:admins@example.com\",\n            \"domain:google.com\",\n            \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n          ]\n        },\n        {\n          \"role\": \"roles/resourcemanager.organizationViewer\",\n          \"members\": [\n            \"user:eve@example.com\"\n          ],\n          \"condition\": {\n            \"title\": \"expirable access\",\n            \"description\": \"Does not grant access after Sep 2020\",\n            \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n          }\n        }\n      ],\n      \"etag\": \"BwWWja0YfJA=\",\n      \"version\": 3\n    }\n\n**YAML example:**\n\n    bindings:\n    - members:\n      - user:mike@example.com\n      - group:admins@example.com\n      - domain:google.com\n      - serviceAccount:my-project-id@appspot.gserviceaccount.com\n      role: roles/resourcemanager.organizationAdmin\n    - members:\n      - user:eve@example.com\n      role: roles/resourcemanager.organizationViewer\n      condition:\n        title: expirable access\n        description: Does not grant access after Sep 2020\n        expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n    - etag: BwWWja0YfJA=\n    - version: 3\n\nFor a description of IAM and its features, see the\n[IAM documentation](https://cloud.google.com/iam/docs/).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6611,7 +6233,7 @@
           "items": null
         },
         "version": {
-          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.",
+          "description": "Specifies the format of the policy.\n\nValid values are `0`, `1`, and `3`. Requests that specify an invalid value\nare rejected.\n\nAny operation that affects conditional role bindings must specify version\n`3`. This requirement applies to the following operations:\n\n* Getting a policy that includes a conditional role binding\n* Adding a conditional role binding to a policy\n* Changing a conditional role binding in a policy\n* Removing any role binding, with or without a condition, from a policy\n  that includes conditions\n\n**Important:** If you use IAM Conditions, you must include the `etag` field\nwhenever you call `setIamPolicy`. If you omit this field, then IAM allows\nyou to overwrite a version `3` policy with a version `1` policy, and all of\nthe conditions in the version `3` policy are lost.\n\nIf a policy does not include any conditions, operations on that policy may\nspecify any valid version or leave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -8193,640 +7815,6 @@
             }
           }
         },
-        "companies": {
-          "resources": {
-            "apps": {
-              "resources": {
-                "keys": {
-                  "resources": {},
-                  "methods": {
-                    "delete": {
-                      "id": "apigee.organizations.companies.apps.keys.delete",
-                      "path": "v1/{+name}",
-                      "httpMethod": "DELETE",
-                      "description": "Deletes a key for a company app and removes all API products associated\nwith the app. The key can no longer be used to access any APIs.",
-                      "parameters": {
-                        "name": {
-                          "description": "Resource name of a company app key\n`organizations/{org}/companies/{company}/apps/{app}/keys/{key}`",
-                          "default": null,
-                          "location": "path",
-                          "required": true,
-                          "type": "string",
-                          "format": null,
-                          "minimum": null,
-                          "maximum": null,
-                          "pattern": "^organizations/[^/]+/companies/[^/]+/apps/[^/]+/keys/[^/]+$",
-                          "enum": [],
-                          "enumDescriptions": [],
-                          "repeated": false
-                        }
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "request": null,
-                      "response": {
-                        "$ref": "GoogleCloudApigeeV1CompanyAppKey"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "supportsMediaDownload": false,
-                      "useMediaDownloadService": false,
-                      "supportsSubscription": false,
-                      "supportsMediaUpload": false,
-                      "mediaUpload": null
-                    },
-                    "get": {
-                      "id": "apigee.organizations.companies.apps.keys.get",
-                      "path": "v1/{+name}",
-                      "httpMethod": "GET",
-                      "description": "Gets information about the consumer key issued to a specific company app.",
-                      "parameters": {
-                        "name": {
-                          "description": "Resource name of a company app key\n`organizations/{org}/companies/{company}/apps/{app}/keys/{key}`",
-                          "default": null,
-                          "location": "path",
-                          "required": true,
-                          "type": "string",
-                          "format": null,
-                          "minimum": null,
-                          "maximum": null,
-                          "pattern": "^organizations/[^/]+/companies/[^/]+/apps/[^/]+/keys/[^/]+$",
-                          "enum": [],
-                          "enumDescriptions": [],
-                          "repeated": false
-                        }
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "request": null,
-                      "response": {
-                        "$ref": "GoogleCloudApigeeV1CompanyAppKey"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "supportsMediaDownload": false,
-                      "useMediaDownloadService": false,
-                      "supportsSubscription": false,
-                      "supportsMediaUpload": false,
-                      "mediaUpload": null
-                    },
-                    "updateCompanyAppKey": {
-                      "id": "apigee.organizations.companies.apps.keys.updateCompanyAppKey",
-                      "path": "v1/{+name}",
-                      "httpMethod": "POST",
-                      "description": "Updates an existing company app key to add additional API products or\nattributes. Note that only a single API product can be resolved per app\nkey at runtime. API products are resolved by name, in alphabetical order.\nThe first API product found in the list will be returned.",
-                      "parameters": {
-                        "action": {
-                          "description": "Set action to approve or revoke.",
-                          "default": null,
-                          "location": "query",
-                          "required": false,
-                          "type": "string",
-                          "format": null,
-                          "minimum": null,
-                          "maximum": null,
-                          "pattern": null,
-                          "enum": [],
-                          "enumDescriptions": [],
-                          "repeated": false
-                        },
-                        "name": {
-                          "description": "Resource name of a company app key\n`organizations/{org}/companies/{company}/apps/{app}/keys/{key}`",
-                          "default": null,
-                          "location": "path",
-                          "required": true,
-                          "type": "string",
-                          "format": null,
-                          "minimum": null,
-                          "maximum": null,
-                          "pattern": "^organizations/[^/]+/companies/[^/]+/apps/[^/]+/keys/[^/]+$",
-                          "enum": [],
-                          "enumDescriptions": [],
-                          "repeated": false
-                        }
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "request": {
-                        "$ref": "GoogleCloudApigeeV1CompanyAppKey"
-                      },
-                      "response": {
-                        "$ref": "GoogleCloudApigeeV1CompanyAppKey"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "supportsMediaDownload": false,
-                      "useMediaDownloadService": false,
-                      "supportsSubscription": false,
-                      "supportsMediaUpload": false,
-                      "mediaUpload": null
-                    }
-                  }
-                }
-              },
-              "methods": {
-                "create": {
-                  "id": "apigee.organizations.companies.apps.create",
-                  "path": "v1/{+parent}/apps",
-                  "httpMethod": "POST",
-                  "description": "Creates an app for a company.",
-                  "parameters": {
-                    "parent": {
-                      "description": "Resource path of the parent: `organizations/{org}/companies/{company_name}`",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": "^organizations/[^/]+/companies/[^/]+$",
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    }
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "request": {
-                    "$ref": "GoogleCloudApigeeV1CompanyApp"
-                  },
-                  "response": {
-                    "$ref": "GoogleCloudApigeeV1CompanyApp"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "supportsMediaDownload": false,
-                  "useMediaDownloadService": false,
-                  "supportsSubscription": false,
-                  "supportsMediaUpload": false,
-                  "mediaUpload": null
-                },
-                "delete": {
-                  "id": "apigee.organizations.companies.apps.delete",
-                  "path": "v1/{+name}",
-                  "httpMethod": "DELETE",
-                  "description": "Deletes a company app.",
-                  "parameters": {
-                    "name": {
-                      "description": "name of the app resource:\n`organizations/{org}/companies/{company_name}/apps/{app_name}`",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": "^organizations/[^/]+/companies/[^/]+/apps/[^/]+$",
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "request": null,
-                  "response": {
-                    "$ref": "GoogleCloudApigeeV1CompanyApp"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "supportsMediaDownload": false,
-                  "useMediaDownloadService": false,
-                  "supportsSubscription": false,
-                  "supportsMediaUpload": false,
-                  "mediaUpload": null
-                },
-                "get": {
-                  "id": "apigee.organizations.companies.apps.get",
-                  "path": "v1/{+name}",
-                  "httpMethod": "GET",
-                  "description": "Gets the profile of a specific company app.",
-                  "parameters": {
-                    "name": {
-                      "description": "name of the app resource:\n`organizations/{org}/companies/{company_name}/apps/{app_name}`",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": "^organizations/[^/]+/companies/[^/]+/apps/[^/]+$",
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "request": null,
-                  "response": {
-                    "$ref": "GoogleCloudApigeeV1CompanyApp"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "supportsMediaDownload": false,
-                  "useMediaDownloadService": false,
-                  "supportsSubscription": false,
-                  "supportsMediaUpload": false,
-                  "mediaUpload": null
-                },
-                "list": {
-                  "id": "apigee.organizations.companies.apps.list",
-                  "path": "v1/{+parent}/apps",
-                  "httpMethod": "GET",
-                  "description": "List company apps in an organization. You can optionally expand the\nresponse to include the profile for each app.",
-                  "parameters": {
-                    "count": {
-                      "description": "Limits the list to the number you specify. The limit is 100.",
-                      "default": null,
-                      "location": "query",
-                      "required": false,
-                      "type": "string",
-                      "format": "int64",
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
-                    "expand": {
-                      "description": "Set expand to true to return a full profile",
-                      "default": null,
-                      "location": "query",
-                      "required": false,
-                      "type": "boolean",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
-                    "parent": {
-                      "description": "The name of a company resource:\n`organizations/{org}/companies/{company_name}`",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": "^organizations/[^/]+/companies/[^/]+$",
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
-                    "startKey": {
-                      "description": "Lets you return a list of app starting with a specific app name in the\nlist.",
-                      "default": null,
-                      "location": "query",
-                      "required": false,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    }
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "request": null,
-                  "response": {
-                    "$ref": "GoogleCloudApigeeV1ListCompanyAppsResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "supportsMediaDownload": false,
-                  "useMediaDownloadService": false,
-                  "supportsSubscription": false,
-                  "supportsMediaUpload": false,
-                  "mediaUpload": null
-                },
-                "update": {
-                  "id": "apigee.organizations.companies.apps.update",
-                  "path": "v1/{+name}",
-                  "httpMethod": "PUT",
-                  "description": "Updates an existing company app.",
-                  "parameters": {
-                    "name": {
-                      "description": "Resource path of the app:\n`organizations/{org}/companies/{company_name}/apps/{app_name}`",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": "^organizations/[^/]+/companies/[^/]+/apps/[^/]+$",
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "request": {
-                    "$ref": "GoogleCloudApigeeV1CompanyApp"
-                  },
-                  "response": {
-                    "$ref": "GoogleCloudApigeeV1CompanyApp"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "supportsMediaDownload": false,
-                  "useMediaDownloadService": false,
-                  "supportsSubscription": false,
-                  "supportsMediaUpload": false,
-                  "mediaUpload": null
-                }
-              }
-            }
-          },
-          "methods": {
-            "create": {
-              "id": "apigee.organizations.companies.create",
-              "path": "v1/{+parent}/companies",
-              "httpMethod": "POST",
-              "description": "Creates an app for a company. Note that you must first create a profile\nfor the company in your organization before you can register apps that\nare associated with the company.",
-              "parameters": {
-                "parent": {
-                  "description": "Name of org that the company will be created in\n`{parent=organizations/*}`",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^organizations/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "request": {
-                "$ref": "GoogleCloudApigeeV1Company"
-              },
-              "response": {
-                "$ref": "GoogleCloudApigeeV1Company"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
-            "delete": {
-              "id": "apigee.organizations.companies.delete",
-              "path": "v1/{+name}",
-              "httpMethod": "DELETE",
-              "description": "Deletes an existing company.",
-              "parameters": {
-                "name": {
-                  "description": "The company resource name\n`organizations/{org}/companies/{company}`",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^organizations/[^/]+/companies/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "GoogleCloudApigeeV1Company"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
-            "get": {
-              "id": "apigee.organizations.companies.get",
-              "path": "v1/{+name}",
-              "httpMethod": "GET",
-              "description": "List details for a company.",
-              "parameters": {
-                "name": {
-                  "description": "The company resource name\n`organizations/{org}/companies/{company}`",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^organizations/[^/]+/companies/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "GoogleCloudApigeeV1Company"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
-            "list": {
-              "id": "apigee.organizations.companies.list",
-              "path": "v1/{+parent}/companies",
-              "httpMethod": "GET",
-              "description": "List all companies in an organization, and optionally returns an\nexpanded list of companies, displaying a full profile for each company in\nthe organization.",
-              "parameters": {
-                "count": {
-                  "description": "Limits the list to the number you specify. The limit is 100.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": "int64",
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "expand": {
-                  "description": "Set expand to true to return a full profile for each company.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "boolean",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "includeDevelopers": {
-                  "description": "Optional. include developers in the response.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "boolean",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "parent": {
-                  "description": "The parent organization name\n`organizations/{org}`",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^organizations/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "startKey": {
-                  "description": "To filter the keys that are returned, enter the email of a developer\nthat the list will start with.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "GoogleCloudApigeeV1ListCompaniesResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
-            "update": {
-              "id": "apigee.organizations.companies.update",
-              "path": "v1/{+name}",
-              "httpMethod": "PUT",
-              "description": "Updates an existing company.\nSend the complete company record as a payload with any changes you want to\nmake. Note that to change the status of the Company you use Set the Status\nof a Company. The attributes in the sample payload below apply to company\nconfiguration in monetization. For non-monetized companies, you need send\nonly displayName.",
-              "parameters": {
-                "action": {
-                  "description": "Specify the status as active or inactive.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "name": {
-                  "description": "Name of the company to be updated.\n`{name=organizations/*/companies/*}`",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^organizations/[^/]+/companies/[^/]+$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "request": {
-                "$ref": "GoogleCloudApigeeV1Company"
-              },
-              "response": {
-                "$ref": "GoogleCloudApigeeV1Company"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            }
-          }
-        },
         "deployments": {
           "resources": {},
           "methods": {
@@ -9144,7 +8132,7 @@
                           "id": "apigee.organizations.developers.apps.keys.create.create",
                           "path": "v1/{+parent}/keys/create",
                           "httpMethod": "POST",
-                          "description": "Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed.\n\n**Note**: To avoid service disruptions, a consumer key and secret\nshould not exceed 2 KBs each.\n\nAfter creating the consumer key and secret, associate the key with\nan API product using the\nUpdateDeveloperAppKey API.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.",
+                          "description": "Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed. To avoid service\ndisruptions, a consumer key and secret should not exceed 2 KBs each.\n\n**Note**: When creating the consumer key and secret, an association to\nAPI products will not be made. Therefore, you should not specify the\nassociated API products in your request. Instead, use the\nUpdateDeveloperAppKey API to\nmake the association after the consumer key and secret are created.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.",
                           "parameters": {
                             "parent": {
                               "description": "Parent of the developer app key. Use the following structure in your\nrequest:\n  `organizations/{org}/developers/{developer_email}/apps`",
@@ -9187,7 +8175,7 @@
                       "id": "apigee.organizations.developers.apps.keys.create",
                       "path": "v1/{+parent}/keys",
                       "httpMethod": "POST",
-                      "description": "Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed.\n\n**Note**: To avoid service disruptions, a consumer key and secret\nshould not exceed 2 KBs each.\n\nAfter creating the consumer key and secret, associate the key with\nan API product using the\nUpdateDeveloperAppKey API.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.",
+                      "description": "Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed. To avoid service\ndisruptions, a consumer key and secret should not exceed 2 KBs each.\n\n**Note**: When creating the consumer key and secret, an association to\nAPI products will not be made. Therefore, you should not specify the\nassociated API products in your request. Instead, use the\nUpdateDeveloperAppKey API to\nmake the association after the consumer key and secret are created.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.",
                       "parameters": {
                         "parent": {
                           "description": "Parent of the developer app key. Use the following structure in your\nrequest:\n  `organizations/{org}/developers/{developer_email}/apps`",
@@ -10526,12 +9514,77 @@
                           "supportsMediaUpload": false,
                           "mediaUpload": null
                         },
+                        "get": {
+                          "id": "apigee.organizations.environments.apis.revisions.debugsessions.get",
+                          "path": "v1/{+name}",
+                          "httpMethod": "GET",
+                          "description": "Retrieves a debug session.",
+                          "parameters": {
+                            "name": {
+                              "description": "Required. The name of the debug session to retrieve.\nMust be of the form:\n `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`.",
+                              "default": null,
+                              "location": "path",
+                              "required": true,
+                              "type": "string",
+                              "format": null,
+                              "minimum": null,
+                              "maximum": null,
+                              "pattern": "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+/debugsessions/[^/]+$",
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "repeated": false
+                            }
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "request": null,
+                          "response": {
+                            "$ref": "GoogleCloudApigeeV1DebugSession"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "supportsMediaDownload": false,
+                          "useMediaDownloadService": false,
+                          "supportsSubscription": false,
+                          "supportsMediaUpload": false,
+                          "mediaUpload": null
+                        },
                         "list": {
                           "id": "apigee.organizations.environments.apis.revisions.debugsessions.list",
                           "path": "v1/{+parent}/debugsessions",
                           "httpMethod": "GET",
                           "description": "Lists debug sessions that are currently active in the given API Proxy\nrevision.",
                           "parameters": {
+                            "pageSize": {
+                              "description": "Maximum number of debug sessions to return. The page size defaults\nto 25.",
+                              "default": null,
+                              "location": "query",
+                              "required": false,
+                              "type": "integer",
+                              "format": "int32",
+                              "minimum": null,
+                              "maximum": null,
+                              "pattern": null,
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "repeated": false
+                            },
+                            "pageToken": {
+                              "description": "Page token, returned from a previous ListDebugSessions call, that you\ncan use to retrieve the next page.",
+                              "default": null,
+                              "location": "query",
+                              "required": false,
+                              "type": "string",
+                              "format": null,
+                              "minimum": null,
+                              "maximum": null,
+                              "pattern": null,
+                              "enum": [],
+                              "enumDescriptions": [],
+                              "repeated": false
+                            },
                             "parent": {
                               "description": "Required. The name of the API Proxy revision deployment for which\nto list debug sessions. Must be of the form:\n `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`.",
                               "default": null,
@@ -11415,7 +10468,7 @@
                   "description": "This api is similar to GetStats\nexcept that the response is less verbose.\nIn the current scheme, a query parameter _optimized instructs\nEdge Analytics to change the response but since this behavior\nis not possible with protocol buffer and since this parameter is\npredominantly used by Edge UI, we are introducing a separate api.",
                   "parameters": {
                     "accuracy": {
-                      "description": "Legacy field. not used anymore",
+                      "description": "Legacy field: not used anymore.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11443,7 +10496,7 @@
                       "repeated": false
                     },
                     "filter": {
-                      "description": "Enables drill-down on specific dimension values",
+                      "description": "Enables drill-down on specific dimension values.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11457,7 +10510,7 @@
                       "repeated": false
                     },
                     "limit": {
-                      "description": "This parameter is used to limit the number of result items.\nDefault and the max value is 14400",
+                      "description": "This parameter is used to limit the number of result items.\nDefault and the max value is 14400.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11471,7 +10524,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "Required. The organization and environment name for which the interactive\nquery will be executed. Must be of the form\n  `organizations/{organization_id}/environments/{environment_id/stats/{dimensions}`\nDimensions let you view metrics in meaningful groupings. E.g. apiproxy,\ntarget_host. The value of dimensions should be comma separated list as\nshown below\n`organizations/{org}/environments/{env}/stats/apiproxy,request_verb`",
+                      "description": "Required. The resource name for which the interactive query will be executed.\nMust be of the form\n  `organizations/{organization_id}/environments/{environment_id/stats/{dimensions}`\nDimensions let you view metrics in meaningful groupings. E.g. apiproxy,\ntarget_host. The value of dimensions should be comma separated list as\nshown below\n`organizations/{org}/environments/{env}/stats/apiproxy,request_verb`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11499,7 +10552,7 @@
                       "repeated": false
                     },
                     "realtime": {
-                      "description": "Legacy field: not used anymore",
+                      "description": "Legacy field: not used anymore.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11513,7 +10566,7 @@
                       "repeated": false
                     },
                     "select": {
-                      "description": "Required. The select parameter contains a comma separated list of metrics\nE.g. sum(message_count),sum(error_count)",
+                      "description": "Required. The select parameter contains a comma separated list of metrics.\nE.g. sum(message_count),sum(error_count)",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11527,7 +10580,7 @@
                       "repeated": false
                     },
                     "sonar": {
-                      "description": "This parameter routes the query to api monitoring service for last hour",
+                      "description": "This parameter routes the query to api monitoring service for last hour.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11625,7 +10678,7 @@
                       "repeated": false
                     },
                     "tzo": {
-                      "description": "This parameters contains the timezone offset value",
+                      "description": "This parameters contains the timezone offset value.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11667,7 +10720,7 @@
                   "description": "Submit a query to be processed in the background.\nIf the submission of the query succeeds, the API returns a 201 status and\nan ID that refer to the query. In addition to the HTTP status 201, the\n`state` of \"enqueued\" means that the request succeeded.",
                   "parameters": {
                     "parent": {
-                      "description": "Required. The parent organization and environment names.\nMust be of the form `organizations/{org}/environments/{env}`.",
+                      "description": "Required. The parent resource name.\nMust be of the form `organizations/{org}/environments/{env}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11773,43 +10826,6 @@
                   "supportsMediaUpload": false,
                   "mediaUpload": null
                 },
-                "getResultView": {
-                  "id": "apigee.organizations.environments.queries.getResultView",
-                  "path": "v1/{+name}",
-                  "httpMethod": "GET",
-                  "description": "",
-                  "parameters": {
-                    "name": {
-                      "description": "Required. Name of the asynchronous query result view to get. Must be of the\nform `organizations/{org}/environments/{env}/queries/{queryId}/resultView`.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": "^organizations/[^/]+/environments/[^/]+/queries/[^/]+/resultView$",
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    }
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "request": null,
-                  "response": {
-                    "$ref": "GoogleCloudApigeeV1AsyncQueryResultView"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "supportsMediaDownload": false,
-                  "useMediaDownloadService": false,
-                  "supportsSubscription": false,
-                  "supportsMediaUpload": false,
-                  "mediaUpload": null
-                },
                 "list": {
                   "id": "apigee.organizations.environments.queries.list",
                   "path": "v1/{+parent}/queries",
@@ -11845,7 +10861,7 @@
                       "repeated": false
                     },
                     "inclQueriesWithoutReport": {
-                      "description": "Flag to include asynchronous queries that don't have a report\ndenifition.",
+                      "description": "Flag to include asynchronous queries that don't have a report denifition.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11859,7 +10875,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent organization and environment names.\nMust be of the form `organizations/{org}/environments/{env}`.",
+                      "description": "Required. The parent resource name.\nMust be of the form `organizations/{org}/environments/{env}`.",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11873,7 +10889,7 @@
                       "repeated": false
                     },
                     "status": {
-                      "description": "Filter response list by asynchronous query status",
+                      "description": "Filter response list by asynchronous query status.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -11887,7 +10903,7 @@
                       "repeated": false
                     },
                     "submittedBy": {
-                      "description": "Filter response list by user who submitted queries",
+                      "description": "Filter response list by user who submitted queries.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -12604,7 +11620,7 @@
                   "description": "Retrieve metrics grouped by dimensions.\nThe types of metrics you can retrieve include traffic, message counts,\nAPI call latency, response size, and cache hits and counts.\nDimensions let you view metrics in meaningful groups.\nThe stats api does accept dimensions as path params. The dimensions are\noptional in which case the metrics are computed on the entire data\nfor the given timerange.",
                   "parameters": {
                     "accuracy": {
-                      "description": "Legacy field. not used anymore\nThis field is present to support UI calls which still use this parameter",
+                      "description": "Legacy field: not used anymore.\nThis field is present to support UI calls which still use this parameter.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -12646,7 +11662,7 @@
                       "repeated": false
                     },
                     "limit": {
-                      "description": "This parameter is used to limit the number of result items.\nDefault and the max value is 14400",
+                      "description": "This parameter is used to limit the number of result items.\nDefault and the max value is 14400.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -12660,7 +11676,7 @@
                       "repeated": false
                     },
                     "name": {
-                      "description": "Required. The organization and environment name for which the interactive\nquery will be executed. Must be of the form\n  `organizations/{organization_id}/environments/{environment_id/stats/{dimensions}`\nDimensions let you view metrics in meaningful groupings. E.g. apiproxy,\ntarget_host. The value of dimensions should be comma separated list as\nshown below\n`organizations/{org}/environments/{env}/stats/apiproxy,request_verb`",
+                      "description": "Required. The resource name for which the interactive query will be executed.\nMust be of the form\n  `organizations/{organization_id}/environments/{environment_id/stats/{dimensions}`\nDimensions let you view metrics in meaningful groupings. E.g. apiproxy,\ntarget_host. The value of dimensions should be comma separated list as\nshown below\n`organizations/{org}/environments/{env}/stats/apiproxy,request_verb`",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -12688,7 +11704,7 @@
                       "repeated": false
                     },
                     "realtime": {
-                      "description": "Legacy field: not used anymore",
+                      "description": "Legacy field: not used anymore.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -12702,7 +11718,7 @@
                       "repeated": false
                     },
                     "select": {
-                      "description": "The select parameter contains a comma separated list of metrics\nE.g. sum(message_count),sum(error_count)",
+                      "description": "The select parameter contains a comma separated list of metrics.\nE.g. sum(message_count),sum(error_count)",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -12716,7 +11732,7 @@
                       "repeated": false
                     },
                     "sonar": {
-                      "description": "This parameter routes the query to api monitoring service for last hour",
+                      "description": "This parameter routes the query to api monitoring service for last hour.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -12814,7 +11830,7 @@
                       "repeated": false
                     },
                     "tzo": {
-                      "description": "This parameters contains the timezone offset value",
+                      "description": "This parameters contains the timezone offset value.",
                       "default": null,
                       "location": "query",
                       "required": false,
@@ -13026,7 +12042,7 @@
               "description": "Creates an environment in an organization.",
               "parameters": {
                 "name": {
-                  "description": "Optional. Name of the environment. Alternatively, the name may\nbe specified in the request body in the\nenvironment_id field.",
+                  "description": "Optional. Name of the environment. Alternatively, the name may\nbe specified in the request body in the\nname field.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -13146,99 +12162,6 @@
               "supportsMediaUpload": false,
               "mediaUpload": null
             },
-            "getDatalocation": {
-              "id": "apigee.organizations.environments.getDatalocation",
-              "path": "v1/{+name}",
-              "httpMethod": "GET",
-              "description": "Get Google Cloud Storage (GCS) signed url for specific organization and\nenvironment. Collection agent uses this signed url to upload data\nto GCS bucket.",
-              "parameters": {
-                "contentType": {
-                  "description": "Content-Type for uploaded file.",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "dataset": {
-                  "description": "Required. Dataset could be one of `api`, `mint`, `trace` and `event`",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "name": {
-                  "description": "Required. The parent organization and environment names. Must be of the\nform `organizations/{org}/environments/{env}/datalocation`.",
-                  "default": null,
-                  "location": "path",
-                  "required": true,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": "^organizations/[^/]+/environments/[^/]+/datalocation$",
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "relativeFilePath": {
-                  "description": "Required. Relative path to the GCS bucket",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                },
-                "repo": {
-                  "description": "Required. Repository name",
-                  "default": null,
-                  "location": "query",
-                  "required": false,
-                  "type": "string",
-                  "format": null,
-                  "minimum": null,
-                  "maximum": null,
-                  "pattern": null,
-                  "enum": [],
-                  "enumDescriptions": [],
-                  "repeated": false
-                }
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "request": null,
-              "response": {
-                "$ref": "GoogleCloudApigeeV1DataLocation"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "supportsMediaDownload": false,
-              "useMediaDownloadService": false,
-              "supportsSubscription": false,
-              "supportsMediaUpload": false,
-              "mediaUpload": null
-            },
             "getDebugmask": {
               "id": "apigee.organizations.environments.getDebugmask",
               "path": "v1/{+name}",
@@ -13320,7 +12243,7 @@
               "description": "Gets the IAM policy on an environment. For more information, see\n[Manage users, roles, and permissions\nusing the API](https://docs.apigee.com/hybrid/latest/manage-users-roles).\n\nYou must have the `apigee.environments.getIamPolicy` permission to call\nthis API.",
               "parameters": {
                 "options.requestedPolicyVersion": {
-                  "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.",
+                  "description": "Optional. The policy format version to be returned.\n\nValid values are 0, 1, and 3. Requests specifying an invalid value will be\nrejected.\n\nRequests for policies with any conditional bindings must specify version 3.\nPolicies without any conditional bindings may specify any valid value or\nleave the field unset.\n\nTo learn which resources support conditions in their IAM policies, see the\n[IAM\ndocumentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                   "default": null,
                   "location": "query",
                   "required": false,

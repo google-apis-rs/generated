@@ -7,7 +7,7 @@
   "canonicalName": "Recommender",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200509",
+  "revision": "20200619",
   "title": "Recommender API",
   "description": "",
   "ownerDomain": "google.com",

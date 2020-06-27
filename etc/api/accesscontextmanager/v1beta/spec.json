@@ -7,7 +7,7 @@
   "canonicalName": "Access Context Manager",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta",
-  "revision": "20200502",
+  "revision": "20200610",
   "title": "Access Context Manager API",
   "description": "An API for setting attribute based access control to requests to GCP services.",
   "ownerDomain": "google.com",

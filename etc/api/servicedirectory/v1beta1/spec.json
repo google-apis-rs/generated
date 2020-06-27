@@ -7,7 +7,7 @@
   "canonicalName": "Service Directory",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200429",
+  "revision": "20200617",
   "title": "Service Directory API",
   "description": "Service Directory is a platform for discovering, publishing, and connecting services.\n",
   "ownerDomain": "google.com",

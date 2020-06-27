@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("securitycenter1_p1beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200410")
+            .version("0.1.0-20200619")
             .about("Security Command Center API provides access to temporal views of assets and findings within an organization.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -86,7 +86,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             notification_configs1 = notification_configs1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("\nUpdates a notification config.");
+            let mcmd = SubCommand::with_name("patch").about("\nUpdates a notification config. The following update\nfields are allowed: description, pubsub_topic, streaming_config.filter");
             notification_configs1 = notification_configs1.subcommand(mcmd);
         }
         let mut operations1 = SubCommand::with_name("operations")

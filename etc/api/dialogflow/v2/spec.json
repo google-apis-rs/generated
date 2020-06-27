@@ -7,7 +7,7 @@
   "canonicalName": "Dialogflow",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200512",
+  "revision": "20200622",
   "title": "Dialogflow API",
   "description": "Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).",
   "ownerDomain": "google.com",
@@ -210,9 +210,768 @@
     }
   },
   "schemas": {
+    "GoogleCloudDialogflowCxV3beta1ExportAgentResponse": {
+      "id": "GoogleCloudDialogflowCxV3beta1ExportAgentResponse",
+      "description": "The response message for Agents.ExportAgent.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "agentContent": {
+          "description": "Uncompressed raw byte content for agent.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "agentUri": {
+          "description": "The URI to a file containing the exported agent. This field is populated\nonly if `agent_uri` is specified in ExportAgentRequest.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1PageInfo": {
+      "id": "GoogleCloudDialogflowCxV3beta1PageInfo",
+      "description": "Represents page information communicated to and from the webhook.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "currentPage": {
+          "description": "Always present for WebhookRequest. Ignored for WebhookResponse.\nThe unique identifier of the current page.\nFormat: `projects/<Project ID>/locations/<Location ID>/agents/<Agent\nID>/flows/<Flow ID>/pages/<Page ID>`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "formInfo": {
+          "description": "Optional for both WebhookRequest and WebhookResponse.\nInformation about the form.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1PageInfoFormInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1PageInfoFormInfo": {
+      "id": "GoogleCloudDialogflowCxV3beta1PageInfoFormInfo",
+      "description": "Represents form information.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "parameterInfo": {
+          "description": "Optional for both WebhookRequest and WebhookResponse.\nThe parameters contained in the form. Note that the webhook cannot add\nor remove any form parameter.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo": {
+      "id": "GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo",
+      "description": "Represents parameter information.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "displayName": {
+          "description": "Always present for WebhookRequest. Required for\nWebhookResponse.\nThe human-readable name of the parameter, unique within the form. This\nfield cannot be modified by the webhook.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "justCollected": {
+          "description": "Optional for WebhookRequest. Ignored for WebhookResponse.\nIndicates if the parameter value was just collected on the last\nconversation turn.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "required": {
+          "description": "Optional for both WebhookRequest and WebhookResponse.\nIndicates whether the parameter is required. Optional parameters will\nnot trigger prompts; however, they are filled if the user specifies\nthem. Required parameters must be filled before form filling concludes.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "state": {
+          "description": "Always present for WebhookRequest. Required for\nWebhookResponse. The state of the parameter. This field can be set\nto INVALID by\nthe webhook to invalidate the parameter; other values set by the\nwebhook will be ignored.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "PARAMETER_STATE_UNSPECIFIED",
+            "EMPTY",
+            "INVALID",
+            "FILLED"
+          ],
+          "enumDescriptions": [
+            "Not specified. This value should be never used.",
+            "Indicates that the parameter does not have a value.",
+            "Indicates that the parameter value is invalid. This field can be used\nby the webhook to invalidate the parameter and ask the server to\ncollect it from the user again.",
+            "Indicates that the parameter has a value."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "value": {
+          "description": "Optional for both WebhookRequest and WebhookResponse.\nThe value of the parameter. This field can be set by the webhook to\nchange the parameter value.",
+          "type": "any",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessage": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessage",
+      "description": "Represents a response message that can be returned by a conversational agent.\n\nResponse messages are also used for output audio synthesis. The approach is\nas follows:\n\n* If at least one OutputAudioText response is present, then all\n  OutputAudioText responses are linearly concatenated, and the result is used\n  for output audio synthesis.\n* If the OutputAudioText responses are a mixture of text and SSML, then the\n  concatenated result is treated as SSML; otherwise, the result is treated as\n  either text or SSML as appropriate. The agent designer should ideally use\n  either text or SSML consistently throughout the bot design.\n* Otherwise, all Text responses are linearly concatenated, and the result is\n  used for output audio synthesis.\n\nThis approach allows for more sophisticated user experience scenarios, where\nthe text displayed to the user may differ from what is heard.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "conversationSuccess": {
+          "description": "Indicates that the conversation succeeded.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess"
+        },
+        "endInteraction": {
+          "description": "Output only. A signal that indicates the interaction with the Dialogflow agent has\nended.\nThis message is generated by Dialogflow only when the conversation\nreaches `END_SESSION` or `END_PAGE` page. It is not supposed to be\ndefined by the user.\nIt's guaranteed that there is at most one such message in each response.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction"
+        },
+        "humanAgentHandoff": {
+          "description": "Hands off conversation to a human agent.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff"
+        },
+        "liveAgentHandoff": {
+          "description": "Hands off conversation to a human agent.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff"
+        },
+        "mixedAudio": {
+          "description": "Output only. An audio response message composed of both the synthesized Dialogflow\nagent responses and responses defined via\nplay_audio.\nThis message is generated by Dialogflow only and not supposed to be\ndefined by the user.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio"
+        },
+        "payload": {
+          "description": "Returns a response containing a custom, platform-specific payload.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "playAudio": {
+          "description": "Signal that the client should play an audio clip hosted at a\nclient-specific URI. Dialogflow uses this to construct\nmixed_audio. However, Dialogflow itself\ndoes not try to read or process the URI in any way.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio"
+        },
+        "text": {
+          "description": "Returns a text response.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageText"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess",
+      "description": "Indicates that the conversation succeeded, i.e., the bot handled the issue\nthat the customer talked to it about.\n\nDialogflow only uses this to determine which conversations should be\ncounted as successful and doesn't process the metadata in this message in\nany way. Note that Dialogflow also considers conversations that get to the\nconversation end page as successful even if they don't return\nConversationSuccess.\n\nYou may set this, for example:\n* In the entry_fulfillment of a Page if\n  entering the page indicates that the conversation succeeded.\n* In a webhook response when you determine that you handled the customer\n  issue.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "metadata": {
+          "description": "Custom metadata. Dialogflow doesn't impose any structure on this.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction",
+      "description": "Indicates that interaction with the Dialogflow agent has ended.\nThis message is generated by Dialogflow only and not supposed to be\ndefined by the user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageHumanAgentHandoff",
+      "description": "Indicates that the conversation should be handed off to a human agent.\n\nDialogflow only uses this to determine which conversations were handed off\nto a human agent for measurement purposes. What else to do with this signal\nis up to you and your handoff procedures.\n\nYou may set this, for example:\n* In the entry_fulfillment of a Page if\n  entering the page indicates something went extremely wrong in the\n  conversation.\n* In a webhook response when you determine that the customer issue can only\n  be handled by a human.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "metadata": {
+          "description": "Custom metadata for your handoff procedure. Dialogflow doesn't impose\nany structure on this.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff",
+      "description": "Indicates that the conversation should be handed off to a live agent.\n\nDialogflow only uses this to determine which conversations were handed off\nto a human agent for measurement purposes. What else to do with this signal\nis up to you and your handoff procedures.\n\nYou may set this, for example:\n* In the entry_fulfillment of a Page if\n  entering the page indicates something went extremely wrong in the\n  conversation.\n* In a webhook response when you determine that the customer issue can only\n  be handled by a human.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "metadata": {
+          "description": "Custom metadata for your handoff procedure. Dialogflow doesn't impose\nany structure on this.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio",
+      "description": "Represents an audio message that is composed of both segments\nsynthesized from the Dialogflow agent prompts and ones hosted externally\nat the specified URIs.\nThe external URIs are specified via\nplay_audio.\nThis message is generated by Dialogflow only and not supposed to be\ndefined by the user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "segments": {
+          "description": "Segments this audio response is composed of.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment",
+      "description": "Represents one segment of audio.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allowPlaybackInterruption": {
+          "description": "Whether the playback of this segment can be interrupted by the end\nuser's speech and the client should then start the next Dialogflow\nrequest.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "audio": {
+          "description": "Raw audio synthesized from the Dialogflow agent's response using\nthe output config specified in the request.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "uri": {
+          "description": "Client-specific URI that points to an audio clip accessible to the\nclient. Dialogflow does not impose any validation on it.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio",
+      "description": "Specifies an audio clip to be played by the client as part of the response.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allowPlaybackInterruption": {
+          "description": "Whether the playback of this message can be interrupted by the end\nuser's speech and the client can then starts the next Dialogflow\nrequest.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "audioUri": {
+          "description": "Required. URI of the audio clip. Dialogflow does not impose any validation on this\nvalue. It is specific to the client that reads it.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1ResponseMessageText": {
+      "id": "GoogleCloudDialogflowCxV3beta1ResponseMessageText",
+      "description": "The text response message.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "allowPlaybackInterruption": {
+          "description": "Whether the playback of this message can be interrupted by the end\nuser's speech and the client can then starts the next Dialogflow\nrequest.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "text": {
+          "description": "Required. A collection of text responses.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1SessionInfo": {
+      "id": "GoogleCloudDialogflowCxV3beta1SessionInfo",
+      "description": "Represents session information communicated to and from the webhook.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "parameters": {
+          "description": "Optional for WebhookRequest. Optional for WebhookResponse.\nAll parameters collected from forms and intents during the session.\nParameters can be created, updated, or removed by the webhook. To remove a\nparameter from the session, the webhook should explicitly set the parameter\nvalue to null in WebhookResponse. The map is keyed by parameters'\ndisplay names.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "session": {
+          "description": "Always present for WebhookRequest. Ignored for WebhookResponse.\nThe unique identifier of the session. This\nfield can be used by the webhook to identify a user.\nFormat: `projects/<Project ID>/locations/<Location ID>/agents/<Agent\nID>/sessions/<Session ID>`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1WebhookRequest": {
+      "id": "GoogleCloudDialogflowCxV3beta1WebhookRequest",
+      "description": "The request message for a webhook call.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "detectIntentResponseId": {
+          "description": "Always present. The unique identifier of the DetectIntentResponse that\nwill be returned to the API caller.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "fulfillmentInfo": {
+          "description": "Always present. Information about the fulfillment that triggered this\nwebhook call.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo"
+        },
+        "intentInfo": {
+          "description": "Information about the last matched intent.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo"
+        },
+        "messages": {
+          "description": "The list of rich message responses to present to the user. Webhook can\nchoose to append or replace this list in\nWebhookResponse.fulfillment_response;",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessage"
+          }
+        },
+        "pageInfo": {
+          "description": "Information about page status.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1PageInfo"
+        },
+        "payload": {
+          "description": "Custom data set in QueryParameters.payload.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "sessionInfo": {
+          "description": "Information about session status.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1SessionInfo"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo": {
+      "id": "GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo",
+      "description": "Represents fulfillment information communicated to the webhook.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "tag": {
+          "description": "Always present. The tag used to identify which fulfillment is being\ncalled.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo": {
+      "id": "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo",
+      "description": "Represents intent information communicated to the webhook.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "lastMatchedIntent": {
+          "description": "Always present. The unique identifier of the last matched\nintent. Format: `projects/<Project ID>/locations/<Location\nID>/agents/<Agent ID>/intents/<Intent ID>`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parameters": {
+          "description": "Parameters identified as a result of intent matching. This is a map of\nthe name of the identified parameter to the value of the parameter\nidentified from the user's utterance. All parameters defined in the\nmatched intent that are identified will be surfaced here.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "$ref": "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue"
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue": {
+      "id": "GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue",
+      "description": "Represents a value for an intent parameter.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "originalValue": {
+          "description": "Always present. Original text value extracted from user utterance.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "resolvedValue": {
+          "description": "Always present. Structured value for the parameter extracted from user\nutterance.",
+          "type": "any",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1WebhookResponse": {
+      "id": "GoogleCloudDialogflowCxV3beta1WebhookResponse",
+      "description": "The response message for a webhook call.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "fulfillmentResponse": {
+          "description": "The fulfillment response to send to the user. This field can be omitted by\nthe webhook if it does not intend to send any response to the user.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse"
+        },
+        "pageInfo": {
+          "description": "Information about page status. This field can be omitted by the webhook if\nit does not intend to modify page status.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1PageInfo"
+        },
+        "payload": {
+          "description": "Value to append directly to QueryResult.webhook_payloads.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        },
+        "sessionInfo": {
+          "description": "Information about session status. This field can be omitted by the webhook\nif it does not intend to modify session status.",
+          "$ref": "GoogleCloudDialogflowCxV3beta1SessionInfo"
+        },
+        "targetFlow": {
+          "description": "The target flow to transition to.\nFormat: `projects/<Project ID>/locations/<Location ID>/agents/<Agent\nID>/flows/<Flow ID>`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "targetPage": {
+          "description": "The target page to transition to.\nFormat: `projects/<Project ID>/locations/<Location ID>/agents/<Agent\nID>/flows/<Flow ID>/pages/<Page ID>`.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse": {
+      "id": "GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse",
+      "description": "Represents a fulfillment response to the user.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "mergeBehavior": {
+          "description": "Merge behavior for `messages`.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "MERGE_BEHAVIOR_UNSPECIFIED",
+            "APPEND",
+            "REPLACE"
+          ],
+          "enumDescriptions": [
+            "Not specified. `APPEND` will be used.",
+            "`messages` will be appended to the list of messages waiting to be sent\nto the user.",
+            "`messages` will replace the list of messages waiting to be sent to the\nuser."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "messages": {
+          "description": "The list of rich message responses to present to the user.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "GoogleCloudDialogflowCxV3beta1ResponseMessage"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "GoogleCloudDialogflowV2Agent": {
       "id": "GoogleCloudDialogflowV2Agent",
-      "description": "Represents a conversational agent.",
+      "description": "A Dialogflow agent is a virtual agent that handles conversations with your\nend-users. It is a natural language understanding module that understands the\nnuances of human language. Dialogflow translates end-user text or audio\nduring a conversation to structured data that your apps and services can\nunderstand. You design and build a Dialogflow agent to handle the types of\nconversations required for your system.\n\nFor more information about agents, see the\n[Agents\ndocumentation](https://cloud.google.com/dialogflow/docs/agents-overview).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -906,7 +1665,7 @@
       "enumDescriptions": [],
       "properties": {
         "outputAudio": {
-          "description": "The audio data bytes encoded as specified in the request.\nNote: The output audio is generated based on the values of default platform\ntext responses found in the `query_result.fulfillment_messages` field. If\nmultiple default text responses exist, they will be concatenated when\ngenerating audio. If no default platform text responses exist, the\ngenerated audio content will be empty.",
+          "description": "The audio data bytes encoded as specified in the request.\nNote: The output audio is generated based on the values of default platform\ntext responses found in the `query_result.fulfillment_messages` field. If\nmultiple default text responses exist, they will be concatenated when\ngenerating audio. If no default platform text responses exist, the\ngenerated audio content will be empty.\n\nIn some scenarios, multiple output audio fields may be present in the\nresponse structure. In these cases, only the top-most-level audio output\nhas content.",
           "type": "string",
           "format": "byte",
           "enum": [],
@@ -3137,7 +3896,7 @@
           }
         },
         "value": {
-          "description": "Optional. The definition of the parameter value. It can be:\n- a constant string,\n- a parameter value defined as `$parameter_name`,\n- an original parameter value defined as `$parameter_name.original`,\n- a parameter value from some context defined as\n  `#context_name.parameter_name`.",
+          "description": "Optional. The definition of the parameter value. It can be:\n\n- a constant string,\n- a parameter value defined as `$parameter_name`,\n- an original parameter value defined as `$parameter_name.original`,\n- a parameter value from some context defined as\n  `#context_name.parameter_name`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6157,7 +6916,7 @@
           "items": null
         },
         "height": {
-          "description": "Required for cards with vertical orientation. The height of the media\nwithin a rich card with a vertical layout. (https://goo.gl/NeFCjz).\nFor a standalone card with horizontal layout, height is not\ncustomizable, and this field is ignored.",
+          "description": "Required for cards with vertical orientation. The height of the media\nwithin a rich card with a vertical layout.\nFor a standalone card with horizontal layout, height is not\ncustomizable, and this field is ignored.",
           "type": "string",
           "format": null,
           "enum": [
@@ -6192,7 +6951,7 @@
     },
     "GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard": {
       "id": "GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard",
-      "description": "Carousel Rich Business Messaging (RBM) rich card.\n\nRich cards allow you to respond to users with more vivid content, e.g.\nwith media and suggestions.\n\nFor more details about RBM rich cards, please see:\nhttps://developers.google.com/rcs-business-messaging/rbm/guides/build/send-messages#rich-cards.\nIf you want to show a single card with more control over the layout,\nplease use RbmStandaloneCard instead.",
+      "description": "Carousel Rich Business Messaging (RBM) rich card.\n\nRich cards allow you to respond to users with more vivid content, e.g.\nwith media and suggestions.\n\nIf you want to show a single card with more control over the layout,\nplease use RbmStandaloneCard instead.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6234,7 +6993,7 @@
     },
     "GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard": {
       "id": "GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard",
-      "description": "Standalone Rich Business Messaging (RBM) rich card.\n\nRich cards allow you to respond to users with more vivid content, e.g.\nwith media and suggestions.\n\nFor more details about RBM rich cards, please see:\nhttps://developers.google.com/rcs-business-messaging/rbm/guides/build/send-messages#rich-cards.\nYou can group multiple rich cards into one using RbmCarouselCard but\ncarousel cards will give you less control over the card layout.",
+      "description": "Standalone Rich Business Messaging (RBM) rich card.\n\nRich cards allow you to respond to users with more vivid content, e.g.\nwith media and suggestions.\n\nYou can group multiple rich cards into one using RbmCarouselCard but\ncarousel cards will give you less control over the card layout.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6330,7 +7089,7 @@
     },
     "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial": {
       "id": "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial",
-      "description": "Opens the user's default dialer app with the specified phone number\nbut does not dial automatically (https://goo.gl/ergbB2).",
+      "description": "Opens the user's default dialer app with the specified phone number\nbut does not dial automatically.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6352,7 +7111,7 @@
     },
     "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri": {
       "id": "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri",
-      "description": "Opens the user's default web browser app to the specified uri\n(https://goo.gl/6GLJD2). If the user has an app installed that is\nregistered as the default handler for the URL, then this app will be\nopened instead, and its icon will be used in the suggested action UI.",
+      "description": "Opens the user's default web browser app to the specified uri\nIf the user has an app installed that is\nregistered as the default handler for the URL, then this app will be\nopened instead, and its icon will be used in the suggested action UI.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6374,7 +7133,7 @@
     },
     "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation": {
       "id": "GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation",
-      "description": "Opens the device's location chooser so the user can pick a location\nto send back to the agent (https://goo.gl/GXotJW).",
+      "description": "Opens the device's location chooser so the user can pick a location\nto send back to the agent.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -6942,7 +7701,7 @@
           }
         },
         "value": {
-          "description": "Optional. The definition of the parameter value. It can be:\n- a constant string,\n- a parameter value defined as `$parameter_name`,\n- an original parameter value defined as `$parameter_name.original`,\n- a parameter value from some context defined as\n  `#context_name.parameter_name`.",
+          "description": "Optional. The definition of the parameter value. It can be:\n\n- a constant string,\n- a parameter value defined as `$parameter_name`,\n- an original parameter value defined as `$parameter_name.original`,\n- a parameter value from some context defined as\n  `#context_name.parameter_name`.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -10243,7 +11002,7 @@
               "id": "dialogflow.projects.agent.import",
               "path": "v2/{+parent}/agent:import",
               "httpMethod": "POST",
-              "description": "Imports the specified agent from a ZIP file.\n\nUploads new intents and entity types without deleting the existing ones.\nIntents and entity types with the same name are replaced with the new\nversions from ImportAgentRequest.\n\nOperation <response: google.protobuf.Empty>",
+              "description": "Imports the specified agent from a ZIP file.\n\nUploads new intents and entity types without deleting the existing ones.\nIntents and entity types with the same name are replaced with the new\nversions from ImportAgentRequest. After the import, the imported draft\nagent will be trained automatically (unless disabled in agent settings).\nHowever, once the import is done, training may not be completed yet. Please\ncall TrainAgent and wait for the operation it returns in order to train\nexplicitly.\n\nOperation <response: google.protobuf.Empty>\nAn operation which tracks when importing is complete. It only tracks\nwhen the draft agent is updated not when it is done training.",
               "parameters": {
                 "parent": {
                   "description": "Required. The project that the agent to import is associated with.\nFormat: `projects/<Project ID>`.",
@@ -10283,7 +11042,7 @@
               "id": "dialogflow.projects.agent.restore",
               "path": "v2/{+parent}/agent:restore",
               "httpMethod": "POST",
-              "description": "Restores the specified agent from a ZIP file.\n\nReplaces the current agent version with a new one. All the intents and\nentity types in the older version are deleted.\n\nOperation <response: google.protobuf.Empty>",
+              "description": "Restores the specified agent from a ZIP file.\n\nReplaces the current agent version with a new one. All the intents and\nentity types in the older version are deleted. After the restore, the\nrestored draft agent will be trained automatically (unless disabled in\nagent settings). However, once the restore is done, training may not be\ncompleted yet. Please call TrainAgent and wait for the operation it\nreturns in order to train explicitly.\n\nOperation <response: google.protobuf.Empty>\nAn operation which tracks when restoring is complete. It only tracks\nwhen the draft agent is updated not when it is done training.",
               "parameters": {
                 "parent": {
                   "description": "Required. The project that the agent to restore is associated with.\nFormat: `projects/<Project ID>`.",

@@ -7,7 +7,7 @@
   "canonicalName": "AdSense Host",
   "fullyEncodeReservedExpansion": null,
   "version": "v4.1",
-  "revision": "20200513",
+  "revision": "20200624",
   "title": "AdSense Host API",
   "description": "Generates performance reports, generates ad codes, and provides publisher management capabilities for AdSense Hosts.",
   "ownerDomain": "google.com",

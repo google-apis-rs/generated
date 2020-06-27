@@ -7,7 +7,7 @@
   "canonicalName": "Identity Toolkit",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200503",
+  "revision": "20200615",
   "title": "Identity Toolkit API",
   "description": "The Google Identity Toolkit API lets you use open standards to verify a\n    user's identity.",
   "ownerDomain": "google.com",
@@ -46,20 +46,6 @@
         "v1 error format",
         "v2 error format"
       ],
-      "repeated": false
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
       "repeated": false
     },
     "alt": {
@@ -114,20 +100,6 @@
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "repeated": false
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "default": null,
       "location": "query",
       "required": false,

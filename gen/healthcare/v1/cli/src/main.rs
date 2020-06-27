@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("healthcare1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200501")
+            .version("0.1.0-20200612")
             .about("Manage, store, and access healthcare data in Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -122,15 +122,15 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_instances").about("SearchForInstances returns a list of matching instances. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.");
+            let mcmd = SubCommand::with_name("search_for_instances").about("SearchForInstances returns a list of matching instances. See\n[Search Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_series").about("SearchForSeries returns a list of matching series. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.");
+            let mcmd = SubCommand::with_name("search_for_series").about("SearchForSeries returns a list of matching series. See\n[Search Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_studies").about("SearchForStudies returns a list of matching studies. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.");
+            let mcmd = SubCommand::with_name("search_for_studies").about("SearchForStudies returns a list of matching studies. See\n[Search Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
@@ -138,7 +138,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("store_instances").about("StoreInstances stores DICOM instances associated with study instance unique\nidentifiers (SUID). See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.");
+            let mcmd = SubCommand::with_name("store_instances").about("StoreInstances stores DICOM instances associated with study instance unique\nidentifiers (SUID). See\n[Store Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).");
             dicom_stores3 = dicom_stores3.subcommand(mcmd);
         }
         {
@@ -176,7 +176,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import").about("Import resources to the FHIR store by loading data from the specified\nsources. This method is optimized to load large quantities of data using\nimport semantics that ignore some FHIR store configuration options and are\nnot suitable for all use cases. It is primarily intended to load data into\nan empty FHIR store that is not being used by other clients. In cases\nwhere this method is not appropriate, consider using ExecuteBundle to\nload data.\n\nEvery resource in the input must contain a client-supplied ID, and will be\nstored using that ID regardless of the\nenable_update_create setting on the FHIR\nstore.\n\nThe import process does not enforce referential integrity, regardless of\nthe\ndisable_referential_integrity\nsetting on the FHIR store. This allows the import of resources with\narbitrary interdependencies without considering grouping or ordering, but\nif the input data contains invalid references or if some resources fail to\nbe imported, the FHIR store might be left in a state that violates\nreferential integrity.\n\nThe import process does not trigger Pub/Sub notification or BigQuery\nstreaming update, regardless of how those are configured on the FHIR store.\n\nIf a resource with the specified ID already exists, the most recent\nversion of the resource is overwritten without creating a new historical\nversion, regardless of the\ndisable_resource_versioning\nsetting on the FHIR store. If transient failures occur during the import,\nit is possible that successfully imported resources will be overwritten\nmore than once.\n\nThe import operation is idempotent unless the input data contains multiple\nvalid resources with the same ID but different contents. In that case,\nafter the import completes, the store will contain exactly one resource\nwith that ID but there is no ordering guarantee on which version of the\ncontents it will have. The operation result counters do not count\nduplicate IDs as an error and will count one success for each resource in\nthe input, which might result in a success count larger than the number\nof resources in the FHIR store. This often occurs when importing data\norganized in bundles produced by Patient-everything\nwhere each bundle contains its own copy of a resource such as Practitioner\nthat might be referred to by many patients.\n\nIf some resources fail to import, for example due to parsing errors,\nsuccessfully imported resources are not rolled back.\n\nThe location and format of the input data is specified by the parameters\nbelow. Note that if no format is specified, this method assumes the\n`BUNDLE` format. When using the `BUNDLE` format this method ignores the\n`Bundle.type` field, except that `history` bundles are rejected, and does\nnot apply any of the bundle processing semantics for batch or transaction\nbundles. Unlike in ExecuteBundle, transaction bundles are not executed\nas a single transaction and bundle-internal references are not rewritten.\nThe bundle is treated as a collection of resources to be written as\nprovided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As\nan example, this allows the import of `searchset` bundles produced by a\nFHIR search or\nPatient-everything operation.\n\nThis method returns an Operation that can\nbe used to track the status of the import by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Cloud Logging (see [Viewing\nlogs](/healthcare/docs/how-tos/logging)). Otherwise, when the\noperation finishes, a detailed response of type ImportResourcesResponse\nis returned in the response field.\nThe metadata field type for this\noperation is OperationMetadata.");
+            let mcmd = SubCommand::with_name("import").about("Imports resources to the FHIR store by loading data from the specified\nsources. This method is optimized to load large quantities of data using\nimport semantics that ignore some FHIR store configuration options and are\nnot suitable for all use cases. It is primarily intended to load data into\nan empty FHIR store that is not being used by other clients. In cases\nwhere this method is not appropriate, consider using ExecuteBundle to\nload data.\n\nEvery resource in the input must contain a client-supplied ID. Each\nresource is stored using the supplied ID regardless of the\nenable_update_create setting on the FHIR\nstore.\n\nThe import process does not enforce referential integrity, regardless of\nthe\ndisable_referential_integrity\nsetting on the FHIR store. This allows the import of resources with\narbitrary interdependencies without considering grouping or ordering, but\nif the input data contains invalid references or if some resources fail to\nbe imported, the FHIR store might be left in a state that violates\nreferential integrity.\n\nThe import process does not trigger Pub/Sub notification or BigQuery\nstreaming update, regardless of how those are configured on the FHIR store.\n\nIf a resource with the specified ID already exists, the most recent\nversion of the resource is overwritten without creating a new historical\nversion, regardless of the\ndisable_resource_versioning\nsetting on the FHIR store. If transient failures occur during the import,\nit\'s possible that successfully imported resources will be overwritten\nmore than once.\n\nThe import operation is idempotent unless the input data contains multiple\nvalid resources with the same ID but different contents. In that case,\nafter the import completes, the store contains exactly one resource\nwith that ID but there is no ordering guarantee on which version of the\ncontents it will have. The operation result counters do not count\nduplicate IDs as an error and count one success for each resource in\nthe input, which might result in a success count larger than the number\nof resources in the FHIR store. This often occurs when importing data\norganized in bundles produced by Patient-everything\nwhere each bundle contains its own copy of a resource such as Practitioner\nthat might be referred to by many patients.\n\nIf some resources fail to import, for example due to parsing errors,\nsuccessfully imported resources are not rolled back.\n\nThe location and format of the input data is specified by the parameters\nbelow. Note that if no format is specified, this method assumes the\n`BUNDLE` format. When using the `BUNDLE` format this method ignores the\n`Bundle.type` field, except that `history` bundles are rejected, and does\nnot apply any of the bundle processing semantics for batch or transaction\nbundles. Unlike in ExecuteBundle, transaction bundles are not executed\nas a single transaction and bundle-internal references are not rewritten.\nThe bundle is treated as a collection of resources to be written as\nprovided in `Bundle.entry.resource`, ignoring `Bundle.entry.request`. As\nan example, this allows the import of `searchset` bundles produced by a\nFHIR search or\nPatient-everything operation.\n\nThis method returns an Operation that can\nbe used to track the status of the import by calling\nGetOperation.\n\nImmediate fatal errors appear in the\nerror field, errors are also logged\nto Cloud Logging (see [Viewing\nlogs](/healthcare/docs/how-tos/logging)). Otherwise, when the\noperation finishes, a detailed response of type ImportResourcesResponse\nis returned in the response field.\nThe metadata field type for this\noperation is OperationMetadata.");
             fhir_stores3 = fhir_stores3.subcommand(mcmd);
         }
         {
@@ -206,7 +206,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             hl_7v2_stores3 = hl_7v2_stores3.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes the specified HL7v2 store and removes all messages that are\ncontained within it.");
+            let mcmd = SubCommand::with_name("delete").about(
+                "Deletes the specified HL7v2 store and removes all messages that it\ncontains.",
+            );
             hl_7v2_stores3 = hl_7v2_stores3.subcommand(mcmd);
         }
         {
@@ -257,23 +259,23 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             studies4 = studies4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_metadata").about("RetrieveStudyMetadata returns instance associated with the given study\npresented as metadata with the bulk data removed. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_metadata").about("RetrieveStudyMetadata returns instance associated with the given study\npresented as metadata with the bulk data removed. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             studies4 = studies4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_study").about("RetrieveStudy returns all instances within the given study. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_study").about("RetrieveStudy returns all instances within the given study. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             studies4 = studies4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_instances").about("SearchForInstances returns a list of matching instances. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.");
+            let mcmd = SubCommand::with_name("search_for_instances").about("SearchForInstances returns a list of matching instances. See\n[Search Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).");
             studies4 = studies4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_series").about("SearchForSeries returns a list of matching series. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.");
+            let mcmd = SubCommand::with_name("search_for_series").about("SearchForSeries returns a list of matching series. See\n[Search Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).");
             studies4 = studies4.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("store_instances").about("StoreInstances stores DICOM instances associated with study instance unique\nidentifiers (SUID). See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5.");
+            let mcmd = SubCommand::with_name("store_instances").about("StoreInstances stores DICOM instances associated with study instance unique\nidentifiers (SUID). See\n[Store Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).");
             studies4 = studies4.subcommand(mcmd);
         }
         let mut fhir4 = SubCommand::with_name("fhir")
@@ -362,45 +364,45 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             series5 = series5.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_metadata").about("RetrieveSeriesMetadata returns instance associated with the given study and\nseries, presented as metadata with the bulk data removed. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_metadata").about("RetrieveSeriesMetadata returns instance associated with the given study and\nseries, presented as metadata with the bulk data removed. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             series5 = series5.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_series").about("RetrieveSeries returns all instances within the given study and series. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_series").about("RetrieveSeries returns all instances within the given study and series. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             series5 = series5.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("search_for_instances").about("SearchForInstances returns a list of matching instances. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6.");
+            let mcmd = SubCommand::with_name("search_for_instances").about("SearchForInstances returns a list of matching instances. See\n[Search Transaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).");
             series5 = series5.subcommand(mcmd);
         }
         let mut instances6 = SubCommand::with_name("instances")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, retrieve_instance, retrieve_metadata and retrieve_rendered");
         {
-            let mcmd = SubCommand::with_name("delete").about("DeleteInstance deletes an instance associated with the given study, series,\nand SOP Instance UID. Delete requests are equivalent to the GET requests\nspecified in the Retrieve transaction.");
+            let mcmd = SubCommand::with_name("delete").about("DeleteInstance deletes an instance associated with the given study, series,\nand SOP Instance UID. Delete requests are equivalent to the GET requests\nspecified in the Retrieve transaction.\nStudy and series search results can take a few seconds to be updated after\nan instance is deleted using DeleteInstance.");
             instances6 = instances6.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_instance").about("RetrieveInstance returns instance associated with the given study, series,\nand SOP Instance UID. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_instance").about("RetrieveInstance returns instance associated with the given study, series,\nand SOP Instance UID. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             instances6 = instances6.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_metadata").about("RetrieveInstanceMetadata returns instance associated with the given study,\nseries, and SOP Instance UID presented as metadata with the bulk data\nremoved. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_metadata").about("RetrieveInstanceMetadata returns instance associated with the given study,\nseries, and SOP Instance UID presented as metadata with the bulk data\nremoved. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             instances6 = instances6.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_rendered").about("RetrieveRenderedInstance returns instance associated with the given study,\nseries, and SOP Instance UID in an acceptable Rendered Media Type. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_rendered").about("RetrieveRenderedInstance returns instance associated with the given study,\nseries, and SOP Instance UID in an acceptable Rendered Media Type. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             instances6 = instances6.subcommand(mcmd);
         }
         let mut frames7 = SubCommand::with_name("frames")
             .setting(AppSettings::ColoredHelp)
             .about("methods: retrieve_frames and retrieve_rendered");
         {
-            let mcmd = SubCommand::with_name("retrieve_frames").about("RetrieveFrames returns instances associated with the given study, series,\nSOP Instance UID and frame numbers. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_frames").about("RetrieveFrames returns instances associated with the given study, series,\nSOP Instance UID and frame numbers. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.");
             frames7 = frames7.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("retrieve_rendered").about("RetrieveRenderedFrames returns instances associated with the given study,\nseries, SOP Instance UID and frame numbers in an acceptable Rendered Media\nType. See\nhttp://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4.");
+            let mcmd = SubCommand::with_name("retrieve_rendered").about("RetrieveRenderedFrames returns instances associated with the given study,\nseries, SOP Instance UID and frame numbers in an acceptable Rendered Media\nType. See\n[RetrieveTransaction]\n(http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).");
             frames7 = frames7.subcommand(mcmd);
         }
         instances6 = instances6.subcommand(frames7);

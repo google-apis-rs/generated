@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("webfonts1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200302")
-            .about("Accesses the metadata for all families served by Google Fonts, providing a list of families currently available (including available styles and a list of supported script subsets).")
+            .version("0.1.0-20200622")
+            .about("The Google Web Fonts Developer API lets you retrieve information about web fonts served\n    by Google.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -38,7 +38,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: list");
         {
             let mcmd = SubCommand::with_name("list").about(
-                "Retrieves the list of fonts currently served by the Google Fonts Developer API",
+                "Retrieves the list of fonts currently served by the Google Fonts Developer\nAPI.",
             );
             webfonts0 = webfonts0.subcommand(mcmd);
         }

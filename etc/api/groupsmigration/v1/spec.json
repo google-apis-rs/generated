@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/qDu5470S_QfnHCP_4GxoX8OU3Kg\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "groupsmigration:v1",
   "name": "groupsmigration",
   "canonicalName": "Groups Migration",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20181126",
+  "revision": "20200618",
   "title": "Groups Migration API",
-  "description": "Groups Migration Api.",
+  "description": "The Groups Migration API allows domain administrators to archive\n    emails into Google groups.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.google.com/images/icons/product/discussions-16.gif",
-    "x32": "https://www.google.com/images/icons/product/discussions-32.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "documentationLink": "https://developers.google.com/google-apps/groups-migration/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/groups/v1/groups/",
-  "basePath": "/groups/v1/groups/",
+  "baseUrl": "https://www.googleapis.com/",
+  "basePath": "",
   "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "groups/v1/groups/",
+  "servicePath": "",
   "batchPath": "batch/groupsmigration/v1",
   "version_module": null,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -180,7 +246,7 @@
       "methods": {
         "insert": {
           "id": "groupsmigration.archive.insert",
-          "path": "{groupId}/archive",
+          "path": "groups/v1/groups/{groupId}/archive",
           "httpMethod": "POST",
           "description": "Inserts a new mail into the archive of the Google group.",
           "parameters": {
@@ -217,16 +283,13 @@
             "accept": [
               "message/rfc822"
             ],
-            "maxSize": "25MB",
+            "maxSize": "26214400",
             "protocols": {
               "simple": {
                 "multipart": true,
                 "path": "/upload/groups/v1/groups/{groupId}/archive"
               },
-              "resumable": {
-                "multipart": true,
-                "path": "/resumable/upload/groups/v1/groups/{groupId}/archive"
-              }
+              "resumable": null
             }
           }
         }

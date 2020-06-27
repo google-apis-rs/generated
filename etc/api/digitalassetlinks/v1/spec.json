@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200505",
+  "revision": "20200606",
   "title": "Digital Asset Links API",
   "description": "Discovers relationships between online assets such as websites or mobile apps.",
   "ownerDomain": "google.com",

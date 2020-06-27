@@ -7,7 +7,7 @@
   "canonicalName": "Acceleratedmobilepageurl",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200511",
+  "revision": "20200624",
   "title": "Accelerated Mobile Pages (AMP) URL API",
   "description": "Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n",
   "ownerDomain": "google.com",

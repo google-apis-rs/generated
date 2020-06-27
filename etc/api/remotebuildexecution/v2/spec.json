@@ -7,7 +7,7 @@
   "canonicalName": "Remote Build Execution",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200505",
+  "revision": "20200623",
   "title": "Remote Build Execution API",
   "description": "Supplies a Remote Execution API service for tools such as bazel.",
   "ownerDomain": "google.com",
@@ -2180,7 +2180,8 @@
             "DOCKER_PREPARELAYER_ERROR",
             "DOCKER_INCOMPATIBLE_OS_ERROR",
             "DOCKER_CREATE_RUNTIME_FILE_NOT_FOUND",
-            "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED"
+            "DOCKER_CREATE_RUNTIME_PERMISSION_DENIED",
+            "DOCKER_CREATE_PROCESS_FILE_NOT_FOUND"
           ],
           "enumDescriptions": [
             "The command succeeded.",
@@ -2217,7 +2218,8 @@
             "Docker failed to run containers with hcsshim::PrepareLayer error.",
             "Docker incompatible operating system error.",
             "Docker failed to create OCI runtime because of file not found.",
-            "Docker failed to create OCI runtime because of permission denied."
+            "Docker failed to create OCI runtime because of permission denied.",
+            "Docker failed to create process because of file not found."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -2853,6 +2855,16 @@
         "reserved": {
           "description": "Determines whether the worker is reserved (equivalent to a Compute Engine\non-demand VM and therefore won't be preempted).\nSee [Preemptible VMs](https://cloud.google.com/preemptible-vms/) for more\ndetails.",
           "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "vmImage": {
+          "description": "The name of the image used by each VM.",
+          "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],

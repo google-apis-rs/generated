@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("cloudbuild1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200506")
+            .version("0.1.0-20200619")
             .about("Creates and manages builds on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -50,7 +50,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
-            .about("sub-resources: builds and triggers");
+            .about("sub-resources: builds, locations and triggers");
         let mut builds1 = SubCommand::with_name("builds")
             .setting(AppSettings::ColoredHelp)
             .about("methods: cancel, create, get, list and retry");
@@ -74,6 +74,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("retry").about("Creates a new build based on the specified build.\n\nThis method creates a new build using the original build request, which may\nor may not result in an identical build.\n\nFor triggered builds:\n\n* Triggered builds resolve to a precise revision; therefore a retry of a\ntriggered build will result in a build that uses the same revision.\n\nFor non-triggered builds that specify `RepoSource`:\n\n* If the original build built from the tip of a branch, the retried build\nwill build from the tip of that branch, which may not be the same revision\nas the original build.\n* If the original build specified a commit sha or revision ID, the retried\nbuild will use the identical source.\n\nFor builds that specify `StorageSource`:\n\n* If the original build pulled source from Google Cloud Storage without\nspecifying the generation of the object, the new build will use the current\nobject, which may be different from the original build source.\n* If the original build pulled source from Cloud Storage and specified the\ngeneration of the object, the new build will attempt to use the same\nobject, which may or may not be available depending on the bucket\'s\nlifecycle management settings.");
             builds1 = builds1.subcommand(mcmd);
         }
+        let mut locations1 = SubCommand::with_name("locations")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: operations");
         let mut triggers1 = SubCommand::with_name("triggers")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch and run");
@@ -105,7 +108,24 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Runs a `BuildTrigger` at a particular source revision.");
             triggers1 = triggers1.subcommand(mcmd);
         }
+        let mut operations2 = SubCommand::with_name("operations")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: cancel, get and list");
+        {
+            let mcmd = SubCommand::with_name("cancel").about("Starts asynchronous cancellation on a long-running operation.  The server\nmakes a best effort to cancel the operation, but success is not\nguaranteed.  If the server doesn\'t support this method, it returns\n`google.rpc.Code.UNIMPLEMENTED`.  Clients can use\nOperations.GetOperation or\nother methods to check whether the cancellation succeeded or whether the\noperation completed despite cancellation. On successful cancellation,\nthe operation is not deleted; instead, it becomes an operation with\nan Operation.error value with a google.rpc.Status.code of 1,\ncorresponding to `Code.CANCELLED`.");
+            operations2 = operations2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.");
+            operations2 = operations2.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Lists operations that match the specified filter in the request. If the\nserver doesn\'t support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.");
+            operations2 = operations2.subcommand(mcmd);
+        }
+        locations1 = locations1.subcommand(operations2);
         projects0 = projects0.subcommand(triggers1);
+        projects0 = projects0.subcommand(locations1);
         projects0 = projects0.subcommand(builds1);
         app = app.subcommand(projects0);
         app = app.subcommand(operations0);

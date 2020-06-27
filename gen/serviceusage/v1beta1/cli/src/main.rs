@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("serviceusage1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200509")
+            .version("0.1.0-20200624")
             .about("Enables services that service consumers want to use on Google Cloud Platform, lists the available or enabled services, or disables services that service consumers no longer use.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -46,7 +46,9 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut services0 = SubCommand::with_name("services")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: batch_enable, disable, enable, get and list");
+            .about(
+                "methods: batch_enable, disable, enable, generate_service_identity, get and list",
+            );
         {
             let mcmd = SubCommand::with_name("batch_enable").about("Enable multiple services on a project. The operation is atomic: if enabling\nany service fails, then the entire batch fails, and no state changes occur.\n\nOperation<response: google.protobuf.Empty>");
             services0 = services0.subcommand(mcmd);
@@ -60,6 +62,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             services0 = services0.subcommand(mcmd);
         }
         {
+            let mcmd = SubCommand::with_name("generate_service_identity")
+                .about("Generate service identity for service.");
+            services0 = services0.subcommand(mcmd);
+        }
+        {
             let mcmd = SubCommand::with_name("get")
                 .about("Returns the service configuration and enabled state for a given service.");
             services0 = services0.subcommand(mcmd);
@@ -70,10 +77,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut consumer_quota_metrics1 = SubCommand::with_name("consumer_quota_metrics")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: get and list");
+            .about("methods: get, import_consumer_overrides and list");
         {
             let mcmd = SubCommand::with_name("get")
                 .about("Retrieves a summary of quota information for a specific quota metric");
+            consumer_quota_metrics1 = consumer_quota_metrics1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("import_consumer_overrides").about("Create or update multiple consumer overrides atomically, all on the\nsame consumer, but on many different metrics or limits.\nThe name field in the quota override message should not be set.");
             consumer_quota_metrics1 = consumer_quota_metrics1.subcommand(mcmd);
         }
         {

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("genomics2_alpha1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200507")
+            .version("0.1.0-20200623")
             .about("Uploads, processes, queries, and searches Genomics data in the cloud.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -72,6 +72,19 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("check_in").about("The worker uses this method to retrieve the assigned operation and\nprovide periodic status updates.");
             workers1 = workers1.subcommand(mcmd);
         }
+        let mut projects1 = SubCommand::with_name("projects")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: workers");
+        let mut workers2 = SubCommand::with_name("workers")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: upload_sos_report");
+        {
+            let mcmd = SubCommand::with_name("upload_sos_report")
+                .about("The worker uses this method to upload SOS reports for unexpected errors.");
+            workers2 = workers2.subcommand(mcmd);
+        }
+        projects1 = projects1.subcommand(workers2);
+        workers0 = workers0.subcommand(projects1);
         projects0 = projects0.subcommand(workers1);
         projects0 = projects0.subcommand(operations1);
         app = app.subcommand(workers0);

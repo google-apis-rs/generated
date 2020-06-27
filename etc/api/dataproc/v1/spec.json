@@ -7,7 +7,7 @@
   "canonicalName": "Dataproc",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200409",
+  "revision": "20200611",
   "title": "Cloud Dataproc API",
   "description": "Manages Hadoop-based clusters and jobs on Google Cloud Platform.",
   "ownerDomain": "google.com",
@@ -46,20 +46,6 @@
         "v1 error format",
         "v2 error format"
       ],
-      "repeated": false
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
       "repeated": false
     },
     "alt": {
@@ -114,20 +100,6 @@
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "repeated": false
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "default": null,
       "location": "query",
       "required": false,
@@ -350,7 +322,7 @@
           "items": null
         },
         "scaleDownFactor": {
-          "description": "Required. Fraction of average pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job.Bounds: 0.0, 1.0.",
+          "description": "Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -370,7 +342,7 @@
           "items": null
         },
         "scaleUpFactor": {
-          "description": "Required. Fraction of average pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.",
+          "description": "Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.",
           "type": "number",
           "format": "double",
           "enum": [],
@@ -402,7 +374,7 @@
       "enumDescriptions": [],
       "properties": {
         "condition": {
-          "description": "The condition that is associated with this binding. NOTE: An unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.",
+          "description": "The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).",
           "$ref": "Expr"
         },
         "members": {
@@ -559,6 +531,10 @@
           "description": "Optional. Encryption settings for the cluster.",
           "$ref": "EncryptionConfig"
         },
+        "endpointConfig": {
+          "description": "Optional. Port/endpoint configuration for this cluster",
+          "$ref": "EndpointConfig"
+        },
         "gceClusterConfig": {
           "description": "Optional. The shared Compute Engine config settings for all instances in a cluster.",
           "$ref": "GceClusterConfig"
@@ -594,6 +570,16 @@
         "softwareConfig": {
           "description": "Optional. The config settings for software inside the cluster.",
           "$ref": "SoftwareConfig"
+        },
+        "tempBucket": {
+          "description": "Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         },
         "workerConfig": {
           "description": "Optional. The Compute Engine config settings for worker instances in a cluster.",
@@ -1085,6 +1071,47 @@
       "additionalProperties": null,
       "items": null
     },
+    "EndpointConfig": {
+      "id": "EndpointConfig",
+      "description": "Endpoint config for this cluster",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "enableHttpPortAccess": {
+          "description": "Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "httpPorts": {
+          "description": "Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.",
+          "type": "object",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": {
+            "description": null,
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          },
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Expr": {
       "id": "Expr",
       "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison):\ntitle: \"Summary size limit\"\ndescription: \"Determines if a summary is less than 100 chars\"\nexpression: \"document.summary.size() < 100\"\nExample (Equality):\ntitle: \"Requestor is owner\"\ndescription: \"Determines if requestor is the document owner\"\nexpression: \"document.owner == request.auth.claims.email\"\nExample (Logic):\ntitle: \"Public documents\"\ndescription: \"Determine whether the document should be publicly visible\"\nexpression: \"document.type != 'private' && document.type != 'internal'\"\nExample (Data Manipulation):\ntitle: \"Notification string\"\ndescription: \"Create a notification string with a timestamp.\"\nexpression: \"'New message received at ' + string(document.create_time)\"\nThe exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
@@ -1267,7 +1294,7 @@
       "enumDescriptions": [],
       "properties": {
         "options": {
-          "description": "OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy. This field is only used by Cloud IAM.",
+          "description": "OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy.",
           "$ref": "GetPolicyOptions"
         }
       },
@@ -1283,7 +1310,7 @@
       "enumDescriptions": [],
       "properties": {
         "requestedPolicyVersion": {
-          "description": "Optional. The policy format version to be returned.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset.",
+          "description": "Optional. The policy format version to be returned.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional bindings must specify version 3. Policies without any conditional bindings may specify any valid value or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -2906,7 +2933,7 @@
     },
     "Policy": {
       "id": "Policy",
-      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members to a single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.Optionally, a binding can specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both.JSON example:\n{\n  \"bindings\": [\n    {\n      \"role\": \"roles/resourcemanager.organizationAdmin\",\n      \"members\": [\n        \"user:mike@example.com\",\n        \"group:admins@example.com\",\n        \"domain:google.com\",\n        \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n      ]\n    },\n    {\n      \"role\": \"roles/resourcemanager.organizationViewer\",\n      \"members\": [\"user:eve@example.com\"],\n      \"condition\": {\n        \"title\": \"expirable access\",\n        \"description\": \"Does not grant access after Sep 2020\",\n        \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n      }\n    }\n  ],\n  \"etag\": \"BwWWja0YfJA=\",\n  \"version\": 3\n}\nYAML example:\nbindings:\n- members:\n  - user:mike@example.com\n  - group:admins@example.com\n  - domain:google.com\n  - serviceAccount:my-project-id@appspot.gserviceaccount.com\n  role: roles/resourcemanager.organizationAdmin\n- members:\n  - user:eve@example.com\n  role: roles/resourcemanager.organizationViewer\n  condition:\n    title: expirable access\n    description: Does not grant access after Sep 2020\n    expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n- etag: BwWWja0YfJA=\n- version: 3\nFor a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/).",
+      "description": "An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources.A Policy is a collection of bindings. A binding binds one or more members to a single role. Members can be user accounts, service accounts, Google groups, and domains (such as G Suite). A role is a named list of permissions; each role can be an IAM predefined role or a user-created custom role.For some types of Google Cloud resources, a binding can also specify a condition, which is a logical expression that allows access to a resource only if the expression evaluates to true. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).JSON example:\n{\n  \"bindings\": [\n    {\n      \"role\": \"roles/resourcemanager.organizationAdmin\",\n      \"members\": [\n        \"user:mike@example.com\",\n        \"group:admins@example.com\",\n        \"domain:google.com\",\n        \"serviceAccount:my-project-id@appspot.gserviceaccount.com\"\n      ]\n    },\n    {\n      \"role\": \"roles/resourcemanager.organizationViewer\",\n      \"members\": [\n        \"user:eve@example.com\"\n      ],\n      \"condition\": {\n        \"title\": \"expirable access\",\n        \"description\": \"Does not grant access after Sep 2020\",\n        \"expression\": \"request.time < timestamp('2020-10-01T00:00:00.000Z')\",\n      }\n    }\n  ],\n  \"etag\": \"BwWWja0YfJA=\",\n  \"version\": 3\n}\nYAML example:\nbindings:\n- members:\n  - user:mike@example.com\n  - group:admins@example.com\n  - domain:google.com\n  - serviceAccount:my-project-id@appspot.gserviceaccount.com\n  role: roles/resourcemanager.organizationAdmin\n- members:\n  - user:eve@example.com\n  role: roles/resourcemanager.organizationViewer\n  condition:\n    title: expirable access\n    description: Does not grant access after Sep 2020\n    expression: request.time < timestamp('2020-10-01T00:00:00.000Z')\n- etag: BwWWja0YfJA=\n- version: 3\nFor a description of IAM and its features, see the IAM documentation (https://cloud.google.com/iam/docs/).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -2935,7 +2962,7 @@
           "items": null
         },
         "version": {
-          "description": "Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations:\nGetting a policy that includes a conditional role binding\nAdding a conditional role binding to a policy\nChanging a conditional role binding in a policy\nRemoving any role binding, with or without a condition, from a policy  that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.",
+          "description": "Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations:\nGetting a policy that includes a conditional role binding\nAdding a conditional role binding to a policy\nChanging a conditional role binding in a policy\nRemoving any role binding, with or without a condition, from a policy  that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).",
           "type": "integer",
           "format": "int32",
           "enum": [],
@@ -3044,7 +3071,7 @@
       "enumDescriptions": [],
       "properties": {
         "archiveUris": {
-          "description": "Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.",
+          "description": "Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3080,7 +3107,7 @@
           }
         },
         "fileUris": {
-          "description": "Optional. HCFS URIs of files to be copied to the working directory of Python drivers and distributed tasks. Useful for naively parallel tasks.",
+          "description": "Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3346,7 +3373,7 @@
           "format": null,
           "enum": [],
           "enumDescriptions": [
-            "Unspecified component.",
+            "Unspecified component. Specifying this will cause Cluster creation to fail.",
             "The Anaconda python distribution.",
             "The Hive Web HCatalog (the REST service for accessing HCatalog).",
             "The Jupyter Notebook.",
@@ -3406,7 +3433,7 @@
       "enumDescriptions": [],
       "properties": {
         "archiveUris": {
-          "description": "Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.",
+          "description": "Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3442,7 +3469,7 @@
           }
         },
         "fileUris": {
-          "description": "Optional. HCFS URIs of files to be copied to the working directory of Spark drivers and distributed tasks. Useful for naively parallel tasks.",
+          "description": "Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3533,7 +3560,7 @@
       "enumDescriptions": [],
       "properties": {
         "archiveUris": {
-          "description": "Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.",
+          "description": "Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -3569,7 +3596,7 @@
           }
         },
         "fileUris": {
-          "description": "Optional. HCFS URIs of files to be copied to the working directory of R drivers and distributed tasks. Useful for naively parallel tasks.",
+          "description": "Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -4600,7 +4627,7 @@
                   "id": "dataproc.projects.locations.autoscalingPolicies.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
@@ -5059,7 +5086,7 @@
                   "id": "dataproc.projects.locations.workflowTemplates.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
@@ -5403,7 +5430,7 @@
                   "id": "dataproc.projects.regions.autoscalingPolicies.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
@@ -6068,7 +6095,7 @@
                   "id": "dataproc.projects.regions.clusters.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
@@ -6602,7 +6629,7 @@
                   "id": "dataproc.projects.regions.jobs.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
@@ -7022,7 +7049,7 @@
                   "id": "dataproc.projects.regions.operations.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
@@ -7442,7 +7469,7 @@
                   "id": "dataproc.projects.regions.workflowTemplates.setIamPolicy",
                   "path": "v1/{+resource}:setIamPolicy",
                   "httpMethod": "POST",
-                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return Public Errors: NOT_FOUND, INVALID_ARGUMENT and PERMISSION_DENIED",
+                  "description": "Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.",
                   "parameters": {
                     "resource": {
                       "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",

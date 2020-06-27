@@ -7,7 +7,7 @@
   "canonicalName": "Translate",
   "fullyEncodeReservedExpansion": true,
   "version": "v3beta1",
-  "revision": "20200508",
+  "revision": "20200619",
   "title": "Cloud Translation API",
   "description": "Integrates text translation into your website or application.",
   "ownerDomain": "google.com",

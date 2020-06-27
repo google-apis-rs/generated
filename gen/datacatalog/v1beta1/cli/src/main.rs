@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("datacatalog1_beta1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200430")
+            .version("0.1.0-20200618")
             .about("A fully managed and highly scalable data discovery and metadata management service.\n")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -292,6 +292,14 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("patch").about("Updates an existing tag.");
             tags4 = tags4.subcommand(mcmd);
         }
+        let mut enum_values4 = SubCommand::with_name("enum_values")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: rename");
+        {
+            let mcmd = SubCommand::with_name("rename").about("Renames an enum value in a tag template. The enum values have to be unique\nwithin one enum field. Thus, an enum value cannot be renamed with a name\nused in any other enum value within the same enum field.");
+            enum_values4 = enum_values4.subcommand(mcmd);
+        }
+        fields3 = fields3.subcommand(enum_values4);
         entries3 = entries3.subcommand(tags4);
         taxonomies2 = taxonomies2.subcommand(policy_tags3);
         tag_templates2 = tag_templates2.subcommand(fields3);

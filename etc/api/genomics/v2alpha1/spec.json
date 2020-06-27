@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": true,
   "version": "v2alpha1",
-  "revision": "20200507",
+  "revision": "20200623",
   "title": "Genomics API",
   "description": "Uploads, processes, queries, and searches Genomics data in the cloud.",
   "ownerDomain": "google.com",
@@ -967,6 +967,65 @@
       "additionalProperties": null,
       "items": null
     },
+    "HttpBody": {
+      "id": "HttpBody",
+      "description": "Message that represents an arbitrary HTTP body. It should only be used for\npayload formats that can't be represented as JSON, such as raw binary or\nan HTML page.\n\n\nThis message can be used both in streaming and non-streaming API methods in\nthe request as well as the response.\n\nIt can be used as a top-level request field, which is convenient if one\nwants to extract parameters from either the URL or HTTP template into the\nrequest fields and also want access to the raw HTTP body.\n\nExample:\n\n    message GetResourceRequest {\n      // A unique request id.\n      string request_id = 1;\n\n      // The raw HTTP body is bound to this field.\n      google.api.HttpBody http_body = 2;\n    }\n\n    service ResourceService {\n      rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);\n      rpc UpdateResource(google.api.HttpBody) returns\n      (google.protobuf.Empty);\n    }\n\nExample with streaming methods:\n\n    service CaldavService {\n      rpc GetCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n      rpc UpdateCalendar(stream google.api.HttpBody)\n        returns (stream google.api.HttpBody);\n    }\n\nUse of this type only changes how the request and response bodies are\nhandled, all other features will continue to work unchanged.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "contentType": {
+          "description": "The HTTP Content-Type header value specifying the content type of the body.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "data": {
+          "description": "The HTTP request/response body as raw binary.",
+          "type": "string",
+          "format": "byte",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "extensions": {
+          "description": "Application specific response metadata. Must be set in the first response\nfor streaming APIs.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "object",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any",
+              "format": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "properties": {},
+              "additionalProperties": null,
+              "items": null
+            },
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "ListOperationsResponse": {
       "id": "ListOperationsResponse",
       "description": "The response message for Operations.ListOperations.",
@@ -1838,6 +1897,17 @@
       "additionalProperties": null,
       "items": null
     },
+    "UploadSOSReportResponse": {
+      "id": "UploadSOSReportResponse",
+      "description": "The response to the UploadSOSReport method.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {},
+      "additionalProperties": null,
+      "items": null
+    },
     "VirtualMachine": {
       "id": "VirtualMachine",
       "description": "Carries information about a Compute Engine VM resource.",
@@ -1898,6 +1968,24 @@
           "additionalProperties": null,
           "items": {
             "$ref": "Disk"
+          }
+        },
+        "dockerCacheImages": {
+          "description": "The Compute Engine Disk Images to use as a Docker cache. The disks will be\nmounted into the Docker folder in a way that the images present in the\ncache will not need to be pulled. The digests of the cached images must\nmatch those of the tags used or the latest version will still be pulled.\nOnly a single image is supported.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
           }
         },
         "enableStackdriverMonitoring": {
@@ -2309,7 +2397,7 @@
               "description": "The worker uses this method to retrieve the assigned operation and\nprovide periodic status updates.",
               "parameters": {
                 "id": {
-                  "description": "The worker id, assigned when it was created.",
+                  "description": "The VM identity token for authenticating the VM instance.\nhttps://cloud.google.com/compute/docs/instances/verifying-instance-identity",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -2348,7 +2436,58 @@
       "methods": {}
     },
     "workers": {
-      "resources": {},
+      "resources": {
+        "projects": {
+          "resources": {
+            "workers": {
+              "resources": {},
+              "methods": {
+                "uploadSosReport": {
+                  "id": "genomics.workers.projects.workers.uploadSosReport",
+                  "path": "v2alpha1/workers/{+id}:uploadSosReport",
+                  "httpMethod": "POST",
+                  "description": "The worker uses this method to upload SOS reports for unexpected errors.",
+                  "parameters": {
+                    "id": {
+                      "description": "The VM identity token for authenticating the VM instance.\nhttps://cloud.google.com/compute/docs/instances/verifying-instance-identity",
+                      "default": null,
+                      "location": "path",
+                      "required": true,
+                      "type": "string",
+                      "format": null,
+                      "minimum": null,
+                      "maximum": null,
+                      "pattern": "^projects/[^/]+/workers/[^/]+$",
+                      "enum": [],
+                      "enumDescriptions": [],
+                      "repeated": false
+                    }
+                  },
+                  "parameterOrder": [
+                    "id"
+                  ],
+                  "request": {
+                    "$ref": "HttpBody"
+                  },
+                  "response": {
+                    "$ref": "UploadSOSReportResponse"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/genomics"
+                  ],
+                  "supportsMediaDownload": false,
+                  "useMediaDownloadService": false,
+                  "supportsSubscription": false,
+                  "supportsMediaUpload": false,
+                  "mediaUpload": null
+                }
+              }
+            }
+          },
+          "methods": {}
+        }
+      },
       "methods": {
         "checkIn": {
           "id": "genomics.workers.checkIn",
@@ -2357,7 +2496,7 @@
           "description": "The worker uses this method to retrieve the assigned operation and\nprovide periodic status updates.",
           "parameters": {
             "id": {
-              "description": "The worker id, assigned when it was created.",
+              "description": "The VM identity token for authenticating the VM instance.\nhttps://cloud.google.com/compute/docs/instances/verifying-instance-identity",
               "default": null,
               "location": "path",
               "required": true,

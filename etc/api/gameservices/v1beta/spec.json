@@ -7,7 +7,7 @@
   "canonicalName": "Game Services",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta",
-  "revision": "20200507",
+  "revision": "20200521",
   "title": "Game Services API",
   "description": "Deploy and manage infrastructure for global multiplayer gaming experiences.",
   "ownerDomain": "google.com",

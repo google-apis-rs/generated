@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dialogflow2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200512")
+            .version("0.1.0-20200622")
             .about("Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -65,11 +65,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             agent1 = agent1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("import").about("Imports the specified agent from a ZIP file.\n\nUploads new intents and entity types without deleting the existing ones.\nIntents and entity types with the same name are replaced with the new\nversions from ImportAgentRequest.\n\nOperation <response: google.protobuf.Empty>");
+            let mcmd = SubCommand::with_name("import").about("Imports the specified agent from a ZIP file.\n\nUploads new intents and entity types without deleting the existing ones.\nIntents and entity types with the same name are replaced with the new\nversions from ImportAgentRequest. After the import, the imported draft\nagent will be trained automatically (unless disabled in agent settings).\nHowever, once the import is done, training may not be completed yet. Please\ncall TrainAgent and wait for the operation it returns in order to train\nexplicitly.\n\nOperation <response: google.protobuf.Empty>\nAn operation which tracks when importing is complete. It only tracks\nwhen the draft agent is updated not when it is done training.");
             agent1 = agent1.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("restore").about("Restores the specified agent from a ZIP file.\n\nReplaces the current agent version with a new one. All the intents and\nentity types in the older version are deleted.\n\nOperation <response: google.protobuf.Empty>");
+            let mcmd = SubCommand::with_name("restore").about("Restores the specified agent from a ZIP file.\n\nReplaces the current agent version with a new one. All the intents and\nentity types in the older version are deleted. After the restore, the\nrestored draft agent will be trained automatically (unless disabled in\nagent settings). However, once the restore is done, training may not be\ncompleted yet. Please call TrainAgent and wait for the operation it\nreturns in order to train explicitly.\n\nOperation <response: google.protobuf.Empty>\nAn operation which tracks when restoring is complete. It only tracks\nwhen the draft agent is updated not when it is done training.");
             agent1 = agent1.subcommand(mcmd);
         }
         {

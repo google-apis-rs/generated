@@ -387,21 +387,6 @@
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v2/rest"
     },
     {
-      "name": "androidpublisher",
-      "id": "androidpublisher:v3",
-      "metadata_file": "androidpublisher/v3/meta.json",
-      "lib_cargo_file": "androidpublisher/v3/lib/Cargo.toml",
-      "gen_error_file": "androidpublisher/v3/generator-errors.log",
-      "cargo_error_file": "androidpublisher/v3/cargo-errors.log",
-      "gen_dir": "androidpublisher/v3",
-      "spec_file": "androidpublisher/v3/spec.json",
-      "lib_crate_name": "google-androidpublisher3",
-      "cli_crate_name": "google-androidpublisher3-cli",
-      "make_target": "androidpublisher3",
-      "bin_name": "androidpublisher3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/androidpublisher/v3/rest"
-    },
-    {
       "name": "apigee",
       "id": "apigee:v1",
       "metadata_file": "apigee/v1/meta.json",
@@ -654,7 +639,7 @@
       "cli_crate_name": "google-blogger2-cli",
       "make_target": "blogger2",
       "bin_name": "blogger2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/blogger/v2/rest"
+      "rest_url": "https://blogger.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "blogger",
@@ -669,7 +654,7 @@
       "cli_crate_name": "google-blogger3-cli",
       "make_target": "blogger3",
       "bin_name": "blogger3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/blogger/v3/rest"
+      "rest_url": "https://blogger.googleapis.com/$discovery/rest?version=v3"
     },
     {
       "name": "books",
@@ -729,7 +714,7 @@
       "cli_crate_name": "google-civicinfo2-cli",
       "make_target": "civicinfo2",
       "bin_name": "civicinfo2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/civicinfo/v2/rest"
+      "rest_url": "https://civicinfo.googleapis.com/$discovery/rest?version=v2"
     },
     {
       "name": "classroom",
@@ -1390,21 +1375,6 @@
       "make_target": "content2d1",
       "bin_name": "content2d1",
       "rest_url": "https://www.googleapis.com/discovery/v1/apis/content/v2.1/rest"
-    },
-    {
-      "name": "customsearch",
-      "id": "customsearch:v1",
-      "metadata_file": "customsearch/v1/meta.json",
-      "lib_cargo_file": "customsearch/v1/lib/Cargo.toml",
-      "gen_error_file": "customsearch/v1/generator-errors.log",
-      "cargo_error_file": "customsearch/v1/cargo-errors.log",
-      "gen_dir": "customsearch/v1",
-      "spec_file": "customsearch/v1/spec.json",
-      "lib_crate_name": "google-customsearch1",
-      "cli_crate_name": "google-customsearch1-cli",
-      "make_target": "customsearch1",
-      "bin_name": "customsearch1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/customsearch/v1/rest"
     },
     {
       "name": "datacatalog",
@@ -2728,51 +2698,6 @@
     },
     {
       "name": "pagespeedonline",
-      "id": "pagespeedonline:v1",
-      "metadata_file": "pagespeedonline/v1/meta.json",
-      "lib_cargo_file": "pagespeedonline/v1/lib/Cargo.toml",
-      "gen_error_file": "pagespeedonline/v1/generator-errors.log",
-      "cargo_error_file": "pagespeedonline/v1/cargo-errors.log",
-      "gen_dir": "pagespeedonline/v1",
-      "spec_file": "pagespeedonline/v1/spec.json",
-      "lib_crate_name": "google-pagespeedonline1",
-      "cli_crate_name": "google-pagespeedonline1-cli",
-      "make_target": "pagespeedonline1",
-      "bin_name": "pagespeedonline1",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v1/rest"
-    },
-    {
-      "name": "pagespeedonline",
-      "id": "pagespeedonline:v2",
-      "metadata_file": "pagespeedonline/v2/meta.json",
-      "lib_cargo_file": "pagespeedonline/v2/lib/Cargo.toml",
-      "gen_error_file": "pagespeedonline/v2/generator-errors.log",
-      "cargo_error_file": "pagespeedonline/v2/cargo-errors.log",
-      "gen_dir": "pagespeedonline/v2",
-      "spec_file": "pagespeedonline/v2/spec.json",
-      "lib_crate_name": "google-pagespeedonline2",
-      "cli_crate_name": "google-pagespeedonline2-cli",
-      "make_target": "pagespeedonline2",
-      "bin_name": "pagespeedonline2",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v2/rest"
-    },
-    {
-      "name": "pagespeedonline",
-      "id": "pagespeedonline:v4",
-      "metadata_file": "pagespeedonline/v4/meta.json",
-      "lib_cargo_file": "pagespeedonline/v4/lib/Cargo.toml",
-      "gen_error_file": "pagespeedonline/v4/generator-errors.log",
-      "cargo_error_file": "pagespeedonline/v4/cargo-errors.log",
-      "gen_dir": "pagespeedonline/v4",
-      "spec_file": "pagespeedonline/v4/spec.json",
-      "lib_crate_name": "google-pagespeedonline4",
-      "cli_crate_name": "google-pagespeedonline4-cli",
-      "make_target": "pagespeedonline4",
-      "bin_name": "pagespeedonline4",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/pagespeedonline/v4/rest"
-    },
-    {
-      "name": "pagespeedonline",
       "id": "pagespeedonline:v5",
       "metadata_file": "pagespeedonline/v5/meta.json",
       "lib_cargo_file": "pagespeedonline/v5/lib/Cargo.toml",
@@ -3522,21 +3447,6 @@
       "rest_url": "https://sqladmin.googleapis.com/$discovery/rest?version=v1beta4"
     },
     {
-      "name": "sqladmin",
-      "id": "sqladmin:v1beta4",
-      "metadata_file": "sqladmin/v1beta4/meta.json",
-      "lib_cargo_file": "sqladmin/v1beta4/lib/Cargo.toml",
-      "gen_error_file": "sqladmin/v1beta4/generator-errors.log",
-      "cargo_error_file": "sqladmin/v1beta4/cargo-errors.log",
-      "gen_dir": "sqladmin/v1beta4",
-      "spec_file": "sqladmin/v1beta4/spec.json",
-      "lib_crate_name": "google-sqladmin1_beta4",
-      "cli_crate_name": "google-sqladmin1_beta4-cli",
-      "make_target": "sqladmin1_beta4",
-      "bin_name": "sqladmin1_beta4",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/sqladmin/v1beta4/rest"
-    },
-    {
       "name": "storage",
       "id": "storage:v1",
       "metadata_file": "storage/v1/meta.json",
@@ -3699,7 +3609,7 @@
       "cli_crate_name": "google-toolresults1_beta3-cli",
       "make_target": "toolresults1_beta3",
       "bin_name": "toolresults1_beta3",
-      "rest_url": "https://www.googleapis.com/discovery/v1/apis/toolresults/v1beta3/rest"
+      "rest_url": "https://www.googleapis.com/$discovery/rest?version=v1beta3"
     },
     {
       "name": "tpu",

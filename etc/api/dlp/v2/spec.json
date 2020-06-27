@@ -7,7 +7,7 @@
   "canonicalName": "DLP",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200505",
+  "revision": "20200614",
   "title": "Cloud Data Loss Prevention (DLP) API",
   "description": "Provides methods for detection, risk analysis, and de-identification of privacy-sensitive fragments in text, images, and Google Cloud Platform storage repositories.",
   "ownerDomain": "google.com",
@@ -926,11 +926,11 @@
           "enum": [],
           "enumDescriptions": [
             "Includes all files.",
-            "Includes all file extensions not covered by text file types.",
+            "Includes all file extensions not covered by another entry. Binary\nscanning attempts to convert the content of the file to utf_8 to scan\nthe file.\nIf you wish to avoid this fall back, specify one or more of the other\nFileType's in your storage scan.",
             "Included file extensions:\n  asc, brf, c, cc, cpp, csv, cxx, c++, cs, css, dart, eml, go, h, hh, hpp,\n  hxx, h++, hs, html, htm, shtml, shtm, xhtml, lhs, ini, java, js, json,\n  ocaml, md, mkd, markdown, m, ml, mli, pl, pm, php, phtml, pht, py, pyw,\n  rb, rbw, rs, rc, scala, sh, sql, tex, txt, text, tsv, vcard, vcs, wml,\n  xml, xsl, xsd, yml, yaml.",
             "Included file extensions:\n  bmp, gif, jpg, jpeg, jpe, png.\nbytes_limit_per_file has no effect on image files.\nImage inspection is restricted to 'global', 'us', 'asia', and 'europe'.",
-            "Included file extensions:\n  docx, dotx, docm, dotm",
-            "Included file extensions:\n  pdf",
+            "Word files >30 MB will be scanned as binary files.\nIncluded file extensions:\n  docx, dotx, docm, dotm",
+            "PDF files >30 MB will be scanned as binary files.\nIncluded file extensions:\n  pdf",
             "Included file extensions:\n  avro"
           ],
           "properties": {},
@@ -1362,7 +1362,7 @@
           "$ref": "GooglePrivacyDlpV2DeidentifyTemplate"
         },
         "locationId": {
-          "description": "The geographic location to store the deidentification template. Reserved\nfor future extensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1408,7 +1408,7 @@
           "items": null
         },
         "locationId": {
-          "description": "The geographic location to store and process the job. Reserved for\nfuture extensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1438,7 +1438,7 @@
           "$ref": "GooglePrivacyDlpV2InspectTemplate"
         },
         "locationId": {
-          "description": "The geographic location to store the inspection template. Reserved for\nfuture extensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1474,7 +1474,7 @@
           "$ref": "GooglePrivacyDlpV2JobTrigger"
         },
         "locationId": {
-          "description": "The geographic location to store the job trigger. Reserved for\nfuture extensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1510,7 +1510,7 @@
           "$ref": "GooglePrivacyDlpV2StoredInfoTypeConfig"
         },
         "locationId": {
-          "description": "The geographic location to store the stored infoType. Reserved for\nfuture extensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1618,10 +1618,10 @@
           ],
           "enumDescriptions": [
             "Unused.",
-            "[0-9] (radix of 10)",
-            "[0-9A-F] (radix of 16)",
-            "[0-9A-Z] (radix of 36)",
-            "[0-9A-Za-z] (radix of 62)"
+            "`[0-9]` (radix of 10)",
+            "`[0-9A-F]` (radix of 16)",
+            "`[0-9A-Z]` (radix of 36)",
+            "`[0-9A-Za-z]` (radix of 62)"
           ],
           "properties": {},
           "additionalProperties": null,
@@ -1656,7 +1656,7 @@
           "items": null
         },
         "surrogateInfoType": {
-          "description": "The custom infoType to annotate the surrogate with.\nThis annotation will be applied to the surrogate by prefixing it with\nthe name of the custom infoType followed by the number of\ncharacters comprising the surrogate. The following scheme defines the\nformat: info_type_name(surrogate_character_count):surrogate\n\nFor example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and\nthe surrogate is 'abc', the full replacement value\nwill be: 'MY_TOKEN_INFO_TYPE(3):abc'\n\nThis annotation identifies the surrogate when inspecting content using the\ncustom infoType\n[`SurrogateType`](/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype).\nThis facilitates reversal of the surrogate when it occurs in free text.\n\nIn order for inspection to work properly, the name of this infoType must\nnot occur naturally anywhere in your data; otherwise, inspection may\nfind a surrogate that does not correspond to an actual identifier.\nTherefore, choose your custom infoType name carefully after considering\nwhat your data looks like. One way to select a name that has a high chance\nof yielding reliable detection is to include one or more unicode characters\nthat are highly improbable to exist in your data.\nFor example, assuming your data is entered from a regular ASCII keyboard,\nthe symbol with the hex code point 29DD might be used like so:\n⧝MY_TOKEN_TYPE",
+          "description": "The custom infoType to annotate the surrogate with.\nThis annotation will be applied to the surrogate by prefixing it with\nthe name of the custom infoType followed by the number of\ncharacters comprising the surrogate. The following scheme defines the\nformat: info_type_name(surrogate_character_count):surrogate\n\nFor example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and\nthe surrogate is 'abc', the full replacement value\nwill be: 'MY_TOKEN_INFO_TYPE(3):abc'\n\nThis annotation identifies the surrogate when inspecting content using the\ncustom infoType\n[`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype).\nThis facilitates reversal of the surrogate when it occurs in free text.\n\nIn order for inspection to work properly, the name of this infoType must\nnot occur naturally anywhere in your data; otherwise, inspection may\nfind a surrogate that does not correspond to an actual identifier.\nTherefore, choose your custom infoType name carefully after considering\nwhat your data looks like. One way to select a name that has a high chance\nof yielding reliable detection is to include one or more unicode characters\nthat are highly improbable to exist in your data.\nFor example, assuming your data is entered from a regular ASCII keyboard,\nthe symbol with the hex code point 29DD might be used like so:\n⧝MY_TOKEN_TYPE",
           "$ref": "GooglePrivacyDlpV2InfoType"
         }
       },
@@ -1940,7 +1940,7 @@
           "$ref": "GooglePrivacyDlpV2ContentItem"
         },
         "locationId": {
-          "description": "The geographic location to process de-identification. Reserved for future\nextensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -3495,7 +3495,7 @@
           "$ref": "GooglePrivacyDlpV2ContentItem"
         },
         "locationId": {
-          "description": "The geographic location to process content inspection. Reserved for future\nextensions.\nWhen inspecting images location is restricted to 'global', 'us', 'asia',\nand 'europe'.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5131,7 +5131,7 @@
     },
     "GooglePrivacyDlpV2PublishToPubSub": {
       "id": "GooglePrivacyDlpV2PublishToPubSub",
-      "description": "Publish a message into given Pub/Sub topic when DlpJob has completed. The\nmessage contains a single field, `DlpJobName`, which is equal to the\nfinished job's\n[`DlpJob.name`](/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).\nCompatible with: Inspect, Risk",
+      "description": "Publish a message into given Pub/Sub topic when DlpJob has completed. The\nmessage contains a single field, `DlpJobName`, which is equal to the\nfinished job's\n[`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob).\nCompatible with: Inspect, Risk",
       "type": "object",
       "format": null,
       "enum": [],
@@ -5476,7 +5476,7 @@
           "$ref": "GooglePrivacyDlpV2InspectConfig"
         },
         "locationId": {
-          "description": "The geographic location to process the request. Reserved for future\nextensions.\nLocation is restricted to 'global', 'us', 'asia', and 'europe'.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -5592,7 +5592,7 @@
           "$ref": "GooglePrivacyDlpV2ContentItem"
         },
         "locationId": {
-          "description": "The geographic location to process content reidentification.  Reserved for\nfuture extensions.",
+          "description": "Deprecated. This field has no effect.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -6160,7 +6160,7 @@
     },
     "GooglePrivacyDlpV2SurrogateType": {
       "id": "GooglePrivacyDlpV2SurrogateType",
-      "description": "Message for detecting output from deidentification transformations\nsuch as\n[`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).\nThese types of transformations are\nthose that perform pseudonymization, thereby producing a \"surrogate\" as\noutput. This should be used in conjunction with a field on the\ntransformation such as `surrogate_info_type`. This CustomInfoType does\nnot support the use of `detection_rules`.",
+      "description": "Message for detecting output from deidentification transformations\nsuch as\n[`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).\nThese types of transformations are\nthose that perform pseudonymization, thereby producing a \"surrogate\" as\noutput. This should be used in conjunction with a field on the\ntransformation such as `surrogate_info_type`. This CustomInfoType does\nnot support the use of `detection_rules`.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -7044,7 +7044,21 @@
               "repeated": false
             },
             "locationId": {
-              "description": "The geographic location to list info types. Reserved for future\nextensions.",
+              "description": "Deprecated. This field has no effect.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "parent": {
+              "description": "The parent resource name.\n- Format:locations/[LOCATION-ID]",
               "default": null,
               "location": "query",
               "required": false,
@@ -7081,7 +7095,7 @@
           "methods": {
             "list": {
               "id": "dlp.locations.infoTypes.list",
-              "path": "v2/locations/{locationId}/infoTypes",
+              "path": "v2/{+parent}/infoTypes",
               "httpMethod": "GET",
               "description": "Returns a list of the sensitive information types that the DLP API\nsupports. See https://cloud.google.com/dlp/docs/infotypes-reference to\nlearn more.",
               "parameters": {
@@ -7114,10 +7128,10 @@
                   "repeated": false
                 },
                 "locationId": {
-                  "description": "The geographic location to list info types. Reserved for future\nextensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
-                  "location": "path",
-                  "required": true,
+                  "location": "query",
+                  "required": false,
                   "type": "string",
                   "format": null,
                   "minimum": null,
@@ -7126,10 +7140,24 @@
                   "enum": [],
                   "enumDescriptions": [],
                   "repeated": false
+                },
+                "parent": {
+                  "description": "The parent resource name.\n- Format:locations/[LOCATION-ID]",
+                  "default": null,
+                  "location": "path",
+                  "required": true,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": "^locations/[^/]+$",
+                  "enum": [],
+                  "enumDescriptions": [],
+                  "repeated": false
                 }
               },
               "parameterOrder": [
-                "locationId"
+                "parent"
               ],
               "request": null,
               "response": {
@@ -7161,7 +7189,7 @@
               "description": "Creates a DeidentifyTemplate for re-using frequently used configuration\nfor de-identifying content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7274,7 +7302,7 @@
               "description": "Lists DeidentifyTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
               "parameters": {
                 "locationId": {
-                  "description": "The geographic location where deidentifications templates will be retrieved\nfrom. Use `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7330,7 +7358,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7411,7 +7439,7 @@
               "description": "Creates an InspectTemplate for re-using frequently used configuration\nfor inspecting content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7524,7 +7552,7 @@
               "description": "Lists InspectTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
               "parameters": {
                 "locationId": {
-                  "description": "The geographic location where inspection templates will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -7580,7 +7608,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -7658,26 +7686,12 @@
               "methods": {
                 "create": {
                   "id": "dlp.organizations.locations.deidentifyTemplates.create",
-                  "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                  "path": "v2/{+parent}/deidentifyTemplates",
                   "httpMethod": "POST",
                   "description": "Creates a DeidentifyTemplate for re-using frequently used configuration\nfor de-identifying content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the deidentification template. Reserved\nfor future extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7685,15 +7699,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^organizations/[^/]+$",
+                      "pattern": "^organizations/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateDeidentifyTemplateRequest"
@@ -7786,15 +7799,15 @@
                 },
                 "list": {
                   "id": "dlp.organizations.locations.deidentifyTemplates.list",
-                  "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                  "path": "v2/{+parent}/deidentifyTemplates",
                   "httpMethod": "GET",
                   "description": "Lists DeidentifyTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
                   "parameters": {
                     "locationId": {
-                      "description": "The geographic location where deidentifications templates will be retrieved\nfrom. Use `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -7847,7 +7860,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7855,15 +7868,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^organizations/[^/]+$",
+                      "pattern": "^organizations/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -7924,26 +7936,12 @@
               "methods": {
                 "create": {
                   "id": "dlp.organizations.locations.inspectTemplates.create",
-                  "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                  "path": "v2/{+parent}/inspectTemplates",
                   "httpMethod": "POST",
                   "description": "Creates an InspectTemplate for re-using frequently used configuration\nfor inspecting content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the inspection template. Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -7951,15 +7949,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^organizations/[^/]+$",
+                      "pattern": "^organizations/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateInspectTemplateRequest"
@@ -8052,15 +8049,15 @@
                 },
                 "list": {
                   "id": "dlp.organizations.locations.inspectTemplates.list",
-                  "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                  "path": "v2/{+parent}/inspectTemplates",
                   "httpMethod": "GET",
                   "description": "Lists InspectTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
                   "parameters": {
                     "locationId": {
-                      "description": "The geographic location where inspection templates will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -8113,7 +8110,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -8121,15 +8118,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^organizations/[^/]+$",
+                      "pattern": "^organizations/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -8190,26 +8186,12 @@
               "methods": {
                 "create": {
                   "id": "dlp.organizations.locations.storedInfoTypes.create",
-                  "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                  "path": "v2/{+parent}/storedInfoTypes",
                   "httpMethod": "POST",
                   "description": "Creates a pre-built stored infoType to be used for inspection.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the stored infoType. Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -8217,15 +8199,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^organizations/[^/]+$",
+                      "pattern": "^organizations/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateStoredInfoTypeRequest"
@@ -8318,15 +8299,15 @@
                 },
                 "list": {
                   "id": "dlp.organizations.locations.storedInfoTypes.list",
-                  "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                  "path": "v2/{+parent}/storedInfoTypes",
                   "httpMethod": "GET",
                   "description": "Lists stored infoTypes.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
                   "parameters": {
                     "locationId": {
-                      "description": "The geographic location where stored infoTypes will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -8379,7 +8360,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -8387,15 +8368,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^organizations/[^/]+$",
+                      "pattern": "^organizations/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -8464,7 +8444,7 @@
               "description": "Creates a pre-built stored infoType to be used for inspection.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8577,7 +8557,7 @@
               "description": "Lists stored infoTypes.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
               "parameters": {
                 "locationId": {
-                  "description": "The geographic location where stored infoTypes will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -8633,7 +8613,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8719,7 +8699,7 @@
               "description": "De-identifies potentially sensitive info from a ContentItem.\nThis method has limits on input size and output size.\nSee https://cloud.google.com/dlp/docs/deidentify-sensitive-data to\nlearn more.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.",
               "parameters": {
                 "parent": {
-                  "description": "The parent resource name, for example projects/my-project-id.",
+                  "description": "Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8758,7 +8738,7 @@
               "description": "Finds potentially sensitive info in content.\nThis method has limits on input size, processing time, and output size.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.\n\nFor how to guides, see https://cloud.google.com/dlp/docs/inspecting-images\nand https://cloud.google.com/dlp/docs/inspecting-text,",
               "parameters": {
                 "parent": {
-                  "description": "The parent resource name, for example projects/my-project-id.",
+                  "description": "Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8797,7 +8777,7 @@
               "description": "Re-identifies content that has been de-identified.\nSee\nhttps://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example\nto learn more.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name.",
+                  "description": "Required. The parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8841,7 +8821,7 @@
               "description": "Creates a DeidentifyTemplate for re-using frequently used configuration\nfor de-identifying content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -8954,7 +8934,7 @@
               "description": "Lists DeidentifyTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
               "parameters": {
                 "locationId": {
-                  "description": "The geographic location where deidentifications templates will be retrieved\nfrom. Use `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -9010,7 +8990,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9130,7 +9110,7 @@
               "description": "Creates a new job to inspect storage or calculate risk metrics.\nSee https://cloud.google.com/dlp/docs/inspecting-storage and\nhttps://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.\n\nWhen no InfoTypes or CustomInfoTypes are specified in inspect jobs, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9257,7 +9237,7 @@
                   "repeated": false
                 },
                 "locationId": {
-                  "description": "The geographic location where jobs will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -9313,7 +9293,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9373,7 +9353,7 @@
               "description": "Redacts potentially sensitive info from an image.\nThis method has limits on input size, processing time, and output size.\nSee https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to\nlearn more.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.",
               "parameters": {
                 "parent": {
-                  "description": "The parent resource name, for example projects/my-project-id.",
+                  "description": "The parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9417,7 +9397,7 @@
               "description": "Creates an InspectTemplate for re-using frequently used configuration\nfor inspecting content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9530,7 +9510,7 @@
               "description": "Lists InspectTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
               "parameters": {
                 "locationId": {
-                  "description": "The geographic location where inspection templates will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -9586,7 +9566,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9706,7 +9686,7 @@
               "description": "Creates a job trigger to run DLP actions such as scanning storage for\nsensitive information on a set schedule.\nSee https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9833,7 +9813,7 @@
                   "repeated": false
                 },
                 "locationId": {
-                  "description": "The geographic location where job triggers will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -9889,7 +9869,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example `projects/my-project-id`.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -9967,26 +9947,12 @@
               "methods": {
                 "deidentify": {
                   "id": "dlp.projects.locations.content.deidentify",
-                  "path": "v2/{+parent}/locations/{locationId}/content:deidentify",
+                  "path": "v2/{+parent}/content:deidentify",
                   "httpMethod": "POST",
                   "description": "De-identifies potentially sensitive info from a ContentItem.\nThis method has limits on input size and output size.\nSee https://cloud.google.com/dlp/docs/deidentify-sensitive-data to\nlearn more.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to process de-identification. Reserved for future\nextensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "The parent resource name, for example projects/my-project-id.",
+                      "description": "Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -9994,15 +9960,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2DeidentifyContentRequest"
@@ -10021,26 +9986,12 @@
                 },
                 "inspect": {
                   "id": "dlp.projects.locations.content.inspect",
-                  "path": "v2/{+parent}/locations/{locationId}/content:inspect",
+                  "path": "v2/{+parent}/content:inspect",
                   "httpMethod": "POST",
                   "description": "Finds potentially sensitive info in content.\nThis method has limits on input size, processing time, and output size.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.\n\nFor how to guides, see https://cloud.google.com/dlp/docs/inspecting-images\nand https://cloud.google.com/dlp/docs/inspecting-text,",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to process content inspection. Reserved for future\nextensions.\nWhen inspecting images location is restricted to 'global', 'us', 'asia',\nand 'europe'.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "The parent resource name, for example projects/my-project-id.",
+                      "description": "Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10048,15 +9999,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2InspectContentRequest"
@@ -10075,26 +10025,12 @@
                 },
                 "reidentify": {
                   "id": "dlp.projects.locations.content.reidentify",
-                  "path": "v2/{+parent}/locations/{locationId}/content:reidentify",
+                  "path": "v2/{+parent}/content:reidentify",
                   "httpMethod": "POST",
                   "description": "Re-identifies content that has been de-identified.\nSee\nhttps://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example\nto learn more.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to process content reidentification.  Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name.",
+                      "description": "Required. The parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10102,15 +10038,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2ReidentifyContentRequest"
@@ -10134,26 +10069,12 @@
               "methods": {
                 "create": {
                   "id": "dlp.projects.locations.deidentifyTemplates.create",
-                  "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                  "path": "v2/{+parent}/deidentifyTemplates",
                   "httpMethod": "POST",
                   "description": "Creates a DeidentifyTemplate for re-using frequently used configuration\nfor de-identifying content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the deidentification template. Reserved\nfor future extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10161,15 +10082,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateDeidentifyTemplateRequest"
@@ -10262,15 +10182,15 @@
                 },
                 "list": {
                   "id": "dlp.projects.locations.deidentifyTemplates.list",
-                  "path": "v2/{+parent}/locations/{locationId}/deidentifyTemplates",
+                  "path": "v2/{+parent}/deidentifyTemplates",
                   "httpMethod": "GET",
                   "description": "Lists DeidentifyTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates-deid to learn\nmore.",
                   "parameters": {
                     "locationId": {
-                      "description": "The geographic location where deidentifications templates will be retrieved\nfrom. Use `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -10323,7 +10243,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10331,15 +10251,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -10439,26 +10358,12 @@
                 },
                 "create": {
                   "id": "dlp.projects.locations.dlpJobs.create",
-                  "path": "v2/{+parent}/locations/{locationId}/dlpJobs",
+                  "path": "v2/{+parent}/dlpJobs",
                   "httpMethod": "POST",
                   "description": "Creates a new job to inspect storage or calculate risk metrics.\nSee https://cloud.google.com/dlp/docs/inspecting-storage and\nhttps://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.\n\nWhen no InfoTypes or CustomInfoTypes are specified in inspect jobs, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store and process the job. Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10466,15 +10371,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateDlpJobRequest"
@@ -10645,7 +10549,7 @@
                 },
                 "list": {
                   "id": "dlp.projects.locations.dlpJobs.list",
-                  "path": "v2/{+parent}/locations/{locationId}/dlpJobs",
+                  "path": "v2/{+parent}/dlpJobs",
                   "httpMethod": "GET",
                   "description": "Lists DlpJobs that match the specified filter in the request.\nSee https://cloud.google.com/dlp/docs/inspecting-storage and\nhttps://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
                   "parameters": {
@@ -10664,10 +10568,10 @@
                       "repeated": false
                     },
                     "locationId": {
-                      "description": "The geographic location where jobs will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -10720,7 +10624,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10728,7 +10632,7 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
@@ -10753,8 +10657,7 @@
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -10776,26 +10679,12 @@
               "methods": {
                 "redact": {
                   "id": "dlp.projects.locations.image.redact",
-                  "path": "v2/{+parent}/locations/{locationId}/image:redact",
+                  "path": "v2/{+parent}/image:redact",
                   "httpMethod": "POST",
                   "description": "Redacts potentially sensitive info from an image.\nThis method has limits on input size, processing time, and output size.\nSee https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to\nlearn more.\n\nWhen no InfoTypes or CustomInfoTypes are specified in this request, the\nsystem will automatically choose what detectors to run. By default this may\nbe all types, but may change over time as detectors are updated.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to process the request. Reserved for future\nextensions.\nLocation is restricted to 'global', 'us', 'asia', and 'europe'.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "The parent resource name, for example projects/my-project-id.",
+                      "description": "The parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10803,15 +10692,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2RedactImageRequest"
@@ -10835,26 +10723,12 @@
               "methods": {
                 "create": {
                   "id": "dlp.projects.locations.inspectTemplates.create",
-                  "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                  "path": "v2/{+parent}/inspectTemplates",
                   "httpMethod": "POST",
                   "description": "Creates an InspectTemplate for re-using frequently used configuration\nfor inspecting content, images, and storage.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the inspection template. Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -10862,15 +10736,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateInspectTemplateRequest"
@@ -10963,15 +10836,15 @@
                 },
                 "list": {
                   "id": "dlp.projects.locations.inspectTemplates.list",
-                  "path": "v2/{+parent}/locations/{locationId}/inspectTemplates",
+                  "path": "v2/{+parent}/inspectTemplates",
                   "httpMethod": "GET",
                   "description": "Lists InspectTemplates.\nSee https://cloud.google.com/dlp/docs/creating-templates to learn more.",
                   "parameters": {
                     "locationId": {
-                      "description": "The geographic location where inspection templates will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -11024,7 +10897,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11032,15 +10905,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -11140,26 +11012,12 @@
                 },
                 "create": {
                   "id": "dlp.projects.locations.jobTriggers.create",
-                  "path": "v2/{+parent}/locations/{locationId}/jobTriggers",
+                  "path": "v2/{+parent}/jobTriggers",
                   "httpMethod": "POST",
                   "description": "Creates a job trigger to run DLP actions such as scanning storage for\nsensitive information on a set schedule.\nSee https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the job trigger. Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11167,15 +11025,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateJobTriggerRequest"
@@ -11307,7 +11164,7 @@
                 },
                 "list": {
                   "id": "dlp.projects.locations.jobTriggers.list",
-                  "path": "v2/{+parent}/locations/{locationId}/jobTriggers",
+                  "path": "v2/{+parent}/jobTriggers",
                   "httpMethod": "GET",
                   "description": "Lists job triggers.\nSee https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
                   "parameters": {
@@ -11326,10 +11183,10 @@
                       "repeated": false
                     },
                     "locationId": {
-                      "description": "The geographic location where job triggers will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -11382,7 +11239,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example `projects/my-project-id`.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11390,15 +11247,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -11459,26 +11315,12 @@
               "methods": {
                 "create": {
                   "id": "dlp.projects.locations.storedInfoTypes.create",
-                  "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                  "path": "v2/{+parent}/storedInfoTypes",
                   "httpMethod": "POST",
                   "description": "Creates a pre-built stored infoType to be used for inspection.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
                   "parameters": {
-                    "locationId": {
-                      "description": "The geographic location to store the stored infoType. Reserved for\nfuture extensions.",
-                      "default": null,
-                      "location": "path",
-                      "required": true,
-                      "type": "string",
-                      "format": null,
-                      "minimum": null,
-                      "maximum": null,
-                      "pattern": null,
-                      "enum": [],
-                      "enumDescriptions": [],
-                      "repeated": false
-                    },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11486,15 +11328,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": {
                     "$ref": "GooglePrivacyDlpV2CreateStoredInfoTypeRequest"
@@ -11587,15 +11428,15 @@
                 },
                 "list": {
                   "id": "dlp.projects.locations.storedInfoTypes.list",
-                  "path": "v2/{+parent}/locations/{locationId}/storedInfoTypes",
+                  "path": "v2/{+parent}/storedInfoTypes",
                   "httpMethod": "GET",
                   "description": "Lists stored infoTypes.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
                   "parameters": {
                     "locationId": {
-                      "description": "The geographic location where stored infoTypes will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                      "description": "Deprecated. This field has no effect.",
                       "default": null,
-                      "location": "path",
-                      "required": true,
+                      "location": "query",
+                      "required": false,
                       "type": "string",
                       "format": null,
                       "minimum": null,
@@ -11648,7 +11489,7 @@
                       "repeated": false
                     },
                     "parent": {
-                      "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                      "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                       "default": null,
                       "location": "path",
                       "required": true,
@@ -11656,15 +11497,14 @@
                       "format": null,
                       "minimum": null,
                       "maximum": null,
-                      "pattern": "^projects/[^/]+$",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
                       "enum": [],
                       "enumDescriptions": [],
                       "repeated": false
                     }
                   },
                   "parameterOrder": [
-                    "parent",
-                    "locationId"
+                    "parent"
                   ],
                   "request": null,
                   "response": {
@@ -11733,7 +11573,7 @@
               "description": "Creates a pre-built stored infoType to be used for inspection.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
               "parameters": {
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,
@@ -11846,7 +11686,7 @@
               "description": "Lists stored infoTypes.\nSee https://cloud.google.com/dlp/docs/creating-stored-infotypes to\nlearn more.",
               "parameters": {
                 "locationId": {
-                  "description": "The geographic location where stored infoTypes will be retrieved from.\nUse `-` for all locations. Reserved for future extensions.",
+                  "description": "Deprecated. This field has no effect.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -11902,7 +11742,7 @@
                   "repeated": false
                 },
                 "parent": {
-                  "description": "Required. The parent resource name, for example projects/my-project-id or\norganizations/my-org-id.",
+                  "description": "Required. Parent resource name.\n- Format:projects/[PROJECT-ID]\n- Format:organizations/[ORGANIZATION-ID]\n- Format:projects/[PROJECT-ID]/locations/[LOCATION-ID]\n- Format:organizations/[ORGANIZATION-ID]/locations/[LOCATION-ID]",
                   "default": null,
                   "location": "path",
                   "required": true,

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Scheduler",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200505",
+  "revision": "20200618",
   "title": "Cloud Scheduler API",
   "description": "Creates and manages jobs run on a regular recurring schedule.",
   "ownerDomain": "google.com",
@@ -806,7 +806,7 @@
       "enumDescriptions": [],
       "properties": {
         "attributes": {
-          "description": "Attributes for this message. If this field is empty, the message must\ncontain non-empty data.",
+          "description": "Attributes for this message. If this field is empty, the message must\ncontain non-empty data. This can be used to filter messages on the\nsubscription.",
           "type": "object",
           "format": null,
           "enum": [],

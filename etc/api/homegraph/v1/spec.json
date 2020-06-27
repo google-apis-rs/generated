@@ -7,7 +7,7 @@
   "canonicalName": "Home Graph Service",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200504",
+  "revision": "20200619",
   "title": "HomeGraph API",
   "description": "",
   "ownerDomain": "google.com",
@@ -751,7 +751,7 @@
           "items": null
         },
         "followUpToken": {
-          "description": "Token to maintain state in the follow up notification response.",
+          "description": "Token to maintain state in the follow up notification response.\nDeprecated. See the [notifications\nguide](https://developers.google.com/assistant/smarthome/develop/notifications)\nfor details on implementing follow up notifications.",
           "type": "string",
           "format": null,
           "enum": [],

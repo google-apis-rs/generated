@@ -15,8 +15,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("youtube3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200423")
-            .about("Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.")
+            .version("0.1.0-20200624")
+            .about("The YouTube Data API v3 is an API that provides access to YouTube data, such as videos, playlists, and channels.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
                 .long("scope")
@@ -35,138 +35,138 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .takes_value(false));
         let mut activities0 = SubCommand::with_name("activities")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: insert and list");
+            .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("insert").about("Posts a bulletin for a specific channel. (The user submitting the request must be authorized to act on the channel\'s behalf.)\n\nNote: Even though an activity resource can contain information about actions like a user rating a video or marking a video as a favorite, you need to use other API methods to generate those activity resources. For example, you would use the API\'s videos.rate() method to rate a video and the playlistItems.insert() method to mark a video as a favorite.");
-            activities0 = activities0.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about("Returns a list of channel activity events that match the request criteria. For example, you can retrieve events associated with a particular channel, events associated with the user\'s subscriptions and Google+ friends, or the YouTube home page feed, which is customized for each user.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             activities0 = activities0.subcommand(mcmd);
         }
         let mut captions0 = SubCommand::with_name("captions")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, download, insert, list and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a specified caption track.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             captions0 = captions0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("download").about("Downloads a caption track. The caption track is returned in its original format unless the request specifies a value for the tfmt parameter and in its original language unless the request specifies a value for the tlang parameter.");
+            let mcmd = SubCommand::with_name("download").about("Downloads a caption track.");
             captions0 = captions0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Uploads a caption track.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             captions0 = captions0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a list of caption tracks that are associated with a specified video. Note that the API response does not contain the actual captions and that the captions.download method provides the ability to retrieve a caption track.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             captions0 = captions0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a caption track. When updating a caption track, you can change the track\'s draft status, upload a new caption file for the track, or both.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             captions0 = captions0.subcommand(mcmd);
         }
         let mut channel_banners0 = SubCommand::with_name("channel_banners")
             .setting(AppSettings::ColoredHelp)
             .about("methods: insert");
         {
-            let mcmd = SubCommand::with_name("insert").about("Uploads a channel banner image to YouTube. This method represents the first two steps in a three-step process to update the banner image for a channel:\n\n- Call the channelBanners.insert method to upload the binary image data to YouTube. The image must have a 16:9 aspect ratio and be at least 2120x1192 pixels.\n- Extract the url property\'s value from the response that the API returns for step 1.\n- Call the channels.update method to update the channel\'s branding settings. Set the brandingSettings.image.bannerExternalUrl property\'s value to the URL obtained in step 2.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             channel_banners0 = channel_banners0.subcommand(mcmd);
         }
         let mut channel_sections0 = SubCommand::with_name("channel_sections")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert, list and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a channelSection.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             channel_sections0 = channel_sections0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("insert")
-                .about("Adds a channelSection for the authenticated user\'s channel.");
+                .about("Inserts a new resource into this collection.");
             channel_sections0 = channel_sections0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns channelSection resources that match the API request criteria.");
+                .about("Retrieves a list of resources, possibly filtered.");
             channel_sections0 = channel_sections0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update a channelSection.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             channel_sections0 = channel_sections0.subcommand(mcmd);
         }
         let mut channels0 = SubCommand::with_name("channels")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list and update");
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a collection of zero or more channel resources that match the request criteria.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             channels0 = channels0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a channel\'s metadata. Note that this method currently only supports updates to the channel resource\'s brandingSettings and invideoPromotion objects and their child properties.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             channels0 = channels0.subcommand(mcmd);
         }
         let mut comment_threads0 = SubCommand::with_name("comment_threads")
             .setting(AppSettings::ColoredHelp)
             .about("methods: insert, list and update");
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a new top-level comment. To add a reply to an existing comment, use the comments.insert method instead.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             comment_threads0 = comment_threads0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of comment threads that match the API request parameters.");
+                .about("Retrieves a list of resources, possibly filtered.");
             comment_threads0 = comment_threads0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Modifies the top-level comment in a comment thread.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             comment_threads0 = comment_threads0.subcommand(mcmd);
         }
         let mut comments0 = SubCommand::with_name("comments")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert, list, mark_as_spam, set_moderation_status and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a comment.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a reply to an existing comment. Note: To create a top-level comment, use the commentThreads.insert method.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of comments that match the API request parameters.");
+                .about("Retrieves a list of resources, possibly filtered.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("mark_as_spam").about("Expresses the caller\'s opinion that one or more comments should be flagged as spam.");
+            let mcmd = SubCommand::with_name("mark_as_spam").about("Expresses the caller\'s opinion that one or more comments should be flagged\nas spam.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_moderation_status").about("Sets the moderation status of one or more comments. The API request must be authorized by the owner of the channel or video associated with the comments.");
+            let mcmd = SubCommand::with_name("set_moderation_status")
+                .about("Sets the moderation status of one or more comments.");
             comments0 = comments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Modifies a comment.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             comments0 = comments0.subcommand(mcmd);
         }
         let mut guide_categories0 = SubCommand::with_name("guide_categories")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about(
-                "Returns a list of categories that can be associated with YouTube channels.",
-            );
+            let mcmd = SubCommand::with_name("list").about("Retrieves a list of guide categories.");
             guide_categories0 = guide_categories0.subcommand(mcmd);
         }
         let mut i_1_8n_languages0 = SubCommand::with_name("i_1_8n_languages")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about(
-                "Returns a list of application languages that the YouTube website supports.",
-            );
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             i_1_8n_languages0 = i_1_8n_languages0.subcommand(mcmd);
         }
         let mut i_1_8n_regions0 = SubCommand::with_name("i_1_8n_regions")
@@ -174,53 +174,54 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: list");
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of content regions that the YouTube website supports.");
+                .about("Retrieves a list of resources, possibly filtered.");
             i_1_8n_regions0 = i_1_8n_regions0.subcommand(mcmd);
         }
         let mut live_broadcasts0 = SubCommand::with_name("live_broadcasts")
             .setting(AppSettings::ColoredHelp)
             .about("methods: bind, control, delete, insert, list, transition and update");
         {
-            let mcmd = SubCommand::with_name("bind").about("Binds a YouTube broadcast to a stream or removes an existing binding between a broadcast and a stream. A broadcast can only be bound to one video stream, though a video stream may be bound to more than one broadcast.");
+            let mcmd = SubCommand::with_name("bind").about("Bind a broadcast to a stream.");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("control").about(
-                "Controls the settings for a slate that can be displayed in the broadcast stream.",
-            );
+            let mcmd = SubCommand::with_name("control").about("Slate and recording control of the live broadcast.\nSupport actions: slate on/off, recording start/stop/pause/resume.\nDesign doc: goto/yt-api-liveBroadcast-control");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a broadcast.");
+            let mcmd = SubCommand::with_name("delete").about("Delete a given broadcast.");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a broadcast.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new stream for the authenticated user.");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about(
-                "Returns a list of YouTube broadcasts that match the API request parameters.",
-            );
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieve the list of broadcasts associated with the given channel.");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("transition").about("Changes the status of a YouTube live broadcast and initiates any processes associated with the new status. For example, when you transition a broadcast\'s status to testing, YouTube starts to transmit video to that broadcast\'s monitor stream. Before calling this method, you should confirm that the value of the status.streamStatus property for the stream bound to your broadcast is active.");
+            let mcmd = SubCommand::with_name("transition")
+                .about("Transition a broadcast to a given status.");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a broadcast. For example, you could modify the broadcast settings defined in the liveBroadcast resource\'s contentDetails object.");
+            let mcmd = SubCommand::with_name("update")
+                .about("Updates an existing broadcast for the authenticated user.");
             live_broadcasts0 = live_broadcasts0.subcommand(mcmd);
         }
         let mut live_chat_bans0 = SubCommand::with_name("live_chat_bans")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete and insert");
         {
-            let mcmd = SubCommand::with_name("delete").about("Removes a chat ban.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a chat ban.");
             live_chat_bans0 = live_chat_bans0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Adds a new ban to the chat.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             live_chat_bans0 = live_chat_bans0.subcommand(mcmd);
         }
         let mut live_chat_messages0 = SubCommand::with_name("live_chat_messages")
@@ -231,155 +232,168 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             live_chat_messages0 = live_chat_messages0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Adds a message to a live chat.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             live_chat_messages0 = live_chat_messages0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Lists live chat messages for a specific chat.");
+                .about("Retrieves a list of resources, possibly filtered.");
             live_chat_messages0 = live_chat_messages0.subcommand(mcmd);
         }
         let mut live_chat_moderators0 = SubCommand::with_name("live_chat_moderators")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Removes a chat moderator.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a chat moderator.");
             live_chat_moderators0 = live_chat_moderators0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Adds a new moderator for the chat.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             live_chat_moderators0 = live_chat_moderators0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Lists moderators for a live chat.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             live_chat_moderators0 = live_chat_moderators0.subcommand(mcmd);
         }
         let mut live_streams0 = SubCommand::with_name("live_streams")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert, list and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a video stream.");
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes an existing stream for the authenticated user.");
             live_streams0 = live_streams0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a video stream. The stream enables you to send your video to YouTube, which can then broadcast the video to your audience.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new stream for the authenticated user.");
             live_streams0 = live_streams0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of video streams that match the API request parameters.");
+                .about("Retrieve the list of streams associated with the given channel. --");
             live_streams0 = live_streams0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a video stream. If the properties that you want to change cannot be updated, then you need to create a new stream with the proper settings.");
+            let mcmd = SubCommand::with_name("update")
+                .about("Updates an existing stream for the authenticated user.");
             live_streams0 = live_streams0.subcommand(mcmd);
         }
         let mut members0 = SubCommand::with_name("members")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists members for a channel.");
+            let mcmd = SubCommand::with_name("list").about(
+                "Retrieves a list of members that match the request criteria for a channel.",
+            );
             members0 = members0.subcommand(mcmd);
         }
         let mut memberships_levels0 = SubCommand::with_name("memberships_levels")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists pricing levels for a channel.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of all pricing levels offered by a creator to the fans.");
             memberships_levels0 = memberships_levels0.subcommand(mcmd);
         }
         let mut playlist_items0 = SubCommand::with_name("playlist_items")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert, list and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a playlist item.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             playlist_items0 = playlist_items0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Adds a resource to a playlist.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             playlist_items0 = playlist_items0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a collection of playlist items that match the API request parameters. You can retrieve all of the playlist items in a specified playlist or retrieve one or more playlist items by their unique IDs.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             playlist_items0 = playlist_items0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Modifies a playlist item. For example, you could update the item\'s position in the playlist.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             playlist_items0 = playlist_items0.subcommand(mcmd);
         }
         let mut playlists0 = SubCommand::with_name("playlists")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert, list and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a playlist.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             playlists0 = playlists0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("insert").about("Creates a playlist.");
+            let mcmd = SubCommand::with_name("insert")
+                .about("Inserts a new resource into this collection.");
             playlists0 = playlists0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a collection of playlists that match the API request parameters. For example, you can retrieve all playlists that the authenticated user owns, or you can retrieve one or more playlists by their unique IDs.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             playlists0 = playlists0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Modifies a playlist. For example, you could change a playlist\'s title, description, or privacy status.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             playlists0 = playlists0.subcommand(mcmd);
         }
         let mut search0 = SubCommand::with_name("search")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Returns a collection of search results that match the query parameters specified in the API request. By default, a search result set identifies matching video, channel, and playlist resources, but you can also configure queries to only retrieve a specific type of resource.");
+            let mcmd = SubCommand::with_name("list").about("Retrieves a list of search resources");
             search0 = search0.subcommand(mcmd);
         }
         let mut sponsors0 = SubCommand::with_name("sponsors")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about("Lists sponsors for a channel.");
+            let mcmd = SubCommand::with_name("list").about(
+                "Retrieves a list of sponsors that match the request criteria for a\nchannel.",
+            );
             sponsors0 = sponsors0.subcommand(mcmd);
         }
         let mut subscriptions0 = SubCommand::with_name("subscriptions")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, insert and list");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a subscription.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             subscriptions0 = subscriptions0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("insert")
-                .about("Adds a subscription for the authenticated user\'s channel.");
+                .about("Inserts a new resource into this collection.");
             subscriptions0 = subscriptions0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns subscription resources that match the API request criteria.");
+                .about("Retrieves a list of resources, possibly filtered.");
             subscriptions0 = subscriptions0.subcommand(mcmd);
         }
         let mut super_chat_events0 = SubCommand::with_name("super_chat_events")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd =
-                SubCommand::with_name("list").about("Lists Super Chat events for a channel.");
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             super_chat_events0 = super_chat_events0.subcommand(mcmd);
         }
         let mut thumbnails0 = SubCommand::with_name("thumbnails")
             .setting(AppSettings::ColoredHelp)
             .about("methods: set");
         {
-            let mcmd = SubCommand::with_name("set")
-                .about("Uploads a custom video thumbnail to YouTube and sets it for a video.");
+            let mcmd = SubCommand::with_name("set").about("As this is not an insert in a strict sense (it supports uploading/setting\nof a thumbnail for multiple videos, which doesn\'t result in creation of a\nsingle resource), I use a custom verb here.");
             thumbnails0 = thumbnails0.subcommand(mcmd);
         }
         let mut video_abuse_report_reasons0 = SubCommand::with_name("video_abuse_report_reasons")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list").about(
-                "Returns a list of abuse reasons that can be used for reporting abusive videos.",
-            );
+            let mcmd = SubCommand::with_name("list")
+                .about("Retrieves a list of resources, possibly filtered.");
             video_abuse_report_reasons0 = video_abuse_report_reasons0.subcommand(mcmd);
         }
         let mut video_categories0 = SubCommand::with_name("video_categories")
@@ -387,33 +401,34 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: list");
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of categories that can be associated with YouTube videos.");
+                .about("Retrieves a list of resources, possibly filtered.");
             video_categories0 = video_categories0.subcommand(mcmd);
         }
         let mut videos0 = SubCommand::with_name("videos")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get_rating, insert, list, rate, report_abuse and update");
         {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a YouTube video.");
+            let mcmd = SubCommand::with_name("delete").about("Deletes a resource.");
             videos0 = videos0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get_rating").about("Retrieves the ratings that the authorized user gave to a list of specified videos.");
+            let mcmd = SubCommand::with_name("get_rating").about("Retrieves the ratings that the authorized user gave to a list of specified\nvideos.");
             videos0 = videos0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("insert")
-                .about("Uploads a video to YouTube and optionally sets the video\'s metadata.");
+                .about("Inserts a new resource into this collection.");
             videos0 = videos0.subcommand(mcmd);
         }
         {
             let mcmd = SubCommand::with_name("list")
-                .about("Returns a list of videos that match the API request parameters.");
+                .about("Retrieves a list of resources, possibly filtered.");
             videos0 = videos0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("rate")
-                .about("Add a like or dislike rating to a video or remove a rating from a video.");
+            let mcmd = SubCommand::with_name("rate").about(
+                "Adds a like or dislike rating to a video or removes a rating from a video.",
+            );
             videos0 = videos0.subcommand(mcmd);
         }
         {
@@ -421,7 +436,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             videos0 = videos0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a video\'s metadata.");
+            let mcmd = SubCommand::with_name("update").about("Updates an existing resource.");
             videos0 = videos0.subcommand(mcmd);
         }
         let mut watermarks0 = SubCommand::with_name("watermarks")
@@ -429,14 +444,29 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .about("methods: set and unset");
         {
             let mcmd = SubCommand::with_name("set")
-                .about("Uploads a watermark image to YouTube and sets it for a channel.");
+                .about("Allows upload of watermark image and setting it for a channel.");
             watermarks0 = watermarks0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("unset").about("Deletes a channel\'s watermark image.");
+            let mcmd = SubCommand::with_name("unset").about("Allows removal of channel watermark.");
             watermarks0 = watermarks0.subcommand(mcmd);
         }
+        let mut youtube0 = SubCommand::with_name("youtube")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: v_3");
+        let mut v_31 = SubCommand::with_name("v_3")
+            .setting(AppSettings::ColoredHelp)
+            .about("sub-resources: tests");
+        let mut tests2 = SubCommand::with_name("tests")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create");
+        {
+            let mcmd = SubCommand::with_name("create").about("POST method.");
+            tests2 = tests2.subcommand(mcmd);
+        }
+        v_31 = v_31.subcommand(tests2);
+        youtube0 = youtube0.subcommand(v_31);
+        app = app.subcommand(youtube0);
         app = app.subcommand(watermarks0);
         app = app.subcommand(videos0);
         app = app.subcommand(video_categories0);

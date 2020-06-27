@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dns1_beta2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20191205")
+            .version("0.1.0-20200515")
             .about("Configures and serves authoritative DNS records.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -37,121 +37,105 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, get and list");
         {
-            let mcmd = SubCommand::with_name("create")
-                .about("Atomically update the ResourceRecordSet collection.");
+            let mcmd = SubCommand::with_name("create").about("");
             changes0 = changes0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetch the representation of an existing Change.");
+            let mcmd = SubCommand::with_name("get").about("");
             changes0 = changes0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Enumerate Changes to a ResourceRecordSet collection.");
+            let mcmd = SubCommand::with_name("list").about("");
             changes0 = changes0.subcommand(mcmd);
         }
         let mut dns_keys0 = SubCommand::with_name("dns_keys")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetch the representation of an existing DnsKey.");
+            let mcmd = SubCommand::with_name("get").about("");
             dns_keys0 = dns_keys0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Enumerate DnsKeys to a ResourceRecordSet collection.");
+            let mcmd = SubCommand::with_name("list").about("");
             dns_keys0 = dns_keys0.subcommand(mcmd);
         }
         let mut managed_zone_operations0 = SubCommand::with_name("managed_zone_operations")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get and list");
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetch the representation of an existing Operation.");
+            let mcmd = SubCommand::with_name("get").about("");
             managed_zone_operations0 = managed_zone_operations0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Enumerate Operations for the given ManagedZone.");
+            let mcmd = SubCommand::with_name("list").about("");
             managed_zone_operations0 = managed_zone_operations0.subcommand(mcmd);
         }
         let mut managed_zones0 = SubCommand::with_name("managed_zones")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch and update");
         {
-            let mcmd = SubCommand::with_name("create").about("Create a new ManagedZone.");
+            let mcmd = SubCommand::with_name("create").about("");
             managed_zones0 = managed_zones0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("delete").about("Delete a previously created ManagedZone.");
+            let mcmd = SubCommand::with_name("delete").about("");
             managed_zones0 = managed_zones0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetch the representation of an existing ManagedZone.");
+            let mcmd = SubCommand::with_name("get").about("");
             managed_zones0 = managed_zones0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Enumerate ManagedZones that have been created but not yet deleted.");
+            let mcmd = SubCommand::with_name("list").about("");
             managed_zones0 = managed_zones0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Apply a partial update to an existing ManagedZone.");
+            let mcmd = SubCommand::with_name("patch").about("");
             managed_zones0 = managed_zones0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update an existing ManagedZone.");
+            let mcmd = SubCommand::with_name("update").about("");
             managed_zones0 = managed_zones0.subcommand(mcmd);
         }
         let mut policies0 = SubCommand::with_name("policies")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, delete, get, list, patch and update");
         {
-            let mcmd = SubCommand::with_name("create").about("Create a new Policy");
+            let mcmd = SubCommand::with_name("create").about("");
             policies0 = policies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("delete").about("Delete a previously created Policy. Will fail if the policy is still being referenced by a network.");
+            let mcmd = SubCommand::with_name("delete").about("");
             policies0 = policies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetch the representation of an existing Policy.");
+            let mcmd = SubCommand::with_name("get").about("");
             policies0 = policies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Enumerate all Policies associated with a project.");
+            let mcmd = SubCommand::with_name("list").about("");
             policies0 = policies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch")
-                .about("Apply a partial update to an existing Policy.");
+            let mcmd = SubCommand::with_name("patch").about("");
             policies0 = policies0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Update an existing Policy.");
+            let mcmd = SubCommand::with_name("update").about("");
             policies0 = policies0.subcommand(mcmd);
         }
         let mut projects0 = SubCommand::with_name("projects")
             .setting(AppSettings::ColoredHelp)
             .about("methods: get");
         {
-            let mcmd = SubCommand::with_name("get")
-                .about("Fetch the representation of an existing Project.");
+            let mcmd = SubCommand::with_name("get").about("");
             projects0 = projects0.subcommand(mcmd);
         }
         let mut resource_record_sets0 = SubCommand::with_name("resource_record_sets")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Enumerate ResourceRecordSets that have been created but not yet deleted.");
+            let mcmd = SubCommand::with_name("list").about("");
             resource_record_sets0 = resource_record_sets0.subcommand(mcmd);
         }
         app = app.subcommand(resource_record_sets0);

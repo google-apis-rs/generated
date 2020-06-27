@@ -7,7 +7,7 @@
   "canonicalName": "TPU",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200318",
+  "revision": "20200622",
   "title": "Cloud TPU API",
   "description": "TPU API provides customers with access to Google TPU technology.",
   "ownerDomain": "google.com",
@@ -989,14 +989,14 @@
     },
     "SchedulingConfig": {
       "id": "SchedulingConfig",
-      "description": null,
+      "description": "Sets the scheduling options for this node.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "preemptible": {
-          "description": null,
+          "description": "Defines whether the node is preemptible.",
           "type": "boolean",
           "format": null,
           "enum": [],

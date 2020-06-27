@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("content2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200508")
+            .version("0.1.0-20200617")
             .about("Manages product items, inventory, and Merchant Center accounts for Google Shopping.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -74,7 +74,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounts0 = accounts0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update").about("Updates a Merchant Center account.");
+            let mcmd = SubCommand::with_name("update").about("Updates a Merchant Center account. Any fields that are not provided are deleted from the resource.");
             accounts0 = accounts0.subcommand(mcmd);
         }
         let mut accountstatuses0 = SubCommand::with_name("accountstatuses")
@@ -115,8 +115,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accounttax0 = accounttax0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("update").about("Updates the tax settings of the account.");
+            let mcmd = SubCommand::with_name("update").about("Updates the tax settings of the account. Any fields that are not provided are deleted from the resource.");
             accounttax0 = accounttax0.subcommand(mcmd);
         }
         let mut datafeeds0 = SubCommand::with_name("datafeeds")
@@ -152,8 +151,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Updates a datafeed configuration of your Merchant Center account.");
+            let mcmd = SubCommand::with_name("update").about("Updates a datafeed configuration of your Merchant Center account. Any fields that are not provided are deleted from the resource.");
             datafeeds0 = datafeeds0.subcommand(mcmd);
         }
         let mut datafeedstatuses0 = SubCommand::with_name("datafeedstatuses")
@@ -235,8 +233,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             liasettings0 = liasettings0.subcommand(mcmd);
         }
         {
-            let mcmd =
-                SubCommand::with_name("update").about("Updates the LIA settings of the account.");
+            let mcmd = SubCommand::with_name("update").about("Updates the LIA settings of the account. Any fields that are not provided are deleted from the resource.");
             liasettings0 = liasettings0.subcommand(mcmd);
         }
         let mut orderinvoices0 = SubCommand::with_name("orderinvoices")
@@ -355,7 +352,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             orders0 = orders0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("returnrefundlineitem").about("Returns and refunds a line item. Note that this method can only be called on fully shipped orders.");
+            let mcmd = SubCommand::with_name("returnrefundlineitem").about("Returns and refunds a line item. Note that this method can only be called on fully shipped orders. Please also note that the Orderreturns API is the preferred way to handle returns after you receive a return from a customer. You can use Orderreturns.list or Orderreturns.get to search for the return, and then use Orderreturns.processreturn to issue the refund. If the return cannot be found, then we recommend using this API to issue a refund.");
             orders0 = orders0.subcommand(mcmd);
         }
         {
@@ -498,8 +495,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("update")
-                .about("Updates the shipping settings of the account.");
+            let mcmd = SubCommand::with_name("update").about("Updates the shipping settings of the account. Any fields that are not provided are deleted from the resource.");
             shippingsettings0 = shippingsettings0.subcommand(mcmd);
         }
         app = app.subcommand(shippingsettings0);

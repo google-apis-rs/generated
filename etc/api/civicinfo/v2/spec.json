@@ -1,35 +1,69 @@
 {
   "kind": "discovery#restDescription",
-  "etag": "\"u9GIe6H63LSGq-9_t39K2Zx_EAc/1WnlVFZbiNK3xcDMHn8dwHwgifk\"",
+  "etag": null,
   "discoveryVersion": "v1",
   "id": "civicinfo:v2",
   "name": "civicinfo",
   "canonicalName": "Civic Info",
   "fullyEncodeReservedExpansion": null,
   "version": "v2",
-  "revision": "20191030",
+  "revision": "20200624",
   "title": "Google Civic Information API",
   "description": "Provides polling places, early vote locations, contest data, election officials, and government representatives for U.S. residential addresses.",
   "ownerDomain": "google.com",
   "ownerName": "Google",
   "icons": {
-    "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
-    "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "documentationLink": "https://developers.google.com/civic-information",
+  "documentationLink": "https://developers.google.com/civic-information/",
   "protocol": "rest",
-  "baseUrl": "https://www.googleapis.com/civicinfo/v2/",
-  "basePath": "/civicinfo/v2/",
-  "rootUrl": "https://www.googleapis.com/",
-  "servicePath": "civicinfo/v2/",
-  "batchPath": "batch/civicinfo/v2",
-  "version_module": null,
+  "baseUrl": "https://civicinfo.googleapis.com/",
+  "basePath": "",
+  "rootUrl": "https://civicinfo.googleapis.com/",
+  "servicePath": "",
+  "batchPath": "batch",
+  "version_module": true,
   "packagePath": null,
   "labels": null,
   "features": null,
   "parameters": {
+    "$.xgafv": {
+      "description": "V1 error format.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [
+        "1",
+        "2"
+      ],
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "repeated": false
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
     "alt": {
-      "description": "Data format for the response.",
+      "description": "Data format for response.",
       "default": "json",
       "location": "query",
       "required": false,
@@ -39,11 +73,29 @@
       "maximum": null,
       "pattern": null,
       "enum": [
-        "json"
+        "json",
+        "media",
+        "proto"
       ],
       "enumDescriptions": [
-        "Responses with Content-Type of application/json"
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
       ],
+      "repeated": false
+    },
+    "callback": {
+      "description": "JSONP",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
       "repeated": false
     },
     "fields": {
@@ -103,7 +155,7 @@
       "repeated": false
     },
     "quotaUser": {
-      "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "default": null,
       "location": "query",
       "required": false,
@@ -116,8 +168,22 @@
       "enumDescriptions": [],
       "repeated": false
     },
-    "userIp": {
-      "description": "Deprecated. Please use quotaUser instead.",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "default": null,
+      "location": "query",
+      "required": false,
+      "type": "string",
+      "format": null,
+      "minimum": null,
+      "maximum": null,
+      "pattern": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "repeated": false
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
       "default": null,
       "location": "query",
       "required": false,
@@ -202,24 +268,6 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
-        },
-        "addressLines": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
         },
         "ballotInfoUrl": {
           "description": "A URL provided by this administrative body to give contest information to the voter.",
@@ -538,13 +586,33 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": {
             "type": "string",
             "format": null,
-            "enum": [],
+            "enum": [
+              "international",
+              "country",
+              "administrativeArea1",
+              "regional",
+              "administrativeArea2",
+              "locality",
+              "subLocality1",
+              "subLocality2",
+              "special"
+            ],
             "enumDescriptions": [],
             "properties": {},
             "additionalProperties": null,
@@ -704,13 +772,37 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": {
             "type": "string",
             "format": null,
-            "enum": [],
+            "enum": [
+              "headOfState",
+              "headOfGovernment",
+              "deputyHeadOfGovernment",
+              "governmentOfficer",
+              "executiveCouncil",
+              "legislatorUpperBody",
+              "legislatorLowerBody",
+              "highestCourtJudge",
+              "judge",
+              "schoolBoard",
+              "specialPurposeOfficer"
+            ],
             "enumDescriptions": [],
             "properties": {},
             "additionalProperties": null,
@@ -748,60 +840,6 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "ContextParams": {
-      "id": "ContextParams",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "clientProfile": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "DivisionRepresentativeInfoRequest": {
-      "id": "DivisionRepresentativeInfoRequest",
-      "description": "A request to look up representative information for a single division.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "contextParams": {
-          "description": null,
-          "$ref": "ContextParams"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "DivisionSearchRequest": {
-      "id": "DivisionSearchRequest",
-      "description": "A search request for political geographies.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "contextParams": {
-          "description": null,
-          "$ref": "ContextParams"
         }
       },
       "additionalProperties": null,
@@ -878,7 +916,7 @@
           "items": null
         },
         "ocdId": {
-          "description": "The unique Open Civic Data identifier for this division.",
+          "description": "The unique Open Civic Data identifier for this division",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1005,22 +1043,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "ElectionsQueryRequest": {
-      "id": "ElectionsQueryRequest",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "contextParams": {
-          "description": null,
-          "$ref": "ContextParams"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "ElectionsQueryResponse": {
       "id": "ElectionsQueryResponse",
       "description": "The list of elections available for this version of the API.",
@@ -1073,16 +1095,6 @@
           "additionalProperties": null,
           "items": null
         },
-        "kgForeignKey": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
         "name": {
           "description": "The name of the district.",
           "type": "string",
@@ -1097,27 +1109,41 @@
           "description": "The geographic scope of this district. If unspecified the district's geography is not known. One of: national, statewide, congressional, stateUpper, stateLower, countywide, judicial, schoolBoard, cityWide, township, countyCouncil, cityCouncil, ward, special",
           "type": "string",
           "format": null,
-          "enum": [],
-          "enumDescriptions": [],
+          "enum": [
+            "statewide",
+            "congressional",
+            "stateUpper",
+            "stateLower",
+            "countywide",
+            "judicial",
+            "schoolBoard",
+            "citywide",
+            "special",
+            "countyCouncil",
+            "township",
+            "ward",
+            "cityCouncil",
+            "national"
+          ],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "FieldMetadataProto": {
-      "id": "FieldMetadataProto",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "internal": {
-          "description": null,
-          "$ref": "InternalFieldMetadataProto"
         }
       },
       "additionalProperties": null,
@@ -1132,7 +1158,7 @@
       "enumDescriptions": [],
       "properties": {
         "alsoKnownAs": {
-          "description": "Any other valid OCD IDs that refer to the same division.\n\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\n\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.",
+          "description": "Any other valid OCD IDs that refer to the same division.\\n\\nBecause OCD IDs are meant to be human-readable and at least somewhat predictable, there are occasionally several identifiers for a single division. These identifiers are defined to be equivalent to one another, and one is always indicated as the primary identifier. The primary identifier will be returned in ocd_id above, and any other equivalent valid identifiers will be returned in this list.\\n\\nFor example, if this division's OCD ID is ocd-division/country:us/district:dc, this will contain ocd-division/country:us/state:dc.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1181,64 +1207,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "InternalFieldMetadataProto": {
-      "id": "InternalFieldMetadataProto",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "isAuto": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "sourceSummary": {
-          "description": null,
-          "$ref": "InternalSourceSummaryProto"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "InternalSourceSummaryProto": {
-      "id": "InternalSourceSummaryProto",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "dataset": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "provider": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "Office": {
       "id": "Office",
       "description": "Information about an Office held by one or more Officials.",
@@ -1262,13 +1230,33 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": {
             "type": "string",
             "format": null,
-            "enum": [],
+            "enum": [
+              "international",
+              "country",
+              "administrativeArea1",
+              "regional",
+              "administrativeArea2",
+              "locality",
+              "subLocality1",
+              "subLocality2",
+              "special"
+            ],
             "enumDescriptions": [],
             "properties": {},
             "additionalProperties": null,
@@ -1308,13 +1296,37 @@
           "type": "array",
           "format": null,
           "enum": [],
-          "enumDescriptions": [],
+          "enumDescriptions": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "properties": {},
           "additionalProperties": null,
           "items": {
             "type": "string",
             "format": null,
-            "enum": [],
+            "enum": [
+              "headOfState",
+              "headOfGovernment",
+              "deputyHeadOfGovernment",
+              "governmentOfficer",
+              "executiveCouncil",
+              "legislatorUpperBody",
+              "legislatorLowerBody",
+              "highestCourtJudge",
+              "judge",
+              "schoolBoard",
+              "specialPurposeOfficer"
+            ],
             "enumDescriptions": [],
             "properties": {},
             "additionalProperties": null,
@@ -1457,42 +1469,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "PointProto": {
-      "id": "PointProto",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "latE7": {
-          "description": null,
-          "type": "integer",
-          "format": "uint32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "lngE7": {
-          "description": null,
-          "type": "integer",
-          "format": "uint32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "metadata": {
-          "description": null,
-          "$ref": "FieldMetadataProto"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "PollingLocation": {
       "id": "PollingLocation",
       "description": "A location where a voter can vote. This may be an early vote site, an election day voting location, or a drop off location for a completed ballot.",
@@ -1611,332 +1587,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "PostalAddress": {
-      "id": "PostalAddress",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "addressLines": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "administrativeAreaName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "countryName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "countryNameCode": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "dependentLocalityName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "dependentThoroughfareName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "firmName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "isDisputed": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "languageCode": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "localityName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "postBoxNumber": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "postalCodeNumber": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "postalCodeNumberExtension": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "premiseName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "recipientName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "sortingCode": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "subAdministrativeAreaName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "subPremiseName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "thoroughfareName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "thoroughfareNumber": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "Provenance": {
-      "id": "Provenance",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "collidedSegmentSource": {
-          "description": null,
-          "$ref": "StreetSegmentList"
-        },
-        "ctclContestUuid": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "ctclOfficeUuid": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "datasetId": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "precinctId": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "precinctSplitId": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "tsStreetSegmentId": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "vip5PrecinctId": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "vip5StreetSegmentId": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "vipStreetSegmentId": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "RepresentativeInfoData": {
       "id": "RepresentativeInfoData",
       "description": null,
@@ -1946,14 +1596,14 @@
       "enumDescriptions": [],
       "properties": {
         "divisions": {
-          "description": "Political geographic divisions that contain the requested address.",
+          "description": "A map of political geographic divisions that contain the requested address, keyed by the unique Open Civic Data identifier for this division.",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": {
-            "description": "The unique Open Civic Data identifier for this division.",
+            "description": null,
             "$ref": "GeographicDivision"
           },
           "items": null
@@ -1986,22 +1636,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "RepresentativeInfoRequest": {
-      "id": "RepresentativeInfoRequest",
-      "description": "A request for political geography and representative information for an address.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "contextParams": {
-          "description": null,
-          "$ref": "ContextParams"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "RepresentativeInfoResponse": {
       "id": "RepresentativeInfoResponse",
       "description": "The result of a representative info lookup query.",
@@ -2011,14 +1645,14 @@
       "enumDescriptions": [],
       "properties": {
         "divisions": {
-          "description": "Political geographic divisions that contain the requested address.",
+          "description": "A map of political geographic divisions that contain the requested address, keyed by the unique Open Civic Data identifier for this division.",
           "type": "object",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
           "additionalProperties": {
-            "description": "The unique Open Civic Data identifier for this division.",
+            "description": null,
             "$ref": "GeographicDivision"
           },
           "items": null
@@ -2179,564 +1813,6 @@
       "additionalProperties": null,
       "items": null
     },
-    "StreetSegment": {
-      "id": "StreetSegment",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "administrationRegionIds": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "beforeGeocodeId": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "catalistUniquePrecinctCode": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "city": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "cityCouncilDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "congressionalDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "contestIds": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "countyCouncilDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "countyFips": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "datasetId": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "earlyVoteSiteByIds": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "endHouseNumber": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "geocodedPoint": {
-          "description": null,
-          "$ref": "PointProto"
-        },
-        "geographicDivisionOcdIds": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "id": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "judicialDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "mailOnly": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "municipalDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "ncoaAddress": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "oddOrEvens": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "originalId": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "pollinglocationByIds": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "precinctName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "precinctOcdId": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "provenances": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "Provenance"
-          }
-        },
-        "published": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "schoolDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "startHouseNumber": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "startLatE7": {
-          "description": null,
-          "type": "integer",
-          "format": "int32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "startLngE7": {
-          "description": null,
-          "type": "integer",
-          "format": "int32",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "state": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "stateHouseDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "stateSenateDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "streetName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "subAdministrativeAreaName": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "surrogateId": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "targetsmartUniquePrecinctCode": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "townshipDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "unitNumber": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "unitType": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "vanPrecinctCode": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "voterGeographicDivisionOcdIds": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "type": "string",
-            "format": null,
-            "enum": [],
-            "enumDescriptions": [],
-            "properties": {},
-            "additionalProperties": null,
-            "items": null
-          }
-        },
-        "wardDistrict": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "wildcard": {
-          "description": null,
-          "type": "boolean",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "zip": {
-          "description": null,
-          "type": "string",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "StreetSegmentList": {
-      "id": "StreetSegmentList",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "segments": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "StreetSegment"
-          }
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
-    "VoterInfoRequest": {
-      "id": "VoterInfoRequest",
-      "description": "A request for information about a voter.",
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "contextParams": {
-          "description": null,
-          "$ref": "ContextParams"
-        },
-        "voterInfoSegmentResult": {
-          "description": null,
-          "$ref": "VoterInfoSegmentResult"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
-    },
     "VoterInfoResponse": {
       "id": "VoterInfoResponse",
       "description": "The result of a voter info lookup query.",
@@ -2843,18 +1919,6 @@
           "additionalProperties": null,
           "items": null
         },
-        "segments": {
-          "description": null,
-          "type": "array",
-          "format": null,
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": {
-            "$ref": "StreetSegment"
-          }
-        },
         "state": {
           "description": "Local Election Information for the state that the voter votes in. For the US, there will only be one element in this array.",
           "type": "array",
@@ -2870,40 +1934,6 @@
       },
       "additionalProperties": null,
       "items": null
-    },
-    "VoterInfoSegmentResult": {
-      "id": "VoterInfoSegmentResult",
-      "description": null,
-      "type": "object",
-      "format": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "properties": {
-        "generatedMillis": {
-          "description": null,
-          "type": "string",
-          "format": "int64",
-          "enum": [],
-          "enumDescriptions": [],
-          "properties": {},
-          "additionalProperties": null,
-          "items": null
-        },
-        "postalAddress": {
-          "description": null,
-          "$ref": "PostalAddress"
-        },
-        "request": {
-          "description": null,
-          "$ref": "VoterInfoRequest"
-        },
-        "response": {
-          "description": null,
-          "$ref": "VoterInfoResponse"
-        }
-      },
-      "additionalProperties": null,
-      "items": null
     }
   },
   "resources": {
@@ -2912,7 +1942,7 @@
       "methods": {
         "search": {
           "id": "civicinfo.divisions.search",
-          "path": "divisions",
+          "path": "civicinfo/v2/divisions",
           "httpMethod": "GET",
           "description": "Searches for political divisions by their natural name or OCD ID.",
           "parameters": {
@@ -2932,9 +1962,7 @@
             }
           },
           "parameterOrder": [],
-          "request": {
-            "$ref": "DivisionSearchRequest"
-          },
+          "request": null,
           "response": {
             "$ref": "DivisionSearchResponse"
           },
@@ -2952,14 +1980,12 @@
       "methods": {
         "electionQuery": {
           "id": "civicinfo.elections.electionQuery",
-          "path": "elections",
+          "path": "civicinfo/v2/elections",
           "httpMethod": "GET",
           "description": "List of available elections to query.",
           "parameters": {},
           "parameterOrder": [],
-          "request": {
-            "$ref": "ElectionsQueryRequest"
-          },
+          "request": null,
           "response": {
             "$ref": "ElectionsQueryResponse"
           },
@@ -2972,7 +1998,7 @@
         },
         "voterInfoQuery": {
           "id": "civicinfo.elections.voterInfoQuery",
-          "path": "voterinfo",
+          "path": "civicinfo/v2/voterinfo",
           "httpMethod": "GET",
           "description": "Looks up information relevant to a voter based on the voter's registered address.",
           "parameters": {
@@ -2991,7 +2017,7 @@
               "repeated": false
             },
             "electionId": {
-              "description": "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/electionsIf no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field.",
+              "description": "The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/elections. If no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field.",
               "default": "0",
               "location": "query",
               "required": false,
@@ -3036,9 +2062,7 @@
           "parameterOrder": [
             "address"
           ],
-          "request": {
-            "$ref": "VoterInfoRequest"
-          },
+          "request": null,
           "response": {
             "$ref": "VoterInfoResponse"
           },
@@ -3056,12 +2080,12 @@
       "methods": {
         "representativeInfoByAddress": {
           "id": "civicinfo.representatives.representativeInfoByAddress",
-          "path": "representatives",
+          "path": "civicinfo/v2/representatives",
           "httpMethod": "GET",
           "description": "Looks up political geography and representative information for a single address.",
           "parameters": {
             "address": {
-              "description": "The address to look up. May only be specified if the field ocdId is not given in the URL.",
+              "description": "The address to look up. May only be specified if the field ocdId is not given in the URL",
               "default": null,
               "location": "query",
               "required": false,
@@ -3099,27 +2123,17 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "administrativeArea1",
-                "administrativeArea2",
-                "country",
                 "international",
-                "locality",
+                "country",
+                "administrativeArea1",
                 "regional",
-                "special",
+                "administrativeArea2",
+                "locality",
                 "subLocality1",
-                "subLocality2"
+                "subLocality2",
+                "special"
               ],
-              "enumDescriptions": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
+              "enumDescriptions": [],
               "repeated": true
             },
             "roles": {
@@ -3133,38 +2147,24 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "deputyHeadOfGovernment",
-                "executiveCouncil",
-                "governmentOfficer",
-                "headOfGovernment",
                 "headOfState",
+                "headOfGovernment",
+                "deputyHeadOfGovernment",
+                "governmentOfficer",
+                "executiveCouncil",
+                "legislatorUpperBody",
+                "legislatorLowerBody",
                 "highestCourtJudge",
                 "judge",
-                "legislatorLowerBody",
-                "legislatorUpperBody",
                 "schoolBoard",
                 "specialPurposeOfficer"
               ],
-              "enumDescriptions": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
+              "enumDescriptions": [],
               "repeated": true
             }
           },
           "parameterOrder": [],
-          "request": {
-            "$ref": "RepresentativeInfoRequest"
-          },
+          "request": null,
           "response": {
             "$ref": "RepresentativeInfoResponse"
           },
@@ -3177,7 +2177,7 @@
         },
         "representativeInfoByDivision": {
           "id": "civicinfo.representatives.representativeInfoByDivision",
-          "path": "representatives/{ocdId}",
+          "path": "civicinfo/v2/representatives/{ocdId}",
           "httpMethod": "GET",
           "description": "Looks up representative information for a single geographic division.",
           "parameters": {
@@ -3192,27 +2192,17 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "administrativeArea1",
-                "administrativeArea2",
-                "country",
                 "international",
-                "locality",
+                "country",
+                "administrativeArea1",
                 "regional",
-                "special",
+                "administrativeArea2",
+                "locality",
                 "subLocality1",
-                "subLocality2"
+                "subLocality2",
+                "special"
               ],
-              "enumDescriptions": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
+              "enumDescriptions": [],
               "repeated": true
             },
             "ocdId": {
@@ -3254,40 +2244,26 @@
               "maximum": null,
               "pattern": null,
               "enum": [
-                "deputyHeadOfGovernment",
-                "executiveCouncil",
-                "governmentOfficer",
-                "headOfGovernment",
                 "headOfState",
+                "headOfGovernment",
+                "deputyHeadOfGovernment",
+                "governmentOfficer",
+                "executiveCouncil",
+                "legislatorUpperBody",
+                "legislatorLowerBody",
                 "highestCourtJudge",
                 "judge",
-                "legislatorLowerBody",
-                "legislatorUpperBody",
                 "schoolBoard",
                 "specialPurposeOfficer"
               ],
-              "enumDescriptions": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
+              "enumDescriptions": [],
               "repeated": true
             }
           },
           "parameterOrder": [
             "ocdId"
           ],
-          "request": {
-            "$ref": "DivisionRepresentativeInfoRequest"
-          },
+          "request": null,
           "response": {
             "$ref": "RepresentativeInfoData"
           },

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("computebeta")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200331")
+            .version("0.1.0-20200606")
             .about("Creates and runs virtual machines on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -47,8 +47,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accelerator_types0 = accelerator_types0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves a list of accelerator types available to the specified project.");
+            let mcmd = SubCommand::with_name("list").about("Retrieves a list of accelerator types that are available to the specified project.");
             accelerator_types0 = accelerator_types0.subcommand(mcmd);
         }
         let mut addresses0 = SubCommand::with_name("addresses")
@@ -971,7 +970,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves the list of referrers to instances contained within the specified zone. For more information, read Viewing Referrers to VM Instances.");
+            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed instance group, the referrers list includes the managed instance group. For more information, read Viewing Referrers to VM Instances.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -1026,8 +1025,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_scheduling")
-                .about("Sets an instance\'s scheduling options.");
+            let mcmd = SubCommand::with_name("set_scheduling").about("Sets an instance\'s scheduling options. You can only call this method on a stopped instance, that is, a VM instance that is in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -2019,6 +2017,26 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("test_iam_permissions")
                 .about("Returns permissions that a caller has on the specified resource.");
             region_instance_groups0 = region_instance_groups0.subcommand(mcmd);
+        }
+        let mut region_network_endpoint_groups0 =
+            SubCommand::with_name("region_network_endpoint_groups")
+                .setting(AppSettings::ColoredHelp)
+                .about("methods: delete, get, insert and list");
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified network endpoint group. Note that the NEG cannot be deleted if it is configured as a backend of a backend service.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a network endpoint group in the specified project using the parameters that are included in the request.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about("Retrieves the list of regional network endpoint groups available to the specified project in the given region.");
+            region_network_endpoint_groups0 = region_network_endpoint_groups0.subcommand(mcmd);
         }
         let mut region_notification_endpoints0 =
             SubCommand::with_name("region_notification_endpoints")
@@ -3033,6 +3051,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(region_ssl_certificates0);
         app = app.subcommand(region_operations0);
         app = app.subcommand(region_notification_endpoints0);
+        app = app.subcommand(region_network_endpoint_groups0);
         app = app.subcommand(region_instance_groups0);
         app = app.subcommand(region_instance_group_managers0);
         app = app.subcommand(region_health_checks0);

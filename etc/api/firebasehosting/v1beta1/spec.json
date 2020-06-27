@@ -7,7 +7,7 @@
   "canonicalName": "Firebase Hosting",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200430",
+  "revision": "20200615",
   "title": "Firebase Hosting API",
   "description": "The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.",
   "ownerDomain": "google.com",
@@ -601,14 +601,14 @@
     },
     "Header": {
       "id": "Header",
-      "description": "A [`header`](/docs/hosting/full-config#headers) defines custom headers to\nadd to a response should the request URL path match the pattern.",
+      "description": "A [`header`](/docs/hosting/full-config#headers) is an object that specifies\na URL pattern that, if matched to the request URL path, triggers Hosting to\napply the specified custom response headers.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "glob": {
-          "description": "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
+          "description": "The user-supplied\n[glob](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -686,7 +686,7 @@
     },
     "ListReleasesResponse": {
       "id": "ListReleasesResponse",
-      "description": "The response when listing Releases.",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -720,7 +720,7 @@
     },
     "ListVersionFilesResponse": {
       "id": "ListVersionFilesResponse",
-      "description": "The response when listing a Version's Files..",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -754,7 +754,7 @@
     },
     "ListVersionsResponse": {
       "id": "ListVersionsResponse",
-      "description": "The response when listing Versions.",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -893,7 +893,7 @@
     },
     "PopulateVersionFilesResponse": {
       "id": "PopulateVersionFilesResponse",
-      "description": "The response to a PopulateVersionFilesRequest.",
+      "description": null,
       "type": "object",
       "format": null,
       "enum": [],
@@ -965,14 +965,14 @@
     },
     "Redirect": {
       "id": "Redirect",
-      "description": "A [`redirect`](/docs/hosting/full-config#redirects) represents the\nconfiguration for returning an HTTP redirect response given a matching\nrequest URL path.",
+      "description": "A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL\npattern that, if matched to the request URL path, triggers Hosting to\nrespond with a redirect to the specified destination path.",
       "type": "object",
       "format": null,
       "enum": [],
       "enumDescriptions": [],
       "properties": {
         "glob": {
-          "description": "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
+          "description": "The user-supplied\n[glob](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1087,7 +1087,7 @@
     },
     "Rewrite": {
       "id": "Rewrite",
-      "description": "A [`rewrite`](/docs/hosting/full-config#rewrites) represents an internal\ncontent rewrite on the version. If the pattern matches, the request will be\nhandled as if it were to the destination path specified in the\nconfiguration.",
+      "description": "A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL\npattern that, if matched to the request URL path, triggers Hosting to\nrespond as if the service were given the specified destination URL.",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1114,7 +1114,7 @@
           "items": null
         },
         "glob": {
-          "description": "The user-supplied [glob\npattern](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
+          "description": "The user-supplied\n[glob](/docs/hosting/full-config#glob_pattern_matching) to match\nagainst the request URL path.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1153,7 +1153,7 @@
     },
     "ServingConfig": {
       "id": "ServingConfig",
-      "description": "The configuration for how incoming requests to a site should be routed and\nprocessed before serving content. The patterns are matched and applied\naccording to a specific\n[priority order](/docs/hosting/full-config#hosting_priority_order).",
+      "description": "The configuration for how incoming requests to a site should be routed and\nprocessed before serving content. The URL request paths are matched against\nthe specified URL patterns in the configuration, then Hosting applies the\napplicable configuration according to a specific\n[priority order](/docs/hosting/full-config#hosting_priority_order).",
       "type": "object",
       "format": null,
       "enum": [],
@@ -1186,7 +1186,7 @@
           "items": null
         },
         "headers": {
-          "description": "A list of custom response headers that are added to the content if the\nrequest URL path matches the glob.",
+          "description": "An array of objects, where each object specifies a URL pattern that, if\nmatched to the request URL path, triggers Hosting to apply the specified\ncustom response headers.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1198,7 +1198,7 @@
           }
         },
         "redirects": {
-          "description": "A list of globs that will cause the response to redirect to another\nlocation.",
+          "description": "An array of objects (called redirect rules), where each rule specifies a\nURL pattern that, if matched to the request URL path, triggers Hosting to\nrespond with a redirect to the specified destination path.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1210,7 +1210,7 @@
           }
         },
         "rewrites": {
-          "description": "A list of rewrites that will act as if the service were given the\ndestination URL.",
+          "description": "An array of objects (called rewrite rules), where each rule specifies a URL\npattern that, if matched to the request URL path, triggers Hosting to\nrespond as if the service were given the specified destination URL.",
           "type": "array",
           "format": null,
           "enum": [],
@@ -1441,8 +1441,7 @@
             "FINALIZED",
             "DELETED",
             "ABANDONED",
-            "EXPIRED",
-            "CLONING"
+            "EXPIRED"
           ],
           "enumDescriptions": [
             "The default status; should not be intentionally used.",
@@ -1450,8 +1449,7 @@
             "All content has been added to the version, and the version can no longer be\nchanged.",
             "The version has been deleted.",
             "The version was not updated to `FINALIZED` within 12&nbsp;hours and was\nautomatically deleted.",
-            "The version is outside the site-configured limit for the number of\nretained versions, so the version's content is scheduled for deletion.",
-            "The version is being cloned from another version. All content is still\nbeing copied over."
+            "The version is outside the site-configured limit for the number of\nretained versions, so the version's content is scheduled for deletion."
           ],
           "properties": {},
           "additionalProperties": null,

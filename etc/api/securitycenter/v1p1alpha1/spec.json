@@ -7,7 +7,7 @@
   "canonicalName": "Security Command Center",
   "fullyEncodeReservedExpansion": true,
   "version": "v1p1alpha1",
-  "revision": "20200410",
+  "revision": "20200619",
   "title": "Security Command Center API",
   "description": "Security Command Center API provides access to temporal views of assets and findings within an organization.",
   "ownerDomain": "google.com",
@@ -362,6 +362,72 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "resource": {
+          "description": "The Cloud resource tied to this notification's Finding.",
+          "$ref": "GoogleCloudSecuritycenterV1Resource"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1Resource": {
+      "id": "GoogleCloudSecuritycenterV1Resource",
+      "description": "\nInformation related to the Google Cloud resource.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "The full resource name of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parent": {
+          "description": "The full resource name of resource's parent.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parentDisplayName": {
+          "description": "\nThe human readable name of resource's parent.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "project": {
+          "description": "The full resource name of project that the resource belongs to.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "projectDisplayName": {
+          "description": "\nThe human readable name of project that the resource belongs to.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,
@@ -691,9 +757,75 @@
           "additionalProperties": null,
           "items": null
         },
+        "resource": {
+          "description": "The Cloud resource tied to the notification.",
+          "$ref": "GoogleCloudSecuritycenterV1p1beta1Resource"
+        },
         "temporalAsset": {
           "description": "If it's an asset based notification config, this field will be\npopulated.",
           "$ref": "GoogleCloudSecuritycenterV1p1beta1TemporalAsset"
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSecuritycenterV1p1beta1Resource": {
+      "id": "GoogleCloudSecuritycenterV1p1beta1Resource",
+      "description": "\nInformation related to the Google Cloud resource.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "name": {
+          "description": "The full resource name of the resource. See:\nhttps://cloud.google.com/apis/design/resource_names#full_resource_name",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parent": {
+          "description": "The full resource name of resource's parent.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "parentDisplayName": {
+          "description": "\nThe human readable name of resource's parent.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "project": {
+          "description": "The full resource name of project that the resource belongs to.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "projectDisplayName": {
+          "description": "\nThe human readable name of project that the resource belongs to.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
         }
       },
       "additionalProperties": null,

@@ -7,7 +7,7 @@
   "canonicalName": "People Service",
   "fullyEncodeReservedExpansion": null,
   "version": "v1",
-  "revision": "20200512",
+  "revision": "20200625",
   "title": "People API",
   "description": "Provides access to information about profiles and contacts.",
   "ownerDomain": "google.com",
@@ -202,6 +202,9 @@
       "scopes": {
         "https://www.googleapis.com/auth/contacts": {
           "description": "See, edit, download, and permanently delete your contacts"
+        },
+        "https://www.googleapis.com/auth/contacts.other.readonly": {
+          "description": "See and download contact info automatically saved in your \"Other contacts\""
         },
         "https://www.googleapis.com/auth/contacts.readonly": {
           "description": "See and download your contacts"
@@ -719,6 +722,66 @@
       "additionalProperties": null,
       "items": null
     },
+    "CopyOtherContactToMyContactsGroupRequest": {
+      "id": "CopyOtherContactToMyContactsGroupRequest",
+      "description": "A request to copy an \"Other contact\" to my contacts group.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "copyMask": {
+          "description": "Required. A field mask to restrict which fields are copied into the new contact.\nValid values are:\n\n* emailAddresses\n* names\n* phoneNumbers",
+          "type": "string",
+          "format": "google-fieldmask",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "readMask": {
+          "description": "Optional. A field mask to restrict which fields on the person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to the\ncopy mask with metadata and membership fields if not set. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined",
+          "type": "string",
+          "format": "google-fieldmask",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "sources": {
+          "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT and\nReadSourceType.PROFILE if not\nset.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Returns\nSourceType.ACCOUNT,\nSourceType.DOMAIN_PROFILE,\nand\nSourceType.PROFILE.",
+            "Returns\nSourceType.CONTACT.",
+            "Returns\nSourceType.DOMAIN_CONTACT."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "READ_SOURCE_TYPE_UNSPECIFIED",
+              "READ_SOURCE_TYPE_PROFILE",
+              "READ_SOURCE_TYPE_CONTACT",
+              "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+            ],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "CoverPhoto": {
       "id": "CoverPhoto",
       "description": "A person's cover photo. A large image shown on the person's\nprofile page that represents who they are or what they care about.",
@@ -983,6 +1046,32 @@
         "verified": {
           "description": "Output only. True if the field is verified; false if the field is unverified. A\nverified field is typically a name, email address, phone number, or\nwebsite that has been confirmed to be owned by the person.",
           "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "FileAs": {
+      "id": "FileAs",
+      "description": "The name that should be used to sort the person in a list.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "metadata": {
+          "description": "Metadata about the file-as.",
+          "$ref": "FieldMetadata"
+        },
+        "value": {
+          "description": "The file-as value",
+          "type": "string",
           "format": null,
           "enum": [],
           "enumDescriptions": [],
@@ -1274,6 +1363,94 @@
       "additionalProperties": null,
       "items": null
     },
+    "ListDirectoryPeopleResponse": {
+      "id": "ListDirectoryPeopleResponse",
+      "description": "The response to a request for the authenticated user's domain directory.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "A token, which can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextSyncToken": {
+          "description": "A token, which can be sent as `sync_token` to retrieve changes since the\nlast request. Request must set `request_sync_token` to return the sync\ntoken.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "people": {
+          "description": "The list of people in the domain directory.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Person"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "ListOtherContactsResponse": {
+      "id": "ListOtherContactsResponse",
+      "description": "The response to a request for the authenticated user's \"Other contacts\".",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "A token, which can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "nextSyncToken": {
+          "description": "A token, which can be sent as `sync_token` to retrieve changes since the\nlast request. Request must set `request_sync_token` to return the sync\ntoken.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "otherContacts": {
+          "description": "The list of \"Other contacts\" returned as Person resources. \"Other contacts\"\nsupport a limited subset of fields. See\nListOtherContactsRequest.request_mask for more detailed information.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Person"
+          }
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Locale": {
       "id": "Locale",
       "description": "A person's locale preference.",
@@ -1554,6 +1731,16 @@
         },
         "phoneticMiddleName": {
           "description": "The middle name(s) spelled as they sound.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "unstructuredName": {
+          "description": "The free form name value.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -1910,6 +2097,18 @@
           "additionalProperties": null,
           "items": {
             "$ref": "Event"
+          }
+        },
+        "fileAses": {
+          "description": "The person's file-ases.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "FileAs"
           }
         },
         "genders": {
@@ -2602,6 +2801,50 @@
       "additionalProperties": null,
       "items": null
     },
+    "SearchDirectoryPeopleResponse": {
+      "id": "SearchDirectoryPeopleResponse",
+      "description": "The response to a request for people in the authenticated user's domain\ndirectory that match the specified query.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "nextPageToken": {
+          "description": "A token, which can be sent as `page_token` to retrieve the next page.\nIf this field is omitted, there are no subsequent pages.",
+          "type": "string",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "people": {
+          "description": "The list of people in the domain directory that match the query.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "$ref": "Person"
+          }
+        },
+        "totalSize": {
+          "description": "The total number of items in the list without pagination.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "SipAddress": {
       "id": "SipAddress",
       "description": "A person's SIP address. Session Initial Protocol addresses are used for VoIP\ncommunications to make voice or video calls over the internet.",
@@ -2715,14 +2958,18 @@
             "ACCOUNT",
             "PROFILE",
             "DOMAIN_PROFILE",
-            "CONTACT"
+            "CONTACT",
+            "OTHER_CONTACT",
+            "DOMAIN_CONTACT"
           ],
           "enumDescriptions": [
             "Unspecified.",
             "[Google Account](https://accounts.google.com).",
             "[Google profile](https://profiles.google.com). You can view the\nprofile at\n[https://profiles.google.com/](https://profiles.google.com/){id}, where\n{id} is the source id.",
             "[G Suite domain profile](https://support.google.com/a/answer/1628008).",
-            "[Google contact](https://contacts.google.com). You can view the\ncontact at\n[https://contact.google.com/](https://contact.google.com/){id}, where\n{id} is the source id."
+            "[Google contact](https://contacts.google.com). You can view the\ncontact at\n[https://contact.google.com/](https://contact.google.com/){id}, where\n{id} is the source id.",
+            "[Google \"Other contact\"](https://contacts.google.com/other).",
+            "[G Suite domain shared\ncontact](https://support.google.com/a/answer/9281635)."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -2870,6 +3117,34 @@
           "properties": {},
           "additionalProperties": null,
           "items": null
+        },
+        "sources": {
+          "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT and\nReadSourceType.PROFILE if not\nset.",
+          "type": "array",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [
+            "Unspecified.",
+            "Returns\nSourceType.ACCOUNT,\nSourceType.DOMAIN_PROFILE,\nand\nSourceType.PROFILE.",
+            "Returns\nSourceType.CONTACT.",
+            "Returns\nSourceType.DOMAIN_CONTACT."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": {
+            "type": "string",
+            "format": null,
+            "enum": [
+              "READ_SOURCE_TYPE_UNSPECIFIED",
+              "READ_SOURCE_TYPE_PROFILE",
+              "READ_SOURCE_TYPE_CONTACT",
+              "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+            ],
+            "enumDescriptions": [],
+            "properties": {},
+            "additionalProperties": null,
+            "items": null
+          }
         }
       },
       "additionalProperties": null,
@@ -3303,6 +3578,142 @@
         }
       }
     },
+    "otherContacts": {
+      "resources": {},
+      "methods": {
+        "copyOtherContactToMyContactsGroup": {
+          "id": "people.otherContacts.copyOtherContactToMyContactsGroup",
+          "path": "v1/{+resourceName}:copyOtherContactToMyContactsGroup",
+          "httpMethod": "POST",
+          "description": "Copies an \"Other contact\" to a new contact in the user's \"myContacts\" group",
+          "parameters": {
+            "resourceName": {
+              "description": "Required. The resource name of the \"Other contact\" to copy.",
+              "default": null,
+              "location": "path",
+              "required": true,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": "^otherContacts/[^/]+$",
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [
+            "resourceName"
+          ],
+          "request": {
+            "$ref": "CopyOtherContactToMyContactsGroupRequest"
+          },
+          "response": {
+            "$ref": "Person"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/contacts",
+            "https://www.googleapis.com/auth/contacts.other.readonly"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "list": {
+          "id": "people.otherContacts.list",
+          "path": "v1/otherContacts",
+          "httpMethod": "GET",
+          "description": "List all \"Other contacts\", that is contacts that are not in a contact\ngroup. \"Other contacts\" are typically auto created contacts from\ninteractions.",
+          "parameters": {
+            "pageSize": {
+              "description": "Optional. The number of \"Other contacts\" to include in the response. Valid values are\nbetween 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "Optional. A page token, received from a previous `ListOtherContacts` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListOtherContacts`\nmust match the call that provided the page token.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "readMask": {
+              "description": "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* emailAddresses\n* names\n* phoneNumbers",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "google-fieldmask",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "requestSyncToken": {
+              "description": "Optional. Whether the response should include `next_sync_token`, which can be used to\nget all changes since the last request. For subsequent sync requests use\nthe `sync_token` param instead. Initial sync requests that specify\n`request_sync_token` have an additional rate limit.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "syncToken": {
+              "description": "Optional. A sync token, received from a previous `ListOtherContacts` call.\nProvide this to retrieve only the resources changed since the last request.\nSync requests that specify `sync_token` have an additional rate limit.\n\nWhen syncing, all other parameters provided to `ListOtherContacts`\nmust match the call that provided the sync token.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "ListOtherContactsResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/contacts.other.readonly"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        }
+      }
+    },
     "people": {
       "resources": {
         "connections": {
@@ -3312,10 +3723,10 @@
               "id": "people.people.connections.list",
               "path": "v1/{+resourceName}/connections",
               "httpMethod": "GET",
-              "description": "Provides a list of the authenticated user's contacts merged with any\nconnected profiles.\n\nThe request throws a 400 error if 'personFields' is not specified.",
+              "description": "Provides a list of the authenticated user's contacts.\n\nThe request throws a 400 error if 'personFields' is not specified.",
               "parameters": {
                 "pageSize": {
-                  "description": "Optional. The number of connections to include in the response. Valid values are\nbetween 1 and 2000, inclusive. Defaults to 100 if not set or set to 0.",
+                  "description": "Optional. The number of connections to include in the response. Valid values are\nbetween 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.",
                   "default": null,
                   "location": "query",
                   "required": false,
@@ -3417,6 +3828,25 @@
                   "enumDescriptions": [],
                   "repeated": false
                 },
+                "sources": {
+                  "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT\nand\nReadSourceType.PROFILE if not\nset.",
+                  "default": null,
+                  "location": "query",
+                  "required": false,
+                  "type": "string",
+                  "format": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "pattern": null,
+                  "enum": [
+                    "READ_SOURCE_TYPE_UNSPECIFIED",
+                    "READ_SOURCE_TYPE_PROFILE",
+                    "READ_SOURCE_TYPE_CONTACT",
+                    "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+                  ],
+                  "enumDescriptions": [],
+                  "repeated": true
+                },
                 "syncToken": {
                   "description": "Optional. A sync token, received from a previous `ListConnections` call.\nProvide this to retrieve only the resources changed since the last request.\nSync requests that specify `sync_token` have an additional rate limit.\n\nWhen syncing, all other parameters provided to `ListConnections`\nmust match the call that provided the sync token.",
                   "default": null,
@@ -3458,7 +3888,41 @@
           "path": "v1/people:createContact",
           "httpMethod": "POST",
           "description": "Create a new contact and return the person resource for that contact.",
-          "parameters": {},
+          "parameters": {
+            "personFields": {
+              "description": "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to all\nfields if not set. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "google-fieldmask",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "sources": {
+              "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT and\nReadSourceType.PROFILE if not\nset.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "READ_SOURCE_TYPE_UNSPECIFIED",
+                "READ_SOURCE_TYPE_PROFILE",
+                "READ_SOURCE_TYPE_CONTACT",
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
+            }
+          },
           "parameterOrder": [],
           "request": {
             "$ref": "Person"
@@ -3545,6 +4009,25 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
+            },
+            "sources": {
+              "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT and\nReadSourceType.PROFILE if not\nset.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "READ_SOURCE_TYPE_UNSPECIFIED",
+                "READ_SOURCE_TYPE_PROFILE",
+                "READ_SOURCE_TYPE_CONTACT",
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
             }
           },
           "parameterOrder": [
@@ -3610,6 +4093,25 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
+            },
+            "sources": {
+              "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.PROFILE\nand\nReadSourceType.CONTACT\nif not set.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "READ_SOURCE_TYPE_UNSPECIFIED",
+                "READ_SOURCE_TYPE_PROFILE",
+                "READ_SOURCE_TYPE_CONTACT",
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
             }
           },
           "parameterOrder": [
@@ -3685,6 +4187,25 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": true
+            },
+            "sources": {
+              "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT\nand\nReadSourceType.PROFILE\nif not set.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "READ_SOURCE_TYPE_UNSPECIFIED",
+                "READ_SOURCE_TYPE_PROFILE",
+                "READ_SOURCE_TYPE_CONTACT",
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
             }
           },
           "parameterOrder": [],
@@ -3711,12 +4232,264 @@
           "supportsMediaUpload": false,
           "mediaUpload": null
         },
+        "listDirectoryPeople": {
+          "id": "people.people.listDirectoryPeople",
+          "path": "v1/people:listDirectoryPeople",
+          "httpMethod": "GET",
+          "description": "Provides a list of domain profiles and domain contacts in the authenticated\nuser's domain directory.",
+          "parameters": {
+            "mergeSources": {
+              "description": "Optional. Additional data to merge into the directory sources if they are connected\nthrough verified join keys such as email addresses or phone numbers.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
+                "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "pageSize": {
+              "description": "Optional. The number of people to include in the response. Valid values are\nbetween 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "Optional. A page token, received from a previous `ListDirectoryPeople` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `ListDirectoryPeople`\nmust match the call that provided the page token.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "readMask": {
+              "description": "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "google-fieldmask",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "requestSyncToken": {
+              "description": "Optional. Whether the response should include `next_sync_token`, which can be used to\nget all changes since the last request. For subsequent sync requests use\nthe `sync_token` param instead.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "boolean",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "sources": {
+              "description": "Required. Directory sources to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "DIRECTORY_SOURCE_TYPE_UNSPECIFIED",
+                "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
+                "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "syncToken": {
+              "description": "Optional. A sync token, received from a previous `ListDirectoryPeople` call.\nProvide this to retrieve only the resources changed since the last request.\n\nWhen syncing, all other parameters provided to `ListDirectoryPeople`\nmust match the call that provided the sync token.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "ListDirectoryPeopleResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/directory.readonly"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
+        "searchDirectoryPeople": {
+          "id": "people.people.searchDirectoryPeople",
+          "path": "v1/people:searchDirectoryPeople",
+          "httpMethod": "GET",
+          "description": "Provides a list of domain profiles and domain contacts in the authenticated\nuser's domain directory that match the search query.",
+          "parameters": {
+            "mergeSources": {
+              "description": "Optional. Additional data to merge into the directory sources if they are connected\nthrough verified join keys such as email addresses or phone numbers.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED",
+                "DIRECTORY_MERGE_SOURCE_TYPE_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
+            },
+            "pageSize": {
+              "description": "Optional. The number of people to include in the response. Valid values are\nbetween 1 and 500, inclusive. Defaults to 100 if not set or set to 0.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "integer",
+              "format": "int32",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "pageToken": {
+              "description": "Optional. A page token, received from a previous `SearchDirectoryPeople` call.\nProvide this to retrieve the subsequent page.\n\nWhen paginating, all other parameters provided to `SearchDirectoryPeople`\nmust match the call that provided the page token.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "query": {
+              "description": "Required. Prefix query that matches fields in the person. Does NOT use the\nread_mask for determining what fields to match.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "readMask": {
+              "description": "Required. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "google-fieldmask",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
+            "sources": {
+              "description": "Required. Directory sources to return.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "DIRECTORY_SOURCE_TYPE_UNSPECIFIED",
+                "DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT",
+                "DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
+            }
+          },
+          "parameterOrder": [],
+          "request": null,
+          "response": {
+            "$ref": "SearchDirectoryPeopleResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/directory.readonly"
+          ],
+          "supportsMediaDownload": false,
+          "useMediaDownloadService": false,
+          "supportsSubscription": false,
+          "supportsMediaUpload": false,
+          "mediaUpload": null
+        },
         "updateContact": {
           "id": "people.people.updateContact",
           "path": "v1/{+resourceName}:updateContact",
           "httpMethod": "PATCH",
           "description": "Update contact data for an existing contact person. Any non-contact data\nwill not be modified.\n\nThe request throws a 400 error if `updatePersonFields` is not specified.\n\nThe request throws a 400 error if `person.metadata.sources` is not\nspecified for the contact to be updated.\n\nThe request throws a 400 error with an error with reason\n`\"failedPrecondition\"` if `person.metadata.sources.etag` is different than\nthe contact's etag, which indicates the contact has changed since its data\nwas read. Clients should get the latest person and re-apply their updates\nto the latest person.",
           "parameters": {
+            "personFields": {
+              "description": "Optional. A field mask to restrict which fields on each person are returned. Multiple\nfields can be specified by separating them with commas. Defaults to all\nfields if not set. Valid values are:\n\n* addresses\n* ageRanges\n* biographies\n* birthdays\n* coverPhotos\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* metadata\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* photos\n* relations\n* residences\n* sipAddresses\n* skills\n* urls\n* userDefined",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": "google-fieldmask",
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [],
+              "enumDescriptions": [],
+              "repeated": false
+            },
             "resourceName": {
               "description": "The resource name for the person, assigned by the server. An ASCII string\nwith a max length of 27 characters, in the form of\n`people/{person_id}`.",
               "default": null,
@@ -3730,6 +4503,25 @@
               "enum": [],
               "enumDescriptions": [],
               "repeated": false
+            },
+            "sources": {
+              "description": "Optional. A mask of what source types to return. Defaults to\nReadSourceType.CONTACT and\nReadSourceType.PROFILE if not\nset.",
+              "default": null,
+              "location": "query",
+              "required": false,
+              "type": "string",
+              "format": null,
+              "minimum": null,
+              "maximum": null,
+              "pattern": null,
+              "enum": [
+                "READ_SOURCE_TYPE_UNSPECIFIED",
+                "READ_SOURCE_TYPE_PROFILE",
+                "READ_SOURCE_TYPE_CONTACT",
+                "READ_SOURCE_TYPE_DOMAIN_CONTACT"
+              ],
+              "enumDescriptions": [],
+              "repeated": true
             },
             "updatePersonFields": {
               "description": "Required. A field mask to restrict which fields on the person are updated. Multiple\nfields can be specified by separating them with commas.\nAll updated fields will be replaced. Valid values are:\n\n* addresses\n* biographies\n* birthdays\n* emailAddresses\n* events\n* genders\n* imClients\n* interests\n* locales\n* memberships\n* names\n* nicknames\n* occupations\n* organizations\n* phoneNumbers\n* relations\n* residences\n* sipAddresses\n* urls\n* userDefined",

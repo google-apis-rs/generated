@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Debugger",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200501",
+  "revision": "20200619",
   "title": "Cloud Debugger API",
   "description": "Examines the call stack and variables of a running application without stopping or slowing it down.\n",
   "ownerDomain": "google.com",

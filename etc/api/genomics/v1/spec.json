@@ -7,7 +7,7 @@
   "canonicalName": null,
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200507",
+  "revision": "20200623",
   "title": "Genomics API",
   "description": "Uploads, processes, queries, and searches Genomics data in the cloud.",
   "ownerDomain": "google.com",

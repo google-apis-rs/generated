@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Filestore",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200413",
+  "revision": "20200613",
   "title": "Cloud Filestore API",
   "description": "The Cloud Filestore API is used for creating and managing cloud file servers.",
   "ownerDomain": "google.com",
@@ -46,20 +46,6 @@
         "v1 error format",
         "v2 error format"
       ],
-      "repeated": false
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
       "repeated": false
     },
     "alt": {
@@ -114,20 +100,6 @@
     },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "default": null,
-      "location": "query",
-      "required": false,
-      "type": "string",
-      "format": null,
-      "minimum": null,
-      "maximum": null,
-      "pattern": null,
-      "enum": [],
-      "enumDescriptions": [],
-      "repeated": false
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
       "default": null,
       "location": "query",
       "required": false,
@@ -340,6 +312,10 @@
           },
           "items": null
         },
+        "maintenanceSettings": {
+          "description": "Optional. The MaintenanceSettings associated with instance.",
+          "$ref": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings"
+        },
         "name": {
           "description": "Unique name of the resource. It uses the form:\n `projects/{project_id}/locations/{location_id}/instances/{instance_id}`",
           "type": "string",
@@ -506,6 +482,28 @@
           "description": "The scheduled start time for the maintenance.",
           "type": "string",
           "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
+    "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings": {
+      "id": "GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings",
+      "description": "Maintenance settings associated with instance. Allows service producers and\nend users to assign settings that controls maintenance on this instance.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "exclude": {
+          "description": "Optional. Exclude instance from maintenance. When true, rollout service will not\nattempt maintenance on the instance. Rollout service will include the\ninstance in reported rollout progress as not attempted.",
+          "type": "boolean",
+          "format": null,
           "enum": [],
           "enumDescriptions": [],
           "properties": {},
@@ -865,8 +863,8 @@
           ],
           "enumDescriptions": [
             "Not set.",
-            "STANDARD tier. BASIC_HDD is the preferred term for this tier.",
-            "PREMIUM tier. BASIC_SSD is the preferred term for this tier.",
+            "STANDARD tier.",
+            "PREMIUM tier.",
             "BASIC instances offer a maximum capacity of 63.9 TB.\nBASIC_HDD is an alias for STANDARD Tier, offering economical\nperformance backed by HDD.",
             "BASIC instances offer a maximum capacity of 63.9 TB.\nBASIC_SSD is an alias for PREMIUM Tier, and offers improved\nperformance backed by SSD.",
             "HIGH_SCALE instances offer expanded capacity and performance scaling\ncapabilities."

@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Video Intelligence",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200423",
+  "revision": "20200615",
   "title": "Cloud Video Intelligence API",
   "description": "Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text. Supports both asynchronous API and streaming API.",
   "ownerDomain": "google.com",
@@ -6458,7 +6458,7 @@
           "$ref": "GoogleCloudVideointelligenceV1p3beta1_StreamingVideoAnnotationResults"
         },
         "annotationResultsUri": {
-          "description": "Google Cloud Storage(GCS) URI that stores annotation results of one\nstreaming session in JSON format.\nIt is the annotation_result_storage_directory\nfrom the request followed by '/cloud_project_number-session_id'.",
+          "description": "Google Cloud Storage URI that stores annotation results of one\nstreaming session in JSON format.\nIt is the annotation_result_storage_directory\nfrom the request followed by '/cloud_project_number-session_id'.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -7427,6 +7427,53 @@
       "resources": {
         "locations": {
           "resources": {
+            "corpura": {
+              "resources": {
+                "operations": {
+                  "resources": {},
+                  "methods": {
+                    "get": {
+                      "id": "videointelligence.projects.locations.corpura.operations.get",
+                      "path": "v1/{+name}",
+                      "httpMethod": "GET",
+                      "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+                      "parameters": {
+                        "name": {
+                          "description": "The name of the operation resource.",
+                          "default": null,
+                          "location": "path",
+                          "required": true,
+                          "type": "string",
+                          "format": null,
+                          "minimum": null,
+                          "maximum": null,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/corpura/[^/]+/operations/[^/]+$",
+                          "enum": [],
+                          "enumDescriptions": [],
+                          "repeated": false
+                        }
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "request": null,
+                      "response": {
+                        "$ref": "GoogleLongrunning_Operation"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "supportsMediaDownload": false,
+                      "useMediaDownloadService": false,
+                      "supportsSubscription": false,
+                      "supportsMediaUpload": false,
+                      "mediaUpload": null
+                    }
+                  }
+                }
+              },
+              "methods": {}
+            },
             "operations": {
               "resources": {},
               "methods": {

@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("deploymentmanager2")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20181207")
+            .version("0.1.0-20200512")
             .about("Declares, configures, and deploys complex solutions on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -65,7 +65,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             deployments0 = deployments0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("patch").about("Updates a deployment and all of the resources described by the deployment manifest. This method supports patch semantics.");
+            let mcmd = SubCommand::with_name("patch").about("Patches a deployment and all of the resources described by the deployment manifest.");
             deployments0 = deployments0.subcommand(mcmd);
         }
         {

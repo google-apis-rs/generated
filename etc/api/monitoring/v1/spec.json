@@ -7,7 +7,7 @@
   "canonicalName": "Monitoring",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200509",
+  "revision": "20200622",
   "title": "Cloud Monitoring API",
   "description": "Manages your Cloud Monitoring data and configurations. Most projects must be associated with a Workspace, with a few exceptions as noted on the individual method pages. The table entries below are presented in alphabetical order, not in order of common use. For explanations of the concepts found in the table entries, read the Cloud Monitoring documentation.",
   "ownerDomain": "google.com",
@@ -1203,6 +1203,44 @@
       "additionalProperties": null,
       "items": null
     },
+    "StatisticalTimeSeriesFilter": {
+      "id": "StatisticalTimeSeriesFilter",
+      "description": "A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.",
+      "type": "object",
+      "format": null,
+      "enum": [],
+      "enumDescriptions": [],
+      "properties": {
+        "numTimeSeries": {
+          "description": "How many time series to output.",
+          "type": "integer",
+          "format": "int32",
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "rankingMethod": {
+          "description": "rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.",
+          "type": "string",
+          "format": null,
+          "enum": [
+            "METHOD_UNSPECIFIED",
+            "METHOD_CLUSTER_OUTLIER"
+          ],
+          "enumDescriptions": [
+            "Not allowed in well-formed requests.",
+            "Compute the outlier score of each stream."
+          ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        }
+      },
+      "additionalProperties": null,
+      "items": null
+    },
     "Text": {
       "id": "Text",
       "description": "A widget that displays textual content.",
@@ -1340,6 +1378,10 @@
         "secondaryAggregation": {
           "description": "Apply a second aggregation after aggregation is applied.",
           "$ref": "Aggregation"
+        },
+        "statisticalTimeSeriesFilter": {
+          "description": "Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.",
+          "$ref": "StatisticalTimeSeriesFilter"
         }
       },
       "additionalProperties": null,
@@ -1368,6 +1410,10 @@
         "secondaryAggregation": {
           "description": "Apply a second aggregation after the ratio is computed.",
           "$ref": "Aggregation"
+        },
+        "statisticalTimeSeriesFilter": {
+          "description": "Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.",
+          "$ref": "StatisticalTimeSeriesFilter"
         }
       },
       "additionalProperties": null,

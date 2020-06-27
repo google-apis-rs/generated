@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Identity",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200509",
+  "revision": "20200622",
   "title": "Cloud Identity API",
   "description": "API for provisioning and managing identity resources.",
   "ownerDomain": "google.com",
@@ -946,6 +946,16 @@
             "Device User Account is compromised.",
             "Device User Account is not compromised."
           ],
+          "properties": {},
+          "additionalProperties": null,
+          "items": null
+        },
+        "createTime": {
+          "description": "When the user first signed in to the device",
+          "type": "string",
+          "format": "google-datetime",
+          "enum": [],
+          "enumDescriptions": [],
           "properties": {},
           "additionalProperties": null,
           "items": null

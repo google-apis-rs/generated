@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("computealpha")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200331")
+            .version("0.1.0-20200606")
             .about("Creates and runs virtual machines on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -47,8 +47,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             accelerator_types0 = accelerator_types0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list")
-                .about("Retrieves a list of accelerator types available to the specified project.");
+            let mcmd = SubCommand::with_name("list").about("Retrieves a list of accelerator types that are available to the specified project.");
             accelerator_types0 = accelerator_types0.subcommand(mcmd);
         }
         let mut addresses0 = SubCommand::with_name("addresses")
@@ -423,8 +422,8 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             forwarding_rules0 = forwarding_rules0.subcommand(mcmd);
         }
         let mut global_addresses0 = SubCommand::with_name("global_addresses")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list, set_labels and test_iam_permissions");
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: delete, get, get_owner_instance, insert, list, set_labels and test_iam_permissions");
         {
             let mcmd =
                 SubCommand::with_name("delete").about("Deletes the specified address resource.");
@@ -432,6 +431,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get").about("Returns the specified address resource. Gets a list of available addresses by making a list() request.");
+            global_addresses0 = global_addresses0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_owner_instance")
+                .about("Find owner instance from given ip address");
             global_addresses0 = global_addresses0.subcommand(mcmd);
         }
         {
@@ -1021,7 +1025,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves the list of referrers to instances contained within the specified zone. For more information, read Viewing Referrers to VM Instances.");
+            let mcmd = SubCommand::with_name("list_referrers").about("Retrieves a list of resources that refer to the VM instance specified in the request. For example, if the VM instance is part of a managed instance group, the referrers list includes the managed instance group. For more information, read Viewing Referrers to VM Instances.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -1080,8 +1084,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             instances0 = instances0.subcommand(mcmd);
         }
         {
-            let mcmd = SubCommand::with_name("set_scheduling")
-                .about("Sets an instance\'s scheduling options.");
+            let mcmd = SubCommand::with_name("set_scheduling").about("Sets an instance\'s scheduling options. You can only call this method on a stopped instance, that is, a VM instance that is in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.");
             instances0 = instances0.subcommand(mcmd);
         }
         {
@@ -1409,6 +1412,86 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("test_iam_permissions")
                 .about("Returns permissions that a caller has on the specified resource.");
             network_endpoint_groups0 = network_endpoint_groups0.subcommand(mcmd);
+        }
+        let mut network_firewall_policies0 = SubCommand::with_name("network_firewall_policies")
+                        .setting(AppSettings::ColoredHelp)
+                        .about("methods: add_association, add_rule, clone_rules, delete, get, get_association, get_iam_policy, get_rule, insert, list, patch, patch_rule, remove_association, remove_rule, set_iam_policy and test_iam_permissions");
+        {
+            let mcmd = SubCommand::with_name("add_association")
+                .about("Inserts an association for the specified firewall policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("add_rule").about("Inserts a rule into a firewall policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("clone_rules")
+                .about("Copies rules to the specified firewall policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete").about("Deletes the specified policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get")
+                .about("Returns the specified network firewall policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_association")
+                .about("Gets an association with the specified name.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get_iam_policy").about("Gets the access control policy for a resource. May be empty if no such policy or resource exists.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd =
+                SubCommand::with_name("get_rule").about("Gets a rule of the specified priority.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("insert").about("Creates a new policy in the specified project using the data included in the request.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("list").about(
+                "Lists all the policies that have been configured for the specified project.",
+            );
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch")
+                .about("Patches the specified policy with the data included in the request.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch_rule")
+                .about("Patches a rule of the specified priority.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("remove_association")
+                .about("Removes an association for the specified firewall policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("remove_rule")
+                .about("Deletes a rule of the specified priority.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_iam_policy").about("Sets the access control policy on the specified resource. Replaces any existing policy.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("test_iam_permissions")
+                .about("Returns permissions that a caller has on the specified resource.");
+            network_firewall_policies0 = network_firewall_policies0.subcommand(mcmd);
         }
         let mut networks0 = SubCommand::with_name("networks")
                         .setting(AppSettings::ColoredHelp)
@@ -2872,7 +2955,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut target_grpc_proxies0 = SubCommand::with_name("target_grpc_proxies")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get, insert, list and test_iam_permissions");
+            .about("methods: delete, get, insert, list, patch and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("delete")
                 .about("Deletes the specified TargetGrpcProxy in the given scope");
@@ -2890,6 +2973,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("list")
                 .about("Lists the TargetGrpcProxies for a project in the given scope.");
+            target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("patch").about("Patches the specified TargetGrpcProxy resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.");
             target_grpc_proxies0 = target_grpc_proxies0.subcommand(mcmd);
         }
         {
@@ -2933,7 +3020,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut target_https_proxies0 = SubCommand::with_name("target_https_proxies")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: aggregated_list, delete, get, insert, list, set_quic_override, set_ssl_certificates, set_ssl_policy, set_url_map and test_iam_permissions");
+                        .about("methods: aggregated_list, delete, get, insert, list, set_certificate_map, set_quic_override, set_ssl_certificates, set_ssl_policy, set_url_map and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("aggregated_list").about("Retrieves the list of all TargetHttpsProxy resources, regional and global, available to the specified project.");
             target_https_proxies0 = target_https_proxies0.subcommand(mcmd);
@@ -2953,6 +3040,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("list").about("Retrieves the list of TargetHttpsProxy resources available to the specified project.");
+            target_https_proxies0 = target_https_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_certificate_map")
+                .about("Changes the Certificate Map for TargetHttpsProxy.");
             target_https_proxies0 = target_https_proxies0.subcommand(mcmd);
         }
         {
@@ -3071,7 +3163,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut target_ssl_proxies0 = SubCommand::with_name("target_ssl_proxies")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: delete, get, insert, list, set_backend_service, set_proxy_header, set_ssl_certificates, set_ssl_policy and test_iam_permissions");
+                        .about("methods: delete, get, insert, list, set_backend_service, set_certificate_map, set_proxy_header, set_ssl_certificates, set_ssl_policy and test_iam_permissions");
         {
             let mcmd = SubCommand::with_name("delete")
                 .about("Deletes the specified TargetSslProxy resource.");
@@ -3092,6 +3184,11 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("set_backend_service")
                 .about("Changes the BackendService for TargetSslProxy.");
+            target_ssl_proxies0 = target_ssl_proxies0.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("set_certificate_map")
+                .about("Changes the Certificate Map for TargetSslProxy.");
             target_ssl_proxies0 = target_ssl_proxies0.subcommand(mcmd);
         }
         {
@@ -3430,6 +3527,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         app = app.subcommand(node_templates0);
         app = app.subcommand(node_groups0);
         app = app.subcommand(networks0);
+        app = app.subcommand(network_firewall_policies0);
         app = app.subcommand(network_endpoint_groups0);
         app = app.subcommand(machine_types0);
         app = app.subcommand(machine_images0);

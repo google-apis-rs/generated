@@ -7,7 +7,7 @@
   "canonicalName": "Slides",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200508",
+  "revision": "20200623",
   "title": "Google Slides API",
   "description": "Reads and writes Google Slides presentations.",
   "ownerDomain": "google.com",
@@ -2866,7 +2866,7 @@
       "enumDescriptions": [],
       "properties": {
         "description": {
-          "description": "The description of the page element. Combined with title to display alt\ntext.",
+          "description": "The description of the page element. Combined with title to display alt\ntext.\n\nThe field is not supported for Group\nelements.",
           "type": "string",
           "format": null,
           "enum": [],
@@ -2914,7 +2914,7 @@
           "$ref": "Table"
         },
         "title": {
-          "description": "The title of the page element. Combined with description to display alt\ntext.",
+          "description": "The title of the page element. Combined with description to display alt\ntext.\n\nThe field is not supported for Group\nelements.",
           "type": "string",
           "format": null,
           "enum": [],

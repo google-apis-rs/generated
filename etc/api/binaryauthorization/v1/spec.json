@@ -7,7 +7,7 @@
   "canonicalName": "Binary Authorization",
   "fullyEncodeReservedExpansion": true,
   "version": "v1",
-  "revision": "20200508",
+  "revision": "20200619",
   "title": "Binary Authorization API",
   "description": "The management interface for Binary Authorization, a system providing policy control for images deployed to Kubernetes Engine clusters.\n",
   "ownerDomain": "google.com",

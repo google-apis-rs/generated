@@ -7,7 +7,7 @@
   "canonicalName": "Cloud Video Intelligence",
   "fullyEncodeReservedExpansion": true,
   "version": "v1p2beta1",
-  "revision": "20200423",
+  "revision": "20200615",
   "title": "Cloud Video Intelligence API",
   "description": "Detects objects, explicit content, and scene changes in videos. It also specifies the region for annotation and transcribes speech to text. Supports both asynchronous API and streaming API.",
   "ownerDomain": "google.com",
@@ -6458,7 +6458,7 @@
           "$ref": "GoogleCloudVideointelligenceV1p3beta1_StreamingVideoAnnotationResults"
         },
         "annotationResultsUri": {
-          "description": "Google Cloud Storage(GCS) URI that stores annotation results of one\nstreaming session in JSON format.\nIt is the annotation_result_storage_directory\nfrom the request followed by '/cloud_project_number-session_id'.",
+          "description": "Google Cloud Storage URI that stores annotation results of one\nstreaming session in JSON format.\nIt is the annotation_result_storage_directory\nfrom the request followed by '/cloud_project_number-session_id'.",
           "type": "string",
           "format": null,
           "enum": [],

@@ -7,7 +7,7 @@
   "canonicalName": "Drive Activity",
   "fullyEncodeReservedExpansion": true,
   "version": "v2",
-  "revision": "20200509",
+  "revision": "20200623",
   "title": "Drive Activity API",
   "description": "Provides a historical view of activity in Google Drive.",
   "ownerDomain": "google.com",

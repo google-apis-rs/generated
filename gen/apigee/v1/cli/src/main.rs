@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("apigee1")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200502")
+            .version("0.1.0-20200618")
             .about("The Apigee API lets you programmatically manage Apigee hybrid with a set of RESTful operations, including:<ul>  <li>Create, edit, and delete API proxies</li>  <li>Manage users</li>  <li>Deploy and undeploy proxy revisions</li>  <li>Configure environments</li></ul><p>For information on using the APIs described in this section, see <a href=\"docs.apigee.com/hybrid/latest/api-get-started\">Get started using the APIs</a>.</p><p><strong>Note:</strong> This product is available as a free trial for a time period of 60 days.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -129,29 +129,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists IDs of apps within an organization that have the specified app status\n(approved or revoked) or are of the specified app type\n(developer or company).");
             apps1 = apps1.subcommand(mcmd);
         }
-        let mut companies1 = SubCommand::with_name("companies")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and update");
-        {
-            let mcmd = SubCommand::with_name("create").about("Creates an app for a company. Note that you must first create a profile\nfor the company in your organization before you can register apps that\nare associated with the company.");
-            companies1 = companies1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("delete").about("Deletes an existing company.");
-            companies1 = companies1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("get").about("List details for a company.");
-            companies1 = companies1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about("List all companies in an organization, and optionally returns an\nexpanded list of companies, displaying a full profile for each company in\nthe organization.");
-            companies1 = companies1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("update").about("Updates an existing company.\nSend the complete company record as a payload with any changes you want to\nmake. Note that to change the status of the Company you use Set the Status\nof a Company. The attributes in the sample payload below apply to company\nconfiguration in monetization. For non-monetized companies, you need send\nonly displayName.");
-            companies1 = companies1.subcommand(mcmd);
-        }
         let mut deployments1 = SubCommand::with_name("deployments")
             .setting(AppSettings::ColoredHelp)
             .about("methods: list");
@@ -193,7 +170,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut environments1 = SubCommand::with_name("environments")
                         .setting(AppSettings::ColoredHelp)
-                        .about("methods: create, delete, get, get_datalocation, get_debugmask, get_deployed_config, get_iam_policy, set_iam_policy, subscribe, test_iam_permissions, unsubscribe, update, update_debugmask and update_environment");
+                        .about("methods: create, delete, get, get_debugmask, get_deployed_config, get_iam_policy, set_iam_policy, subscribe, test_iam_permissions, unsubscribe, update, update_debugmask and update_environment");
         {
             let mcmd =
                 SubCommand::with_name("create").about("Creates an environment in an organization.");
@@ -206,10 +183,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get").about("Gets environment details.");
-            environments1 = environments1.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("get_datalocation").about("Get Google Cloud Storage (GCS) signed url for specific organization and\nenvironment. Collection agent uses this signed url to upload data\nto GCS bucket.");
             environments1 = environments1.subcommand(mcmd);
         }
         {
@@ -384,30 +357,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             revisions2 = revisions2.subcommand(mcmd);
         }
         let mut apps2 = SubCommand::with_name("apps")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete, get, list and update");
-        {
-            let mcmd = SubCommand::with_name("create").about("Creates an app for a company.");
-            apps2 = apps2.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a company app.");
-            apps2 = apps2.subcommand(mcmd);
-        }
-        {
-            let mcmd =
-                SubCommand::with_name("get").about("Gets the profile of a specific company app.");
-            apps2 = apps2.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("list").about("List company apps in an organization. You can optionally expand the\nresponse to include the profile for each app.");
-            apps2 = apps2.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("update").about("Updates an existing company app.");
-            apps2 = apps2.subcommand(mcmd);
-        }
-        let mut apps2 = SubCommand::with_name("apps")
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: attributes_method, create, delete, generate_key_pair_or_update_developer_app_status, get, list and update");
         {
@@ -535,7 +484,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         let mut queries2 = SubCommand::with_name("queries")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, get, get_result, get_result_view and list");
+            .about("methods: create, get, get_result and list");
         {
             let mcmd = SubCommand::with_name("create").about("Submit a query to be processed in the background.\nIf the submission of the query succeeds, the API returns a 201 status and\nan ID that refer to the query. In addition to the HTTP status 201, the\n`state` of \"enqueued\" means that the request succeeded.");
             queries2 = queries2.subcommand(mcmd);
@@ -546,10 +495,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("get_result").about("After the query is completed, use this API to retrieve the results.\nIf the request succeeds, and there is a non-zero result set, the result is\ndownloaded to the client as a zipped JSON file.\nThe name of the downloaded file will be:\n  OfflineQueryResult-<query-id>.zip\n\nExample: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`");
-            queries2 = queries2.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("get_result_view").about("");
             queries2 = queries2.subcommand(mcmd);
         }
         {
@@ -666,22 +611,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                 .about("Lists all deployments of an API proxy revision.");
             deployments3 = deployments3.subcommand(mcmd);
         }
-        let mut keys3 = SubCommand::with_name("keys")
-            .setting(AppSettings::ColoredHelp)
-            .about("methods: delete, get and update_company_app_key");
-        {
-            let mcmd = SubCommand::with_name("delete").about("Deletes a key for a company app and removes all API products associated\nwith the app. The key can no longer be used to access any APIs.");
-            keys3 = keys3.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("get")
-                .about("Gets information about the consumer key issued to a specific company app.");
-            keys3 = keys3.subcommand(mcmd);
-        }
-        {
-            let mcmd = SubCommand::with_name("update_company_app_key").about("Updates an existing company app key to add additional API products or\nattributes. Note that only a single API product can be resolved per app\nkey at runtime. API products are resolved by name, in alphabetical order.\nThe first API product found in the list will be returned.");
-            keys3 = keys3.subcommand(mcmd);
-        }
         let mut attributes3 = SubCommand::with_name("attributes")
             .setting(AppSettings::ColoredHelp)
             .about("methods: delete, get, list and update_developer_app_attribute");
@@ -706,7 +635,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
                         .setting(AppSettings::ColoredHelp)
                         .about("methods: create_method, delete, get, replace_developer_app_key and update_developer_app_key");
         {
-            let mcmd = SubCommand::with_name("create_method").about("Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed.\n\n**Note**: To avoid service disruptions, a consumer key and secret\nshould not exceed 2 KBs each.\n\nAfter creating the consumer key and secret, associate the key with\nan API product using the\nUpdateDeveloperAppKey API.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.");
+            let mcmd = SubCommand::with_name("create_method").about("Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed. To avoid service\ndisruptions, a consumer key and secret should not exceed 2 KBs each.\n\n**Note**: When creating the consumer key and secret, an association to\nAPI products will not be made. Therefore, you should not specify the\nassociated API products in your request. Instead, use the\nUpdateDeveloperAppKey API to\nmake the association after the consumer key and secret are created.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.");
             keys3 = keys3.subcommand(mcmd);
         }
         {
@@ -823,12 +752,12 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             .setting(AppSettings::ColoredHelp)
             .about("methods: create");
         {
-            let mcmd = SubCommand::with_name("create").about("Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed.\n\n**Note**: To avoid service disruptions, a consumer key and secret\nshould not exceed 2 KBs each.\n\nAfter creating the consumer key and secret, associate the key with\nan API product using the\nUpdateDeveloperAppKey API.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.");
+            let mcmd = SubCommand::with_name("create").about("Creates a custom consumer key and secret for a developer app. This is\nparticularly useful if you want to migrate existing consumer keys and\nsecrets to Apigee hybrid from another system.\n\nConsumer keys and secrets can contain letters, numbers, underscores, and\nhyphens. No other special characters are allowed. To avoid service\ndisruptions, a consumer key and secret should not exceed 2 KBs each.\n\n**Note**: When creating the consumer key and secret, an association to\nAPI products will not be made. Therefore, you should not specify the\nassociated API products in your request. Instead, use the\nUpdateDeveloperAppKey API to\nmake the association after the consumer key and secret are created.\n\nIf a consumer key and secret already exist, you can keep them or\ndelete them using the\nDeleteDeveloperAppKey API.");
             create4 = create4.subcommand(mcmd);
         }
         let mut debugsessions4 = SubCommand::with_name("debugsessions")
             .setting(AppSettings::ColoredHelp)
-            .about("methods: create, delete_data and list");
+            .about("methods: create, delete_data, get and list");
         {
             let mcmd = SubCommand::with_name("create")
                 .about("Creates a debug session for a deployed API Proxy revision.");
@@ -836,6 +765,10 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         }
         {
             let mcmd = SubCommand::with_name("delete_data").about("Deletes the data from a debug session. This does not cancel the debug\nsession or prevent further data from being collected if the session is\nstill active in runtime pods.");
+            debugsessions4 = debugsessions4.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Retrieves a debug session.");
             debugsessions4 = debugsessions4.subcommand(mcmd);
         }
         {
@@ -865,7 +798,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         analytics2 = analytics2.subcommand(admin3);
         apps2 = apps2.subcommand(keys3);
         apps2 = apps2.subcommand(attributes3);
-        apps2 = apps2.subcommand(keys3);
         revisions2 = revisions2.subcommand(deployments3);
         sharedflows1 = sharedflows1.subcommand(revisions2);
         sharedflows1 = sharedflows1.subcommand(deployments2);
@@ -885,7 +817,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         environments1 = environments1.subcommand(analytics2);
         developers1 = developers1.subcommand(attributes2);
         developers1 = developers1.subcommand(apps2);
-        companies1 = companies1.subcommand(apps2);
         apis1 = apis1.subcommand(revisions2);
         apis1 = apis1.subcommand(keyvaluemaps2);
         apis1 = apis1.subcommand(deployments2);
@@ -897,7 +828,6 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         organizations0 = organizations0.subcommand(environments1);
         organizations0 = organizations0.subcommand(developers1);
         organizations0 = organizations0.subcommand(deployments1);
-        organizations0 = organizations0.subcommand(companies1);
         organizations0 = organizations0.subcommand(apps1);
         organizations0 = organizations0.subcommand(apis1);
         organizations0 = organizations0.subcommand(apiproducts1);

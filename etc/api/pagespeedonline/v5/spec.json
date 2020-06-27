@@ -7,7 +7,7 @@
   "canonicalName": "Pagespeed Insights",
   "fullyEncodeReservedExpansion": null,
   "version": "v5",
-  "revision": "20200318",
+  "revision": "20200612",
   "title": "PageSpeed Insights API",
   "description": "The PageSpeed Insights API lets you analyze the performance of your website with a simple API.  It offers tailored suggestions for how you can optimize your site, and lets you easily integrate PageSpeed Insights analysis into your development tools and workflow.\n",
   "ownerDomain": "google.com",
@@ -851,6 +851,16 @@
             "description": null,
             "$ref": "UserPageLoadMetricV5"
           },
+          "items": null
+        },
+        "origin_fallback": {
+          "description": "True if the result is an origin fallback from a page, false otherwise.",
+          "type": "boolean",
+          "format": null,
+          "enum": [],
+          "enumDescriptions": [],
+          "properties": {},
+          "additionalProperties": null,
           "items": null
         },
         "overall_category": {

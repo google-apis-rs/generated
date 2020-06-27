@@ -15,7 +15,7 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         let mut app = App::new("dataflow1_b3")
             .setting(clap::AppSettings::ColoredHelp)
             .author("Sebastian Thiel <byronimo@gmail.com>")
-            .version("0.1.0-20200319")
+            .version("0.1.0-20200602")
             .about("Manages Google Cloud Dataflow projects on Google Cloud Platform.")
             .after_help("All documentation details can be found at <TODO figure out URL>")
             .arg(Arg::with_name("scope")
@@ -44,6 +44,30 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("worker_messages")
                 .about("Send a worker_message to the service.");
             projects0 = projects0.subcommand(mcmd);
+        }
+        let mut catalog_templates1 = SubCommand::with_name("catalog_templates")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: commit, delete, get, label and tag");
+        {
+            let mcmd = SubCommand::with_name("commit").about("Creates a new TemplateVersion (Important: not new Template) entry in the\nspanner table. Requires project_id and display_name (template).");
+            catalog_templates1 = catalog_templates1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("delete")
+                .about("Deletes an existing Template. Do nothing if Template does not exist.");
+            catalog_templates1 = catalog_templates1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("get").about("Get TemplateVersion using project_id and display_name with an optional\nversion_id field. Get latest (has tag \"latest\") TemplateVersion if\nversion_id not set.");
+            catalog_templates1 = catalog_templates1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("label").about("Updates the label of the TemplateVersion. Label can be duplicated in\nTemplate, so either add or remove the label in the TemplateVersion.");
+            catalog_templates1 = catalog_templates1.subcommand(mcmd);
+        }
+        {
+            let mcmd = SubCommand::with_name("tag").about("Updates the tag of the TemplateVersion, and tag is unique in Template.\nIf tag exists in another TemplateVersion in the Template, updates the tag\nto this TemplateVersion will remove it from the old TemplateVersion and add\nit to this TemplateVersion. If request is remove_only (remove_only = true),\nremove the tag from this TemplateVersion.");
+            catalog_templates1 = catalog_templates1.subcommand(mcmd);
         }
         let mut jobs1 = SubCommand::with_name("jobs")
             .setting(AppSettings::ColoredHelp)
@@ -97,6 +121,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
             let mcmd = SubCommand::with_name("list").about("Lists snapshots.");
             snapshots1 = snapshots1.subcommand(mcmd);
         }
+        let mut template_versions1 = SubCommand::with_name("template_versions")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: list");
+        {
+            let mcmd = SubCommand::with_name("list").about("List TemplateVersions using project_id and an optional display_name field.\nList all the TemplateVersions in the Template if display set.\nList all the TemplateVersions in the Project if display_name not set.");
+            template_versions1 = template_versions1.subcommand(mcmd);
+        }
         let mut templates1 = SubCommand::with_name("templates")
             .setting(AppSettings::ColoredHelp)
             .about("methods: create, get and launch");
@@ -113,6 +144,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         {
             let mcmd = SubCommand::with_name("launch").about("Launch a template.");
             templates1 = templates1.subcommand(mcmd);
+        }
+        let mut template_versions2 = SubCommand::with_name("template_versions")
+            .setting(AppSettings::ColoredHelp)
+            .about("methods: create");
+        {
+            let mcmd = SubCommand::with_name("create").about("Creates a new Template with TemplateVersion. Requires\nproject_id(projects) and template display_name(catalogTemplates).\nThe template display_name is set by the user.");
+            template_versions2 = template_versions2.subcommand(mcmd);
         }
         let mut debug2 = SubCommand::with_name("debug")
             .setting(AppSettings::ColoredHelp)
@@ -271,10 +309,13 @@ impl<'a, 'b> Default for HeapApp<'a, 'b> {
         jobs1 = jobs1.subcommand(work_items2);
         jobs1 = jobs1.subcommand(messages2);
         jobs1 = jobs1.subcommand(debug2);
+        catalog_templates1 = catalog_templates1.subcommand(template_versions2);
         projects0 = projects0.subcommand(templates1);
+        projects0 = projects0.subcommand(template_versions1);
         projects0 = projects0.subcommand(snapshots1);
         projects0 = projects0.subcommand(locations1);
         projects0 = projects0.subcommand(jobs1);
+        projects0 = projects0.subcommand(catalog_templates1);
         app = app.subcommand(projects0);
 
         Self { app }

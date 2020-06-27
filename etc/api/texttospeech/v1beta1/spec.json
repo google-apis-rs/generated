@@ -7,7 +7,7 @@
   "canonicalName": "Texttospeech",
   "fullyEncodeReservedExpansion": true,
   "version": "v1beta1",
-  "revision": "20200501",
+  "revision": "20200619",
   "title": "Cloud Text-to-Speech API",
   "description": "Synthesizes natural-sounding speech by applying powerful neural network models.",
   "ownerDomain": "google.com",
@@ -330,7 +330,7 @@
       "enumDescriptions": [],
       "properties": {
         "ssml": {
-          "description": "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](/speech/text-to-speech/docs/ssml).",
+          "description": "The SSML document to be synthesized. The SSML document must be valid\nand well-formed. Otherwise the RPC will fail and return\ngoogle.rpc.Code.INVALID_ARGUMENT. For more information, see\n[SSML](https://cloud.google.com/text-to-speech/docs/ssml).",
           "type": "string",
           "format": null,
           "enum": [],
@@ -459,7 +459,7 @@
             "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
             "A male voice.",
             "A female voice.",
-            "A gender-neutral voice."
+            "A gender-neutral voice. This voice is not yet supported."
           ],
           "properties": {},
           "additionalProperties": null,
@@ -511,7 +511,7 @@
             "An unspecified gender.\nIn VoiceSelectionParams, this means that the client doesn't care which\ngender the selected voice will have. In the Voice field of\nListVoicesResponse, this may mean that the voice doesn't fit any of the\nother categories in this enum, or that the gender of the voice isn't known.",
             "A male voice.",
             "A female voice.",
-            "A gender-neutral voice."
+            "A gender-neutral voice. This voice is not yet supported."
           ],
           "properties": {},
           "additionalProperties": null,
